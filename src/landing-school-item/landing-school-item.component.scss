@@ -1,0 +1,45 @@
+.school-name ,.school-code{
+    color: #747474;
+    font-family: 'Open Sans Bold';
+    font-size: 18px;
+}
+
+.img-count{
+    position: relative;
+}
+
+.counter{
+    position: absolute;
+    left: 1px;
+    top:1px;
+    background-color: #F9F7F7;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Open Sans SemiBold';
+    font-size: 14px;
+}
+.view-number{
+    margin-left: 10px;
+}
+.school-name,.school-address{
+    margin-left: 2%;
+}
+
+.school-address{
+    color: #747474;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    
+}
+
+.info-container{
+    border-left: solid 2px #c6c6c6;
+    padding-bottom: 1px;
+}
+
+
+.school-code{
+    margin-left: 5px;
+}

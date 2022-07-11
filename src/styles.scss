@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+@font-face {
+    font-family: "Orbitron";
+    src: local("Orbitron"), url(./assets/fonts/Orbitron/Orbitron-ExtraBold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Open Sans Regular";
+    font-style: normal;
+    src: url(./assets/fonts/OpenSans/OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Open Sans Bold";
+    font-style: bold;
+    src: url(./assets/fonts/OpenSans/OpenSans-Bold.ttf);
+}
+
+body {
+    width: 100%;
+}

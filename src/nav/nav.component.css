@@ -1,0 +1,26 @@
+.navbar-brand .brand-name{
+   vertical-align: middle;
+   margin: 0 10px 0 10px;
+   font-family: 'Orbitron';
+   font-size: large;
+   color: black;
+}
+
+.btn-signup{
+   background-color: #3CB5AF;
+   color: whitesmoke;
+   border-radius: 20px;
+}
+
+.btn-signin{
+   border: solid 1.5px #3CB5AF;
+   border-radius: 20px;
+}
+
+.search-input{
+   border-radius: 20px;
+}
+
+.navbar-nav{
+   font-size: 18px;
+}

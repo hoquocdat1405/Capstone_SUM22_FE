@@ -1,0 +1,30 @@
+.brief {
+    overflow: hidden;
+}
+
+.container {
+    border-radius: 50px;
+    // box-shadow: 5px 5px #ececec;
+}
+
+img {
+    border-radius: 20px;
+}
+
+.news-main {
+    position: relative;
+}
+
+.text-block {
+    overflow: hidden;
+    height: 50%;
+    position: absolute;
+    bottom: 0px;
+    // background: rgba(0.5, 0, 0, 0);
+    background: linear-gradient(to bottom,  rgb(26, 25, 25) 0%, rgba(233, 233, 233, 0) 100%); /* W3C */
+    color: white;
+    padding: 5%;
+    padding-top: 1%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}

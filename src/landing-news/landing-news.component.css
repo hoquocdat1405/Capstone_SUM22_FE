@@ -1,0 +1,16 @@
+.news-section{
+    background-color: #F1F1F1;
+    margin-top: 3%;
+    
+}
+
+.news-section .section-header{
+    padding-top: 1%;
+}
+
+.news-section .section-header h3{
+    font-family: 'Open Sans Bold';
+    font-size: 17;
+    color: #5C5C5C;
+}
+

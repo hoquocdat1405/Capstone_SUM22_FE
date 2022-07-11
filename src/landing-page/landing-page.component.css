@@ -1,0 +1,48 @@
+.news-section {
+  width: auto;
+  background-color: #f1f1f1;
+  margin-top: 3%;
+}
+
+.section-header {
+  padding-top: 1%;
+}
+
+.section-header h3 {
+  font-family: "Open Sans Bold";
+  font-size: 17;
+  color: #5c5c5c;
+}
+
+.news-left {
+  margin-top: 1%;
+  width: 60%;
+}
+.news-right {
+  margin-left: -2%;
+  margin-top: 1%;
+  width: 30%;
+}
+
+.news-right .news-item {
+  margin-bottom: 10%;
+}
+
+.sep{
+  width: 2px;
+  margin-left: 4%;
+  margin-top: 5%;
+  height: 40vh;
+  background-color: #5c5c5c;
+}
+
+.school-view-rank-section{
+  width: 100%;
+  background-color: #f1f1f1;
+  padding-bottom: 2%;
+}
+
+.school-rank-container{
+  margin: 2%;
+}
+
