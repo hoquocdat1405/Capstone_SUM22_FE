@@ -1,3 +1,4 @@
+
 .news-section {
   width: auto;
   background-color: #f1f1f1;
@@ -46,3 +47,6 @@
   margin: 2%;
 }
 
+.edu-news-item:last-child hr{
+  display: none;
+}

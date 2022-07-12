@@ -9,10 +9,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav">
-              <a href="#" class="nav-item nav-link active">Trang chủ</a>
-              <a href="#" class="nav-item nav-link">Hướng nghiệp</a>
-              <a href="#" class="nav-item nav-link">Messages</a>
-              <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
+              <a href="#" routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Trang chủ</a>
+              <a href="#" routerLink="/quiz-list" routerLinkActive="active"  class="nav-item nav-link">Trắc nghiệm tính cách</a>
+              <a href="#" routerLink="/quiz-list-category" routerLinkActive="active"  class="nav-item nav-link">Ngành nghề</a>
+              <a href="#" class="nav-item nav-link">Chọn trường</a>
+              <a href="#" class="nav-item nav-link">Tin tuyển sinh</a>
           </div>
           
           <div class="navbar-nav ms-auto">
@@ -20,7 +21,7 @@
               <input type="search" class="form-control form-control-dark search-input" placeholder="Tìm kiếm" aria-label="Search">
             </form>
             <button type="button" class="btn btn-light text-dark me-2 btn-signin">Đăng Nhập</button>
-            <button type="button" class="btn btn-signup">Đăng kí</button>
+            <!-- <button type="button" class="btn btn-signup">Đăng kí</button> -->
           </div>
       </div>
   </div>
