@@ -1,0 +1,65 @@
+.page-container {
+    background: linear-gradient(to bottom right, #ffdfb4, #ffe8bf);
+    width: 100%;
+}
+
+.banner-section {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.banner-section img {
+    width: 600px;
+    height: auto;
+}
+
+.banner-option {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.banner-option a {
+    bottom: 0;
+    color: #fff;
+    background: #3c3327;
+    padding: 10px 45px;
+    font-weight: 500;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.content-container {
+    font-family: 'Open Sans Regular';
+    font-size: 18px;
+    text-align: center;
+    margin: 0 10%;
+}
+
+.content-section{
+    margin-top: 5%;
+}
+
+.content-section .content-header{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 2%;
+}
+
+app-type-card{
+    margin: 0 auto;
+}
+
+.card{
+    width: 300px;
+    border: none;
+    margin: 10px
+}
+
+.type-card-container{
+    margin: 0 auto;
+}

@@ -5,7 +5,16 @@
    font-size: large;
    color: black;
 }
+.nav-item .nav-link{
+   color: black;
+}
 
+
+.nav-item .nav-link:active {
+   color:black;
+   font-weight: 600;
+   
+}
 .navbar-nav{
    font-family: 'Open Sans Semibold';
    font-size: 18px;

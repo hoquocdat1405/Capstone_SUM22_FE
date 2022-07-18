@@ -15,6 +15,8 @@ import { FooterComponent } from './footer/footer.component';
 import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.component';
 import { QuizListingCategoryPageComponent } from './quiz-listing-category-page/quiz-listing-category-page.component';
 import { QuizInfoItemComponent } from './quiz-listing-page/quiz-info-item/quiz-info-item.component';
+import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-detail-page.component';
+import { TypeCardComponent } from './mbti-quiz-detail-page/type-card/type-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { QuizInfoItemComponent } from './quiz-listing-page/quiz-info-item/quiz-i
     FooterComponent,
     QuizListingPageComponent,
     QuizListingCategoryPageComponent,
-    QuizInfoItemComponent
+    QuizInfoItemComponent,
+    MbtiQuizDetailPageComponent,
+    TypeCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],
