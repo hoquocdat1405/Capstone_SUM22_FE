@@ -1,0 +1,74 @@
+<div class="body">
+  <img class="mbti-img" src="assets/img/mbti-banner-nobackground.png" alt="">
+  <div class="note">
+    <div class="note-text-icon">
+      <p><i class="note-text">Suy nghĩ thật kĩ và chọn bên giống nhất với mình</i></p>
+      <div class="icon-box">
+        <mat-icon class="note-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        <div class="note-choose-question">
+          <p class="note-choose-question-text">Chọn câu hỏi bên dưới</p>
+        </div>
+      </div>
+    </div>
+    <div class="question-list">
+      <input type="checkbox" class="question question1 question-done">
+      <input type="checkbox" class="question question2 question-done">
+      <input type="checkbox" class="question question3">
+      <input type="checkbox" class="question question4 question-not-done">
+      <input type="checkbox" class="question question5 question-not-done">
+      <input type="checkbox" class="question question6 question-not-done">
+      <input type="checkbox" class="question question7 question-not-done">
+      <input type="checkbox" class="question question8 question-not-done">
+      <input type="checkbox" class="question question9 question-not-done">
+      <input type="checkbox" class="question question10 question-not-done">
+    </div>
+  </div>
+
+  <div class="main">
+    <p class="number-question">7/12</p>
+    <div class="question-answer">
+      <div class="answer-left" #answerLeft>
+        <p class="answer-text" (click)="clickAnswerLeft()" (mouseenter)="hoverLeft()" (mouseleave)="(unHoverLeft())">Nói
+          chuyện với tất cả mọi người, kể cả
+          người lạ</p>
+        <img class="answer-arrow" src="assets/img/arrow-left.png">
+      </div>
+
+      <div class="deck-box">
+        <div class="card card-third">
+        </div>
+
+        <div class="card card-second">
+        </div>
+
+        <div class="card card-first" #cardFirst cdkDrag cdkDragLockAxis="x">
+          <img src="assets/img/disco.png" class="card-image">
+          <p class="card-text">Trong một buổi tiệc, bạn sẽ?</p>
+        </div>
+
+      </div>
+
+      <div class="answer-right">
+        <p class="answer-text" (click)="clickAnswerRight()" (mouseenter)="hoverRight()" (mouseleave)="(unHoverRight())">
+          Nói chuyện với những người
+          bạn quen
+        </p>
+        <img class="answer-arrow" src="assets/img/arrow-right.png">
+      </div>
+    </div>
+  </div>
+
+  <div class="question-sets">
+    <p class="question-sets-text">Introvertsion - Extroversion</p>
+    <div class="icon-box-bottom">
+      <mat-icon class="note-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+      <p class="choose-set-question-text"><i>Chọn bộ câu hỏi bên dưới</i></p>
+    </div>
+    <div class="set-container">
+      <p class="set ">IE</p>
+      <p class="set font-light">SI</p>
+      <p class="set font-light">TF</p>
+      <p class="set font-light">JP</p>
+    </div>
+  </div>
+</div>

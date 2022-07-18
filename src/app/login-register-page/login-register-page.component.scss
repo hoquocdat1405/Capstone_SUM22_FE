@@ -1,0 +1,46 @@
+*{ 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+   }
+
+.body{
+    height: 100vh;
+    // background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #15B1AA , #4D9074,#686099,#44D1CB,#40BCB7);
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    width: 760px;
+    overflow: hidden;
+}
+
+.icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#fff;
+    min-width: 360px;
+    padding:10px;
+    height:500px;
+}
+
+.qick-logo{
+    width: 60%;
+    height:50%;
+    object-fit: center;
+}
+
+.qick-text{
+    width: 40%;
+    height:10%;
+    object-fit: center;
+    margin-top:10px;
+}

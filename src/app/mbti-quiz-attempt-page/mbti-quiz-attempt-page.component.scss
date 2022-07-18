@@ -1,0 +1,378 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+*{
+    margin: 0;
+    padding: 0;
+}
+.body{
+    background-color:#FFE5C0;
+    height:100vh;
+    width:100vw;
+    position:relative;
+}
+.main{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    height:80%;
+    position:relative;
+}
+
+.mbti-img{
+    position: absolute;
+    width: 12.5rem;
+    height:auto;
+}
+
+.question-answer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    position:absolute;
+    top: 6.5rem;
+}
+
+.deck-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 25rem;
+    height:30rem;
+}
+
+.card-first{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFE5C0;
+    border:10px solid #315452;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height:90%;
+    border-radius:10px;
+    position: absolute;
+    transition: all 1s;
+    z-index: 10;
+}
+
+.card-first:hover{
+    transform:scale(1.05);
+}
+
+.card-second{
+    background-color: red;
+    width: 80%;
+    height:90%;
+    position:absolute;
+    border:10px solid #000;
+    transform: rotate(5deg);
+    top:-0.3rem;
+    right: 0.6rem;
+}
+
+.card-third{
+    background-color: green;
+    width: 80%;
+    height:90%;
+    position:absolute;
+    top:-0.6rem;
+    transform: scale(0.98);
+
+}
+
+.card-image{
+    width: 60%;
+    height: auto;
+    object-fit: cover;
+    margin: 1.2rem;
+}
+
+.card-text{
+    width:80%;
+    font-size: 1.875rem;
+    text-align: center;
+    color: #315452;
+    font-weight: bold;
+}
+
+
+
+
+
+.answer-left,.answer-right{
+    width: 30%;
+}
+
+.answer-left:hover .answer-text{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.answer-left:hover + .deck-box .card-first{
+    // transform: rotate(-10deg) scale(1.05);
+}
+
+.answer-right:hover + .card-first{
+    transform: rotate(-10deg);
+    bottom:2.5rem;
+}
+
+.answer-right:hover .answer-text{
+    cursor: pointer;
+    opacity: 0.5;
+
+}
+
+.answer-right{
+    text-align: left;
+
+}
+
+.answer-left{
+    text-align: right;
+}
+
+.answer-left .answer-text{
+    font-size: 2.5rem;
+}
+
+.answer-right .answer-text{
+    font-size: 2.5rem;
+
+}
+
+.answer-text{
+    width:100%;
+    height:12.5rem;
+}
+
+.answer-arrow{
+    width: 80%;
+}
+
+.set-container{
+    display: flex;
+    gap: 0.8rem;
+}
+
+.set{
+    letter-spacing:4px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.suggest{
+
+}
+
+.note{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 9.4rem;
+    top: 4.4rem;
+}
+
+.icon-box{
+    background-color: #000;
+    border-radius:50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.note-choose-question{
+    width:.625rem;
+    height:2.5rem;
+    display:none;
+    position: absolute;
+    background-color:#000;
+    bottom: 5px;
+    left: 10px;
+    border-radius: 10px 10px 10px 0;
+    border: 1px solid #000;
+}
+
+.note-choose-question-text{
+    color:#fff;
+}
+
+.icon-box:hover .note-choose-question{
+    display: block;
+}
+
+.note-icon{
+    color:#fff;
+    transform: scale(0.5);
+    // align-items: center;
+}
+
+.note-text-icon{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.note-text{
+    margin-right: 0.3rem;
+}
+
+.question:not(:first-child){
+    margin-left:0.625rem;
+}
+
+.question{
+    border-radius: 50%;
+    width:0.625rem;
+    height:0.625rem;
+    border: 2px solid #383025;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+// nhung cau hoi da tick
+.question-done{
+    border:none;
+    background-color:#15B1AA;
+}
+
+// nhung cau hoi da tick
+.question-not-done{
+    background-color:#383025;
+}
+
+.icon-box-bottom{
+    background-color: #000;
+    border-radius:1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    display:flex;
+    // justify-content:center;
+    // align-items:center;
+    position:relative;
+    transition: width 1s;
+    overflow:hidden;
+    align-items: center;
+}
+
+
+.icon-box-bottom:hover {
+    width:13.75rem;
+    border-radius: 0.625rem;
+    justify-content:space-between;
+
+}
+
+.icon-box-bottom:hover .choose-set-question-text{
+    display:block;
+}
+
+.question-sets{
+    display:inline-block;
+    margin:0 3.125rem;
+}
+
+.choose-set-question-text{
+    // display:none;
+    color:#fff;
+    position: absolute;
+    left: 1.875rem;
+    width: 18.75rem;
+}
+
+.question-sets-text{
+    color:#3C3327;
+    font-size: 1.25rem;
+}
+
+.question-sets-text{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+
+.font-light{
+    opacity: 0.5;
+}
+
+
+
+// animation cho the bai
+.move-left{
+    animation-name: clickLeft;
+    animation-duration: 1s;
+}
+
+.move-right{
+    animation-name: clickRight;
+    animation-duration: 1s;
+}
+
+.hoverRotateLeft{
+    transform: rotate(-10deg) scale(1.05);
+}
+
+.hoverRotateRight{
+    transform: rotate(10deg) scale(1.05);
+    
+}
+
+@keyframes clickLeft {  
+    to {
+        margin-right: 62.5rem;
+        opacity: 0;
+        transform: scale(0.1);
+    }
+  }
+
+  @keyframes clickRight {
+    to {
+        margin-left: 62.5rem;
+        opacity: 0;
+        transform: scale(0.1);
+    }
+  }
+
+
+  @media(max-width:739px){
+    .row-input input{
+      width:100%;
+      margin-top: 10px;
+    }
+  
+    #sidebar .sidebar-item{
+      padding: 3px 30px;
+    }
+  
+    .sidebar-item .icon{
+      font-size:20px;
+    
+    }
+    
+  }
+  
+//   @media(min-width:1023px) and (max-width:1068px){
+//     .my-work-img{
+//       width: 250px;
+//     }
+  
+//     .contact-left{
+//       width: 100%;
+//     }
+  
+//     .contact-info{
+//       margin-bottom: 10px;
+//     }
+//     .skill-item-box{
+//       margin-top: 10px;
+//     }
+//   }
+  
+  
+
+

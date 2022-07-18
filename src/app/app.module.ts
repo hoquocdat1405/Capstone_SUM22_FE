@@ -1,3 +1,4 @@
+import { LoginComponent } from './login-register-page/login/login.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -17,8 +18,17 @@ import { QuizListingCategoryPageComponent } from './quiz-listing-category-page/q
 import { QuizInfoItemComponent } from './quiz-listing-page/quiz-info-item/quiz-info-item.component';
 import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-detail-page.component';
 import { TypeCardComponent } from './mbti-quiz-detail-page/type-card/type-card.component';
+import { LoginRegisterPageComponent } from './login-register-page/login-register-page.component';
+import { RegisterComponent } from './login-register-page/register/register.component';
+import { MbtiQuizAttemptPageComponent } from './mbti-quiz-attempt-page/mbti-quiz-attempt-page.component';
+import { MiQuizAttemptPageComponent } from './mi-quiz-attempt-page/mi-quiz-attempt-page.component';
+import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-page/mbti-quiz-result-detail-page.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
-  declarations: [
+  declarations: [				
     AppComponent,
     NavComponent,
     CarouselComponent,
@@ -34,8 +44,14 @@ import { TypeCardComponent } from './mbti-quiz-detail-page/type-card/type-card.c
     QuizInfoItemComponent,
     MbtiQuizDetailPageComponent,
     TypeCardComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
+    LoginRegisterPageComponent,
+    LoginComponent,
+    RegisterComponent,
+      MbtiQuizAttemptPageComponent,
+      MiQuizAttemptPageComponent,
+      MbtiQuizResultDetailPageComponent
+   ],
+  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,MatIconModule,MatTabsModule,BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

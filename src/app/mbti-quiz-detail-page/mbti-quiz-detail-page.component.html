@@ -53,15 +53,13 @@
     </p>
   </div>
 
-  <div class="content-section">
+  <div class="card-section">
     <h4 class="content-header">16 Kiểu tính cách</h4>
-    <div class="type-card-container row row-col-3">
-      <div class="card" *ngFor="let type of mbtiTypes">
-        <app-type-card
-          [name]="type.name"
-          [shorthand]="type.shorthand"
-          [imgSrc]="type.imgSrc"
-        ></app-type-card>
+    <div class="type-card-container">
+      <div class="card-row">
+        <div class="card" *ngFor="let type of mbtiTypes">
+          <app-type-card [name]="type.name" [shorthand]="type.shorthand" [imgSrc]="type.imgSrc"></app-type-card>
+        </div>
       </div>
     </div>
   </div>

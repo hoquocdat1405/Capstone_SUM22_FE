@@ -1,6 +1,7 @@
 .page-container {
     background: linear-gradient(to bottom right, #ffdfb4, #ffe8bf);
     width: 100%;
+    position:relative;
 }
 
 .banner-section {
@@ -31,6 +32,12 @@
     font-weight: 500;
     border-radius: 15px;
     text-decoration: none;
+    position:absolute;
+    bottom: 10px;
+}
+
+.banner-option a:hover{
+    opacity: 0.6;
 }
 
 .content-container {
@@ -55,11 +62,30 @@ app-type-card{
 }
 
 .card{
-    width: 300px;
+    width: 280px;
     border: none;
-    margin: 10px
+    margin: 10px;
+    transition: all 0.2s ease-in;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    cursor:pointer;
 }
 
 .type-card-container{
     margin: 0 auto;
 }
+
+.card-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-row{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+

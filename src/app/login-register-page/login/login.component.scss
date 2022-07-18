@@ -1,0 +1,98 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.main {
+    background-color: #126369;
+    width: 360px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height:500px;
+    align-items: center;
+    justify-content: center;
+}
+
+::placeholder { 
+    color: white;
+    opacity: 0.8;
+  }
+
+input:not(.checkbox, .btn-submit){
+    display: block;
+    width: 100%;
+    margin: 40px auto;
+    background-color: #126369;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 10px 0px 10px 0px;
+}
+
+// input:focus{
+//     border: 1px solid red;
+// }
+
+.btn-submit{
+    margin: 20px auto;
+    display: block;
+    background-color:#1D8990;
+    color: #fff;
+    border:none;
+    padding: 10px;
+    width:100%;
+}
+
+.other-login img:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.btn-submit:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+p{
+    color: #fff;
+    margin: 0;
+    text-align: center;
+}
+
+img{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+
+.other-login{
+    flex-direction: row;
+    margin-top: 10px
+}
+
+.forget-password,.or{
+    font-size:15px;
+    text-align: right;
+    color:#fff;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.forget-password:hover{
+    opacity: 0.8;
+
+}
+
+.items{
+    width: 80%;
+}
+
+.create-page{
+    color: #fff;
+    text-decoration: none;
+}
+
+.create-page:hover{
+    opacity: 0.8;
+}
