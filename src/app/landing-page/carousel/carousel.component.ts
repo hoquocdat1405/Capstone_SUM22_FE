@@ -6,7 +6,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
   styleUrls: ['./carousel.component.css'],
 })
 export class CarouselComponent implements OnInit, AfterViewInit {
-  public quizes: { name: string; description: string; imgSrc: string }[];
+  public quizes: { name: string; description: string; imgSrc: string,shorthand:string }[];
 
   constructor() {
     this.quizes = [
@@ -15,24 +15,28 @@ export class CarouselComponent implements OnInit, AfterViewInit {
         description:
           'MBTI là một trong những bài trắc nghiệm tính cách phổ biến nhất thế giới với hơn 2 triệu người mới sử dụng mỗi năm và đặc biệt được ứng dụng trong các hoạt động tuyển dụng, đánh giá nhân sự, giáo dục, hướng nghiệp… ',
         imgSrc: 'assets/img/mbti-fhd.jpg',
+        shorthand: 'mbti'
       },
       {
         name: 'DISC Test',
         description:
           'DISC là một trong những bài trắc nghiệm tính cách phổ biến nhất thế giới với hơn 2 triệu người mới sử dụng mỗi năm và đặc biệt được ứng dụng trong các hoạt động tuyển dụng, đánh giá nhân sự, giáo dục, hướng nghiệp… ',
         imgSrc: 'assets/img/disc-fhd.jpg',
+        shorthand: 'disc'
       },
       {
-        name: 'Myers-Briggs Type Indication',
+        name: 'Big Five Test',
         description:
-          'MBTI là một trong những bài trắc nghiệm tính cách phổ biến nhất thế giới với hơn 2 triệu người mới sử dụng mỗi năm và đặc biệt được ứng dụng trong các hoạt động tuyển dụng, đánh giá nhân sự, giáo dục, hướng nghiệp… ',
+          'Big Five là một trong những bài trắc nghiệm tính cách phổ biến nhất thế giới với hơn 2 triệu người mới sử dụng mỗi năm và đặc biệt được ứng dụng trong các hoạt động tuyển dụng, đánh giá nhân sự, giáo dục, hướng nghiệp… ',
         imgSrc: 'assets/img/big-five-fhd.jpg',
+        shorthand: 'big-five'
       },
       {
-        name: 'Myers-Briggs Type Indication',
+        name: 'Multiple Inteligent Test',
         description:
-          'MBTI là một trong những bài trắc nghiệm tính cách phổ biến nhất thế giới với hơn 2 triệu người mới sử dụng mỗi năm và đặc biệt được ứng dụng trong các hoạt động tuyển dụng, đánh giá nhân sự, giáo dục, hướng nghiệp… ',
+          'MI là một trong những bài trắc nghiệm tính cách phổ biến nhất thế giới với hơn 2 triệu người mới sử dụng mỗi năm và đặc biệt được ứng dụng trong các hoạt động tuyển dụng, đánh giá nhân sự, giáo dục, hướng nghiệp… ',
         imgSrc: 'assets/img/mi-fhd.jpg',
+        shorthand: 'mi'
       },
     ];
   }

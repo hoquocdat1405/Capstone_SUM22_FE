@@ -10,16 +10,26 @@ import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.
 import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-detail-page.component';
 
 const routes: Routes = [
-  //homepage
+  //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  // { path: 'home', component: LandingPageComponent, },
-  { path: 'home', component: MiQuizAttemptPageComponent},
+  { path: 'home', component: LandingPageComponent},
+
+  //loginpage
+  { path: 'login', component: LoginRegisterPageComponent },
 
   //quizes listing page (non-category)
   { path: 'quiz-list', component: QuizListingPageComponent },
   { path: 'quiz-list-category', component: QuizListingCategoryPageComponent },
+
+  //quizes detail pages link
   { path: 'mbti-quiz-detail', component: MbtiQuizDetailPageComponent },
-  { path: 'login', component: LoginRegisterPageComponent },
+  { path: 'disc-quiz-detail', component: MbtiQuizDetailPageComponent },
+  { path: 'mi-quiz-detail', component: MbtiQuizDetailPageComponent },
+  { path: 'big-five-quiz-detail', component: MbtiQuizDetailPageComponent },
+  
+  //Quizes attempt pages link
+  { path: 'mbti-quiz-attempt', component: MbtiQuizAttemptPageComponent },
+  { path: 'mi-quiz-attempt', component: MiQuizAttemptPageComponent },
 ];
 
 @NgModule({

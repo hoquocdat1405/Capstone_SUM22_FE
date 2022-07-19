@@ -10,5 +10,6 @@ export class QuizCarouselItemComponent {
   @Input() name!: string;
   @Input('description') des!: string;
   @Input('imgSrc') img!: string;
+  @Input() shorthand!: string;
 
 }

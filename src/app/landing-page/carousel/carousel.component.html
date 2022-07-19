@@ -8,7 +8,7 @@
   </div>
   <div class="carousel-inner" >
     <div class="carousel-item" data-bs-interval="3000" *ngFor="let quiz of quizes">
-      <app-quiz-carousel-item [name]="quiz.name" [description]="quiz.description" [imgSrc]="quiz.imgSrc"></app-quiz-carousel-item>    
+      <app-quiz-carousel-item [name]="quiz.name" [description]="quiz.description" [imgSrc]="quiz.imgSrc" [shorthand]="quiz.shorthand"></app-quiz-carousel-item>    
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
