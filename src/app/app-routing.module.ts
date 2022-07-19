@@ -8,6 +8,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { QuizListingCategoryPageComponent } from './quiz-listing-category-page/quiz-listing-category-page.component';
 import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.component';
 import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-detail-page.component';
+import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 
 const routes: Routes = [
   //homepage - default blank url link redirect to home
@@ -16,6 +17,9 @@ const routes: Routes = [
 
   //loginpage
   { path: 'login', component: LoginRegisterPageComponent },
+
+  //User profile page
+  { path: 'profile', component: UserProfilePageComponent },
 
   //quizes listing page (non-category)
   { path: 'quiz-list', component: QuizListingPageComponent },

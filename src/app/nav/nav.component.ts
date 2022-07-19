@@ -3,25 +3,26 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
+  _username: string = '';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  loggedIn(){
+  loggedIn() {
     const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    if (username) {
+      this._username = username;
+    }
     return !!token;
   }
 
-  logout(){
+  logout() {
     localStorage.getItem('token');
-    console.log('loged out');
+    console.log('logged out');
   }
-
-
-
 }

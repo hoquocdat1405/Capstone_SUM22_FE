@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MbtiQuizAttemptPageComponent,
     MiQuizAttemptPageComponent,
     MbtiQuizResultDetailPageComponent,
+    UserProfilePageComponent,
   ],
   imports: [
     FormsModule,
@@ -62,7 +64,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
