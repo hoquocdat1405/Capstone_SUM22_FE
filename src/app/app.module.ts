@@ -26,9 +26,12 @@ import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-pag
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './_services/auth.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [				
+  declarations: [
     AppComponent,
     NavComponent,
     CarouselComponent,
@@ -47,12 +50,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginRegisterPageComponent,
     LoginComponent,
     RegisterComponent,
-      MbtiQuizAttemptPageComponent,
-      MiQuizAttemptPageComponent,
-      MbtiQuizResultDetailPageComponent
-   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule,MatIconModule,MatTabsModule,BrowserAnimationsModule],
-  providers: [],
+    MbtiQuizAttemptPageComponent,
+    MiQuizAttemptPageComponent,
+    MbtiQuizResultDetailPageComponent,
+  ],
+  imports: [
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    MatIconModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
+    HttpClientModule
+  ],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

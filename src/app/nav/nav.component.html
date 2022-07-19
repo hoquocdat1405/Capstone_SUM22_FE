@@ -1,29 +1,77 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
     <a href="#" class="navbar-brand">
-      <img src="../assets/img/logo-qick-black.png" height="28" alt="Qick">
+      <img src="../assets/img/logo-qick-black.png" height="28" alt="Qick" />
       <span class="brand-name">Qick</span>
     </a>
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <button
+      type="button"
+      class="navbar-toggler"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav">
-        <a href="#" routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page"
-          class="nav-item nav-link">Trang chủ</a>
-        <a href="#" routerLink="/quiz-list" routerLinkActive="active" class="nav-item nav-link">Trắc nghiệm tính
-          cách</a>
-        <a href="#" routerLink="/quiz-list-category" routerLinkActive="active" class="nav-item nav-link">Ngành nghề</a>
+        <a
+          href="#"
+          routerLink="/home"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="nav-item nav-link"
+          >Trang chủ</a
+        >
+        <a
+          href="#"
+          routerLink="/quiz-list"
+          routerLinkActive="active"
+          class="nav-item nav-link"
+          >Trắc nghiệm hướng nghiệp</a
+        >
+        <a
+          href="#"
+          routerLink="/quiz-list-category"
+          routerLinkActive="active"
+          class="nav-item nav-link"
+          >Ngành nghề</a
+        >
         <a href="#" class="nav-item nav-link">Chọn trường</a>
         <a href="#" class="nav-item nav-link">Tin tuyển sinh</a>
       </div>
 
       <div class="navbar-nav ms-auto">
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark search-input" placeholder="Tìm kiếm"
-            aria-label="Search">
+          <input
+            type="search"
+            class="form-control form-control-dark search-input"
+            placeholder="Tìm kiếm"
+            aria-label="Search"
+          />
         </form>
-        <button routerLink="/login" type="button" class="btn btn-light text-dark me-2 btn-signin">Đăng Nhập</button>
+        <div class="nav-item dropdown" *ngIf="loggedIn()">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="dropdown03"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Username</a
+          >
+          <ul class="dropdown-menu" aria-labelledby="dropdown03">
+            <li><a class="dropdown-item" href="#">Tài khoản</a></li>
+            <li><div class="dropdown-divider"></div></li>
+            <li><a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a></li>
+          </ul>
+        </div>
+        <button
+          routerLink="/login"
+          type="button"
+          class="btn btn-light text-dark me-2 btn-signin"
+          *ngIf="!loggedIn()"
+        >
+          Đăng Nhập
+        </button>
         <!-- <button type="button" class="btn btn-signup">Đăng kí</button> -->
       </div>
     </div>

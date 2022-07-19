@@ -3,15 +3,28 @@
     <p>Qick help to find U</p>
     <p>Chào mừng bạn trở lại</p>
 
-    <form action="">
-      <input type="text" placeholder="Địa chỉ email" class="email">
-      <input type="password" placeholder="Mật khẩu" class="password">
+    <form #loginForm="ngForm" action="" (ngSubmit)="login()">
+      <input type="text" placeholder="Địa chỉ email" name="email" required
+       #username="ngModel" class="email" [(ngModel)]="model.email">
+      <input type="password" placeholder="Mật khẩu" name="password" required
+      #password="ngModel" class="password" [(ngModel)]="model.password">
       <a class="forget-password" href="#">
         <h3 class="forget-password">Quên mật khẩu</h3>
       </a>
       <input type="submit" class="btn-submit" value="Đăng nhập">
     </form>
   </div>
+<!-- 
+  <pre>
+    Form Valid: {{loginForm.valid}}
+    Form Dirty: {{loginForm.dirty}}
+    Username Valid: {{username.valid}}
+    Username Dirty: {{username.dirty}}
+    Password Valid: {{password.valid}}
+    Password Dirty: {{password.dirty}}
+
+
+  </pre> -->
 
 
   <h4 class="or">Hoặc</h4>
