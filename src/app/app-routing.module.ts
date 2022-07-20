@@ -1,3 +1,4 @@
+import { FooterComponent } from './footer/footer.component';
 import { MiQuizAttemptPageComponent } from './mi-quiz-attempt-page/mi-quiz-attempt-page.component';
 import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-page/mbti-quiz-result-detail-page.component';
 import { MbtiQuizAttemptPageComponent } from './mbti-quiz-attempt-page/mbti-quiz-attempt-page.component';
@@ -14,7 +15,8 @@ import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-d
 const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: LandingPageComponent},
+  // { path: 'home', component: LandingPageComponent},
+  { path: 'home', component: FooterComponent},
 
   //loginpage
   { path: 'login', component: LoginRegisterPageComponent },
