@@ -9,6 +9,7 @@ import { QuizListingCategoryPageComponent } from './quiz-listing-category-page/q
 import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.component';
 import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-detail-page.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
+import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-detail-page.component';
 
 const routes: Routes = [
   //homepage - default blank url link redirect to home
@@ -27,12 +28,13 @@ const routes: Routes = [
 
   //quizes detail pages link
   { path: 'mbti-quiz-detail', component: MbtiQuizDetailPageComponent },
-  { path: 'disc-quiz-detail', component: MbtiQuizDetailPageComponent },
+  { path: 'disc-quiz-detail', component: DiscQuizDetailPageComponent },
   { path: 'mi-quiz-detail', component: MbtiQuizDetailPageComponent },
   { path: 'big-five-quiz-detail', component: MbtiQuizDetailPageComponent },
   
   //Quizes attempt pages link
   { path: 'mbti-quiz-attempt', component: MbtiQuizAttemptPageComponent },
+  { path: 'disc-quiz-attempt', component: MbtiQuizAttemptPageComponent },
   { path: 'mi-quiz-attempt', component: MiQuizAttemptPageComponent },
 ];
 

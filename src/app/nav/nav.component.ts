@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -22,7 +23,7 @@ export class NavComponent implements OnInit {
   }
 
   logout() {
-    localStorage.getItem('token');
+    localStorage.removeItem('token');
     console.log('logged out');
   }
 }

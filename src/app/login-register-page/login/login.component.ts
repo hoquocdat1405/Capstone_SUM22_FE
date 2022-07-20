@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterStateSnapshot } from '@angular/router';
+
 import { AuthService } from '../../_services/auth.service';
 
 @Component({
@@ -9,18 +11,25 @@ import { AuthService } from '../../_services/auth.service';
 export class LoginComponent implements OnInit {
   model: any = {};
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    // private state: RouterStateSnapshot
+  ) {}
 
   ngOnInit() {}
 
   login() {
-    this.authService.login(this.model).subscribe(
-      (next) => {
-        console.log('logged in');
-      },
-      (error) => {
-        console.log('Login error');
-      }
-    );
+    // this.authService.login(this.model).subscribe(
+    //   (next) => {
+    //     console.log('Logged in');
+    //   },
+    //   (error) => {
+    //     console.log('Login error');
+    //   }
+    // );
+    localStorage.setItem('token', 'abcdfdsfsdf');
+    localStorage.setItem('username', 'bla bla');
+    this.router.navigate(['/']);
   }
 }

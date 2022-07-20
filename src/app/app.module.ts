@@ -18,6 +18,7 @@ import { QuizListingCategoryPageComponent } from './quiz-listing-category-page/q
 import { QuizInfoItemComponent } from './quiz-listing-page/quiz-info-item/quiz-info-item.component';
 import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-detail-page.component';
 import { TypeCardComponent } from './mbti-quiz-detail-page/type-card/type-card.component';
+import { TypeBubbleComponent } from './disc-quiz-detail-page/type-bubble/type-bubble.component';
 import { LoginRegisterPageComponent } from './login-register-page/login-register-page.component';
 import { RegisterComponent } from './login-register-page/register/register.component';
 import { MbtiQuizAttemptPageComponent } from './mbti-quiz-attempt-page/mbti-quiz-attempt-page.component';
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
+import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { UserProfilePageComponent } from './user-profile-page/user-profile-page.
     QuizInfoItemComponent,
     MbtiQuizDetailPageComponent,
     TypeCardComponent,
+    TypeBubbleComponent,
     LoginRegisterPageComponent,
     LoginComponent,
     RegisterComponent,
@@ -55,6 +58,7 @@ import { UserProfilePageComponent } from './user-profile-page/user-profile-page.
     MiQuizAttemptPageComponent,
     MbtiQuizResultDetailPageComponent,
     UserProfilePageComponent,
+    DiscQuizDetailPageComponent,
   ],
   imports: [
     FormsModule,
