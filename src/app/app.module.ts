@@ -30,6 +30,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { UserProfilePageComponent } from './user-profile-page/user-profile-page.
     MatTabsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    DragDropModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

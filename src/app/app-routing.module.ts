@@ -15,7 +15,7 @@ const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   // { path: 'home', component: LandingPageComponent},
-  { path: 'home', component: FooterComponent},
+  { path: 'home', component: MbtiQuizAttemptPageComponent},
 
   //loginpage
   { path: 'login', component: LoginRegisterPageComponent },
