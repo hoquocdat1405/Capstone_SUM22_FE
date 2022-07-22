@@ -37,6 +37,7 @@ import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz
 import { MiQuizDetailPageComponent } from './mi-quiz-detail-page/mi-quiz-detail-page.component';
 import { ExpansionPanelComponent } from './mi-quiz-detail-page/expansion-panel/expansion-panel.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { BfQuizAttemptPageComponent } from './bf-quiz-attempt-page/bf-quiz-attempt-page.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     DiscQuizAttemptPageComponent,
     MiQuizDetailPageComponent,
     ExpansionPanelComponent,
+    BfQuizAttemptPageComponent,
   ],
   imports: [
     FormsModule,
