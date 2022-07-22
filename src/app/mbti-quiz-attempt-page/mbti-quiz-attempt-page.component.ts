@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -7,6 +8,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class MbtiQuizAttemptPageComponent implements OnInit {
   @ViewChild('cardFirst') cardFirst!:ElementRef;
+  @ViewChild('answerLeft') answerLeft!:ElementRef;
+  @ViewChild('answerRight') answerRight!:ElementRef;
+  
 
   constructor() { }
 
@@ -36,9 +40,34 @@ unHoverLeft(){
 
 hoverRight(){
   this.cardFirst.nativeElement.classList.add('hoverRotateRight');
+  console.log('aaaa');
 }
 
 unHoverRight(){
   this.cardFirst.nativeElement.classList.remove('hoverRotateRight');
+}
+
+dragPosition = {x: 0, y: 0};
+
+drop() {
+  var x = this.cardFirst.nativeElement.getBoundingClientRect().left;
+  var width = this.cardFirst.nativeElement.offsetWidth;
+
+  //tha ben trai
+  if(x-width <-100){
+    this.clickAnswerLeft();
+  }
+  //tha ben phai
+  if(x-width > 100){
+    this.clickAnswerRight();
+  }
+  if(x-width >= -100 && x-width <= 100){
+    this.dragPosition = {x: this.dragPosition.x, y: this.dragPosition.y};
+    return;
+  }
+
+  //quay ve vi tri ban dau
+  setTimeout(()=>this.dragPosition = {x: this.dragPosition.x, y: this.dragPosition.y},800);
+  
 }
 }

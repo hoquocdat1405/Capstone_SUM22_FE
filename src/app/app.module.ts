@@ -36,6 +36,7 @@ import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-d
 import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz-attempt-page.component';
 import { MiQuizDetailPageComponent } from './mi-quiz-detail-page/mi-quiz-detail-page.component';
 import { ExpansionPanelComponent } from './mi-quiz-detail-page/expansion-panel/expansion-panel.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ExpansionPanelComponent } from './mi-quiz-detail-page/expansion-panel/e
     MatExpansionModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    DragDropModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

@@ -28,7 +28,8 @@
     <p class="number-question">7/12</p>
     <div class="question-answer">
       <div class="answer-left" #answerLeft>
-        <p class="answer-text" (click)="clickAnswerLeft()" (mouseenter)="hoverLeft()" (mouseleave)="(unHoverLeft())">Nói
+        <p class="answer-text" (click)="clickAnswerLeft()" (mouseenter)="hoverLeft()" (mouseleave)="(unHoverLeft())"
+          #answerLeft>Nói
           chuyện với tất cả mọi người, kể cả
           người lạ</p>
         <img class="answer-arrow" src="assets/img/arrow-left.png">
@@ -36,20 +37,27 @@
 
       <div class="deck-box">
         <div class="card card-third">
+          <img src=" assets/img/disco.png" class="card-image">
+          <p class="card-text">Trong một buổi tiệc, bạn sẽ?</p>
         </div>
 
         <div class="card card-second">
+          <img src=" assets/img/disco.png" class="card-image">
+          <p class="card-text">Trong một buổi tiệc, bạn sẽ?</p>
         </div>
-
-        <div class="card card-first" #cardFirst cdkDrag cdkDragLockAxis="x">
-          <img src="assets/img/disco.png" class="card-image">
+        <!-- #cardFirst cdkDrag cdkDragLockAxis="x" (cdkDragEnded)="drop()"
+        [cdkDragFreeDragPosition]="dragPosition" -->
+        <div class="card card-first" #cardFirst cdkDrag (cdkDragEnded)="drop()" cdkDragLockAxis="x"
+          [cdkDragFreeDragPosition]="dragPosition">
+          <img src=" assets/img/disco.png" class="card-image">
           <p class="card-text">Trong một buổi tiệc, bạn sẽ?</p>
         </div>
 
       </div>
 
       <div class="answer-right">
-        <p class="answer-text" (click)="clickAnswerRight()" (mouseenter)="hoverRight()" (mouseleave)="(unHoverRight())">
+        <p class="answer-text" #answerRight (click)="clickAnswerRight()" (mouseenter)="hoverRight()"
+          (mouseleave)="(unHoverRight())">
           Nói chuyện với những người
           bạn quen
         </p>
