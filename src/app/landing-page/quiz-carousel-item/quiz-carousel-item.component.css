@@ -1,11 +1,12 @@
 .slide {
   margin: auto;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 10px;
   border-radius: 50px;
   width: 90%;
   height: 90%;
   font-family: "Open Sans";
-  box-shadow: 7px 10px 5px #ececec;
+  box-shadow: 5px 5px 10px 5px #d9d9d9;
 }
 
 #category-name {
@@ -33,9 +34,9 @@
 
 .quiz-img {
   /* justify-content: center; */
-  width: 70%;
+  width: 80%;
   margin: 10%;
-  height: 65%;
+  height: 70%;
   border-radius: 10%;
 }
 #quiz-info h4 {

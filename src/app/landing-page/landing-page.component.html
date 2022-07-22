@@ -1,80 +1,94 @@
-
+<div class="page-container">
   <app-nav></app-nav>
   <app-carousel></app-carousel>
-
-  <!-- tin tuyển sinh -->
-  <div class="news-section">
-    <div class="section-header d-flex justify-content-center">
-      <h3>Tin tuyển sinh</h3>
-    </div>
-    <div class="news-container row d-flex justify-content-center">
-      <div class="news-left">
-        <div class="news-item">
-          <app-news-item></app-news-item>
-        </div>
+</div>
+<!-- tin tuyển sinh -->
+<div class="news-section">
+  <div class="section-header d-flex justify-content-center">
+    <h3>Tin tuyển sinh</h3>
+  </div>
+  <div class="news-container row d-flex justify-content-center">
+    <div class="news-left">
+      <div class="news-item">
+        <app-news-item></app-news-item>
       </div>
-      <div class="news-right">
-        <div class="news-item">
-          <app-news-item></app-news-item>
-        </div>
-        <div class="news-item">
-          <app-news-item></app-news-item>
-        </div>
+    </div>
+    <div class="news-right">
+      <div class="news-item">
+        <app-news-item></app-news-item>
+      </div>
+      <div class="news-item">
+        <app-news-item></app-news-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- tin giáo dục -->
+<div class="edu-news-section container-fluid">
+  <div class="section-header d-flex justify-content-center">
+    <h3>Tin tức giáo dục</h3>
+  </div>
+
+  <div class="edu-news-container row d-flex justify-content-center">
+    <div class="edu-news-item col-sm-6">
+      <div class="d-flex">
+        <app-news-item></app-news-item>
+      </div>
+    </div>
+
+    <div class="edu-news-item col-sm-6">
+      <div class="d-flex">
+        <app-news-item></app-news-item>
+      </div>
+    </div>
+
+    <div class="edu-news-item col-sm-6">
+      <div class="d-flex">
+        <app-news-item></app-news-item>
+      </div>
+    </div>
+
+    <div class="edu-news-item col-sm-6">
+      <div class="d-flex">
+        <app-news-item></app-news-item>
+      </div>
+    </div>
+
+    <div class="edu-news-item col-sm-6">
+      <div class="d-flex">
+        <app-news-item></app-news-item>
+      </div>
+    </div>
+
+    <div class="edu-news-item col-sm-6">
+      <div class="d-flex">
+        <app-news-item></app-news-item>
       </div>
     </div>
   </div>
 
-  <!-- tin giáo dục -->
-  <div class="edu-news-section container-fluid">
-    <div class="section-header d-flex justify-content-center">
-      <h3>Tin tức giáo dục</h3>
-    </div>
-
-    <div class="edu-news-container row">
-      <div class="edu-news-item col-sm">
-        <div class="d-flex">
-          <app-edu-news-item></app-edu-news-item>
-          <hr class="sep" />
-        </div>
-      </div>
-
-      <div class="edu-news-item col-sm">
-        <div class="d-flex">
-          <app-edu-news-item></app-edu-news-item>
-          <hr class="sep" />
-        </div>
-      </div>
-
-      <div class="edu-news-item col-sm">
-        <div class="d-flex">
-          <app-edu-news-item></app-edu-news-item>
-          <hr class="sep" />
-        </div>
-      </div>
-    </div>
+</div>
+<!-- Top trường theo lượt xem -->
+<div class="school-view-rank-section container-fluid">
+  <div class="section-header d-flex justify-content-center">
+    <h3>Top trường nhiều lượt xem</h3>
   </div>
-
-  <!-- Top trường theo lượt xem -->
-  <div class="school-view-rank-section container-fluid">
-    <div class="section-header d-flex justify-content-center">
-      <h3>Top trường nhiều lượt xem</h3>
+  <div class="school-rank-container row">
+    <div class="school-rank-item col-sm">
+      <app-landing-school-item></app-landing-school-item>
     </div>
-    <div class="school-rank-container row">
-      <div class="school-rank-item col-sm">
-        <app-landing-school-item></app-landing-school-item>
-      </div>
-      <div class="school-rank-item col-sm">
-        <app-landing-school-item></app-landing-school-item>
-      </div>
-      <div class="school-rank-item col-sm">
-        <app-landing-school-item></app-landing-school-item>
-      </div>
-      <div class="school-rank-item col-sm">
-        <app-landing-school-item></app-landing-school-item>
-      </div>
+    <div class="school-rank-item col-sm">
+      <app-landing-school-item></app-landing-school-item>
+    </div>
+    <div class="school-rank-item col-sm">
+      <app-landing-school-item></app-landing-school-item>
+    </div>
+    <div class="school-rank-item col-sm">
+      <app-landing-school-item></app-landing-school-item>
     </div>
   </div>
 
   <!-- Footer -->
-  <app-footer></app-footer>
-
+</div>
+<app-footer></app-footer>

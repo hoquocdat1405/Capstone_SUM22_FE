@@ -1,3 +1,7 @@
+.navbar{
+   padding: auto 1%;
+}
+
 .navbar-brand .brand-name{
    vertical-align: middle;
    margin: 0 10px 0 10px;
@@ -7,8 +11,8 @@
 }
 .nav-item .nav-link{
    color: black;
-}
 
+}
 
 .nav-item .nav-link:active {
    color:black;
@@ -18,7 +22,16 @@
 .navbar-nav{
    font-family: 'Open Sans Semibold';
    font-size: 18px;
-    margin-right: 15px;
+   margin: auto 5px;
+}
+
+.navbar-nav a{
+   margin: auto 5px;
+}
+
+.navbar-nav a:hover{
+   background: #e4e4e4;
+   border-radius: 15px;
 }
 
 .btn-signup{
@@ -34,8 +47,4 @@
 
 .search-input{
    border-radius: 20px;
-}
-
-.navbar-nav{
-   font-size: 18px;
 }

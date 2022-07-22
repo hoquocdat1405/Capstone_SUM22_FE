@@ -9,22 +9,40 @@
 
 img {
     border-radius: 20px;
+    transform: scale(1);
+    transition: all 0.3s ease-out;
 }
+
 
 .news-main {
     position: relative;
 }
 
 .text-block {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease-out;
     overflow: hidden;
     height: 50%;
     position: absolute;
     bottom: 0px;
     // background: rgba(0.5, 0, 0, 0);
-    background: linear-gradient(to bottom,  rgb(26, 25, 25) 0%, rgba(233, 233, 233, 0) 100%); /* W3C */
+    background: linear-gradient(to bottom, rgb(26, 25, 25) 0%, rgba(233, 233, 233, 0) 100%);
+    /* W3C */
     color: white;
     padding: 5%;
     padding-top: 1%;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+
+.text-block:hover img{
+    border-radius: 20px;
+    opacity: 0.5;
+}
+
+.news-main:hover .text-block{
+    opacity: 1;
+    transform: translateY(0);
 }

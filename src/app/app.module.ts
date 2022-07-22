@@ -26,12 +26,16 @@ import { MiQuizAttemptPageComponent } from './mi-quiz-attempt-page/mi-quiz-attem
 import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-page/mbti-quiz-result-detail-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-detail-page.component';
+import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz-attempt-page.component';
+import { MiQuizDetailPageComponent } from './mi-quiz-detail-page/mi-quiz-detail-page.component';
+import { ExpansionPanelComponent } from './mi-quiz-detail-page/expansion-panel/expansion-panel.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +63,9 @@ import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-d
     MbtiQuizResultDetailPageComponent,
     UserProfilePageComponent,
     DiscQuizDetailPageComponent,
+    DiscQuizAttemptPageComponent,
+    MiQuizDetailPageComponent,
+    ExpansionPanelComponent,
   ],
   imports: [
     FormsModule,
@@ -67,6 +74,7 @@ import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-d
     FontAwesomeModule,
     MatIconModule,
     MatTabsModule,
+    MatExpansionModule,
     BrowserAnimationsModule,
     HttpClientModule,
   ],

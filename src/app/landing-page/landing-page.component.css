@@ -1,12 +1,12 @@
-
 .news-section {
   width: auto;
   background-color: #f1f1f1;
   margin-top: 3%;
+  padding-bottom: 2%;
 }
 
 .section-header {
-  padding-top: 1%;
+  padding-top: 3%;
 }
 
 .section-header h3 {
@@ -15,38 +15,40 @@
   color: #5c5c5c;
 }
 
-.news-left {
-  margin-top: 1%;
-  width: 60%;
+.news-container {
+  padding-top: 2%;
 }
+
+.news-left {
+  width: 62%;
+}
+
 .news-right {
   margin-left: -2%;
-  margin-top: 1%;
-  width: 30%;
+  width: 32%;
 }
 
 .news-right .news-item {
-  margin-bottom: 10%;
+  margin-bottom: 5%;
+}
+.edu-news-container,
+.news-container,
+.school-rank-container {
+  margin: 1% 0;
 }
 
-.sep{
-  width: 2px;
-  margin-left: 4%;
-  margin-top: 5%;
-  height: 40vh;
-  background-color: #5c5c5c;
-}
-
-.school-view-rank-section{
+.school-view-rank-section {
   width: 100%;
   background-color: #f1f1f1;
   padding-bottom: 2%;
 }
 
-.school-rank-container{
+.school-rank-container {
   margin: 2%;
 }
 
-.edu-news-item:last-child hr{
-  display: none;
+.edu-news-item {
+  margin: 5px;
+  margin-top: 2%;
+  width: 31%;
 }

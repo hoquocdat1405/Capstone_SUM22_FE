@@ -1,17 +1,23 @@
-.school-name ,.school-code{
+.school-name,
+.school-code {
     color: #747474;
     font-family: 'Open Sans Bold';
     font-size: 18px;
 }
 
-.img-count{
+.img-count {
     position: relative;
+
 }
 
-.counter{
+.news-img {
+    border-radius: 5px 50px 15px 50px;
+}
+
+.counter {
     position: absolute;
     left: 1px;
-    top:1px;
+    top: 1px;
     background-color: #F9F7F7;
     margin-top: 10px;
     margin-left: 10px;
@@ -20,14 +26,17 @@
     font-family: 'Open Sans SemiBold';
     font-size: 14px;
 }
-.view-number{
+
+.view-number {
     margin-left: 10px;
 }
-.school-name,.school-address{
+
+.school-name,
+.school-address {
     margin-left: 2%;
 }
 
-.school-address{
+.school-address {
     color: #747474;
     font-family: 'Open Sans';
     font-size: 14px;
@@ -35,12 +44,12 @@
     margin-bottom: 0rem;
 }
 
-.info-container{
+.info-container {
     // border-left: solid 2px #c6c6c6;
     padding-bottom: 1px;
 }
 
 
-.school-code{
+.school-code {
     margin-left: 5px;
 }

@@ -1,74 +1,88 @@
-:host{width:100%;}
-*{
+:host {
+    width: 100%;
+}
+
+* {
     margin: 0;
     padding: 0;
 }
 
-.footer-container{
+.footer-container {
     background-color: #212121;
     display: inline-block;
     width: 100vw;
 }
 
-.footer-section{
+.footer-section {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin:50px 0;
+    margin: 50px 0;
 
 }
 
-.footer-menu{
+.footer-menu {
     // text-align: justify;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.footer-menu .menu-header{
+.footer-menu .menu-header {
     color: #fff;
     font-size: 20px;
 }
 
-.footer-section:nth-child(2){
+.footer-section:nth-child(2) {
     position: relative;
 }
 
-.footer-menu-column{
+.footer-menu-column {
     display: flex;
-    flex-direction:column;
-    gap:10px;
+    flex-direction: column;
+    gap: 10px;
     position: absolute;
     left: 130px;
     bottom: 0;
 }
 
 
-.menu-item{
+.menu-item {
     color: #6f7164;
     font-size: 18px;
 }
 
-.icon-footer{
+.icon-footer {
     width: 100px;
     height: auto;
 }
 
-.qick-text{
+.qick-text {
     width: 130px;
-    margin: 10px 0;;
+    margin: 10px 0;
+    ;
 }
 
-.footer-menu-row .menu-item:hover{
+.footer-menu-row .menu-item:hover {
     opacity: 0.6;
 }
 
-.white-icon{
+.white-icon {
     color: #fff;
 }
 
-.footer-menu-column span{
+.footer-menu-column span {
     color: #fff;
+}
+
+mat-icon{
+    margin-right: 5px;
+}
+
+.info-icon {
+    display: flex;
+    position: relative;
+    justify-content: center flex-start;
 }
