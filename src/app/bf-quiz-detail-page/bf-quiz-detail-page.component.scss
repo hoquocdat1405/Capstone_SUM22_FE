@@ -1,0 +1,155 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --text: 100px;
+}
+
+.body {
+  background-image: url('/assets/img/big5-bg.jpg');
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.page-container {
+  width: 100%;
+  background-color: #d0a885;
+  position: absolute;
+  top: 0;
+}
+
+.mi-title {
+  position: absolute;
+  width: 400px;
+  top: 0;
+  left: 30px;
+}
+
+.question-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.question-number {
+  font-size: 4em;
+  grid-row: span 2;
+  font-weight: 600;
+  color: #fff;
+}
+
+.question {
+  font-size: 1em;
+  color: #fff;
+}
+
+.question-hint {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.quiz-detail-body {
+  width: 100%;
+}
+
+.bar-graph-container {
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 20px;
+}
+
+.bar-wrapper {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bar {
+  background-color: rgba($color: #fff, $alpha: 0.8);
+  width: 44px;
+  height: calc(var(--perc) * 3);
+  -webkit-box-shadow: 16px 15px 20px 2px rgba(0, 0, 0, 0.66);
+  box-shadow: 16px 15px 20px 2px rgba(0, 0, 0, 0.66);
+}
+
+.percentage-numb {
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.bar-title {
+  color: #fff;
+  margin-top: 12px;
+  opacity: .8;
+}
+
+.big-five-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  margin-top: 16%;
+  position: relative;
+  margin-bottom: -8%;
+}
+
+.big-five-detail ul {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-five-detail ul li {
+  position: absolute;
+  list-style: none;
+  transform: rotate(calc(360deg /8 * var(--i)));
+  left: 0;
+  bottom: 0;
+  transform-origin: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.li-wrapper {
+  transform: rotate(calc(360deg /-8 * var(--i)));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-five-detail ul li img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.big-five-detail ul li p {
+  color: #fff;
+}
+
+.big-five-text {
+  position: absolute;
+  bottom: 20%;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+}

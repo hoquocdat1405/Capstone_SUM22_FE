@@ -1,3 +1,4 @@
+import { BfQuizDetailPageComponent } from './bf-quiz-detail-page/bf-quiz-detail-page.component';
 import { BfQuizAttemptPageComponent } from './bf-quiz-attempt-page/bf-quiz-attempt-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { MiQuizAttemptPageComponent } from './mi-quiz-attempt-page/mi-quiz-attempt-page.component';
@@ -35,7 +36,7 @@ const routes: Routes = [
   { path: 'mbti-quiz-detail', component: MbtiQuizDetailPageComponent },
   { path: 'disc-quiz-detail', component: DiscQuizDetailPageComponent },
   { path: 'mi-quiz-detail', component: MiQuizDetailPageComponent },
-  { path: 'big-five-quiz-detail', component: MbtiQuizDetailPageComponent },
+  { path: 'big-five-quiz-detail', component: BfQuizDetailPageComponent },
 
   //Quizes attempt pages link
   { path: 'mbti-quiz-attempt', component: MbtiQuizAttemptPageComponent },

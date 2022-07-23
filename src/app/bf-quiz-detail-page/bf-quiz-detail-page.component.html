@@ -1,0 +1,61 @@
+<div class="body">
+  <div class="page-container">
+    <app-nav></app-nav>
+  </div>
+  <div class="main">
+    <div class="question-container">
+      <p class="question-number">5</p>
+      <div class="question-text">
+        <p class="question">Kết quả</p>
+        <p class="question-hint">Đặc điểm tính cách</p>
+      </div>
+    </div>
+    <div class="quiz-detail-body">
+      <div class="bar-graph-container">
+        <div
+          class="bar-wrapper"
+          *ngFor="let i of charPercentage; let ind = index"
+        >
+          <div class="percentage-numb">{{ i }}%</div>
+          <div class="bar" style="--perc: {{ i }}px"></div>
+          <div class="bar-title">{{ charTitle[ind] }}</div>
+        </div>
+      </div>
+      <div class="big-five-detail">
+        <ul>
+          <li style="--i: 0">
+            <div class="li-wrapper">
+              <img src="./../../assets/img/qick-white.png" />
+              <p>Cởi mở</p>
+            </div>
+          </li>
+          <li style="--i: 1">
+            <div class="li-wrapper">
+              <img src="./../../assets/img/qick-white.png" />
+              <p>Tự chủ</p>
+            </div>
+          </li>
+          <li style="--i: 2">
+            <div class="li-wrapper">
+              <img src="./../../assets/img/qick-white.png" />
+              <p>Hướng ngoại</p>
+            </div>
+          </li>
+          <li style="--i: 3">
+            <div class="li-wrapper">
+              <img src="./../../assets/img/qick-white.png" />
+              <p>Hòa đồng</p>
+            </div>
+          </li>
+          <li style="--i: 4">
+            <div class="li-wrapper">
+              <img src="./../../assets/img/qick-white.png" />
+              <p>Bất ổn cảm xúc</p>
+            </div>
+          </li>
+        </ul>
+        <p class="big-five-text">5 ĐẶC ĐIỂM TÍNH CÁCH</p>
+      </div>
+    </div>
+  </div>
+</div>
