@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 .main {
@@ -9,9 +10,10 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    height:500px;
+    height:550px;
     align-items: center;
     justify-content: center;
+    transition: margin 1s;
 }
 
 ::placeholder { 
@@ -27,12 +29,8 @@ input:not(.checkbox, .btn-submit){
     border-top: none;
     border-left: none;
     border-right: none;
-    padding: 10px 0px 10px 0px;
+    padding: 10px;
 }
-
-// input:focus{
-//     border: 1px solid red;
-// }
 
 .btn-submit{
     margin: 20px auto;
@@ -88,11 +86,12 @@ img{
     width: 80%;
 }
 
-.create-page{
+.create-page-button{
     color: #fff;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.create-page:hover{
+.create-page-button:hover{
     opacity: 0.8;
 }

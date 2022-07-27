@@ -17,6 +17,12 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit(){
+    var beginX = this.cardFirst.nativeElement.getBoundingClientRect().left;
+    console.log(beginX);
+
+  }
+
   clickAnswerLeft(){
     this.cardFirst.nativeElement.classList.add('move-left');
     setTimeout(() =>this.cardFirst.nativeElement.classList.remove('move-left')
@@ -49,19 +55,26 @@ unHoverRight(){
 
 dragPosition = {x: 0, y: 0};
 
+  beginX:any;
+drag(){
+  this.beginX = this.cardFirst.nativeElement.getBoundingClientRect().left;
+}
+
 drop() {
   var x = this.cardFirst.nativeElement.getBoundingClientRect().left;
-  var width = this.cardFirst.nativeElement.offsetWidth;
+  console.log("x:" +x);
 
   //tha ben trai
-  if(x-width <-100){
+  if(x-this.beginX <-150){
     this.clickAnswerLeft();
+    console.log("x:" +x);
+    console.log("this.beginX: " +this.beginX);
   }
   //tha ben phai
-  if(x-width > 100){
+  if(x-this.beginX > 150){
     this.clickAnswerRight();
   }
-  if(x-width >= -100 && x-width <= 100){
+  if(x-this.beginX >= -150 && x-this.beginX <= 150){
     this.dragPosition = {x: this.dragPosition.x, y: this.dragPosition.y};
     return;
   }

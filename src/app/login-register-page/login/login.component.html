@@ -1,20 +1,20 @@
-<div class="main">
+<div class="main" #container>
   <div class="items">
     <p>Qick help to find U</p>
     <p>Chào mừng bạn trở lại</p>
 
     <form #loginForm="ngForm" action="" (ngSubmit)="login()">
-      <input type="text" placeholder="Địa chỉ email" name="email" required
-       #username="ngModel" class="email" [(ngModel)]="model.email">
-      <input type="password" placeholder="Mật khẩu" name="password" required
-      #password="ngModel" class="password" [(ngModel)]="model.password">
+      <input type="text" placeholder="Địa chỉ email" name="email" required #username="ngModel" class="email"
+        [(ngModel)]="model.email">
+      <input type="password" placeholder="Mật khẩu" name="password" required #password="ngModel" class="password"
+        [(ngModel)]="model.password">
       <a class="forget-password" href="#">
         <h3 class="forget-password">Quên mật khẩu</h3>
       </a>
       <input type="submit" class="btn-submit" value="Đăng nhập">
     </form>
   </div>
-<!-- 
+  <!-- 
   <pre>
     Form Valid: {{loginForm.valid}}
     Form Dirty: {{loginForm.dirty}}
@@ -32,7 +32,7 @@
     <img src="/assets/img/fb-icon.png" alt="">
     <img src="/assets/img/google-icon.png" alt="">
   </div>
-  <a href="#" class="create-page">Tạo tài khoản</a>
+  <a (click)="marginRight()" class="create-page-button">Tạo tài khoản</a>
 
 
 </div>

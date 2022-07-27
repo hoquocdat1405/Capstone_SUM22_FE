@@ -9,13 +9,14 @@
       <input type="text" placeholder="Mật khẩu" class="password">
       <input type="text" placeholder="Xác nhận mật khẩu" class="confirm-password">
       <input type="checkbox" class="checkbox">
-      <p>Tôi đã đồng ý với Điều khoản dịch vụ và Chính sách bảo mật</p>
+      <p>Tôi đã đồng ý với <span><a href="#">Điều khoản dịch vụ</a></span> và <span><a href="#">Chính sách bảo
+            mật</a></span> </p>
       <input type="submit" class="btn-submit" value="Tạo tài khoản">
     </form>
   </div>
   <div class="login-page">
     <p>Bạn đã có tài khoản?</p>
-    <a href="/">Đăng nhập ngay</a>
+    <p class="login-page-button" (click)="login()">Đăng nhập ngay</p>
   </div>
 
 

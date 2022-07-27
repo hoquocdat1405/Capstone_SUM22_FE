@@ -14,10 +14,10 @@
     background-image: linear-gradient(to right, #15B1AA , #4D9074,#686099,#44D1CB,#40BCB7);
 }
 
-.main{
+.slide{
     display: flex;
     flex-direction: row;
-    width: 760px;
+    width: 720px;
     overflow: hidden;
 }
 
@@ -29,13 +29,13 @@
     background-color:#fff;
     min-width: 360px;
     padding:10px;
-    height:500px;
+    height:550px;
 }
 
 .qick-logo{
-    width: 60%;
+    width: 70%;
     height:50%;
-    object-fit: center;
+    object-fit: cover;
 }
 
 .qick-text{

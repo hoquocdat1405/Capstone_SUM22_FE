@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ElementRef, ViewChild } from '@angular/core';
 import { Router, RouterStateSnapshot } from '@angular/router';
 
 import { AuthService } from '../../_services/auth.service';
@@ -10,6 +10,7 @@ import { AuthService } from '../../_services/auth.service';
 })
 export class LoginComponent implements OnInit {
   model: any = {};
+  @ViewChild('container') container!:ElementRef;
 
   constructor(
     private authService: AuthService,
@@ -31,5 +32,14 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('token', 'abcdfdsfsdf');
     localStorage.setItem('username', 'bla bla');
     this.router.navigate(['/']);
+  }
+
+  marginRight(){
+    this.container.nativeElement.style.marginLeft = '-360px';
+  }
+
+  removeMarginRight(){
+    this.container.nativeElement.style.marginLeft = '0px';
+
   }
 }

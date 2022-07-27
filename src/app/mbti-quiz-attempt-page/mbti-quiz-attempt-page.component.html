@@ -47,8 +47,8 @@
         </div>
         <!-- #cardFirst cdkDrag cdkDragLockAxis="x" (cdkDragEnded)="drop()"
         [cdkDragFreeDragPosition]="dragPosition" -->
-        <div class="card card-first" #cardFirst cdkDrag (cdkDragEnded)="drop()" cdkDragLockAxis="x"
-          [cdkDragFreeDragPosition]="dragPosition">
+        <div class="card card-first" #cardFirst cdkDrag (cdkDragStarted)="drag()" (cdkDragEnded)="drop()"
+          cdkDragLockAxis="x" [cdkDragFreeDragPosition]="dragPosition">
           <img src=" assets/img/disco.png" class="card-image">
           <p class="card-text">Trong một buổi tiệc, bạn sẽ?</p>
         </div>
