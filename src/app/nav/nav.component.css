@@ -1,50 +1,48 @@
-.navbar{
-   padding: auto 1%;
+:host {
+  width: 100%;
 }
 
-.navbar-brand .brand-name{
-   vertical-align: middle;
-   margin: 0 10px 0 10px;
-   font-family: 'Orbitron';
-   font-size: large;
-   color: black;
+.navbar-brand .brand-name {
+  vertical-align: middle;
+  margin: 0 10px 0 10px;
+  font-family: "Orbitron";
+  font-size: large;
+  color: black;
 }
-.nav-item .nav-link{
-   color: black;
-
+.nav-item .nav-link {
+  color: black;
 }
 
 .nav-item .nav-link:active {
-   color:black;
-   font-weight: 600;
-   
+  color: black;
+  font-weight: 600;
 }
-.navbar-nav{
-   font-family: 'Open Sans Semibold';
-   font-size: 18px;
-   margin: auto 5px;
-}
-
-.navbar-nav a{
-   margin: auto 5px;
+.navbar-nav {
+  font-family: "Open Sans Semibold";
+  font-size: 18px;
+  margin: auto 5px;
 }
 
-.navbar-nav a:hover{
-   background: #e4e4e4;
-   border-radius: 15px;
+.navbar-nav a {
+  margin: auto 5px;
 }
 
-.btn-signup{
-   background-color: #3CB5AF;
-   color: whitesmoke;
-   border-radius: 20px;
+.navbar-nav a:hover {
+  background: #e4e4e4;
+  border-radius: 15px;
 }
 
-.btn-signin{
-   border: solid 1.5px #3CB5AF;
-   border-radius: 20px;
+.btn-signup {
+  background-color: #3cb5af;
+  color: whitesmoke;
+  border-radius: 20px;
 }
 
-.search-input{
-   border-radius: 20px;
+.btn-signin {
+  border: solid 1.5px #3cb5af;
+  border-radius: 20px;
+}
+
+.search-input {
+  border-radius: 20px;
 }
