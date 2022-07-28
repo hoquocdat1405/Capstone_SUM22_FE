@@ -1,61 +1,96 @@
 <div class="body">
-  <div class="page-container">
+  <div class="first-section">
     <app-nav></app-nav>
-  </div>
-  <div class="main">
-    <div class="question-container">
+    <div class="first-section-title">
       <p class="question-number">5</p>
       <div class="question-text">
         <p class="question">Kết quả</p>
         <p class="question-hint">Đặc điểm tính cách</p>
       </div>
     </div>
-    <div class="quiz-detail-body">
-      <div class="bar-graph-container">
+    <div class="bar-graph-container">
+      <div
+        class="bar-wrapper"
+        *ngFor="let i of charPercentage; let ind = index"
+      >
+        <div class="percentage-numb">{{ i }}%</div>
         <div
-          class="bar-wrapper"
-          *ngFor="let i of charPercentage; let ind = index"
-        >
-          <div class="percentage-numb">{{ i }}%</div>
-          <div class="bar" style="--perc: {{ i }}px"></div>
-          <div class="bar-title">{{ charTitle[ind] }}</div>
-        </div>
-      </div>
-      <div class="big-five-detail">
-        <ul>
-          <li style="--i: 0">
-            <div class="li-wrapper">
-              <img src="./../../assets/svg/bf-types/bf-coimo.svg" />
-              <p>Cởi mở</p>
-            </div>
-          </li>
-          <li style="--i: 1">
-            <div class="li-wrapper">
-              <img src="./../../assets/svg/bf-types/bf-tuchu.svg" />
-              <p>Tự chủ</p>
-            </div>
-          </li>
-          <li style="--i: 2">
-            <div class="li-wrapper">
-              <img src="./../../assets/svg/bf-types/bf-huongngoai.svg" />
-              <p>Hướng ngoại</p>
-            </div>
-          </li>
-          <li style="--i: 3">
-            <div class="li-wrapper">
-              <img src="./../../assets/svg/bf-types/bf-hoadong.svg" />
-              <p>Hòa đồng</p>
-            </div>
-          </li>
-          <li style="--i: 4">
-            <div class="li-wrapper">
-              <img src="./../../assets/svg/bf-types/bf-batoncamxuc.svg" />
-              <p>Bất ổn cảm xúc</p>
-            </div>
-          </li>
-        </ul>
-        <p class="big-five-text">5 ĐẶC ĐIỂM TÍNH CÁCH</p>
+          class="bar"
+          style="--perc: {{ i }}; background-color: {{ getColor(ind) }}"
+        ></div>
+        <div class="bar-title">{{ charTitle[ind] }}</div>
       </div>
     </div>
+  </div>
+  <div class="second-section">
+    <ul>
+      <li style="--i: 2">
+        <div class="li-wrapper">
+          <div class="img-wrapper">
+            <img src="./../../assets/svg/bf-types/bf-coimo.svg" />
+          </div>
+          <p>Cởi mở</p>
+        </div>
+      </li>
+      <li style="--i: 3">
+        <div class="li-wrapper">
+          <div class="img-wrapper">
+            <img src="./../../assets/svg/bf-types/bf-tuchu.svg" />
+          </div>
+          <p>Tự chủ</p>
+        </div>
+      </li>
+      <li style="--i: 4">
+        <div class="li-wrapper">
+          <div class="img-wrapper">
+            <img src="./../../assets/svg/bf-types/bf-huongngoai.svg" />
+          </div>
+          <p>Hướng ngoại</p>
+        </div>
+      </li>
+      <li style="--i: 5">
+        <div class="li-wrapper">
+          <div class="img-wrapper">
+            <img src="./../../assets/svg/bf-types/bf-hoadong.svg" />
+          </div>
+          <p>Hòa đồng</p>
+        </div>
+      </li>
+      <li style="--i: 6">
+        <div class="li-wrapper">
+          <div class="img-wrapper">
+            <img src="./../../assets/svg/bf-types/bf-batoncamxuc.svg" />
+          </div>
+          <p>Bất ổn cảm xúc</p>
+        </div>
+      </li>
+    </ul>
+    <p class="big-five-text">5 ĐẶC ĐIỂM TÍNH CÁCH</p>
+  </div>
+  <div class="third-section">
+    <div class="job-wrapper">
+      <h3 class="job-wrapper-header">Nghề nghiệp - Sự nghiệp</h3>
+      <p class="job-wrapper-text">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates
+        magnam laudantium, natus harum voluptatibus facilis minus at non,
+        aliquid asperiores facere? Reiciendis, quisquam sequi accusamus aliquam
+        atque illo cupiditate accusantium? Et quibusdam recusandae nam rem
+        obcaecati corporis veritatis quam quaerat minus voluptatum a nesciunt
+        aliquid aperiam cumque, rerum placeat incidunt sint, culpa assumenda
+        molestias ducimus. Accusantium, corporis? Optio repellat aut modi nisi
+        provident, animi quaerat commodi nam ratione quos eius? Quia, animi eos
+        eligendi placeat labore laudantium totam dolores odit dolor vero
+        repellat laboriosam! Facilis, deserunt tempore. Voluptate debitis, eius
+        assumenda excepturi fugit earum quaerat dolor vitae alias, odit,
+        molestias impedit quam repudiandae in accusamus accusantium fugiat
+        voluptates quia molestiae ad laudantium blanditiis quod consequuntur? A
+        laboriosam consectetur ducimus dolor eligendi nobis illo vitae pariatur
+        at, molestiae laborum molestias blanditiis id optio iure nam distinctio
+        et maiores reprehenderit, ipsam labore modi. Recusandae, quo fugiat
+        veniam eaque laudantium, quaerat a sint commodi, necessitatibus soluta
+        perferendis? Asperiores, pari
+      </p>
+    </div>
+    <app-footer></app-footer>
   </div>
 </div>

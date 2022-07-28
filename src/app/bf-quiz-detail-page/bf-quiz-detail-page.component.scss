@@ -2,73 +2,69 @@
   padding: 0;
   margin: 0;
 }
-
-:root {
-  --text: 100px;
-}
+$navbar-height: 59px;
+$bar-min-height: 500px;
 
 .body {
   background-image: url('/assets/img/big5-bg.jpg');
-  height: 100vh;
+  height: 300vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: space-between;
   position: relative;
 }
 
-.page-container {
-  width: 100%;
-  background-color: #d0a885;
-  position: absolute;
-  top: 0;
-}
-
-.mi-title {
-  position: absolute;
-  width: 400px;
-  top: 0;
-  left: 30px;
-}
-
-.question-container {
+.first-section {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100%;
+
+  &-title {
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30vh;
+  }
 }
 
 .question-number {
-  font-size: 4em;
-  grid-row: span 2;
+  font-size: 72px;
   font-weight: 600;
   color: #fff;
+  margin-right: 10px;
+}
+
+.question-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .question {
-  font-size: 1em;
+  font-size: 18px;
   color: #fff;
 }
 
 .question-hint {
-  font-size: 1.5em;
+  font-size: 25px;
   color: #fff;
 }
 
-.quiz-detail-body {
-  width: 100%;
-}
-
 .bar-graph-container {
-  width: 700px;
   display: flex;
   justify-content: center;
   align-items: end;
-  gap: 20px;
+  gap: 5vw;
+  height: calc(70vh - $navbar-height);
+  width: 100%;
+  padding-bottom: 10vh;
 }
 
 .bar-wrapper {
-  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,8 +73,8 @@
 
 .bar {
   background-color: rgba($color: #fff, $alpha: 0.8);
-  width: 44px;
-  height: calc(var(--perc) * 3);
+  width: 56px;
+  height: calc(var(--perc) * $bar-min-height * 0.01);
   -webkit-box-shadow: 16px 15px 20px 2px rgba(0, 0, 0, 0.66);
   box-shadow: 16px 15px 20px 2px rgba(0, 0, 0, 0.66);
 }
@@ -90,37 +86,35 @@
 
 .bar-title {
   color: #fff;
-  margin-top: 12px;
   opacity: .8;
+  margin-top: 12px;
 }
 
-.big-five-detail {
+.second-section {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   width: 100%;
-  aspect-ratio: 2 / 1;
-  margin-top: 16%;
   position: relative;
-  margin-bottom: -8%;
 }
 
-.big-five-detail ul {
+.second-section ul {
   position: relative;
+  height: 100vh;
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.big-five-detail ul li {
+.second-section ul li {
   position: absolute;
   list-style: none;
-  transform: rotate(calc(360deg /8 * var(--i)));
-  left: 0;
-  bottom: 0;
-  transform-origin: 350px;
+  transform: rotate(calc(360deg /16 * var(--i)));
+  left: calc(50vw - 800px);
+  bottom: -30%;
+  transform-origin: 800px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,27 +123,67 @@
 }
 
 .li-wrapper {
-  transform: rotate(calc(360deg /-8 * var(--i)));
+  transform: rotate(calc(360deg /-16 * var(--i)));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.big-five-detail ul li img {
-  width: 100px;
-  height: 100px;
+.li-wrapper .img-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: inset 0px 0px 18px 5px #D9D9D9;
+  box-shadow: inset 0px 0px 18px 5px #D9D9D9;
+}
+
+.li-wrapper img {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
 }
 
-.big-five-detail ul li p {
+.li-wrapper p {
   color: #fff;
 }
 
 .big-five-text {
-  position: absolute;
-  bottom: 20%;
   color: #fff;
-  font-size: 24px;
+  position: absolute;
+  font-size: 40px;
   font-weight: 600;
+  bottom: 25vh;
+}
+
+.third-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.job-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+
+  &-header {
+      color: #fff;
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    &-text {
+      font-size: 22px;
+    }
 }

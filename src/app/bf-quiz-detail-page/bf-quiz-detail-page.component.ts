@@ -15,6 +15,22 @@ export class BfQuizDetailPageComponent implements OnInit {
     "Cởi mở", "Hướng ngoại", "Tự chủ", "Hòa đồng", "Bất ổn cảm xúc"
   ];
 
+  getColor(index:number):string {
+    switch(index) {
+      case 1:
+        return "#62D2CE";
+      case 2:
+        return "#B0FF95";
+      case 3:
+        return "#DA6E88";
+      case 4:
+        return "#6B71FF";
+      case 0:
+        return "#82528A";
+      default: return "#fff";
+    }
+  }
+
   constructor() { }
 
   ngOnInit(): void {
