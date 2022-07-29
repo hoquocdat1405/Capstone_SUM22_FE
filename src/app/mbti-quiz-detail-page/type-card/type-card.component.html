@@ -1,11 +1,25 @@
-<div class="card-border">
-  <div class="card-container">
-    <img src="{{ img }}" alt="mbti characteristic type" class="card-img" />
-    <div class="type-name-container">
-      <p class="type-name">{{ shorthand }}</p>
+<div class="card-background" #cardBackground (click)="unViewCard($event)">
+  <div class="main">
+    <div class="card-border head" (click)="viewCard($event)" #cardBorder>
+      <div class="card-container">
+        <img src="{{ img }}" alt="mbti characteristic type" class="card-img" />
+        <div class="type-name-container">
+          <p class="type-name">{{ shorthand }}</p>
+        </div>
+        <div class="type-shorthand-container">
+          <p class="type-shorthand">{{ name }}</p>
+        </div>
+      </div>
     </div>
-    <div class="type-shorthand-container">
-      <p class="type-shorthand">{{ name }}</p>
+    <div class="tail" #tail>
+      <h3 class="tail-title">ESFJ</h3>
+      <p class="tail-sub-title">Người quan tâm</p>
+      <p class="tail-description">INFJ là những người rất tận tâm và có định hướng rõ ràng, họ luôn tìm kiếm các ý nghĩa
+        trong các mối quan hệ, ý tưởng và các sự kiện để mong muốn hiểu được bản thân và những người xung quanh. Bằng
+        các kỹ năng trực quan, tầm nhìn và sự tự tin để phát triển cải thiện cuộc sống của mọi người. Cũng khá tương tự
+        với đối tác INTJ, INFJ luôn nhìn nhận các vấn đê gặp phải như là cơ hội để thách thức sự phát triển, sáng tạo.
+      </p>
+      <button class="tail-btn-detail">Xem chi tiết</button>
     </div>
   </div>
 </div>

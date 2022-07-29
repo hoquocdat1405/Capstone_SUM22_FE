@@ -43,6 +43,10 @@ const routes: Routes = [
   { path: 'disc-quiz-attempt', component: DiscQuizAttemptPageComponent },
   { path: 'mi-quiz-attempt', component: MiQuizAttemptPageComponent },
   { path: 'big-five-quiz-attempt', component: BfQuizAttemptPageComponent },
+
+  //Quizes result pages link
+  { path: 'mbti-quiz-result', component: MbtiQuizResultDetailPageComponent },
+
 ];
 
 @NgModule({

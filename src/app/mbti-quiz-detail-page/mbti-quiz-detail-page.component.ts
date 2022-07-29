@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-mbti-quiz-detail-page',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mbti-quiz-detail-page.component.scss'],
 })
 export class MbtiQuizDetailPageComponent implements OnInit {
+  @ViewChild('card') card!:ElementRef;
   public mbtiTypes: { name: string; shorthand: string; imgSrc: string }[];
   constructor() {
     this.mbtiTypes = [
@@ -93,4 +94,14 @@ export class MbtiQuizDetailPageComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  // clickCard(){
+  //   console.log(this.card.nativeElement.classList);
+  //   this.card.nativeElement.classList.add('background');
+  // }
+
+  // clickOutside(){
+  //   this.card.nativeElement.classList.remove('background');
+  // }
+
 }
