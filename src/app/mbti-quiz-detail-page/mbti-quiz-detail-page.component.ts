@@ -94,14 +94,4 @@ export class MbtiQuizDetailPageComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  // clickCard(){
-  //   console.log(this.card.nativeElement.classList);
-  //   this.card.nativeElement.classList.add('background');
-  // }
-
-  // clickOutside(){
-  //   this.card.nativeElement.classList.remove('background');
-  // }
-
 }

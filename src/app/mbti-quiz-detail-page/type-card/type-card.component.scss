@@ -113,6 +113,7 @@
     width: 210px;
     height: 270px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 10px solid #3d5d58;
@@ -123,7 +124,6 @@
 .tail-rotate{
     visibility: visible;
     transform: rotateY(360deg) scale(2);
-    display: inline-block;
 }
 
 //card rotate end

@@ -23,6 +23,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .main {
@@ -70,23 +71,26 @@
 .content1 {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .content2 {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .content3 {
     display: flex;
     align-items: center;
-
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .content4 {
-
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -95,7 +99,7 @@
 
 .text {
     margin: 10px 0;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .content1,
@@ -109,9 +113,9 @@
 }
 
 img {
-    width: 50%;
-    height: 60%;
-    object-fit: center;
+    width: 60%;
+    height: 70%;
+    object-fit: cover;
 }
 
 .left-content {
@@ -124,47 +128,81 @@ img {
     width: 50%;
 }
 
-
-
-// .card-inside{
-//     width:70%;
-//     height:70%;
-//     border:1px solid #786565;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     padding: 10px;
-// }
-
-// .card-name,
-// .card-category {
-//     margin: 0;
-//     font-size: 24px;
-
-// }
-
-.bottom-content {
+.suggest-row {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
-    gap: 50px;
+    margin-top: 50px;
+    flex-wrap: wrap;
 }
 
-.suggest-content {
-    width: 22%;
+.suggest-row-item {
+    width: 25%;
+    display: flex;
+    margin: 20px;
 }
 
 .suggest-major-group {
     display: flex;
 }
 
-.suggest-major-group-name {}
+
+
+.suggest-major-group-name {
+    font-weight: bold;
+}
 
 .suggest-major-group-icon {}
 
-.suggest-major {}
-
-.suggest-content:not(:last-child) .suggest-major {
-    border-right: 1px solid #000;
+.suggest-major {
+    margin-top:10px 0;
 }
+
+.suggest{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+.suggest-content{
+    display:inline-block;
+}
+
+@media(max-width:740px){
+  .content1,.content2,.content3{
+    flex-direction: column-reverse;
+  }
+
+  .left-content,.right-content{
+    width: 100%;
+  }
+
+  img{
+    width:20%;
+    height:30%
+}
+}
+
+@media(min-width:740px) and (max-width:1024px){
+    .content1,.content2,.content3{
+        flex-direction: column-reverse;
+      }
+    
+      .left-content,.right-content{
+        width: 100%;
+      }
+      
+    img{
+        width:20%;
+        height:30%
+    }
+}
+
+@media(min-width:1024px){
+  
+}
+
+
+
+
