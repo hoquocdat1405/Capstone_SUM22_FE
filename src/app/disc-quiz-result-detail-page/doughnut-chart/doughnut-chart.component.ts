@@ -94,6 +94,32 @@ export class DoughnutChartComponent implements OnInit {
       },
     };
 
+    const doughnutImgCenter = {
+      id: 'doughnutImgCenter',
+      afterDraw(chart: Chart, args: any, options: any) {
+        const {
+          ctx,
+          chartArea: { top, bottom, left, right, width, height },
+        } = chart;
+
+        var image = new Image();
+        image.src = '../assets/img/disc-text/disc-c-nobackground.png';
+        image.width = 0.5*chart.height;
+        image.height = 0.5*chart.height;
+        ctx.drawImage(
+          image,
+          //sx
+          chart.width / 2 - image.width / 2,
+          //sy
+          chart.height / 2 - image.height / 2,
+          //sw
+          image.width,
+          //sh
+          image.height
+        );
+        ctx.restore();
+      },
+    };
     const config: ChartConfiguration = {
       type: 'doughnut',
       data: data,
@@ -108,7 +134,7 @@ export class DoughnutChartComponent implements OnInit {
           },
         },
       },
-      plugins: [doughnutLabelsLine],
+      plugins: [doughnutLabelsLine, doughnutImgCenter],
     };
 
     const chartItem: ChartItem = document.getElementById(
