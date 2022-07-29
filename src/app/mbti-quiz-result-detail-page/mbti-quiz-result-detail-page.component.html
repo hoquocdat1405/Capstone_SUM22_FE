@@ -167,59 +167,107 @@
             <img src="/assets/img/teamword.png" alt="" />
           </div>
         </div>
-        <div class="content4">
-          <div class="bottom-content">
-            <div class="suggest-content">
-              <div class="suggest-major-group">
-                <p class="suggest-major-group-name">
-                  Dịch vụ cộng đồng và xã hội
-                </p>
-                <button class="suggest-major-group-icon"></button>
-              </div>
-              <div class="suggest-major">
-                <ul>
-                  <li class="suggest-major-name">Giáo dục sức khỏe</li>
-                  <li class="suggest-major-name">
-                    Tư vấn viên hôn nhân gia đình
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="suggest-content">
-              <div class="suggest-major-group">
-                <p class="suggest-major-group-name">Giáo dục</p>
-                <button class="suggest-major-group-icon"></button>
-              </div>
-              <div class="suggest-major">
-                <ul>
-                  <li class="suggest-major-name">Giáo viên</li>
-                  <li class="suggest-major-name">Quản trị viên</li>
-                </ul>
+        <div class="suggest">
+          <div class="suggest-row">
+            <div class="suggest-row-item">
+              <div class="suggest-content">
+                <div class="suggest-major-group">
+                  <p class="suggest-major-group-name">
+                    Dịch vụ cộng đồng và xã hội
+                  </p>
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                </div>
+                <div class="suggest-major">
+                  <ul>
+                    <li class="suggest-major-name">Giáo dục sức khỏe</li>
+                    <li class="suggest-major-name">
+                      Tư vấn viên hôn nhân gia đình
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <div class="suggest-content">
-              <div class="suggest-major-group">
-                <p class="suggest-major-group-name">Khoa học</p>
-                <button class="suggest-major-group-icon"></button>
+            <div class="suggest-row-item">
+              <div class="suggest-content">
+                <div class="suggest-major-group">
+                  <p class="suggest-major-group-name">Giáo dục</p>
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                </div>
+                <div class="suggest-major">
+                  <ul>
+                    <li class="suggest-major-name">Giáo viên</li>
+                    <li class="suggest-major-name">Quản trị viên</li>
+                  </ul>
+                </div>
               </div>
-              <div class="suggest-major">
-                <ul>
-                  <li class="suggest-major-name">Nhà tâm lý học</li>
-                  <li class="suggest-major-name">Nhà xã hội học</li>
-                </ul>
+            </div>
+
+            <div class="suggest-row-item">
+              <div class="suggest-content">
+                <div class="suggest-major-group">
+                  <p class="suggest-major-group-name">Khoa học</p>
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                </div>
+                <div class="suggest-major">
+                  <ul>
+                    <li class="suggest-major-name">Nhà tâm lý học</li>
+                    <li class="suggest-major-name">Nhà xã hội học</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="suggest-row-item">
+              <div class="suggest-content">
+                <div class="suggest-major-group">
+                  <p class="suggest-major-group-name">Chăm sóc sức khỏe</p>
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                </div>
+                <div class="suggest-major">
+                  <ul>
+                    <li class="suggest-major-name">Chuyên gia dinh dưỡng</li>
+                    <li class="suggest-major-name">Bác sỹ vật lý trị liệu</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="suggest-row-item">
+              <div class="suggest-content">
+                <div class="suggest-major-group">
+                  <p class="suggest-major-group-name">Dịch vụ chăm sóc cá nhân</p>
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                </div>
+                <div class="suggest-major">
+                  <ul>
+                    <li class="suggest-major-name">Huấn luyện viên cá nhân</li>
+                    <li class="suggest-major-name">Bảo mẫu</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="suggest-row-item">
+              <div class="suggest-content">
+                <div class="suggest-major-group">
+                  <p class="suggest-major-group-name">Nghệ thuật và thiết kế</p>
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                </div>
+                <div class="suggest-major">
+                  <ul>
+                    <li class="suggest-major-name">Hội họa</li>
+                    <li class="suggest-major-name">Kiến trúc</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
           <div class="top-content">
             <div class="card-mbti">
               <div class="card-inside">
-                <app-type-card
-                  [name]="mbtiType.name"
-                  [shorthand]="mbtiType.shorthand"
-                  [imgSrc]="mbtiType.imgSrc"
-                ></app-type-card>
+                <app-type-card [name]="mbtiType.name" [shorthand]="mbtiType.shorthand" [imgSrc]="mbtiType.imgSrc">
+                </app-type-card>
               </div>
             </div>
           </div>

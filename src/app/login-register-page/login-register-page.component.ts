@@ -7,13 +7,8 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./login-register-page.component.scss']
 })
 export class LoginRegisterPageComponent implements OnInit {
-  // @ViewChild('loginComponent', { read: LoginRegisterPageComponent }) loginComponent!:ElementRef;
   constructor() { }
 
   ngOnInit() {
-  }
-
-  register(){
-console.log('test1234');
   }
 }
