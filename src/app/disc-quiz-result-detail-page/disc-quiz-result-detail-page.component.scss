@@ -1,0 +1,44 @@
+.page-container {
+    -moz-box-shadow: inset 0 0 50px 10px #dddada;
+    -webkit-box-shadow: inset 0 0 50px 10px #dddada;
+    box-shadow: inset 0 0 50px 10px #dddada;
+    padding: 5% 0;
+}
+
+.content-header {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5%;
+}
+
+.type-name {
+    margin : 2% 0;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2%;
+}
+
+.career-section , .chart-section {
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.career-section .content-text {
+    margin: 0 auto;
+    text-align: left;
+    font-size: 18px;
+    width : 70%
+}
+
+.type-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.career-section img {
+    text-align: center;
+    width: 15%;
+}
+

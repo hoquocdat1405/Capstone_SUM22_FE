@@ -1,0 +1,38 @@
+<app-nav></app-nav>
+<div class="page-container">
+  <div class="chart-section">
+    <div class="content-header">Kết quả kiểm tra DISC</div>
+    <app-doughnut-chart [labels]="result.labels" [values]="result.values"></app-doughnut-chart>
+  </div>
+
+  <div class="info-section"></div>
+
+  <div class="career-section">
+    <div class="content-header">Nhóm tính cách của bạn là</div>
+    <div class="type-img">
+      <img
+        src="./../../assets/svg/disc-types/disc-s-type.svg"
+        alt="disc-s-type"
+      />
+    </div>
+    <!-- <div class="type-name">Nhóm {{shorthand}} - {{name}}</div> -->
+    <div class="type-name">Nhóm S - Người kiên định</div>
+
+    <div class="content-text">
+      Nhóm S trong DISC được biết đến là ổn định, bình tĩnh và nhạy cảm trước
+      các dự đoán. Họ là những người lắng nghe thấu hiểu tốt, thích mối quan hệ
+      gần gũi như cởi mở với những người thân yêu. Người này thường ít nói, sợ
+      đám đông nhưng lại thích lắng nghe, tâm sự và hay quan tâm người khác.
+      <br /><br />
+
+      Bên cạnh đó, nhóm S trong DISC thích tuân theo các khuôn mẫu và tránh các
+      vấn đề xảy ra bất chợt. Do đó, những người này có xu hướng chống lại sự
+      thay đổi và sẽ mất thời gian để thích nghi với các tình huống mới. Nhóm S
+      cao là người có mức độ cởi mở cao nhưng quyết đoán thấp, DISC phản ánh
+      nhóm S thấp là người có thái độ khá khác biệt.
+    </div>
+  </div>
+
+  <div class="career-carousel-section"></div>
+</div>
+<app-footer></app-footer>

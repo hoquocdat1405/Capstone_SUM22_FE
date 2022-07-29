@@ -15,10 +15,12 @@ import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-d
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-detail-page.component';
 import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz-attempt-page.component';
+import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
 
 const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full'},
+
   // { path: 'home', component: LandingPageComponent},
   { path: 'home', component: LandingPageComponent},
 
@@ -43,6 +45,13 @@ const routes: Routes = [
   { path: 'disc-quiz-attempt', component: DiscQuizAttemptPageComponent },
   { path: 'mi-quiz-attempt', component: MiQuizAttemptPageComponent },
   { path: 'big-five-quiz-attempt', component: BfQuizAttemptPageComponent },
+
+  //Quizes result page link
+  { path: 'mbti-result', component: MbtiQuizResultDetailPageComponent },
+  { path: 'disc-result', component: DiscQuizResultDetailPageComponent},
+  { path: 'mi-result', component: DiscQuizResultDetailPageComponent},
+  { path: 'bf-result', component: DiscQuizResultDetailPageComponent},
+
 ];
 
 @NgModule({
