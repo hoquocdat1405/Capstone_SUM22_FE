@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgChartsModule } from 'ng2-charts';
 
 //services
 import { AuthService } from './_services/auth.service';
@@ -34,6 +33,8 @@ import { QuizInfoItemComponent } from './quiz-listing-page/quiz-info-item/quiz-i
 import { LandingSchoolItemComponent } from './landing-page/landing-school-item/landing-school-item.component';
 import { QuizCarouselItemComponent } from './landing-page/quiz-carousel-item/quiz-carousel-item.component';
 import {DoughnutChartComponent} from './disc-quiz-result-detail-page/doughnut-chart/doughnut-chart.component';
+import {CoinComponent} from './disc-quiz-attempt-page/coin/coin.component'; 
+import {ToogleComponent} from './disc-quiz-attempt-page/toogle/toogle.component'; 
 
 //quizes listing
 import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.component';
@@ -93,6 +94,8 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
     BfQuizDetailPageComponent,
     DiscQuizResultDetailPageComponent,
     DoughnutChartComponent,
+    CoinComponent,
+    ToogleComponent,
   ],
   imports: [
     FormsModule,
@@ -105,7 +108,6 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
     BrowserAnimationsModule,
     HttpClientModule,
     DragDropModule,
-    NgChartsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
