@@ -31,7 +31,11 @@ export class BfQuizDetailPageComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  public mbtiType: { name: string; shorthand: string; imgSrc: string };
+
+  constructor() {
+    this.mbtiType = {name:'Người che chở',shorthand:'INFJ',imgSrc:'../../assets/svg/mbti-types/mbti-type-infj.svg'}
+  }
 
   ngOnInit(): void {
   }
