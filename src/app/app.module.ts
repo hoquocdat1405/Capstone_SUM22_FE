@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgChartsModule } from 'ng2-charts';
+
 
 //services
 import { AuthService } from './_services/auth.service';
@@ -105,7 +105,7 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
     BrowserAnimationsModule,
     HttpClientModule,
     DragDropModule,
-    NgChartsModule,
+    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
