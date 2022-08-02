@@ -1,3 +1,5 @@
+import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
+import { BfQuizPersonalityDetailPageComponent } from './bf-quiz-personality-detail-page/bf-quiz-personality-detail-page.component';
 import { BfQuizDetailPageComponent } from './bf-quiz-detail-page/bf-quiz-detail-page.component';
 import { BfQuizAttemptPageComponent } from './bf-quiz-attempt-page/bf-quiz-attempt-page.component';
 import { FooterComponent } from './footer/footer.component';
@@ -50,7 +52,11 @@ const routes: Routes = [
   { path: 'mbti-result', component: MbtiQuizResultDetailPageComponent },
   { path: 'disc-result', component: DiscQuizResultDetailPageComponent},
   { path: 'mi-result', component: DiscQuizResultDetailPageComponent},
-  { path: 'bf-result', component: DiscQuizResultDetailPageComponent},
+  { path: 'bf-result', component: BfQuizDetailPageComponent},
+
+  { path: 'bf-personality-detail', component: BfQuizPersonalityDetailPageComponent},
+  { path: 'twelve-astrological-page', component: TwelveAstrologicalPageComponent},
+
 
 ];
 
