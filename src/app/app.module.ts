@@ -47,7 +47,7 @@ import { LoginComponent } from './login-register-page/login/login.component';
 import { RegisterComponent } from './login-register-page/register/register.component';
 //detail pages
 import { BfQuizDetailPageComponent } from './bf-quiz-detail-page/bf-quiz-detail-page.component';
-import { MiQuizDetailPageComponent } from './mi-quiz-detail-page/mi-quiz-detail-page.component';
+import { HollandQuizDetailPageComponent } from './holland-quiz-detail-page/holland-quiz-detail-page.component';
 import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-detail-page.component';
 import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-detail-page.component';
 
@@ -55,7 +55,7 @@ import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-d
 import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz-attempt-page.component';
 import { BfQuizAttemptPageComponent } from './bf-quiz-attempt-page/bf-quiz-attempt-page.component';
 import { MbtiQuizAttemptPageComponent } from './mbti-quiz-attempt-page/mbti-quiz-attempt-page.component';
-import { MiQuizAttemptPageComponent } from './mi-quiz-attempt-page/mi-quiz-attempt-page.component';
+import { HollandQuizAttemptPageComponent } from './holland-quiz-attempt-page/holland-quiz-attempt-page.component';
 
 //result pages
 import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-page/mbti-quiz-result-detail-page.component';
@@ -85,12 +85,12 @@ import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twel
     LoginComponent,
     RegisterComponent,
     MbtiQuizAttemptPageComponent,
-    MiQuizAttemptPageComponent,
+    HollandQuizAttemptPageComponent,
     MbtiQuizResultDetailPageComponent,
     UserProfilePageComponent,
     DiscQuizDetailPageComponent,
     DiscQuizAttemptPageComponent,
-    MiQuizDetailPageComponent,
+    HollandQuizDetailPageComponent,
     BfQuizAttemptPageComponent,
     BfQuizDetailPageComponent,
     DiscQuizResultDetailPageComponent,
