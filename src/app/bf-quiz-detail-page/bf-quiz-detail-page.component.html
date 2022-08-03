@@ -1,31 +1,36 @@
-<div class="body">
-  <div class="first-section">
-    <app-nav></app-nav>
-    <div class="first-section-title">
-      <p class="question-number">5</p>
-      <div class="question-text">
-        <p class="question">Kết quả</p>
-        <p class="question-hint">Đặc điểm tính cách</p>
-      </div>
-    </div>
-    <div class="bar-graph-container">
-      <div
-        class="bar-wrapper"
-        *ngFor="let i of charPercentage; let ind = index"
-      >
-        <div class="percentage-numb">{{ i }}%</div>
-        <div
-          class="bar"
-          
-          style="--perc: {{ i }}; background-color: {{ getColor(ind) }}"
-        ></div>
-        <div class="bar-title">{{ charTitle[ind] }}</div>
-      </div>
-    </div>
+<div class="page-container">
+  <app-nav></app-nav>
+  <div class="header-section">
+    <img src="./../../assets/svg/bf-types/bf-coimo.svg" alt="" />
+    <h3 class="header-title">Cởi mở</h3>
   </div>
   <div class="third-section">
     <mat-tab-group>
       <mat-tab label="Tổng quan" class="tab-content">
+        <!-- Bar-Graph -->
+        <div class="first-section">
+          <div class="first-section-title">
+            <p class="question-number">5</p>
+            <div class="question-text">
+              <p class="question">Kết quả</p>
+              <p class="question-hint">Đặc điểm tính cách</p>
+            </div>
+          </div>
+          <div class="bar-graph-container">
+            <div
+              class="bar-wrapper"
+              *ngFor="let i of charPercentage; let ind = index"
+            >
+              <div class="percentage-numb">{{ i }}%</div>
+              <div
+                class="bar"
+                style="--perc: {{ i }}; background-color: {{ getColor(ind) }}"
+              ></div>
+              <div class="bar-title">{{ charTitle[ind] }}</div>
+            </div>
+          </div>
+        </div>
+
         <div class="content1">
           <div class="left-content">
             <p class="text">
@@ -58,52 +63,6 @@
           <div class="right-content">
             <img src="/assets/img/superhero 1.png" alt="" />
           </div>
-        </div>
-        <div class="content3">
-          <div class="left-content">
-            <p class="text">
-              Những xu hướng đó cũng được củng cố bởi thực tế rằng tính cách của
-              INFJ có một sự kết hợp độc đáo của chủ nghĩa lý tưởng và quyết
-              đoán - điều này có nghĩa rằng sự sáng tạo và trí tưởng tượng của
-              họ có thể được dẫn thẳng tới một mục tiêu cụ thể. Vài loại tính
-              cách khác cũng có đặc điểm này và đây là một trong những lý do
-              quan trọng nhất lý giải tại sao nhiều INFJ thực hiện ước mơ của họ
-              và thực hiện một cách cương quyết lâu dài.
-            </p>
-          </div>
-          <div class="right-content">
-            <img src="/assets/img/mountain-climb 1.png" alt="" />
-          </div>
-        </div>
-        <div class="content4">
-          <p class="text">
-            Các INFJ là bậc thầy về giao tiếp bằng văn bản, với một ngôn ngữ đặc
-            sắc mượt mà và ấm áp. Ngoài ra, sự nhạy cảm của INFJ cho phép họ kết
-            nối với những người khác khá dễ dàng. Giao tiếp dễ dàng và sự dễ
-            chịu của họ thường có thể gây hiểu lầm cho những người xung quanh,
-            những người đó có thể nghĩ rằng INFJ thực sự là hướng ngoại.
-          </p>
-          <p class="text">
-            Các INFJ nên cẩn thận để tránh "quá nhiệt" như nhiệt huyết và quyết
-            tâm của họ đôi khi có thể vượt quá tầm kiểm soát. Mang đặc điểm
-            hướng nội, thỉnh thoảng các INFJ cần phải có khoảng "thời gian một
-            mình" để tĩnh dưỡng nếu không năng lượng tích trữ trong họ sẽ cạn
-            kiệt rất nhanh. Nếu điều này xảy ra, các INFJ có thể làm mọi người
-            ngạc nhiên bằng cách rút khỏi tất cả các hoạt động của họ trong một
-            thời gian - và kể từ đó mọi người thường thấy các INFJ dường như
-            hướng ngoại, điều này có thể làm cả hai ngạc nhiên và lo âu.
-          </p>
-          <p class="text">
-            Các INFJ hết sức quan tâm đến cảm xúc của người khác và mong đợi họ
-            trả ơn. Đương nhiên những người có loại tính cách này rất nhạy cảm
-            và dễ bị tổn thương vì những xung đột - thậm chí các INFJ có lý trí
-            nhất cũng gặp khó khăn để tránh bị chỉ trích cá nhân. Đây là điểm
-            yếu của INFJ - nếu một người nào đó mang tính cách INFJ không thể
-            thoát khỏi cuộc xung đột, họ sẽ làm hết sức mình để đối phó với nó,
-            nhưng điều này sẽ gây ra nhiều căng thẳng và cũng có thể có thể dẫn
-            đến vấn đề sức khỏe hoặc hành vi rất phi lý.
-          </p>
-          <img src="/assets/img/discussion 1.png" alt="" />
         </div>
       </mat-tab>
 

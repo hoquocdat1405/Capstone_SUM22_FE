@@ -60,6 +60,8 @@ import { HollandQuizAttemptPageComponent } from './holland-quiz-attempt-page/hol
 //result pages
 import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-page/mbti-quiz-result-detail-page.component';
 import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
+import { BfQuizPersonalityDetailPageComponent } from './bf-quiz-personality-detail-page/bf-quiz-personality-detail-page.component';
+import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +95,8 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
     BfQuizDetailPageComponent,
     DiscQuizResultDetailPageComponent,
     DoughnutChartComponent,
+    BfQuizPersonalityDetailPageComponent,
+    TwelveAstrologicalPageComponent,
     ExpansionPanelComponent,
   ],
   imports: [

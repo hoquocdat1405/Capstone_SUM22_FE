@@ -1,0 +1,70 @@
+<app-nav></app-nav>
+<div class="page-container">
+  <div class="container">
+    <div class="carousel" [ngStyle]="carouselStyle">
+      <div
+        class="item a"
+        style="--currItem: 0"
+        [ngClass]="currIndex == 0 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item b"
+        style="--currItem: 1"
+        [ngClass]="currIndex == 1 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item c"
+        style="--currItem: 2"
+        [ngClass]="currIndex == 2 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item d"
+        style="--currItem: 3"
+        [ngClass]="currIndex == 3 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item e"
+        style="--currItem: 4"
+        [ngClass]="currIndex == 4 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item f"
+        style="--currItem: 5"
+        [ngClass]="currIndex == 5 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item g"
+        style="--currItem: 6"
+        [ngClass]="currIndex == 6 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item h"
+        style="--currItem: 7"
+        [ngClass]="currIndex == 7 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item i"
+        style="--currItem: 8"
+        [ngClass]="currIndex == 8 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item j"
+        style="--currItem: 9"
+        [ngClass]="currIndex == 9 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item k"
+        style="--currItem: 10"
+        [ngClass]="currIndex == 10 ? 'scale-12' : ''"
+      ></div>
+      <div
+        class="item l"
+        style="--currItem: 11"
+        [ngClass]="currIndex == 11 ? 'scale-12' : ''"
+      ></div>
+    </div>
+  </div>
+  <div class="next" (click)="handleNextClick()">Next</div>
+  <div class="prev" (click)="handlePrevClick()">Prev</div>
+</div>
+<app-footer></app-footer>
