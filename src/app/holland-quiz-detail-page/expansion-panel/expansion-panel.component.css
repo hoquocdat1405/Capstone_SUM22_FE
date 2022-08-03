@@ -1,0 +1,41 @@
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+  text-align: left;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  margin-top: 10px;
+  text-align: left !important;
+}
+
+::ng-deep
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:hover {
+  background: var(--color) !important;
+}
+
+::ng-deep .mat-expansion-panel-header,
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:hover {
+  font-weight: 600;
+  font-size: 18px;
+  background: var(--color) !important;
+}
+
+::ng-deep .mat-expansion-panel-header mat-panel-title,mat-expansion-indicator {
+  margin-left: 1%;
+  color: #fff;
+}
+
+.header-allign-right {
+  padding-left: 0;
+}
+
+.header-img img {
+  width: 5%;
+  margin-right: 10px;
+}
+
+.header-img {
+  display: flex;
+}

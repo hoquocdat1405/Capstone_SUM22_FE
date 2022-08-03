@@ -1,0 +1,29 @@
+<mat-accordion>
+  <mat-expansion-panel class="bgColor" [style.--color]="color">
+    <mat-expansion-panel-header expandedHeight="80px">
+      <!-- for right align -->
+
+      <div class="header-img header-allign-right" *ngIf="isAllignRight">
+        <img
+          src="../../../assets/svg/holland-types/{{ shorthand }}.svg"
+          alt=""
+          class="type-img"
+        />
+        <mat-panel-title> {{ name }} </mat-panel-title>
+      </div>
+
+      <!-- for left align -->
+      <div class="header-img" *ngIf="!isAllignRight">
+        <img
+          src="../../../assets/svg/holland-types/{{ shorthand }}.svg"
+          alt=""
+          class="type-img"
+        />
+        <mat-panel-title> {{ name }} </mat-panel-title>
+      </div>
+    </mat-expansion-panel-header>
+    <p>
+      {{ text }}
+    </p>
+  </mat-expansion-panel>
+</mat-accordion>

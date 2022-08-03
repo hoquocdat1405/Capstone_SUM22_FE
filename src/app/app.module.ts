@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-
 //services
 import { AuthService } from './_services/auth.service';
 
@@ -22,6 +21,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 //sub component
+import { ExpansionPanelComponent } from './holland-quiz-detail-page/expansion-panel/expansion-panel.component';
 import { CarouselComponent } from './landing-page/carousel/carousel.component';
 import { NewsItemComponent } from './landing-page/news-item/news-item.component';
 import { EduNewsItemComponent } from './landing-page/edu-news-item/edu-news-item.component';
@@ -33,7 +33,7 @@ import { LandingNewsComponent } from './landing-page/landing-news/landing-news.c
 import { QuizInfoItemComponent } from './quiz-listing-page/quiz-info-item/quiz-info-item.component';
 import { LandingSchoolItemComponent } from './landing-page/landing-school-item/landing-school-item.component';
 import { QuizCarouselItemComponent } from './landing-page/quiz-carousel-item/quiz-carousel-item.component';
-import {DoughnutChartComponent} from './disc-quiz-result-detail-page/doughnut-chart/doughnut-chart.component';
+import { DoughnutChartComponent } from './disc-quiz-result-detail-page/doughnut-chart/doughnut-chart.component';
 
 //quizes listing
 import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.component';
@@ -93,6 +93,7 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
     BfQuizDetailPageComponent,
     DiscQuizResultDetailPageComponent,
     DoughnutChartComponent,
+    ExpansionPanelComponent,
   ],
   imports: [
     FormsModule,
@@ -105,7 +106,6 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
     BrowserAnimationsModule,
     HttpClientModule,
     DragDropModule,
-    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

@@ -1,7 +1,15 @@
-import { Component, EventEmitter, OnInit, Output, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { Router, RouterStateSnapshot } from '@angular/router';
-
+import { User } from 'src/app/_model/User';
 import { AuthService } from '../../_services/auth.service';
+// import UsersJson from '../users.json';
 
 @Component({
   selector: 'app-login',
@@ -10,36 +18,37 @@ import { AuthService } from '../../_services/auth.service';
 })
 export class LoginComponent implements OnInit {
   model: any = {};
-  @ViewChild('container') container!:ElementRef;
+  @ViewChild('container') container!: ElementRef;
 
   constructor(
     private authService: AuthService,
-    private router: Router
-    // private state: RouterStateSnapshot
+    private router: Router // private state: RouterStateSnapshot
   ) {}
 
   ngOnInit() {}
 
   login() {
-    // this.authService.login(this.model).subscribe(
-    //   (next) => {
-    //     console.log('Logged in');
-    //   },
-    //   (error) => {
-    //     console.log('Login error');
-    //   }
-    // );
-    localStorage.setItem('token', 'abcdfdsfsdf');
-    localStorage.setItem('username', 'bla bla');
-    this.router.navigate(['/']);
+    this.authService.login(this.model).subscribe(
+      (user) => {
+        console.log(user);
+        console.log('Logged in');
+        this.router.navigate(['/']);
+      }
+      // (next) => {
+      //   console.log('Logged in');
+      //   this.router.navigate(['/']);
+      // },
+      // (error) => {
+      //   console.log('Login error'+ error);
+      // }
+    );
   }
 
-  marginRight(){
+  marginRight() {
     this.container.nativeElement.style.marginLeft = '-360px';
   }
 
-  removeMarginRight(){
+  removeMarginRight() {
     this.container.nativeElement.style.marginLeft = '0px';
-
   }
 }
