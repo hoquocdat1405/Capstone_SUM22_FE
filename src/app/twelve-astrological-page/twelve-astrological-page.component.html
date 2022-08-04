@@ -6,6 +6,8 @@
         class="item a"
         style="--currItem: 0"
         [ngClass]="currIndex == 0 ? 'scale-12' : ''"
+        (click)="clickItem('a')"
+        [ngStyle]="clickStyle"
       ></div>
       <div
         class="item b"
@@ -66,5 +68,10 @@
   </div>
   <div class="next" (click)="handleNextClick()">Next</div>
   <div class="prev" (click)="handlePrevClick()">Prev</div>
+  <div class="detail-page" [ngClass]="isDisplayDetailPage ? '' : 'hide'">
+    <app-twelve-astrological-page-detail></app-twelve-astrological-page-detail>
+  </div>
+  <div class="overlay" (click)="handleOverlayClick()" [ngClass]="isDisplayOverlayClass ? '' : 'hide'"></div>
 </div>
+<!--[ngClass]="isDisplayOverlayClass ? '' : 'hide'"-->
 <app-footer></app-footer>

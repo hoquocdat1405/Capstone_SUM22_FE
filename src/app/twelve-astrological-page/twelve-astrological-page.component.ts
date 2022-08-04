@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-twelve-astrological-page',
@@ -15,6 +15,11 @@ export class TwelveAstrologicalPageComponent implements OnInit {
   currdeg = 0;
   carouselStyle = {};
   currIndex = 0;
+  clickStyle = {};
+  flagClick:Boolean = false;
+  isOpacity:Boolean = true;
+  isDisplayOverlayClass:Boolean = false;
+  isDisplayDetailPage:Boolean = false;
 
   handleNextClick() {
     this.currdeg -= 30;
@@ -47,6 +52,40 @@ export class TwelveAstrologicalPageComponent implements OnInit {
         this.currIndex = 12;
       }
       this.currIndex--;
+    }
+  }
+
+  clickItem(itemName:String) {
+    if(!this.isDisplayOverlayClass) {
+      this.isDisplayOverlayClass = true;
+    }
+    if(!this.isDisplayDetailPage) {
+      this.isDisplayDetailPage = true;
+    }
+    switch(itemName) {
+      case "a": {
+        // if(!this.flagClick) {
+        //   this.clickStyle = {
+        //     "transform" : "rotateY(calc(30deg * 0)) translateZ(300px) translateY(-20vh)",
+        //     "z-index" : "1001"
+        //   }
+        //   this.flagClick = true;
+        //   this.isOpacity = false;
+        // } else {
+        //   this.clickStyle = {}
+        //   this.flagClick = false;
+        //   this.isOpacity = true;
+        // }
+      }
+    }
+  }
+
+  handleOverlayClick() {
+    if(this.isDisplayOverlayClass) {
+      this.isDisplayOverlayClass = false;
+    }
+    if(this.isDisplayDetailPage) {
+      this.isDisplayDetailPage = false;
     }
   }
 }
