@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Tarot } from './Tarot';
+import { Component, OnInit } from '@angular/core';
+import { TAROTS } from './tarot-data';
 
 @Component({
   selector: 'app-twelve-astrological-page',
@@ -15,11 +17,12 @@ export class TwelveAstrologicalPageComponent implements OnInit {
   currdeg = 0;
   carouselStyle = {};
   currIndex = 0;
-  clickStyle = {};
-  flagClick:Boolean = false;
-  isOpacity:Boolean = true;
-  isDisplayOverlayClass:Boolean = false;
-  isDisplayDetailPage:Boolean = false;
+  itemStyle = {};
+  flagClick: Boolean = false;
+  isOpacity: Boolean = true;
+  isDisplayOverlayClass: Boolean = false;
+  isDisplayDetailPage: Boolean = false;
+  tarots = TAROTS;
 
   handleNextClick() {
     this.currdeg -= 30;
@@ -40,52 +43,42 @@ export class TwelveAstrologicalPageComponent implements OnInit {
       "transform": "rotateY(" + this.currdeg + "deg)",
     }
   }
-  changeCurrIndex(sign:String) {
-    if(sign === "next") {
-      if(this.currIndex == 11) {
+  changeCurrIndex(sign: String) {
+    if (sign === "next") {
+      if (this.currIndex == 11) {
         this.currIndex = -1;
       }
       this.currIndex++;
     }
     else {
-      if(this.currIndex == 0) {
+      if (this.currIndex == 0) {
         this.currIndex = 12;
       }
       this.currIndex--;
     }
   }
 
-  clickItem(itemName:String) {
-    if(!this.isDisplayOverlayClass) {
-      this.isDisplayOverlayClass = true;
+  handleOverlayClick() {
+    if (this.isDisplayOverlayClass) {
+      this.isDisplayOverlayClass = false;
     }
-    if(!this.isDisplayDetailPage) {
-      this.isDisplayDetailPage = true;
-    }
-    switch(itemName) {
-      case "a": {
-        // if(!this.flagClick) {
-        //   this.clickStyle = {
-        //     "transform" : "rotateY(calc(30deg * 0)) translateZ(300px) translateY(-20vh)",
-        //     "z-index" : "1001"
-        //   }
-        //   this.flagClick = true;
-        //   this.isOpacity = false;
-        // } else {
-        //   this.clickStyle = {}
-        //   this.flagClick = false;
-        //   this.isOpacity = true;
-        // }
-      }
+    if (this.isDisplayDetailPage) {
+      this.isDisplayDetailPage = false;
     }
   }
 
-  handleOverlayClick() {
-    if(this.isDisplayOverlayClass) {
-      this.isDisplayOverlayClass = false;
+  handleCardClick(cardPos: Number) {
+    if(cardPos === this.currIndex - 1) {
+      this.handlePrevClick();
+    } else if(cardPos === this.currIndex + 1) {
+      this.handleNextClick();
     }
-    if(this.isDisplayDetailPage) {
-      this.isDisplayDetailPage = false;
+
+    if (this.currIndex === 11 && cardPos === 0) {
+      this.handleNextClick();
+    }
+    if(this.currIndex === 0 && cardPos === 11) {
+      this.handlePrevClick();
     }
   }
 }

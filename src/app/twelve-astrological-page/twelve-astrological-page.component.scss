@@ -2,7 +2,7 @@
 .page-container {
   width: 100%;
   height: 100vh;
-  background-image: url("../../assets/img/twelve-astrological/hinh-anh-bau-troi-dep-3.jpg");
+  background-image: url("../../assets/img/tarots/tarot-bg.jpg");
   background-size: cover;
   position: relative;
 }
@@ -34,9 +34,8 @@
   display: block;
   position: absolute;
   background: #000;
-  width: 10vw;
-  height: 10vw;
-  // line-height: 200px;
+  width: 7vw;
+  aspect-ratio: 1 / 1.64;
   font-size: 5em;
   text-align: center;
   color: #fff;
@@ -46,92 +45,89 @@
   cursor: pointer;
 }
 
-.a {
+.item img {
+  width: 7vw;
+  aspect-ratio: 1 / 1.64;
+}
+
+.tarot-0 {
   transform: rotateY(calc(30deg * 0)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/bach-duong.jpg");
-  background-size: cover;
-  background-position: center;
+  // background: url("../../assets/img/tarots/tarot-chariot.jpg");
+  // background-size: cover;
+  // background-position: center;
 }
 
-.b {
+.tarot-1 {
   transform: rotateY(calc(30deg * 1)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/kim-nguu.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
-.c {
+.tarot-2 {
   transform: rotateY(calc(30deg * 2)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/song-tu.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
-.d {
+.tarot-3 {
   transform: rotateY(calc(30deg * 3)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/cu-giai.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
-.e {
+.tarot-4 {
   transform: rotateY(calc(30deg * 4)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/su-tu.jpg");
-  background-size: cover;
-  background-position: center;
+}
+
+.f::before {
+  content: "Xem thêm";
 }
 
 .f {
   transform: rotateY(calc(30deg * 5)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/xu-nu.jpg");
-  background-size: cover;
-  background-position: center;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.g {
+.tarot-6 {
   transform: rotateY(calc(30deg * 6)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/thien-binh.jpg");
-  background-size: cover;
-  background-position: center;
+  // background: url("../../assets/img/tarots/xem-them-bg.jpg");
+  // background-size: cover;
+  // background-position: center;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // font-size: 30px;
+  // flex-direction: column;
+  // color: #000;
 }
 
-.h {
+.tarot-7 {
   transform: rotateY(calc(30deg * 7)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/thien-yet.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
-.i {
+.tarot-8 {
   transform: rotateY(calc(30deg * 8)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/nhan-ma.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
-.j {
+.tarot-9 {
   transform: rotateY(calc(30deg * 9)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/ma-ket.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
-.k {
+.tarot-10 {
   transform: rotateY(calc(30deg * 10)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/bao-binh.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
-.l {
+.tarot-11 {
   transform: rotateY(calc(30deg * 11)) translateZ(500px);
-  background: url("../../assets/img/twelve-astrological/song-ngu.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
 .scale-12 {
-  transform: rotateY(calc(30deg * var(--curr-item))) translateZ(600px) scale(1.2);
+  transform: rotateY(calc(30deg * var(--currItem))) translateZ(600px) scale(1.2);
+}
+
+.scale-12:hover {
+  transform: rotateY(calc(30deg * var(--currItem))) translateZ(600px) scale(1.4);
+}
+
+.scale-10:hover {
+  transform: rotateY(calc(30deg * var(--currItem))) translateZ(500px) scale(1.2);
 }
 
 .next,
@@ -146,16 +142,6 @@
   border-top: 1px solid #fff;
   box-shadow: 0 5px 0 #999;
   transition: box-shadow 0.1s, top 0.1s;
-}
-
-.next:hover,
-.prev:hover {
-  color: #000;
-}
-
-.next:active,
-.prev:active {
-  box-shadow: 0 1px 0 #999;
 }
 
 .next {
