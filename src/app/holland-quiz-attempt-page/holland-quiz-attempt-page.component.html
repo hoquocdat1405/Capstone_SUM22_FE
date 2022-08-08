@@ -1,6 +1,9 @@
 <div class="body">
   <div class="main">
     <img src="assets/img/holland-text-image.png" alt="" class="mi-title" />
+    <div class="finish-btn-container" *ngIf="i + 1 == questionSet.length">
+      <button class="finish-btn" (click)="finishTest()">Kết thúc</button>
+    </div>
     <div class="question-container">
       <p class="question">{{ currentQuestion.text }}</p>
       <p class="question-hint">Chọn những câu trả lời phù hợp với bản thân</p>
@@ -8,13 +11,12 @@
 
     <div class="answer-container-column">
       <div class="answer-container-row">
-
         <div class="option-section">
           <div
-            *ngFor="let ans of questionSet[index].option; index as i"
+            *ngFor="let ans of questionSet[i].option,index as in"
             id="{{ ans.id }}"
             class="option"
-            (click)="enableChoose(i)"
+            (click)="enableChoose(in)"
             [ngClass]="{
               'option-checked': ans.isSelected,
               'option-unchecked': !ans.isSelected
@@ -39,9 +41,11 @@
           src="assets/img/right-arrow.png"
           alt=""
         />
+       
       </div>
-      <p class="number-question"><span>{{index+1}}/</span>{{questionSet.length}}</p>
+      <p class="number-question">
+        <span>{{ i + 1 }}/</span>{{ questionSet.length }}
+      </p>
     </div>
-
   </div>
 </div>
