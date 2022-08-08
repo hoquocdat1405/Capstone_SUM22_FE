@@ -23,6 +23,7 @@ export class TwelveAstrologicalPageComponent implements OnInit {
   isDisplayOverlayClass: Boolean = false;
   isDisplayDetailPage: Boolean = false;
   tarots = TAROTS;
+  notShowDetailPage:Boolean = true;
 
   handleNextClick() {
     this.currdeg -= 30;
@@ -78,6 +79,26 @@ export class TwelveAstrologicalPageComponent implements OnInit {
       this.handleNextClick();
     }
     if(this.currIndex === 0 && cardPos === 11) {
+      this.handlePrevClick();
+    }
+  }
+
+  handleViewMoreClick(cardPos: Number) {
+    if(this.currIndex === 5) {
+      this.notShowDetailPage = false;
+      return;
+    }
+
+    if (cardPos === this.currIndex - 1) {
+      this.handlePrevClick();
+    } else if (cardPos === this.currIndex + 1) {
+      this.handleNextClick();
+    }
+
+    if (this.currIndex === 11 && cardPos === 0) {
+      this.handleNextClick();
+    }
+    if (this.currIndex === 0 && cardPos === 11) {
       this.handlePrevClick();
     }
   }

@@ -1,5 +1,5 @@
 <app-nav></app-nav>
-<div class="page-container">
+<div class="page-container" *ngIf="notShowDetailPage;else elseBlock">
   <div class="container">
     <div class="carousel" [ngStyle]="carouselStyle">
       <div
@@ -15,7 +15,7 @@
         class="item f"
         style="--currItem: {{5}}"
         [ngClass]="currIndex == 5 ? 'scale-12' : 'scale-10'"
-        (click)="handleCardClick(5)"
+        (click)="handleViewMoreClick(5)"
       >
       </div>
       <div
@@ -38,4 +38,7 @@
     [ngClass]="isDisplayOverlayClass ? '' : 'hide'"
   ></div>
 </div>
+<ng-template #elseBlock>
+  <app-twelve-astrological-list-page></app-twelve-astrological-list-page>
+</ng-template>
 <app-footer></app-footer>

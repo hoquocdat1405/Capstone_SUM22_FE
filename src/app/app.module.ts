@@ -63,6 +63,7 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
 import { BfQuizPersonalityDetailPageComponent } from './bf-quiz-personality-detail-page/bf-quiz-personality-detail-page.component';
 import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
 import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
+import { TwelveAstrologicalListPageComponent } from './twelve-astrological-page/twelve-astrological-list-page/twelve-astrological-list-page.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-pag
     BfQuizPersonalityDetailPageComponent,
     TwelveAstrologicalPageComponent,
     TwelveAstrologicalPageDetailComponent,
+    TwelveAstrologicalListPageComponent
   ],
   imports: [
     FormsModule,
@@ -111,7 +113,7 @@ import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-pag
     BrowserAnimationsModule,
     HttpClientModule,
     DragDropModule,
-    
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

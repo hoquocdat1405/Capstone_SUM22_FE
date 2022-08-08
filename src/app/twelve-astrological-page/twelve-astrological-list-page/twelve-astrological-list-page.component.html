@@ -1,0 +1,50 @@
+<app-nav></app-nav>
+<div class="page-container">
+  <div class="section-header">The Major Arcana</div>
+  <div class="wrapper">
+    <div class="card" *ngFor="let tarot of tarots | slice: 0:22" (click)="handleCardClick(tarot.pos)">
+      <img src="{{ tarot.url }}" alt="" class="card-img" />
+      <div class="card-name">{{tarot.name}}</div>
+    </div>
+  </div>
+  <div class="section-header">The Minor Arcana</div>
+  <div class="sub-section-header">Tarot Wands</div>
+  <div class="wrapper">
+    <div class="card" *ngFor="let tarot of tarots | slice: 22:36">
+      <img src="{{ tarot.url }}" alt="" class="card-img" />
+      <div class="card-name">{{tarot.name}}</div>
+    </div>
+  </div>
+  <div class="sub-section-header">Tarot Pentacles</div>
+  <div class="wrapper">
+    <div class="card" *ngFor="let tarot of tarots | slice: 36:50">
+      <img src="{{ tarot.url }}" alt="" class="card-img" />
+      <div class="card-name">{{tarot.name}}</div>
+    </div>
+  </div>
+  <div class="sub-section-header">Tarot Cups</div>
+  <div class="wrapper">
+    <div class="card" *ngFor="let tarot of tarots | slice: 50:64">
+      <img src="{{ tarot.url }}" alt="" class="card-img" />
+      <div class="card-name">{{tarot.name}}</div>
+    </div>
+  </div>
+  <div class="sub-section-header">Tarot Swords</div>
+  <div class="wrapper">
+    <div class="card" *ngFor="let tarot of tarots | slice: 64:78">
+      <img src="{{ tarot.url }}" alt="" class="card-img" />
+      <div class="card-name">{{tarot.name}}</div>
+    </div>
+  </div>
+
+  <!--Detail Page-->
+  <div class="detail-page" [ngClass]="isDisplayDetailPage ? '' : 'hide'">
+    <app-twelve-astrological-page-detail></app-twelve-astrological-page-detail>
+  </div>
+  <div
+    class="overlay"
+    (click)="handleOverlayClick()"
+    [ngClass]="isDisplayOverlayClass ? '' : 'hide'"
+  ></div>
+</div>
+<app-footer></app-footer>
