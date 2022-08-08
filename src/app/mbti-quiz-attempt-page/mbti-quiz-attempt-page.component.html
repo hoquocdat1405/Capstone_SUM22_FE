@@ -10,56 +10,49 @@
         </div>
       </div>
     </div>
-    <div class="question-list">
-      <input type="checkbox" class="question question1 question-done">
-      <input type="checkbox" class="question question2 question-done">
-      <input type="checkbox" class="question question3">
-      <input type="checkbox" class="question question4 question-not-done">
-      <input type="checkbox" class="question question5 question-not-done">
-      <input type="checkbox" class="question question6 question-not-done">
-      <input type="checkbox" class="question question7 question-not-done">
-      <input type="checkbox" class="question question8 question-not-done">
-      <input type="checkbox" class="question question9 question-not-done">
-      <input type="checkbox" class="question question10 question-not-done">
+
+    <div class="question-list" *ngFor="let question of questions;index as i">
+      <div type="checkbox" *ngIf="question.category==currentTag" class="question question{{i}}"
+        (click)="chooseQuestion(i)">
+      </div>
     </div>
   </div>
 
   <div class="main">
-    <p class="number-question">7/12</p>
+    <p class="number-question"><span
+        class="current-question">{{currentQuestionView}}</span>/<span>{{totalQuestion}}</span></p>
     <div class="question-answer">
-      <div class="answer-left" #answerLeft>
-        <p class="answer-text" (click)="clickAnswerLeft()" (mouseenter)="hoverLeft()" (mouseleave)="(unHoverLeft())"
-          #answerLeft>Nói
-          chuyện với tất cả mọi người, kể cả
-          người lạ</p>
+      <div class="answer-left">
+        <p class="answer-text" #answerLeft (click)="clickAnswerLeft()" (mouseenter)="hoverLeft()"
+          (mouseleave)="(unHoverLeft())" *ngIf="currentTag==questions[currentQuestion].category">
+          {{questions[currentQuestion].answer.left}}
+        </p>
         <img class="answer-arrow" src="assets/img/arrow-left.png">
       </div>
 
       <div class="deck-box">
-        <div class="card card-third">
-          <img src=" assets/img/disco.png" class="card-image">
-          <p class="card-text">Trong một buổi tiệc, bạn sẽ?</p>
+        <div class="card-mbti card-third">
+
         </div>
 
-        <div class="card card-second">
-          <img src=" assets/img/disco.png" class="card-image">
-          <p class="card-text">Trong một buổi tiệc, bạn sẽ?</p>
+        <div class="card-mbti card-second">
+
         </div>
-        <!-- #cardFirst cdkDrag cdkDragLockAxis="x" (cdkDragEnded)="drop()"
-        [cdkDragFreeDragPosition]="dragPosition" -->
-        <div class="card card-first" #cardFirst cdkDrag (cdkDragStarted)="drag()" (cdkDragEnded)="drop()"
-          cdkDragLockAxis="x" [cdkDragFreeDragPosition]="dragPosition">
+        <div class="card-mbti card-first " #dragCard="cdkDrag" #cardFirst cdkDrag (cdkDragStarted)="drag()"
+          (cdkDragEnded)="drop($event)" cdkDragLockAxis="x" [cdkDragFreeDragPosition]="dragPosition"
+          cdkDragBoundary=".question-answer">
           <img src=" assets/img/disco.png" class="card-image">
-          <p class="card-text">Trong một buổi tiệc, bạn sẽ?</p>
+          <p class="card-text" *ngIf="currentTag==questions[currentQuestion].category">
+            {{questions[currentQuestion].question}}</p>
+
         </div>
 
       </div>
 
       <div class="answer-right">
         <p class="answer-text" #answerRight (click)="clickAnswerRight()" (mouseenter)="hoverRight()"
-          (mouseleave)="(unHoverRight())">
-          Nói chuyện với những người
-          bạn quen
+          (mouseleave)="(unHoverRight())" *ngIf="currentTag==questions[currentQuestion].category">
+          {{questions[currentQuestion].answer.right}}
         </p>
         <img class="answer-arrow" src="assets/img/arrow-right.png">
       </div>
@@ -72,11 +65,6 @@
       <mat-icon class="note-icon-bottom" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
       <p class="choose-set-question-text">Chọn bộ câu hỏi bên dưới</p>
     </div>
-    <div class="set-container">
-      <p class="set ">IE</p>
-      <p class="set font-light">SI</p>
-      <p class="set font-light">TF</p>
-      <p class="set font-light">JP</p>
-    </div>
+    <button class="set font-light set{{i}}" *ngFor="let tag of tags;index as i" (click)="changeTag(i)">{{tag}}</button>
   </div>
 </div>

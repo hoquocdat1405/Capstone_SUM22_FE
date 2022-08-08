@@ -1,3 +1,5 @@
+import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
+import { TarotPageComponent } from './tarot-page/tarot-page.component';
 import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
 import { BfQuizPersonalityDetailPageComponent } from './bf-quiz-personality-detail-page/bf-quiz-personality-detail-page.component';
 import { BfQuizDetailPageComponent } from './bf-quiz-detail-page/bf-quiz-detail-page.component';
@@ -57,6 +59,8 @@ const routes: Routes = [
 
   //Additional links
   { path: 'twelve-astrological-page', component: TwelveAstrologicalPageComponent},
+  { path: 'tarot-page', component: TarotPageComponent },
+  { path: 'tarot-list-page', component: TarotListPageComponent },
 ];
 
 @NgModule({

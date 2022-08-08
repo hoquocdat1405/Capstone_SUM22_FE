@@ -68,6 +68,10 @@ import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-deta
 
 //additional options
 import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
+import { TarotPageComponent } from './tarot-page/tarot-page.component';
+import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
+import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-detail-page.component';
+import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
 
 @NgModule({
   declarations: [
@@ -101,9 +105,13 @@ import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twel
     BfQuizDetailPageComponent,
     DiscQuizResultDetailPageComponent,
     DoughnutChartComponent,
-    RadarChartComponent,
     BfQuizPersonalityDetailPageComponent,
     TwelveAstrologicalPageComponent,
+    CoinComponent,
+    TarotPageComponent,
+    TarotListPageComponent,
+    TarotDetailPageComponent,
+    RadarChartComponent,
     ExpansionPanelComponent,
     HollandQuizResultDetailPageComponent,
   ],
