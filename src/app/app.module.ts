@@ -33,7 +33,10 @@ import { LandingNewsComponent } from './landing-page/landing-news/landing-news.c
 import { QuizInfoItemComponent } from './quiz-listing-page/quiz-info-item/quiz-info-item.component';
 import { LandingSchoolItemComponent } from './landing-page/landing-school-item/landing-school-item.component';
 import { QuizCarouselItemComponent } from './landing-page/quiz-carousel-item/quiz-carousel-item.component';
+
+//Charts
 import { DoughnutChartComponent } from './disc-quiz-result-detail-page/doughnut-chart/doughnut-chart.component';
+import { RadarChartComponent } from './holland-quiz-result-detail-page/radar-chart/radar-chart.component';
 
 //quizes listing
 import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.component';
@@ -61,6 +64,9 @@ import { HollandQuizAttemptPageComponent } from './holland-quiz-attempt-page/hol
 import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-page/mbti-quiz-result-detail-page.component';
 import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
 import { BfQuizPersonalityDetailPageComponent } from './bf-quiz-personality-detail-page/bf-quiz-personality-detail-page.component';
+import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-detail-page/holland-quiz-result-detail-page.component';
+
+//additional options
 import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
 
 @NgModule({
@@ -95,9 +101,11 @@ import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twel
     BfQuizDetailPageComponent,
     DiscQuizResultDetailPageComponent,
     DoughnutChartComponent,
+    RadarChartComponent,
     BfQuizPersonalityDetailPageComponent,
     TwelveAstrologicalPageComponent,
     ExpansionPanelComponent,
+    HollandQuizResultDetailPageComponent,
   ],
   imports: [
     FormsModule,

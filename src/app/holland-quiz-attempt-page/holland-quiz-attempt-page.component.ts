@@ -8,7 +8,7 @@ import data from '../holland-data.json';
 })
 export class HollandQuizAttemptPageComponent implements OnInit {
   index!: number;
-  question!: {
+  currentQuestion!: {
     id: number;
     text: string;
     option: {
@@ -219,7 +219,7 @@ export class HollandQuizAttemptPageComponent implements OnInit {
         ],
       },
     ];
-    this.question = this.questionSet[this.index];
+    this.currentQuestion = this.questionSet[this.index];
   }
 
   enableChoose(i: number) {
@@ -229,12 +229,12 @@ export class HollandQuizAttemptPageComponent implements OnInit {
 
   nextQuestion() {
     if (this.index < this.questionSet.length - 1)
-      this.question = this.questionSet[++this.index];
-    else this.question = this.questionSet[this.questionSet.length - 1];
+      this.currentQuestion = this.questionSet[++this.index];
+    else this.currentQuestion = this.questionSet[this.questionSet.length - 1];
   }
 
   previousQuestion() {
-    if (this.index > 0) this.question = this.questionSet[--this.index];
-    else this.question = this.questionSet[0];
+    if (this.index > 0) this.currentQuestion = this.questionSet[--this.index];
+    else this.currentQuestion = this.questionSet[0];
   }
 }
