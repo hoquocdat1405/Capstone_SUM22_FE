@@ -62,8 +62,9 @@ import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-pag
 import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
 import { BfQuizPersonalityDetailPageComponent } from './bf-quiz-personality-detail-page/bf-quiz-personality-detail-page.component';
 import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
-import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
-import { TwelveAstrologicalListPageComponent } from './twelve-astrological-page/twelve-astrological-list-page/twelve-astrological-list-page.component';
+import { TarotPageComponent } from './tarot-page/tarot-page.component';
+import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
+import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -99,8 +100,9 @@ import { TwelveAstrologicalListPageComponent } from './twelve-astrological-page/
     DoughnutChartComponent,
     BfQuizPersonalityDetailPageComponent,
     TwelveAstrologicalPageComponent,
-    TwelveAstrologicalPageDetailComponent,
-    TwelveAstrologicalListPageComponent
+    TarotPageComponent,
+    TarotListPageComponent,
+    TarotDetailPageComponent
   ],
   imports: [
     FormsModule,

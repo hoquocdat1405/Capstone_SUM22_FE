@@ -1,5 +1,5 @@
 export class Tarot {
-  name:String = "";
+  name: String = "";
   pos: Number = -1;
   url: String = "";
 }

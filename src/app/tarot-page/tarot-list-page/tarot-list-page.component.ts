@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { TAROTS } from '../tarot-data';
 
 @Component({
-  selector: 'app-twelve-astrological-list-page',
-  templateUrl: './twelve-astrological-list-page.component.html',
-  styleUrls: ['./twelve-astrological-list-page.component.scss']
+  selector: 'app-tarot-list-page',
+  templateUrl: './tarot-list-page.component.html',
+  styleUrls: ['./tarot-list-page.component.scss']
 })
-export class TwelveAstrologicalListPageComponent implements OnInit {
+export class TarotListPageComponent implements OnInit {
+
   isDisplayOverlayClass: Boolean = false;
   isDisplayDetailPage: Boolean = false;
 
@@ -24,10 +24,11 @@ export class TwelveAstrologicalListPageComponent implements OnInit {
       this.isDisplayDetailPage = false;
     }
   }
-  handleCardClick(cardPos:Number) {
-    if(!this.isDisplayDetailPage && !this.isDisplayOverlayClass) {
+  handleCardClick(cardPos: Number) {
+    if (!this.isDisplayDetailPage && !this.isDisplayOverlayClass) {
       this.isDisplayDetailPage = true;
       this.isDisplayOverlayClass = true;
     }
   }
+
 }

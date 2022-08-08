@@ -1,44 +1,54 @@
 <app-nav></app-nav>
-<div class="page-container" *ngIf="notShowDetailPage;else elseBlock">
-  <div class="container">
-    <div class="carousel" [ngStyle]="carouselStyle">
-      <div
-        *ngFor="let tarot of tarots | slice: 0:5"
-        class="item tarot-{{tarot.pos}}"
-        style="--currItem: {{ tarot.pos }}"
-        [ngClass]="currIndex == tarot.pos ? 'scale-12' : 'scale-10'"
-        (click)="handleCardClick(tarot.pos)"
-      >
-        <img src="{{ tarot.url }}" alt="" />
-      </div>
-      <div
-        class="item f"
-        style="--currItem: {{5}}"
-        [ngClass]="currIndex == 5 ? 'scale-12' : 'scale-10'"
-        (click)="handleViewMoreClick(5)"
-      >
-      </div>
-      <div
-        *ngFor="let tarot of tarots | slice: 6:12"
-        class="item tarot-{{tarot.pos}}"
-        style="--currItem: {{ tarot.pos }}"
-        [ngClass]="currIndex == tarot.pos ? 'scale-12' : 'scale-10'"
-        (click)="handleCardClick(tarot.pos)"
-      >
-        <img src="{{ tarot.url }}" alt="" />
-      </div>
+<div class="page-container">
+  <div class="wrapper">
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
+    </div>
+    <div class="card">
+      <div class="card-img">Bảo bình Image</div>
+      <div class="card-name">Bảo bình</div>
     </div>
   </div>
-  <div class="detail-page" [ngClass]="isDisplayDetailPage ? '' : 'hide'">
-    <app-twelve-astrological-page-detail></app-twelve-astrological-page-detail>
-  </div>
-  <div
-    class="overlay"
-    (click)="handleOverlayClick()"
-    [ngClass]="isDisplayOverlayClass ? '' : 'hide'"
-  ></div>
 </div>
-<ng-template #elseBlock>
-  <app-twelve-astrological-list-page></app-twelve-astrological-list-page>
-</ng-template>
 <app-footer></app-footer>
