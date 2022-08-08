@@ -32,11 +32,11 @@ export class CarouselComponent implements OnInit, AfterViewInit {
         shorthand: 'big-five'
       },
       {
-        name: 'Multiple Inteligent Test',
+        name: 'Holland Test',
         description:
-          'MI là một trong những bài trắc nghiệm tính cách phổ biến nhất thế giới với hơn 2 triệu người mới sử dụng mỗi năm và đặc biệt được ứng dụng trong các hoạt động tuyển dụng, đánh giá nhân sự, giáo dục, hướng nghiệp… ',
-        imgSrc: 'assets/img/mi-fhd.jpg',
-        shorthand: 'mi'
+          'Holland là một trong những bài trắc nghiệm tính cách phổ biến nhất thế giới với hơn 2 triệu người mới sử dụng mỗi năm và đặc biệt được ứng dụng trong các hoạt động tuyển dụng, đánh giá nhân sự, giáo dục, hướng nghiệp… ',
+        imgSrc: 'assets/img/holland-fhd.jpg',
+        shorthand: 'holland'
       },
     ];
   }

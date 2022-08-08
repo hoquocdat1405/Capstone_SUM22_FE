@@ -32,8 +32,8 @@ import { LandingNewsComponent } from './landing-page/landing-news/landing-news.c
 import { QuizInfoItemComponent } from './quiz-listing-page/quiz-info-item/quiz-info-item.component';
 import { LandingSchoolItemComponent } from './landing-page/landing-school-item/landing-school-item.component';
 import { QuizCarouselItemComponent } from './landing-page/quiz-carousel-item/quiz-carousel-item.component';
-import {DoughnutChartComponent} from './disc-quiz-result-detail-page/doughnut-chart/doughnut-chart.component';
-import {CoinComponent} from './disc-quiz-attempt-page/coin/coin.component'; 
+import { DoughnutChartComponent } from './disc-quiz-result-detail-page/doughnut-chart/doughnut-chart.component';
+import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
 
 //quizes listing
 import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.component';
@@ -47,7 +47,7 @@ import { LoginComponent } from './login-register-page/login/login.component';
 import { RegisterComponent } from './login-register-page/register/register.component';
 //detail pages
 import { BfQuizDetailPageComponent } from './bf-quiz-detail-page/bf-quiz-detail-page.component';
-import { MiQuizDetailPageComponent } from './mi-quiz-detail-page/mi-quiz-detail-page.component';
+import { HollandQuizDetailPageComponent } from './holland-quiz-detail-page/holland-quiz-detail-page.component';
 import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-detail-page.component';
 import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-detail-page.component';
 
@@ -55,11 +55,16 @@ import { MbtiQuizDetailPageComponent } from './mbti-quiz-detail-page/mbti-quiz-d
 import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz-attempt-page.component';
 import { BfQuizAttemptPageComponent } from './bf-quiz-attempt-page/bf-quiz-attempt-page.component';
 import { MbtiQuizAttemptPageComponent } from './mbti-quiz-attempt-page/mbti-quiz-attempt-page.component';
-import { MiQuizAttemptPageComponent } from './mi-quiz-attempt-page/mi-quiz-attempt-page.component';
+import { HollandQuizAttemptPageComponent } from './holland-quiz-attempt-page/holland-quiz-attempt-page.component';
 
 //result pages
 import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-page/mbti-quiz-result-detail-page.component';
 import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
+import { BfQuizPersonalityDetailPageComponent } from './bf-quiz-personality-detail-page/bf-quiz-personality-detail-page.component';
+import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
+import { TarotPageComponent } from './tarot-page/tarot-page.component';
+import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
+import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -83,17 +88,22 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
     LoginComponent,
     RegisterComponent,
     MbtiQuizAttemptPageComponent,
-    MiQuizAttemptPageComponent,
+    HollandQuizAttemptPageComponent,
     MbtiQuizResultDetailPageComponent,
     UserProfilePageComponent,
     DiscQuizDetailPageComponent,
     DiscQuizAttemptPageComponent,
-    MiQuizDetailPageComponent,
+    HollandQuizDetailPageComponent,
     BfQuizAttemptPageComponent,
     BfQuizDetailPageComponent,
     DiscQuizResultDetailPageComponent,
     DoughnutChartComponent,
     CoinComponent,
+    BfQuizPersonalityDetailPageComponent,
+    TwelveAstrologicalPageComponent,
+    TarotPageComponent,
+    TarotListPageComponent,
+    TarotDetailPageComponent,
   ],
   imports: [
     FormsModule,
