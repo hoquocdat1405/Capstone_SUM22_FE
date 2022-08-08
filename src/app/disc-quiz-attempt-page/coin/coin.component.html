@@ -1,4 +1,17 @@
-<div class="coin">
-  <p class="answer">Tôi rất năng động, cả trong công việc và vui chơi
-  </p>
+<div class="toogle-coin">
+  <div class="tri-state-toggle">
+    <button class="tri-state-toggle-button button-false" id="toggle-button1" #toogle1 (click)="toogleClick('false')">
+      Sai
+    </button>
+    <button class="tri-state-toggle-button button-none" id="toggle-button2" #toogle2 (click)="toogleClick('none')">
+      X
+    </button>
+    <button class=" tri-state-toggle-button button-true" id="toggle-button3" #toogle3 (click)="toogleClick('true')">
+      Đúng
+    </button>
+  </div>
+  <div class="coin" #coin>
+    <p #answer class="answer">{{answer2}}
+    </p>
+  </div>
 </div>

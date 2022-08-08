@@ -1,2 +1,30 @@
-<app-toogle></app-toogle>
-<app-coin></app-coin>
+<div class="disc-container">
+    <div class="title-row">
+        <img class="title-img-disc" src="assets/img/disc-banner-nobackground.png" alt="">
+        <p class="title-text">Chọn câu giống nhất và khác nhất với bản thân!</p>
+    </div>
+    <div class="row">
+        <div class="arrow-container-left">
+            <img #left (click)="prevQuestion()" class="left-arrow" src="assets/img/left-arrow.png" alt="">
+        </div>
+        <div class="coin-row">
+            <div class="coin-column column{{i}}"
+                *ngFor="let question of questionsSet[currentQuestion-1].answer;index as i">
+                <app-coin [answer2]="question" #coin (messageClick)="messageClick($event)"></app-coin>
+            </div>
+        </div>
+        <div class="arrow-container-right">
+            <img #right (click)="nextQuestion()" class=" right-arrow" src="assets/img/right-arrow.png" alt="">
+        </div>
+
+    </div>
+    <div class="question-number">
+        <p class="number"><span>{{currentQuestion}}</span>/<span>{{totalQuestion}}</span></p>
+    </div>
+    <div class="question-list-container">
+        <div class="question-list" *ngFor="let question of questionsSet;index as i">
+            <div type="checkbox" class="question question{{i}}" (click)="chooseQuestion(i)"></div>
+        </div>
+    </div>
+
+</div>

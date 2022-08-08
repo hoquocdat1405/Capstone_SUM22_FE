@@ -34,7 +34,6 @@ import { LandingSchoolItemComponent } from './landing-page/landing-school-item/l
 import { QuizCarouselItemComponent } from './landing-page/quiz-carousel-item/quiz-carousel-item.component';
 import {DoughnutChartComponent} from './disc-quiz-result-detail-page/doughnut-chart/doughnut-chart.component';
 import {CoinComponent} from './disc-quiz-attempt-page/coin/coin.component'; 
-import {ToogleComponent} from './disc-quiz-attempt-page/toogle/toogle.component'; 
 
 //quizes listing
 import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.component';
@@ -95,7 +94,6 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
     DiscQuizResultDetailPageComponent,
     DoughnutChartComponent,
     CoinComponent,
-    ToogleComponent,
   ],
   imports: [
     FormsModule,
