@@ -7,7 +7,7 @@
         class="item tarot-{{tarot.pos}}"
         style="--currItem: {{ tarot.pos }}"
         [ngClass]="currIndex == tarot.pos ? 'scale-12' : 'scale-10'"
-        (click)="handleCardClick(tarot.pos)"
+        (click)="handleCardClick(tarot.pos ?? -1)"
       >
         <img src="{{ tarot.url }}" alt="" />
       </div>
@@ -23,7 +23,7 @@
         class="item tarot-{{tarot.pos}}"
         style="--currItem: {{ tarot.pos }}"
         [ngClass]="currIndex == tarot.pos ? 'scale-12' : 'scale-10'"
-        (click)="handleCardClick(tarot.pos)"
+        (click)="handleCardClick(tarot.pos ?? -1)"
       >
         <img src="{{ tarot.url }}" alt="" />
       </div>

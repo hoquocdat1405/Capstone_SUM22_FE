@@ -1,7 +1,7 @@
 <div class="page-container">
   <div class="section-header">The Major Arcana</div>
   <div class="wrapper">
-    <div class="card" *ngFor="let tarot of tarots | slice: 0:22" (click)="handleCardClick(tarot.pos)">
+    <div class="card" *ngFor="let tarot of tarots | slice: 0:22" (click)="handleCardClick(tarot.pos ? tarot.pos : -1)">
       <img src="{{ tarot.url }}" alt="" class="card-img" />
       <div class="card-name">{{tarot.name}}</div>
     </div>
@@ -38,7 +38,7 @@
 
   <!--Detail Page-->
   <div class="detail-page" [ngClass]="isDisplayDetailPage ? '' : 'hide'">
-    <app-tarot-detail-page></app-tarot-detail-page>
+    <app-tarot-detail-page [tarotPos]="currentTarotIndex"></app-tarot-detail-page>
   </div>
   <div
     class="overlay"

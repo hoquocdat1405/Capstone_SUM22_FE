@@ -6,6 +6,7 @@
   background-color: #fff;
   position: absolute;
   border-radius: 50px;
+  overflow: scroll;
 }
 
 .wrapper {
@@ -19,7 +20,7 @@
 
 .img {
   width: 30vh;
-  height: 30vh;
+  aspect-ratio: 1 / 1.64;
   border: solid 1px #fff;
   margin-top: 5vh;
 }
