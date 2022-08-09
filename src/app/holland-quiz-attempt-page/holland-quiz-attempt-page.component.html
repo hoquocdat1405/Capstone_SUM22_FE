@@ -2,59 +2,46 @@
   <div class="main">
     <img src="assets/img/holland-text-image.png" alt="" class="mi-title" />
     <div class="question-container">
-      <p class="question">
-        Tôi học tốt nhất bằng cách tự rèn luyện kỹ năng, hơn là đọc về nó hay có
-        người khác chỉ
-      </p>
-      <p class="question-hint">Chọn mức độ phù hợp với bản thân</p>
+      <p class="question">{{ currentQuestion.text }}</p>
+      <p class="question-hint">Chọn những câu trả lời phù hợp với bản thân</p>
     </div>
 
     <div class="answer-container-column">
       <div class="answer-container-row">
-        <p class="text">Hoàn toàn sai</p>
-        <div class="answer-checkbox">
-          <div class="round">
-            <input type="checkbox" name="" id="checkbox1" class="checkbox" />
-            <div class="inside-checkbox inside1"></div>
-            <label id="checkbox1" for="checkbox1"></label>
-          </div>
-          <div class="round">
-            <input type="checkbox" name="" id="checkbox2" class="checkbox" />
-            <div class="inside-checkbox inside2"></div>
-            <label id="checkbox2" for="checkbox2"></label>
-          </div>
 
-          <div class="round">
-            <input type="checkbox" name="" id="checkbox3" class="checkbox" />
-            <div class="inside-checkbox inside3"></div>
-            <label id="checkbox3" for="checkbox3"></label>
-          </div>
-          <div class="round">
-            <input type="checkbox" name="" id="checkbox4" class="checkbox" />
-            <div class="inside-checkbox inside4"></div>
-            <label id="checkbox4" for="checkbox4"></label>
-          </div>
-
-          <div class="round">
-            <input type="checkbox" name="" id="checkbox5" class="checkbox" />
-            <div class="inside-checkbox inside5"></div>
-            <label id="checkbox5" for="checkbox5"></label>
+        <div class="option-section">
+          <div
+            *ngFor="let ans of questionSet[index].option; index as i"
+            id="{{ ans.id }}"
+            class="option"
+            (click)="enableChoose(i)"
+            [ngClass]="{
+              'option-checked': ans.isSelected,
+              'option-unchecked': !ans.isSelected
+            }"
+          >
+            <div class="option-text">
+              <p>{{ ans.text }}</p>
+            </div>
           </div>
         </div>
-        <p class="text">Hoàn toàn đúng</p>
       </div>
       <div class="arrow-container-row">
-        <img class="arrow-left" src="assets/img/left-arrow.png" alt="" />
-        <img class="arrow-left" src="assets/img/right-arrow.png" alt="" />
+        <img
+          (click)="previousQuestion()"
+          class="arrow-left"
+          src="assets/img/left-arrow.png"
+          alt=""
+        />
+        <img
+          (click)="nextQuestion()"
+          class="arrow-left"
+          src="assets/img/right-arrow.png"
+          alt=""
+        />
       </div>
-      <p class="number-question"><span>7</span>/81</p>
+      <p class="number-question"><span>{{index+1}}/</span>{{questionSet.length}}</p>
     </div>
 
-    <!-- <div class="answer-choose">
-      <div class="round">
-        <input type="checkbox" name="" id="checkbox1" class="checkbox">
-        <label id="checkbox1" for="checkbox1"></label>
-      </div>
-    </div> -->
   </div>
 </div>

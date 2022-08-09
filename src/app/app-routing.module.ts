@@ -19,6 +19,7 @@ import { UserProfilePageComponent } from './user-profile-page/user-profile-page.
 import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-detail-page.component';
 import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz-attempt-page.component';
 import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
+import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-detail-page/holland-quiz-result-detail-page.component';
 
 const routes: Routes = [
   //homepage - default blank url link redirect to home
@@ -52,11 +53,11 @@ const routes: Routes = [
   //Quizes result page link
   { path: 'mbti-result', component: MbtiQuizResultDetailPageComponent },
   { path: 'disc-result', component: DiscQuizResultDetailPageComponent},
-  { path: 'holland-result', component: DiscQuizResultDetailPageComponent},
+  { path: 'holland-result', component: HollandQuizResultDetailPageComponent},
   { path: 'bf-result', component: DiscQuizResultDetailPageComponent},
-  { path: 'mi-result', component: DiscQuizResultDetailPageComponent},
 
-  { path: 'bf-personality-detail', component: BfQuizPersonalityDetailPageComponent},
+
+  //Additional links
   { path: 'twelve-astrological-page', component: TwelveAstrologicalPageComponent},
   { path: 'tarot-page', component: TarotPageComponent },
   { path: 'tarot-list-page', component: TarotListPageComponent },

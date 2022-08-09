@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-
 //services
 import { AuthService } from './_services/auth.service';
 
@@ -22,6 +21,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 //sub component
+import { ExpansionPanelComponent } from './holland-quiz-detail-page/expansion-panel/expansion-panel.component';
 import { CarouselComponent } from './landing-page/carousel/carousel.component';
 import { NewsItemComponent } from './landing-page/news-item/news-item.component';
 import { EduNewsItemComponent } from './landing-page/edu-news-item/edu-news-item.component';
@@ -33,7 +33,10 @@ import { LandingNewsComponent } from './landing-page/landing-news/landing-news.c
 import { QuizInfoItemComponent } from './quiz-listing-page/quiz-info-item/quiz-info-item.component';
 import { LandingSchoolItemComponent } from './landing-page/landing-school-item/landing-school-item.component';
 import { QuizCarouselItemComponent } from './landing-page/quiz-carousel-item/quiz-carousel-item.component';
-import {DoughnutChartComponent} from './disc-quiz-result-detail-page/doughnut-chart/doughnut-chart.component';
+
+//Charts
+import { DoughnutChartComponent } from './disc-quiz-result-detail-page/doughnut-chart/doughnut-chart.component';
+import { RadarChartComponent } from './holland-quiz-result-detail-page/radar-chart/radar-chart.component';
 
 //quizes listing
 import { QuizListingPageComponent } from './quiz-listing-page/quiz-listing-page.component';
@@ -61,10 +64,14 @@ import { HollandQuizAttemptPageComponent } from './holland-quiz-attempt-page/hol
 import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-page/mbti-quiz-result-detail-page.component';
 import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
 import { BfQuizPersonalityDetailPageComponent } from './bf-quiz-personality-detail-page/bf-quiz-personality-detail-page.component';
+import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-detail-page/holland-quiz-result-detail-page.component';
+
+//additional options
 import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
 import { TarotPageComponent } from './tarot-page/tarot-page.component';
 import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
 import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-detail-page.component';
+import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
 
 @NgModule({
   declarations: [
@@ -100,9 +107,13 @@ import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-d
     DoughnutChartComponent,
     BfQuizPersonalityDetailPageComponent,
     TwelveAstrologicalPageComponent,
+    CoinComponent,
     TarotPageComponent,
     TarotListPageComponent,
-    TarotDetailPageComponent
+    TarotDetailPageComponent,
+    RadarChartComponent,
+    ExpansionPanelComponent,
+    HollandQuizResultDetailPageComponent,
   ],
   imports: [
     FormsModule,
@@ -115,7 +126,6 @@ import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-d
     BrowserAnimationsModule,
     HttpClientModule,
     DragDropModule,
-
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

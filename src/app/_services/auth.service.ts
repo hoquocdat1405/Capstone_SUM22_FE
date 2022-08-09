@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { User } from '../_model/User';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,16 +11,20 @@ import { Observable } from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  baseUrl = 'http://localhost:5000/api/auth';
+  baseUrl = `${environment.mockApiUrl}`;
 
-  login(model: any) {
-    return this.http.post(this.baseUrl + 'login', model).pipe(
-      map((response: any) => {
-        const user = response;
-        if (user) {
-          localStorage.setItem('token', user.token);
-        }
-      })
-    );
+  // login(model: any) {
+  //   return this.http.post(this.baseUrl + '/api/login', model).pipe(
+  //     map((response: any) => {
+  //       const user:User = response;
+  //       if (user) {
+  //         localStorage.setItem('username', user.name);
+  //       }
+  //     })
+  //   );
+  // }
+
+  login(model:any){
+    return this.http.post(this.baseUrl+'/api/login',model);
   }
 }
