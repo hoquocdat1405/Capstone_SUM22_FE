@@ -1,3 +1,4 @@
+import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
 import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
 import { TarotPageComponent } from './tarot-page/tarot-page.component';
 import { TwelveAstrologicalPageComponent } from './twelve-astrological-page/twelve-astrological-page.component';
@@ -62,9 +63,13 @@ const routes: Routes = [
   },
   { path: 'tarot-page', component: TarotPageComponent },
   { path: 'tarot-list-page', component: TarotListPageComponent },
+  { path: 'new-tarot-page', component: NewTarotPageComponent },
+
 
   //Staff links
   { path: 'staff', loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule) },
+
+
 ];
 
 @NgModule({

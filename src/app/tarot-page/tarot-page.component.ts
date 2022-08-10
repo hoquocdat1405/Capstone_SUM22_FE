@@ -1,3 +1,4 @@
+import { TarotServiceService } from './tarot-service.service';
 import { TAROTS } from './tarot-data';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarotPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tarotService: TarotServiceService) {}
 
   ngOnInit(): void {
   }
@@ -100,6 +101,6 @@ export class TarotPageComponent implements OnInit {
     if (this.currIndex === 0 && cardPos === 11) {
       this.handlePrevClick();
     }
+    // this.tarotService.changeObject(this.tarotService.getTarotByIndex(cardPos));
   }
-
 }

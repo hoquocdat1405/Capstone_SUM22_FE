@@ -10,7 +10,6 @@ export class NavComponent implements OnInit {
   _userPic: string = '';
 
   @Input() theme: string = 'light';
-
   constructor() {}
 
   ngOnInit() {}

@@ -1,0 +1,18 @@
+<div class="page-container">
+  <div class="wrapper">
+    <div class="left-deck">
+      <div class="deck next-card">
+        <img src="../../assets/img/tarots/back1.png" alt="" class="img"/>
+      </div>
+      <div class="card" (click)="cardClick()" [ngClass]="cardActive ? 'card-active' : ''">
+        <div class="face front">
+          <img src="../../assets/img/tarots/back1.png" alt="" class="img"/>
+        </div>
+        <div class="face back">
+          <img src={{currentTarot?.url}} alt="" class="img"/>
+        </div>
+      </div>
+    </div>
+    <div class="right-deck"></div>
+  </div>
+</div>

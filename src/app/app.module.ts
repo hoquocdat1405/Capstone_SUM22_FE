@@ -11,6 +11,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 //services
 import { AuthService } from './_services/auth.service';
+import { TarotServiceService } from './tarot-page/tarot-service.service';
 
 //fa icon
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -76,11 +77,14 @@ import { TarotPageComponent } from './tarot-page/tarot-page.component';
 import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
 import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-detail-page.component';
 import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
+import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
 
 //staff links
 import { StaffPageComponent } from './staff/staff-page/staff-page.component';
 import { StaffDashboardComponent } from './staff/staff-page/staff-dashboard/staff-dashboard.component';
 import { StaffModule } from './staff/staff.module';
+
+
 
 @NgModule({
   declarations: [
@@ -123,6 +127,7 @@ import { StaffModule } from './staff/staff.module';
     RadarChartComponent,
     ExpansionPanelComponent,
     HollandQuizResultDetailPageComponent,
+    NewTarotPageComponent,
     StaffPageComponent,
     StaffDashboardComponent
   ],
@@ -141,9 +146,10 @@ import { StaffModule } from './staff/staff.module';
     MatListModule,
     MatButtonModule,
     MatTreeModule,
+    
     StaffModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
