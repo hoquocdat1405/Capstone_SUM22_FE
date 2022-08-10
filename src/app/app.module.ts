@@ -11,6 +11,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 //services
 import { AuthService } from './_services/auth.service';
+import { TarotServiceService } from './tarot-page/tarot-service.service';
 
 //fa icon
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -72,6 +73,7 @@ import { TarotPageComponent } from './tarot-page/tarot-page.component';
 import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
 import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-detail-page.component';
 import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
+import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +116,7 @@ import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
     RadarChartComponent,
     ExpansionPanelComponent,
     HollandQuizResultDetailPageComponent,
+    NewTarotPageComponent,
   ],
   imports: [
     FormsModule,
@@ -127,7 +130,7 @@ import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
     HttpClientModule,
     DragDropModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

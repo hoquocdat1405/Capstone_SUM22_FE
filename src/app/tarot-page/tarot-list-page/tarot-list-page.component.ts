@@ -11,7 +11,7 @@ import { TarotServiceService } from '../tarot-service.service';
 export class TarotListPageComponent implements OnInit {
   isDisplayOverlayClass: Boolean = false;
   isDisplayDetailPage: Boolean = false;
-  currentTarotIndex:Number = 0;
+  currentTarotIndex?:Number;
   currentTarot: Tarot = {
     name: "",
     pos: -1,

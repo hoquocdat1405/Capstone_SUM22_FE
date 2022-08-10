@@ -1,54 +1,13 @@
-<app-nav></app-nav>
 <div class="page-container">
+  <app-nav [theme]="'dark'"></app-nav>
   <div class="wrapper">
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
-    <div class="card">
-      <div class="card-img"></div>
-      <div class="card-name">Bảo bình</div>
-    </div>
+    <img
+      src="{{ url }}"
+      alt=""
+      *ngFor="let url of listAstrologyUrl; let i = index"
+      (click)="handleStarClick(i + 1)"
+    />
   </div>
+  <img src="../../assets/img/twelve-astrological/Earth.png" alt="" />
 </div>
 <app-footer></app-footer>
