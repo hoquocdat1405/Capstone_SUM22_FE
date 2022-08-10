@@ -1,0 +1,47 @@
+.dash-board-container{
+    display: inline-block;
+}
+
+.stat-block {
+    display: inline-block;
+    width: 22vw;
+    height: 7vw;
+    background-color: rgb(49, 96, 98);
+    border-radius: 15px;
+    margin: 1.5vw
+}
+
+.stat-block mat-icon {
+    color: #fff;
+    font-size: 3vw;
+    margin:  2vw 1vw;
+}
+.stat-block mat-divider {
+    background-color: #d4d4d4;
+    margin-bottom: 1%;
+    
+}
+
+.stat-block .stat-section{
+    display: inline-block;
+    margin-left: 1.5vw;
+    margin-top: 0.5vw;
+    width: 70%;
+    color:#fff;
+    font-size: 1vw;
+    font-weight: 500;
+}
+
+.report-section {
+    width: 80%;
+    margin : 1vw 1.5vw;
+}
+
+.section-header{
+    font-size: 1vw;
+    font-weight: 600;
+}
+
+.report-section mat-divider{
+    width: 50%;
+}

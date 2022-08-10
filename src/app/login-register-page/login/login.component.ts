@@ -28,21 +28,27 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.authService.login(this.model).subscribe(
-      (user) => {
-        console.log(user);
-        console.log('Logged in');
+    // this.authService.login(this.model).subscribe(
+    //   (user) => {
+    //     console.log(user);
+    //     console.log('Logged in');
         
-        this.router.navigate(['/']);
-      }
-      // (next) => {
-      //   console.log('Logged in');
-      //   this.router.navigate(['/']);
-      // },
-      // (error) => {
-      //   console.log('Login error'+ error);
-      // }
-    );
+    //     this.router.navigate(['/']);
+    //   }
+    //   // (next) => {
+    //   //   console.log('Logged in');
+    //   //   this.router.navigate(['/']);
+    //   // },
+    //   // (error) => {
+    //   //   console.log('Login error'+ error);
+    //   // }
+    // );
+
+    localStorage.setItem('username','Liem Nguyen');
+    localStorage.setItem('token','xxxxxxxxxxxx');
+    localStorage.setItem('userPic','../../assets/img/logo-qick.png');
+    this.router.navigate(['/']);
+
   }
 
   marginRight() {

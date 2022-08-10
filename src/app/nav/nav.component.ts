@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -8,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   _username: string = '';
+  _userPic: string = '';
+
+  @Input() theme: string = 'light';
 
   constructor() {}
 
@@ -16,8 +18,10 @@ export class NavComponent implements OnInit {
   loggedIn() {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
-    if (username) {
+    const userPic = localStorage.getItem('userPic');
+    if (username && userPic) {
       this._username = username;
+      this._userPic = userPic;
     }
     return !!token;
   }

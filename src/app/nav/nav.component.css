@@ -32,6 +32,10 @@
   border-radius: 15px;
 }
 
+.user-img{
+width: 1vw;
+}
+
 .btn-signup {
   background-color: #3cb5af;
   color: whitesmoke;
@@ -45,4 +49,9 @@
 
 .search-input {
   border-radius: 20px;
+}
+
+.dropdown-menu{
+  left:auto;
+  right:0;
 }

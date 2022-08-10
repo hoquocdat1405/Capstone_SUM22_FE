@@ -19,6 +19,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTreeModule} from '@angular/material/tree';
 
 //sub component
 import { ExpansionPanelComponent } from './holland-quiz-detail-page/expansion-panel/expansion-panel.component';
@@ -73,6 +77,11 @@ import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-
 import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-detail-page.component';
 import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
 
+//staff links
+import { StaffPageComponent } from './staff/staff-page/staff-page.component';
+import { StaffDashboardComponent } from './staff/staff-page/staff-dashboard/staff-dashboard.component';
+import { StaffModule } from './staff/staff.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,6 +123,8 @@ import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
     RadarChartComponent,
     ExpansionPanelComponent,
     HollandQuizResultDetailPageComponent,
+    StaffPageComponent,
+    StaffDashboardComponent
   ],
   imports: [
     FormsModule,
@@ -126,6 +137,11 @@ import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
     BrowserAnimationsModule,
     HttpClientModule,
     DragDropModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatTreeModule,
+    StaffModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
