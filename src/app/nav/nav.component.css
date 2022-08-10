@@ -7,18 +7,15 @@
   margin: 0 10px 0 10px;
   font-family: "Orbitron";
   font-size: large;
-  color: black;
-}
-.nav-item .nav-link {
-  color: black;
 }
 
-.nav-item .nav-link:active {
-  color: black;
-  font-weight: 600;
+.navbar-nav .nav-link.active {
+  font-family: "Open Sans Regular" !important;
+  font-weight: 500;
+  font-size: 18px;
 }
 .navbar-nav {
-  font-family: "Open Sans Semibold";
+  font-family: "Open Sans Regular";
   font-size: 18px;
   margin: auto 5px;
 }
@@ -28,12 +25,11 @@
 }
 
 .navbar-nav a:hover {
-  background: #e4e4e4;
-  border-radius: 15px;
+  transform: scale(1.1);
 }
 
-.user-img{
-width: 1vw;
+.user-img {
+  width: 1vw;
 }
 
 .btn-signup {
@@ -51,7 +47,18 @@ width: 1vw;
   border-radius: 20px;
 }
 
-.dropdown-menu{
-  left:auto;
-  right:0;
+.dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+.dropdown-menu li:hover a {
+  overflow: hidden;
+}
+
+.dark {
+  color: white !important;
+}
+.light {
+  color: black !important;
 }

@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <a href="#" class="navbar-brand">
       <!-- <img src="../assets/img/logo-qick-black.png" height="28" alt="Qick" /> -->
-      <img src="../assets/img/qick-text-black.png" height="18" alt="Qick-brand" class="brand-name" *ngIf="theme == 'dark'">
-      <img src="../assets/img/qick-text-white.png" height="18" alt="Qick-brand" class="brand-name" *ngIf="theme != 'dark'">
+      <img src="../assets/img/qick-text-black.png" height="18" alt="Qick-brand" class="brand-name" *ngIf="theme == 'light'">
+      <img src="../assets/img/qick-text-white.png" height="18" alt="Qick-brand" class="brand-name" *ngIf="theme != 'light'">
     </a>
     <button
       type="button"
@@ -66,11 +66,13 @@
         </form> -->
         <div class="nav-item dropdown" *ngIf="loggedIn()">
           <a
+            [ngClass]="{'dark': theme=='dark', 'light': theme != 'dark'}"
             class="nav-link dropdown-toggle"
             href="#"
             id="dropdown03"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            ngClass
             ><img src="{{_userPic}}" alt="user profile picture" class="user-img"></a
           >
           <ul class="dropdown-menu  " aria-labelledby="dropdown03">
