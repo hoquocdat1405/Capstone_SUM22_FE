@@ -8,7 +8,9 @@
 .coin {
   width: 18vw;
   height: 18vw;
-  // background: #ccc;
+  background: #fff;
+  // background: linear-gradient(to right, #df1b1b, #ba3030);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,16 +20,18 @@
   border-radius: 50%;
 }
 
-//ban dau {nen trang, border:#626161, font-color:#626161  }
-//sai {border:none, background:EF6666}
-//dung{border:none, background:69B047}
 .coin-wrong {
-  background-color: #ef6666;
-  // border
+  background: linear-gradient(to right, #ba3030, #ce2525);
+  border: none;
 }
 
 .coin-right {
-  // background-color: #69b047;
+  background: linear-gradient(45deg, #01a29d, #a0feb0);
+  border: none;
+}
+
+.white-font {
+  color: #fff !important;
 }
 
 .answer {
@@ -79,37 +83,48 @@
 
 @media (max-width: 740px) {
   .tri-state-toggle-button {
-    width: 3.5vw;
-    height: 3.5vw;
+    width: 5vw;
+    height: 5vw;
+  }
+
+  .icon {
+    font-size: 20px;
   }
 
   .coin {
-    width: 50vw;
-    height: 6vw;
+    width: 70vw;
+    height: 8vw;
     border-radius: 10px;
+    margin: 5px;
   }
 
   .answer {
     padding: 10px;
     margin: 0;
+    font-size: 3vw;
   }
 }
 
 @media (min-width: 740px) and (max-width: 900px) {
   .tri-state-toggle-button {
-    width: 3.5vw;
-    height: 3.5vw;
+    width: 5vw;
+    height: 5vw;
+  }
+
+  .icon {
+    font-size: 20px;
   }
 
   .coin {
-    width: 38vw;
-    height: 6vw;
+    width: 40vw;
+    height: 8vw;
     border-radius: 10px;
   }
 
   .answer {
     padding: 10px;
     margin: 0;
+    font-size: 20px;
   }
 }
 @media (min-width: 900px) and (max-width: 1200px) {

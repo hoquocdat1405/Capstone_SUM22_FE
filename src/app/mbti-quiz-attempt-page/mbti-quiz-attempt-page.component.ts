@@ -297,7 +297,23 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
   }
 
   checkSetDone() {
-    let sets = document.querySelector('.set');
+    let checkAnswer = false;
+    let sets = document.querySelectorAll('.set');
+    for (let i = 0; i < this.userAnswer.length; i++) {
+      if (this.questions[i].category == this.currentTag) {
+        if (this.userAnswer[i].answered) {
+          checkAnswer = true;
+        } else {
+          checkAnswer = false;
+        }
+      }
+    }
+
+    if (checkAnswer === true) {
+      sets[this.currentTag].classList.add('set-done');
+    } else {
+      sets[this.currentTag].classList.remove('set-done');
+    }
   }
 
   chooseQuestion(number: any) {
@@ -337,13 +353,13 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
           this.userAnswer[this.currentQuestion].userAnswer ===
           this.answerLeft.nativeElement.innerText
         ) {
-          this.answerLeft.nativeElement.style.color = 'blue';
+          this.answerLeft.nativeElement.style.color = '#15b1aa';
           this.answerRight.nativeElement.style.color = 'black';
         } else if (
           this.userAnswer[this.currentQuestion].userAnswer ===
           this.answerRight.nativeElement.innerText
         ) {
-          this.answerRight.nativeElement.style.color = 'blue';
+          this.answerRight.nativeElement.style.color = '#15b1aa';
           this.answerLeft.nativeElement.style.color = 'black';
         } else {
           this.answerLeft.nativeElement.style.color = 'black';
@@ -354,7 +370,10 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
   }
 
   clickAnswerLeft() {
-    this.cardFirst.nativeElement.classList.add('move-left');
+    var x = window.matchMedia('(max-width: 850px)');
+    if (!x.matches) {
+      this.cardFirst.nativeElement.classList.add('move-left');
+    }
     setTimeout(
       () => this.cardFirst.nativeElement.classList.remove('move-left'),
       1000
@@ -364,10 +383,14 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
     this.checkAnswer();
     this.chooseQuestion(++this.currentQuestion);
     this.checkSubmit();
+    this.checkSetDone();
   }
 
   clickAnswerRight() {
-    this.cardFirst.nativeElement.classList.add('move-right');
+    var x = window.matchMedia('(max-width: 850px)');
+    if (!x.matches) {
+      this.cardFirst.nativeElement.classList.add('move-right');
+    }
     setTimeout(
       () => this.cardFirst.nativeElement.classList.remove('move-right'),
       1000
@@ -379,10 +402,14 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
     this.checkAnswer();
     this.chooseQuestion(++this.currentQuestion);
     this.checkSubmit();
+    this.checkSetDone();
   }
 
   hoverLeft() {
-    this.cardFirst.nativeElement.classList.add('hoverRotateLeft');
+    var x = window.matchMedia('(max-width: 850px)');
+    if (!x.matches) {
+      this.cardFirst.nativeElement.classList.add('hoverRotateLeft');
+    }
   }
 
   unHoverLeft() {
@@ -390,7 +417,10 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
   }
 
   hoverRight() {
-    this.cardFirst.nativeElement.classList.add('hoverRotateRight');
+    var x = window.matchMedia('(max-width: 850px)');
+    if (!x.matches) {
+      this.cardFirst.nativeElement.classList.add('hoverRotateRight');
+    }
   }
 
   unHoverRight() {
