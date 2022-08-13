@@ -173,14 +173,17 @@ export class DiscQuizAttemptPageComponent implements OnInit {
       this.activateButton();
       this.storeUserAnswer(event);
       this.checkAnswer();
+      this.checkDone();
     } else if (event.message === 'true') {
       this.activateButton();
       this.storeUserAnswer(event);
       this.checkAnswer();
+      this.checkDone();
     } else {
       this.activateButton();
       this.storeUserAnswer(event);
       this.checkAnswer();
+      this.checkDone();
     }
   }
 
@@ -244,6 +247,14 @@ export class DiscQuizAttemptPageComponent implements OnInit {
     var buttonsTrue = document.querySelectorAll<HTMLElement>('.button-true');
     var buttonsFalse = document.querySelectorAll<HTMLElement>('.button-false');
     var buttonsNone = document.querySelectorAll<HTMLElement>('.button-none');
+
+    var iconsFalse = document.querySelectorAll<HTMLElement>(
+      '.button-false .icon'
+    );
+    var iconsTrue =
+      document.querySelectorAll<HTMLElement>('.button-true .icon');
+    var iconsNone =
+      document.querySelectorAll<HTMLElement>('.button-none .icon');
     this.buttonFalse = false;
     this.buttonTrue = false;
     for (let i = 0; i < answer.length; i++) {
@@ -255,7 +266,11 @@ export class DiscQuizAttemptPageComponent implements OnInit {
         buttonsFalse[i].hidden = false;
         buttonsFalse[i].classList.add('active');
         buttonsNone[i].classList.remove('active');
-        coin[i].style.backgroundColor = 'red';
+        coin[i].classList.add('coin-wrong');
+        answer[i].classList.add('white-font');
+        buttonsFalse[i].style.background =
+          'linear-gradient(to right, 	#ba3030, #ce2525)';
+        iconsFalse[i].classList.add('white-font');
         this.buttonFalse = true;
       }
       if (
@@ -266,7 +281,13 @@ export class DiscQuizAttemptPageComponent implements OnInit {
         buttonsTrue[i].hidden = false;
         buttonsTrue[i].classList.add('active');
         buttonsNone[i].classList.remove('active');
-        coin[i].style.backgroundColor = 'green';
+        coin[i].classList.add('coin-right');
+        answer[i].classList.add('white-font');
+        answer[i].classList.add('white-font');
+        buttonsTrue[i].style.background =
+          'linear-gradient(135deg, #01a29d, #a0feb0)';
+        iconsTrue[i].classList.add('white-font');
+
         this.buttonTrue = true;
       }
 
@@ -320,5 +341,26 @@ export class DiscQuizAttemptPageComponent implements OnInit {
       this.right.nativeElement.style.visibility = 'visible';
     }
     setTimeout(() => this.changCoin());
+  }
+
+  checkDone() {
+    let checkDone = false;
+    for (let i = 0; i < this.userAnswer.length; i++) {
+      if (
+        this.userAnswer[i].answer.right != '' ||
+        this.userAnswer[i].answer.wrong != ''
+      ) {
+        checkDone = true;
+      } else {
+        checkDone = false;
+      }
+    }
+
+    let btnSubmit = document.querySelector('.btn-submit');
+    if (checkDone === true) {
+      btnSubmit?.classList.add('submit-active');
+    } else {
+      btnSubmit?.classList.remove('submit-active');
+    }
   }
 }

@@ -1,8 +1,52 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+app-nav {
+  position: absolute;
+  z-index: 20;
+}
+
+.icon {
+  font-size: 18px;
+  color: white;
+  position: absolute;
+  left: 7px;
+}
+
+.card-icon {
+  position: absolute;
+  z-index: 20;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+}
+
+.card-note {
+  position: absolute;
+  top: -50px;
+  right: -140px;
+  width: 160px;
+  background-color: #000;
+  z-index: 30;
+  border-radius: 10px 10px 10px 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s linear;
+}
+
+.card-note-text {
+  color: #fff;
+  padding: 10px;
+}
+
+.card-icon:hover + .card-note {
+  opacity: 1;
+  visibility: visible;
 }
 
 .body {
@@ -24,8 +68,8 @@
   position: absolute;
   width: 12.5rem;
   height: auto;
-  top: 2vh;
-  left: 1vw;
+  top: 5%;
+  left: 2%;
 }
 
 .question-answer {
@@ -164,10 +208,14 @@
   margin-right: 10px;
 }
 
+.set-done {
+  color: #15b1aa;
+}
+
 .note {
   position: absolute;
-  right: 5%;
-  top: 5%;
+  right: 6%;
+  top: 12%;
   z-index: 10;
 }
 
@@ -180,27 +228,30 @@
   align-items: center;
   position: relative;
   transition: width 1s;
-  overflow: hidden;
 }
 
 .note-choose-question {
-  width: 0.625rem;
-  height: 2.5rem;
-  display: none;
+  width: 12rem;
+  height: 2rem;
   position: absolute;
   background-color: #000;
-  bottom: 5%;
-  left: 10%;
-  border-radius: 10px 10px 10px 0;
+  top: 20px;
+  right: 10px;
+  border-radius: 10px 0px 10px 10px;
   border: 1px solid #000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 .note-choose-question-text {
   color: #fff;
+  text-align: center;
 }
 
 .icon-box:hover .note-choose-question {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .note-icon {
@@ -219,7 +270,7 @@
 
 .note-text {
   margin-right: 0.5rem;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
 }
 
 .question-list {
@@ -237,8 +288,38 @@
 }
 
 .number-question {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
+}
+
+.btn-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  padding: 10px;
+  background-color: #000;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  border-radius: 10px;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.btn-submit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.submit-text {
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn-submit-show {
+  visibility: visible;
 }
 
 // nhung cau hoi da tick
@@ -353,6 +434,7 @@
 @media (max-width: 850px) {
   .question-answer {
     flex-wrap: wrap;
+    justify-content: center;
   }
   .answer-left {
     order: 2;
@@ -365,14 +447,26 @@
   .deck-box {
     order: 1;
     width: 100%;
+    min-height: 300px;
   }
 
   .card-first {
-    width: 300px;
+    width: 50%;
+    min-height: 320px;
+    pointer-events: none;
+    margin-bottom: 20px;
   }
 
   .card-first:hover {
     pointer-events: none;
+  }
+
+  .answer-left,
+  .answer-right {
+    width: 60%;
+    height: 80px;
+    display: flex;
+    align-items: center;
   }
 
   .card-second {
@@ -387,8 +481,7 @@
   }
 
   .answer-text {
-    height: auto;
-    width: auto;
+    height: 60px;
     color: #fff;
     font-size: 1.2rem;
     text-align: center;
@@ -399,7 +492,8 @@
   }
 
   .card-text {
-    font-size: 26px;
+    width: 90%;
+    font-size: 24px;
   }
 
   .question-sets-text {
@@ -422,13 +516,33 @@
     display: none;
   }
 
-  .question-sets {
-    top: 5%;
-    right: 5%;
+  .sets-row {
+    position: absolute;
+    // bottom: -200%;
+    top: -450px;
+    left: -20px;
+    display: flex;
+    flex-direction: column;
   }
 
   .set {
-    font-size: 18px;
+    font-size: 30px;
+  }
+
+  .question {
+    width: 20px;
+    height: 20px;
+    margin-top: 30px;
+  }
+
+  app-nav {
+    background-color: #fff;
+  }
+
+  .btn-submit {
+    width: 100px;
+    right: 3%;
+    bottom: 3%;
   }
 }
 

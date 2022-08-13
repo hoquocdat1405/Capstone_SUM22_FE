@@ -1,13 +1,13 @@
 <div class="toogle-coin">
   <div class="tri-state-toggle">
     <button class="tri-state-toggle-button button-false" id="toggle-button1" #toogle1 (click)="toogleClick('false')">
-      Sai
+      <i class="icon fa fa-times" aria-hidden="true" id="icon1" #iconFalse></i>
     </button>
     <button class="tri-state-toggle-button button-none" id="toggle-button2" #toogle2 (click)="toogleClick('none')">
-      X
+      <i class="icon fa fa-minus" aria-hidden="true" id="icon2" #iconNone></i>
     </button>
     <button class=" tri-state-toggle-button button-true" id="toggle-button3" #toogle3 (click)="toogleClick('true')">
-      Đúng
+      <i class="icon fa fa-check" aria-hidden="true" id="icon3" #iconTrue></i>
     </button>
   </div>
   <div class="coin" #coin>

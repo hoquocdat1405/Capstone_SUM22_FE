@@ -132,6 +132,38 @@
   justify-content: flex-end;
 }
 
+.btn-submit {
+  width: 170px;
+  height: 50px;
+  background-color: #15b1aa;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 10%;
+  bottom: 14%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.btn-submit:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.submit-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.btn-submit-text {
+  color: #fff;
+  height: auto;
+  font-size: 20px;
+}
+
 // nhung cau hoi da tick
 .question-done {
   border: none;
@@ -146,10 +178,14 @@
 
 @media (max-width: 740px) {
   .title-row {
-    padding: 10px;
+    padding: 5px;
   }
   .title-img-disc {
     display: none;
+  }
+
+  .title-text {
+    font-size: 24px;
   }
   .arrow-container-right {
     order: 3;
@@ -168,6 +204,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .left-arrow,
+  .right-arrow {
+    width: 80px;
+    height: auto;
+  }
+
+  .number {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .question-list-container {
+    position: absolute;
+    bottom: 5%;
   }
 }
 
@@ -192,6 +244,11 @@
     width: 90%;
     flex-wrap: wrap;
     order: 1;
+  }
+
+  .left-arrow,
+  .right-arrow {
+    width: 100px;
   }
 }
 @media (min-width: 900px) and (max-width: 1200px) {
