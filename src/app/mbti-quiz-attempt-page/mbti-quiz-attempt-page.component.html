@@ -1,4 +1,5 @@
 <div class="body">
+  <!-- <app-nav></app-nav> -->
   <img class="mbti-img" src="assets/img/mbti-banner-nobackground.png" alt="">
   <div class="note">
     <div class="note-text-icon">
@@ -66,5 +67,9 @@
       <p class="choose-set-question-text">Chọn bộ câu hỏi bên dưới</p>
     </div>
     <button class="set font-light set{{i}}" *ngFor="let tag of tags;index as i" (click)="changeTag(i)">{{tag}}</button>
+  </div>
+
+  <div class="btn-submit">
+    <p class="submit-text">Submit</p>
   </div>
 </div>

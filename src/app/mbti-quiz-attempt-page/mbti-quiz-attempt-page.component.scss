@@ -241,6 +241,31 @@
   font-weight: bold;
 }
 
+.btn-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  padding: 10px;
+  background-color: #000;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  border-radius: 10px;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.submit-text {
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn-submit-show {
+  visibility: visible;
+}
+
 // nhung cau hoi da tick
 .question-done {
   border: none;

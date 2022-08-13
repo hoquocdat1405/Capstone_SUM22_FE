@@ -6,18 +6,32 @@
 }
 
 .coin {
-  background-color: #ccc;
+  width: 18vw;
+  height: 18vw;
+  // background: #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 18vw;
-  height: 18vw;
-  border-radius: 50%;
   margin: 20px 0;
+  object-fit: cover;
+  border: 3px solid #626161;
+  border-radius: 50%;
+}
+
+//ban dau {nen trang, border:#626161, font-color:#626161  }
+//sai {border:none, background:EF6666}
+//dung{border:none, background:69B047}
+.coin-wrong {
+  background-color: #ef6666;
+  // border
+}
+
+.coin-right {
+  // background-color: #69b047;
 }
 
 .answer {
-  color: #fff;
+  color: #626161;
   font-size: 2vw;
   text-align: center;
   padding: 20px;

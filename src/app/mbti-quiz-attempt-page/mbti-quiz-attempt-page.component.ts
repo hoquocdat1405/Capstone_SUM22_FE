@@ -281,6 +281,25 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
     }
   }
 
+  checkSubmit() {
+    let checkDone = false;
+    let btnSubmit = document.querySelector('.btn-submit');
+    for (let i = 0; i < this.userAnswer.length; i++) {
+      if (!this.userAnswer[i].answered) {
+        checkDone = false;
+      } else {
+        checkDone = true;
+      }
+    }
+    if (checkDone) {
+      btnSubmit?.classList.add('btn-submit-show');
+    }
+  }
+
+  checkSetDone() {
+    let sets = document.querySelector('.set');
+  }
+
   chooseQuestion(number: any) {
     //hien thi cau hien tai(currentQuestionView)
     let count = 0;
@@ -344,6 +363,7 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
     this.storedQuestion(this.answerLeft.nativeElement.innerText);
     this.checkAnswer();
     this.chooseQuestion(++this.currentQuestion);
+    this.checkSubmit();
   }
 
   clickAnswerRight() {
@@ -358,6 +378,7 @@ export class MbtiQuizAttemptPageComponent implements OnInit {
     }
     this.checkAnswer();
     this.chooseQuestion(++this.currentQuestion);
+    this.checkSubmit();
   }
 
   hoverLeft() {
