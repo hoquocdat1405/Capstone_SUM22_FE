@@ -23,13 +23,12 @@ import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-d
 import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz-attempt-page.component';
 import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
 import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-detail-page/holland-quiz-result-detail-page.component';
-
 const routes: Routes = [
   //homepage - default blank url link redirect to home
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   // { path: 'home', component: LandingPageComponent},
-  { path: 'home', component: LandingPageComponent},
+  { path: 'home', component: LandingPageComponent },
 
   //loginpage
   { path: 'login', component: LoginRegisterPageComponent },
@@ -55,10 +54,9 @@ const routes: Routes = [
 
   //Quizes result page link
   { path: 'mbti-result', component: MbtiQuizResultDetailPageComponent },
-  { path: 'disc-result', component: DiscQuizResultDetailPageComponent},
-  { path: 'holland-result', component: HollandQuizResultDetailPageComponent},
-  { path: 'bf-result', component: DiscQuizResultDetailPageComponent},
-
+  { path: 'disc-result', component: DiscQuizResultDetailPageComponent },
+  { path: 'holland-result', component: HollandQuizResultDetailPageComponent },
+  { path: 'bf-result', component: DiscQuizResultDetailPageComponent },
 
   //Additional links
   { path: 'astrological-page', component: TwelveAstrologicalPageComponent},
@@ -67,6 +65,9 @@ const routes: Routes = [
   { path: 'new-tarot-page', component: NewTarotPageComponent },
   { path: 'astrological-detail-page', component: TwelveAstrologicalPageDetailComponent },
   { path: 'random-tarot-page', component: NewTarotDrawCardPageComponent },
+  //Staff links
+  { path: 'staff', loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule) },
+
 ];
 
 @NgModule({
@@ -76,4 +77,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-

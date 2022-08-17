@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.body {
+    display: block;
+}
+
+.side-nav-container {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    right: 0;
+    top: 3vw;
+}
+
+.logo-section {
+    width: 100vw;
+    background-color: #051f20;
+}
+
+.toggle-btn {
+    right: 0.9vw;
+    float: right;
+    position: absolute;
+    color: white;
+    margin-bottom: 1vw;
+}
+
+.logo-brand {
+    width: 5vw;
+    margin: 1vw;
+}
+
+.side-nav {
+    background-color: #051f20;
+    // width: 15vw;
+
+}
+
+.action-list {
+    height: 90vh;
+}
+
+.action-list mat-list-item {
+    color: #FFF;
+    margin: 3% auto;
+    font-size: 0.8vw;
+
+    .link-label {
+        width: 10vw;
+    }
+
+}
+
+.mat-list-item.active {
+    border-left : solid 7px #a6a6a6 !important;
+}
+
+.action-list mat-icon {
+    margin: 0 3%;
+    display: inline-flex;
+    text-align: center;
+    vertical-align: center;
+    font-size: 1.25em;
+}
+
+.user-section {
+    margin-top: 5vw !important;
+}
+
+.user-option {
+    mat-icon {
+        margin-left: 20px !important;
+    }
+
+    .option-label {
+        width: 5vw;
+    }
+}
+
+.arrow-down-btn {
+    transform: rotate(0deg);
+    transition: ease-in-out 200ms;
+}
+
+.arrow-down-btn.rotate {
+    transform: rotate(180deg);
+}
+
+
+@media (max-width: 1367px) {
+
+    .action-list mat-list-item {
+        font-size: 1vw;
+
+        .link-label {
+            width: 11vw;
+        }
+    }
+
+    .user-section {
+        margin-top: 2vw !important;
+    }
+}

@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { HollandQuizModel } from '../_model/holland-quiz/holland_quiz_model';
 import data from '../holland-data.json';
+import { AppRoutingModule } from '../app-routing.module';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-holland-quiz-attempt-page',
   templateUrl: './holland-quiz-attempt-page.component.html',
   styleUrls: ['./holland-quiz-attempt-page.component.scss'],
 })
 export class HollandQuizAttemptPageComponent implements OnInit {
-  index!: number;
+  i!: number;
+
   currentQuestion!: {
     id: number;
     text: string;
@@ -28,11 +31,11 @@ export class HollandQuizAttemptPageComponent implements OnInit {
     }[];
   }[];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    this.index = 0;
-    console.log(this.index);
+    this.i = 0;
+    console.log(this.i);
     this.questionSet = [
       {
         id: 1,
@@ -219,22 +222,47 @@ export class HollandQuizAttemptPageComponent implements OnInit {
         ],
       },
     ];
-    this.currentQuestion = this.questionSet[this.index];
+    this.currentQuestion = this.questionSet[this.i];
   }
 
   enableChoose(i: number) {
-    this.questionSet[this.index].option[i].isSelected =
-      !this.questionSet[this.index].option[i].isSelected;
+    this.questionSet[this.i].option[i].isSelected =
+      !this.questionSet[this.i].option[i].isSelected;
   }
 
   nextQuestion() {
-    if (this.index < this.questionSet.length - 1)
-      this.currentQuestion = this.questionSet[++this.index];
+    if (this.i < this.questionSet.length - 1)
+      this.currentQuestion = this.questionSet[++this.i];
     else this.currentQuestion = this.questionSet[this.questionSet.length - 1];
   }
 
+  checkAnsweredOption(): boolean {
+    let isValid: boolean = true;
+
+    this.questionSet.forEach((question) => {
+      let isAnswered: boolean = false;
+      question.option.forEach((opt) => {
+        if (opt.isSelected) isAnswered = true;
+      });
+
+      if (!isAnswered) isValid = isAnswered;
+      isAnswered = false;
+    });
+
+    return isValid;
+  }
+
   previousQuestion() {
-    if (this.index > 0) this.currentQuestion = this.questionSet[--this.index];
+    if (this.i > 0) this.currentQuestion = this.questionSet[--this.i];
     else this.currentQuestion = this.questionSet[0];
+  }
+
+  finishTest() {
+    if (this.checkAnsweredOption()) {
+      this.router.navigate(['/holland-result']);
+    }
+    else{
+      alert("Hãy đảm bảo bạn đã trả lời tất cả câu hỏi của chúng tôi");
+    }
   }
 }

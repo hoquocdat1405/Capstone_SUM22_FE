@@ -1,3 +1,5 @@
+import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
+import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
 import { AppComponent } from './app.component';
 
 //modules
@@ -20,6 +22,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTreeModule} from '@angular/material/tree';
 
 //sub component
 import { ExpansionPanelComponent } from './holland-quiz-detail-page/expansion-panel/expansion-panel.component';
@@ -74,8 +80,6 @@ import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-
 import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-detail-page.component';
 import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
 import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
-import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
-import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
 
 @NgModule({
   declarations: [

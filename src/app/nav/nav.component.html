@@ -2,7 +2,8 @@
   <div class="container-fluid">
     <a href="#" class="navbar-brand">
       <!-- <img src="../assets/img/logo-qick-black.png" height="28" alt="Qick" /> -->
-      <img src="../assets/img/qick-text-black.png" height="18" alt="Qick-brand" class="brand-name">
+      <img src="../assets/img/qick-text-black.png" height="18" alt="Qick-brand" class="brand-name" *ngIf="theme == 'light'">
+      <img src="../assets/img/qick-text-white.png" height="18" alt="Qick-brand" class="brand-name" *ngIf="theme != 'light'">
     </a>
     <button
       type="button"
@@ -27,38 +28,54 @@
           routerLink="/quiz-list"
           routerLinkActive="active"
           class="nav-item nav-link"
-          >Trắc nghiệm hướng nghiệp</a
+          >Trắc nghiệm tính cách</a
         >
         <a
           href="#"
-          routerLink="/quiz-list-category"
+          routerLink=""
           routerLinkActive="active"
           class="nav-item nav-link"
-          >Ngành nghề</a
+          >Tìm hiểu bản thân</a
+        >
+        <a
+          href="#"
+          routerLink=""
+          routerLinkActive="active"
+          class="nav-item nav-link"
+          >Tin tức</a
+        >
+        <a
+          href="#"
+          routerLink=""
+          routerLinkActive="active"
+          class="nav-item nav-link"
+          >Nghề nghiệp</a
         >
         <!-- <a href="#" class="nav-item nav-link">Chọn trường</a>
         <a href="#" class="nav-item nav-link">Tin tuyển sinh</a> -->
       </div>
 
       <div class="navbar-nav ms-auto">
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input
             type="search"
             class="form-control form-control-dark search-input"
             placeholder="Tìm kiếm"
             aria-label="Search"
           />
-        </form>
+        </form> -->
         <div class="nav-item dropdown" *ngIf="loggedIn()">
           <a
+            [ngClass]="{'dark': theme=='dark', 'light': theme != 'dark'}"
             class="nav-link dropdown-toggle"
             href="#"
             id="dropdown03"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            >Username</a
+            ngClass
+            ><img src="{{_userPic}}" alt="user profile picture" class="user-img"></a
           >
-          <ul class="dropdown-menu" aria-labelledby="dropdown03">
+          <ul class="dropdown-menu  " aria-labelledby="dropdown03">
             <li><a class="dropdown-item" routerLink="/profile" href="#">Tài khoản</a></li>
             <li><div class="dropdown-divider"></div></li>
             <li><a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a></li>
