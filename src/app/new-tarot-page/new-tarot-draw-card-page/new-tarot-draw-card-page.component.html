@@ -1,0 +1,102 @@
+<div class="page-container">
+  <app-nav [theme]="'dark'"></app-nav>
+  <div class="wrapper">
+    <div
+      class="card-wrapper"
+      (click)="cardClick(1)"
+      [ngClass]="cardActive ? 'card-active' : ''"
+    >
+      <div class="face front">
+        <img src="../../../assets/img/tarots/back3.png" alt="" />
+      </div>
+      <div class="face back">
+        <img src="../{{ currentTarot?.url }}" alt="" class="img" />
+      </div>
+    </div>
+    <div
+      class="card-wrapper"
+      (click)="cardClick(2)"
+      [ngClass]="cardActive ? 'card-active' : ''"
+    >
+      <div class="face front">
+        <img src="../../../assets/img/tarots/back3.png" alt="" />
+      </div>
+      <div class="face back">
+        <img src="../{{ currentTarot?.url }}" alt="" class="img" />
+      </div>
+    </div>
+    <div
+      class="card-wrapper"
+      (click)="cardClick(3)"
+      [ngClass]="cardActive ? 'card-active' : ''"
+    >
+      <div class="face front">
+        <img src="../../../assets/img/tarots/back3.png" alt="" />
+      </div>
+      <div class="face back">
+        <img src="../{{ currentTarot?.url }}" alt="" class="img" />
+      </div>
+    </div>
+    <div
+      class="card-wrapper"
+      (click)="cardClick(4)"
+      [ngClass]="cardActive ? 'card-active' : ''"
+    >
+      <div class="face front">
+        <img src="../../../assets/img/tarots/back3.png" alt="" />
+      </div>
+      <div class="face back">
+        <img src="../{{ currentTarot?.url }}" alt="" class="img" />
+      </div>
+    </div>
+    <div
+      class="card-wrapper"
+      (click)="cardClick(5)"
+      [ngClass]="cardActive ? 'card-active' : ''"
+    >
+      <div class="face front">
+        <img src="../../../assets/img/tarots/back3.png" alt="" />
+      </div>
+      <div class="face back">
+        <img src="../{{ currentTarot?.url }}" alt="" class="img" />
+      </div>
+    </div>
+
+    <!-- <button class="draw-again-button" (click)="drawAgain()" *ngIf="clickFlag">Rút lại</button> -->
+    <img
+      src="../../../assets/img/tarots/rutlai.png"
+      alt=""
+      class="draw-again-button"
+      (click)="drawAgain()"
+      *ngIf="clickFlag"
+    />
+  </div>
+  <div class="tarot-desc-content hide">
+    <div class="text">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam, optio
+      assumenda eveniet quod quia facilis non at necessitatibus. Assumenda,
+      laboriosam eveniet minus corrupti excepturi pariatur hic ipsum obcaecati
+      aspernatur dolor aliquid rem voluptate! Dicta, repellat rerum eligendi
+      expedita corporis labore itaque obcaecati praesentium optio facere maxime
+      beatae, reiciendis ipsa sunt qui, temporibus fuga debitis? Consequatur
+      atque quod fuga, impedit blanditiis maiores minima sequi suscipit
+      repellendus soluta iusto magni non ipsum dolorem labore corporis, quasi
+      harum beatae unde possimus exercitationem? Illo nulla quam mollitia dolor
+      doloribus id, odio quos voluptates itaque molestiae, officiis ex vitae
+      beatae soluta velit quis praesentium voluptatibus deleniti. Id vel,
+      veritatis quas magni minus, et molestiae suscipit fugit quibusdam, quasi
+      ea tempora. Quos, deserunt praesentium? Aspernatur aperiam nobis impedit
+      at, laudantium, nihil illum eum vel iste repellendus quo ipsam veniam
+      incidunt aliquid? Aliquid, dolorum, facilis deserunt repellat libero
+      voluptatem aliquam quas incidunt obcaecati sed molestiae sapiente
+      explicabo a eos. Eum delectus blanditiis itaque aut non dignissimos
+      voluptatem dolores, minima harum nobis aliquid. Nam, tempora corporis vero
+      aperiam animi quo est delectus laboriosam impedit magni quasi explicabo,
+      natus error consequatur cumque fuga saepe, recusandae dolore. Dolor quidem
+      non quod illo adipisci rerum distinctio? Quibusdam sit asperiores tenetur
+      deleniti!
+    </div>
+  </div>
+  <div class="overlay hide"></div>
+</div>
+<app-footer></app-footer>

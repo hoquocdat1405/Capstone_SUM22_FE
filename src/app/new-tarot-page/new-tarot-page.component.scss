@@ -1,10 +1,14 @@
+$card-width: 300px;
+
 .page-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
   background-color: transparent;
+  background-image: url("../../assets/img/tarots/bgBlur.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .wrapper {
@@ -12,72 +16,100 @@
   justify-content: center;
   align-items: center;
   width: 80%;
-  height: 100%;
+  height: 100vh;
   gap: 10vw;
 }
 
-.left-deck {
-  position: relative;
-  perspective: 600px;
-}
 
-.card {
-  border: 1px solid black;
-  width: 200px;
-  aspect-ratio: 1 / 1.64;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-  border: none;
-  border-radius: 10px;
-}
-
-.card:active {
-  transform: rotateY(180deg);
-}
-.card-active {
-  transform: rotateY(180deg);
-}
-
-.face {
-  position: absolute;
-  backface-visibility: hidden;
-  width: 200px;
-  aspect-ratio: 1 / 1.64;
+.card-deck {
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 
-.back {
-  transform: rotateY(180deg);
+.card-deck>img {
+  width: $card-width;
 }
 
-.next-card {
-  width: 100%;
-  height: 100%;
-  position: absolute;
+.left-deck-title {
+  height: 7vh;
+  margin: 16px 0;
+  font-weight: 600;
+  color: #000;
+  text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00, 2px -2px 6px rgba(0, 50, 206, 0);
 }
 
-.img {
-  width: 200px;
-  border-top: solid 2px #000;
-  border-bottom: solid 2px #000;
-  border-left: solid 1px #000;
-  border-right: solid 1px #000;
-  border-radius: 10px;
+//   &-title {
+// position: absolute;
+// font-size: 24px;
+// margin: 16px 0;
+// opacity: .7;
+// font-weight: 600;
+
+// color: #000;
+// text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00, 2px -2px 6px rgba(0, 50, 206, 0);
+//   }
+// }
+
+// .card {
+//   border: 1px solid black;
+//   width: 300px;
+//   aspect-ratio: 1 / 1.64;
+//   position: relative;
+//   transform-style: preserve-3d;
+//   transition: transform 1s;
+//   border: none;
+//   border-radius: 10px;
+// }
+
+// .card:active {
+//   transform: rotateY(180deg);
+// }
+
+// .card-active {
+//   transform: rotateY(180deg);
+// }
+
+// .face {
+//   position: absolute;
+//   backface-visibility: hidden;
+//   width: 300px;
+//   aspect-ratio: 1 / 1.64;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .back {
+//   transform: rotateY(180deg);
+// }
+
+// .next-card {
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+// }
+
+.card-deck {
+  transition: 1s;
+  // z-index: 1;
 }
 
-
-.right-deck {
-  width: 200px;
-  aspect-ratio: 1 / 1.64;
-  background-image: url("../../assets/img/tarots/back2.jpg");
-  background-size: cover;
-  background-position: center;
+.card-deck:hover {
+  transform: scale(1.2);
 }
 
 .deck {
+  -webkit-box-shadow: -24px 0px 17px -2px rgba(0, 0, 0, 0.79);
+  box-shadow: -24px 0px 17px -2px rgba(0, 0, 0, 0.79);
+  border-radius: 10px;
+}
+
+.back-card {
+  position: absolute;
+  width: $card-width;
+  z-index: 0;
   -webkit-box-shadow: -24px 0px 17px -2px rgba(0, 0, 0, 0.79);
   box-shadow: -24px 0px 17px -2px rgba(0, 0, 0, 0.79);
   border-radius: 10px;
