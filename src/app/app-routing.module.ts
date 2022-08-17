@@ -21,6 +21,7 @@ import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-d
 import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz-attempt-page.component';
 import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
 import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-detail-page/holland-quiz-result-detail-page.component';
+import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -65,11 +66,15 @@ const routes: Routes = [
   { path: 'tarot-list-page', component: TarotListPageComponent },
   { path: 'new-tarot-page', component: NewTarotPageComponent },
 
+  //Major links
+  { path: 'major', component: MajorDetailPageComponent },
 
   //Staff links
-  { path: 'staff', loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule) },
-
-
+  {
+    path: 'staff',
+    loadChildren: () =>
+      import('./staff/staff.module').then((m) => m.StaffModule),
+  },
 ];
 
 @NgModule({

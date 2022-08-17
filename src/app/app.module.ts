@@ -22,8 +22,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTreeModule} from '@angular/material/tree';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatDividerModule } from '@angular/material/divider';
 
 //sub component
 import { ExpansionPanelComponent } from './holland-quiz-detail-page/expansion-panel/expansion-panel.component';
@@ -80,11 +81,11 @@ import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
 import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
 
 //staff links
-import { StaffPageComponent } from './staff/staff-page/staff-page.component';
-import { StaffDashboardComponent } from './staff/staff-page/staff-dashboard/staff-dashboard.component';
-import { StaffModule } from './staff/staff.module';
 
-
+// import { StaffPageComponent } from './staff/staff-page/staff-page.component';
+// import { StaffDashboardComponent } from './staff/staff-page/staff-dashboard/staff-dashboard.component';
+// import { StaffModule } from './staff/staff.module';
+import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -128,8 +129,7 @@ import { StaffModule } from './staff/staff.module';
     ExpansionPanelComponent,
     HollandQuizResultDetailPageComponent,
     NewTarotPageComponent,
-    StaffPageComponent,
-    StaffDashboardComponent
+    MajorDetailPageComponent,
   ],
   imports: [
     FormsModule,
@@ -146,8 +146,7 @@ import { StaffModule } from './staff/staff.module';
     MatListModule,
     MatButtonModule,
     MatTreeModule,
-    
-    StaffModule
+    MatDividerModule,
   ],
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],

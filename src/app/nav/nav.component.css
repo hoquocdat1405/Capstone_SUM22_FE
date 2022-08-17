@@ -24,6 +24,7 @@
   margin: auto 5px;
 }
 
+
 .navbar-nav a:hover {
   transform: scale(1.1);
 }
@@ -52,8 +53,8 @@
   right: 0;
 }
 
-.dropdown-menu li:hover a {
-  overflow: hidden;
+.nav-item.dropdown a:hover{
+  background-color: transparent;
 }
 
 .dark {

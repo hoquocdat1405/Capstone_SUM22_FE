@@ -1,0 +1,101 @@
+.page-container {
+    background: #fefefe;
+}
+
+.banner-section-container {
+    margin: 2% auto;
+    padding: 2% 1%;
+    width: 80vw;
+
+    display: flex;
+    border-radius: 15px;
+    border: solid 4px #b0b0b0;
+    box-shadow: 5px 10px 25px;
+}
+
+.major-info {
+    width: 60vw;
+    text-align: center;
+}
+
+.major-img {
+    border-radius: 15px;
+    width: 20vw;
+    right: 0;
+}
+
+.major-name {
+    font-family: 'Open Sans Semibold';
+    font-size: 1.5vw;
+    margin-top: 4%;
+}
+
+.major-short-description {
+    text-align: left;
+    width: 70%;
+    margin: 1% auto;
+}
+
+.content-section {
+    width: 80vw;
+    overflow: hidden;
+    margin: 2% auto;
+    text-align: center;
+}
+
+.mat-divider {
+    border-top-width: 3px;
+    border-radius: 10px;
+}
+
+.content-header {
+    margin: 1% auto;
+}
+
+.header {
+    font-family: 'Open Sans Semibold';
+    font-size: 1.1vw;
+}
+
+.content-text {
+    text-align: left;
+    margin-bottom: 1%;
+}
+
+.text {
+    font-family: 'Open Sans Regular';
+    font-size: 0.9vw;
+}
+
+.content-bullet {
+    margin: 0.5% auto;
+    text-align: left;
+}
+
+.content-bullet .mat-icon {
+    font-size: 0.5vw;
+    margin: auto 0.5%;
+}
+
+.bullet {
+    font-size: 0.9;
+    font-family: 'Open Sans Semibold';
+}
+
+.school-rank-item,
+.school-rank {
+    background-color: #f1f1f1;
+}
+
+.school-rank-container {
+    margin: 1% auto;
+}
+
+.show-all-btn {
+    margin: 2% auto;
+    border-radius: 10px;
+    padding: 0.5% 2%;
+    font-family: 'Open Sans Semibold';
+    border: solid 2px #b0b0b0;
+    background-color: #fff;
+}
