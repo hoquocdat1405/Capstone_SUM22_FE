@@ -1,10 +1,15 @@
+$r05: 15vw;
 $r: 18vw;
 $r15: 21vw;
 $r1: 24vw;
 $r2: 30vw;
 
 app-nav {
-  color: #fff !important;
+  color: #ffffff !important;
+}
+
+.hide {
+  display:none !important;
 }
 
 .page-container {
@@ -16,14 +21,35 @@ app-nav {
   background-position: center;
 }
 
-.page-container > img {
+
+
+.page-container>img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 25vw;
   aspect-ratio: 1 / 1;
+  transition: opacity 1s linear;
 }
+
+.circle1 {
+  width: 25vw;
+  opacity: 1;
+}
+
+.circle2 {
+  width: 21vw;
+  opacity: 0;
+}
+
+.circle1.hide {
+  opacity: 0;
+}
+
+.circle2.show {
+  opacity: 1;
+}
+
 
 .wrapper {
   width: 100%;
@@ -35,7 +61,7 @@ app-nav {
   align-content: center;
 }
 
-.wrapper > img {
+.wrapper>.img-card {
   width: 8vw;
   z-index: 1;
   position: absolute;
@@ -43,47 +69,135 @@ app-nav {
   transition: 1s;
 }
 
-.wrapper > img:hover {
+.img-wrapper {
+  position: relative;
+}
+
+.img-wrapper .title1 {
+  position: absolute;
+  bottom: -18%;
+  right: 0;
+  color: #fff;
+  font-size: 2vh;
+  color: #f4b677;
+}
+
+.img-wrapper .title2 {
+  position: absolute;
+  bottom: -30%;
+  right: 0;
+  color: #fff;
+  font-size: 1.5vh;
+}
+
+.img-wrapper>img {
+  width: 100%;
+}
+
+.wrapper>.img-card:hover {
   filter: drop-shadow(0px 0px 18px #fff);
   width: 10vw;
 }
 
-.wrapper img:nth-child(1) {
+.wrapper .img-card:nth-child(1) {
   transform: rotate(0deg) translate($r1);
 }
-.wrapper img:nth-child(2) {
-  transform: rotate(30deg) translate($r2);
+
+.wrapper .img-card:nth-child(2) {
+  transform: rotate(30deg) translate($r1);
 }
-.wrapper img:nth-child(3) {
-  transform: rotate(60deg) translate($r);
+
+.wrapper .img-card:nth-child(3) {
+  transform: rotate(50deg) translate($r15);
 }
-.wrapper img:nth-child(4) {
-  transform: rotate(90deg) translate($r);
+
+.wrapper .img-card:nth-child(4) {
+  transform: rotate(100deg) translate($r05);
 }
-.wrapper img:nth-child(5) {
+
+.wrapper .img-card:nth-child(5) {
   transform: rotate(140deg) translate($r1);
 }
-.wrapper img:nth-child(6) {
+
+.wrapper .img-card:nth-child(6) {
   transform: rotate(170deg) translate($r2);
 }
-.wrapper img:nth-child(7) {
+
+.wrapper .img-card:nth-child(7) {
   transform: rotate(190deg) translate($r2);
 }
-.wrapper img:nth-child(8) {
+
+.wrapper .img-card:nth-child(8) {
   transform: rotate(210deg) translate($r2);
 }
-.wrapper img:nth-child(9) {
+
+.wrapper .img-card:nth-child(9) {
   transform: rotate(230deg) translate($r15);
 }
-.wrapper img:nth-child(10) {
+
+.wrapper .img-card:nth-child(10) {
   transform: rotate(270deg) translate($r);
 }
-.wrapper img:nth-child(11) {
+
+.wrapper .img-card:nth-child(11) {
   transform: rotate(300deg) translate($r);
 }
-.wrapper img:nth-child(12) {
+
+.wrapper .img-card:nth-child(12) {
   transform: rotate(330deg) translate($r2);
 }
+
+
+
+.img-card:nth-child(1) .img-wrapper {
+  transform: rotate(0deg);
+}
+
+.img-card:nth-child(2) .img-wrapper {
+  transform: rotate(-30deg);
+}
+
+.img-card:nth-child(3) .img-wrapper {
+  transform: rotate(-50deg);
+}
+
+.img-card:nth-child(4) .img-wrapper {
+  transform: rotate(-100deg);
+}
+
+.img-card:nth-child(5) .img-wrapper {
+  transform: rotate(-140deg);
+}
+
+.img-card:nth-child(6) .img-wrapper {
+  transform: rotate(-170deg);
+}
+
+.img-card:nth-child(7) .img-wrapper {
+  transform: rotate(-190deg);
+}
+
+.img-card:nth-child(8) .img-wrapper {
+  transform: rotate(-210deg);
+}
+
+.img-card:nth-child(9) .img-wrapper {
+  transform: rotate(-230deg);
+}
+
+.img-card:nth-child(10) .img-wrapper {
+  transform: rotate(-270deg);
+}
+
+.img-card:nth-child(11) .img-wrapper {
+  transform: rotate(-300deg);
+}
+
+.img-card:nth-child(12) .img-wrapper {
+  transform: rotate(-330deg);
+}
+
+
 
 .card-img {
   border: none;
@@ -96,9 +210,12 @@ app-nav {
   background-position: center;
 }
 
-.trans-center{
+.trans-center {
   transform: none !important;
-  filter: drop-shadow(0px 0px 10px #000);
+}
+
+.scale15 {
+  transform: scale(1.5) !important;
 }
 
 #myVideo {
@@ -108,4 +225,28 @@ app-nav {
   min-width: 100%;
   min-height: 100%;
   z-index: 0;
+}
+
+// .move-ani {
+//   transition: 1s;
+//   transform: translateY(-35vh) !important;
+// }
+
+// .page-container .detail-content {
+//   position: absolute;
+//   top: 30vh;
+//   left: 0;
+//   margin: 0 5vw;
+//   color: #fff;
+//   animation: fadein 2s;
+// }
+
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {opacity: 1;}
+  to {opacity: 0;}
 }

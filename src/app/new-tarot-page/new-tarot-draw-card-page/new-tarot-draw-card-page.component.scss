@@ -1,0 +1,295 @@
+$card-size: 15vw;
+
+.page-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../../../assets/img/tarots/bgBlur.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: #000;
+  z-index: 3;
+  animation: fadein7 1s forwards;
+}
+
+.hide {
+  display: none !important;
+}
+
+.reset-transform {
+  transform: none !important;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4vw;
+  perspective: 600px;
+  overflow-y: scroll;
+  padding: 0 4vw;
+  box-sizing: content-box;
+  margin-bottom: 4vh;
+  z-index: 4;
+}
+
+.wrapper .card-wrapper {
+  position: absolute;
+  width: $card-size;
+  aspect-ratio: 1 / 1.64;
+  bottom: 20h;
+  -webkit-box-shadow: -24px 0px 17px -2px rgba(0, 0, 0, 0.79);
+  box-shadow: -24px 0px 17px -2px rgba(0, 0, 0, 0.79);
+  border-radius: 10px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.card-wrapper img {
+  width: $card-size;
+}
+
+.face {
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.wrapper .card-wrapper:nth-child(1) {
+  transform: rotate(-55deg);
+  transform-origin: 50% 100%;
+}
+
+.wrapper .card-wrapper:nth-child(2) {
+  transform: rotate(-30deg);
+  transform-origin: 50% 100%;
+}
+
+.wrapper .card-wrapper:nth-child(4) {
+  transform: rotate(30deg);
+  transform-origin: 50% 100%;
+}
+
+.wrapper .card-wrapper:nth-child(5) {
+  transform: rotate(55deg);
+  transform-origin: 50% 100%;
+}
+
+// Card Hover
+// .wrapper .card-wrapper:nth-child(1):hover {
+//   transform: rotate(-55deg) translateY(-10vh);
+//   transform-origin: 50% 100%;
+// }
+
+// .wrapper .card-wrapper:nth-child(2):hover {
+//   transform: rotate(-30deg) translateY(-10vh);
+//   transform-origin: 50% 100%;
+// }
+
+// .wrapper .card-wrapper:nth-child(3):hover {
+//   transform: translateY(-10vh);
+// }
+
+// .wrapper .card-wrapper:nth-child(4):hover {
+//   transform: rotate(30deg) translateY(-10vh);
+//   transform-origin: 50% 100%;
+// }
+
+// .wrapper .card-wrapper:nth-child(5):hover {
+//   transform: rotate(55deg) translateY(-10vh);
+//   transform-origin: 50% 100%;
+// }
+
+
+
+@keyframes transMid {
+  50% {
+    transform: translateY(0vh);
+  }
+
+  80% {
+    transform: translateY(-20vh);
+  }
+
+  100% {
+    transform: translateY(-20vh) rotateY(180deg);
+  }
+}
+
+@keyframes transMid3 {
+  70% {
+    transform: translateY(-20vh);
+  }
+
+  100% {
+    transform: translateY(-20vh) rotateY(180deg);
+  }
+}
+
+.card-trans {
+  position: relative;
+  animation: transMid 2s forwards;
+}
+
+.card-trans-3 {
+  position: relative;
+  animation: transMid3 2s forwards;
+}
+
+.tarot-desc-content {
+  position: relative;
+  top: -50vh;
+  z-index: 4;
+  margin-bottom: -50vh;
+}
+
+.text {
+  margin: 5%;
+  color: #fff;
+}
+
+.draw-again-button {
+  width: 10vw;
+  position: absolute;
+  top: 7%;
+  right: 10%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  animation: fadein1 1s forwards;
+}
+
+//Draw again animation
+
+.trans-back-1 {
+  position: relative;
+  animation: transback1 1s forwards;
+}
+
+@keyframes transback1 {
+  0% {
+    transform: translateY(-20vh) rotateY(180deg);
+  }
+
+  50% {
+    transform: translateY(0vh) rotateY(0);
+  }
+
+  100% {
+    transform: rotate(-55deg);
+  }
+}
+
+
+.trans-back-2 {
+  position: relative;
+  animation: transback2 1s forwards;
+}
+
+@keyframes transback2 {
+  0% {
+    transform: translateY(-20vh) rotateY(180deg);
+  }
+
+  50% {
+    transform: translateY(0vh) rotateY(0);
+  }
+
+  100% {
+    transform: rotate(-55deg);
+  }
+}
+
+.trans-back-3 {
+  position: relative;
+  animation: transbac3 1s forwards;
+}
+
+@keyframes transback3 {
+  0% {
+    transform: translateY(-20vh) rotateY(180deg);
+  }
+
+  100% {
+    transform: translateY(0vh) rotateY(0);
+  }
+}
+
+.trans-back-4 {
+  position: relative;
+  animation: transback4 1s forwards;
+}
+
+@keyframes transback4 {
+  0% {
+    transform: translateY(-20vh) rotateY(180deg);
+  }
+
+  50% {
+    transform: translateY(0vh) rotateY(0);
+  }
+
+  100% {
+    transform: rotate(30deg);
+  }
+}
+
+.trans-back-5 {
+  position: relative;
+  animation: transback5 1s forwards;
+}
+
+@keyframes transback5 {
+  0% {
+    transform: translateY(-20vh) rotateY(180deg);
+  }
+
+  50% {
+    transform: translateY(0vh) rotateY(0);
+  }
+
+  100% {
+    transform: rotate(55deg);
+  }
+}
+
+
+@keyframes fadein7 {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadein1 {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

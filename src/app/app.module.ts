@@ -1,3 +1,5 @@
+import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
+import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
 import { AppComponent } from './app.component';
 
 //modules
@@ -80,12 +82,9 @@ import { TarotDetailPageComponent } from './tarot-page/tarot-detail-page/tarot-d
 import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
 import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
 
-//staff links
 
-// import { StaffPageComponent } from './staff/staff-page/staff-page.component';
-// import { StaffDashboardComponent } from './staff/staff-page/staff-dashboard/staff-dashboard.component';
-// import { StaffModule } from './staff/staff.module';
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
+import { StaffModule } from './staff/staff.module';
 
 @NgModule({
   declarations: [
@@ -129,6 +128,8 @@ import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.
     ExpansionPanelComponent,
     HollandQuizResultDetailPageComponent,
     NewTarotPageComponent,
+    TwelveAstrologicalPageDetailComponent,
+    NewTarotDrawCardPageComponent,
     MajorDetailPageComponent,
   ],
   imports: [
@@ -146,7 +147,12 @@ import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.
     MatListModule,
     MatButtonModule,
     MatTreeModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatTreeModule,
     MatDividerModule,
+    StaffModule
   ],
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],
