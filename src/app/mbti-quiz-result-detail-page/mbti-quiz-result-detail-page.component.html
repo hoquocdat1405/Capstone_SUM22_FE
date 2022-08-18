@@ -2,8 +2,14 @@
   <app-nav></app-nav>
   <div class="body">
     <div class="mbti-category">
-      <p class="category">{{ mbtiType.shorthand }}</p>
-      <p class="name-category">{{ mbtiType.name }}</p>
+      <div class="card-mbti">
+        <div class="card-inside">
+          <app-type-card [name]="mbtiType.name" [shorthand]="mbtiType.shorthand" [imgSrc]="mbtiType.imgSrc" [isScalable]="false">
+          </app-type-card>
+        </div>
+      </div>
+      <!-- <p class="category">{{ mbtiType.shorthand }}</p>
+      <p class="name-category">{{ mbtiType.name }}</p> -->
     </div>
 
     <mat-tab-group>
@@ -264,12 +270,7 @@
             </div>
           </div>
           <div class="top-content">
-            <div class="card-mbti">
-              <div class="card-inside">
-                <app-type-card [name]="mbtiType.name" [shorthand]="mbtiType.shorthand" [imgSrc]="mbtiType.imgSrc">
-                </app-type-card>
-              </div>
-            </div>
+            
           </div>
         </div>
       </mat-tab>

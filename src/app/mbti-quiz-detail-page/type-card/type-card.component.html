@@ -1,6 +1,6 @@
 <div class="card-background" #cardBackground (click)="unViewCard($event)">
   <div class="main">
-    <div class="card-border head" (click)="viewCard($event)" #cardBorder>
+    <div class="card-border head" (click)="viewCard($event)" #cardBorder [ngClass]="{'no-hover': isScalelable == false}" >
       <div class="card-container">
         <img src="{{ img }}" alt="mbti characteristic type" class="card-img" />
         <div class="type-name-container">

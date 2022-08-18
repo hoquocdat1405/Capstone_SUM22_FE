@@ -9,9 +9,24 @@
     </div>
 
     <div class="user-option">
-
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle option-btn"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img src="../../../../assets/img/logo-qick.png" alt="user pic" class="user-pic">
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton1">
+          <!-- <li><a class="dropdown-item" href="#">Tài khoản</a></li> -->
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#"><mat-icon>exit_to_app</mat-icon>Đăng xuất</a></li>
+          
+        </ul>
+      </div>
     </div>
-
   </div>
 
   <mat-sidenav-container class="side-nav-container" autosize>
@@ -30,42 +45,48 @@
           ><span class="link-label" *ngIf="opened">Trang chủ</span>
         </mat-list-item>
 
-        <mat-list-item [routerLink]="['/staff']"
-          ><mat-icon>next_week</mat-icon
+        <mat-list-item [routerLink]="['/staff/plan']" routerLinkActive="active"
+          ><mat-icon>checklist_rtls</mat-icon
           ><span class="link-label" *ngIf="opened"
             >Kế hoạch</span
           ></mat-list-item
         >
 
-        <mat-list-item [routerLink]="['/staff']"
+        <mat-list-item
+          [routerLink]="['/staff/school']"
+          routerLinkActive="active"
           ><mat-icon>school</mat-icon
           ><span class="link-label" *ngIf="opened"
             >Trường học</span
           ></mat-list-item
         >
 
-        <mat-list-item [routerLink]="['/staff']"
+        <mat-list-item
+          [routerLink]="['/staff/campaign']"
+          routerLinkActive="active"
           ><mat-icon>event_note</mat-icon
           ><span class="link-label" *ngIf="opened"
             >Chiến dịch tuyển sinh</span
           ></mat-list-item
         >
 
-        <mat-list-item [routerLink]="['/staff']"
-          ><mat-icon>description</mat-icon
+        <mat-list-item [routerLink]="['/staff/news']" routerLinkActive="active"
+          ><mat-icon>newspaper</mat-icon
           ><span class="link-label" *ngIf="opened"
             >Tin tức tuyển sinh</span
           ></mat-list-item
         >
 
-        <mat-list-item [routerLink]="['/staff']"
-          ><mat-icon>task</mat-icon
+        <mat-list-item
+          [routerLink]="['/staff/application']"
+          routerLinkActive="active"
+          ><mat-icon>assignment</mat-icon
           ><span class="link-label" *ngIf="opened"
             >Hồ sơ ứng tuyển</span
           ></mat-list-item
         >
 
-        <mat-list-item [routerLink]="['/staff']"
+        <mat-list-item [routerLink]="['/stats']" routerLinkActive="active"
           ><mat-icon>timeline</mat-icon
           ><span class="link-label" *ngIf="opened"
             >Thống kê</span

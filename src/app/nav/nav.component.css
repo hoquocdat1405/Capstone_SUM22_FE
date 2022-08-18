@@ -10,7 +10,7 @@
 }
 
 .navbar-nav .nav-link.active {
-  font-family: "Open Sans Regular" !important;
+  font-family: "Open Sans Semibold" !important;
   font-weight: 500;
   font-size: 18px;
 }
@@ -23,6 +23,7 @@
 .navbar-nav a {
   margin: auto 5px;
 }
+
 
 .navbar-nav a:hover {
   transform: scale(1.1);
@@ -52,8 +53,8 @@
   right: 0;
 }
 
-.dropdown-menu li:hover a {
-  overflow: hidden;
+.nav-item.dropdown a:hover{
+  background-color: transparent;
 }
 
 .dark {

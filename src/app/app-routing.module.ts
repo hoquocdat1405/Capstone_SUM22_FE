@@ -1,3 +1,5 @@
+import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
+import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
 import { MajorInfoComponent } from './major-info/major-info.component';
 import { MajorListComponent } from './major-list/major-list.component';
 import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
@@ -23,6 +25,7 @@ import { DiscQuizDetailPageComponent } from './disc-quiz-detail-page/disc-quiz-d
 import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz-attempt-page.component';
 import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-page/disc-quiz-result-detail-page.component';
 import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-detail-page/holland-quiz-result-detail-page.component';
+import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -59,13 +62,18 @@ const routes: Routes = [
   { path: 'bf-result', component: DiscQuizResultDetailPageComponent },
 
   //Additional links
-  {
-    path: 'twelve-astrological-page',
-    component: TwelveAstrologicalPageComponent,
-  },
+  { path: 'astrological-page', component: TwelveAstrologicalPageComponent },
   { path: 'tarot-page', component: TarotPageComponent },
   { path: 'tarot-list-page', component: TarotListPageComponent },
   { path: 'new-tarot-page', component: NewTarotPageComponent },
+  {
+    path: 'astrological-detail-page',
+    component: TwelveAstrologicalPageDetailComponent,
+  },
+  { path: 'random-tarot-page', component: NewTarotDrawCardPageComponent },
+
+  //Major links
+  { path: 'major', component: MajorDetailPageComponent },
 
   //Staff links
   {
@@ -80,7 +88,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      onSameUrlNavigation: 'reload',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

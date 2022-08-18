@@ -5,6 +5,7 @@
 
 .body {
     display: block;
+    overflow-y: overlay;
 }
 
 .side-nav-container {
@@ -13,11 +14,6 @@
     bottom: 0;
     right: 0;
     top: 3vw;
-}
-
-.logo-section {
-    width: 100vw;
-    background-color: #051f20;
 }
 
 .toggle-btn {
@@ -36,7 +32,6 @@
 .side-nav {
     background-color: #051f20;
     // width: 15vw;
-
 }
 
 .action-list {
@@ -51,11 +46,10 @@
     .link-label {
         width: 10vw;
     }
-
 }
 
 .mat-list-item.active {
-    border-left : solid 7px #a6a6a6 !important;
+    border-left: solid 7px #a6a6a6 !important;
 }
 
 .action-list mat-icon {
@@ -70,14 +64,39 @@
     margin-top: 5vw !important;
 }
 
-.user-option {
-    mat-icon {
-        margin-left: 20px !important;
-    }
+.toolbar {
+    display: flex;
+    width: 100vw;
+    background-color: #051f20;
+}
 
-    .option-label {
-        width: 5vw;
-    }
+.user-pic {
+    width: 1.3vw;
+    margin-right: 2px;
+}
+
+.user-option {
+    top: 1vh;
+    right: 2vw;
+    position: absolute;
+    background: transparent;
+    background-color: transparent;
+}
+
+.option-btn {
+    border: none;
+    padding: 2px;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.option-btn::after {
+    vertical-align: 0;
+    margin-right: 5px;
+}
+
+.user-option-toggle {
+    margin-top: 2px;
 }
 
 .arrow-down-btn {
@@ -89,6 +108,22 @@
     transform: rotate(180deg);
 }
 
+.dropdown-menu li {
+    padding: 1%;
+
+    a {
+        margin-left: 10px;
+        font-size: 0.8vw;
+
+        mat-icon {
+            vertical-align: middle;
+        }
+    }
+
+    a:hover {
+        background-color: transparent;
+    }
+}
 
 @media (max-width: 1367px) {
 

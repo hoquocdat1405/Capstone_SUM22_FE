@@ -1,3 +1,6 @@
+import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
+import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
+import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
 import { AppComponent } from './app.component';
 
 //modules
@@ -22,8 +25,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTreeModule} from '@angular/material/tree';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatDividerModule } from '@angular/material/divider';
 
 //sub component
 import { ExpansionPanelComponent } from './holland-quiz-detail-page/expansion-panel/expansion-panel.component';
@@ -80,16 +84,12 @@ import { CoinComponent } from './disc-quiz-attempt-page/coin/coin.component';
 import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
 
 //staff links
-import { StaffPageComponent } from './staff/staff-page/staff-page.component';
-import { StaffDashboardComponent } from './staff/staff-page/staff-dashboard/staff-dashboard.component';
 import { StaffModule } from './staff/staff.module';
 import { MajorListComponent } from './major-list/major-list.component';
 import { MajorInfoComponent } from './major-info/major-info.component';
 
-
-
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     NavComponent,
     CarouselComponent,
@@ -130,11 +130,12 @@ import { MajorInfoComponent } from './major-info/major-info.component';
     ExpansionPanelComponent,
     HollandQuizResultDetailPageComponent,
     NewTarotPageComponent,
-    StaffPageComponent,
-    StaffDashboardComponent,
-      MajorListComponent,
-      MajorInfoComponent
-   ],
+    MajorListComponent,
+    MajorInfoComponent,
+    NewTarotDrawCardPageComponent,
+    TwelveAstrologicalPageDetailComponent,
+    MajorDetailPageComponent,
+  ],
   imports: [
     FormsModule,
     BrowserModule,
@@ -150,8 +151,12 @@ import { MajorInfoComponent } from './major-info/major-info.component';
     MatListModule,
     MatButtonModule,
     MatTreeModule,
-    
-    StaffModule
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatTreeModule,
+    MatDividerModule,
+    StaffModule,
   ],
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],
