@@ -1,3 +1,5 @@
+import { MajorInfoComponent } from './major-info/major-info.component';
+import { MajorListComponent } from './major-list/major-list.component';
 import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
 import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
 import { TarotPageComponent } from './tarot-page/tarot-page.component';
@@ -65,11 +67,16 @@ const routes: Routes = [
   { path: 'tarot-list-page', component: TarotListPageComponent },
   { path: 'new-tarot-page', component: NewTarotPageComponent },
 
-
   //Staff links
-  { path: 'staff', loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule) },
+  {
+    path: 'staff',
+    loadChildren: () =>
+      import('./staff/staff.module').then((m) => m.StaffModule),
+  },
 
-
+  //Major
+  { path: 'major-list', component: MajorListComponent },
+  { path: 'major-info', component: MajorInfoComponent },
 ];
 
 @NgModule({

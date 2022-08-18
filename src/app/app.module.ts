@@ -83,11 +83,13 @@ import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component
 import { StaffPageComponent } from './staff/staff-page/staff-page.component';
 import { StaffDashboardComponent } from './staff/staff-page/staff-dashboard/staff-dashboard.component';
 import { StaffModule } from './staff/staff.module';
+import { MajorListComponent } from './major-list/major-list.component';
+import { MajorInfoComponent } from './major-info/major-info.component';
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     NavComponent,
     CarouselComponent,
@@ -129,8 +131,10 @@ import { StaffModule } from './staff/staff.module';
     HollandQuizResultDetailPageComponent,
     NewTarotPageComponent,
     StaffPageComponent,
-    StaffDashboardComponent
-  ],
+    StaffDashboardComponent,
+      MajorListComponent,
+      MajorInfoComponent
+   ],
   imports: [
     FormsModule,
     BrowserModule,
