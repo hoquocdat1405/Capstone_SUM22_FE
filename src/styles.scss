@@ -44,6 +44,12 @@ $addmission-theme: mat.define-light-theme((color: (primary: $addmission-primary,
 }
 
 @font-face {
+  font-family: "Open Sans Semibold";
+  font-style: normal;
+  src: url(./assets/fonts/OpenSans/OpenSans-SemiBold.ttf);
+}
+
+@font-face {
   font-family: "Open Sans Bold";
   font-style: bold;
   src: url(./assets/fonts/OpenSans/OpenSans-Bold.ttf);
