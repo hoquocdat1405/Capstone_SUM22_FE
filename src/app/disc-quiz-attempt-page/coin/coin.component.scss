@@ -9,8 +9,6 @@
   width: 18vw;
   height: 18vw;
   background: #fff;
-  // background: linear-gradient(to right, #df1b1b, #ba3030);
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,6 +47,31 @@
   display: inline-flex;
   flex-direction: row;
   transition: all 500ms ease;
+  position: relative;
+}
+
+.wrong {
+  transition: all 1s ease;
+  left: 2px;
+  margin-left: 0;
+}
+
+.correct {
+  transition: all 1s ease;
+  margin-left: calc(2 * (3vw + 4px));
+}
+
+.none {
+  transition: all 1s ease;
+}
+
+.left {
+  left: 2px;
+  margin-left: 0;
+}
+
+.right {
+  margin-left: calc(3vw + 3px);
 }
 
 .tri-state-toggle-button {
@@ -66,16 +89,33 @@
   font-size: 1.2vw;
 }
 
-.tri-state-toggle-button.active {
-  background-image: linear-gradient(
-    -180deg,
-    #fff 0%,
-    #fafafa 81%,
-    #f2f2f2 100%
-  );
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
-  font-weight: 500;
+.icon {
+  position: absolute;
+  z-index: 10;
 }
+
+// .round {
+//   position: absolute;
+//   background-color: black;
+//   width: 3vw;
+//   height: 3vw;
+//   border-radius: 50%;
+//   left: 2px;
+//   top: 2px;
+//   opacity: transparent;
+//   margin-left: 3vw;
+// }
+
+// .tri-state-toggle-button.active {
+//   background-image: linear-gradient(
+//     -180deg,
+//     #fff 0%,
+//     #fafafa 81%,
+//     #f2f2f2 100%
+//   );
+//   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+//   font-weight: 500;
+// }
 
 .tri-state-toggle-button:focus {
   outline: none;

@@ -1,5 +1,7 @@
 import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
 import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
+import { MajorInfoComponent } from './major-info/major-info.component';
+import { MajorListComponent } from './major-list/major-list.component';
 import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
 import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
 import { TarotPageComponent } from './tarot-page/tarot-page.component';
@@ -60,27 +62,37 @@ const routes: Routes = [
   { path: 'bf-result', component: DiscQuizResultDetailPageComponent },
 
   //Additional links
-  { path: 'astrological-page', component: TwelveAstrologicalPageComponent},
+  { path: 'astrological-page', component: TwelveAstrologicalPageComponent },
   { path: 'tarot-page', component: TarotPageComponent },
   { path: 'tarot-list-page', component: TarotListPageComponent },
   { path: 'new-tarot-page', component: NewTarotPageComponent },
-  { path: 'astrological-detail-page', component: TwelveAstrologicalPageDetailComponent },
+  {
+    path: 'astrological-detail-page',
+    component: TwelveAstrologicalPageDetailComponent,
+  },
   { path: 'random-tarot-page', component: NewTarotDrawCardPageComponent },
 
   //Major links
   { path: 'major', component: MajorDetailPageComponent },
 
-
   //Staff links
-  { path: 'staff', loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule) },
+  {
+    path: 'staff',
+    loadChildren: () =>
+      import('./staff/staff.module').then((m) => m.StaffModule),
+  },
 
-
+  //Major
+  { path: 'major-list', component: MajorListComponent },
+  { path: 'major-info', component: MajorInfoComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    onSameUrlNavigation: 'reload',
-  })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      onSameUrlNavigation: 'reload',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
