@@ -1,3 +1,100 @@
-<p>
-  campaign-detail works!
-</p>
+<div class="body">
+  <mat-toolbar class="toolbar">
+    <!-- Back button -->
+    <button mat-stroked-button class="back-btn" routerLink="../">
+      <mat-icon>keyboard_backspace</mat-icon>Quay lại
+    </button>
+    <span class="toolbar-header">Chi tiết chiến dịch : ....</span>
+  </mat-toolbar>
+  <div class="page-container">
+    <div class="stats-block-section">
+      <div class="stat-block">
+        <p class="stat-block-header">Tổng số hồ sơ ứng tuyển</p>
+        <span class="stat-block-value">92</span>
+      </div>
+
+      <div class="stat-block text-green">
+        <p class="stat-block-header">Hồ sơ ứng tuyển chờ duyệt</p>
+        <span class="stat-block-value">15</span>
+      </div>
+
+      <div class="stat-block text-red">
+        <p class="stat-block-header">Tổng số tin tức tuyển sinh</p>
+        <span class="stat-block-value">12</span>
+      </div>
+
+      <div class="stat-block text-blue">
+        <p class="stat-block-header">Tổng số lượt xem tin</p>
+        <span class="stat-block-value">2748</span>
+      </div>
+    </div>
+
+    <mat-tab-group
+      class="tab-group"
+      mat-align-tabs="center"
+      (selectedTabChange)="selectedTabChange($event)"
+    >
+      <mat-tab label="Tin tức tuyển sinh">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-slide-toggle
+                  size="small"
+                  color="primary"
+                  [(ngModel)]="element.status"
+                  class="campaign-toggle-btn"
+                ></mat-slide-toggle>
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Tên</th>
+              <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="view">
+              <th mat-header-cell *matHeaderCellDef>Lượt xem</th>
+              <td mat-cell *matCellDef="let element">{{ element.view }}</td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="applicationNum">
+              <th mat-header-cell *matHeaderCellDef>Số hồ sơ ứng tuyển</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.applicationNum }}
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="publishedDate">
+              <th mat-header-cell *matHeaderCellDef>publishedDate</th>
+              <td mat-cell *matCellDef="let element">
+                
+                {{ element.publishedDate.getDay() }} Tháng
+                {{ element.publishedDate.getMonth() }}
+                {{ element.publishedDate.getFullYear() }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+
+          <mat-paginator
+            [pageSizeOptions]="[5]"
+            showFirstLastButtons
+            aria-label="Select page of periodic elements"
+          >
+          </mat-paginator>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Hồ sơ ứng tuyển"> Hồ sơ tuyển sinh </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

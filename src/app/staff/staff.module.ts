@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CampaignDetailComponent } from './components/campaign-detail/campaign-detail.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CampaignDetailComponent } from './components/campaign-detail/campaign-d
     FormsModule,
     MatSlideToggleModule,
     MatPaginatorModule,
+    MatTabsModule,
   ],
 })
 export class StaffModule {}

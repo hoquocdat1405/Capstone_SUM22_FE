@@ -1,0 +1,76 @@
+.body {
+    background-color: #f1f2f6;
+}
+
+.page-container {
+    height: 100vh;
+}
+
+.toolbar {
+    background-color: #FFF;
+}
+
+.toolbar-header {
+    margin-left: 2%;
+    font-size: 1rem;
+}
+
+.stats-block-section {
+    display: flex;
+}
+
+.stat-block {
+    background-color: #FFF;
+    width: 20vw;
+    margin-left: 1%;
+    margin-top: 1%;
+    padding: 1%;
+}
+
+.stat-block-header {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.stat-block-value {
+    font-size: 2rem;
+}
+
+.tab-group {
+    background-color: #FFF;
+    width: calc(80vw + 3%);
+    height: 60vh;
+    margin-top: 2%;
+    margin-left: 1%;
+}
+
+::ng-deep .mat-tab-label-content {
+    font-size: 1rem;
+}
+
+::ng-deep .mat-ink-bar {
+    padding: 0 -10%;
+    background-color: #101110 !important;
+}
+
+table {
+    width: 100%;
+}
+
+
+
+
+
+
+
+.text-blue {
+    color: #4285f4;
+}
+
+.text-red {
+    color: #de4637;
+}
+
+.text-green {
+    color: #00b14f;
+}
