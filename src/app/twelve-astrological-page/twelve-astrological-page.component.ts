@@ -93,10 +93,8 @@ export class TwelveAstrologicalPageComponent implements OnInit {
     const nonBgCircleEle = document.querySelector(".circle2");
     nonBgCircleEle?.classList.toggle("show");
     circleEle?.classList.toggle("hide");
-    // circleEle?.classList.add("hide");
-    // nonBgCircleEle?.classList.add("circle2Ani");
     setTimeout(() => {
-      imgEle?.classList.add("scale15");
+      imgEle?.classList.add("scale13");
     }, 1000)
 
     setTimeout(() => {

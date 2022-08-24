@@ -168,6 +168,10 @@ export class DiscQuizAttemptPageComponent implements OnInit {
   }
 
   messageClick(event: any) {
+    var round = document.querySelectorAll('.round') as NodeListOf<HTMLElement>;
+    var buttonFalse = document.querySelectorAll('.button-false');
+    var buttonTrue = document.querySelectorAll('.button-true');
+    var buttonNone = document.querySelectorAll('.button-none');
     this.disableButton(event.message);
     if (event.message === 'false') {
       this.activateButton();
@@ -353,6 +357,7 @@ export class DiscQuizAttemptPageComponent implements OnInit {
         checkDone = true;
       } else {
         checkDone = false;
+        break;
       }
     }
 
