@@ -25,9 +25,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { CampaignDetailComponent } from './components/campaign-detail/campaign-detail.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { getVietnamesePaginatorIntl } from '../vietnamese-paginator-intl';
 
 @NgModule({
   declarations: [
@@ -59,5 +60,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatPaginatorModule,
     MatTabsModule,
   ],
+  providers:[
+    {provide: MatPaginatorIntl,useValue: getVietnamesePaginatorIntl()}
+  ]
 })
 export class StaffModule {}
