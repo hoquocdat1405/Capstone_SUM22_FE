@@ -4,6 +4,7 @@ import { ApplicationComponent } from './components/application/application.compo
 import { CampaignDetailComponent } from './components/campaign-detail/campaign-detail.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MajorsComponent } from './components/majors/majors.component';
 import { NewsComponent } from './components/news/news.component';
 import { PlanComponent } from './components/plan/plan.component';
 import { SchoolComponent } from './components/school/school.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'campaign/:id', component: CampaignDetailComponent },
       { path: 'news', component: NewsComponent },
       { path: 'application', component: ApplicationComponent },
+      { path: 'majors', component: MajorsComponent },
     ],
   },
   {

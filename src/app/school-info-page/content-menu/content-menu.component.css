@@ -1,0 +1,27 @@
+.menu-header {
+  border-left: solid 3px blue;
+}
+
+.header {
+  font-size: 1rem;
+  font-family: "Open Sans Semibold";
+  margin: auto 1%;
+}
+
+.mid-dot {
+  font-size: 1rem;
+  /* line-height: 1rem;
+  margin: auto 0; */
+}
+
+.content-link {
+  
+  font-size: 0.9rem;
+  color: black;
+  text-decoration: none;
+}
+
+.content-link:hover {
+  color: blue;
+  cursor: pointer;
+}

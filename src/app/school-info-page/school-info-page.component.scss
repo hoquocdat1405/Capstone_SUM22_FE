@@ -1,49 +1,78 @@
-.school-banner-img{
+.school-banner-img {
     width: 100vw;
     height: 25vh;
     object-fit: cover;
 }
-.school-logo{
+
+.school-logo {
     width: 10%;
-    aspect-ratio: 1 / 1 ;
+    aspect-ratio: 1 / 1;
     margin-top: -10vh;
     margin-left: 10vw;
     border-radius: 10px;
-    border : solid 3px grey;
+    border: solid 3px grey;
     box-shadow: 10px 10px 50px #777777;
 }
 
-.school-name{
+.school-name {
     font-family: 'Open Sans Semibold';
     font-size: 1.8rem;
     margin-left: 2vw;
     font-weight: 500;
 }
-.school-website{
 
-    display: flex;
-    position: absolute;
-    top:calc(35vh);
-    right: calc(5vw);
+.school-website {
+    margin-left: 50%;
+    display: inline-block;
+    top: 35vh;
+    right: 5vw;
 }
-.school-address{
+
+.school-address {
     width: 30vw;
-    margin-left: 22vw;    
+    margin-left: 22vw;
 }
 
-.address,.website{
+.address,
+.website {
+    font-size: 14px;
+}
+
+.tab-section {
+    width: 70%;
+    margin: 3% auto;
+}
+
+.tab-content {
+    margin: 5% 5%;
+}
+
+
+::ng-deep mat-tab-body {
+    background-color: #F9F7F7;
+    border-radius: 20px;
+}
+
+::ng-deep .mat-tab-label-content {
     font-size: 1rem;
 }
 
+::ng-deep .mat-ink-bar {
+    padding: 0 -10%;
+    background-color: #151515 !important;
+}
 
+.menu-content-section{
+    
+}
 
+.row{
+    margin-top:5%;
+}
 
-
-
-
-
-
-
+app-content-menu{
+    width: 33%;
+}
 
 
 // @media (min-width: 360px) and (max-width:541px) {
