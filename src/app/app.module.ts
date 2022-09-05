@@ -57,6 +57,7 @@ import { UserProfilePageComponent } from './user-profile-page/user-profile-page.
 import { LoginRegisterPageComponent } from './login-register-page/login-register-page.component';
 import { LoginComponent } from './login-register-page/login/login.component';
 import { RegisterComponent } from './login-register-page/register/register.component';
+
 //detail pages
 import { BfQuizDetailPageComponent } from './bf-quiz-detail-page/bf-quiz-detail-page.component';
 import { HollandQuizDetailPageComponent } from './holland-quiz-detail-page/holland-quiz-detail-page.component';
@@ -87,6 +88,11 @@ import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component
 import { StaffModule } from './staff/staff.module';
 import { MajorListComponent } from './major-list/major-list.component';
 import { MajorInfoComponent } from './major-info/major-info.component';
+import { SchoolInfoPageComponent } from './school-info-page/school-info-page.component';
+
+//School's info page
+import { ContentMenuComponent } from './school-info-page/content-menu/content-menu.component';
+
 
 @NgModule({
   declarations: [
@@ -135,6 +141,8 @@ import { MajorInfoComponent } from './major-info/major-info.component';
     NewTarotDrawCardPageComponent,
     TwelveAstrologicalPageDetailComponent,
     MajorDetailPageComponent,
+    SchoolInfoPageComponent,
+    ContentMenuComponent
   ],
   imports: [
     FormsModule,
@@ -161,4 +169,4 @@ import { MajorInfoComponent } from './major-info/major-info.component';
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

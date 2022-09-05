@@ -21,7 +21,12 @@ export interface CampaignElement {
 })
 export class CampaignComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
+  dataSource = new MatTableDataSource<CampaignElement>(CAMPAIGN_ELEMENT);
 
+  pageSize:number = 5;
+  pageSizeOptions = [5,10];
+  
   selectedItem = 'all';
 
   displayedColumns: string[] = [
@@ -31,28 +36,14 @@ export class CampaignComponent implements AfterViewInit {
     'pendingApplication',
     'completion',
   ];
-  dataSource = new MatTableDataSource<CampaignElement>(CAMPAIGN_ELEMENT);
 
   constructor(private router:Router) {}
 
-  decimalPipe = new DecimalPipe(navigator.language);
+  // decimalPipe = new DecimalPipe(navigator.language);
 
   ngAfterViewInit() {
+    this.paginator.pageSize = this.pageSize;
     this.dataSource.paginator = this.paginator;
-    this.paginator._intl.itemsPerPageLabel = 'Mỗi trang :';
-    this.paginator._intl.firstPageLabel = 'Trang đầu';
-    this.paginator._intl.lastPageLabel = 'Trang cuối';
-    this.paginator._intl.nextPageLabel = 'Trang tiếp theo';
-    this.paginator._intl.previousPageLabel = 'Trang trước';
-    this.paginator._intl.getRangeLabel = (
-      page: number,
-      pageSize: number,
-      length: number
-    ) => {
-      const start = page * pageSize + 1;
-      const end = (page + 1) * pageSize;
-      return `${start} - ${end} trên ${this.decimalPipe.transform(length)} trang`;
-    };
   }
 
   ngOnInit() {}

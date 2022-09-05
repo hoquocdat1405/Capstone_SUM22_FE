@@ -32,7 +32,7 @@ import {
 import { CampaignDetailComponent } from './components/campaign-detail/campaign-detail.component';
 import { MajorsComponent } from './components/majors/majors.component';
 import { MatTabsModule } from '@angular/material/tabs';
-// import { getVietnamesePaginatorIntl } from '../vietnamese-paginator-intl';
+import { getVietnamesePaginatorIntl } from '../vietnamese-paginator-intl';
 
 @NgModule({
   declarations: [
@@ -66,7 +66,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTabsModule,
   ],
   providers: [
-    // {provide: MatPaginatorIntl,useValue: getVietnamesePaginatorIntl()}
+    {provide: MatPaginatorIntl,useValue: getVietnamesePaginatorIntl()}
   ],
 })
 export class StaffModule {}
