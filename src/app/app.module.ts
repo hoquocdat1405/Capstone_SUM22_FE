@@ -92,6 +92,7 @@ import { SchoolInfoPageComponent } from './school-info-page/school-info-page.com
 
 //School's info page
 import { ContentMenuComponent } from './school-info-page/content-menu/content-menu.component';
+import { SchoolNewsComponent } from './school-info-page/school-news/school-news.component';
 
 
 @NgModule({
@@ -142,7 +143,8 @@ import { ContentMenuComponent } from './school-info-page/content-menu/content-me
     TwelveAstrologicalPageDetailComponent,
     MajorDetailPageComponent,
     SchoolInfoPageComponent,
-    ContentMenuComponent
+    ContentMenuComponent,
+    SchoolNewsComponent
   ],
   imports: [
     FormsModule,

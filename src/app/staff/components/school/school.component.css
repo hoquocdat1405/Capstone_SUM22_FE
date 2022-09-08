@@ -110,3 +110,7 @@ input:focus {
   height: 15vh;
   margin-bottom: 2%;
 }
+
+.faq-item{
+  background-color: #9a9a9a;
+}

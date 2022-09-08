@@ -33,6 +33,7 @@ import { CampaignDetailComponent } from './components/campaign-detail/campaign-d
 import { MajorsComponent } from './components/majors/majors.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { getVietnamesePaginatorIntl } from '../vietnamese-paginator-intl';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { getVietnamesePaginatorIntl } from '../vietnamese-paginator-intl';
     MatSlideToggleModule,
     MatPaginatorModule,
     MatTabsModule,
+    MatExpansionModule
   ],
   providers: [
     {provide: MatPaginatorIntl,useValue: getVietnamesePaginatorIntl()}

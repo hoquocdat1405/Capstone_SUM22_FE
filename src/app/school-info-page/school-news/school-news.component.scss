@@ -1,0 +1,25 @@
+.news-container{
+    width: 100%;
+    
+}
+
+.news-img{
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 4/3;
+}
+
+.news-header{
+    font-size: 1.1vw;
+}
+
+.news-content,
+.news-published-date{
+    font-size: 0.9vw;
+    font-style: italic;
+}
+
+.news-published-date{
+    text-align: end;
+    right: 5px;
+}
