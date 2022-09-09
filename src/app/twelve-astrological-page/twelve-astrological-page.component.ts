@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from "@angular/router"
 
 @Component({
@@ -7,7 +7,8 @@ import { Router } from "@angular/router"
   styleUrls: ['./twelve-astrological-page.component.scss']
 })
 export class TwelveAstrologicalPageComponent implements OnInit {
-  clickFlag:Boolean = false;
+  clickFlag: Boolean = false;
+  public innerWidth: any;
 
   listAstrologyUrl = [
     "../../assets/img/twelve-astrological/Aquarius.png",
@@ -58,10 +59,16 @@ export class TwelveAstrologicalPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
   }
 
   handleStarClick(index: Number) {
-    if(this.clickFlag) {
+    if (this.clickFlag) {
       return;
     }
     this.clickFlag = true;
@@ -80,7 +87,7 @@ export class TwelveAstrologicalPageComponent implements OnInit {
     })
 
     const imgEle = document.querySelector('.wrapper>.img-card:nth-child(' + index + ')');
-    imgEle?.classList.add("trans-center");
+    imgEle?.classList.add("trans-center1");
 
     const title1Ele = document.querySelector('.img-card:nth-child(' + index + ') .img-wrapper .title1');
     title1Ele?.classList.add("hide");

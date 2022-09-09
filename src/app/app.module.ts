@@ -87,6 +87,11 @@ import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component
 import { StaffModule } from './staff/staff.module';
 import { MajorListComponent } from './major-list/major-list.component';
 import { MajorInfoComponent } from './major-info/major-info.component';
+import { BfQuizResultDetailPageComponent } from './bf-quiz-result-detail-page/bf-quiz-result-detail-page.component';
+import { RandomTarotPageComponent } from './new-tarot-page/random-tarot-page/random-tarot-page.component';
+import { AstrologicalPageComponent } from './astrological-page/astrological-page.component';
+import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
+import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
 
 @NgModule({
   declarations: [
@@ -135,6 +140,11 @@ import { MajorInfoComponent } from './major-info/major-info.component';
     NewTarotDrawCardPageComponent,
     TwelveAstrologicalPageDetailComponent,
     MajorDetailPageComponent,
+    BfQuizResultDetailPageComponent,
+    RandomTarotPageComponent,
+    AstrologicalPageComponent,
+    CfAstrologyPageComponent,
+    MonaAstrologicalPageComponent,
   ],
   imports: [
     FormsModule,

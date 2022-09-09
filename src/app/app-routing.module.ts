@@ -1,3 +1,8 @@
+import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
+import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
+import { AstrologicalPageComponent } from './astrological-page/astrological-page.component';
+import { RandomTarotPageComponent } from './new-tarot-page/random-tarot-page/random-tarot-page.component';
+import { BfQuizResultDetailPageComponent } from './bf-quiz-result-detail-page/bf-quiz-result-detail-page.component';
 import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
 import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
 import { MajorInfoComponent } from './major-info/major-info.component';
@@ -59,7 +64,7 @@ const routes: Routes = [
   { path: 'mbti-result', component: MbtiQuizResultDetailPageComponent },
   { path: 'disc-result', component: DiscQuizResultDetailPageComponent },
   { path: 'holland-result', component: HollandQuizResultDetailPageComponent },
-  { path: 'bf-result', component: DiscQuizResultDetailPageComponent },
+  { path: 'bf-result', component: BfQuizResultDetailPageComponent },
 
   //Additional links
   { path: 'astrological-page', component: TwelveAstrologicalPageComponent },
@@ -71,6 +76,8 @@ const routes: Routes = [
     component: TwelveAstrologicalPageDetailComponent,
   },
   { path: 'random-tarot-page', component: NewTarotDrawCardPageComponent },
+  { path: 'cf-astrology-page', component: CfAstrologyPageComponent },
+  { path: 'mona-astrology-page', component: MonaAstrologicalPageComponent },
 
   //Major links
   { path: 'major', component: MajorDetailPageComponent },

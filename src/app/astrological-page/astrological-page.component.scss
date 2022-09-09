@@ -1,0 +1,474 @@
+$globeWidth: 20em;
+$nextPrevAniSpeed: 1s;
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.page-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  perspective: 1000px;
+  z-index: 1;
+  background-image: url("../../assets/img/twelve-astrological/test-bg2.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.scene {
+  top: 50%;
+  translate: -50%;
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: floorAnimate 50s infinite linear;
+
+  @keyframes floorAnimate {
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+}
+
+.globe {
+  width: 10em;
+  height: 10em;
+  left: 50%;
+  top: calc(50% + 5em);
+  translate: -50% -50%;
+  border-radius: 50%;
+  position: absolute;
+  background-image: url("../../assets/img/twelve-astrological/bg.png");
+  box-shadow: inset 45px -40px 50px 29px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.globe.middle {
+  width: 30em;
+  height: 30em;
+}
+
+.globe1 {
+  left: 10%;
+}
+
+.globe2 {
+  left: 90%;
+}
+
+.globe img {
+  width: 5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0px 0px 50px #fff);
+  transition: .5s;
+  pointer-events: none;
+  user-select: none;
+}
+
+.globe.middle img {
+  width: 15em;
+  user-select: auto;
+}
+
+.globe.middle img:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.ballShadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#000, #0000 50%);
+}
+
+.lightningPoint {
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background-color: #fff;
+  right: 10em;
+  top: 5em;
+  box-shadow: 0px 0px 20px 2px #fff;
+  transform: rotateX(30deg) rotateY(20deg);
+  opacity: .7;
+}
+
+.floor {
+  position: absolute;
+  width: 100em;
+  height: 100em;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  top: 20em;
+  background-image: url("../../assets/img/twelve-astrological/bg2.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.page-container .btn {
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  position: absolute;
+
+  background-image: url("../../assets/img/twelve-astrological/bg.png");
+  box-shadow: inset 12px -24px 24px 10px rgb(0 0 0 / 75%);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-container .btn img {
+  width: 4em;
+}
+
+.page-container .btn:hover {
+  border: solid 1px blue;
+}
+
+.next {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%;
+}
+
+.prev {
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%;
+}
+
+.globe1Copy,
+.globe2Copy {
+  opacity: 0;
+}
+
+.hideInOut {
+  animation: hideOut .5s linear forwards,
+    hideIn .5s linear .5s forwards;
+}
+
+@keyframes hideOut {
+
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hideIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.astroName {
+  position: absolute;
+  top: 10%;
+  font-size: 8em;
+  animation: textGrow 1s linear infinite;
+  color: #ddd;
+
+  @keyframes textGrow {
+
+    0% {
+      text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+    }
+
+    25% {
+      text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+    }
+
+    50% {
+      text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #002fff, 0 0 30px #002fff, 0 0 40px #002fff, 0 0 55px #002fff, 0 0 75px #002fff;
+    }
+
+    75% {
+      text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #fbff00, 0 0 30px #fbff00, 0 0 40px #fbff00, 0 0 55px #fbff00, 0 0 75px #fbff00;
+    }
+  }
+}
+
+
+// Left Click animation
+.globe1Animate {
+  animation: globe1Animate $nextPrevAniSpeed linear;
+}
+
+@keyframes globe1Animate {
+  from {
+    left: 10%;
+    width: 10em;
+    height: 10em;
+  }
+
+  to {
+    left: 50%;
+    width: 30em;
+    height: 30em;
+  }
+}
+
+.img1Animate {
+  animation: img1Animate $nextPrevAniSpeed linear;
+}
+
+@keyframes img1Animate {
+  from {
+    width: 5em;
+  }
+
+  to {
+    width: 15em;
+  }
+}
+
+.globe2Animate {
+  animation: globe2Animate $nextPrevAniSpeed linear;
+}
+
+@keyframes globe2Animate {
+  from {
+    left: 50%;
+    width: 30em;
+    height: 30em;
+  }
+
+  to {
+    left: 90%;
+    width: 10em;
+    height: 10em;
+  }
+}
+
+.img2Animate {
+  animation: img2Animate $nextPrevAniSpeed linear;
+}
+
+@keyframes img2Animate {
+  from {
+    width: 15em;
+  }
+
+  to {
+    width: 5em;
+  }
+}
+
+.globe3Animate {
+  animation: globe3Animate $nextPrevAniSpeed linear forwards;
+}
+
+@keyframes globe3Animate {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.globe1CopyAnimate {
+  animation: globe1CopyAnimate $nextPrevAniSpeed linear forwards;
+}
+
+@keyframes globe1CopyAnimate {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// Right Click animation
+.globe1AnimateR {
+  animation: globe1AnimateR $nextPrevAniSpeed linear;
+}
+
+@keyframes globe1AnimateR {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.globe2AnimateR {
+  animation: globe2AnimateR $nextPrevAniSpeed linear;
+}
+
+@keyframes globe2AnimateR {
+  from {
+    left: 50%;
+    width: 30em;
+    height: 30em;
+  }
+
+  to {
+    left: 10%;
+    width: 10em;
+    height: 10em;
+  }
+}
+
+.img2AnimateR {
+  animation: img2AnimateR $nextPrevAniSpeed linear;
+}
+
+@keyframes img2AnimateR {
+  from {
+    width: 15em;
+  }
+
+  to {
+    width: 5em;
+  }
+}
+
+.globe3AnimateR {
+  animation: globe3AnimateR $nextPrevAniSpeed linear forwards;
+}
+
+@keyframes globe3AnimateR {
+  from {
+    left: 90%;
+    width: 10em;
+    height: 10em;
+  }
+
+  to {
+    left: 50%;
+    width: 30em;
+    height: 30em;
+  }
+}
+
+.img3AnimateR {
+  animation: img3AnimateR $nextPrevAniSpeed linear;
+}
+
+@keyframes img3AnimateR {
+  from {
+    width: 5em;
+  }
+
+  to {
+    width: 15em;
+  }
+}
+
+.globe3CopyAnimateR {
+  animation: globe3CopyAnimateR $nextPrevAniSpeed linear forwards;
+}
+
+@keyframes globe3CopyAnimateR {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// @media screen and (max-width: 102.5em) {
+//   .globe {
+//     top: 0em;
+//     width: 10em;
+//     height: 10em;
+//   }
+
+//   .globe {
+//     width: 30em;
+//     height: 30em;
+//   }
+
+//   .globe img {
+//     width: 15em;
+//   }
+
+//   .floor {
+//     top: 15em;
+//   }
+
+//   .lightningPoint {
+//     width: 3em;
+//     height: 3em;
+//     right: 8em;
+//     top: 5em;
+//   }
+// }
+
+// @media screen and (max-width: 60em) {
+//   .globe {
+//     width: 20em;
+//     height: 20em;
+//     top: -10em;
+//     left: -10em;
+//   }
+
+//   .globe img {
+//     width: 10em;
+//   }
+
+//   .floor {
+//     top: 10em;
+//   }
+
+//   .lightningPoint {
+//     width: 2em;
+//     height: 2em;
+//     right: 5em;
+//     top: 3em;
+//   }
+// }
+
+// @media screen and (max-width: 40em) {
+//   .globe {
+//     width: 10em;
+//     height: 10em;
+//     top: -5em;
+//     left: -5em;
+//   }
+
+//   .globe img {
+//     width: 5em;
+//   }
+
+//   .floor {
+//     top: 5em;
+//   }
+
+//   .lightningPoint {
+//     width: 1.5em;
+//     height: 1.5em;
+//     right: 2.5em;
+//     top: 2em;
+//   }
+// }

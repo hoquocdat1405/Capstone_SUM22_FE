@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tarot } from './../../tarot-page/Tarot';
 import { TarotServiceService } from './../../tarot-page/tarot-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-new-tarot-draw-card-page',
@@ -13,6 +13,7 @@ export class NewTarotDrawCardPageComponent implements OnInit {
   cardActive: Boolean = false;
   clickFlag: Boolean = false;
   cardSelected?: Number;
+  readonly textScrollEle = document.querySelector(".detail-section-content");
 
   constructor(
     private tarotService: TarotServiceService,
@@ -32,91 +33,78 @@ export class NewTarotDrawCardPageComponent implements OnInit {
 
   cardClick(cardIndex: Number) {
     const cardEles = document.querySelectorAll(".card-wrapper");
-    const overlayEle = document.querySelector(".overlay");
+    const cardEle = document.querySelector(".card-wrapper:nth-child(" + cardIndex + ")");
+    const btnEle = document.querySelector(".wrapper .btn");
     if (this.clickFlag) {
       return;
     }
     this.cardSelected = cardIndex;
     this.clickFlag = true;
     this.currentTarot = this.getRandomTarot();
-    cardEles.forEach(card => {
-      card.classList.add('hide');
+    btnEle?.classList.remove("hide");
+    cardEle?.classList.add("zindex1");
+
+    cardEles.forEach((card, index) => {
+      card.classList.remove('hover-only');
+      card.classList.add('shadow-when-active');
+      setTimeout(() => {
+        card.classList.add("card-rotate");
+        if (!(this.cardSelected?.toFixed(0) === (index + 1).toString())) {
+          card.classList.add("hide");
+        }
+      }, 600)
     })
-
-    overlayEle?.classList.remove("hide");
-
-    if (cardIndex === 3) {
-      const cardEle = document.querySelector(".card-wrapper:nth-child(" + cardIndex + ")");
-      cardEle?.classList.remove("hide");
-      cardEle?.classList.add("card-trans-3");
-    }
-    else {
-      const cardEle = document.querySelector(".card-wrapper:nth-child(" + cardIndex + ")");
-      cardEle?.classList.remove("hide");
-      cardEle?.classList.add("card-trans");
-    }
-
-    setTimeout(() => {
-      const tarotDescEle = document.querySelector(".tarot-desc-content");
-      tarotDescEle?.classList.remove("hide");
-    }, 2000)
   }
 
   drawAgain() {
-    const currentCardEle = document.querySelector(".card-wrapper:nth-child(" + this.cardSelected + ")");
     const cardEles = document.querySelectorAll(".card-wrapper");
-    const tarotDescEle = document.querySelector(".tarot-desc-content");
-    const overlayEle = document.querySelector(".overlay");
-
-    overlayEle?.classList.add("hide");
-
-    tarotDescEle?.classList.add("hide");
+    const btnEle = document.querySelector(".wrapper .btn");
     if (!this.clickFlag) {
       return;
     }
     this.clickFlag = false;
-    currentCardEle?.classList.remove("card-trans");
-    currentCardEle?.classList.remove("card-trans-3");
-    // currentCardEle?.classList.add("trans-back-1");
-    switch (this.cardSelected) {
-      case 1:
-        currentCardEle?.classList.add("trans-back-1");
-        break;
-      case 2:
-        currentCardEle?.classList.add("trans-back-2");
-        break;
-      case 3:
-        currentCardEle?.classList.add("trans-back-3");
-        break;
-      case 4:
-        currentCardEle?.classList.add("trans-back-4");
-        break;
-      case 5:
-        currentCardEle?.classList.add("trans-back-5");
-        break;
-    }
-    setTimeout(() => {
-      cardEles.forEach(card => {
-        card.classList.remove("hide");
-      })
-      switch (this.cardSelected) {
-        case 1:
-          currentCardEle?.classList.remove("trans-back-1");
-          break;
-        case 2:
-          currentCardEle?.classList.remove("trans-back-2");
-          break;
-        case 3:
-          currentCardEle?.classList.remove("trans-back-3");
-          break;
-        case 4:
-          currentCardEle?.classList.remove("trans-back-4");
-          break;
-        case 5:
-          currentCardEle?.classList.remove("trans-back-5");
-          break;
-      }
-    }, 1000)
+    cardEles.forEach(card => {
+      card.classList.remove("card-rotate");
+      card.classList.remove("zindex1");
+      card.classList.remove("shadow-when-active");
+      card.classList.add("hover-only");
 
+      setTimeout(() => {
+        card.classList.remove("hide");
+        btnEle?.classList.add("hide");
+      }, 600)
+    })
+  }
+
+  showDetail() {
+    console.log(this.currentTarot?.name);
+    document.querySelector('.detail-section')?.classList.remove('hide');
+    document.querySelector(".page-container-overlay")?.classList.remove("hide");
+  }
+
+
+  // Horizontal ProcessBar Logic
+
+  @HostListener('scroll', ['$event'])
+  handleScrollEvent(event:Event) {
+    const scrollPerc = (document.querySelector(".detail-section-content")?.scrollTop ?? 0) /
+    ((document.querySelector(".detail-section-content")?.scrollHeight ?? 0) -
+    (document.querySelector(".detail-section-content")?.clientHeight ?? 0));
+    const progress = document.querySelector<HTMLElement>("#progressbar");
+    if(progress != null) {
+      progress.style.width = scrollPerc * 100 + "%";
+    }
+  }
+
+  handleOverlayClick() {
+    document.querySelector(".page-container-overlay")?.classList.add("hide");
+    document.querySelector('.detail-section')?.classList.add('hide');
+  }
+
+  // reload and not check same page prevent
+  drawAgainHandler() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/new-tarot-page']);
   }
 }

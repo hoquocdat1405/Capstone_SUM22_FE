@@ -1,25 +1,5 @@
-// $r05: 15vw;
-// $r: 18vw;
-// $r15: 21vw;
-// $r1: 24vw;
-// $r2: 30vw;
-
-$r1: 10vw;
-$r15: 12vw;
-$r2: 14vw;
-$r3: 18vw;
-$r4: 22vw;
-$r5: 26vw;
-$r6: 30vw;
-$r7: 34vw;
-$r1h: 24vh;
-$r2h: 28vh;
-$r3h: 32vh;
-$r4h: 36vh;
-$r5h: 40vh;
-$r6h: 50vh;
-$card-width: 8vw;
-$card-width-res-680: 20vw;
+$r: 36vh;
+$card-width: 7vw;
 
 app-nav {
   color: #ffffff !important;
@@ -32,7 +12,7 @@ app-nav {
 .page-container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   background-image: url("../../assets/img/twelve-astrological/bg.png");
   background-size: cover;
   background-position: center;
@@ -58,12 +38,12 @@ app-nav {
 }
 
 .circle1 {
-  width: 22vw;
+  width: 270px;
   opacity: 1;
 }
 
 .circle2 {
-  width: 18vw;
+  width: 250px;
   opacity: 0;
 }
 
@@ -91,33 +71,28 @@ app-nav {
 
 .wrapper>.img-card {
   width: $card-width;
-  z-index: 1;
+  min-width: 120px;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  margin: auto;
   transition: 1s;
 }
 
 .img-wrapper {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .img-wrapper .title1 {
-  position: absolute;
-  bottom: -18%;
-  right: 0;
   color: #fff;
-  font-size: 1.1vw;
+  font-size: 16px;
   color: #f4b677;
 }
 
 .img-wrapper .title2 {
-  position: absolute;
-  bottom: -30%;
-  right: 0;
   color: #fff;
-  font-size: 1vw;
+  font-size: 14px;
 }
 
 .img-wrapper>img {
@@ -131,51 +106,51 @@ app-nav {
 }
 
 .wrapper .img-card:nth-child(1) {
-  transform: rotate(0deg) translate($r3);
+  transform: rotate(0deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(2) {
-  transform: rotate(30deg) translate($r4);
+  transform: rotate(30deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(3) {
-  transform: rotate(60deg) translate($r15);
+  transform: rotate(60deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(4) {
-  transform: rotate(100deg) translate($r15);
+  transform: rotate(90deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(5) {
-  transform: rotate(140deg) translate($r3);
+  transform: rotate(120deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(6) {
-  transform: rotate(160deg) translate($r5);
+  transform: rotate(150deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(7) {
-  transform: rotate(185deg) translate($r6);
+  transform: rotate(180deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(8) {
-  transform: rotate(210deg) translate($r6);
+  transform: rotate(210deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(9) {
-  transform: rotate(240deg) translate($r5);
+  transform: rotate(240deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(10) {
-  transform: rotate(270deg) translate($r4);
+  transform: rotate(270deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(11) {
-  transform: rotate(310deg) translate($r5);
+  transform: rotate(300deg) translate($r);
 }
 
 .wrapper .img-card:nth-child(12) {
-  transform: rotate(340deg) translate($r5);
+  transform: rotate(330deg) translate($r);
 }
 
 
@@ -193,19 +168,19 @@ app-nav {
 }
 
 .img-card:nth-child(4) .img-wrapper {
-  transform: rotate(-100deg);
+  transform: rotate(-90deg);
 }
 
 .img-card:nth-child(5) .img-wrapper {
-  transform: rotate(-140deg);
+  transform: rotate(-120deg);
 }
 
 .img-card:nth-child(6) .img-wrapper {
-  transform: rotate(-160deg);
+  transform: rotate(-150deg);
 }
 
 .img-card:nth-child(7) .img-wrapper {
-  transform: rotate(-185deg);
+  transform: rotate(-180deg);
 }
 
 .img-card:nth-child(8) .img-wrapper {
@@ -221,11 +196,11 @@ app-nav {
 }
 
 .img-card:nth-child(11) .img-wrapper {
-  transform: rotate(-310deg);
+  transform: rotate(-300deg);
 }
 
 .img-card:nth-child(12) .img-wrapper {
-  transform: rotate(-340deg);
+  transform: rotate(-330deg);
 }
 
 
@@ -241,12 +216,12 @@ app-nav {
   background-position: center;
 }
 
-.trans-center {
-  transform: inherit !important;
+.trans-center1 {
+  transform: none !important;
 }
 
 .scale13 {
-  width: calc($card-width * 1.3) !important;
+  width: calc($card-width * 1.2) !important;
 }
 
 #myVideo {
@@ -278,114 +253,53 @@ app-nav {
   }
 }
 
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 100vh) {
   .wrapper .img-card:nth-child(1) {
-    transform: rotate(0deg) translate($r3);
+    transform: rotate(0deg) translate(40vw);
   }
 
   .wrapper .img-card:nth-child(2) {
-    transform: rotate(30deg) translate($r4);
+    transform: rotate(40deg) translate(45vw);
   }
 
   .wrapper .img-card:nth-child(3) {
-    transform: rotate(60deg) translate($r15);
+    transform: rotate(60deg) translate(42vh);
   }
 
   .wrapper .img-card:nth-child(4) {
-    transform: rotate(100deg) translate($r15);
+    transform: rotate(90deg) translate(38vh);
   }
 
   .wrapper .img-card:nth-child(5) {
-    transform: rotate(140deg) translate($r3);
+    transform: rotate(120deg) translate(42vh);
   }
 
   .wrapper .img-card:nth-child(6) {
-    transform: rotate(160deg) translate($r5);
+    transform: rotate(150deg) translate(45vw);
   }
 
   .wrapper .img-card:nth-child(7) {
-    transform: rotate(185deg) translate($r6);
+    transform: rotate(180deg) translate(40vw);
   }
 
   .wrapper .img-card:nth-child(8) {
-    transform: rotate(210deg) translate($r6);
+    transform: rotate(210deg) translate(42vw);
   }
 
   .wrapper .img-card:nth-child(9) {
-    transform: rotate(240deg) translate($r5);
+    transform: rotate(240deg) translate(40vh);
   }
 
   .wrapper .img-card:nth-child(10) {
-    transform: rotate(270deg) translate($r4);
+    transform: rotate(270deg) translate(40vh);
   }
 
   .wrapper .img-card:nth-child(11) {
-    transform: rotate(310deg) translate($r5);
+    transform: rotate(300deg) translate(40vh);
   }
 
   .wrapper .img-card:nth-child(12) {
-    transform: rotate(340deg) translate($r5);
-  }
-
-  .img-wrapper .title1 {
-    font-size: 1.5vw;
-  }
-
-  .img-wrapper .title2 {
-    font-size: 1.1vw;
-  }
-}
-
-@media only screen and (max-width: 680px) {
-  .wrapper>.img-card {
-    width: $card-width-res-680
-  }
-  .wrapper .img-card:nth-child(1) {
-    transform: rotate(0deg) translate($r5);
-  }
-
-  .wrapper .img-card:nth-child(2) {
-    transform: rotate(40deg) translate($r7);
-  }
-
-  .wrapper .img-card:nth-child(3) {
-    transform: rotate(65deg) translate($r2h);
-  }
-
-  .wrapper .img-card:nth-child(4) {
-    transform: rotate(100deg) translate($r1h);
-  }
-
-  .wrapper .img-card:nth-child(5) {
-    transform: rotate(130deg) translate($r3h);
-  }
-
-  .wrapper .img-card:nth-child(6) {
-    transform: rotate(160deg) translate($r1h);
-  }
-
-  .wrapper .img-card:nth-child(7) {
-    transform: rotate(200deg) translate($r1h);
-  }
-
-  .wrapper .img-card:nth-child(8) {
-    transform: rotate(230deg) translate($r5h);
-  }
-
-  .wrapper .img-card:nth-child(9) {
-    transform: rotate(250deg) translate($r5h);
-  }
-
-  .wrapper .img-card:nth-child(10) {
-    transform: rotate(270deg) translate($r4h);
-  }
-
-  .wrapper .img-card:nth-child(11) {
-    transform: rotate(295deg) translate($r4h);
-  }
-
-  .wrapper .img-card:nth-child(12) {
-    transform: rotate(310deg) translate($r7);
+    transform: rotate(320deg) translate(40vw);
   }
 
   .img-card:nth-child(1) .img-wrapper {
@@ -397,31 +311,31 @@ app-nav {
   }
 
   .img-card:nth-child(3) .img-wrapper {
-    transform: rotate(-65deg);
+    transform: rotate(-60deg);
   }
 
   .img-card:nth-child(4) .img-wrapper {
-    transform: rotate(-100deg);
+    transform: rotate(-90deg);
   }
 
   .img-card:nth-child(5) .img-wrapper {
-    transform: rotate(-130deg);
+    transform: rotate(-120deg);
   }
 
   .img-card:nth-child(6) .img-wrapper {
-    transform: rotate(-160deg);
+    transform: rotate(-150deg);
   }
 
   .img-card:nth-child(7) .img-wrapper {
-    transform: rotate(-200deg);
+    transform: rotate(-180deg);
   }
 
   .img-card:nth-child(8) .img-wrapper {
-    transform: rotate(-230deg);
+    transform: rotate(-210deg);
   }
 
   .img-card:nth-child(9) .img-wrapper {
-    transform: rotate(-250deg);
+    transform: rotate(-240deg);
   }
 
   .img-card:nth-child(10) .img-wrapper {
@@ -429,23 +343,22 @@ app-nav {
   }
 
   .img-card:nth-child(11) .img-wrapper {
-    transform: rotate(-295deg);
+    transform: rotate(-300deg);
   }
 
   .img-card:nth-child(12) .img-wrapper {
-    transform: rotate(-310deg);
+    transform: rotate(-320deg);
   }
 
-  .wrapper>.img-card:hover {
-    filter: drop-shadow(0px 0px 18px #fff);
-    width: calc($card-width-res-680 * 1.2);
+  .wrapper>.img-card:hover{
+    width: 160px;
   }
 
   .img-wrapper .title1 {
-    font-size: 3vw;
+    font-size: 14px;
   }
 
   .img-wrapper .title2 {
-    font-size: 2.5vw;
+    font-size: 12px;
   }
 }

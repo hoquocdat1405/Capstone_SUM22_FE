@@ -1,0 +1,26 @@
+<div class="page-container">
+  <app-nav [theme]="'dark'"></app-nav>
+  <div class="scene">
+    <div class="floor">
+      <div class="ballShadow"></div>
+    </div>
+  </div>
+  <div class="astroName">
+    <span class="hideInOutEffect">{{ listName[currentMiddleIndexCopy] }}</span>
+  </div>
+  <div class="globe globe1" (click)="leftClickHandler()">
+    <img src="{{ listAstrologyUrl[currentLeftIndex] }}" alt="" />
+  </div>
+  <div class="globe globe1 globe1Copy" (click)="leftClickHandler()">
+    <img src="{{ listAstrologyUrl[currentLeftIndexCopy] }}" alt="" />
+  </div>
+  <div class="globe middle">
+    <img src="{{ listAstrologyUrl[currentMiddleIndex] }}" alt="" />
+  </div>
+  <div class="globe globe2" (click)="rightClickHandler()">
+    <img src="{{ listAstrologyUrl[currentRightIndex] }}" alt="" />
+  </div>
+  <div class="globe globe2 globe2Copy" (click)="rightClickHandler()">
+    <img src="{{ listAstrologyUrl[currentRightIndexCopy] }}" alt="" />
+  </div>
+</div>
