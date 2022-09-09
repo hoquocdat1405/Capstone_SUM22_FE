@@ -214,48 +214,9 @@ li::before {
   justify-content: center;
   gap: 70px;
 }
-.school-item {
-  display: flex;
-  flex-direction: column;
-  // justify-content: center;
-  position: relative;
-  border-left: 1px solid #ccc;
-  width: 280px;
-}
-.school-img {
-  width: 100%;
-  aspect-ratio: 1.5/1;
-}
-.school-name {
-  font-weight: 800;
-  font-size: 24px;
-  margin: 10px 0 0 5px;
-  color: #747474;
-  height: 80px;
-}
-.school-name-short {
-  margin-left: 10px;
-}
-.school-address {
-  font-weight: 400;
-  margin: 30px 0 30px 5px;
-  font-size: 14px;
-}
-.school-view {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  padding: 1px 2px;
-}
-.school-view-icon {
-  margin: 0 10px;
-}
-.school-view-number {
-  margin-right: 10px;
+
+app-landing-school-item {
+  width: 28%;
 }
 
 .btn-more-school {

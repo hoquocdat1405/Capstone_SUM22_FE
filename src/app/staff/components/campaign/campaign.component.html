@@ -1,7 +1,5 @@
 <div class="body">
-  <mat-toolbar class="toolbar"
-    ><span>Quản lí chiến dịch tuyển sinh</span></mat-toolbar
-  >
+  <mat-toolbar class="toolbar"><span>Quản lí chiến dịch tuyển sinh</span></mat-toolbar>
   <div class="page-container">
     <div class="search-section">
       <button mat-flat-button class="create-new-btn">
@@ -26,28 +24,20 @@
     </div>
 
     <div class="campaign-table">
-      <table
-        mat-table
-        [dataSource]="dataSource"
-        class="mat-elevation-z8 data-table"
-      >
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 data-table">
         <!-- State Column -->
         <ng-container matColumnDef="state">
           <th mat-header-cell *matHeaderCellDef>Bật/tắt hoạt động</th>
           <td mat-cell *matCellDef="let element">
-            <mat-slide-toggle
-              size="small"
-              color="primary"
-              [(ngModel)]="element.state"
-              class="campaign-toggle-btn"
-            ></mat-slide-toggle>
+            <mat-slide-toggle size="small" color="primary" [(ngModel)]="element.state" class="campaign-toggle-btn">
+            </mat-slide-toggle>
           </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Tên</th>
-          <td mat-cell *matCellDef="let element">
+          <td mat-cell *matCellDef="let element" routerLink="{{element.id}}" class="cursor">
             <span class="campaign-name"> {{ element.name }}</span>
           </td>
         </ng-container>
@@ -55,26 +45,19 @@
         <!-- Status Column -->
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
-          <td
-            mat-cell
-            *matCellDef="let element"
-            ngClass="status status-{{ element.status }}"
-          >
+          <td mat-cell *matCellDef="let element" ngClass="status status-{{ element.status }}">
             <div class="status-text" *ngIf="element.status == 'normal'">
               <mat-icon class="status-icon">cached</mat-icon>
               <span>Đang hoạt động</span>
             </div>
             <div class="status-text" *ngIf="element.status == 'completed'">
-              <mat-icon class="status-icon">done_all</mat-icon
-              ><span>Đã hoàn thành</span>
+              <mat-icon class="status-icon">done_all</mat-icon><span>Đã hoàn thành</span>
             </div>
             <div class="status-text" *ngIf="element.status == 'suspended'">
-              <mat-icon class="status-icon">pause_presentation</mat-icon
-              ><span>Tạm hoãn</span>
+              <mat-icon class="status-icon">pause_presentation</mat-icon><span>Tạm hoãn</span>
             </div>
             <div class="status-text" *ngIf="element.status == 'blocked'">
-              <mat-icon class="status-icon">warning</mat-icon
-              ><span>Đã bị huỷ</span>
+              <mat-icon class="status-icon">warning</mat-icon><span>Đã bị huỷ</span>
             </div>
           </td>
         </ng-container>
@@ -94,20 +77,12 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr
-          mat-row
-          *matRowDef="let row; columns: displayedColumns"
-          [ngClass]="{ 'active-row': row.state == true }"
-
-          routerLink="{{row.id}}" 
-        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{ 'active-row': row.state == true }">
+        </tr>
       </table>
 
-      <mat-paginator
-        [pageSize]="5"
-        showFirstLastButtons
-        aria-label="Chọn trang chiến dịch"
-      >
+      <mat-paginator [length]="this.dataSource._filterData.length" [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions" showFirstLastButtons aria-label="Chọn trang chiến dịch">
       </mat-paginator>
     </div>
   </div>

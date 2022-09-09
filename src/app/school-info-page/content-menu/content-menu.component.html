@@ -1,0 +1,9 @@
+<div class="menu-header">
+  <p class="header">{{header}}</p>
+</div>
+
+<div class="menu-content">
+  <a href="school/{{content}}" class="content-link" *ngFor="let content of contents">
+    <br/> <span class="mid-dot"> &middot;</span> {{content}}
+  </a>
+</div>
