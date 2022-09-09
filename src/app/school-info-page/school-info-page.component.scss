@@ -1,0 +1,122 @@
+.body {
+    background-color: #FAF9F5;
+}
+
+.school-banner-img {
+    width: 100vw;
+    height: 25vh;
+    object-fit: cover;
+}
+
+.school-logo {
+    width: 10%;
+    aspect-ratio: 1 / 1;
+    margin-top: -10vh;
+    margin-left: 10vw;
+    border-radius: 10px;
+    border: solid 4px rgb(175, 175, 175);
+    box-shadow: 10px 10px 50px #777777;
+}
+
+.school-name {
+    font-family: 'Open Sans Semibold';
+    font-size: 1.8rem;
+    margin-left: 2vw;
+    font-weight: 500;
+}
+
+.school-website {
+    margin-left: 50%;
+    display: inline-block;
+    top: 35vh;
+    right: 5vw;
+}
+
+.school-address {
+    width: 30vw;
+    margin-left: 22vw;
+}
+
+.address,
+.website {
+    font-size: 14px;
+}
+
+.tab-section {
+    width: 70%;
+    margin: 3% auto;
+}
+
+.tab-content {
+    margin: 5% 5%;
+}
+
+
+::ng-deep mat-tab-body {
+    margin-top: 1%;
+    background-color: #F2EFEA;
+    border-radius: 20px;
+}
+
+::ng-deep .mat-tab-label-content {
+    font-size: 0.95rem;
+}
+
+.remove-border-bottom ::ng-deep .mat-tab-header {
+    border-bottom: none;
+}
+
+::ng-deep .mat-ink-bar {
+    padding: 1% -10%;
+    background-color: #51bfbb !important;
+
+}
+
+.menu-content-section {
+    //sad
+}
+
+.row {
+    margin-top: 5%;
+}
+
+app-content-menu {
+    width: 33%;
+}
+
+.tab-content.news-tab {
+    display: flex;
+}
+
+.news-item {
+    width: 20%;
+    margin: 1%;
+}
+
+.news-tab .news-item:nth-child(1) {
+    width: 70%;
+}
+
+.contacts{
+    width: 100%;
+    display: flex;
+    .contact-phone,
+    .contact-email{
+        width: 40%;
+        margin: 5% 5%;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+        background-color: rgb(16, 220, 220);
+        border-radius: 10px;
+        padding: 1% 2%;
+    }
+}
+
+
+// @media (min-width: 360px) and (max-width:541px) {
+//     .school-logo{
+//         width: 15%;
+//        margin
+//     }   
+// }

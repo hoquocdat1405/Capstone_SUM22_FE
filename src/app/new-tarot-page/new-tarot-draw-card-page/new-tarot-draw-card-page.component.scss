@@ -1,4 +1,5 @@
 $card-size: 15vw;
+$card-size-res-1024: 28vw;
 
 .page-container {
   position: relative;
@@ -292,4 +293,18 @@ $card-size: 15vw;
   100% {
     opacity: 1;
   }
+}
+
+@media only screen and (max-width: 1025px) {
+  .wrapper .card-wrapper {
+      width: $card-size-res-1024;
+    }
+
+    .card-wrapper img {
+      width: $card-size-res-1024;
+    }
+
+    .draw-again-button {
+      width: 16vw;
+    }
 }

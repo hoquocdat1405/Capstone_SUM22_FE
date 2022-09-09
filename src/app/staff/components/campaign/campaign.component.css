@@ -93,6 +93,11 @@
   font-size: 1.5rem;
 }
 
+.cursor{
+  cursor: pointer;
+
+}
+
 .active-row {
   background-color: #f2fbf6;
 }
