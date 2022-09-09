@@ -1,91 +1,99 @@
-:host {
-    width: 100%;
-}
-
 //set default margin & padding for all elements
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .footer-container {
-    background-color: #212121;
-    display: inline-block;
-    width: 100%;
-    // margin-top: 5%;
+  background-color: #212121;
+  width: 100%;
 }
 
 .footer-section {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 50px 0;
-
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 50px 0;
 }
 
 .footer-menu {
-    // text-align: justify;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
 }
 
 .footer-menu .menu-header {
-    color: #fff;
-    font-size: 20px;
+  color: #fff;
+  font-size: 20px;
 }
 
 .footer-section:nth-child(2) {
-    position: relative;
+  position: relative;
 }
 
 .footer-menu-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: absolute;
-    left: 130px;
-    bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 100px;
 }
 
-
 .menu-item {
-    color: #6f7164;
-    font-size: 18px;
+  color: #6f7164;
+  font-size: 18px;
 }
 
 .icon-footer {
-    width: 100px;
-    height: auto;
+  width: 100px;
+  height: auto;
 }
 
 .qick-text {
-    width: 15%;
-    // margin: 10px 0;
-    // ;
+  display: none;
 }
 
 .footer-menu-row .menu-item:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .white-icon {
-    color: #fff;
+  color: #fff;
 }
 
 .footer-menu-column span {
-    color: #fff;
+  color: #fff;
 }
 
-mat-icon{
-    margin-right: 5px;
+mat-icon {
+  margin-right: 5px;
 }
 
 .info-icon {
-    display: flex;
-    position: relative;
-    justify-content: center flex-start;
+  display: flex;
+  position: relative;
+  justify-content: center flex-start;
+}
+
+@media (max-width: 600px) {
+  .footer-menu {
+    width: 50%;
+    margin-top: 10px;
+  }
+
+  .qick-text {
+    display: none;
+  }
+
+  .footer-menu-column {
+    margin-left: 60px;
+  }
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+}
+
+@media (min-width: 1024px) {
 }
