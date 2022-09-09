@@ -98,20 +98,6 @@ import { SchoolInfoPageComponent } from './school-info-page/school-info-page.com
 //School's info page
 import { ContentMenuComponent } from './school-info-page/content-menu/content-menu.component';
 import { SchoolNewsComponent } from './school-info-page/school-news/school-news.component';
-<<<<<<< HEAD
-import { BfQuizResultDetailPageComponent } from './bf-quiz-result-detail-page/bf-quiz-result-detail-page.component';
-import { RandomTarotPageComponent } from './new-tarot-page/random-tarot-page/random-tarot-page.component';
-import { AstrologicalPageComponent } from './astrological-page/astrological-page.component';
-import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
-import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
-=======
-import { SchoolInfoPageComponent } from './school-info-page/school-info-page.component';
-
-//School's info page
-import { ContentMenuComponent } from './school-info-page/content-menu/content-menu.component';
-import { SchoolNewsComponent } from './school-info-page/school-news/school-news.component';
-
->>>>>>> a522b8934c931f5710b7a9a86c450f747445f785
 
 @NgModule({
   declarations: [
@@ -167,18 +153,15 @@ import { SchoolNewsComponent } from './school-info-page/school-news/school-news.
     MonaAstrologicalPageComponent,
     SchoolInfoPageComponent,
     ContentMenuComponent,
-    SchoolNewsComponent
-<<<<<<< HEAD
+    SchoolNewsComponent,
     BfQuizResultDetailPageComponent,
     RandomTarotPageComponent,
     AstrologicalPageComponent,
     CfAstrologyPageComponent,
     MonaAstrologicalPageComponent,
-=======
     SchoolInfoPageComponent,
     ContentMenuComponent,
     SchoolNewsComponent
->>>>>>> a522b8934c931f5710b7a9a86c450f747445f785
   ],
   imports: [
     FormsModule,
