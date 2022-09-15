@@ -98,6 +98,12 @@ const routes: Routes = [
   //School
   { path: 'school', component: SchoolInfoPageComponent },
 
+  //Psy links
+  {
+    path: 'psy',
+    loadChildren: () =>
+      import('./psy/psy.module').then((m) => m.PsyModule),
+  },
 
 ];
 

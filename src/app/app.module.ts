@@ -99,6 +99,10 @@ import { SchoolInfoPageComponent } from './school-info-page/school-info-page.com
 import { ContentMenuComponent } from './school-info-page/content-menu/content-menu.component';
 import { SchoolNewsComponent } from './school-info-page/school-news/school-news.component';
 
+//psy links
+import { BarChartComponent } from './common-components/bar-chart/bar-chart.component';
+import { PsyModule } from './psy/psy.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -154,14 +158,7 @@ import { SchoolNewsComponent } from './school-info-page/school-news/school-news.
     SchoolInfoPageComponent,
     ContentMenuComponent,
     SchoolNewsComponent,
-    BfQuizResultDetailPageComponent,
-    RandomTarotPageComponent,
-    AstrologicalPageComponent,
-    CfAstrologyPageComponent,
-    MonaAstrologicalPageComponent,
-    SchoolInfoPageComponent,
-    ContentMenuComponent,
-    SchoolNewsComponent
+    // BarChartComponent
   ],
   imports: [
     FormsModule,
@@ -184,6 +181,7 @@ import { SchoolNewsComponent } from './school-info-page/school-news/school-news.
     MatTreeModule,
     MatDividerModule,
     StaffModule,
+    PsyModule
   ],
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],

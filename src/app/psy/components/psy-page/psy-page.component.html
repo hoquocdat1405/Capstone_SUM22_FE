@@ -1,0 +1,65 @@
+<div class="body">
+  <div class="toolbar">
+    <div class="logo-section">
+      <img
+        src="../../assets/img/qick-text-white.png"
+        alt="qick logo"
+        class="logo-brand"
+      />
+    </div>
+
+    <div class="user-option">
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle option-btn"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img src="../../../../assets/img/logo-qick.png" alt="user pic" class="user-pic">
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton1">
+          <!-- <li><a class="dropdown-item" href="#">Tài khoản</a></li> -->
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#"><mat-icon>exit_to_app</mat-icon>Đăng xuất</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <mat-sidenav-container class="side-nav-container" autosize>
+    <mat-sidenav #sidenav class="side-nav" mode="side" opened="true">
+      <mat-nav-list class="action-list">
+        <mat-list-item (click)="opened = !opened"
+          ><mat-icon mat-button class="toggle-btn">
+            <mat-icon>menu</mat-icon>
+          </mat-icon></mat-list-item
+        >
+        <mat-list-item
+          [routerLink]="['/psy/dashboard']"
+          routerLinkActive="active"
+          ><mat-icon>home</mat-icon
+          ><span class="link-label" *ngIf="opened">Trang chủ</span>
+        </mat-list-item>
+
+        <mat-list-item [routerLink]="['/psy/myQuestion']" routerLinkActive="active"
+          ><mat-icon>checklist_rtls</mat-icon
+          ><span class="link-label" *ngIf="opened"
+            >Bài test của tôi</span
+          ></mat-list-item
+        >
+        <mat-list-item [routerLink]="['/psy/allQuestion']" routerLinkActive="active"
+          ><mat-icon>assignment</mat-icon
+          ><span class="link-label" *ngIf="opened"
+            >Danh sách câu hỏi</span
+          ></mat-list-item
+        >
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
