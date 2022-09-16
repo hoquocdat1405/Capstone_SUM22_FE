@@ -93,10 +93,11 @@ import { SchoolInfoPageComponent } from './school-info-page/school-info-page.com
 //School's info page
 import { ContentMenuComponent } from './school-info-page/content-menu/content-menu.component';
 import { SchoolNewsComponent } from './school-info-page/school-news/school-news.component';
+import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavComponent,
     CarouselComponent,
@@ -144,8 +145,9 @@ import { SchoolNewsComponent } from './school-info-page/school-news/school-news.
     MajorDetailPageComponent,
     SchoolInfoPageComponent,
     ContentMenuComponent,
-    SchoolNewsComponent
-  ],
+    SchoolNewsComponent,
+      AddmissionNewsDetailComponent
+   ],
   imports: [
     FormsModule,
     BrowserModule,

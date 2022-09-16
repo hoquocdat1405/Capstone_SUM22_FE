@@ -27,6 +27,7 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
 import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-detail-page/holland-quiz-result-detail-page.component';
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 import { SchoolInfoPageComponent } from './school-info-page/school-info-page.component';
+import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
 const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -87,11 +88,11 @@ const routes: Routes = [
   { path: 'major-list', component: MajorListComponent },
   { path: 'major-info', component: MajorInfoComponent },
 
-
   //School
   { path: 'school', component: SchoolInfoPageComponent },
 
-
+  //addmission-news
+  { path: 'addmission-news-detail', component: AddmissionNewsDetailComponent },
 ];
 
 @NgModule({
@@ -102,4 +103,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
