@@ -88,6 +88,11 @@ import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component
 import { StaffModule } from './staff/staff.module';
 import { MajorListComponent } from './major-list/major-list.component';
 import { MajorInfoComponent } from './major-info/major-info.component';
+import { BfQuizResultDetailPageComponent } from './bf-quiz-result-detail-page/bf-quiz-result-detail-page.component';
+import { RandomTarotPageComponent } from './new-tarot-page/random-tarot-page/random-tarot-page.component';
+import { AstrologicalPageComponent } from './astrological-page/astrological-page.component';
+import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
+import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
 import { SchoolInfoPageComponent } from './school-info-page/school-info-page.component';
 
 //School's info page
@@ -95,9 +100,12 @@ import { ContentMenuComponent } from './school-info-page/content-menu/content-me
 import { SchoolNewsComponent } from './school-info-page/school-news/school-news.component';
 import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
 
+//psy links
+import { BarChartComponent } from './common-components/bar-chart/bar-chart.component';
+import { PsyModule } from './psy/psy.module';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavComponent,
     CarouselComponent,
@@ -143,11 +151,16 @@ import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmissi
     NewTarotDrawCardPageComponent,
     TwelveAstrologicalPageDetailComponent,
     MajorDetailPageComponent,
+    BfQuizResultDetailPageComponent,
+    RandomTarotPageComponent,
+    AstrologicalPageComponent,
+    CfAstrologyPageComponent,
+    MonaAstrologicalPageComponent,
     SchoolInfoPageComponent,
     ContentMenuComponent,
     SchoolNewsComponent,
-      AddmissionNewsDetailComponent
-   ],
+    AddmissionNewsDetailComponent,
+  ],
   imports: [
     FormsModule,
     BrowserModule,
@@ -169,8 +182,9 @@ import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmissi
     MatTreeModule,
     MatDividerModule,
     StaffModule,
+    PsyModule,
   ],
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

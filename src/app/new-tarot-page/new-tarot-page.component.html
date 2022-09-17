@@ -2,12 +2,16 @@
   <app-nav [theme]="'dark'"></app-nav>
   <div class="wrapper">
     <div class="card-deck">
-      <img src="../../assets/img/tarots/rutngaunhien.png" alt="" class="left-deck-title">
-      <img src="../../assets/img/tarots/back3.png" alt="" class="img deck" (click)="viewRandomTarotPage()"/>
+      <img src="../../assets/img/tarots/rutngaunhien.png" alt="" class="deck-title">
+      <div class="img-wrapper">
+        <img src="../../assets/img/tarots/back3.png" alt="" class="img" (click)="viewRandomTarotPage()"/>
+      </div>
     </div>
     <div class="card-deck">
-      <img src="../../assets/img/tarots/xemtatca.png" alt="" class="left-deck-title">
-      <img src="../../assets/img/tarots/back5.png" alt="" class="img deck" (click)="viewAllCard()" />
+      <img src="../../assets/img/tarots/xemtatca.png" alt="" class="deck-title">
+      <div class="img-wrapper">
+        <img src="../../assets/img/tarots/back5.png" alt="" class="img" (click)="viewAllCard()" />
+      </div>
     </div>
   </div>
   <app-footer></app-footer>

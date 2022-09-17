@@ -1,0 +1,208 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  font-size: 62.5%;
+  background-image: url("../../assets/img/twelve-astrological/bg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+// Left Section
+.left-content-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.center-item {
+  position: absolute;
+  top: 50%;
+  left: -15em;
+  width: 46em;
+  height: 46em;
+  translate: 0 -50%;
+  border-radius: 50%;
+  background-image: url("../../assets/img/twelve-astrological/earth4.png");
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    inset 10px -40px 48px 0px #060606,
+    inset -5px 10px 50px -13px #959595;
+  //inset -30px -30px 48px -20px #060606,inset 3px 10px 39px -10px #d4d4d4
+  //30px 30px 40px -20px #060606;
+}
+
+.around-item-wrapper {
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.item-wrapper {
+  position: absolute;
+  width: 25em;
+  height: 25em;
+  top: 50%;
+  left: 8em;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background-image: url("../../assets/img/twelve-astrological/item-bg.png");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 0px 40px -14px #ffffff,
+    inset -30px -30px 48px -20px #060606,
+    inset 3px 10px 39px -10px #d4d4d4;
+  // border: solid 1px rgb(185, 185, 185);
+}
+
+.item-wrapper img {
+  position: absolute;
+  width: 32%;
+  height: 32%;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  transition: .7s;
+}
+
+.item-wrapper:nth-child(1) {
+  transform: translate(45em);
+  width: 35em;
+  height: 35em;
+  box-shadow: 0px 0px 50px -5px #ffffff,
+    inset -30px -30px 48px -20px #060606,
+    inset 3px 10px 39px -10px #d4d4d4;
+}
+
+.item-wrapper:nth-child(2) {
+  transform: translate(45em);
+  rotate: 45deg;
+}
+
+.item-wrapper:nth-child(3) {
+  transform: translate(45em);
+  rotate: 90deg;
+}
+
+.item-wrapper:nth-child(4) {
+  transform: translate(45em);
+  rotate: 135deg;
+}
+
+.item-wrapper:nth-child(5) {
+  transform: translate(45em);
+  rotate: 180deg;
+}
+
+.item-wrapper:nth-child(6) {
+  transform: translate(45em);
+  rotate: 225deg;
+}
+
+.item-wrapper:nth-child(7) {
+  transform: translate(45em);
+  rotate: 270deg;
+}
+
+.item-wrapper:nth-child(8) {
+  transform: translate(45em);
+  rotate: 315deg;
+}
+
+.item-wrapper:nth-child(1) img {
+  top: 46%;
+  left: 48%;
+}
+
+.item-wrapper:hover img {
+  scale: 2;
+  filter: drop-shadow(0px 0px 3px #fff);
+}
+
+.hoverEffect:nth-child(1) {
+  transition: .7s;
+}
+
+.hoverEffect:nth-child(1):hover {
+  scale: 1.4;
+}
+
+.item-wrapper:nth-child(2) img {
+  top: 41%;
+  left: 50%;
+}
+
+.item-wrapper:nth-child(8) img {
+  top: 46%;
+  left: 48%;
+}
+
+
+
+// Right Section
+.right-content-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.right-content-wrapper .box {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background-color: #1E1F24;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border-radius: 3em;
+  // box-shadow: inset -30px -30px 48px -20px #060606,
+  //   inset 3px 10px 39px -10px #d4d4d4;
+  box-shadow: 30px 30px 48px 10px #060606;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  flex-direction: column;
+  padding: 8em;
+  text-align: justify;
+}
+
+.right-content-wrapper .box .box-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 4em;
+  line-height: 1;
+  gap: 1em;
+
+  &-title {
+    font-size: 6em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  &-date {
+    font-size: 2em;
+  }
+}
+
+.box .main-content {
+  position: relative;
+  font-size: 2em;
+}
+
+.box .main-content img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  opacity: .2;
+  width: 80%;
+}

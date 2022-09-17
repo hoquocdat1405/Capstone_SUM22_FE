@@ -1,0 +1,35 @@
+.page-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wrapper mat-form-field {
+    align-self: flex-start;
+    width: 40%;
+}
+
+.wrapper mat-paginator {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.wrapper .btn-create-new {
+    position: absolute;
+    right: 1em;
+    top: 2em;
+}
