@@ -1,3 +1,4 @@
+import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
 import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
 import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
 import { AstrologicalPageComponent } from './astrological-page/astrological-page.component';
@@ -104,6 +105,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./psy/psy.module').then((m) => m.PsyModule),
   },
+  //Job detail
+  { path: 'job-detail', component: JobDetailPageComponent },
 
 ];
 
