@@ -103,6 +103,7 @@ import { SchoolNewsComponent } from './school-info-page/school-news/school-news.
 import { BarChartComponent } from './common-components/bar-chart/bar-chart.component';
 import { PsyModule } from './psy/psy.module';
 import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
+import { JobListPageComponent } from './job-list-page/job-list-page.component';
 
 @NgModule({
   declarations: [
@@ -160,6 +161,7 @@ import { JobDetailPageComponent } from './job-detail-page/job-detail-page.compon
     ContentMenuComponent,
     SchoolNewsComponent,
     JobDetailPageComponent,
+    JobListPageComponent,
     // BarChartComponent
   ],
   imports: [

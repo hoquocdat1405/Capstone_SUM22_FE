@@ -1,3 +1,4 @@
+import { JobListPageComponent } from './job-list-page/job-list-page.component';
 import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
 import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
 import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
@@ -107,6 +108,7 @@ const routes: Routes = [
   },
   //Job detail
   { path: 'job-detail', component: JobDetailPageComponent },
+  { path: 'job-list', component: JobListPageComponent },
 
 ];
 
