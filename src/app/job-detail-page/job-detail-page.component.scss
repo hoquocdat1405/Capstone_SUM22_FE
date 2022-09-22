@@ -80,15 +80,20 @@
 }
 
 .card-item .job-name {
-    font-size: 1.6em;
+    font-size: 1.8em;
     font-weight: 500;
     margin-top: 3em;
 }
 
 .card-item .job-desc {
-    font-size: 1.2em;
+    font-size: 1.4em;
     padding: 1em 0;
     text-align: justify;
+}
+
+.view-detail-btn {
+    background-color: rgb(0, 161, 224);
+    color: #fff;
 }
 
 

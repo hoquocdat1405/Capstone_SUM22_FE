@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,11 +10,15 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
 
   public mbtiType: { name: string; shorthand: string; imgSrc: string };
 
-  constructor() {
+  constructor(private router: Router) {
     this.mbtiType = {name:'Người che chở',shorthand:'INFJ',imgSrc:'../../assets/svg/mbti-types/mbti-type-infj.svg'}
   }
 
   ngOnInit() {
+  }
+
+  suggestClickHandler() {
+    this.router.navigate(['/job-list']);
   }
 
   
