@@ -6,7 +6,7 @@
 
 .header-title {
   padding-left: 20px;
-  padding-top: 20px;
+  // padding-top: 20px;
   font-size: 3em;
   font-weight: 500;
   color: #88B04B;
@@ -19,6 +19,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
+}
+
+.card-box-2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .card-box .card-wrapper {
@@ -54,7 +58,7 @@
 }
 
 .card-box .card-wrapper .card-number .card-number-main {
-  font-size: 4em;
+  font-size: 3.5em;
   font-weight: 600;
   color: #000;
 }
@@ -82,7 +86,7 @@
 
 .chart {
   width: 100%;
-  padding: 20px;
+  padding: 0 20px;
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

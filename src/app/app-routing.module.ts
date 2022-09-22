@@ -1,6 +1,10 @@
 import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
 import { MbtiQuizAttemptNewComponent } from './mbti-quiz-attempt-new/mbti-quiz-attempt-new.component';
 import { LoginRegisterMainComponent } from './login-register-main/login-register-main.component';
+
+import { JobListPageComponent } from './job-list-page/job-list-page.component';
+import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
+
 import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
 import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
 import { AstrologicalPageComponent } from './astrological-page/astrological-page.component';
@@ -108,10 +112,18 @@ const routes: Routes = [
     path: 'psy',
     loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),
   },
+  //Job detail
+  { path: 'job-detail', component: JobDetailPageComponent },
+  { path: 'job-list', component: JobListPageComponent },
 
   //addmission-news
   { path: 'addmission-news-detail', component: AddmissionNewsDetailComponent },
   //Psy links
+
+  //Job detail
+  { path: 'job-detail', component: JobDetailPageComponent },
+  { path: 'job-list', component: JobListPageComponent },
+
   {
     path: 'psy',
     loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),

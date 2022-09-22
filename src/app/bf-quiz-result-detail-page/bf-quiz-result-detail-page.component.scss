@@ -26,21 +26,16 @@ $bar-min-height: 40vh;
 :host ::ng-deep .mat-tab-labels {
   justify-content: space-between;
   font-size: 18px;
-  color: #fff;
 }
-
-:host ::ng-deep .mat-tab-label {
-  color: #fff;
-}
-
 .page-container {
-  background-image: url('/assets/img/big5-bg.jpg');
-  height: fit-content;
+  // background-image: url('/assets/img/big5-bg.jpg');
+  // height: fit-content;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  background-color: #ffe8c9;
 }
 
 .header-section {
@@ -61,7 +56,6 @@ $bar-min-height: 40vh;
   font-size: 6vh;
   margin-top: 2vh;
   font-weight: 600;
-  color: #fff;
 }
 
 .first-section {
@@ -83,7 +77,6 @@ $bar-min-height: 40vh;
 .question-number {
   font-size: 72px;
   font-weight: 600;
-  color: #fff;
   margin-right: 10px;
 }
 
@@ -95,12 +88,10 @@ $bar-min-height: 40vh;
 
 .question {
   font-size: 18px;
-  color: #fff;
 }
 
 .question-hint {
   font-size: 25px;
-  color: #fff;
 }
 
 .bar-graph-container {
@@ -131,12 +122,10 @@ $bar-min-height: 40vh;
 }
 
 .percentage-numb {
-  color: #fff;
   margin-bottom: 4px;
 }
 
 .bar-title {
-  color: #fff;
   opacity: .8;
   margin-top: 12px;
   font-size: 20px;
@@ -227,13 +216,11 @@ $bar-min-height: 40vh;
 }
 
 .li-wrapper p {
-  color: #fff;
   font-size: 1.3vw;
   transition: 0.5s;
 }
 
 .big-five-text {
-  color: #fff;
   position: absolute;
   font-size: 2.5vw;
   font-weight: 600;
@@ -286,7 +273,6 @@ $bar-min-height: 40vh;
 .text {
   margin: 10px 0;
   font-size: 14px;
-  color: #fff;
 }
 
 .content1,
@@ -373,12 +359,10 @@ img {
   }
 
   .li-wrapper p {
-    color: #fff;
     font-size: 2vh;
   }
 
   .big-five-text {
-    color: #fff;
     position: inherit;
     font-size: 2.5vh;
     font-weight: 600;

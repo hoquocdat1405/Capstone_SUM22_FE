@@ -107,6 +107,9 @@ import { PsyModule } from './psy/psy.module';
 import { LoginRegisterMainComponent } from './login-register-main/login-register-main.component';
 import { MbtiQuizAttemptNewComponent } from './mbti-quiz-attempt-new/mbti-quiz-attempt-new.component';
 
+import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
+import { JobListPageComponent } from './job-list-page/job-list-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -166,6 +169,9 @@ import { MbtiQuizAttemptNewComponent } from './mbti-quiz-attempt-new/mbti-quiz-a
     LoginRegisterMainComponent,
     MbtiQuizAttemptNewComponent,
     QuestionComponent,
+    JobDetailPageComponent,
+    JobListPageComponent,
+    // BarChartComponent
   ],
   imports: [
     FormsModule,
