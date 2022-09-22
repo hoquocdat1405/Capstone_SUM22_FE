@@ -1,3 +1,6 @@
+import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
+import { MbtiQuizAttemptNewComponent } from './mbti-quiz-attempt-new/mbti-quiz-attempt-new.component';
+import { LoginRegisterMainComponent } from './login-register-main/login-register-main.component';
 import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
 import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
 import { AstrologicalPageComponent } from './astrological-page/astrological-page.component';
@@ -33,6 +36,7 @@ import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-deta
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 import { SchoolInfoPageComponent } from './school-info-page/school-info-page.component';
 import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
+
 const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -42,6 +46,7 @@ const routes: Routes = [
 
   //loginpage
   { path: 'login', component: LoginRegisterPageComponent },
+  { path: 'login-main', component: LoginRegisterMainComponent },
 
   //User profile page
   { path: 'profile', component: UserProfilePageComponent },
@@ -57,7 +62,8 @@ const routes: Routes = [
   { path: 'big-five-quiz-detail', component: BfQuizDetailPageComponent },
 
   //Quizes attempt pages link
-  { path: 'mbti-quiz-attempt', component: MbtiQuizAttemptPageComponent },
+
+  { path: 'mbti-quiz-attempt', component: MbtiQuizAttemptNewComponent },
   { path: 'disc-quiz-attempt', component: DiscQuizAttemptPageComponent },
   { path: 'holland-quiz-attempt', component: HollandQuizAttemptPageComponent },
   { path: 'big-five-quiz-attempt', component: BfQuizAttemptPageComponent },

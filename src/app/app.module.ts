@@ -1,3 +1,4 @@
+import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
 import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
@@ -103,6 +104,8 @@ import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmissi
 //psy links
 import { BarChartComponent } from './common-components/bar-chart/bar-chart.component';
 import { PsyModule } from './psy/psy.module';
+import { LoginRegisterMainComponent } from './login-register-main/login-register-main.component';
+import { MbtiQuizAttemptNewComponent } from './mbti-quiz-attempt-new/mbti-quiz-attempt-new.component';
 
 @NgModule({
   declarations: [
@@ -160,6 +163,9 @@ import { PsyModule } from './psy/psy.module';
     ContentMenuComponent,
     SchoolNewsComponent,
     AddmissionNewsDetailComponent,
+    LoginRegisterMainComponent,
+    MbtiQuizAttemptNewComponent,
+    QuestionComponent,
   ],
   imports: [
     FormsModule,

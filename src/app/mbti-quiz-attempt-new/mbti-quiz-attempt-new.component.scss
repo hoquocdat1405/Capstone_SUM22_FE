@@ -1,0 +1,17 @@
+.test-container {
+  background-color: #252c4a;
+  display: flex;
+  flex-direction: column;
+  //   justify-content: center;
+  align-items: center;
+}
+
+app-question {
+  width: 60%;
+}
+
+@media (max-width: 1000px) {
+  app-question {
+    width: 90%;
+  }
+}

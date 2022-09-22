@@ -1,97 +1,107 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .main {
-    background-color: #126369;
-    width: 360px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    height:550px;
-    align-items: center;
-    justify-content: center;
-    transition: margin 1s;
+  background-color: #126369;
+  width: 360px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  align-items: center;
+  justify-content: center;
+  transition: margin 1s;
 }
 
-::placeholder { 
-    color: white;
-    opacity: 0.8;
-  }
-
-input:not(.checkbox, .btn-submit){
-    display: block;
-    width: 100%;
-    margin: 40px auto;
-    background-color: #126369;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding: 10px;
+::placeholder {
+  color: white;
+  opacity: 0.8;
 }
 
-.btn-submit{
-    margin: 20px auto;
-    display: block;
-    background-color:#1D8990;
-    color: #fff;
-    border:none;
-    padding: 10px;
-    width:100%;
+input:not(.checkbox, .btn-submit) {
+  display: block;
+  width: 100%;
+  margin: 40px auto;
+  background-color: #126369;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 10px;
 }
 
-.other-login img:hover{
-    opacity: 0.8;
-    cursor: pointer;
-}
-.btn-submit:hover{
-    opacity: 0.8;
-    cursor: pointer;
-}
-
-p{
-    color: #fff;
-    margin: 0;
-    text-align: center;
+.btn-submit {
+  margin: 20px auto;
+  display: block;
+  background-color: #1d8990;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  width: 100%;
 }
 
-img{
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    margin: 5px;
+.other-login img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.btn-submit:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
-.other-login{
-    flex-direction: row;
-    margin-top: 10px
+p {
+  color: #fff;
+  margin: 0;
+  text-align: center;
 }
 
-.forget-password,.or{
-    font-size:15px;
-    text-align: right;
-    color:#fff;
-    font-weight: normal;
-    text-decoration: none;
+img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
 }
 
-.forget-password:hover{
-    opacity: 0.8;
-
+.other-login {
+  flex-direction: row;
+  margin-top: 10px;
 }
 
-.items{
-    width: 80%;
+.forget-password,
+.or {
+  font-size: 15px;
+  text-align: right;
+  color: #fff;
+  font-weight: normal;
+  text-decoration: none;
 }
 
-.create-page-button{
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
+.forget-password:hover {
+  opacity: 0.8;
 }
 
-.create-page-button:hover{
-    opacity: 0.8;
+.items {
+  width: 80%;
+}
+
+.create-page-button {
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.create-page-button:hover {
+  opacity: 0.8;
+}
+
+input {
+  color: #fff;
+  outline-color: #fff;
+  outline-width: 1px;
+  //   outline: none;
+  pointer-events: none;
 }
