@@ -11,7 +11,20 @@ export class LoginRegisterMainComponent implements OnInit {
   ngOnInit() {}
 
   changePosition() {
-    var infoContainer = document.querySelector('.info-container');
-    infoContainer?.classList.toggle('toggle');
+    console.log(window.innerWidth);
+    if (window.innerWidth <= 800) {
+      var registerContainer = document.querySelector(
+        '.register-form'
+      ) as HTMLDivElement;
+      var loginContainer = document.querySelector(
+        '.login-form'
+      ) as HTMLDivElement;
+
+      registerContainer?.classList.toggle('active');
+      loginContainer?.classList.toggle('active');
+    } else {
+      var infoContainer = document.querySelector('.info-container');
+      infoContainer?.classList.toggle('toggle');
+    }
   }
 }

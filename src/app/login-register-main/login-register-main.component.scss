@@ -181,14 +181,19 @@ input {
   .login-register-container {
     display: flex;
     overflow: hidden;
+    // position: relative;
   }
 
   .register-form {
-    display: none;
     flex-direction: column;
     justify-content: center;
     padding: 30px 20px 30px;
-    width: 100%;
+    min-width: 100%;
+    transform: translateX(100%);
+  }
+
+  .register-form.active {
+    transform: translateX(-100%);
   }
 
   .login-form {
@@ -196,8 +201,11 @@ input {
     flex-direction: column;
     justify-content: center;
     padding: 30px 20px 30px;
+    min-width: 100%;
   }
-
+  .login-form.active {
+    transform: translateX(-100%);
+  }
   .input-div {
     width: 100%;
   }
@@ -214,11 +222,11 @@ input {
     text-align: center;
   }
 
-  .info-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  // .info-form {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
 }
 
 @media (min-width: 800px) and (max-width: 1300px) {
