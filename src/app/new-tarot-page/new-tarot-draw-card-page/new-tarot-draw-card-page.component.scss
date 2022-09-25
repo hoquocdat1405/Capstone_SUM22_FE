@@ -1,17 +1,24 @@
-$card-size: 15vw;
-$card-size-res-1024: 28vw;
+$card-size: 14em;
+$card-size-res-1024: 16em;
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
 
 .page-container {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-image: url("../../../assets/img/tarots/bgBlur.jpg");
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  position: relative;
 }
 
 .overlay {
@@ -31,37 +38,58 @@ $card-size-res-1024: 28vw;
   transform: none !important;
 }
 
+.zindex1 {
+  z-index: 1;
+}
+
 .wrapper {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: $card-size;
+  aspect-ratio: 1 / 1.64;
   flex-direction: column;
-  gap: 4vw;
   perspective: 600px;
-  overflow-y: scroll;
-  padding: 0 4vw;
-  box-sizing: content-box;
-  margin-bottom: 4vh;
-  z-index: 4;
+  margin-top: 15em;
 }
 
 .wrapper .card-wrapper {
   position: absolute;
   width: $card-size;
   aspect-ratio: 1 / 1.64;
-  bottom: 20h;
-  -webkit-box-shadow: -24px 0px 17px -2px rgba(0, 0, 0, 0.79);
-  box-shadow: -24px 0px 17px -2px rgba(0, 0, 0, 0.79);
-  border-radius: 10px;
+  // -webkit-box-shadow: -15px -5px 22px -7px #000000;
+  // box-shadow: -15px -5px 22px -7px #000000;
   transform-style: preserve-3d;
   cursor: pointer;
+  transition: 0.5s;
+  transform-origin: bottom;
 }
 
 .card-wrapper img {
   width: $card-size;
+}
+
+.btn {
+  background-image: linear-gradient(to right, #8e5c20 0%, #ffd79c 100%);
+  // margin: 10px;
+  padding: 1em 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: -10px -10px 20px 2px rgba(49, 49, 49, 0.4);
+  border-radius: 10px;
+  position: absolute;
+  bottom: -10em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  border: none;
+  width: 10em;
+}
+
+.btn:hover {
+  background-position: right center;
+  text-decoration: none;
 }
 
 .face {
@@ -77,91 +105,89 @@ $card-size-res-1024: 28vw;
 }
 
 .wrapper .card-wrapper:nth-child(1) {
-  transform: rotate(-55deg);
-  transform-origin: 50% 100%;
+  transform: translate(0px, 0px);
+  box-shadow: -15px -5px 22px -7px #000000;
 }
 
 .wrapper .card-wrapper:nth-child(2) {
-  transform: rotate(-30deg);
-  transform-origin: 50% 100%;
+  transform: translate(2px, 2px);
+}
+
+.wrapper .card-wrapper:nth-child(3) {
+  transform: translate(4px, 4px);
 }
 
 .wrapper .card-wrapper:nth-child(4) {
-  transform: rotate(30deg);
-  transform-origin: 50% 100%;
+  transform: translate(6px, 6px);
 }
 
 .wrapper .card-wrapper:nth-child(5) {
-  transform: rotate(55deg);
-  transform-origin: 50% 100%;
+  transform: translate(8px, 8px);
 }
 
-// Card Hover
-// .wrapper .card-wrapper:nth-child(1):hover {
-//   transform: rotate(-55deg) translateY(-10vh);
-//   transform-origin: 50% 100%;
-// }
-
-// .wrapper .card-wrapper:nth-child(2):hover {
-//   transform: rotate(-30deg) translateY(-10vh);
-//   transform-origin: 50% 100%;
-// }
-
-// .wrapper .card-wrapper:nth-child(3):hover {
-//   transform: translateY(-10vh);
-// }
-
-// .wrapper .card-wrapper:nth-child(4):hover {
-//   transform: rotate(30deg) translateY(-10vh);
-//   transform-origin: 50% 100%;
-// }
-
-// .wrapper .card-wrapper:nth-child(5):hover {
-//   transform: rotate(55deg) translateY(-10vh);
-//   transform-origin: 50% 100%;
-// }
-
-
-
-@keyframes transMid {
-  50% {
-    transform: translateY(0vh);
-  }
-
-  80% {
-    transform: translateY(-20vh);
-  }
-
-  100% {
-    transform: translateY(-20vh) rotateY(180deg);
-  }
+// Hover
+.wrapper:hover .hover-only:nth-child(1) {
+  transform: translate(0px, 0px) rotate(-55deg);
 }
 
-@keyframes transMid3 {
-  70% {
-    transform: translateY(-20vh);
-  }
-
-  100% {
-    transform: translateY(-20vh) rotateY(180deg);
-  }
+.wrapper:hover .hover-only:nth-child(2) {
+  transform: translate(0px, 0px) rotate(-30deg);
+  box-shadow: -15px -5px 22px -7px #000000;
 }
 
-.card-trans {
-  position: relative;
-  animation: transMid 2s forwards;
+.wrapper:hover .hover-only:nth-child(3) {
+  transform: translate(0px, 0px) rotate(0deg);
+  box-shadow: -15px -5px 22px -7px #000000;
 }
 
-.card-trans-3 {
-  position: relative;
-  animation: transMid3 2s forwards;
+.wrapper:hover .hover-only:nth-child(4) {
+  transform: translate(0px, 0px) rotate(30deg);
+  box-shadow: -15px -5px 22px -7px #000000;
+}
+
+.wrapper:hover .hover-only:nth-child(5) {
+  transform: translate(0px, 0px) rotate(55deg);
+  box-shadow: -15px -5px 22px -7px #000000;
+}
+
+.shadow-when-active {
+  box-shadow: -15px -5px 22px -7px #000000;
+}
+
+// Move Y while hovering
+.wrapper .hover-only:nth-child(1):hover {
+  transform: translate(0px, 0px) rotate(-55deg) translateY(-2em);
+}
+
+.wrapper .hover-only:nth-child(2):hover {
+  transform: translate(0px, 0px) rotate(-30deg) translateY(-2em);
+}
+
+.wrapper .hover-only:nth-child(3):hover {
+  transform: translate(0px, 0px) rotate(0deg) translateY(-2em);
+}
+
+.wrapper .hover-only:nth-child(4):hover {
+  transform: translate(0px, 0px) rotate(30deg) translateY(-2em);
+}
+
+.wrapper .hover-only:nth-child(5):hover {
+  transform: translate(0px, 0px) rotate(55deg) translateY(-2em);
+}
+
+// Click
+.card-rotate {
+  transform: translate(0px, 0px) rotate(0deg) rotateY(180deg) !important;
 }
 
 .tarot-desc-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 4;
   position: relative;
   top: -50vh;
-  z-index: 4;
-  margin-bottom: -50vh;
 }
 
 .text {
@@ -169,142 +195,164 @@ $card-size-res-1024: 28vw;
   color: #fff;
 }
 
+.btn-receive {
+  background-image: linear-gradient(to right, #603813 0%, #b29f94 51%, #603813 100%);
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  border: none;
+}
+
+.btn-receive:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
 .draw-again-button {
-  width: 10vw;
+  width: 8em;
   position: absolute;
   top: 7%;
   right: 10%;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
   animation: fadein1 1s forwards;
 }
 
-//Draw again animation
-
-.trans-back-1 {
-  position: relative;
-  animation: transback1 1s forwards;
+.detail-section {
+  width: 80%;
+  height: 80%;
+  background-image: url("../../../assets/img/tarots/overlay-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  box-shadow: -8px 8px 31px 0px rgb(43, 43, 43);
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px rgb(246, 255, 165);
+  z-index: 2;
 }
 
-@keyframes transback1 {
-  0% {
-    transform: translateY(-20vh) rotateY(180deg);
+.detail-section-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 4em;
+  padding-bottom: 1em;
+}
+
+.detail-section-wrapper .head-img {
+  margin: 2rem 0;
+  width: 12em;
+  aspect-ratio: 1 / 1.64;
+}
+
+.detail-section-wrapper .draw-again-img {
+  width: 6em;
+  object-fit: cover;
+  position: absolute;
+  top: 3em;
+  right: 3em;
+  cursor: pointer;
+}
+
+.detail-section-content {
+  overflow-y: scroll;
+  text-align: justify;
+  color: #fff;
+}
+
+// Horizontal Scrollbar
+.detail-section-content::-webkit-scrollbar {
+  width: 0;
+}
+
+#scrollPath {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#progressbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 10px;
+  background: linear-gradient(to top, #008aff, #00ffe7);
+  animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+
+  0%,
+  100% {
+    filter: hue-rotate(0deg);
   }
 
   50% {
-    transform: translateY(0vh) rotateY(0);
-  }
-
-  100% {
-    transform: rotate(-55deg);
+    filter: hue-rotate(360deg);
   }
 }
 
-
-.trans-back-2 {
-  position: relative;
-  animation: transback2 1s forwards;
+#progressbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #008aff, #00ffe7);
+  filter: blur(10px);
 }
 
-@keyframes transback2 {
-  0% {
-    transform: translateY(-20vh) rotateY(180deg);
-  }
-
-  50% {
-    transform: translateY(0vh) rotateY(0);
-  }
-
-  100% {
-    transform: rotate(-55deg);
-  }
+#progressbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #008aff, #00ffe7);
+  filter: blur(30px);
 }
 
-.trans-back-3 {
-  position: relative;
-  animation: transback3 1s forwards;
+.page-container-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url("../../../assets/img/tarots/bgBlur.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
 }
 
-@keyframes transback3 {
-  0% {
-    transform: translateY(-20vh) rotateY(180deg);
-  }
-
-  100% {
-    transform: translateY(0vh) rotateY(0);
-  }
+.btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 0em;
 }
 
-.trans-back-4 {
-  position: relative;
-  animation: transback4 1s forwards;
-}
-
-@keyframes transback4 {
-  0% {
-    transform: translateY(-20vh) rotateY(180deg);
-  }
-
-  50% {
-    transform: translateY(0vh) rotateY(0);
-  }
-
-  100% {
-    transform: rotate(30deg);
-  }
-}
-
-.trans-back-5 {
-  position: relative;
-  animation: transback5 1s forwards;
-}
-
-@keyframes transback5 {
-  0% {
-    transform: translateY(-20vh) rotateY(180deg);
-  }
-
-  50% {
-    transform: translateY(0vh) rotateY(0);
-  }
-
-  100% {
-    transform: rotate(55deg);
-  }
-}
-
-
-@keyframes fadein7 {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 0.7;
-  }
-}
-
-@keyframes fadein1 {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@media only screen and (max-width: 1025px) {
-  .wrapper .card-wrapper {
-      width: $card-size-res-1024;
-    }
-
-    .card-wrapper img {
-      width: $card-size-res-1024;
-    }
-
-    .draw-again-button {
-      width: 16vw;
-    }
+.receive-btn {
+  padding: 1em 3em;
+  border: none;
+  color: #fff;
+  background-color: #ae7839;
+  border-radius: 1em;
 }

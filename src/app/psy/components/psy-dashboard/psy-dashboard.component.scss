@@ -1,0 +1,133 @@
+.page-container {
+  font-size: 10px;
+  width: 100%;
+  min-height: 100%;
+}
+
+.header-title {
+  padding-left: 20px;
+  // padding-top: 20px;
+  font-size: 3em;
+  font-weight: 500;
+  color: #88B04B;
+}
+
+.card-box {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.card-box-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-box .card-wrapper {
+  position: relative;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 7px 25px rgba($color: #000000, $alpha: 0.08);
+}
+
+.card-box .card-wrapper .card-title {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5em;
+  color: #287bff;
+  margin: 0;
+}
+
+.card-box .card-wrapper .mat-divider {
+  border-top-color: #287bff;
+}
+
+.card-box .card-wrapper .card-number {
+  position: relative;
+  margin-top: 0.6em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-box .card-wrapper .card-number .card-number-main {
+  font-size: 3.5em;
+  font-weight: 600;
+  color: #000;
+}
+
+.card-box .card-wrapper .card-number .card-number-title {
+  font-size: 2em;
+  color: #000;
+  margin-left: 1em;
+}
+
+.card-box .card-wrapper:hover {
+  background-color: #287bff;
+}
+
+.card-box .card-wrapper:hover .card-title,
+.card-box .card-wrapper:hover .card-number {
+  color: #fff;
+}
+
+.card-box .card-wrapper:hover .mat-divider {
+  border-top-color: #fff;
+}
+
+// Chart
+
+.chart {
+  width: 100%;
+  padding: 0 20px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.chart .left-chart {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chart .left-chart .chart-title {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5em;
+  color: #287bff;
+}
+
+.chart .left-chart .chart-wrapper {
+  position: relative;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 78.75em) {
+  .card-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chart {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (max-width: 50em) {
+  .card-box {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

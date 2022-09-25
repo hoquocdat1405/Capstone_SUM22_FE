@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.5s;
+}
+
+.highlight-text {
+  color: #3bd4a6;
+  text-decoration: underline;
+  margin-left: 2px;
+}
+
+.highlight-text:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.login-register-body {
+  min-height: 100vh;
+  background-color: #088f8f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-register-container {
+  width: 85%;
+  display: flex;
+  position: relative;
+  z-index: 10;
+  margin: 40px 0;
+}
+
+// .login-register-container:after {
+//   content: "";
+//   position: absolute;
+//   width: 50%;
+//   height: 50%;
+//   right: 0px;
+//   bottom: 50px;
+//   transform: perspective(1200px) rotateY(-40deg);
+//   box-shadow: 40px 60px 10px rgba(157, 58, 53, 0.7);
+//   z-index: -1;
+// }
+
+.register-form {
+  width: 50%;
+  background-color: #f5f5f5;
+  padding: 0 50px;
+  flex: 1;
+  padding: 30px 100px 30px;
+}
+
+.login-form {
+  background-color: #f5f5f5;
+  width: 50%;
+  padding: 30px 100px 30px;
+  flex: 1;
+}
+
+.title-text {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.detail-title-text {
+  color: #b2ada6;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.input-div {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.label-input {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px 5px;
+}
+
+.remember-checkbox-div {
+  display: flex;
+  margin-top: 10px;
+}
+
+.remember-text {
+  margin: 0 5px;
+}
+
+.login-btn {
+  padding: 8px 25px;
+  border: none;
+  background-color: #3bd4a6;
+  color: white;
+  margin: 10px 0;
+}
+
+.register-btn {
+  padding: 8px 25px;
+  border: none;
+  background-color: #3bd4a6;
+  color: white;
+  margin: 10px 0;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+  opacity: 0.8;
+}
+
+.term-text {
+  width: 8 0%;
+  margin: 10px 0;
+}
+
+.register-text {
+  margin: 20px 0;
+}
+
+.input-icon {
+  position: relative;
+}
+.icon-input {
+  position: absolute;
+}
+
+.info-container {
+  width: 50%;
+  position: absolute;
+  flex: 1;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 100px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  transition: transform 0.5s;
+}
+
+.info-form {
+  width: 100%;
+}
+
+.info-title-text {
+  width: 80%;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.info-title-detail-text {
+  font-size: 18px;
+  color: #b2ada6;
+}
+
+.info-img {
+  margin: 20px auto;
+  width: 70%;
+}
+
+.info-container.toggle {
+  transform: translateX(-100%);
+}
+
+@media (max-width: 800px) {
+  .info-container {
+    display: none;
+  }
+
+  .login-register-container {
+    display: flex;
+    overflow: hidden;
+    // position: relative;
+  }
+
+  .register-form {
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 20px 30px;
+    min-width: 100%;
+    transform: translateX(100%);
+  }
+
+  .register-form.active {
+    transform: translateX(-100%);
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 20px 30px;
+    min-width: 100%;
+  }
+  .login-form.active {
+    transform: translateX(-100%);
+  }
+  .input-div {
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .title-text {
+    text-align: center;
+  }
+
+  .detail-title-text {
+    text-align: center;
+  }
+
+  // .info-form {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
+}
+
+@media (min-width: 800px) and (max-width: 1300px) {
+  .register-form {
+    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 20px 30px;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 20px 30px;
+  }
+
+  .info-container {
+    padding: 30px 20px 30px;
+  }
+
+  .info-title-text {
+    width: 100%;
+  }
+
+  .input-div {
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .info-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

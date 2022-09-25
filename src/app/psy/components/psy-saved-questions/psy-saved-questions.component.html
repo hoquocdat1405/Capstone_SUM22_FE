@@ -1,0 +1,68 @@
+<div class="page-container">
+  <div class="wrapper">
+    <button mat-raised-button color="primary" class="btn btn-create-new">
+      Tạo câu hỏi mới
+    </button>
+    <mat-form-field appearance="standard">
+      <mat-label>Bộ lọc</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ví dụ: SSG-Quiz_1"
+        #input
+      />
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tên bài Quiz</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Số câu hỏi</th>
+        <td mat-cell *matCellDef="let row">4</td>
+      </ng-container>
+
+      <!-- CreateDate Column -->
+      <ng-container matColumnDef="createDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ngày tạo</th>
+        <td mat-cell *matCellDef="let row">4</td>
+      </ng-container>
+
+      <!-- Edit Column -->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sửa câu hỏi</th>
+        <td mat-cell *matCellDef="let row"><mat-icon>edit</mat-icon></td>
+      </ng-container>
+
+      <!-- Delete Column -->
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Xoá câu hỏi</th>
+        <td mat-cell *matCellDef="let row"><mat-icon>delete</mat-icon></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[10, 25, 50, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+</div>

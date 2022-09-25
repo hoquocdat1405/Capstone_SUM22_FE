@@ -3,7 +3,8 @@
 </div>
 
 <div class="menu-content">
-  <a href="school/{{content}}" class="content-link" *ngFor="let content of contents">
-    <br/> <span class="mid-dot"> &middot;</span> {{content}}
-  </a>
+  <li class="content-link" *ngFor="let content of contents">
+    <!-- <br /> <span class="mid-dot"> &middot;</span>  -->
+    <a href="school/{{content}}">{{content}}</a>
+  </li>
 </div>

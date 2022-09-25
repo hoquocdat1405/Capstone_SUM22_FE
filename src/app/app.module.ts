@@ -1,3 +1,4 @@
+import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
 import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
@@ -88,12 +89,26 @@ import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component
 import { StaffModule } from './staff/staff.module';
 import { MajorListComponent } from './major-list/major-list.component';
 import { MajorInfoComponent } from './major-info/major-info.component';
+import { BfQuizResultDetailPageComponent } from './bf-quiz-result-detail-page/bf-quiz-result-detail-page.component';
+import { RandomTarotPageComponent } from './new-tarot-page/random-tarot-page/random-tarot-page.component';
+import { AstrologicalPageComponent } from './astrological-page/astrological-page.component';
+import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
+import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
 import { SchoolInfoPageComponent } from './school-info-page/school-info-page.component';
 
 //School's info page
 import { ContentMenuComponent } from './school-info-page/content-menu/content-menu.component';
 import { SchoolNewsComponent } from './school-info-page/school-news/school-news.component';
+import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
 
+//psy links
+import { BarChartComponent } from './common-components/bar-chart/bar-chart.component';
+import { PsyModule } from './psy/psy.module';
+import { LoginRegisterMainComponent } from './login-register-main/login-register-main.component';
+import { MbtiQuizAttemptNewComponent } from './mbti-quiz-attempt-new/mbti-quiz-attempt-new.component';
+
+import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
+import { JobListPageComponent } from './job-list-page/job-list-page.component';
 
 @NgModule({
   declarations: [
@@ -142,9 +157,21 @@ import { SchoolNewsComponent } from './school-info-page/school-news/school-news.
     NewTarotDrawCardPageComponent,
     TwelveAstrologicalPageDetailComponent,
     MajorDetailPageComponent,
+    BfQuizResultDetailPageComponent,
+    RandomTarotPageComponent,
+    AstrologicalPageComponent,
+    CfAstrologyPageComponent,
+    MonaAstrologicalPageComponent,
     SchoolInfoPageComponent,
     ContentMenuComponent,
-    SchoolNewsComponent
+    SchoolNewsComponent,
+    AddmissionNewsDetailComponent,
+    LoginRegisterMainComponent,
+    MbtiQuizAttemptNewComponent,
+    QuestionComponent,
+    JobDetailPageComponent,
+    JobListPageComponent,
+    // BarChartComponent
   ],
   imports: [
     FormsModule,
@@ -167,8 +194,9 @@ import { SchoolNewsComponent } from './school-info-page/school-news/school-news.
     MatTreeModule,
     MatDividerModule,
     StaffModule,
+    PsyModule,
   ],
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

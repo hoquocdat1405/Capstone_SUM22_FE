@@ -11,20 +11,25 @@
 
     <div class="answer-container-column">
       <div class="answer-container-row">
-        <img src="assets/img/disagree.png" alt="" class="big5-selection-img" />
+
         <div class="answer-checkbox">
+          <img src="assets/img/disagree.png" alt="" class="big5-selection-img" />
           <input type="radio" name="answer" id="radio0" class="radio" (click)="chooseAnswer()" />
           <input type="radio" name="answer" id="radio1" class="radio" (click)="chooseAnswer()" />
           <input type="radio" name="answer" id="radio2" class="radio" (click)="chooseAnswer()" />
           <input type="radio" name="answer" id="radio3" class="radio" (click)="chooseAnswer()" />
           <input type="radio" name="answer" id="radio4" class="radio" (click)="chooseAnswer()" />
+          <img src="assets/img/agree.png" alt="" class="big5-selection-img" />
+
         </div>
-        <img src="assets/img/agree.png" alt="" class="big5-selection-img" />
-      </div>
-      <div class="arrow-container-row">
+
         <img class="arrow-left" src="assets/img/left-arrow.png" alt="" (click)="choosePrevQuestion()" />
-        <img class="arrow-left" src="assets/img/right-arrow.png" alt="" (click)="chooseNextQuestion()" />
+        <img class="arrow-right" src="assets/img/right-arrow.png" alt="" (click)="chooseNextQuestion()" />
       </div>
+      <!-- <div class="arrow-container-row"> -->
+      <!-- <img class="arrow-left" src="assets/img/left-arrow.png" alt="" (click)="choosePrevQuestion()" />
+      <img class="arrow-left" src="assets/img/right-arrow.png" alt="" (click)="chooseNextQuestion()" /> -->
+      <!-- </div> -->
       <p class="number-question"><span>{{currentQuestion+1}}</span>/{{questions.length}}</p>
 
     </div>
