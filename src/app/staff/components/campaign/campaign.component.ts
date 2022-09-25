@@ -32,9 +32,9 @@ export class CampaignComponent implements AfterViewInit {
   displayedColumns: string[] = [
     'state',
     'name',
-    'status',
     'pendingApplication',
     'completion',
+    'status',
   ];
 
   constructor(private router:Router) {}
