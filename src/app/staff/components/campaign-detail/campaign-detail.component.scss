@@ -7,7 +7,7 @@
 }
 
 .toolbar {
-    background-color: #FFF;
+    background-color: #f3f4f8;
 }
 
 .toolbar-header {
@@ -53,15 +53,24 @@
     background-color: #101110 !important;
 }
 
+.table-section{
+    margin-top: 4%;
+}
+
+.table-header {
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.news-table,
+.application-table {
+    
+    margin: 1% 1%;
+}
+
 table {
     width: 100%;
 }
-
-
-
-
-
-
 
 .text-blue {
     color: #4285f4;

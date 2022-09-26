@@ -2,7 +2,7 @@
   <div class="toolbar">
     <div class="logo-section">
       <img
-        src="../../assets/img/qick-text-white.png"
+        src="../../assets/img/qick-text-black.png"
         alt="qick logo"
         class="logo-brand"
       />
@@ -42,7 +42,7 @@
           [routerLink]="['/staff/dashboard']"
           routerLinkActive="active"
           ><mat-icon>home</mat-icon
-          ><span class="link-label" *ngIf="opened">Trang chủ</span>
+          ><span class="link-label" *ngIf="opened">Tổng quan</span>
         </mat-list-item>
 
         <mat-list-item [routerLink]="['/staff/plan']" routerLinkActive="active"
@@ -60,7 +60,7 @@
             >Trường học</span
           ></mat-list-item
         >
-
+<!-- 
         <mat-list-item
           [routerLink]="['/staff/majors']"
           routerLinkActive="active"
@@ -68,7 +68,7 @@
           ><span class="link-label" *ngIf="opened"
             >Ngành đào tạo</span
           ></mat-list-item
-        >
+        > -->
 
         <mat-list-item
           [routerLink]="['/staff/campaign']"

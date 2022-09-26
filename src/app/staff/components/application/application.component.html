@@ -1,3 +1,31 @@
-<p>
-  application works!
-</p>
+<!-- 
+  TODO : 
+  - search student maybe base on categories : filter (GPA > ??) or (complete ??)
+  - sorting base on : (status) : <pending> <approved> <rejected> <all>
+
+  - using table layout to display : 
+    + student's img 
+    + name 
+    + spec
+    + GPA ?
+    + status
+    + action : <detail>
+
+-->
+
+<div class="body">
+  <mat-toolbar class="toolbar"><span>Hồ sơ ứng tuyển</span></mat-toolbar>
+  <div class="page-container">
+    <div class="sorting-section">
+      <button class="sorting-btn active">Chờ duyệt</button>
+      <button class="sorting-btn">Chấp thuận</button>
+      <button class="sorting-btn">Từ chối</button>
+      <button class="sorting-btn">Tất cả</button>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="search-section">
+      <input type="text" placeholder="Nội dung tìm kiếm" class="search-input" />
+    </div>
+  </div>
+</div>
