@@ -13,6 +13,12 @@
       />
     </div>
     <div class="school-logo-container">
+      <!--
+        TODO : 
+        - add edit banner img function
+        - add edit logo function
+        - 
+      -->
       <img
         class="school-logo"
         src="https://downloadlogomienphi.com/sites/default/files/logos/download-logo-vector-dai-hoc-fpt-mien-phi.jpg"
@@ -21,6 +27,11 @@
       <p class="school-name">University ABC</p>
     </div>
 
+
+    <!-- 
+      TODO : 
+      - for each section , put info inputs into a expandable panel
+    -->
     <div class="info-form-section">
       <div class="form-section-header-container">
         <p class="form-section-header">Thông tin tổng quan</p>
@@ -47,7 +58,7 @@
         </div>
         <div class="form-content-item row">
           <span class="content-item-name col-4">Số điện thoại :</span>
-
+          
           <input
             class="content-item-input col-6"
             type="text"
@@ -68,9 +79,21 @@
       </div>
     </div>
 
+    <!-- include majors tab inside this component
+      - add new major
+      - add new spec of a major
+      - find a way to display all majors and theirs specs
+    -->
+
     <div class="info-form-section">
       <div class="form-section-header-container">
         <p class="form-section-header">Thông tin tư vấn</p>
+      </div>
+
+      <div class="faq-search-section">
+        <button mat-flat-button class="create-new-btn">
+          <mat-icon>add</mat-icon>Câu hỏi mới
+        </button>
       </div>
 
       <div class="majors-section">

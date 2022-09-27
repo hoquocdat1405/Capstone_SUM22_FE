@@ -4,11 +4,13 @@
 }
 
 .body {
+    background-color: #FAF9F5;
     display: block;
     overflow-y: overlay;
 }
 
 mat-sidenav-content{
+    background-color: #FAF9F5;
     overflow-y: overlay;
 }
 
@@ -34,7 +36,7 @@ mat-sidenav-content{
 }
 
 .side-nav {
-    background-color: #051f20;
+    background-color: #FAF9F5;
     // width: 15vw;
 }
 
@@ -42,8 +44,13 @@ mat-sidenav-content{
     height: 90vh;
 }
 
+.toggle-btn{
+    color: #000;
+}
+
 .action-list mat-list-item {
-    color: #FFF;
+    color: #000;
+    font-weight: 500;
     margin: 3% auto;
     font-size: 0.8vw;
 
@@ -53,7 +60,10 @@ mat-sidenav-content{
 }
 
 .mat-list-item.active {
-    border-left: solid 7px #a6a6a6 !important;
+    // border-right: solid 7px #a6a6a6 !important;
+    background-color: #051f20;
+    border-radius: 50px;
+    color: #FAF9F5 !important;
 }
 
 .action-list mat-icon {
@@ -71,7 +81,7 @@ mat-sidenav-content{
 .toolbar {
     display: flex;
     width: 100vw;
-    background-color: #051f20;
+    background-color: #FAF9F5;
 }
 
 .user-pic {

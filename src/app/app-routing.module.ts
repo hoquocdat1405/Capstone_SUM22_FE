@@ -1,4 +1,5 @@
 import { DiscQuizAttemptNewComponent } from './disc-quiz-attempt-new/disc-quiz-attempt-new.component';
+import { AdmissionListComponent } from './admission-list/admission-list.component';
 import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
 import { MbtiQuizAttemptNewComponent } from './mbti-quiz-attempt-new/mbti-quiz-attempt-new.component';
 import { LoginRegisterMainComponent } from './login-register-main/login-register-main.component';
@@ -119,6 +120,7 @@ const routes: Routes = [
 
   //addmission-news
   { path: 'addmission-news-detail', component: AddmissionNewsDetailComponent },
+  { path: 'admission-list', component: AdmissionListComponent },
   //Psy links
 
   //Job detail

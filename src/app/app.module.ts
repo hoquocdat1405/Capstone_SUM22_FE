@@ -111,6 +111,13 @@ import { LoginRegisterMainComponent } from './login-register-main/login-register
 
 import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
 import { JobListPageComponent } from './job-list-page/job-list-page.component';
+import { AdmissionListComponent } from './admission-list/admission-list.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -175,6 +182,7 @@ import { JobListPageComponent } from './job-list-page/job-list-page.component';
     JobListPageComponent,
     DiscQuizAttemptNewComponent,
     DiscQuestionComponent,
+    AdmissionListComponent,
   ],
   imports: [
     FormsModule,
@@ -198,6 +206,12 @@ import { JobListPageComponent } from './job-list-page/job-list-page.component';
     MatDividerModule,
     StaffModule,
     PsyModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatPaginatorModule,
   ],
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],

@@ -1,0 +1,32 @@
+.body {
+  background-color: #f1f2f6;
+}
+
+.toolbar {
+  background: #f3f4f8;
+  font-size: 1.1rem;
+}
+.page-container {
+  width: 96%;
+  margin: 0 2%;
+  height: 100vh;
+}
+
+.sorting-btn{
+    background-color: transparent;
+    border: none;
+    margin-right: 2%;
+    font-size: 15px;
+}
+
+.sorting-btn.active{
+    border-bottom: 2px solid #051f20;
+    font-weight: 500;
+}
+.search-input{
+    border: none;
+    /* border-radius: 10px; */
+    /* padding: 10px; */
+    border-bottom: 1px solid #000;
+    background-color: transparent;
+}
