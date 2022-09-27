@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
+  currentQuestion = 0;
   constructor() {}
 
   ngOnInit() {}
@@ -40,6 +41,32 @@ export class QuestionComponent implements OnInit {
       questionText: 'What does HTML stand for5?',
       answers: ['Hypertext 4444', 'Hypertext 6666'],
     },
+
+    {
+      id: 6,
+      questionText: 'What does HTML stand for5?',
+      answers: ['Hypertext 4444', 'Hypertext 6666'],
+    },
+    {
+      id: 7,
+      questionText: 'What does HTML stand for5?',
+      answers: ['Hypertext 4444', 'Hypertext 6666'],
+    },
+    {
+      id: 8,
+      questionText: 'What does HTML stand for5?',
+      answers: ['Hypertext 4444', 'Hypertext 6666'],
+    },
+    {
+      id: 9,
+      questionText: 'What does HTML stand for5?',
+      answers: ['Hypertext 4444', 'Hypertext 6666'],
+    },
+    {
+      id: 10,
+      questionText: 'What does HTML stand for5?',
+      answers: ['Hypertext 4444', 'Hypertext 6666'],
+    },
   ];
 
   userAnswers: { id: number; answer: string }[] = [];
@@ -64,30 +91,39 @@ export class QuestionComponent implements OnInit {
         i + 1
       }) .answer-container .answer:nth-child(${j + 1})`
     );
-
-    // if (activeAnswer !== userAnswer) {
     userAnswer?.classList.add('active');
-    // }
 
     var answerText = document.querySelector(
       `.question-container:nth-child(${
         i + 1
       }) .answer-container .answer:nth-child(${j + 1}) .answer-text`
     ) as HTMLElement;
+    this.currentQuestion = i + 1;
     this.storeUserAnswer(i, answerText?.innerText);
-    this.changeQuestion(i + 1);
-    // this.checkUserAnswer();
+    this.changeQuestion(i + 1, 'click');
+
+    var questionNumber = document.querySelector(
+      `.question-number:nth-child(${i + 1})`
+    );
+    console.log(questionNumber);
+    questionNumber?.classList.add('done');
   }
 
   storeUserAnswer(index: number, answerText: string) {
     this.userAnswers[index].answer = answerText;
   }
 
-  changeQuestion(i: number) {
+  changeQuestion(i: number, method: string) {
     var currentAnswerContainer = document.querySelector(
       `.question-container:nth-child(${i + 1})`
     );
-    currentAnswerContainer?.scrollIntoView({ behavior: 'smooth' });
+
+    if (method === 'click') {
+      currentAnswerContainer?.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (method === 'change') {
+      currentAnswerContainer?.scrollIntoView();
+    }
   }
 
   checkUserAnswer(): boolean {
@@ -98,12 +134,29 @@ export class QuestionComponent implements OnInit {
 
       if (this.userAnswers[i].answer === '') {
         txtError?.classList.add('active');
-        this.changeQuestion(i);
+        this.changeQuestion(i, 'click');
         return false;
       } else {
         txtError?.classList.remove('active');
       }
     }
     return true;
+  }
+
+  chooseOption(event: any) {
+    var userChooseOption = event.target.value;
+    var container = document.querySelector('.container-main');
+    if (userChooseOption === 'single') {
+      container?.classList.add('single');
+      this.changeQuestion(this.currentQuestion, 'change');
+    }
+    if (userChooseOption === 'multiple') {
+      container?.classList.remove('single');
+      this.changeQuestion(this.currentQuestion, 'change');
+    }
+  }
+
+  onResize(event: any) {
+    this.changeQuestion(this.currentQuestion + 1, 'change');
   }
 }

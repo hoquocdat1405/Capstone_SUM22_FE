@@ -1,16 +1,17 @@
-<div class="question-container" *ngFor="let question of questions;index as i">
-  <p class="question-index">Question <span>{{question.id}}</span></p>
-  <span class="question-total">/{{questions.length}}</span>
-  <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
-  <div class="horizontal-line"></div>
-  <p class="question-text">{{question.questionText}}</p>
+<div class="container-main single" (window:resize)="onResize($event)">
+  <div class="question-container" *ngFor="let question of questions;index as i">
+    <p class="question-index">Question <span>{{question.id}}</span></p>
+    <span class="question-total">/{{questions.length}}</span>
+    <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
+    <div class="horizontal-line"></div>
+    <p class="question-text">{{question.questionText}}</p>
 
-  <div class="answer-container">
-    <div class="answer" (click)="chooseAnswer(i,j)" *ngFor="let answer of questions[i].answers;index as j">
-      <p class="answer-text">{{answer}}</p>
-      <i class="icon-check fa fa-check-circle-o" aria-hidden="true"></i>
+    <div class="answer-container">
+      <div class="answer" (click)="chooseAnswer(i,j)" *ngFor="let answer of questions[i].answers;index as j">
+        <p class="answer-text">{{answer}}</p>
+        <i class="icon-check fa fa-check-circle-o" aria-hidden="true"></i>
+      </div>
     </div>
   </div>
 </div>
-
-<button (click)="checkUserAnswer()">Submit</button>
+<button class="btn-result" (click)="checkUserAnswer()">Kết quả</button>
