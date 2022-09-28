@@ -1,3 +1,5 @@
+import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
+import { DiscQuestionComponent } from './disc-quiz-attempt-new/disc-question/disc-question.component';
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
 import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
@@ -69,6 +71,8 @@ import { DiscQuizAttemptPageComponent } from './disc-quiz-attempt-page/disc-quiz
 import { BfQuizAttemptPageComponent } from './bf-quiz-attempt-page/bf-quiz-attempt-page.component';
 import { MbtiQuizAttemptPageComponent } from './mbti-quiz-attempt-page/mbti-quiz-attempt-page.component';
 import { HollandQuizAttemptPageComponent } from './holland-quiz-attempt-page/holland-quiz-attempt-page.component';
+import { MbtiQuizAttemptNewComponent } from './mbti-quiz-attempt-new/mbti-quiz-attempt-new.component';
+import { DiscQuizAttemptNewComponent } from './disc-quiz-attempt-new/disc-quiz-attempt-new.component';
 
 //result pages
 import { MbtiQuizResultDetailPageComponent } from './mbti-quiz-result-detail-page/mbti-quiz-result-detail-page.component';
@@ -98,10 +102,22 @@ import { SchoolInfoPageComponent } from './school-info-page/school-info-page.com
 //School's info page
 import { ContentMenuComponent } from './school-info-page/content-menu/content-menu.component';
 import { SchoolNewsComponent } from './school-info-page/school-news/school-news.component';
+import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
 
 //psy links
 import { BarChartComponent } from './common-components/bar-chart/bar-chart.component';
 import { PsyModule } from './psy/psy.module';
+import { LoginRegisterMainComponent } from './login-register-main/login-register-main.component';
+
+import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
+import { JobListPageComponent } from './job-list-page/job-list-page.component';
+import { AdmissionListComponent } from './admission-list/admission-list.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -158,7 +174,15 @@ import { PsyModule } from './psy/psy.module';
     SchoolInfoPageComponent,
     ContentMenuComponent,
     SchoolNewsComponent,
-    // BarChartComponent
+    AddmissionNewsDetailComponent,
+    LoginRegisterMainComponent,
+    MbtiQuizAttemptNewComponent,
+    QuestionComponent,
+    JobDetailPageComponent,
+    JobListPageComponent,
+    DiscQuizAttemptNewComponent,
+    DiscQuestionComponent,
+    AdmissionListComponent,
   ],
   imports: [
     FormsModule,
@@ -181,9 +205,15 @@ import { PsyModule } from './psy/psy.module';
     MatTreeModule,
     MatDividerModule,
     StaffModule,
-    PsyModule
+    PsyModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatPaginatorModule,
   ],
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

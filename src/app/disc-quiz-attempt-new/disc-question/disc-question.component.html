@@ -1,0 +1,27 @@
+<div class="container-main single" (window:resize)="onResize($event)">
+    <div class="question-container" *ngFor="let question of questions;index as i">
+        <p class="question-index">Question <span>{{question.id}}</span></p>
+        <span class="question-total">/{{questions.length}}</span>
+        <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
+        <div class="horizontal-line"></div>
+
+        <div class="flex-row">
+            <p class="same-label">Giống bạn nhất</p>
+            <p class="different-label">Khác bạn nhất</p>
+        </div>
+        <div class="answer-container">
+            <div class="answer-row" *ngFor="let answer of questions[i].answers;index as j">
+                <label class="input-container">
+                    <input class="disc-same" type="radio">
+                    <span class="checkmark" (click)="chooseAnswer(i,j,$event)"></span>
+                </label>
+                <p class="answer">{{answer}}</p>
+                <label class="input-container">
+                    <input class="disc-differ" type="radio">
+                    <span class="checkmark-differ" (click)="chooseAnswer(i,j,$event)"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <button class="btn-result" (click)="checkUserAnswer()">Kết quả</button> -->

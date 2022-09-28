@@ -10,7 +10,13 @@
 }
 
 .section-header {
+  position: relative;
   padding-top: 3%;
+}
+
+.section-header .view-all-link {
+  position: absolute;
+  right: 5%;
 }
 
 .section-header h3 {

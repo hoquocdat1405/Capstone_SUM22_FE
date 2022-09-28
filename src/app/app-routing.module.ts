@@ -1,3 +1,12 @@
+import { DiscQuizAttemptNewComponent } from './disc-quiz-attempt-new/disc-quiz-attempt-new.component';
+import { AdmissionListComponent } from './admission-list/admission-list.component';
+import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
+import { MbtiQuizAttemptNewComponent } from './mbti-quiz-attempt-new/mbti-quiz-attempt-new.component';
+import { LoginRegisterMainComponent } from './login-register-main/login-register-main.component';
+
+import { JobListPageComponent } from './job-list-page/job-list-page.component';
+import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
+
 import { MonaAstrologicalPageComponent } from './mona-astrological-page/mona-astrological-page.component';
 import { CfAstrologyPageComponent } from './cf-astrology-page/cf-astrology-page.component';
 import { AstrologicalPageComponent } from './astrological-page/astrological-page.component';
@@ -32,6 +41,8 @@ import { DiscQuizResultDetailPageComponent } from './disc-quiz-result-detail-pag
 import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-detail-page/holland-quiz-result-detail-page.component';
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 import { SchoolInfoPageComponent } from './school-info-page/school-info-page.component';
+import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
+
 const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -41,6 +52,7 @@ const routes: Routes = [
 
   //loginpage
   { path: 'login', component: LoginRegisterPageComponent },
+  { path: 'login-main', component: LoginRegisterMainComponent },
 
   //User profile page
   { path: 'profile', component: UserProfilePageComponent },
@@ -56,8 +68,9 @@ const routes: Routes = [
   { path: 'big-five-quiz-detail', component: BfQuizDetailPageComponent },
 
   //Quizes attempt pages link
-  { path: 'mbti-quiz-attempt', component: MbtiQuizAttemptPageComponent },
-  { path: 'disc-quiz-attempt', component: DiscQuizAttemptPageComponent },
+
+  { path: 'mbti-quiz-attempt', component: MbtiQuizAttemptNewComponent },
+  { path: 'disc-quiz-attempt', component: DiscQuizAttemptNewComponent },
   { path: 'holland-quiz-attempt', component: HollandQuizAttemptPageComponent },
   { path: 'big-five-quiz-attempt', component: BfQuizAttemptPageComponent },
 
@@ -94,17 +107,30 @@ const routes: Routes = [
   { path: 'major-list', component: MajorListComponent },
   { path: 'major-info', component: MajorInfoComponent },
 
-
   //School
   { path: 'school', component: SchoolInfoPageComponent },
 
-  //Psy links
   {
     path: 'psy',
-    loadChildren: () =>
-      import('./psy/psy.module').then((m) => m.PsyModule),
+    loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),
   },
+  //Job detail
+  { path: 'job-detail', component: JobDetailPageComponent },
+  { path: 'job-list', component: JobListPageComponent },
 
+  //addmission-news
+  { path: 'addmission-news-detail', component: AddmissionNewsDetailComponent },
+  { path: 'admission-list', component: AdmissionListComponent },
+  //Psy links
+
+  //Job detail
+  { path: 'job-detail', component: JobDetailPageComponent },
+  { path: 'job-list', component: JobListPageComponent },
+
+  {
+    path: 'psy',
+    loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),
+  },
 ];
 
 @NgModule({
@@ -115,4 +141,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

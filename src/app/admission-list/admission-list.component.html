@@ -1,0 +1,156 @@
+<div class="page-container">
+  <app-nav></app-nav>
+  <div class="wrapper">
+    <div class="search-section">
+      <div class="search-input-row">
+        <div class="search-input-field">
+          <div class="search-title">Tìm theo trường</div>
+          <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Tên trường ...</mat-label>
+              <input
+                type="text"
+                placeholder="Nhập"
+                aria-label="Number"
+                matInput
+                [formControl]="myControl"
+                [matAutocomplete]="auto"
+              />
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredOptions | async"
+                  [value]="option"
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="filter-by-test">
+          <div class="search-title">Lọc theo bài test</div>
+          <mat-form-field appearance="fill">
+            <mat-label>Toppings</mat-label>
+            <mat-select [formControl]="toppings" multiple>
+              <mat-select-trigger>
+                {{toppings.value?.[0] || ''}}
+                <span
+                  *ngIf="(toppings.value?.length || 0) > 1"
+                  class="example-additional-selection"
+                >
+                  (+{{ (toppings.value?.length || 0) - 1 }}
+                  {{ toppings.value?.length === 2 ? "other" : "others" }})
+                </span>
+              </mat-select-trigger>
+              <mat-option
+                *ngFor="let topping of toppingList"
+                [value]="topping"
+                >{{ topping }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="card-list">
+      <div class="card-item">
+        <img
+          src="../../assets/img/schoolImg/fpt-logo.png"
+          alt=""
+          class="card-item-img"
+        />
+        <div class="card-item-right">
+          <div class="card-item-title">Tuyển sinh Title</div>
+          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
+          <div class="card-item-desc">
+            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
+            perspiciatis totam eligendi error dolor voluptate voluptatem
+            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
+            dolore. Expedita, qui. Animi, voluptatem!
+          </div>
+        </div>
+      </div>
+      <div class="card-item">
+        <img
+          src="../../assets/img/schoolImg/fpt-logo.png"
+          alt=""
+          class="card-item-img"
+        />
+        <div class="card-item-right">
+          <div class="card-item-title">Tuyển sinh Title</div>
+          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
+          <div class="card-item-desc">
+            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
+            perspiciatis totam eligendi error dolor voluptate voluptatem
+            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
+            dolore. Expedita, qui. Animi, voluptatem!
+          </div>
+        </div>
+      </div>
+      <div class="card-item">
+        <img
+          src="../../assets/img/schoolImg/fpt-logo.png"
+          alt=""
+          class="card-item-img"
+        />
+        <div class="card-item-right">
+          <div class="card-item-title">Tuyển sinh Title</div>
+          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
+          <div class="card-item-desc">
+            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
+            perspiciatis totam eligendi error dolor voluptate voluptatem
+            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
+            dolore. Expedita, qui. Animi, voluptatem!
+          </div>
+        </div>
+      </div>
+      <div class="card-item">
+        <img
+          src="../../assets/img/schoolImg/fpt-logo.png"
+          alt=""
+          class="card-item-img"
+        />
+        <div class="card-item-right">
+          <div class="card-item-title">Tuyển sinh Title</div>
+          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
+          <div class="card-item-desc">
+            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
+            perspiciatis totam eligendi error dolor voluptate voluptatem
+            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
+            dolore. Expedita, qui. Animi, voluptatem!
+          </div>
+        </div>
+      </div>
+      <div class="card-item">
+        <img
+          src="../../assets/img/schoolImg/fpt-logo.png"
+          alt=""
+          class="card-item-img"
+        />
+        <div class="card-item-right">
+          <div class="card-item-title">Tuyển sinh Title</div>
+          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
+          <div class="card-item-desc">
+            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
+            perspiciatis totam eligendi error dolor voluptate voluptatem
+            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
+            dolore. Expedita, qui. Animi, voluptatem!
+          </div>
+        </div>
+      </div>
+      <mat-paginator
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="pageEvent = $event"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

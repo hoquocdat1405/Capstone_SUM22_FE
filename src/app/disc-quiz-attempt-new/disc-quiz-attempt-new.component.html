@@ -1,0 +1,21 @@
+<div class="test-container">
+  <app-disc-question #questionApp></app-disc-question>
+
+  <div class="question-list-container">
+    <i class="icon-arrow fa fa-arrow-right" aria-hidden="true" (click)="clickSpan()"></i>
+    <div class="question-list">
+      <p class="question-list-text">Kiểu làm test</p>
+      <select id="test-type" (change)="questionApp.chooseOption($event)">
+        <option value="single">Single</option>
+        <option value="multiple">Multiple</option>
+      </select>
+      <div class="horizontal-bar"></div>
+      <p class="question-list-text">Danh sách câu hỏi</p>
+      <div class="question-list-number">
+        <p class="question-number" *ngFor="let question of questionApp.questions"
+          (click)="questionApp.changeQuestion(question.id-1,'change')">
+          {{question.id}}</p>
+      </div>
+    </div>
+  </div>
+</div>

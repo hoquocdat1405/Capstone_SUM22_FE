@@ -29,108 +29,128 @@
       </div>
     </div>
 
-    <!-- <mat-tab-group
-      class="tab-group"
-      mat-align-tabs="center"
-      (selectedTabChange)="selectedTabChange($event)"
-    > -->
-    <!-- <mat-tab label="Tin tức tuyển sinh"> -->
+    <div class="table-section">
+      <h5 class="table-header">Tin tức tuyển sinh</h5>
 
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="newsDataSource">
-        <!-- Position Column -->
-        <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
-          <td mat-cell *matCellDef="let element">
-            <mat-slide-toggle size="small" color="primary" [(ngModel)]="element.status" class="campaign-toggle-btn">
-            </mat-slide-toggle>
-          </td>
-        </ng-container>
+      <div class="mat-elevation-z8 news-table">
+        <table mat-table [dataSource]="newsDataSource">
+          <!-- Position Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-slide-toggle
+                size="small"
+                color="primary"
+                [(ngModel)]="element.status"
+                class="campaign-toggle-btn"
+              >
+              </mat-slide-toggle>
+            </td>
+          </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Tên</th>
-          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-        </ng-container>
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Tên</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="view">
-          <th mat-header-cell *matHeaderCellDef>Lượt xem</th>
-          <td mat-cell *matCellDef="let element">{{ element.view }}</td>
-        </ng-container>
+          <!-- Weight Column -->
+          <ng-container matColumnDef="view">
+            <th mat-header-cell *matHeaderCellDef>Lượt xem</th>
+            <td mat-cell *matCellDef="let element">{{ element.view }}</td>
+          </ng-container>
 
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="applicationNum">
-          <th mat-header-cell *matHeaderCellDef>Số hồ sơ ứng tuyển</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.applicationNum }}
-          </td>
-        </ng-container>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="applicationNum">
+            <th mat-header-cell *matHeaderCellDef>Số hồ sơ ứng tuyển</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.applicationNum }}
+            </td>
+          </ng-container>
 
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="publishedDate">
-          <th mat-header-cell *matHeaderCellDef>Ngày đăng tải</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.publishedDate.getDay() }} - T{{ element.publishedDate.getMonth() }} -
-            {{ element.publishedDate.getFullYear() }}
-          </td>
-        </ng-container>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="publishedDate">
+            <th mat-header-cell *matHeaderCellDef>Ngày đăng tải</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.publishedDate.getDay() }} - T{{
+                element.publishedDate.getMonth()
+              }}
+              -
+              {{ element.publishedDate.getFullYear() }}
+            </td>
+          </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="newsDisplayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: newsDisplayedColumns"></tr>
-      </table>
+          <tr mat-header-row *matHeaderRowDef="newsDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: newsDisplayedColumns"></tr>
+        </table>
 
-      <mat-paginator #paginatorNews="matPaginator" [length]="this.newsDataSource._filterData.length"
-        [pageSizeOptions]="pageSizeOptions" showFirstLastButtons aria-label="Select page of periodic elements">
-      </mat-paginator>
+        <mat-paginator
+          #paginatorNews="matPaginator"
+          [length]="this.newsDataSource._filterData.length"
+          [pageSizeOptions]="pageSizeOptions"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
     </div>
-    <!-- </mat-tab>
+    <div class="table-section">
+      <h5 class="table-header">Hồ sơ ứng tuyển</h5>
 
-      <mat-tab label="Hồ sơ ứng tuyển"> Hồ sơ tuyển sinh -->
+      <div class="mat-elevation-z8 application-table">
+        <table mat-table [dataSource]="applicationDataSource">
+          <!-- Name Column -->
+          <ng-container matColumnDef="studentName">
+            <th mat-header-cell *matHeaderCellDef>Tên học sinh</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.studentName }}
+            </td>
+          </ng-container>
 
+          <!-- Weight Column -->
+          <ng-container matColumnDef="uniSpec">
+            <th mat-header-cell *matHeaderCellDef>Ngành học</th>
+            <td mat-cell *matCellDef="let element">{{ element.uniSpec }}</td>
+          </ng-container>
 
-    <div class="mat-elevation-z8" style="margin-top: 20vh">
-      <table mat-table [dataSource]="applicationDataSource">
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="publishedDate">
+            <th mat-header-cell *matHeaderCellDef>Ngày nộp</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.publishedDate.getDay() }} - T{{
+                element.publishedDate.getMonth()
+              }}
+              -
+              {{ element.publishedDate.getFullYear() }}
+            </td>
+          </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="studentName">
-          <th mat-header-cell *matHeaderCellDef>Tên học sinh</th>
-          <td mat-cell *matCellDef="let element">{{ element.studentName }}</td>
-        </ng-container>
+          <!-- Weight Column -->
+          <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
+            <td mat-cell *matCellDef="let element">{{ element.state }}</td>
+          </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="uniSpec">
-          <th mat-header-cell *matHeaderCellDef>Ngành học</th>
-          <td mat-cell *matCellDef="let element">{{ element.uniSpec }}</td>
-        </ng-container>
+          <tr
+            mat-header-row
+            *matHeaderRowDef="applicationsDisplayedColumns"
+          ></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: applicationsDisplayedColumns"
+          ></tr>
+        </table>
 
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="publishedDate">
-          <th mat-header-cell *matHeaderCellDef>Ngày nộp</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.publishedDate.getDay() }} - T{{ element.publishedDate.getMonth() }} -
-            {{ element.publishedDate.getFullYear() }}
-          </td>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="state">
-          <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
-          <td mat-cell *matCellDef="let element">{{ element.state }}</td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="applicationsDisplayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: applicationsDisplayedColumns"></tr>
-      </table>
-
-      <mat-paginator #paginatorApplications="matPaginator" [length]="this.applicationDataSource.filteredData.length"
-        [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons aria-label="Chọn trang">
-      </mat-paginator>
+        <mat-paginator
+          #paginatorApplications="matPaginator"
+          [length]="this.applicationDataSource.filteredData.length"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          showFirstLastButtons
+          aria-label="Chọn trang"
+        >
+        </mat-paginator>
+      </div>
     </div>
-
-
-
-    <!-- </mat-tab> -->
-    <!-- </mat-tab-group> -->
   </div>
 </div>
