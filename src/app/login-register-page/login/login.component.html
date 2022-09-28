@@ -3,11 +3,21 @@
     <p>Qick help to find U</p>
     <p>Chào mừng bạn trở lại</p>
 
-    <form #loginForm="ngForm" action="" (ngSubmit)="login()">
-      <input type="text" placeholder="Địa chỉ email" name="email" required #username="ngModel" class="email"
-        [(ngModel)]="model.email">
-      <input type="password" placeholder="Mật khẩu" name="password" required #password="ngModel" class="password"
-        [(ngModel)]="model.password">
+    <form action="" (ngSubmit)="onSubmit()" #f="ngForm" name="form">
+      <input type="email"
+      class="form-control"
+      name="email"
+      [(ngModel)]="form.email"
+      required
+      #email="ngModel">
+
+      <input type="password"
+      class="form-control"
+      name="password"
+      [(ngModel)]="form.password"
+      required
+      #password="ngModel">
+
       <a class="forget-password" href="#">
         <h3 class="forget-password">Quên mật khẩu</h3>
       </a>
