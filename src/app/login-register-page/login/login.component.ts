@@ -17,7 +17,11 @@ import { AuthService } from '../../_services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  model: any = {};
+  form: any = {
+    email: null,
+    password: null
+  };
+  errorMessage = '';
   @ViewChild('container') container!: ElementRef;
 
   constructor(
@@ -27,27 +31,34 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  login() {
-    // this.authService.login(this.model).subscribe(
-    //   (user) => {
-    //     console.log(user);
-    //     console.log('Logged in');
-        
-    //     this.router.navigate(['/']);
-    //   }
-    //   // (next) => {
-    //   //   console.log('Logged in');
-    //   //   this.router.navigate(['/']);
-    //   // },
-    //   // (error) => {
-    //   //   console.log('Login error'+ error);
-    //   // }
-    // );
+  onSubmit(): void {
 
-    localStorage.setItem('username','Liem Nguyen');
-    localStorage.setItem('token','xxxxxxxxxxxx');
-    localStorage.setItem('userPic','../../assets/img/logo-qick.png');
-    this.router.navigate(['/']);
+    const { email, password } = this.form;
+console.log(this.form);
+    this.authService.login(email, password).subscribe({
+      error: err => {
+        this.errorMessage = err.error.message;
+      }
+    });
+  
+  // login() {
+  //   console.log(this.model);
+  //   this.authService.login(this.model).subscribe(
+  //     // (user) => {
+  //     //   console.log(user);
+  //     //   console.log('Logged in');
+        
+  //     //   this.router.navigate(['/']);
+  //     // },
+  //     (error) => {
+  //       console.log('Login error'+ error.toString());
+  //     }
+  //   );
+
+    // localStorage.setItem('username','Liem Nguyen');
+    // localStorage.setItem('token','xxxxxxxxxxxx');
+    // localStorage.setItem('userPic','../../assets/img/logo-qick.png');
+    // this.router.navigate(['/']);
 
   }
 
