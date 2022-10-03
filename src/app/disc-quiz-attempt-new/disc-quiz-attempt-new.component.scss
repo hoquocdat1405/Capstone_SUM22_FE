@@ -83,6 +83,20 @@
   margin: 10px 0;
 }
 
+.icon-exit {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 100px;
+  color: white;
+}
+
 app-disc-question {
   width: 60%;
+}
+
+@media (max-width: 1000px) {
+  app-disc-question {
+    width: 90%;
+  }
 }

@@ -122,9 +122,9 @@ export class DiscQuestionComponent implements OnInit {
       );
       activeAnswerSame?.classList.remove('active-same');
     }
-
     this.clickCheckBox(event);
     this.disableAnswer(i, j, event);
+    this.changeQuestion(i + 1, 'click');
 
     // var userAnswer = document.querySelector(
     //   `.question-container:nth-child(${
@@ -140,7 +140,6 @@ export class DiscQuestionComponent implements OnInit {
     // ) as HTMLElement;
     // this.currentQuestion = i + 1;
     // this.storeUserAnswer(i, answerText?.innerText);
-    // this.changeQuestion(i + 1, 'click');
 
     // var questionNumber = document.querySelector(
     //   `.question-number:nth-child(${i + 1})`
@@ -157,11 +156,25 @@ export class DiscQuestionComponent implements OnInit {
       `.question-container:nth-child(${i + 1})`
     );
 
+    var answerDifferActive = document.querySelector(
+      `.question-container:nth-child(${i}) .active-same`
+    );
+    var answerSameActive = document.querySelector(
+      `.question-container:nth-child(${i}) .active-difference`
+    );
+
     if (method === 'click') {
-      currentAnswerContainer?.scrollIntoView({ behavior: 'smooth' });
+      if (answerDifferActive !== null && answerSameActive !== null) {
+        setTimeout(() => {
+          currentAnswerContainer?.scrollIntoView({ behavior: 'smooth' });
+        }, 1);
+      }
     }
     if (method === 'change') {
-      currentAnswerContainer?.scrollIntoView();
+      setTimeout(() => {
+        console.log('hahah');
+        currentAnswerContainer?.scrollIntoView();
+      }, 1);
     }
   }
 
@@ -227,17 +240,15 @@ export class DiscQuestionComponent implements OnInit {
     );
 
     if (event.target.classList.contains('checkmark-differ')) {
-      answerDifferAll.forEach((differ) => {
-        differ.classList.remove('disable');
-      });
-      answerSame?.classList.add('disable');
-    } else {
       answerSameAll.forEach((same) => {
         same.classList.remove('disable');
       });
+      answerSame?.classList.add('disable');
+    } else {
+      answerDifferAll.forEach((differ) => {
+        differ.classList.remove('disable');
+      });
       answerDiffer?.classList.add('disable');
     }
-
-    console.log(event.target.classList);
   }
 }

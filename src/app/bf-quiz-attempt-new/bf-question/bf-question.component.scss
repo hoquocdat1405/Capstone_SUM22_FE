@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  width: 80%;
+  margin: 0 auto;
+}
+.main-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #c4933b;
+}
+
+.header-row {
+  display: flex;
+  width: 40%;
+  margin-left: 50%;
+  justify-content: space-between;
+}
+
+.level-title {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.question-container {
+  display: flex;
+  padding: 20px 30px;
+  background-color: #ccc;
+  margin: 2px 0;
+}
+
+.question-container:last-child {
+  margin-bottom: 1000px;
+}
+
+.question-container:nth-child(odd) {
+  background-color: #f8f5f2;
+}
+
+.question-container:nth-child(even) {
+  background-color: white;
+}
+
+.question-text-box {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.question-text {
+  font-size: 18px;
+}
+
+.character-level-box {
+  display: flex;
+  position: relative;
+  width: 40%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.character-level {
+  width: 30px;
+  height: 30px;
+}
+
+.input-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  top: -12.5px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  width: 10px;
+  height: 18px;
+  border: 2px solid green;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+@media (max-width: 1000px) {
+  .question-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px;
+    background-color: #ccc;
+  }
+
+  .question-text-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .character-level-box {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .checkmark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .question-text {
+    font-size: 18px;
+    text-align: center;
+  }
+}

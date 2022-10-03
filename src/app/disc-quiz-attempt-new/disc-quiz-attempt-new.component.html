@@ -1,15 +1,15 @@
 <div class="test-container">
+  <i class="icon-exit fa fa-times" aria-hidden="true"></i>
   <app-disc-question #questionApp></app-disc-question>
-
   <div class="question-list-container">
     <i class="icon-arrow fa fa-arrow-right" aria-hidden="true" (click)="clickSpan()"></i>
     <div class="question-list">
-      <p class="question-list-text">Kiểu làm test</p>
+      <!-- <p class="question-list-text">Kiểu làm test</p>
       <select id="test-type" (change)="questionApp.chooseOption($event)">
         <option value="single">Single</option>
         <option value="multiple">Multiple</option>
-      </select>
-      <div class="horizontal-bar"></div>
+      </select> -->
+      <!-- <div class="horizontal-bar"></div> -->
       <p class="question-list-text">Danh sách câu hỏi</p>
       <div class="question-list-number">
         <p class="question-number" *ngFor="let question of questionApp.questions"

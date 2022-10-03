@@ -1,3 +1,4 @@
+import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt-new.component';
 import { DiscQuizAttemptNewComponent } from './disc-quiz-attempt-new/disc-quiz-attempt-new.component';
 import { AdmissionListComponent } from './admission-list/admission-list.component';
 import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
@@ -72,7 +73,7 @@ const routes: Routes = [
   { path: 'mbti-quiz-attempt', component: MbtiQuizAttemptNewComponent },
   { path: 'disc-quiz-attempt', component: DiscQuizAttemptNewComponent },
   { path: 'holland-quiz-attempt', component: HollandQuizAttemptPageComponent },
-  { path: 'big-five-quiz-attempt', component: BfQuizAttemptPageComponent },
+  { path: 'big-five-quiz-attempt', component: BfQuizAttemptNewComponent },
 
   //Quizes result page link
   { path: 'mbti-result', component: MbtiQuizResultDetailPageComponent },

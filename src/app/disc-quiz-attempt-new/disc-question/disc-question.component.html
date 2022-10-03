@@ -1,4 +1,4 @@
-<div class="container-main single" (window:resize)="onResize($event)">
+<div class="container-main" (window:resize)="onResize($event)">
     <div class="question-container" *ngFor="let question of questions;index as i">
         <p class="question-index">Question <span>{{question.id}}</span></p>
         <span class="question-total">/{{questions.length}}</span>

@@ -1,0 +1,39 @@
+<div class="main-container">
+  <div class="content">
+
+    <div class="header">
+      <div class="header-row">
+        <p class="level-title">Không chính xác</p>
+        <p class="level-title">Bình thường</p>
+        <p class="level-title">Chính xác</p>
+      </div>
+    </div>
+    <div class="question-container" *ngFor="let question of questions;index as i">
+      <div class="question-text-box">
+        <div class="question-text">{{question.questionText}}</div>
+      </div>
+      <div class="character-level-box">
+        <label class="input-container">
+          <input class="level" type="radio">
+          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
+        </label>
+        <label class="input-container">
+          <input class="level" type="radio">
+          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
+        </label>
+        <label class="input-container">
+          <input class="level" type="radio">
+          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
+        </label>
+        <label class="input-container">
+          <input class="level" type="radio">
+          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
+        </label>
+        <label class="input-container">
+          <input class="level" type="radio">
+          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

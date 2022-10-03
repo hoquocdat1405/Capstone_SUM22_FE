@@ -1,3 +1,4 @@
+import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
 import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
 import { DiscQuestionComponent } from './disc-quiz-attempt-new/disc-question/disc-question.component';
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
@@ -118,6 +119,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt-new.component';
+// import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
 
 @NgModule({
   declarations: [
@@ -183,6 +186,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     DiscQuizAttemptNewComponent,
     DiscQuestionComponent,
     AdmissionListComponent,
+    BfQuizAttemptNewComponent,
+    BfQuestionComponent,
   ],
   imports: [
     FormsModule,
