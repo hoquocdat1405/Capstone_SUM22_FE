@@ -151,6 +151,10 @@ input {
 
 .info-form {
   width: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
 }
 
 .info-title-text {
@@ -166,7 +170,7 @@ input {
 
 .info-img {
   margin: 20px auto;
-  width: 70%;
+  width: 300px;
 }
 
 .info-container.toggle {

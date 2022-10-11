@@ -1,27 +1,41 @@
-<div class="container-main" (window:resize)="onResize($event)">
-    <div class="question-container" *ngFor="let question of questions;index as i">
-        <p class="question-index">Question <span>{{question.id}}</span></p>
-        <span class="question-total">/{{questions.length}}</span>
-        <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
-        <div class="horizontal-line"></div>
-
-        <div class="flex-row">
-            <p class="same-label">Giống bạn nhất</p>
-            <p class="different-label">Khác bạn nhất</p>
+<div class="container-main">
+    <div class="content">
+        <p class="title-disc">Bài trắc nghiệm DISC</p>
+        <div class="disc-header">
+            <span class="header-content same">Giống bạn nhất</span>
+            <span class="header-content difference">Khác bạn nhất</span>
         </div>
-        <div class="answer-container">
-            <div class="answer-row" *ngFor="let answer of questions[i].answers;index as j">
-                <label class="input-container">
-                    <input class="disc-same" type="radio">
-                    <span class="checkmark" (click)="chooseAnswer(i,j,$event)"></span>
-                </label>
-                <p class="answer">{{answer}}</p>
-                <label class="input-container">
-                    <input class="disc-differ" type="radio">
-                    <span class="checkmark-differ" (click)="chooseAnswer(i,j,$event)"></span>
-                </label>
+        <div class="question">
+            <div class="question-container" *ngFor="let question of questions;index as i">
+                <p class="question-index">Câu <span>{{question.id}}</span></p>
+                <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
+                <mat-divider></mat-divider>
+
+                <div class="answer-container">
+                    <div class="answer-row" *ngFor="let answer of questions[i].answers;index as j">
+                        <p class="answer">{{answer}}</p>
+                        <div class="answer-box">
+                            <label class="input-container">
+                                <input class="disc-same" type="radio">
+                                <span class="checkmark" (click)="chooseAnswer(i,j,$event)"></span>
+                            </label>
+                            <label class="input-container">
+                                <input class="disc-differ" type="radio">
+                                <span class="checkmark-differ" (click)="chooseAnswer(i,j,$event)"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page">
+        </mat-paginator>
     </div>
+
 </div>
+
+
+
+
+
 <!-- <button class="btn-result" (click)="checkUserAnswer()">Kết quả</button> -->

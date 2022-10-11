@@ -4,14 +4,29 @@
   box-sizing: border-box;
 }
 
-.container {
-  margin: 50px 0;
+.container-main {
+  width: 100%;
+  background-color: #f0f0f0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.error-text {
-  color: red;
-  display: none;
-  float: right;
+.content {
+  padding: 10px;
+  width: 70%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-mbti {
+  font-size: 30px;
+  color: #00b14f;
+  margin: 30px 0;
+  font-weight: bold;
 }
 
 .error-text.active {
@@ -19,85 +34,50 @@
 }
 
 .question-container {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  min-width: 100%;
-  box-shadow: 1px 1px 1px 1px #ccc;
-  margin: 20px 0;
+  padding: 10px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .question-index {
-  font-size: 20px;
-  display: inline;
+  font-size: 14px;
+  color: #333;
+  margin-left: 20px;
+}
+
+.question-text {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+label {
+  font-size: 16px;
 }
 
 .question-total {
   color: #6f6d6e;
 }
 
-.horizontal-line {
-  width: 100%;
-  height: 1px;
-  border: 1px solid #6f6d6e;
-  margin-top: 10px;
-}
-
-.question-text {
-  font-size: 30px;
-  margin: 20px 0 50px;
-  font-weight: 500;
-}
-
-.answer-container {
-  display: grid;
-  grid-template-columns: calc(50% - 30px) calc(50% - 30px);
-  grid-template-rows: 50px 50px;
-  gap: 30px 50px;
-  margin-bottom: 40px;
-}
-
-.answer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 3px solid #508583;
-  border-radius: 30px;
-  padding: 0 15px;
-}
-
-.answer.active {
-  border: 3px solid #12c4b6;
-}
-
-.answer.active .answer-text {
-  color: #fff;
-}
-
-.answer.active .icon-check {
-  color: green;
-}
-
-.answer-text {
-  color: #6f6d6e;
-  font-size: 20px;
-}
-
-.icon-check {
-  color: #6f6d6e;
-  font-size: 30px;
-}
-
-.container-main.single {
-  display: flex;
-  overflow: hidden;
-  min-height: 100vh;
-  align-items: center;
+input {
+  margin: 0 5px 0 20px;
 }
 
 .btn-result {
   padding: 5px 10px;
   margin-top: -500px;
+}
+
+.answer-container {
+  background-color: #f7f7f7;
+  display: flex;
+}
+
+.answer {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
 }
 
 @media (max-width: 600px) {

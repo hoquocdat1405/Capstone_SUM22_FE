@@ -4,8 +4,50 @@
   box-sizing: border-box;
 }
 
-.container {
-  margin: 50px 0;
+.question {
+  width: 100%;
+}
+
+.question-container:first-child {
+  width: 10%;
+}
+
+mat-divider {
+  margin-bottom: 10px;
+}
+
+.same {
+  font-size: 20px;
+  color: #008300;
+}
+
+.difference {
+  font-size: 20px;
+  color: red;
+}
+
+.title-disc {
+  font-size: 40px;
+  color: #00b14f;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.disc-header {
+  background-color: #f3c97d;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 2px 0 0 0 #ccc;
+}
+
+.header-content {
+  width: 25%;
+  text-align: center;
 }
 
 .error-text {
@@ -14,22 +56,21 @@
   float: right;
 }
 
-.error-text.active {
-  display: inline;
-}
-
 .question-container {
   background-color: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
+  padding: 10px 20px;
   min-width: 100%;
   box-shadow: 1px 1px 1px 1px #ccc;
-  margin: 40px 0;
+}
+
+.question-container:nth-child(even) {
+  background-color: #f8f5f2;
 }
 
 .question-index {
-  font-size: 20px;
+  font-size: 18px;
   display: inline;
+  font-weight: 500;
 }
 
 .question-total {
@@ -38,15 +79,15 @@
 
 .horizontal-line {
   width: 100%;
-  height: 1px;
-  border: 1px solid #6f6d6e;
-  margin-top: 10px;
+  height: 0.5px;
+  border: 0.5px solid #6f6d6e;
+  margin-top: 5px;
 }
 
 .flex-row {
   display: flex;
   justify-content: space-between;
-  margin: 15px 0;
+  margin: 10px 0;
 }
 
 .input-container {
@@ -62,19 +103,20 @@
 
 .checkmark {
   position: absolute;
-  top: 0;
+  top: 4px;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   border: 2px solid green;
   border-radius: 4px;
+  margin-left: 50%;
 }
 
 .active-same::after {
   content: "";
   position: absolute;
-  left: 6px;
-  top: 2px;
+  left: 4px;
+  top: 1px;
   width: 8px;
   height: 12px;
   border: solid green;
@@ -86,19 +128,20 @@
 
 .checkmark-differ {
   position: absolute;
-  top: 0;
+  top: 4px;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   border: 2px solid red;
   border-radius: 4px;
+  margin-left: 50%;
 }
 
 .active-difference::after {
   content: "";
   position: absolute;
-  left: 6px;
-  top: 2px;
+  left: 4px;
+  top: 1px;
   width: 8px;
   height: 12px;
   border: solid red;
@@ -124,9 +167,15 @@ span {
   cursor: pointer;
 }
 
+.answer-box {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+
 .answer {
-  font-size: 20px;
-  text-align: center;
+  font-size: 17px;
+  width: 50%;
 }
 
 .icon-check {
@@ -134,10 +183,17 @@ span {
   font-size: 30px;
 }
 
-.container-main.single {
+.container-main {
+  width: 100%;
+  background-color: #f4e9e2;
+  padding: 20px;
+}
+
+.content {
+  width: 70%;
+  margin: 0 auto;
   display: flex;
-  overflow: hidden;
-  min-height: 100vh;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -148,18 +204,34 @@ span {
 
 .answer-row {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin: 5px 0;
 }
 
+label {
+  width: 50%;
+  // display: flex;
+  // justify-content: center;
+}
+
 .same-label {
-  font-size: 20px;
+  font-size: 16px;
   color: green;
 }
 
 .different-label {
-  font-size: 20px;
+  font-size: 16px;
   color: red;
+}
+
+:host ::ng-deep.mat-paginator {
+  width: 100%;
+}
+
+:host ::ng-deep.mat-paginator .mat-paginator-container {
+  justify-content: flex-end;
+  background-color: #f4e9e2;
+  font-size: 16px;
 }
 
 @media (max-width: 600px) {

@@ -4,13 +4,19 @@
   box-sizing: border-box;
 }
 
+.note-text {
+  color: red;
+  margin-left: 10%;
+  padding: 10px 0;
+}
+
 .content {
   width: 80%;
   margin: 0 auto;
 }
 .main-container {
-  width: 80%;
   margin: 0 auto;
+  background-color: #f4e9e2;
 }
 
 .header {
@@ -42,7 +48,8 @@
 }
 
 .question-container:last-child {
-  margin-bottom: 1000px;
+  margin-bottom: 100px;
+  border-bottom: 1px solid #f4f4f4;
 }
 
 .question-container:nth-child(odd) {

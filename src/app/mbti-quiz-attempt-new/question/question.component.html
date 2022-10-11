@@ -1,17 +1,15 @@
-<div class="container-main single" (window:resize)="onResize($event)">
-  <div class="question-container" *ngFor="let question of questions;index as i">
-    <p class="question-index">Question <span>{{question.id}}</span></p>
-    <span class="question-total">/{{questions.length}}</span>
-    <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
-    <div class="horizontal-line"></div>
-    <p class="question-text">{{question.questionText}}</p>
-
-    <div class="answer-container">
-      <div class="answer" (click)="chooseAnswer(i,j)" *ngFor="let answer of questions[i].answers;index as j">
-        <p class="answer-text">{{answer}}</p>
-        <i class="icon-check fa fa-check-circle-o" aria-hidden="true"></i>
+<div class="container-main">
+  <div class="content">
+    <p class="title-mbti">Bài trắc nghiệm MBTI</p>
+    <div class="question-container" *ngFor="let question of questions;index as i">
+      <p class="question-index">{{question.id}}. <span class="question-text">{{question.questionText}}</span></p>
+      <div class="answer-container">
+        <div class="answer" *ngFor="let answer of questions[i].answers;index as j">
+          <input type="radio" name="answer-radio{{i}}" id="radio{{j}}" value="{{answer}}">
+          <label for="radio{{j}}">{{answer}}</label>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<button class="btn-result" (click)="checkUserAnswer()">Kết quả</button>
+<!-- <button class="btn-result">Kết quả</button> -->

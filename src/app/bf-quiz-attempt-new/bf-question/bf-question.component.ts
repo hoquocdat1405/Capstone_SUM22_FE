@@ -31,6 +31,26 @@ export class BfQuestionComponent implements OnInit {
       id: 5,
       questionText: 'I have a kind word for everyone. 5',
     },
+    {
+      id: 5,
+      questionText: 'I have a kind word for everyone. 5',
+    },
+    {
+      id: 5,
+      questionText: 'I have a kind word for everyone. 5',
+    },
+    {
+      id: 5,
+      questionText: 'I have a kind word for everyone. 5',
+    },
+    {
+      id: 5,
+      questionText: 'I have a kind word for everyone. 5',
+    },
+    {
+      id: 5,
+      questionText: 'I have a kind word for everyone. 5',
+    },
   ];
 
   chooseAnswer(i: number, event: any) {

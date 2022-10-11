@@ -124,92 +124,10 @@ export class DiscQuestionComponent implements OnInit {
     }
     this.clickCheckBox(event);
     this.disableAnswer(i, j, event);
-    this.changeQuestion(i + 1, 'click');
-
-    // var userAnswer = document.querySelector(
-    //   `.question-container:nth-child(${
-    //     i + 1
-    //   }) .answer-container .answer:nth-child(${j + 1})`
-    // );
-    // userAnswer?.classList.add('active');
-
-    // var answerText = document.querySelector(
-    //   `.question-container:nth-child(${
-    //     i + 1
-    //   }) .answer-container .answer:nth-child(${j + 1}) .answer-text`
-    // ) as HTMLElement;
-    // this.currentQuestion = i + 1;
-    // this.storeUserAnswer(i, answerText?.innerText);
-
-    // var questionNumber = document.querySelector(
-    //   `.question-number:nth-child(${i + 1})`
-    // );
-    // questionNumber?.classList.add('done');
   }
 
   storeUserAnswer(index: number, answerText: string) {
     this.userAnswers[index].answer = answerText;
-  }
-
-  changeQuestion(i: number, method: string) {
-    var currentAnswerContainer = document.querySelector(
-      `.question-container:nth-child(${i + 1})`
-    );
-
-    var answerDifferActive = document.querySelector(
-      `.question-container:nth-child(${i}) .active-same`
-    );
-    var answerSameActive = document.querySelector(
-      `.question-container:nth-child(${i}) .active-difference`
-    );
-
-    if (method === 'click') {
-      if (answerDifferActive !== null && answerSameActive !== null) {
-        setTimeout(() => {
-          currentAnswerContainer?.scrollIntoView({ behavior: 'smooth' });
-        }, 1);
-      }
-    }
-    if (method === 'change') {
-      setTimeout(() => {
-        console.log('hahah');
-        currentAnswerContainer?.scrollIntoView();
-      }, 1);
-    }
-  }
-
-  chooseOption(event: any) {
-    var userChooseOption = event.target.value;
-    var container = document.querySelector('.container-main');
-    if (userChooseOption === 'single') {
-      container?.classList.add('single');
-      this.changeQuestion(this.currentQuestion, 'change');
-    }
-    if (userChooseOption === 'multiple') {
-      container?.classList.remove('single');
-      this.changeQuestion(this.currentQuestion, 'change');
-    }
-  }
-
-  checkUserAnswer(): boolean {
-    for (var i = 0; i < this.userAnswers.length; i++) {
-      var txtError = document.querySelector(
-        `.question-container:nth-child(${i + 1}) .error-text`
-      ) as HTMLElement;
-
-      if (this.userAnswers[i].answer === '') {
-        txtError?.classList.add('active');
-        this.changeQuestion(i, 'click');
-        return false;
-      } else {
-        txtError?.classList.remove('active');
-      }
-    }
-    return true;
-  }
-
-  onResize(event: any) {
-    this.changeQuestion(this.currentQuestion + 1, 'change');
   }
 
   clickCheckBox(event: any) {
@@ -226,6 +144,7 @@ export class DiscQuestionComponent implements OnInit {
         j + 1
       }) .checkmark-differ`
     );
+
     var answerSame = document.querySelector(
       `.question-container:nth-child(${i + 1}) .answer-row:nth-child(${
         j + 1
@@ -235,6 +154,7 @@ export class DiscQuestionComponent implements OnInit {
     var answerDifferAll = document.querySelectorAll(
       `.question-container:nth-child(${i + 1}) .checkmark-differ`
     );
+
     var answerSameAll = document.querySelectorAll(
       `.question-container:nth-child(${i + 1}) .answer-row .checkmark`
     );
