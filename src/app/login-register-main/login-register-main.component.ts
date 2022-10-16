@@ -1,4 +1,7 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login-register-main',
@@ -6,9 +9,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-register-main.component.scss'],
 })
 export class LoginRegisterMainComponent implements OnInit {
-  constructor() {}
+  email: string = '';
+  password: string = '';
 
-  ngOnInit() {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    // let role:string = this.authService.currentUserValue.currentUser.role;
+    // this.router.navigate([role.toLowerCase()]);
+  }
+
+  ngOnInit() { }
+
+  // get f() {
+  //   return this.form.controls;
+  // }
+
+  async login() {
+    this.authService.login(this.email, this.password).subscribe({
+      next: () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          this.router.navigate(['/home']);
+        }
+      }
+    });
+
+    
+
+  }
 
   changePosition() {
     console.log(window.innerWidth);

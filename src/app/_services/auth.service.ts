@@ -1,38 +1,76 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { User } from '../_model/User';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+class Tokens {
+  jwt: string = '';
+  refreshToken: string = '';
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  // private currentUserSubject: BehaviorSubject<string>;
+  // public currentUser: Observable<string>;
+  private readonly JWT_TOKEN = 'JWT_TOKEN';
+  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+  baseUrl = environment.mockApiUrl;
+  private loggedUser: string = '';
 
-
-  baseUrl = `${environment.mockApiUrl}`;
-
-  login(email: string,password:string): Observable<any> {
-    // return this.http.post(this.baseUrl + 'User/login', model).pipe(
-    //   map((response: any) => {
-    //     const user: User = response;
-    //     if (user) {
-    //       localStorage.setItem('email', user.name);
-    //     }
-    //   })
+  constructor(private http: HttpClient) {
+    // this.currentUserSubject = new BehaviorSubject<string>(
+    //   localStorage.getItem('currentUser')!
     // );
-    return this.http.post(this.baseUrl + 'User/login', {
-      email,password
-    }, httpOptions);
+    // this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  // public get currentUserValue() {
+  //   return JSON.parse(this.currentUserSubject.value);
+  // }
+
+  // public setCurrentUserValue(userInfo: any) {
+  //   localStorage.setItem('currentUser', JSON.stringify(userInfo));
+  //   this.currentUserSubject.next(JSON.stringify(userInfo));
+  // }
+
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(this.baseUrl + '/User/login', {
+      email: email, password: password
+    }, {responseType: 'text'}).pipe(
+      map((response:any) => {
+        const token = response;
+        if(token) {
+          localStorage.setItem('token', token);
+        }
+      })
+    );
+  }
+
+  private doLoginUser(email: string, tokens: Tokens) {
+    this.loggedUser = email;
+    this.storeTokens(tokens);
+  }
+
+  private storeTokens(tokens: any) {
+    localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
+    localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
   }
 
   // login(model:any){
   // return this.http.post(this.baseUrl+'/api/login',model);
   // }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    // this.currentUserSubject.next(null!);
+  }
 }
