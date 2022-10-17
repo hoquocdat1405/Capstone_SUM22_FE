@@ -11,6 +11,10 @@ import { FormGroup } from '@angular/forms';
 export class LoginRegisterMainComponent implements OnInit {
   email: string = '';
   password: string = '';
+  registerName:string = '';
+  emailReg:string = '';
+  passwordReg:string = '';
+  confirmPasswordReg:string = '';
 
   constructor(
     private authService: AuthService,
@@ -26,7 +30,7 @@ export class LoginRegisterMainComponent implements OnInit {
   //   return this.form.controls;
   // }
 
-  async login() {
+  login() {
     this.authService.login(this.email, this.password).subscribe({
       next: () => {
         const token = localStorage.getItem('token');
@@ -35,9 +39,22 @@ export class LoginRegisterMainComponent implements OnInit {
         }
       }
     });
+  }
 
-    
+  registerValidate() {
+    return this.passwordReg === this.confirmPasswordReg;
+  }
 
+  register() {
+    if(this.registerValidate())
+    this.authService.register(this.emailReg, this.registerName, this.passwordReg).subscribe({
+      next: () => {
+        console.log("register success"); 
+      },
+      error: () => {
+        console.error("register fail");
+      }
+    })
   }
 
   changePosition() {

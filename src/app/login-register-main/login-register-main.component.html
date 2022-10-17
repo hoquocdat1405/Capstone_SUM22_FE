@@ -24,29 +24,29 @@
           ngay</span></p>
     </form>
 
-    <div class="register-form">
+    <form class="register-form" #registerForm="ngForm" (ngSubmit)="register()">
       <p class="title-text">Đăng kí tài khoản mới</p>
       <p class="detail-title-text">Nhập đầy đủ thông tin bên dưới để đăng kí</p>
       <div class="input-div">
         <label for="name" class="label-input">Họ và tên</label>
-        <input type="text" id="name" class="name-input" placeholder="Điền họ và tên của bạn">
+        <input type="text" id="name" class="name-input" placeholder="Điền họ và tên của bạn" [(ngModel)]="registerName" name="registerName" required>
       </div>
       <div class="input-div">
         <label for="email-register" class="label-input">Địa Chỉ Email</label>
-        <input type="text" id="email-register" class="email-input" placeholder="Điền Email của bạn">
+        <input type="text" id="email-register" class="email-input" placeholder="Điền Email của bạn" [(ngModel)]="emailReg" name="emailReg" required>
       </div>
       <div class="input-div">
         <label for="pass-register" class="label-input">Mật khẩu</label>
-        <input type="text" id="pass-register" class="password-input" placeholder="Điền mật khẩu">
+        <input type="password" id="pass-register" class="password-input" placeholder="Điền mật khẩu" [(ngModel)]="passwordReg" name="passwordReg" required>
       </div>
       <div class="input-div">
         <label for="re-pass-register" class="label-input">Xác nhận mật khẩu</label>
-        <input type="text" id="re-pass-register" class="re-password-input" placeholder="Điền lại mật khẩu">
+        <input type="password" id="re-pass-register" class="re-password-input" placeholder="Điền lại mật khẩu" [(ngModel)]="confirmPasswordReg" name="confirmPasswordReg" required>
       </div>
-      <button class="register-btn">Đăng ký</button>
+      <button class="register-btn" type="submit" [disabled]="!registerForm.valid">Đăng ký</button>
       <p class="login-text">Bạn đã có tài khoản?<span class="highlight-text" (click)="changePosition()">Đăng nhập
           ngay</span></p>
-    </div>
+    </form>
 
     <div class="info-container">
       <div class="info-form">

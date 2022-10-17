@@ -41,9 +41,28 @@ export class AuthService {
         if (this.token) {
           localStorage.setItem('token', this.token);
           this.decodedToken = this.helper.decodeToken(this.token)
+          localStorage.setItem('role', this.decodedToken.role)
         }
       })
     );
+  }
+
+  register(email:string, name:string, password:string) : Observable<any> {
+    return this.http.post(this.baseUrl + '/User/register', {
+      email: email, name:name, password: password
+    }, {responseType: 'text'}).pipe(
+      map((response:any) => {
+        let res = response;
+        if(res.message === "Success") {
+          console.log("Register successfully");
+        }
+      })
+    )
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
   }
 
   getDecodedToken() {
