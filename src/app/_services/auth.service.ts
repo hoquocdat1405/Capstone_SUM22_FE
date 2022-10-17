@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(this.baseUrl + '/User/login', {
+    return this.http.post(this.baseUrl + 'user/login', {
       email: email, password: password
     }, { responseType: 'text' }).pipe(
       map((response: any) => {
@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   register(email:string, name:string, password:string) : Observable<any> {
-    return this.http.post(this.baseUrl + '/User/register', {
+    return this.http.post(this.baseUrl + 'user/register', {
       email: email, name:name, password: password
     }, {responseType: 'text'}).pipe(
       map((response:any) => {
