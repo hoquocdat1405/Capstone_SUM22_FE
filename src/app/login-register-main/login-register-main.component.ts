@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-register-main',
@@ -11,27 +11,30 @@ import { FormGroup } from '@angular/forms';
 export class LoginRegisterMainComponent implements OnInit {
   email: string = '';
   password: string = '';
-  registerName:string = '';
-  emailReg:string = '';
-  passwordReg:string = '';
-  confirmPasswordReg:string = '';
+  registerName: string = '';
+  emailReg: string = '';
+  passwordReg: string = '';
+  confirmPasswordReg: string = '';
 
   constructor(
     private authService: AuthService,
-    private router: Router
-  ) {
-    // let role:string = this.authService.currentUserValue.currentUser.role;
-    // this.router.navigate([role.toLowerCase()]);
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
+
+  loginFormIns = this.fb.group({
+    "email": ["", [Validators.required, Validators.email]],
+    "password": ["", [Validators.required]]
+  })
+
+  get f() {
+    return this.loginFormIns.controls;
   }
 
   ngOnInit() { }
 
-  // get f() {
-  //   return this.form.controls;
-  // }
-
   login() {
-    this.authService.login(this.email, this.password).subscribe({
+    this.authService.login(this.loginFormIns.value.email, this.loginFormIns.value.password).subscribe({
       next: () => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -46,15 +49,15 @@ export class LoginRegisterMainComponent implements OnInit {
   }
 
   register() {
-    if(this.registerValidate())
-    this.authService.register(this.emailReg, this.registerName, this.passwordReg).subscribe({
-      next: () => {
-        console.log("register success"); 
-      },
-      error: () => {
-        console.error("register fail");
-      }
-    })
+    if (this.registerValidate())
+      this.authService.register(this.emailReg, this.registerName, this.passwordReg).subscribe({
+        next: () => {
+          console.log("register success");
+        },
+        error: () => {
+          console.error("register fail");
+        }
+      })
   }
 
   changePosition() {
