@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // mockApiUrl: 'http://localhost:3000/'
-  mockApiUrl: 'http://api.qick.tech/api/'
+  mockApiUrl: 'https://api.qick.tech/api/'
 };
 
 /*
