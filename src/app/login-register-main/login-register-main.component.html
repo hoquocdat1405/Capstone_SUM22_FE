@@ -2,14 +2,19 @@
   <div class="login-register-container">
     <div class="login-form">
       <p class="title-text">Đăng nhập vào tài khoản</p>
-      <p class="detail-title-text">Điền thông tin để đăng nhập</p>
+      <p class="detail-title-text">Điền đầy đủ thông tin để đăng nhập</p>
       <div class="input-div">
         <label for="email-login" class="label-input">Địa Chỉ Email</label>
         <input type="text" id="email-login" class="email-input" placeholder="Điền Email của bạn">
       </div>
       <div class="input-div">
         <label for="pass-login" class="label-input">Mật khẩu</label>
-        <input type="text" id="pass-login" class="password-input" placeholder="Điền mật khẩu">
+        <div class="icon-input-container">
+          <i class="icon-seen fa fa-eye" aria-hidden="true" (click)="isActive=false" *ngIf="isActive"></i>
+          <i class="icon-unseen fa fa-eye-slash" aria-hidden="true" (click)="isActive=true" *ngIf="!isActive"></i>
+          <input [type]="isActive ? 'password' : 'text'" id="pass-login" class="password-input"
+            placeholder="Điền mật khẩu">
+        </div>
       </div>
 
       <div class="remember-checkbox-div">
@@ -37,11 +42,13 @@
       </div>
       <div class="input-div">
         <label for="pass-register" class="label-input">Mật khẩu</label>
-        <input type="text" id="pass-register" class="password-input" placeholder="Điền mật khẩu">
+        <div class="icon-input-container">
+          <input type="password" id="pass-register" class="password-input" placeholder="Điền mật khẩu">
+        </div>
       </div>
       <div class="input-div">
         <label for="re-pass-register" class="label-input">Xác nhận mật khẩu</label>
-        <input type="text" id="re-pass-register" class="re-password-input" placeholder="Điền lại mật khẩu">
+        <input type="password" id="re-pass-register" class="re-password-input" placeholder="Điền lại mật khẩu">
       </div>
       <button class="register-btn">Đăng ký</button>
       <p class="login-text">Bạn đã có tài khoản?<span class="highlight-text" (click)="changePosition()">Đăng nhập

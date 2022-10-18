@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login-register-main',
@@ -9,9 +9,10 @@ export class LoginRegisterMainComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  @Input()
+  isActive = true;
 
   changePosition() {
-    console.log(window.innerWidth);
     if (window.innerWidth <= 800) {
       var registerContainer = document.querySelector(
         '.register-form'

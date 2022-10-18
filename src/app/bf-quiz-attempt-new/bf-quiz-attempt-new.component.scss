@@ -38,7 +38,7 @@
 }
 
 .header-banner-right {
-  width: 30%;
+  // width: 30%;
 }
 
 .header-banner-img {
@@ -72,4 +72,23 @@
 
 app-bf-question {
   background-color: #f4e9e2;
+}
+
+@media (max-width: 900px) {
+  .header-banner {
+    flex-direction: column;
+  }
+
+  .header-banner-left {
+    order: 2;
+    width: 90%;
+    text-align: center;
+  }
+  .header-banner-right {
+    order: 1;
+  }
+
+  .horizontal-bar {
+    margin: 10px auto;
+  }
 }

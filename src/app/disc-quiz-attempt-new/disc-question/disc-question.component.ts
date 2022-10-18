@@ -8,8 +8,24 @@ import { Component, OnInit } from '@angular/core';
 export class DiscQuestionComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    var totalQuestions = this.questions.length;
+    var sliceQuestion = this.questionSlice.length;
+    this.totalPage =
+      (totalQuestions - (totalQuestions % sliceQuestion)) / sliceQuestion;
+    if (totalQuestions / sliceQuestion !== 0) {
+      this.totalPage++;
+    }
 
+    this.questions.forEach((question) => {
+      this.userAnswers.push({
+        id: question.id,
+        answers: { right: '', wrong: '' },
+      });
+    });
+  }
+
+  ngAfterViewInit() {}
   questions = [
     {
       id: 1,
@@ -96,6 +112,195 @@ export class DiscQuestionComponent implements OnInit {
     {
       id: 10,
       answers: [
+        'Tôi có xu hướng là một người thận trọng10',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 11,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng11',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 12,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng12',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 13,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng13',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 14,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng14',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 15,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 16,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 17,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 18,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 19,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 20,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 21,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng21',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 22,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng22',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 23,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng23',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 24,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng24',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 25,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng25',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 26,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng26',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 27,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 28,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 29,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 30,
+      answers: [
+        'Tôi có xu hướng là một người thận trọng',
+        'Tôi là một người rất kiên quyết',
+        'Tôi giỏi thuyết phục mọi người',
+        'Tôi có xu hướng trở thành một người thân thiện',
+      ],
+    },
+    {
+      id: 31,
+      answers: [
         'Tôi có xu hướng là một người thận trọng',
         'Tôi là một người rất kiên quyết',
         'Tôi giỏi thuyết phục mọi người',
@@ -103,10 +308,21 @@ export class DiscQuestionComponent implements OnInit {
       ],
     },
   ];
+
+  questionSlice = this.questions.slice(0, 10);
+  totalPage = 0;
   currentQuestion = 0;
-  userAnswers: { id: number; answer: string }[] = [];
+  currentPage = 0;
+
+  userAnswers: { id: number; answers: { right: string; wrong: string } }[] = [];
 
   chooseAnswer(i: number, j: number, event: any) {
+    var answerText = document.querySelector(
+      `.question-container:nth-child(${
+        i + 1
+      }) .answer-container .answer-row:nth-child(${j + 1}) .answer`
+    )?.textContent;
+
     if (event.target.classList.contains('checkmark-differ')) {
       var activeAnswerDiffer = document.querySelector(
         `.question-container:nth-child(${
@@ -114,6 +330,8 @@ export class DiscQuestionComponent implements OnInit {
         }) .answer-container .checkmark-differ.active-difference`
       );
       activeAnswerDiffer?.classList.remove('active-difference');
+
+      this.storeUserAnswer(10 * this.currentPage + i, answerText, 'wrong');
     } else {
       var activeAnswerSame = document.querySelector(
         `.question-container:nth-child(${
@@ -121,13 +339,19 @@ export class DiscQuestionComponent implements OnInit {
         }) .answer-container .checkmark.active-same`
       );
       activeAnswerSame?.classList.remove('active-same');
+      this.storeUserAnswer(10 * this.currentPage + i, answerText, 'right');
     }
+
     this.clickCheckBox(event);
     this.disableAnswer(i, j, event);
   }
 
-  storeUserAnswer(index: number, answerText: string) {
-    this.userAnswers[index].answer = answerText;
+  storeUserAnswer(index: number, answerText: any, check: string) {
+    if (check === 'right') {
+      this.userAnswers[index].answers.right = answerText;
+    } else {
+      this.userAnswers[index].answers.wrong = answerText;
+    }
   }
 
   clickCheckBox(event: any) {
@@ -170,5 +394,57 @@ export class DiscQuestionComponent implements OnInit {
       });
       answerDiffer?.classList.add('disable');
     }
+  }
+
+  changePage(event: any) {
+    this.currentPage = event.pageIndex;
+
+    var startIndex = event.pageIndex * event.pageSize;
+    var endIndex = startIndex + event.pageSize;
+    if (endIndex > event.length) {
+      endIndex = event.length;
+    }
+    this.questionSlice = this.questions.slice(startIndex, endIndex);
+
+    var userAnswerSlice = this.userAnswers.slice(startIndex, endIndex);
+    setTimeout(() => {
+      for (var i = 0; i < userAnswerSlice.length; i++) {
+        for (var j = 0; j < 4; j++) {
+          var answerText = document.querySelector(
+            `.question-container:nth-child(${
+              i + 1
+            }) .answer-container .answer-row:nth-child(${j + 1}) .answer`
+          )?.textContent;
+
+          var answerSame = document.querySelector(
+            `.question-container:nth-child(${
+              i + 1
+            }) .answer-container .answer-row:nth-child(${j + 1}) .checkmark`
+          );
+
+          var answerDiffer = document.querySelector(
+            `.question-container:nth-child(${
+              i + 1
+            }) .answer-container .answer-row:nth-child(${
+              j + 1
+            }) .checkmark-differ`
+          );
+
+          if (userAnswerSlice[i].answers.right === answerText) {
+            answerSame?.classList.add('active-same');
+            answerDiffer?.classList.add('disable');
+          }
+
+          if (userAnswerSlice[i].answers.wrong === answerText) {
+            answerDiffer?.classList.add('active-difference');
+            answerSame?.classList.add('disable');
+          }
+        }
+      }
+    }, 2);
+
+    setTimeout(() => {
+      document.querySelector('.content')?.scrollIntoView();
+    }, 1);
   }
 }

@@ -1,4 +1,5 @@
 import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
+import { HollandQuestionComponent } from './holland-quiz-attempt-new/holland-question/holland-question.component';
 import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
 import { DiscQuestionComponent } from './disc-quiz-attempt-new/disc-question/disc-question.component';
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
@@ -121,6 +122,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt-new.component';
 // import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
+import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
 
 @NgModule({
   declarations: [
@@ -188,6 +190,8 @@ import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt
     AdmissionListComponent,
     BfQuizAttemptNewComponent,
     BfQuestionComponent,
+    HollandQuizAttemptNewComponent,
+    HollandQuestionComponent,
   ],
   imports: [
     FormsModule,
