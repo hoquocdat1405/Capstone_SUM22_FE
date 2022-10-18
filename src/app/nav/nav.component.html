@@ -34,9 +34,11 @@
         </form> -->
         <div class="nav-item dropdown" *ngIf="loggedIn()">
           <a [ngClass]="{'dark': theme=='dark', 'light': theme != 'dark'}" class="nav-link dropdown-toggle" href="#"
-            id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false" ngClass><img src="{{_userPic}}"
-              alt="user profile picture" class="user-img"></a>
-          <ul class="dropdown-menu  " aria-labelledby="dropdown03">
+            id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false" ngClass *ngIf="!hasUserPic()">{{email}}</a>
+          <a [ngClass]="{'dark': theme=='dark', 'light': theme != 'dark'}" class="nav-link dropdown-toggle" href="#"
+            id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false" ngClass *ngIf="hasUserPic()"><img src="{{_userPic}}"
+              alt="{{email}}" class="user-img"></a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown03">
             <li><a class="dropdown-item" routerLink="/profile" href="#">Tài khoản</a></li>
             <li>
               <div class="dropdown-divider"></div>
@@ -44,7 +46,7 @@
             <li><a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a></li>
           </ul>
         </div>
-        <button routerLink="/login-main" type="button" class="btn btn-light text-dark me-2 btn-signin"
+        <button routerLink="/login" type="button" class="btn btn-light text-dark me-2 btn-signin"
           *ngIf="!loggedIn()">
           Đăng Nhập
         </button>

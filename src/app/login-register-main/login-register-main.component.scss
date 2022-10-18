@@ -37,6 +37,10 @@
   margin: 40px 0;
 }
 
+.error-info {
+  color: red;
+}
+
 .register-form {
   width: 50%;
   background-color: #f5f5f5;
@@ -111,9 +115,13 @@ input:not(.remember-checkbox) {
 .login-btn {
   padding: 8px 25px;
   border: none;
-  background-color: #3bd4a6;
+  background-color: #088f8f;
   color: white;
   margin: 10px 0;
+}
+
+.login-btn:disabled {
+  background-color: #3bd4a6;
 }
 
 .register-btn {

@@ -53,8 +53,7 @@ const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
 
   //loginpage
-  { path: 'login', component: LoginRegisterPageComponent },
-  { path: 'login-main', component: LoginRegisterMainComponent },
+  { path: 'login', component: LoginRegisterMainComponent },
 
   //User profile page
   { path: 'profile', component: UserProfilePageComponent },

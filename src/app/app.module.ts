@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { JwtModule } from "@auth0/angular-jwt";
 //services
 import { AuthService } from './_services/auth.service';
 import { TarotServiceService } from './tarot-page/tarot-service.service';
@@ -124,6 +124,14 @@ import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt
 // import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
 import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
 
+export function tokenGetter() {
+  let savedToken = localStorage.getItem("currentUser");
+  if (savedToken) {
+    return JSON.parse(savedToken).token;
+  }
+  return null;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -221,6 +229,13 @@ import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holla
     MatInputModule,
     MatSelectModule,
     MatPaginatorModule,
+    // JwtModule.forRoot({
+    //   config: {
+    //     tokenGetter: tokenGetter,
+    //     allowedDomains: ["api.qick.tech"],
+    //     disallowedRoutes: ["api.qick.tech/api/user/login"],
+    //   },
+    // }),
   ],
   providers: [AuthService, TarotServiceService],
   bootstrap: [AppComponent],
