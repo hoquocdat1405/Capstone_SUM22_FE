@@ -1,1 +1,103 @@
+ /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.tests-container{
+    margin: 1% 10%;
+}
+ img {
+    width: 110%;
+    display: block;
+    border-radius: 10px;
+    object-fit: fill;
+}
 
+.quiz-card {
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.quiz-card img {
+    transform: scale(1);
+    transition: all 0.3s ease-out;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-weight: 700;
+}
+
+
+
+.des {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.des h4 {
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 0 20px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
+.des p {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.des a {
+    color: #fff;
+    background: #34aff3;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease-out 0.3s;
+}
+
+.des a:hover {
+    background: #0e6290;
+}
+.quiz-card:hover { 
+    background: radial-gradient(#111 50%, #000 100%);
+}
+.quiz-card:hover img {
+    transform: scale(1.1) translateY(5px);
+    opacity: 0.3;
+}
+.quiz-card:hover .des h4 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quiz-card:hover .des a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quiz-card:hover .des p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (min-width:320px)  { 
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
+    .tests-container{
+        margin: 1% 0;
+    }
+    /* .quiz-card{
+        margin: 1% !important; 
+    } */
+}
