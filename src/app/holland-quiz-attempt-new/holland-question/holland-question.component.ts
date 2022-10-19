@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-question',
-  templateUrl: './question.component.html',
-  styleUrls: ['./question.component.scss'],
+  selector: 'app-holland-question',
+  templateUrl: './holland-question.component.html',
+  styleUrls: ['./holland-question.component.scss'],
 })
-export class QuestionComponent implements OnInit {
+export class HollandQuestionComponent implements OnInit {
   constructor() {}
-
   ngOnInit() {
     var totalQuestions = this.questions.length;
     var sliceQuestion = this.questionSlice.length;
@@ -20,7 +19,7 @@ export class QuestionComponent implements OnInit {
     this.questions.forEach((question) => {
       this.userAnswer.push({
         id: question.id,
-        answer: '',
+        answer: [],
       });
     });
   }
@@ -31,12 +30,19 @@ export class QuestionComponent implements OnInit {
     {
       id: 1,
       questionText: 'What does HTML stand for?',
-      answers: ['Hypertext 1234', 'Hypertext 1235'],
+      answers: [
+        'Hypertext 1234 asasssssssssssasas',
+        'Hypertext 2222 asasssssssssssasas',
+        'Hypertext 3333 asasssssssssssasas',
+        'Hypertext 4444 asasssssssssssasas',
+        'Hypertext 5555 asasssssssssssasas',
+        'Hypertext 6666 asasssssssssssasas',
+      ],
     },
     {
       id: 2,
       questionText: 'What does HTML stand for2?',
-      answers: ['Hypertext 1111', 'Hypertext 9999'],
+      answers: ['Hypertext 1111', 'Hypertext 9999', 'Hypertext 121111'],
     },
     {
       id: 3,
@@ -81,8 +87,8 @@ export class QuestionComponent implements OnInit {
     },
     {
       id: 11,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
+      questionText: 'What does HTML stand for11?',
+      answers: ['Hypertext 4444', 'Hypertext 111111'],
     },
     {
       id: 12,
@@ -189,7 +195,7 @@ export class QuestionComponent implements OnInit {
   questionSlice = this.questions.slice(0, 10);
   totalPage = 0;
   currentPage = 0;
-  userAnswer: { id: number; answer: string }[] = [];
+  userAnswer: { id: number; answer: string[] }[] = [];
 
   changePage(event: any) {
     this.currentPage = event.pageIndex;
@@ -202,20 +208,24 @@ export class QuestionComponent implements OnInit {
 
     setTimeout(() => {
       var userAnswerSlice = this.userAnswer.slice(startIndex, endIndex);
+      var questionSlice = this.questions.slice(startIndex, endIndex);
+
       for (var i = 0; i < userAnswerSlice.length; i++) {
-        for (var j = 0; j < 2; j++) {
+        for (var j = 0; j < questionSlice[i].answers.length; j++) {
           var answer = document.querySelector(
             `.question-container:nth-child(${i + 1}) .answer:nth-child(${
               j + 1
             }) input`
           ) as HTMLInputElement;
 
-          if (answer.value === userAnswerSlice[i].answer) {
-            answer.checked = true;
-          }
+          userAnswerSlice[i].answer.forEach((text) => {
+            if (answer.value === text) {
+              answer.checked = true;
+            }
+          });
         }
       }
-    }, 1);
+    }, 2);
 
     setTimeout(() => {
       document.querySelector('.container-main')?.scrollIntoView();
@@ -223,6 +233,17 @@ export class QuestionComponent implements OnInit {
   }
 
   storeUserAnswer(event: any, i: number) {
-    this.userAnswer[10 * this.currentPage + i].answer = event.target.value;
+    if (event.target.checked === true) {
+      this.userAnswer[10 * this.currentPage + i].answer.push(
+        event.target.value
+      );
+    } else {
+      const index = this.userAnswer[10 * this.currentPage + i].answer.indexOf(
+        event.target.value
+      );
+      if (index > -1) {
+        this.userAnswer[10 * this.currentPage + i].answer.splice(index, 1);
+      }
+    }
   }
 }

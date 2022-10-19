@@ -37,6 +37,10 @@
   line-height: 35px;
 }
 
+.header-banner-right {
+  width: 30%;
+}
+
 .header-banner-img {
   width: 300px;
 }
@@ -71,21 +75,8 @@
 //   width: 60%;
 // }
 
-@media (max-width: 900px) {
-  .header-banner {
-    flex-direction: column;
-  }
-
-  .header-banner-left {
-    order: 2;
+@media (max-width: 1000px) {
+  app-question {
     width: 90%;
-    text-align: center;
-  }
-  .header-banner-right {
-    order: 1;
-  }
-
-  .horizontal-bar {
-    margin: 10px auto;
   }
 }

@@ -1,7 +1,6 @@
 <div class="main-container">
   <div class="note-text">*Hãy đọc kĩ câu hỏi và lựa chọn mức độ phù hợp nhất với bản thân. </div>
   <div class="content">
-
     <div class="header">
       <div class="header-row">
         <p class="level-title">Không chính xác</p>
@@ -9,32 +8,39 @@
         <p class="level-title">Chính xác</p>
       </div>
     </div>
-    <div class="question-container" *ngFor="let question of questions;index as i">
-      <div class="question-text-box">
-        <div class="question-text">{{question.questionText}}</div>
-      </div>
-      <div class="character-level-box">
-        <label class="input-container">
-          <input class="level" type="radio">
-          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
-        </label>
-        <label class="input-container">
-          <input class="level" type="radio">
-          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
-        </label>
-        <label class="input-container">
-          <input class="level" type="radio">
-          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
-        </label>
-        <label class="input-container">
-          <input class="level" type="radio">
-          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
-        </label>
-        <label class="input-container">
-          <input class="level" type="radio">
-          <span class="checkmark" (click)="chooseAnswer(i,$event)"></span>
-        </label>
+    <div class="question-container">
+      <div class="question" *ngFor="let question of questionSlice;index as i">
+        <div class="question-text-box">
+          <div class="question-text">{{question.questionText}}</div>
+        </div>
+        <div class="character-level-box">
+          <label class="input-container">
+            <input class="level" type="radio" value="1">
+            <span class="checkmark" (click)="chooseAnswer(i,$event,'1')"></span>
+          </label>
+          <label class="input-container">
+            <input class="level" type="radio" value="2">
+            <span class="checkmark" (click)="chooseAnswer(i,$event,'2')"></span>
+          </label>
+          <label class="input-container">
+            <input class="level" type="radio" value="3">
+            <span class="checkmark" (click)="chooseAnswer(i,$event,'3')"></span>
+          </label>
+          <label class="input-container">
+            <input class="level" type="radio" value="4">
+            <span class="checkmark" (click)="chooseAnswer(i,$event,'4')"></span>
+          </label>
+          <label class="input-container">
+            <input class="level" type="radio" value="5">
+            <span class="checkmark" (click)="chooseAnswer(i,$event,'5')"></span>
+          </label>
+        </div>
       </div>
     </div>
   </div>
+  <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
+      class="end-index">{{totalPage}}</span>
+  </p>
+  <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page" (page)="changePage($event)">
+  </mat-paginator>
 </div>

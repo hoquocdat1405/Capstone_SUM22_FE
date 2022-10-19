@@ -2,66 +2,106 @@
   <div class="login-register-container">
     <form class="login-form" (ngSubmit)="login()" [formGroup]="loginFormIns">
       <p class="title-text">Đăng nhập vào tài khoản</p>
-      <p class="detail-title-text">Điền thông tin để đăng nhập</p>
+      <p class="detail-title-text">Điền đầy đủ thông tin để đăng nhập</p>
       <div class="input-div">
         <label for="email-login" class="label-input">Địa Chỉ Email</label>
         <input type="text" required id="email-login" class="email-input" placeholder="Điền Email của bạn" formControlName="email">
-        <div *ngIf="f['email'].invalid && f['email'].dirty">
-          <div *ngIf="f['email'].errors">
-            <div *ngIf="f['email'].errors['required']" class="error-info">
+        <div *ngIf="loginF['email'].invalid && loginF['email'].dirty">
+          <div *ngIf="loginF['email'].errors">
+            <div *ngIf="loginF['email'].errors['required']" class="error-info">
               <div>Email không được để trống</div>
             </div>
-            <div *ngIf="f['email'].errors['email']" class="error-info">
+            <div *ngIf="loginF['email'].errors['email']" class="error-info">
               <div>Sai định dạng email</div>
             </div>
           </div>
         </div>
       </div>
       <div class="input-div">
-        <label for="pass-login" class="label-input">Mật khẩu</label>
-        <input type="password" required id="pass-login" class="password-input" placeholder="Điền mật khẩu" formControlName="password">
-        <div *ngIf="f['password'].invalid && f['password'].dirty">
-          <div *ngIf="f['password'].errors">
-            <div *ngIf="f['password'].errors['required']" class="error-info">
-              <div>Password không được để trống</div>
+        
+
+        <div class="icon-input-container">
+          <i class="icon-seen fa fa-eye" aria-hidden="true" (click)="isActive=false" *ngIf="isActive"></i>
+          <i class="icon-unseen fa fa-eye-slash" aria-hidden="true" (click)="isActive=true" *ngIf="!isActive"></i>
+
+          <label for="pass-login" class="label-input">Mật khẩu</label>
+          <input type="password" required id="pass-login" class="password-input" placeholder="Điền mật khẩu"
+            formControlName="password">
+          <div *ngIf="loginF['password'].invalid && loginF['password'].dirty">
+            <div *ngIf="loginF['password'].errors">
+              <div *ngIf="loginF['password'].errors['required']" class="error-info">
+                <div>Mật khẩu không được để trống</div>
+              </div>
             </div>
+
           </div>
         </div>
-      </div>
 
-      <div class="remember-checkbox-div">
-        <input type="checkbox" class="remember-checkbox">
-        <p class="remember-text">Remember Me</p>
+        <div class="remember-checkbox-div">
+          <input type="checkbox" class="remember-checkbox">
+          <p class="remember-text">Remember Me</p>
+        </div>
+        <!-- <button class="login-btn" type="submit" [disabled]="!loginForm.valid">Đăng nhập</button> -->
+        <button class="login-btn" type="submit">Đăng nhập</button>
+        <p class="term-text">Bằng cách ấn đăng nhập, bạn đã đồng ý với <span class="highlight-text">chính sách bảo
+            mật</span> và <span class="highlight-text">điều khoản dịch vụ</span> của chúng tôi</p>
+        <p class="register-text">Bạn chưa có tài khoản?<span class="highlight-text" (click)="changePosition()">Đăng
+            kí
+            ngay</span></p>
       </div>
-      <!-- <button class="login-btn" type="submit" [disabled]="!loginForm.valid">Đăng nhập</button> -->
-      <button class="login-btn" type="submit">Đăng nhập</button>
-      <p class="term-text">Bằng cách ấn đăng nhập, bạn đã đồng ý với <span class="highlight-text">chính sách bảo
-          mật</span> và <span class="highlight-text">điều khoản dịch vụ</span> của chúng tôi</p>
-      <p class="register-text">Bạn chưa có tài khoản?<span class="highlight-text" (click)="changePosition()">Đăng
-          kí
-          ngay</span></p>
     </form>
 
-    <form class="register-form" #registerForm="ngForm" (ngSubmit)="register()">
+    <form class="register-form" (ngSubmit)="register()" [formGroup]="registerFormIns">
       <p class="title-text">Đăng kí tài khoản mới</p>
       <p class="detail-title-text">Nhập đầy đủ thông tin bên dưới để đăng kí</p>
       <div class="input-div">
         <label for="name" class="label-input">Họ và tên</label>
-        <input type="text" id="name" class="name-input" placeholder="Điền họ và tên của bạn" [(ngModel)]="registerName" name="registerName" required>
+        <input type="text" id="name" class="name-input" placeholder="Điền họ và tên của bạn" formControlName="registerName" required>
+        <div *ngIf="passwordF['registerName'].invalid && passwordF['registerName'].dirty">
+          <div *ngIf="passwordF['registerName'].errors">
+            <div *ngIf="passwordF['registerName'].errors['required']" class="error-info">
+              <div>Họ và tên không được để trống</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="input-div">
         <label for="email-register" class="label-input">Địa Chỉ Email</label>
-        <input type="text" id="email-register" class="email-input" placeholder="Điền Email của bạn" [(ngModel)]="emailReg" name="emailReg" required>
+        <input type="text" id="email-register" class="email-input" placeholder="Điền Email của bạn" formControlName="emailReg" required>
+        <div *ngIf="passwordF['emailReg'].invalid && passwordF['emailReg'].dirty">
+          <div *ngIf="passwordF['emailReg'].errors">
+            <div *ngIf="passwordF['emailReg'].errors['required']" class="error-info">
+              <div>Email không được để trống</div>
+            </div>
+            <div *ngIf="passwordF['emailReg'].errors['email']" class="error-info">
+              <div>Sai định dạng email</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="input-div">
         <label for="pass-register" class="label-input">Mật khẩu</label>
-        <input type="password" id="pass-register" class="password-input" placeholder="Điền mật khẩu" [(ngModel)]="passwordReg" name="passwordReg" required>
+        <input type="password" id="pass-register" class="password-input" placeholder="Điền mật khẩu" formControlName="passwordReg" required>
+        <div *ngIf="passwordF['passwordReg'].invalid && passwordF['passwordReg'].dirty">
+          <div *ngIf="passwordF['passwordReg'].errors">
+            <div *ngIf="passwordF['passwordReg'].errors['required']" class="error-info">
+              <div>Mật khẩu không được để trống</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="input-div">
         <label for="re-pass-register" class="label-input">Xác nhận mật khẩu</label>
-        <input type="password" id="re-pass-register" class="re-password-input" placeholder="Điền lại mật khẩu" [(ngModel)]="confirmPasswordReg" name="confirmPasswordReg" required>
+        <input type="password" id="re-pass-register" class="re-password-input" placeholder="Điền lại mật khẩu" formControlName="confirmPasswordReg" required>
+        <div *ngIf="passwordF['confirmPasswordReg'].invalid && passwordF['confirmPasswordReg'].dirty">
+          <div *ngIf="passwordF['confirmPasswordReg'].errors">
+            <div *ngIf="passwordF['confirmPasswordReg'].errors['required']" class="error-info">
+              <div>Xác nhận mật khẩu không được để trống</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="register-btn" type="submit" [disabled]="!registerForm.valid">Đăng ký</button>
+      <button class="register-btn" type="submit">Đăng ký</button>
       <p class="login-text">Bạn đã có tài khoản?<span class="highlight-text" (click)="changePosition()">Đăng nhập
           ngay</span></p>
     </form>

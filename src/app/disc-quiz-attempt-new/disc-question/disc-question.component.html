@@ -1,18 +1,19 @@
 <div class="container-main">
     <div class="content">
         <p class="title-disc">Bài trắc nghiệm DISC</p>
+        <p class="note-text">*Hãy đọc thật kĩ và chọn câu trả lời phù hợp nhất với bản thân</p>
         <div class="disc-header">
             <span class="header-content same">Giống bạn nhất</span>
             <span class="header-content difference">Khác bạn nhất</span>
         </div>
         <div class="question">
-            <div class="question-container" *ngFor="let question of questions;index as i">
+            <div class="question-container" *ngFor="let question of questionSlice;index as i">
                 <p class="question-index">Câu <span>{{question.id}}</span></p>
                 <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
                 <mat-divider></mat-divider>
 
                 <div class="answer-container">
-                    <div class="answer-row" *ngFor="let answer of questions[i].answers;index as j">
+                    <div class="answer-row" *ngFor="let answer of questionSlice[i].answers;index as j">
                         <p class="answer">{{answer}}</p>
                         <div class="answer-box">
                             <label class="input-container">
@@ -28,7 +29,11 @@
                 </div>
             </div>
         </div>
-        <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page">
+        <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
+                class="end-index">{{totalPage}}</span>
+        </p>
+        <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page"
+            (page)="changePage($event)">
         </mat-paginator>
     </div>
 
