@@ -5,6 +5,11 @@
   transition: all 0.5s;
 }
 
+.icon-input-container {
+  width: 100%;
+  position: relative;
+}
+
 .highlight-text {
   color: #3bd4a6;
   text-decoration: underline;
@@ -78,6 +83,24 @@
 
 input {
   padding: 10px 5px;
+}
+
+input:not(.remember-checkbox) {
+  width: 100%;
+}
+
+.icon-seen {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.icon-unseen {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .remember-checkbox-div {

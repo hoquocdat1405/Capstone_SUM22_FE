@@ -1,6 +1,6 @@
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../_services/auth.service';
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -16,6 +16,9 @@ export class LoginRegisterMainComponent implements OnInit {
   passwordReg: string = '';
   confirmPasswordReg: string = '';
 
+  @Input()
+  isActive = true;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -23,9 +26,9 @@ export class LoginRegisterMainComponent implements OnInit {
   ) {}
 
   loginFormIns = this.fb.group({
-    "email": ["", [Validators.required, Validators.email]],
-    "password": ["", [Validators.required]]
-  })
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+  });
 
   registerFormIns = this.fb.group({
     "registerName": ["", [Validators.required]],
@@ -64,18 +67,19 @@ export class LoginRegisterMainComponent implements OnInit {
 
   register() {
     if (this.registerValidate())
-      this.authService.register(this.emailReg, this.registerName, this.passwordReg).subscribe({
-        next: () => {
-          console.log("register success");
-        },
-        error: () => {
-          console.error("register fail");
-        }
-      })
+      this.authService
+        .register(this.emailReg, this.registerName, this.passwordReg)
+        .subscribe({
+          next: () => {
+            console.log('register success');
+          },
+          error: () => {
+            console.error('register fail');
+          },
+        });
   }
 
   changePosition() {
-    console.log(window.innerWidth);
     if (window.innerWidth <= 800) {
       var registerContainer = document.querySelector(
         '.register-form'

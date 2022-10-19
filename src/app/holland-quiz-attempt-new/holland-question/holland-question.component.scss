@@ -38,7 +38,7 @@
 
 .question-container {
   padding: 10px;
-  margin: 0 auto;
+  margin: 5px auto;
   width: 100%;
 }
 
@@ -78,13 +78,14 @@ input {
 .answer-container {
   background-color: #f7f7f7;
   display: flex;
+  flex-direction: column;
 }
 
 .answer {
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 :host ::ng-deep.mat-paginator {
@@ -107,24 +108,5 @@ input {
 @media (max-width: 600px) {
   .answer-container {
     grid-template-columns: calc(100% - 20px);
-  }
-}
-
-@media (max-width: 900px) {
-  .content {
-    width: 90%;
-  }
-
-  .answer {
-    width: 100%;
-  }
-
-  .answer-container {
-    // flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  .note-text {
-    width: 90%;
   }
 }
