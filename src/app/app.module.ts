@@ -1,3 +1,4 @@
+import { Interceptor } from './interceptor';
 import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
 import { QuestionComponent } from './mbti-quiz-attempt-new/question/question.component';
 import { DiscQuestionComponent } from './disc-quiz-attempt-new/disc-question/disc-question.component';
@@ -13,8 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { JwtModule } from "@auth0/angular-jwt";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 //services
 import { AuthService } from './_services/auth.service';
 import { TarotServiceService } from './tarot-page/tarot-service.service';
@@ -123,9 +124,9 @@ import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt
 // import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
 
 export function tokenGetter() {
-  let savedToken = localStorage.getItem("currentUser");
+  let savedToken = localStorage.getItem("token");
   if (savedToken) {
-    return JSON.parse(savedToken).token;
+    return savedToken;
   }
   return null;
 }
@@ -225,15 +226,12 @@ export function tokenGetter() {
     MatInputModule,
     MatSelectModule,
     MatPaginatorModule,
-    // JwtModule.forRoot({
-    //   config: {
-    //     tokenGetter: tokenGetter,
-    //     allowedDomains: ["api.qick.tech"],
-    //     disallowedRoutes: ["api.qick.tech/api/user/login"],
-    //   },
-    // }),
   ],
-  providers: [AuthService, TarotServiceService],
+  providers: [
+    AuthService, 
+    TarotServiceService, 
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

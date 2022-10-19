@@ -68,4 +68,8 @@ export class AuthService {
   getDecodedToken() {
     return this.decodedToken;
   }
+
+  hasLoggedIn() {
+    return !!localStorage.getItem('token');
+  }
 }

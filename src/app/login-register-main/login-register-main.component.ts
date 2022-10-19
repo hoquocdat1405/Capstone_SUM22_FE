@@ -27,8 +27,19 @@ export class LoginRegisterMainComponent implements OnInit {
     "password": ["", [Validators.required]]
   })
 
-  get f() {
+  registerFormIns = this.fb.group({
+    "registerName": ["", [Validators.required]],
+    "emailReg": ["", [Validators.required, Validators.email]],
+    "passwordReg": ["", [Validators.required]],
+    "confirmPasswordReg": ["", [Validators.required]]
+  })
+
+  get loginF() {
     return this.loginFormIns.controls;
+  }
+
+  get passwordF() {
+    return this.registerFormIns.controls;
   }
 
   ngOnInit() { }
@@ -40,6 +51,9 @@ export class LoginRegisterMainComponent implements OnInit {
         if (token) {
           this.router.navigate(['/home']);
         }
+      },
+      error: () => {
+        console.log("login error");
       }
     });
   }
