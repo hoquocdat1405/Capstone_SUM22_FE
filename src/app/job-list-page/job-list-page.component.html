@@ -1,38 +1,28 @@
 <div class="page-container">
   <app-nav></app-nav>
   <div class="search-container">
-    <p class="seach-title">Khám phá các ngành nghề phù hợp với bản thân</p>
-    <p class="seach-description">Tra cứu thông tin và chọn ngành nghề phù hợp nhất với bạn</p>
+    <p class="search-title">Khám phá các ngành nghề phù hợp với bản thân</p>
+    <p class="search-description">Tra cứu thông tin và chọn ngành nghề phù hợp nhất với bạn</p>
     <div class="search-row">
       <form class="search-form" action="">
-        <div class="filter">
-          <div class="filter-btn" (click)="clickFilter($event)">
-            <i class="filter-icon fa fa-filter" aria-hidden="true"></i>
-            <p class="filter-text">Bộ lọc</p>
-          </div>
-
-          <div class="filter-box">
-            <p class="filter-box-title">Bộ lọc</p>
-            <input type="text" name="" id="" class="filter-input" placeholder="Nhập .......">
-
-            <div class="filter-box-row">
-              <input type="checkbox" name="" id="text1">
-              <label for="text1">Text1</label>
-            </div>
-            <div class="filter-box-row">
-              <input type="checkbox" name="" id="text2">
-              <label for="text2">Text2</label>
-            </div>
-            <div class="filter-box-row">
-              <input type="checkbox" name="" id="text3">
-              <label for="text3">Text2</label>
-            </div>
-          </div>
-        </div>
         <div class="search">
           <input type="text" class="search-input" placeholder="Nhập tên ngành nghề">
           <i class="search-icon fa fa-search" aria-hidden="true"></i>
         </div>
+        <!-- <div class="filter"> -->
+        <i class="filter-icon fa fa-filter" aria-hidden="true"></i>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Number</mat-label>
+          <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+            [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <!-- </div> -->
         <input type="button" value="Tìm kiếm" class="btn-search">
       </form>
     </div>
@@ -42,7 +32,7 @@
     <div class="job-container">
 
       <div class="text-container">
-        <div class="header-title">Danh sách các ngành nghề phù hợp</div>
+        <div class="header-title">Danh sách các ngành nghề</div>
         <div class="job-wrapper">
           <div class="card-item">
             <div class="job-icon">

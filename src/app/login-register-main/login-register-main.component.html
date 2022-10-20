@@ -5,7 +5,8 @@
       <p class="detail-title-text">Điền đầy đủ thông tin để đăng nhập</p>
       <div class="input-div">
         <label for="email-login" class="label-input">Địa Chỉ Email</label>
-        <input type="text" required id="email-login" class="email-input" placeholder="Điền Email của bạn" formControlName="email">
+        <input type="text" required id="email-login" class="email-input" placeholder="Điền Email của bạn"
+          formControlName="email">
         <div *ngIf="loginF['email'].invalid && loginF['email'].dirty">
           <div *ngIf="loginF['email'].errors">
             <div *ngIf="loginF['email'].errors['required']" class="error-info">
@@ -18,23 +19,20 @@
         </div>
       </div>
       <div class="input-div">
-        
-
+        <label for="pass-login" class="label-input">Mật khẩu</label>
         <div class="icon-input-container">
           <i class="icon-seen fa fa-eye" aria-hidden="true" (click)="isActive=false" *ngIf="isActive"></i>
           <i class="icon-unseen fa fa-eye-slash" aria-hidden="true" (click)="isActive=true" *ngIf="!isActive"></i>
-
-          <label for="pass-login" class="label-input">Mật khẩu</label>
-          <input type="password" required id="pass-login" class="password-input" placeholder="Điền mật khẩu"
-            formControlName="password">
-          <div *ngIf="loginF['password'].invalid && loginF['password'].dirty">
-            <div *ngIf="loginF['password'].errors">
-              <div *ngIf="loginF['password'].errors['required']" class="error-info">
-                <div>Mật khẩu không được để trống</div>
-              </div>
+          <input [type]="isActive ? 'text' : 'password'" required id="pass-login" class="password-input"
+            placeholder="Điền mật khẩu" formControlName="password">
+        </div>
+        <div *ngIf="loginF['password'].invalid && loginF['password'].dirty">
+          <div *ngIf="loginF['password'].errors">
+            <div *ngIf="loginF['password'].errors['required']" class="error-info">
+              <div>Mật khẩu không được để trống</div>
             </div>
-
           </div>
+
         </div>
 
         <div class="remember-checkbox-div">
@@ -56,7 +54,8 @@
       <p class="detail-title-text">Nhập đầy đủ thông tin bên dưới để đăng kí</p>
       <div class="input-div">
         <label for="name" class="label-input">Họ và tên</label>
-        <input type="text" id="name" class="name-input" placeholder="Điền họ và tên của bạn" formControlName="registerName" required>
+        <input type="text" id="name" class="name-input" placeholder="Điền họ và tên của bạn"
+          formControlName="registerName" required>
         <div *ngIf="passwordF['registerName'].invalid && passwordF['registerName'].dirty">
           <div *ngIf="passwordF['registerName'].errors">
             <div *ngIf="passwordF['registerName'].errors['required']" class="error-info">
@@ -67,7 +66,8 @@
       </div>
       <div class="input-div">
         <label for="email-register" class="label-input">Địa Chỉ Email</label>
-        <input type="text" id="email-register" class="email-input" placeholder="Điền Email của bạn" formControlName="emailReg" required>
+        <input type="text" id="email-register" class="email-input" placeholder="Điền Email của bạn"
+          formControlName="emailReg" required>
         <div *ngIf="passwordF['emailReg'].invalid && passwordF['emailReg'].dirty">
           <div *ngIf="passwordF['emailReg'].errors">
             <div *ngIf="passwordF['emailReg'].errors['required']" class="error-info">
@@ -81,7 +81,8 @@
       </div>
       <div class="input-div">
         <label for="pass-register" class="label-input">Mật khẩu</label>
-        <input type="password" id="pass-register" class="password-input" placeholder="Điền mật khẩu" formControlName="passwordReg" required>
+        <input type="password" id="pass-register" class="password-input" placeholder="Điền mật khẩu"
+          formControlName="passwordReg" required>
         <div *ngIf="passwordF['passwordReg'].invalid && passwordF['passwordReg'].dirty">
           <div *ngIf="passwordF['passwordReg'].errors">
             <div *ngIf="passwordF['passwordReg'].errors['required']" class="error-info">
@@ -92,7 +93,8 @@
       </div>
       <div class="input-div">
         <label for="re-pass-register" class="label-input">Xác nhận mật khẩu</label>
-        <input type="password" id="re-pass-register" class="re-password-input" placeholder="Điền lại mật khẩu" formControlName="confirmPasswordReg" required>
+        <input type="password" id="re-pass-register" class="re-password-input" placeholder="Điền lại mật khẩu"
+          formControlName="confirmPasswordReg" required>
         <div *ngIf="passwordF['confirmPasswordReg'].invalid && passwordF['confirmPasswordReg'].dirty">
           <div *ngIf="passwordF['confirmPasswordReg'].errors">
             <div *ngIf="passwordF['confirmPasswordReg'].errors['required']" class="error-info">
