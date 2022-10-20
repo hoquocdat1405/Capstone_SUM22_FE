@@ -2,9 +2,10 @@
   <app-nav></app-nav>
 
   <div class="banner-section">
-    <img src="../../assets/img/disc-banner-nobackground.png" alt="mbti test" />
+    <img src="{{test.bannerUrl}}" alt="{{test.quizName}}" />
   </div>
   <div class="banner-option">
+    <!-- TODO: change this router to /test-attemp:param(id) -->
     <a href="#" routerLink="/disc-quiz-attempt" class="btn-start"
       >Bắt đầu ngay</a
     >
@@ -13,35 +14,21 @@
 
 <div class="content-container">
   <div class="content-section">
-    <h4 class="content-header">DISC Test là gì</h4>
+    <h4 class="content-header">{{ test.quizName }} là gì</h4>
     <p class="content-text">
-      Trắc nghiệm tính cách DISC là một công cụ xác định tính cách của người đối
-      diện thông qua hành vi của họ trong một tình huống thực tế hay hệ thống
-      câu hỏi cụ thể. Điều này giúp bạn có thể nắm bắt sở thích, suy nghĩ và xu
-      hướng hành vi của người đó, từ biết được họ thuộc nhóm tính cách nào để
-      giao tiếp linh hoạt, hiệu quả. Những phân tích rõ ràng và cụ thể về 4 nhóm
-      phong cách hành vi theo DISC giúp bạn cải thiện kỹ năng giao tiếp của bản
-      thân, tạo thiện cảm với mọi người xung quanh, xây dựng mối quan hệ, xây
-      dựng đội nhóm và phát triển mối quan hệ cộng đồng.
-      <br /><br />
-      Trắc nghiệm DISC được xây dựng dựa trên lý thuyết DISC của nhà tâm lý học
-      William Moulton Marston – một luật sư và một nhà tâm lý học. Đây là một
-      trong những công cụ hữu ích nhất được các công ty và tổ chức sử dụng hiện
-      nay để đánh giá tính cách ứng viên. Người làm bài đánh giá sẽ hoàn thành
-      một bảng câu hỏi bao gồm từ 24 đến 28 câu. Mỗi câu hỏi bao gồm 4 tính từ
-      được trích ra từ nghiên cứu ban đầu của Marston.
+      {{ test.introduction }}
+    </p>
+  </div>
+  <div class="content-section">
+    <h4 class="content-header">Lịch sử</h4>
+    <p class="content-text">
+      {{ test.history }}
     </p>
   </div>
   <div class="content-section">
     <h4 class="content-header">Tiêu chí</h4>
     <p class="content-text">
-      Theo trắc nghiệm tính cách DISC, tính cách của mỗi người trong số chúng ta
-      đều nằm trong 4 khuôn mẫu hành vi của 4 nhóm: D (Dominance – Quyền lực), I
-      (Influence – Sự ảnh hưởng), S (Steadiness – Sự kiên định), C – (Compliance
-      – Sự tuân thủ). Mỗi cá nhân đều hội tụ đủ bốn nhóm tính cách trên, với mức
-      độ khác nhau. Khi đọc biểu đồ DISC của một cá nhân, chúng ta sẽ chọn ra
-      một hoặc hai nhóm chiếm phần trăm cao nhất để xác định tính cách điển hình
-      của người đó.
+      {{ test.criteriaInformation }}
     </p>
   </div>
 

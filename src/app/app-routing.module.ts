@@ -60,8 +60,20 @@ const routes: Routes = [
   { path: 'profile', component: UserProfilePageComponent },
 
   //quizes listing page (non-category)
+  { path: 'tests', component: QuizListingPageComponent ,
+    // children: [
+    //   {
+    //     path: 'detail/:id', // child route path
+    //     component: DiscQuizDetailPageComponent, // child route component that the router renders
+    //   },
+      
+    // ],
+  },//LiemNT test new route
+  { path: 'test-detail/:id', component: DiscQuizDetailPageComponent },//LiemNT test new route
+
   { path: 'quiz-list', component: QuizListingPageComponent },
   { path: 'quiz-list-category', component: QuizListingCategoryPageComponent },
+
 
   //quizes detail pages link
   { path: 'mbti-quiz-detail', component: MbtiQuizDetailPageComponent },
