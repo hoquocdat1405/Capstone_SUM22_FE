@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../_services/shared.service';
 import { Test } from '../_model/test.model';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-quiz-listing-page',
   templateUrl: './quiz-listing-page.component.html',
@@ -9,13 +10,12 @@ import { Test } from '../_model/test.model';
 export class QuizListingPageComponent implements OnInit {
   public tests: Test[] = [];
 
-  constructor(private sharedServ: SharedService) {}
+  constructor(private sharedServ: SharedService,private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.sharedServ.getAllTest().subscribe((response) => {
       this.tests = response;
-      console.log(response);
-      console.log("tests"+this.tests[0].createdDate);
     });
   }
+
 }

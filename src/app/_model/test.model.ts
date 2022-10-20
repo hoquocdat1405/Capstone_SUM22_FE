@@ -6,7 +6,10 @@ export interface Test {
   totalQuestion: number;
   createdDate: Date;
   status: boolean;
-  description: string;
+  introduction: string;
+  bannerUrl: string;
+  history: string;
+  criteriaInformation: string;
   shortDescription: string;
   creator: string;
   quizType: number;

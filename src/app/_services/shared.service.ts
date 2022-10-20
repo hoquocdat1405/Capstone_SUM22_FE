@@ -13,9 +13,9 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
+  getAllTest(): Observable<any> { return this.http.get<any>(this.baseUrl +  'guest/get-list-test-guest'); }
 
-  getAllTest(): Observable<any> { return this.http.get<any>(this.baseUrl +  'Guest/get-list-test-guest'); }
-
+  getTestDetail(id:string | null): Observable<any>{ return this.http.get<any>(this.baseUrl + 'guest/get-test-detail-guest?testId=' + id); }
 
 //   getProfile(): Observable<User> {
 //     return this.http.get<User>(`${this.baseUrl}/user/profile`);
