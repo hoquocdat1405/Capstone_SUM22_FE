@@ -1,7 +1,7 @@
 <app-nav></app-nav>
 
-<div class="tests-container row" *ngFor="let test of tests">
-  <div class="quiz-card col-sm-5 col-md-5 col-10 m-4">
+<div class="tests-container row" >
+  <div class="quiz-card col-sm-5 col-md-5 col-10 m-4" *ngFor="let test of tests">
     <img src="..\assets\img\disc-fhd.jpg" alt="" />
     <div class="des">
       <h4>{{test.quizName}}</h4>
@@ -18,19 +18,5 @@
       </div>
     </div>
   </div>
- 
-  
-  <!-- <div class="test-item .col-md-6">
-    <app-quiz-info-item></app-quiz-info-item>
-  </div>
-  <div class="test-item .col-md-6">
-    <app-quiz-info-item></app-quiz-info-item>
-  </div> -->
-  <!-- <div class="test-item .col-md-6.">
-    <app-quiz-info-item></app-quiz-info-item>
-  </div>
-  <div class="test-item .col-md-6.">
-    <app-quiz-info-item></app-quiz-info-item>
-  </div> -->
 </div>
 <app-footer></app-footer>
