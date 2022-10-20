@@ -1,3 +1,4 @@
+import { MaterialModule } from './material/material.module';
 import { Interceptor } from './interceptor';
 import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
 import { HollandQuestionComponent } from './holland-quiz-attempt-new/holland-question/holland-question.component';
@@ -23,17 +24,6 @@ import { TarotServiceService } from './tarot-page/tarot-service.service';
 
 //fa icon
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-//material ui
-import { MatIconModule } from '@angular/material/icon';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTreeModule } from '@angular/material/tree';
-import { MatDividerModule } from '@angular/material/divider';
-
 //sub component
 import { ExpansionPanelComponent } from './holland-quiz-detail-page/expansion-panel/expansion-panel.component';
 import { CarouselComponent } from './landing-page/carousel/carousel.component';
@@ -115,12 +105,7 @@ import { LoginRegisterMainComponent } from './login-register-main/login-register
 import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
 import { JobListPageComponent } from './job-list-page/job-list-page.component';
 import { AdmissionListComponent } from './admission-list/admission-list.component';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt-new.component';
 // import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
 import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
@@ -207,29 +192,13 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    MatIconModule,
-    MatTabsModule,
-    MatExpansionModule,
     BrowserAnimationsModule,
     HttpClientModule,
     DragDropModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatTreeModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatTreeModule,
-    MatDividerModule,
     StaffModule,
     PsyModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatPaginatorModule,
+    MaterialModule
   ],
   providers: [
     AuthService, 
