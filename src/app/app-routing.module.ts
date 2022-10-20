@@ -1,3 +1,4 @@
+import { AuthGuard } from './_services/auth.guard';
 import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
 import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt-new.component';
 import { DiscQuizAttemptNewComponent } from './disc-quiz-attempt-new/disc-quiz-attempt-new.component';
@@ -116,7 +117,7 @@ const routes: Routes = [
     loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),
   },
   //Job detail
-  { path: 'job-detail', component: JobDetailPageComponent },
+  { path: 'job-detail', component: JobDetailPageComponent, canActivate: [AuthGuard] },
   { path: 'job-list', component: JobListPageComponent },
 
   //addmission-news
@@ -142,4 +143,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

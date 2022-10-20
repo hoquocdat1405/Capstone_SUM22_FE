@@ -30,23 +30,35 @@ export class LoginRegisterMainComponent implements OnInit {
     password: ['', [Validators.required]],
   });
 
-  get f() {
+  registerFormIns = this.fb.group({
+    "registerName": ["", [Validators.required]],
+    "emailReg": ["", [Validators.required, Validators.email]],
+    "passwordReg": ["", [Validators.required]],
+    "confirmPasswordReg": ["", [Validators.required]]
+  })
+
+  get loginF() {
     return this.loginFormIns.controls;
   }
 
-  ngOnInit() {}
+  get passwordF() {
+    return this.registerFormIns.controls;
+  }
+
+  ngOnInit() { }
 
   login() {
-    this.authService
-      .login(this.loginFormIns.value.email, this.loginFormIns.value.password)
-      .subscribe({
-        next: () => {
-          const token = localStorage.getItem('token');
-          if (token) {
-            this.router.navigate(['/home']);
-          }
-        },
-      });
+    this.authService.login(this.loginFormIns.value.email, this.loginFormIns.value.password).subscribe({
+      next: () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          this.router.navigate(['/home']);
+        }
+      },
+      error: () => {
+        console.log("login error");
+      }
+    });
   }
 
   registerValidate() {
