@@ -92,10 +92,10 @@
     transform: translateY(0);
 }
 
-@media (min-width:320px)  { 
+@media (max-width:500px)   { 
     /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
     .tests-container{
-        margin: 1% 0;
+        margin: 1% 1%;
     }
     /* .quiz-card{
         margin: 1% !important; 

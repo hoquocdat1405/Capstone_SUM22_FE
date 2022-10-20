@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { CloudinaryAppConst } from '../shared/constants/app-const';
-
+import { Test } from '../_model/test.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,6 +14,7 @@ export class SharedService {
   constructor(private http: HttpClient) {}
 
 
+  getAllTest(): Observable<any> { return this.http.get<any>(this.baseUrl +  'Guest/get-list-test-guest'); }
 
 
 //   getProfile(): Observable<User> {

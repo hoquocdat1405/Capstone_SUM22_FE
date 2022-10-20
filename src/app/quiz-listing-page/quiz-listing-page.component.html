@@ -1,52 +1,12 @@
 <app-nav></app-nav>
 
-<div class="tests-container row">
+<div class="tests-container row" *ngFor="let test of tests">
   <div class="quiz-card col-sm-5 col-md-5 col-10 m-4">
-    <img src="../../../assets/img/disc-fhd.jpg" alt="" />
+    <img src="..\assets\img\disc-fhd.jpg" alt="" />
     <div class="des">
-      <h4>DISC Test</h4>
+      <h4>{{test.quizName}}</h4>
       <p>
-        DISC là một loại trắc nghiệm dùng để đánh giá hành vi cá nhân tập
-        trung vào bốn đặc điểm tính cách nổi bật con người trong một khoảng
-        thời gian nhất định
-      </p>
-      <div class="options">
-        <a href="#" routerLink="/disc-quiz-detail" class="btn-detail"
-          >Chi tiết</a
-        >
-        <a href="#" routerLink="/disc-quiz-attempt" class="btn-start"
-          >Bắt đầu</a
-        >
-      </div>
-    </div>
-  </div>
-  <div class="quiz-card col-sm-5 col-md-5 col-10 m-4">
-    <img src="../../../assets/img/disc-fhd.jpg" alt="" />
-    <div class="des">
-      <h4>DISC Test</h4>
-      <p>
-        DISC là một loại trắc nghiệm dùng để đánh giá hành vi cá nhân tập
-        trung vào bốn đặc điểm tính cách nổi bật con người trong một khoảng
-        thời gian nhất định
-      </p>
-      <div class="options">
-        <a href="#" routerLink="/disc-quiz-detail" class="btn-detail"
-          >Chi tiết</a
-        >
-        <a href="#" routerLink="/disc-quiz-attempt" class="btn-start"
-          >Bắt đầu</a
-        >
-      </div>
-    </div>
-  </div>
-  <div class="quiz-card col-sm-5 col-md-5 col-10 m-4">
-    <img src="../../../assets/img/disc-fhd.jpg" alt="" />
-    <div class="des">
-      <h4>DISC Test</h4>
-      <p>
-        DISC là một loại trắc nghiệm dùng để đánh giá hành vi cá nhân tập
-        trung vào bốn đặc điểm tính cách nổi bật con người trong một khoảng
-        thời gian nhất định
+        {{test.shortDescription}}
       </p>
       <div class="options">
         <a href="#" routerLink="/disc-quiz-detail" class="btn-detail"
