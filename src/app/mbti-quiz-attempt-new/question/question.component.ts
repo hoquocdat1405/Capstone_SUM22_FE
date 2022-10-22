@@ -223,6 +223,17 @@ export class QuestionComponent implements OnInit {
   }
 
   storeUserAnswer(event: any, i: number) {
+    var check = false;
     this.userAnswer[10 * this.currentPage + i].answer = event.target.value;
+
+    this.userAnswer.forEach((answer) => {
+      if (answer.answer === '') {
+        check = false;
+      }
+      if (check !== false) {
+        var btnSubmit = document.querySelector('.submit-btn');
+        btnSubmit?.classList.add('active');
+      }
+    });
   }
 }

@@ -1,30 +1,36 @@
 <div class="page-container">
   <app-nav></app-nav>
   <div class="search-container">
-    <p class="search-title">Khám phá các ngành nghề phù hợp với bản thân</p>
-    <p class="search-description">Tra cứu thông tin và chọn ngành nghề phù hợp nhất với bạn</p>
-    <div class="search-row">
-      <form class="search-form" action="">
-        <div class="search">
-          <input type="text" class="search-input" placeholder="Nhập tên ngành nghề">
-          <i class="search-icon fa fa-search" aria-hidden="true"></i>
-        </div>
-        <!-- <div class="filter"> -->
-        <i class="filter-icon fa fa-filter" aria-hidden="true"></i>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Number</mat-label>
-          <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
-            [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
+    <div class="left">
 
-        <!-- </div> -->
-        <input type="button" value="Tìm kiếm" class="btn-search">
-      </form>
+      <p class="search-title">Khám phá các ngành nghề phù hợp với bản thân</p>
+      <p class="search-description">Tra cứu thông tin và chọn ngành nghề phù hợp nhất với bạn</p>
+      <div class="search-row">
+        <form class="search-form" action="">
+          <div class="search">
+            <input type="text" class="search-input" placeholder="Nhập tên ngành nghề">
+            <i class="search-icon fa fa-search" aria-hidden="true"></i>
+          </div>
+
+          <select name="cars" id="cars">
+            <option value="volvo">Chọn ngành</option>
+            <option value="saab">Công nghệ thông tin</option>
+            <option value="mercedes">Khoa học</option>
+            <option value="audi">Giáo dục</option>
+          </select>
+
+          <select name="cars" id="cars">
+            <option value="volvo">Chọn chuyên ngành</option>
+            <option value="saab">Kỹ thuật phần mềm</option>
+            <option value="mercedes">An toàn thông tin</option>
+          </select>
+          <!-- </div> -->
+          <input type="button" value="Tìm kiếm" class="btn-search">
+        </form>
+      </div>
+    </div>
+    <div class="right">
+      <img src="assets/img/discover.png" alt="" class="banner-img">
     </div>
   </div>
   <div class="wrapper">

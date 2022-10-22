@@ -104,6 +104,20 @@ input {
   margin: 0 auto;
 }
 
+.submit-btn {
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 20px;
+  // display: none;
+}
+
+.submit-btn.active {
+  display: block;
+}
+
 @media (max-width: 600px) {
   .answer-container {
     grid-template-columns: calc(100% - 20px);
