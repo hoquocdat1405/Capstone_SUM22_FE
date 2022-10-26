@@ -1,22 +1,27 @@
 <div class="container-main">
   <p class="title-mbti">Bài trắc nghiệm MBTI</p>
   <p class="note-text">*Hãy đọc thật kĩ và chọn câu trả lời phù hợp nhất với bản thân</p>
-  <div class="content">
-    <div class="question-container" *ngFor="let question of questionSlice;index as i">
-      <p class="question-index">{{question.id}}. <span class="question-text">{{question.questionText}}</span></p>
-      <div class="answer-container">
-        <div class="answer" *ngFor="let answer of questions[i].answers;index as j">
-          <input type="radio" name="answer-radio{{i}}" id="radio{{i}}{{j}}" value="{{answer}}"
-            (click)="storeUserAnswer($event,i)">
-          <label for="radio{{i}}{{j}}">{{answer}}</label>
+  <form action="">
+    <div class="content">
+      <div class="question-container" *ngFor="let question of questionSlice;index as i">
+        <p class="question-index">{{question.id}}. <span
+            class="question-text">{{questionSlice[i].questionContent}}</span>
+        </p>
+        <div class="answer-container">
+          <div class="answer" *ngFor="let answer of questionSlice[i].options;index as j">
+            <input type="radio" name="answer-radio{{i}}" id="radio{{i}}{{j}}" value="{{answer.optionContent}}"
+              (click)="storeUserAnswer($event,i)">
+            <label for="radio{{i}}{{j}}">{{answer.optionContent}}</label>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <a routerLink="/mbti-result" class="submit-btn">Xem kết quả</a>
+    <!-- <a routerLink="/mbti-result" class="submit-btn" (click)="submitAnswer()">Xem kết quả</a> -->
+  </form>
   <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
       class="end-index">{{totalPage}}</span>
   </p>
-  <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page" (page)="changePage($event)">
+  <mat-paginator [length]="quizCollections.questions.length" [pageSize]="10" aria-label=" Select page"
+    (page)="changePage($event)">
   </mat-paginator>
 </div>

@@ -13,18 +13,23 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
-  getAllTest(): Observable<any> { return this.http.get<any>(this.baseUrl +  'guest/get-list-test-guest'); }
+  getAllTest(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'guest/get-list-test-guest');
+  }
 
-  getTestDetail(id:string | null): Observable<any>{ return this.http.get<any>(this.baseUrl + 'guest/get-test-detail-guest?testId=' + id); }
+  getTestDetail(id: string | null): Observable<any> {
+    return this.http.get<any>(
+      this.baseUrl + 'guest/get-test-detail-guest?testId=' + id
+    );
+  }
 
-//   getProfile(): Observable<User> {
-//     return this.http.get<User>(`${this.baseUrl}/user/profile`);
-//   }
+  //   getProfile(): Observable<User> {
+  //     return this.http.get<User>(`${this.baseUrl}/user/profile`);
+  //   }
 
-//   updateUser(user: any): Observable<any> {
-//     return this.http.put<any>(`${this.baseUrl}/user/update-user`, user);
-//   }
-
+  //   updateUser(user: any): Observable<any> {
+  //     return this.http.put<any>(`${this.baseUrl}/user/update-user`, user);
+  //   }
 
   uploadImage(file: string): Observable<any> {
     let data = {
@@ -36,6 +41,12 @@ export class SharedService {
     return this.http.post<any>(
       `https://api.cloudinary.com/v1_1/qick/auto/upload`,
       data
+    );
+  }
+
+  takingTestGuest(index: number): Observable<any> {
+    return this.http.get<any>(
+      this.baseUrl + 'guest/guest-taking-test-guest?testId=' + index
     );
   }
 }

@@ -1,3 +1,12 @@
+import {
+  MbtiQuizQuestion,
+  MbtiPostQuizQuestion,
+} from './../../_model/mbti-quiz/mbti-quiz-question';
+import { SharedService } from './../../_services/shared.service';
+import {
+  MbtiQuizCollection,
+  MbtiPostQuizCollection,
+} from './../../_model/mbti-quiz/mbti-quiz-collection';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,190 +15,60 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
-  constructor() {}
+  quizCollections: MbtiQuizCollection = new MbtiQuizCollection();
+  ngAfterViewInit() {}
+  currentQuestion = 0;
+  questionSlice: any;
+  totalPage = 0;
+  currentPage = 0;
+  countAnswer = 0;
+  checkAnswer = false;
+  postAnswer: MbtiPostQuizCollection = new MbtiPostQuizCollection();
+
+  constructor(private shareService: SharedService) {}
 
   ngOnInit() {
-    var totalQuestions = this.questions.length;
+    this.getData();
+  }
+
+  // {
+  //   id:int,
+  //   questions:[
+  //     {
+  //       questionId:int,
+  //       value:string,
+  //       options:[
+  //         {
+  //           optionId:int,
+  //           value:string
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // }
+
+  // userAnswer: MbtiQuizCollection = new MbtiQuizCollection();
+
+  getData() {
+    this.shareService.takingTestGuest(1).subscribe({
+      next: (data) => {
+        this.quizCollections = data;
+        this.questionSlice = this.quizCollections.questions.slice(0, 10);
+        this.getTotal();
+      },
+    });
+    console.log(this.quizCollections);
+  }
+
+  getTotal() {
+    var totalQuestions = this.quizCollections.questions.length;
     var sliceQuestion = this.questionSlice.length;
     this.totalPage =
       (totalQuestions - (totalQuestions % sliceQuestion)) / sliceQuestion;
-    if (totalQuestions / sliceQuestion !== 0) {
+    if (totalQuestions % sliceQuestion !== 0) {
       this.totalPage++;
     }
-
-    this.questions.forEach((question) => {
-      this.userAnswer.push({
-        id: question.id,
-        answer: '',
-      });
-    });
   }
-
-  ngAfterViewInit() {}
-
-  questions = [
-    {
-      id: 1,
-      questionText: 'What does HTML stand for?',
-      answers: ['Hypertext 1234', 'Hypertext 1235'],
-    },
-    {
-      id: 2,
-      questionText: 'What does HTML stand for2?',
-      answers: ['Hypertext 1111', 'Hypertext 9999'],
-    },
-    {
-      id: 3,
-      questionText: 'What does HTML stand for3?',
-      answers: ['Hypertext 2222', 'Hypertext 8888'],
-    },
-    {
-      id: 4,
-      questionText: 'What does HTML stand for4?',
-      answers: ['Hypertext 3333', 'Hypertext 7777'],
-    },
-    {
-      id: 5,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-
-    {
-      id: 6,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 7,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 8,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 9,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 10,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 11,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 12,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 13,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 14,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 15,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 16,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 17,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 18,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 19,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 20,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 21,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 22,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 23,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 24,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 25,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 26,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 27,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 28,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 29,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 30,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-    {
-      id: 31,
-      questionText: 'What does HTML stand for5?',
-      answers: ['Hypertext 4444', 'Hypertext 6666'],
-    },
-  ];
-  currentQuestion = 0;
-  questionSlice = this.questions.slice(0, 10);
-  totalPage = 0;
-  currentPage = 0;
-  userAnswer: { id: number; answer: string }[] = [];
 
   changePage(event: any) {
     this.currentPage = event.pageIndex;
@@ -198,24 +77,27 @@ export class QuestionComponent implements OnInit {
     if (endIndex > event.length) {
       endIndex = event.length;
     }
-    this.questionSlice = this.questions.slice(startIndex, endIndex);
+    this.questionSlice = this.quizCollections.questions.slice(
+      startIndex,
+      endIndex
+    );
 
-    setTimeout(() => {
-      var userAnswerSlice = this.userAnswer.slice(startIndex, endIndex);
-      for (var i = 0; i < userAnswerSlice.length; i++) {
-        for (var j = 0; j < 2; j++) {
-          var answer = document.querySelector(
-            `.question-container:nth-child(${i + 1}) .answer:nth-child(${
-              j + 1
-            }) input`
-          ) as HTMLInputElement;
+    // setTimeout(() => {
+    //   var userAnswerSlice = this.userAnswer.slice(startIndex, endIndex);
+    //   for (var i = 0; i < userAnswerSlice.length; i++) {
+    //     for (var j = 0; j < 2; j++) {
+    //       var answer = document.querySelector(
+    //         `.question-container:nth-child(${i + 1}) .answer:nth-child(${
+    //           j + 1
+    //         }) input`
+    //       ) as HTMLInputElement;
 
-          if (answer.value === userAnswerSlice[i].answer) {
-            answer.checked = true;
-          }
-        }
-      }
-    }, 1);
+    //       if (answer.value === userAnswerSlice[i].answer) {
+    //         answer.checked = true;
+    //       }
+    //     }
+    //   }
+    // }, 1);
 
     setTimeout(() => {
       document.querySelector('.container-main')?.scrollIntoView();
@@ -223,17 +105,61 @@ export class QuestionComponent implements OnInit {
   }
 
   storeUserAnswer(event: any, i: number) {
-    var check = false;
-    this.userAnswer[10 * this.currentPage + i].answer = event.target.value;
+    // this.userAnswer[10 * this.currentPage + i].answer = event.target.value;
 
-    this.userAnswer.forEach((answer) => {
-      if (answer.answer === '') {
-        check = false;
-      }
-      if (check !== false) {
-        var btnSubmit = document.querySelector('.submit-btn');
-        btnSubmit?.classList.add('active');
-      }
-    });
+    // this.userAnswer.forEach((answer) => {
+    //   if (answer.answer === '') {
+    //     check = false;
+    //   }
+    //   if (check !== false) {
+    //     var btnSubmit = document.querySelector('.submit-btn');
+    //     btnSubmit?.classList.add('active');
+    //   }
+    // });
+
+    // this.userAnswer;
+
+    // var btnSubmit = document.querySelector('.submit-btn');
+    // var inputRowAll = document.querySelectorAll(
+    //   `.question-container:nth-child(${i + 1}) input`
+    // ) as NodeListOf<HTMLInputElement>;
+
+    // inputRowAll.forEach((input) => {
+    //   if (input.checked) {
+    //     this.checkAnswer = true;
+    //   }
+    // });
+
+    // if (this.checkAnswer === false) {
+    //   this.countAnswer++;
+    //   this.checkAnswer = false;
+    // }
+    console.log(this.countAnswer);
+
+    this.postAnswer.id = i;
+    this.postAnswer.questions.push();
+  }
+
+  // {
+  //   id:int,
+  //   questions:[
+  //     {
+  //       questionId:int,
+  //       value:string,
+  //       options:[
+  //         {
+  //           optionId:int,
+  //           value:string
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // }
+
+  submitAnswer(idTest: number, questionCollection: MbtiPostQuizQuestion) {
+    this.postAnswer.id = idTest;
+    for (var i = 0; i < this.quizCollections.questions.length; i++) {
+      this.postAnswer.questions.push(questionCollection);
+    }
   }
 }

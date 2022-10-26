@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../_services/shared.service';
 
 @Component({
   selector: 'app-mbti-quiz-attempt-new',
