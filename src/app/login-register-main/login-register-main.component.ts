@@ -11,10 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginRegisterMainComponent implements OnInit {
   email: string = '';
   password: string = '';
-  registerName: string = '';
-  emailReg: string = '';
-  passwordReg: string = '';
-  confirmPasswordReg: string = '';
+  // registerName: string = '';
+  // emailReg: string = '';
+  // passwordReg: string = '';
+  // confirmPasswordReg: string = '';
 
   @Input()
   isActive = true;
@@ -23,7 +23,7 @@ export class LoginRegisterMainComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   loginFormIns = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -31,10 +31,10 @@ export class LoginRegisterMainComponent implements OnInit {
   });
 
   registerFormIns = this.fb.group({
-    "registerName": ["", [Validators.required]],
-    "emailReg": ["", [Validators.required, Validators.email]],
-    "passwordReg": ["", [Validators.required]],
-    "confirmPasswordReg": ["", [Validators.required]]
+    registerName: ["", [Validators.required]],
+    emailReg: ["", [Validators.required, Validators.email]],
+    passwordReg: ["", [Validators.required]],
+    confirmPasswordReg: ["", [Validators.required]]
   })
 
   get loginF() {
@@ -62,13 +62,13 @@ export class LoginRegisterMainComponent implements OnInit {
   }
 
   registerValidate() {
-    return this.passwordReg === this.confirmPasswordReg;
+    return this.registerFormIns.get("passwordReg")!.value === this.registerFormIns.get("confirmPasswordReg")!.value;
   }
 
   register() {
     if (this.registerValidate())
       this.authService
-        .register(this.emailReg, this.registerName, this.passwordReg)
+        .register(this.registerFormIns.get("emailReg")!.value, this.registerFormIns.get("registerName")!.value, this.registerFormIns.get("passwordReg")!.value)
         .subscribe({
           next: () => {
             console.log('register success');
