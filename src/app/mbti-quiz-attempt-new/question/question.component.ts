@@ -1,3 +1,4 @@
+import { MbtiPostQuizOption } from './../../_model/mbti-quiz/mbti-quiz-option';
 import {
   MbtiQuizQuestion,
   MbtiPostQuizQuestion,
@@ -21,8 +22,7 @@ export class QuestionComponent implements OnInit {
   questionSlice: any;
   totalPage = 0;
   currentPage = 0;
-  countAnswer = 0;
-  checkAnswer = false;
+  countAnswerValue = 0;
   postAnswer: MbtiPostQuizCollection = new MbtiPostQuizCollection();
 
   constructor(private shareService: SharedService) {}
@@ -31,33 +31,18 @@ export class QuestionComponent implements OnInit {
     this.getData();
   }
 
-  // {
-  //   id:int,
-  //   questions:[
-  //     {
-  //       questionId:int,
-  //       value:string,
-  //       options:[
-  //         {
-  //           optionId:int,
-  //           value:string
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
-
-  // userAnswer: MbtiQuizCollection = new MbtiQuizCollection();
-
   getData() {
-    this.shareService.takingTestGuest(1).subscribe({
+    var count = 0;
+    this.shareService.takingTestGuest(1002).subscribe({
       next: (data) => {
         this.quizCollections = data;
+        this.quizCollections.questions.forEach((question) => {
+          question.index = count++;
+        });
         this.questionSlice = this.quizCollections.questions.slice(0, 10);
         this.getTotal();
       },
     });
-    console.log(this.quizCollections);
   }
 
   getTotal() {
@@ -81,63 +66,46 @@ export class QuestionComponent implements OnInit {
       startIndex,
       endIndex
     );
-
-    // setTimeout(() => {
-    //   var userAnswerSlice = this.userAnswer.slice(startIndex, endIndex);
-    //   for (var i = 0; i < userAnswerSlice.length; i++) {
-    //     for (var j = 0; j < 2; j++) {
-    //       var answer = document.querySelector(
-    //         `.question-container:nth-child(${i + 1}) .answer:nth-child(${
-    //           j + 1
-    //         }) input`
-    //       ) as HTMLInputElement;
-
-    //       if (answer.value === userAnswerSlice[i].answer) {
-    //         answer.checked = true;
-    //       }
-    //     }
-    //   }
-    // }, 1);
-
     setTimeout(() => {
       document.querySelector('.container-main')?.scrollIntoView();
     }, 1);
   }
 
   storeUserAnswer(event: any, i: number) {
-    // this.userAnswer[10 * this.currentPage + i].answer = event.target.value;
+    var question: MbtiPostQuizQuestion;
+    var options: MbtiPostQuizOption[] = [];
+    options.push({
+      id: event.target.id,
+      value: event.target.value,
+    });
 
-    // this.userAnswer.forEach((answer) => {
-    //   if (answer.answer === '') {
-    //     check = false;
-    //   }
-    //   if (check !== false) {
-    //     var btnSubmit = document.querySelector('.submit-btn');
-    //     btnSubmit?.classList.add('active');
-    //   }
-    // });
+    var param = document.querySelector(
+      `.question-container:nth-child(${i + 1}) param`
+    ) as HTMLInputElement;
 
-    // this.userAnswer;
+    question = {
+      id: param?.id.replace('p', '') as unknown as number,
+      value: param.value,
+      options: options,
+    };
 
-    // var btnSubmit = document.querySelector('.submit-btn');
-    // var inputRowAll = document.querySelectorAll(
-    //   `.question-container:nth-child(${i + 1}) input`
-    // ) as NodeListOf<HTMLInputElement>;
+    this.postAnswer.id = 1;
 
-    // inputRowAll.forEach((input) => {
-    //   if (input.checked) {
-    //     this.checkAnswer = true;
-    //   }
-    // });
+    const index = this.postAnswer.questions.findIndex(
+      (e) => e.id === question.id
+    );
+    if (index > -1) {
+      this.postAnswer.questions[i] = question;
+    } else {
+      this.postAnswer.questions.push(question);
+    }
 
-    // if (this.checkAnswer === false) {
-    //   this.countAnswer++;
-    //   this.checkAnswer = false;
-    // }
-    console.log(this.countAnswer);
-
-    this.postAnswer.id = i;
-    this.postAnswer.questions.push();
+    if (
+      this.postAnswer.questions.length === this.quizCollections.questions.length
+    ) {
+      var btnSubmit = document.querySelector('.submit-btn');
+      btnSubmit?.classList.add('active');
+    }
   }
 
   // {
@@ -156,10 +124,5 @@ export class QuestionComponent implements OnInit {
   //   ]
   // }
 
-  submitAnswer(idTest: number, questionCollection: MbtiPostQuizQuestion) {
-    this.postAnswer.id = idTest;
-    for (var i = 0; i < this.quizCollections.questions.length; i++) {
-      this.postAnswer.questions.push(questionCollection);
-    }
-  }
+  submitAnswer() {}
 }

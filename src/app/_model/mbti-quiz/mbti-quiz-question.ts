@@ -1,6 +1,7 @@
 import { MbtiQuizOption, MbtiPostQuizOption } from './mbti-quiz-option';
 
 export interface MbtiQuizQuestion {
+  index: number;
   id: string;
   text: string;
   value: string;

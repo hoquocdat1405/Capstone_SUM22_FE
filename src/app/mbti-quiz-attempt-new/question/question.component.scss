@@ -111,7 +111,11 @@ input {
   color: #fff;
   border-radius: 5px;
   margin-top: 20px;
-  // display: none;
+  display: none;
+}
+
+.submit-btn.active {
+  display: block;
 }
 
 .submit-btn.active {
@@ -130,8 +134,11 @@ form {
 }
 
 @media (max-width: 900px) {
+  .container-main {
+    padding: 2px;
+  }
   form {
-    width: 90%;
+    width: calc(100% - 2px);
   }
   .content {
     // width: 90%;

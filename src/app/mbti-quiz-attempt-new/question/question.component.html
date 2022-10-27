@@ -4,14 +4,15 @@
   <form action="">
     <div class="content">
       <div class="question-container" *ngFor="let question of questionSlice;index as i">
-        <p class="question-index">{{question.id}}. <span
+        <p class="question-index">Câu {{question.index+1}}: <span
             class="question-text">{{questionSlice[i].questionContent}}</span>
+          <param id="p{{question.id}}" value="{{question.value}}">
         </p>
         <div class="answer-container">
           <div class="answer" *ngFor="let answer of questionSlice[i].options;index as j">
-            <input type="radio" name="answer-radio{{i}}" id="radio{{i}}{{j}}" value="{{answer.optionContent}}"
+            <input type="radio" name="answer-radio{{i}}" id="{{answer.id}}" value="{{answer.value}}"
               (click)="storeUserAnswer($event,i)">
-            <label for="radio{{i}}{{j}}">{{answer.optionContent}}</label>
+            <label for="{{answer.id}}">{{answer.optionContent}}</label>
           </div>
         </div>
       </div>
