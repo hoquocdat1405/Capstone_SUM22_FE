@@ -15,7 +15,14 @@ export class QuizListingPageComponent implements OnInit {
   ngOnInit() {
     this.sharedServ.getAllTest().subscribe((response) => {
       this.tests = response;
+      console.log(this.tests.length);
+      this.tests.forEach(test => {
+      test.introduction = test.introduction.slice(0,150) + "...";
+      
     });
+    });
+    
+
   }
 
 }
