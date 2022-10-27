@@ -1,4 +1,6 @@
-import { Router } from '@angular/router';
+import { QuizResult } from './../_model/quiz-result';
+import { SharedService } from './../_services/shared.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,8 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MbtiQuizResultDetailPageComponent implements OnInit {
   public mbtiType: { name: string; shorthand: string; imgSrc: string };
+  id?: string | null;
+  quizResult?: QuizResult;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private sharedServ: SharedService
+  ) {
     this.mbtiType = {
       name: 'Người che chở',
       shorthand: 'INFJ',
@@ -17,7 +25,14 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
     };
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.sharedServ.getTestResult(this.id).subscribe((result) => {
+      this.quizResult = result;
+      console.log(this.quizResult);
+      console.log(result);
+    });
+  }
 
   suggestClickHandler() {
     this.router.navigate(['/job-list']);

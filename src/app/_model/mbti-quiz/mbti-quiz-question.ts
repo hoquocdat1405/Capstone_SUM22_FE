@@ -9,7 +9,7 @@ export interface MbtiQuizQuestion {
 }
 
 export interface MbtiPostQuizQuestion {
-  id: number;
-  value: string;
+  questionId: number;
+  questionvalue: string;
   options: MbtiPostQuizOption[];
 }

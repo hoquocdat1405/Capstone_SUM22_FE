@@ -47,6 +47,7 @@
   padding: 0 50px;
   flex: 1;
   padding: 30px 100px 30px;
+  border-radius: 0 5px 5px 0;
 }
 
 .login-form {
@@ -54,6 +55,7 @@
   width: 50%;
   padding: 30px 100px 30px;
   flex: 1;
+  border-radius: 5px 0 0 5px;
 }
 
 .title-text {
@@ -74,6 +76,10 @@
   margin: 20px 0;
 }
 
+// .register-form .input-div:last-child {
+//   margin: 20px 0 10px;
+// }
+
 .label-input {
   font-size: 14px;
   text-transform: uppercase;
@@ -83,6 +89,8 @@
 
 input {
   padding: 10px 5px;
+  border-radius: 5px;
+  border: 2px solid #ddd;
 }
 
 input:not(.remember-checkbox) {
@@ -118,6 +126,7 @@ input:not(.remember-checkbox) {
   background-color: #088f8f;
   color: white;
   margin: 10px 0;
+  border-radius: 2px;
 }
 
 .login-btn:disabled {
@@ -129,7 +138,8 @@ input:not(.remember-checkbox) {
   border: none;
   background-color: #3bd4a6;
   color: white;
-  margin: 10px 0;
+  margin: 0 0 10px 0;
+  border-radius: 2px;
 }
 
 .login-btn:hover,
@@ -166,6 +176,7 @@ input:not(.remember-checkbox) {
   bottom: 0;
   right: 0;
   transition: transform 0.5s;
+  border-radius: 0 5px 5px 0;
 }
 
 .info-form {
