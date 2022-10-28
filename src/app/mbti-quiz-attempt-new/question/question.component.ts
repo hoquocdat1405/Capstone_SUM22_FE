@@ -163,8 +163,6 @@ export class QuestionComponent implements OnInit {
       btnSubmit?.classList.add('active');
     }
 
-    console.log(document.querySelector(`question-item:nth-child(1)`));
-
     document
       .querySelector(`.question-item:nth-child(${indexQuestion}`)
       ?.classList.add('active');

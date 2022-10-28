@@ -142,7 +142,7 @@
 
 .left {
   width: 70%;
-  border-right: 1px dotted #ccc;
+  // border-right: 1px dotted #ccc;
 }
 
 .right {
@@ -224,6 +224,15 @@
   border-radius: 50px;
   background-color: #11be52;
   padding: 7px 20px;
+  width: fit-content;
+  margin-top: 20px;
+}
+.right {
+  width: fit-content;
+}
+
+.result-img {
+  width: 20%;
 }
 
 .btn-take-again:hover {
