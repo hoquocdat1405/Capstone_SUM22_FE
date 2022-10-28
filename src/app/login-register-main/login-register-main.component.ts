@@ -24,9 +24,8 @@ export class LoginRegisterMainComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder,
-    public dialog: MatDialog
-  ) { }
+    private fb: FormBuilder
+  ) {}
 
   loginFormIns = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -34,11 +33,11 @@ export class LoginRegisterMainComponent implements OnInit {
   });
 
   registerFormIns = this.fb.group({
-    registerName: ["", [Validators.required]],
-    emailReg: ["", [Validators.required, Validators.email]],
-    passwordReg: ["", [Validators.required]],
-    confirmPasswordReg: ["", [Validators.required]]
-  })
+    registerName: ['', [Validators.required]],
+    emailReg: ['', [Validators.required, Validators.email]],
+    passwordReg: ['', [Validators.required]],
+    confirmPasswordReg: ['', [Validators.required]],
+  });
 
   get loginF() {
     return this.loginFormIns.controls;
@@ -48,21 +47,22 @@ export class LoginRegisterMainComponent implements OnInit {
     return this.registerFormIns.controls;
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   login() {
-    this.authService.login(this.loginFormIns.value.email, this.loginFormIns.value.password).subscribe({
-      next: () => {
-        const token = localStorage.getItem('token');
-        if (token) {
-          // this.openDialog()
-          this.router.navigate(['/home']);
-        }
-      },
-      error: () => {
-        console.log("login error");
-      }
-    });
+    this.authService
+      .login(this.loginFormIns.value.email, this.loginFormIns.value.password)
+      .subscribe({
+        next: () => {
+          const token = localStorage.getItem('token');
+          if (token) {
+            this.router.navigate(['/home']);
+          }
+        },
+        error: () => {
+          console.log('login error');
+        },
+      });
   }
 
   // openDialog() {
@@ -72,13 +72,20 @@ export class LoginRegisterMainComponent implements OnInit {
   // }
 
   registerValidate() {
-    return this.registerFormIns.get("passwordReg")!.value === this.registerFormIns.get("confirmPasswordReg")!.value;
+    return (
+      this.registerFormIns.get('passwordReg')!.value ===
+      this.registerFormIns.get('confirmPasswordReg')!.value
+    );
   }
 
   register() {
     if (this.registerValidate())
       this.authService
-        .register(this.registerFormIns.get("emailReg")!.value, this.registerFormIns.get("registerName")!.value, this.registerFormIns.get("passwordReg")!.value)
+        .register(
+          this.registerFormIns.get('emailReg')!.value,
+          this.registerFormIns.get('registerName')!.value,
+          this.registerFormIns.get('passwordReg')!.value
+        )
         .subscribe({
           next: () => {
             console.log('register success');

@@ -1,3 +1,4 @@
+import { PageEvent } from '@angular/material/paginator';
 import { MbtiPostQuizOption } from './../../_model/mbti-quiz/mbti-quiz-option';
 import {
   MbtiQuizQuestion,
@@ -9,7 +10,9 @@ import {
   MbtiPostQuizCollection,
 } from './../../_model/mbti-quiz/mbti-quiz-collection';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
+// mbti-result
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -23,13 +26,47 @@ export class QuestionComponent implements OnInit {
   totalPage = 0;
   currentPage = 0;
   countAnswerValue = 0;
+  hamburgerFlag: boolean = false;
+  pageObject = {
+    previouPageIndex: 0,
+    pageIndex: 0,
+    pageSize: 10,
+    Lenghth: this.quizCollections.questions.length,
+  };
+  currentRoutes: any = [];
+
+  pageEvent?: PageEvent;
+  datasource?: null;
+  pageIndex?: number;
+  pageSize?: number;
+  length?: number;
+
   postAnswer: MbtiPostQuizCollection = new MbtiPostQuizCollection();
 
-  constructor(private shareService: SharedService) {}
+  constructor(private shareService: SharedService, private router: Router) {}
 
   ngOnInit() {
     this.getData();
   }
+
+  // public getServerData(event?:PageEvent){
+  //   this.fooService.getdata(event).subscribe(
+  //     response =>{
+  //       if(response.error) {
+  //         // handle error
+  //       } else {
+  //         this.datasource = response.data;
+  //         this.pageIndex = response.pageIndex;
+  //         this.pageSize = response.pageSize;
+  //         this.length = response.length;
+  //       }
+  //     },
+  //     error =>{
+  //       // handle error
+  //     }
+  //   );
+  //   return event;
+  // }
 
   getData() {
     var count = 0;
@@ -69,14 +106,16 @@ export class QuestionComponent implements OnInit {
     setTimeout(() => {
       document.querySelector('.container-main')?.scrollIntoView();
     }, 1);
+
+    this.pageObject = event;
   }
 
   storeUserAnswer(event: any, i: number) {
     var question: MbtiPostQuizQuestion;
     var options: MbtiPostQuizOption[] = [];
     options.push({
-      id: event.target.id,
-      value: event.target.value,
+      optionId: event.target.id,
+      optionValue: event.target.value,
     });
 
     var param = document.querySelector(
@@ -84,15 +123,15 @@ export class QuestionComponent implements OnInit {
     ) as HTMLInputElement;
 
     question = {
-      id: param?.id.replace('p', '') as unknown as number,
-      value: param.value,
+      questionId: param?.id.replace('p', '') as unknown as number,
+      questionvalue: param.value,
       options: options,
     };
 
-    this.postAnswer.id = 1;
+    this.postAnswer.testId = this.quizCollections.id;
 
     const index = this.postAnswer.questions.findIndex(
-      (e) => e.id === question.id
+      (e) => e.questionId === question.questionId
     );
     if (index > -1) {
       this.postAnswer.questions[i] = question;
@@ -106,23 +145,31 @@ export class QuestionComponent implements OnInit {
       var btnSubmit = document.querySelector('.submit-btn');
       btnSubmit?.classList.add('active');
     }
+
+    console.log(this.postAnswer);
   }
 
-  // {
-  //   id:int,
-  //   questions:[
-  //     {
-  //       questionId:int,
-  //       value:string,
-  //       options:[
-  //         {
-  //           optionId:int,
-  //           value:string
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
+  hamburgerClick() {
+    this.hamburgerFlag = !this.hamburgerFlag;
+    document.querySelector('.sidebar-container')?.classList.toggle('active');
+    document.querySelector('.main-content')?.classList.toggle('active');
+    document.querySelector('.nav-row .hamburger')?.classList.toggle('active');
+    document.querySelectorAll('.nav-item-title')?.forEach((item) => {
+      item.classList.toggle('active');
+    });
+  }
 
-  submitAnswer() {}
+  chooseQuestion(index: number) {
+    this.pageObject.pageIndex = Math.floor(index / 10);
+    this.changePage(this.pageObject);
+  }
+
+  submitAnswer() {
+    this.shareService.submitTest(this.postAnswer).subscribe((result) => {
+      console.log(result);
+      if (result !== null) {
+        this.router.navigate(['mbti-result/' + result]);
+      }
+    });
+  }
 }

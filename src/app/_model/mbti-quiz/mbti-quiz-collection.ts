@@ -7,6 +7,6 @@ export class MbtiQuizCollection {
 }
 
 export class MbtiPostQuizCollection {
-  id: number = 0;
+  testId: number = 0;
   questions: MbtiPostQuizQuestion[] = [];
 }

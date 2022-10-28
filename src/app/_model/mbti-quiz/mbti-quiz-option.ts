@@ -6,6 +6,6 @@ export interface MbtiQuizOption {
 }
 
 export interface MbtiPostQuizOption {
-  id: number;
-  value: string;
+  optionId: number;
+  optionValue: string;
 }
