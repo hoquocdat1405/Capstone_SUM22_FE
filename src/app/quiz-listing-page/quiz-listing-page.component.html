@@ -12,7 +12,7 @@
         <a href="#" [routerLink]="['/test-detail',test.id]" class="btn-detail"
           >Chi tiết</a
         >
-        <a href="#" routerLink="/disc-quiz-attempt" class="btn-start"
+        <a  (click)="redirectTest(test.quizTypeId)" class="btn-start"
           >Bắt đầu</a
         >
       </div>
