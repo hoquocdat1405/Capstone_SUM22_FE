@@ -35,7 +35,7 @@ export class AuthService {
   login(email: string, password: string): Observable<any> {
     return this.http
       .post(
-        this.baseUrl + 'user/login',
+        this.baseUrl + 'auth/login',
         {
           email: email,
           password: password,
@@ -57,7 +57,7 @@ export class AuthService {
   register(email: string, name: string, password: string): Observable<any> {
     return this.http
       .post(
-        this.baseUrl + 'user/register',
+        this.baseUrl + 'auth/register',
         {
           email: email,
           name: name,

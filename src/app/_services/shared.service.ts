@@ -4,7 +4,6 @@ import { catchError, map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { CloudinaryAppConst } from '../shared/constants/app-const';
-import { Test } from '../_model/test.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,12 +13,12 @@ export class SharedService {
   constructor(private http: HttpClient) {}
 
   getAllTest(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'guest/guest-get-list-active-test-guest');
+    return this.http.get<any>(this.baseUrl + 'guest/get-test');
   }
 
   getTestDetail(id: string | null): Observable<any> {
     return this.http.get<any>(
-      this.baseUrl + 'guest/guest-get-test-detail-guest?testId=' + id
+      this.baseUrl + 'guest/get-test-detail?testId=' + id
     );
   }
 
@@ -46,7 +45,7 @@ export class SharedService {
 
   takingTestGuest(index: number): Observable<any> {
     return this.http.get<any>(
-      this.baseUrl + 'guest/guest-taking-test-guest?testId=' + index
+      this.baseUrl + 'test/taking-test?testId=' + index
     );
   }
 }

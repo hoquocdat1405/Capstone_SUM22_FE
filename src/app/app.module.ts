@@ -109,6 +109,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt-new.component';
 // import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
 import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
+import { PopupComponent } from './popup/popup.component';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem("token");
@@ -186,6 +187,7 @@ export function tokenGetter() {
     BfQuestionComponent,
     HollandQuizAttemptNewComponent,
     HollandQuestionComponent,
+    PopupComponent,
   ],
   imports: [
     FormsModule,

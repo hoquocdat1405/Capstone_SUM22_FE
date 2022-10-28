@@ -1,7 +1,9 @@
+import { PopupComponent } from './../popup/popup.component';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../_services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login-register-main',
@@ -22,7 +24,8 @@ export class LoginRegisterMainComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
   ) { }
 
   loginFormIns = this.fb.group({
@@ -52,6 +55,7 @@ export class LoginRegisterMainComponent implements OnInit {
       next: () => {
         const token = localStorage.getItem('token');
         if (token) {
+          // this.openDialog()
           this.router.navigate(['/home']);
         }
       },
@@ -60,6 +64,12 @@ export class LoginRegisterMainComponent implements OnInit {
       }
     });
   }
+
+  // openDialog() {
+  //   this.dialog.open(PopupComponent, {
+  //     width: '250px',
+  //   });
+  // }
 
   registerValidate() {
     return this.registerFormIns.get("passwordReg")!.value === this.registerFormIns.get("confirmPasswordReg")!.value;
