@@ -4,7 +4,6 @@ import { catchError, map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { CloudinaryAppConst } from '../shared/constants/app-const';
-import { Test } from '../_model/test.model';
 @Injectable({
   providedIn: 'root',
 })
