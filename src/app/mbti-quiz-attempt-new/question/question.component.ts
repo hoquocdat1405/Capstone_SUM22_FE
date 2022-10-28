@@ -104,13 +104,30 @@ export class QuestionComponent implements OnInit {
       endIndex
     );
     setTimeout(() => {
-      document.querySelector('.container-main')?.scrollIntoView();
+      document.querySelector('.content-row')?.scrollIntoView();
+    }, 1);
+
+    //lấy dữ liệu hiển thị
+    setTimeout(() => {
+      for (let i = 0; i < this.questionSlice.length; i++) {
+        for (let j = 0; j < this.postAnswer.questions.length; j++) {
+          if (
+            this.questionSlice[i].id == this.postAnswer.questions[j].questionId
+          ) {
+            var input = document.getElementById(
+              `${this.postAnswer.questions[j].options[0].optionId}`
+            ) as HTMLInputElement;
+            console.log(input);
+            input.checked = true;
+          }
+        }
+      }
     }, 1);
 
     this.pageObject = event;
   }
 
-  storeUserAnswer(event: any, i: number) {
+  storeUserAnswer(event: any, i: number, indexQuestion: number) {
     var question: MbtiPostQuizQuestion;
     var options: MbtiPostQuizOption[] = [];
     options.push({
@@ -146,7 +163,11 @@ export class QuestionComponent implements OnInit {
       btnSubmit?.classList.add('active');
     }
 
-    console.log(this.postAnswer);
+    console.log(document.querySelector(`question-item:nth-child(1)`));
+
+    document
+      .querySelector(`.question-item:nth-child(${indexQuestion}`)
+      ?.classList.add('active');
   }
 
   hamburgerClick() {
@@ -166,7 +187,6 @@ export class QuestionComponent implements OnInit {
 
   submitAnswer() {
     this.shareService.submitTest(this.postAnswer).subscribe((result) => {
-      console.log(result);
       if (result !== null) {
         this.router.navigate(['mbti-result/' + result]);
       }

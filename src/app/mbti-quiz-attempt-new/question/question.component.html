@@ -1,46 +1,48 @@
 <div class="container-main">
   <p class="title-mbti">Bài trắc nghiệm MBTI</p>
-  <p class="note-text">*Hãy đọc thật kĩ và chọn câu trả lời phù hợp nhất với bản thân</p>
+  <div class="content-column">
+    <p class="note-text">*Hãy đọc thật kĩ và chọn câu trả lời phù hợp nhất với bản thân</p>
+    <div class="content-row">
+      <div class="sidebar-container">
+        <div class="nav-row">
+          <div class="sidebar-title"> Danh sách câu hỏi</div>
+          <div class="hamburger" (click)="hamburgerClick()">
+            <mat-icon>menu</mat-icon>
+          </div>
+        </div>
 
-  <div class="content-row">
-    <div class="sidebar-container">
-      <div class="nav-row">
-        <div class="logo">
-          <img src="./../../../assets/img/Qick.png" alt="" />
-        </div>
-        <div class="hamburger" (click)="hamburgerClick()">
-          <mat-icon>menu</mat-icon>
-        </div>
-      </div>
-      <div class="nav-section">
-        <div class="question-list">
-          <p class="question-item" *ngFor="let question of quizCollections.questions"
-            (click)="chooseQuestion(question.index+1)">
-            {{question.index+1}}</p>
-        </div>
-      </div>
-    </div>
-
-    <form action="" (ngSubmit)=submitAnswer()>
-      <div class="content">
-        <div class="question-container" *ngFor="let question of questionSlice;index as i">
-          <p class="question-index">Câu {{question.index+1}}: <span
-              class="question-text">{{questionSlice[i].questionContent}}</span>
-            <param id="p{{question.id}}" value="{{question.value}}">
-          </p>
-          <div class="answer-container">
-            <div class="answer" *ngFor="let answer of questionSlice[i].options;index as j">
-              <input type="radio" name="answer-radio{{i}}" id="{{answer.id}}" value="{{answer.value}}"
-                (click)="storeUserAnswer($event,i)">
-              <label for="{{answer.id}}">{{answer.optionContent}}</label>
-            </div>
+        <div class="horizontal-bar"></div>
+        <div class="nav-section">
+          <div class="question-list">
+            <p class="question-item" *ngFor="let question of quizCollections.questions"
+              (click)="chooseQuestion(question.index+1)">
+              {{question.index+1}}</p>
           </div>
         </div>
       </div>
-      <!-- <a routerLink="/mbti-result" class="submit-btn">Xem kết quả</a> -->
-      <button class="submit-btn">Xem kết quả</button>
-    </form>
+      <form action="" (ngSubmit)=submitAnswer()>
+        <div class="content">
+          <div class="question-container" *ngFor="let question of questionSlice;index as i">
+            <p class="question-index">Câu {{question.index+1}}: <span
+                class="question-text">{{questionSlice[i].questionContent}}</span>
+              <param id="p{{question.id}}" value="{{question.value}}">
+            </p>
+            <div class="answer-container">
+              <div class="answer" *ngFor="let answer of questionSlice[i].options;index as j">
+                <input type="radio" name="answer-radio{{i}}" id="{{answer.id}}" value="{{answer.value}}"
+                  (click)="storeUserAnswer($event,i,question.index+1)">
+                <label for="{{answer.id}}">{{answer.optionContent}}</label>
+              </div>
+            </div>
+          </div>
+          <button class="submit-btn">Xem kết quả</button>
+
+        </div>
+      </form>
+    </div>
+
   </div>
+
 
   <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
       class="end-index">{{totalPage}}</span>
