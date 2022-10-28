@@ -1,9 +1,8 @@
-import { PopupComponent } from './../popup/popup.component';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../_services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-login-register-main',
@@ -13,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class LoginRegisterMainComponent implements OnInit {
   email: string = '';
   password: string = '';
+  
   // registerName: string = '';
   // emailReg: string = '';
   // passwordReg: string = '';
@@ -47,7 +47,9 @@ export class LoginRegisterMainComponent implements OnInit {
     return this.registerFormIns.controls;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    alertify.set('notifier', 'delay', 3);
+  }
 
   login() {
     this.authService
@@ -56,20 +58,17 @@ export class LoginRegisterMainComponent implements OnInit {
         next: () => {
           const token = localStorage.getItem('token');
           if (token) {
+            
+            alertify.success("Login Successfully!");
             this.router.navigate(['/home']);
           }
         },
         error: () => {
-          console.log('login error');
+          alertify.set('notifier', 'position', 'top-center');
+          alertify.error("Login Failed!");
         },
       });
   }
-
-  // openDialog() {
-  //   this.dialog.open(PopupComponent, {
-  //     width: '250px',
-  //   });
-  // }
 
   registerValidate() {
     return (
@@ -88,10 +87,10 @@ export class LoginRegisterMainComponent implements OnInit {
         )
         .subscribe({
           next: () => {
-            console.log('register success');
+            alertify.success("Register Successfully!");
           },
           error: () => {
-            console.error('register fail');
+            alertify.success("Register Failed");
           },
         });
   }
