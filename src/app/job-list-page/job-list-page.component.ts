@@ -31,6 +31,6 @@ export class JobListPageComponent implements OnInit {
   }
 
   handleClick() {
-    this.router.navigate(['/job-detail']);
+    this.router.navigate(['/school-list']);
   }
 }

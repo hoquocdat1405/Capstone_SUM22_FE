@@ -1,3 +1,4 @@
+import { SchoolListComponent } from './school-list/school-list.component';
 import { AuthGuard } from './_services/auth.guard';
 import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
 import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt-new.component';
@@ -133,23 +134,13 @@ const routes: Routes = [
   {
     path: 'job-detail',
     component: JobDetailPageComponent,
-    canActivate: [AuthGuard],
   },
   { path: 'job-list', component: JobListPageComponent },
 
   //addmission-news
   { path: 'addmission-news-detail', component: AddmissionNewsDetailComponent },
   { path: 'admission-list', component: AdmissionListComponent },
-  //Psy links
-
-  //Job detail
-  { path: 'job-detail', component: JobDetailPageComponent },
-  { path: 'job-list', component: JobListPageComponent },
-
-  {
-    path: 'psy',
-    loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),
-  },
+  { path: 'school-list', component: SchoolListComponent },
 ];
 
 @NgModule({
