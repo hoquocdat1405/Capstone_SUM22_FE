@@ -111,6 +111,7 @@ import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt
 import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
 import { PopupComponent } from './popup/popup.component';
 import { SchoolListComponent } from './school-list/school-list.component';
+import { HandinUniAppComponent } from './handin-uni-app/handin-uni-app.component';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem("token");
@@ -190,6 +191,7 @@ export function tokenGetter() {
     HollandQuestionComponent,
     PopupComponent,
     SchoolListComponent,
+    HandinUniAppComponent,
   ],
   imports: [
     FormsModule,

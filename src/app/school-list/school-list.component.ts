@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchoolListComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -23,5 +27,13 @@ export class SchoolListComponent implements OnInit {
 
   searchSchool() {
     console.log("Search")
+  }
+
+  viewSchoolDetail() {
+    this.router.navigate(['/school'])
+  }
+
+  submitApplication() {
+    this.router.navigate(['/submit-application'])
   }
 }

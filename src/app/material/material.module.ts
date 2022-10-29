@@ -15,6 +15,9 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const MaterialComponents: any = [
   MatIconModule,
@@ -34,6 +37,9 @@ const MaterialComponents: any = [
   MatInputModule,
   MatSelectModule,
   MatPaginatorModule,
+  MatStepperModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ]
 
 @NgModule({

@@ -1,3 +1,4 @@
+import { HandinUniAppComponent } from './handin-uni-app/handin-uni-app.component';
 import { SchoolListComponent } from './school-list/school-list.component';
 import { AuthGuard } from './_services/auth.guard';
 import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
@@ -125,6 +126,8 @@ const routes: Routes = [
 
   //School
   { path: 'school', component: SchoolInfoPageComponent },
+
+  { path: 'submit-application', component: HandinUniAppComponent },
 
   {
     path: 'psy',
