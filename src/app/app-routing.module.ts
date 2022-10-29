@@ -1,3 +1,6 @@
+import { SchoolInterestedComponent } from './user-profile-page/school-interested/school-interested.component';
+import { PrimaryInfoComponent } from './user-profile-page/primary-info/primary-info.component';
+import { EducationComponent } from './user-profile-page/education/education.component';
 import { AuthGuard } from './_services/auth.guard';
 import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
 import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt-new.component';
@@ -57,7 +60,16 @@ const routes: Routes = [
   { path: 'login', component: LoginRegisterMainComponent },
 
   //User profile page
-  { path: 'profile', component: UserProfilePageComponent },
+  {
+    path: 'profile',
+    component: UserProfilePageComponent,
+    children: [
+      { path: 'education', component: EducationComponent },
+      { path: 'school-interested', component: SchoolInterestedComponent },
+      { path: 'primary', component: PrimaryInfoComponent },
+      { path: '', component: PrimaryInfoComponent },
+    ],
+  },
 
   //quizes listing page (non-category)
   {

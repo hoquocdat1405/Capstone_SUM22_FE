@@ -13,7 +13,7 @@ export class SharedService {
   constructor(private http: HttpClient) {}
 
   getAllTest(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'guest/get-test');
+    return this.http.get<any>(this.baseUrl + 'guest/get-active-test');
   }
 
   getTestDetail(id: string | null): Observable<any> {

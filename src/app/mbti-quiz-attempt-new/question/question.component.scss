@@ -119,6 +119,7 @@ input {
   display: block;
   cursor: not-allowed;
   background-color: #ccc;
+  pointer-events: none;
 }
 
 .submit-btn.active {

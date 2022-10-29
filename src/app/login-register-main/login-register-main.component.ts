@@ -12,14 +12,14 @@ import * as alertify from 'alertifyjs';
 export class LoginRegisterMainComponent implements OnInit {
   email: string = '';
   password: string = '';
-  
+
   // registerName: string = '';
   // emailReg: string = '';
   // passwordReg: string = '';
   // confirmPasswordReg: string = '';
 
   @Input()
-  isActive = true;
+  isActive = false;
 
   constructor(
     private authService: AuthService,
@@ -58,14 +58,13 @@ export class LoginRegisterMainComponent implements OnInit {
         next: () => {
           const token = localStorage.getItem('token');
           if (token) {
-            
-            alertify.success("Login Successfully!");
+            alertify.success('Login Successfully!');
             this.router.navigate(['/home']);
           }
         },
         error: () => {
           alertify.set('notifier', 'position', 'top-center');
-          alertify.error("Login Failed!");
+          alertify.error('Login Failed!');
         },
       });
   }
@@ -87,10 +86,10 @@ export class LoginRegisterMainComponent implements OnInit {
         )
         .subscribe({
           next: () => {
-            alertify.success("Register Successfully!");
+            alertify.success('Register Successfully!');
           },
           error: () => {
-            alertify.success("Register Failed");
+            alertify.success('Register Failed');
           },
         });
   }

@@ -49,6 +49,10 @@ import { QuizListingCategoryPageComponent } from './quiz-listing-category-page/q
 //users pages
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
+import { EducationComponent } from './user-profile-page/education/education.component';
+import { PrimaryInfoComponent } from './user-profile-page/primary-info/primary-info.component';
+import { SchoolInterestedComponent } from './user-profile-page/school-interested/school-interested.component';
+import { ProfileSidebarComponent } from './user-profile-page/profile-sidebar/profile-sidebar.component';
 import { LoginRegisterPageComponent } from './login-register-page/login-register-page.component';
 import { LoginComponent } from './login-register-page/login/login.component';
 import { RegisterComponent } from './login-register-page/register/register.component';
@@ -112,7 +116,7 @@ import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holla
 import { PopupComponent } from './popup/popup.component';
 
 export function tokenGetter() {
-  let savedToken = localStorage.getItem("token");
+  let savedToken = localStorage.getItem('token');
   if (savedToken) {
     return savedToken;
   }
@@ -188,6 +192,10 @@ export function tokenGetter() {
     HollandQuizAttemptNewComponent,
     HollandQuestionComponent,
     PopupComponent,
+    ProfileSidebarComponent,
+    PrimaryInfoComponent,
+    EducationComponent,
+    SchoolInterestedComponent,
   ],
   imports: [
     FormsModule,
@@ -200,13 +208,13 @@ export function tokenGetter() {
     StaffModule,
     PsyModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [
-    AuthService, 
-    TarotServiceService, 
+    AuthService,
+    TarotServiceService,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
