@@ -1,4 +1,5 @@
 export interface QuizResult {
+  id: string;
   resultName: string;
   resultSummary: string;
   resultRelationship: string;

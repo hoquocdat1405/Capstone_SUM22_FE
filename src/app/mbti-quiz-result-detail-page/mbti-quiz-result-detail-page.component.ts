@@ -1,3 +1,4 @@
+import { JobModel } from './../_model/job/job-model';
 import { QuizResult } from './../_model/quiz-result';
 import { SharedService } from './../_services/shared.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,7 +12,9 @@ import { Component, OnInit } from '@angular/core';
 export class MbtiQuizResultDetailPageComponent implements OnInit {
   public mbtiType: { name: string; shorthand: string; imgSrc: string };
   id?: string | null;
+  shortName?: string;
   quizResult?: QuizResult;
+  job?: JobModel[];
 
   constructor(
     private router: Router,
@@ -26,11 +29,30 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.sharedServ.getTestResult(this.id).subscribe((result) => {
-      this.quizResult = result;
-      console.log(this.quizResult);
-      console.log(result);
+    this.getData();
+  }
+
+  getData() {
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.shortName = this.route.snapshot.paramMap.get('shortName')!;
+    this.sharedServ
+      .getTestResult(this.id, this.shortName)
+      .subscribe((result) => {
+        this.quizResult = result;
+        this.getJob();
+
+        console.log(this.quizResult);
+      });
+  }
+
+  getJob() {
+    this.sharedServ.getJobCareer(this.quizResult!.id).subscribe({
+      next: (data) => {
+        this.job = data;
+        // console.log(this.quizResult!.id);
+        // console.log(data);
+        // console.log(this.job);
+      },
     });
   }
 

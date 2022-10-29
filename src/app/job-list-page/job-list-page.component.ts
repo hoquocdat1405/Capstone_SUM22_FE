@@ -1,3 +1,5 @@
+import { JobModel } from './../_model/job/job-model';
+import { SharedService } from './../_services/shared.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -10,17 +12,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./job-list-page.component.scss'],
 })
 export class JobListPageComponent implements OnInit {
+  job?: JobModel;
   myControl = new FormControl('');
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions?: Observable<string[]>;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sharedServ: SharedService) {}
 
-  ngOnInit(): void {
-    // this.filteredOptions = this.myControl.valueChanges.pipe(
-    //   startWith(''),
-    //   map(value => this._filter(value || '')),
-    // );
-  }
+  ngOnInit(): void {}
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
