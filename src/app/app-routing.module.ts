@@ -1,3 +1,5 @@
+import { HandinUniAppComponent } from './handin-uni-app/handin-uni-app.component';
+import { SchoolListComponent } from './school-list/school-list.component';
 import { SchoolInterestedComponent } from './user-profile-page/school-interested/school-interested.component';
 import { PrimaryInfoComponent } from './user-profile-page/primary-info/primary-info.component';
 import { EducationComponent } from './user-profile-page/education/education.component';
@@ -137,6 +139,8 @@ const routes: Routes = [
   //School
   { path: 'school', component: SchoolInfoPageComponent },
 
+  { path: 'submit-application', component: HandinUniAppComponent },
+
   {
     path: 'psy',
     loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),
@@ -145,23 +149,13 @@ const routes: Routes = [
   {
     path: 'job-detail',
     component: JobDetailPageComponent,
-    canActivate: [AuthGuard],
   },
   { path: 'job-list', component: JobListPageComponent },
 
   //addmission-news
   { path: 'addmission-news-detail', component: AddmissionNewsDetailComponent },
   { path: 'admission-list', component: AdmissionListComponent },
-  //Psy links
-
-  //Job detail
-  { path: 'job-detail', component: JobDetailPageComponent },
-  { path: 'job-list', component: JobListPageComponent },
-
-  {
-    path: 'psy',
-    loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),
-  },
+  { path: 'school-list', component: SchoolListComponent },
 ];
 
 @NgModule({

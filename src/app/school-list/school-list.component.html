@@ -1,0 +1,178 @@
+<div class="page-container">
+    <app-nav></app-nav>
+    <div class="search-container">
+        <div class="search-container-left">
+            <div class="search-main-header">Khám phá các trường đại học nổi bật</div>
+            <div class="search-sub-header">Tra cứu thông tin và tìm kiếm trường đại học tốt nhất dành cho bạn</div>
+            <form [formGroup]="search" class="search-form" (ngSubmit)="searchSchool()">
+                <mat-icon>search</mat-icon>
+                <input type="text" class="search-input" placeholder="Nhập tên trường đại học">
+                <button type="submit" mat-raised-button>Tìm kiếm</button>
+            </form>
+        </div>
+        <div class="search-container-right">
+            <img src="./../../assets/img/school-list-logo.png" alt="">
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="header-title">DANH SÁCH CÁC TRƯỜNG ĐẠI HỌC NỔI BẬT</div>
+        <div class="job-wrapper">
+            <div class="card-item">
+                <div class="job-icon">
+                    <div class="img-wrapper">
+                        <img src="../../assets/img/schoolImg/fpt.jpg" alt="" class="main-img">
+                        <div class="sub-img-wrapper"><img src="../../assets/img/schoolImg/fpt-logo.png" alt=""
+                                class="sub-img"></div>
+                    </div>
+                    <div class="mini-background"></div>
+                </div>
+                <div class="job-name">FPT Software</div>
+                <div class="job-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, id qui earum laborum aperiam
+                    quibusdam iste quidem cumque! Repellat a numquam ducimus mollitia, odio similique dolorem officia
+                    cum natus veniam quis obcaecati. Animi, ducimus tempore at quasi ab repellendus beatae.
+                </div>
+                <div class="action-btn">
+                    <button mat-raised-button class="view-detail-btn" (click)="viewSchoolDetail()">Xem chi tiết</button>
+                    <button mat-raised-button class="view-detail-btn" (click)="submitApplication()">Nộp hồ sơ</button>
+                </div>
+            </div>
+            <div class="card-item">
+                <div class="job-icon">
+                    <div class="img-wrapper">
+                        <img src="../../assets/img/schoolImg/fpt.jpg" alt="" class="main-img">
+                        <div class="sub-img-wrapper"><img src="../../assets/img/schoolImg/fpt-logo.png" alt=""
+                                class="sub-img"></div>
+                    </div>
+                    <div class="mini-background"></div>
+                </div>
+                <div class="job-name">FPT Software</div>
+                <div class="job-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, id qui earum laborum aperiam
+                    quibusdam iste quidem cumque! Repellat a numquam ducimus mollitia, odio similique dolorem officia
+                    cum natus veniam quis obcaecati. Animi, ducimus tempore at quasi ab repellendus beatae.
+                </div>
+                <button mat-raised-button class="view-detail-btn">Xem chi tiết</button>
+            </div>
+            <div class="card-item">
+                <div class="job-icon">
+                    <div class="img-wrapper">
+                        <img src="../../assets/img/schoolImg/fpt.jpg" alt="" class="main-img">
+                        <div class="sub-img-wrapper"><img src="../../assets/img/schoolImg/fpt-logo.png" alt=""
+                                class="sub-img"></div>
+                    </div>
+                    <div class="mini-background"></div>
+                </div>
+                <div class="job-name">FPT Software</div>
+                <div class="job-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, id qui earum laborum aperiam
+                    quibusdam iste quidem cumque! Repellat a numquam ducimus mollitia, odio similique dolorem officia
+                    cum natus veniam quis obcaecati. Animi, ducimus tempore at quasi ab repellendus beatae.
+                </div>
+                <button mat-raised-button class="view-detail-btn">Xem chi tiết</button>
+            </div>
+            <div class="card-item">
+                <div class="job-icon">
+                    <div class="img-wrapper">
+                        <img src="../../assets/img/schoolImg/fpt.jpg" alt="" class="main-img">
+                        <div class="sub-img-wrapper"><img src="../../assets/img/schoolImg/fpt-logo.png" alt=""
+                                class="sub-img"></div>
+                    </div>
+                    <div class="mini-background"></div>
+                </div>
+                <div class="job-name">FPT Software</div>
+                <div class="job-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, id qui earum laborum aperiam
+                    quibusdam iste quidem cumque! Repellat a numquam ducimus mollitia, odio similique dolorem officia
+                    cum natus veniam quis obcaecati. Animi, ducimus tempore at quasi ab repellendus beatae.
+                </div>
+                <button mat-raised-button class="view-detail-btn">Xem chi tiết</button>
+            </div>
+            <div class="card-item">
+                <div class="job-icon">
+                    <div class="img-wrapper">
+                        <img src="../../assets/img/schoolImg/fpt.jpg" alt="" class="main-img">
+                        <div class="sub-img-wrapper"><img src="../../assets/img/schoolImg/fpt-logo.png" alt=""
+                                class="sub-img"></div>
+                    </div>
+                    <div class="mini-background"></div>
+                </div>
+                <div class="job-name">FPT Software</div>
+                <div class="job-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, id qui earum laborum aperiam
+                    quibusdam iste quidem cumque! Repellat a numquam ducimus mollitia, odio similique dolorem officia
+                    cum natus veniam quis obcaecati. Animi, ducimus tempore at quasi ab repellendus beatae.
+                </div>
+                <button mat-raised-button class="view-detail-btn">Xem chi tiết</button>
+            </div>
+            <div class="card-item">
+                <div class="job-icon">
+                    <div class="img-wrapper">
+                        <img src="../../assets/img/schoolImg/fpt.jpg" alt="" class="main-img">
+                        <div class="sub-img-wrapper"><img src="../../assets/img/schoolImg/fpt-logo.png" alt=""
+                                class="sub-img"></div>
+                    </div>
+                    <div class="mini-background"></div>
+                </div>
+                <div class="job-name">FPT Software</div>
+                <div class="job-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, id qui earum laborum aperiam
+                    quibusdam iste quidem cumque! Repellat a numquam ducimus mollitia, odio similique dolorem officia
+                    cum natus veniam quis obcaecati. Animi, ducimus tempore at quasi ab repellendus beatae.
+                </div>
+                <button mat-raised-button class="view-detail-btn">Xem chi tiết</button>
+            </div>
+            <div class="card-item">
+                <div class="job-icon">
+                    <div class="img-wrapper">
+                        <img src="../../assets/img/schoolImg/fpt.jpg" alt="" class="main-img">
+                        <div class="sub-img-wrapper"><img src="../../assets/img/schoolImg/fpt-logo.png" alt=""
+                                class="sub-img"></div>
+                    </div>
+                    <div class="mini-background"></div>
+                </div>
+                <div class="job-name">FPT Software</div>
+                <div class="job-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, id qui earum laborum aperiam
+                    quibusdam iste quidem cumque! Repellat a numquam ducimus mollitia, odio similique dolorem officia
+                    cum natus veniam quis obcaecati. Animi, ducimus tempore at quasi ab repellendus beatae.
+                </div>
+                <button mat-raised-button class="view-detail-btn">Xem chi tiết</button>
+            </div>
+            <div class="card-item">
+                <div class="job-icon">
+                    <div class="img-wrapper">
+                        <img src="../../assets/img/schoolImg/fpt.jpg" alt="" class="main-img">
+                        <div class="sub-img-wrapper"><img src="../../assets/img/schoolImg/fpt-logo.png" alt=""
+                                class="sub-img"></div>
+                    </div>
+                    <div class="mini-background"></div>
+                </div>
+                <div class="job-name">FPT Software</div>
+                <div class="job-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, id qui earum laborum aperiam
+                    quibusdam iste quidem cumque! Repellat a numquam ducimus mollitia, odio similique dolorem officia
+                    cum natus veniam quis obcaecati. Animi, ducimus tempore at quasi ab repellendus beatae.
+                </div>
+                <button mat-raised-button class="view-detail-btn">Xem chi tiết</button>
+            </div>
+            <div class="card-item">
+                <div class="job-icon">
+                    <div class="img-wrapper">
+                        <img src="../../assets/img/schoolImg/fpt.jpg" alt="" class="main-img">
+                        <div class="sub-img-wrapper"><img src="../../assets/img/schoolImg/fpt-logo.png" alt=""
+                                class="sub-img"></div>
+                    </div>
+                    <div class="mini-background"></div>
+                </div>
+                <div class="job-name">FPT Software</div>
+                <div class="job-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, id qui earum laborum aperiam
+                    quibusdam iste quidem cumque! Repellat a numquam ducimus mollitia, odio similique dolorem officia
+                    cum natus veniam quis obcaecati. Animi, ducimus tempore at quasi ab repellendus beatae.
+                </div>
+                <button mat-raised-button class="view-detail-btn">Xem chi tiết</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -114,6 +114,8 @@ import { BfQuizAttemptNewComponent } from './bf-quiz-attempt-new/bf-quiz-attempt
 // import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
 import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holland-quiz-attempt-new.component';
 import { PopupComponent } from './popup/popup.component';
+import { SchoolListComponent } from './school-list/school-list.component';
+import { HandinUniAppComponent } from './handin-uni-app/handin-uni-app.component';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -192,6 +194,8 @@ export function tokenGetter() {
     HollandQuizAttemptNewComponent,
     HollandQuestionComponent,
     PopupComponent,
+    SchoolListComponent,
+    HandinUniAppComponent,
     ProfileSidebarComponent,
     PrimaryInfoComponent,
     EducationComponent,

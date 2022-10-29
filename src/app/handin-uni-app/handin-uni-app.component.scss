@@ -1,0 +1,103 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+}
+
+.wrapper {
+    padding: 10px 100px;
+} 
+
+.mat-form-field {
+    width: 100%;
+}
+
+.submit-app-header {
+    background-color: #3b52f5;
+    color: #fff;
+    padding: 10px 40px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+.personal-header {
+    color: #3b52f5;
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 40px;
+}
+
+.personal-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 60px;
+}
+
+.label {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.highschool-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 60px;
+}
+
+.step-two-header {
+    color: #3b52f5;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.second-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-two-card {
+    margin: 20px;
+    font-size: 16px;
+    border: solid 1px #ddd;
+    padding: 24px 12px;
+    border-radius: 10px;
+}
+
+.step-two-card label {
+    width: 240px;
+}
+
+.step-two-card input {
+    padding-right: 60px;
+}
+
+.next-btn {
+    float: right;
+    padding: 4px 28px;
+    font-size: 16px;
+    background-color: #3b52f5;
+    color: #fff;
+}
+
+.action-btn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.action-btn button {
+    background-color: #3b52f5;
+    color: #fff;
+    padding: 4px 28px;
+    font-size: 16px;
+}
+
+.finish-header {
+    text-align: center;
+    color: #3b52f5;
+    font-size: 32px;
+    font-weight: 500;
+    margin-top: 20px;
+}
