@@ -317,33 +317,43 @@ export class DiscQuestionComponent implements OnInit {
   userAnswers: { id: number; answers: { right: string; wrong: string } }[] = [];
 
   chooseAnswer(i: number, j: number, event: any) {
-    var answerText = document.querySelector(
+    var activeSame = document.querySelector(
       `.question-container:nth-child(${
         i + 1
-      }) .answer-container .answer-row:nth-child(${j + 1}) .answer`
-    )?.textContent;
+      }) .answer-container .checkmark.active-same`
+    );
+
+    var activeSameRow = document.querySelector(
+      `.question-container:nth-child(${
+        i + 1
+      }) .answer-container .answer-row:nth-child(${
+        j + 1
+      }) .checkmark.active-same`
+    );
+
+    var activeDiffer = document.querySelector(
+      `.question-container:nth-child(${
+        i + 1
+      }) .answer-container .checkmark-differ.active-difference`
+    );
+
+    var activeDifferRow = document.querySelector(
+      `.question-container:nth-child(${
+        i + 1
+      }) .answer-container .answer-row:nth-child(${
+        j + 1
+      }) .checkmark-differ.active-difference`
+    );
 
     if (event.target.classList.contains('checkmark-differ')) {
-      var activeAnswerDiffer = document.querySelector(
-        `.question-container:nth-child(${
-          i + 1
-        }) .answer-container .checkmark-differ.active-difference`
-      );
-      activeAnswerDiffer?.classList.remove('active-difference');
-
-      this.storeUserAnswer(10 * this.currentPage + i, answerText, 'wrong');
+      console.log('hahaah');
+      activeSameRow?.classList.remove('active-same');
+      activeDiffer?.classList.remove('active-difference');
     } else {
-      var activeAnswerSame = document.querySelector(
-        `.question-container:nth-child(${
-          i + 1
-        }) .answer-container .checkmark.active-same`
-      );
-      activeAnswerSame?.classList.remove('active-same');
-      this.storeUserAnswer(10 * this.currentPage + i, answerText, 'right');
+      activeSame?.classList.remove('active-same');
+      activeDifferRow?.classList.remove('active-difference');
     }
-
     this.clickCheckBox(event);
-    this.disableAnswer(i, j, event);
   }
 
   storeUserAnswer(index: number, answerText: any, check: string) {
@@ -354,45 +364,12 @@ export class DiscQuestionComponent implements OnInit {
     }
   }
 
+  //them active
   clickCheckBox(event: any) {
     if (event.target.classList.contains('checkmark-differ')) {
       event.target.classList.add('active-difference');
     } else {
       event.target.classList.add('active-same');
-    }
-  }
-
-  disableAnswer(i: number, j: number, event: any) {
-    var answerDiffer = document.querySelector(
-      `.question-container:nth-child(${i + 1}) .answer-row:nth-child(${
-        j + 1
-      }) .checkmark-differ`
-    );
-
-    var answerSame = document.querySelector(
-      `.question-container:nth-child(${i + 1}) .answer-row:nth-child(${
-        j + 1
-      }) .checkmark`
-    );
-
-    var answerDifferAll = document.querySelectorAll(
-      `.question-container:nth-child(${i + 1}) .checkmark-differ`
-    );
-
-    var answerSameAll = document.querySelectorAll(
-      `.question-container:nth-child(${i + 1}) .answer-row .checkmark`
-    );
-
-    if (event.target.classList.contains('checkmark-differ')) {
-      answerSameAll.forEach((same) => {
-        same.classList.remove('disable');
-      });
-      answerSame?.classList.add('disable');
-    } else {
-      answerDifferAll.forEach((differ) => {
-        differ.classList.remove('disable');
-      });
-      answerDiffer?.classList.add('disable');
     }
   }
 

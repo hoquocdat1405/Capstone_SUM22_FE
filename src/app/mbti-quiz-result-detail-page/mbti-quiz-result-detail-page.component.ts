@@ -72,8 +72,9 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
     var infoContentAcTive = document.querySelector(`.info-content.active`);
     infoContentAcTive?.classList.remove('active');
     infoContent?.classList.add('active');
+  }
 
-    // var characterInfo = document.querySelector('.character-info');
-    // characterInfo?.scrollIntoView({ behavior: 'smooth' });
+  getMajor() {
+    this.router.navigate(['/job-list']);
   }
 }

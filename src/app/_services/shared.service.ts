@@ -60,7 +60,7 @@ export class SharedService {
   }
 
   submitTest(data: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl + 'test/submit-test-guest', data);
+    return this.http.post<any>(this.baseUrl + 'test/submit-test', data);
   }
 
   getJobCareer(id: string | null): Observable<any> {
