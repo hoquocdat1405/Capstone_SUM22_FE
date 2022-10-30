@@ -3,6 +3,7 @@
   <div class="content-column">
     <p class="note-text">*Hãy đọc thật kĩ và chọn câu trả lời phù hợp nhất với bản thân</p>
     <div class="content-row">
+
       <div class="sidebar-container">
         <div class="nav-row">
           <div class="sidebar-title"> Danh sách câu hỏi</div>
@@ -20,6 +21,8 @@
           </div>
         </div>
       </div>
+
+
       <form action="" (ngSubmit)=submitAnswer()>
         <div class="content">
           <div class="question-container" *ngFor="let question of questionSlice;index as i">
@@ -36,7 +39,9 @@
             </div>
           </div>
           <button class="submit-btn">Xem kết quả</button>
-
+          <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
+              class="end-index">{{totalPage}}</span>
+          </p>
         </div>
       </form>
     </div>
@@ -44,9 +49,7 @@
   </div>
 
 
-  <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
-      class="end-index">{{totalPage}}</span>
-  </p>
+
   <mat-paginator [length]="quizCollections.questions.length" [pageSize]="10" aria-label=" Select page"
     (page)="changePage($event)">
   </mat-paginator>

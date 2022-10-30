@@ -49,24 +49,7 @@ export class QuestionComponent implements OnInit {
     this.getData();
   }
 
-  // public getServerData(event?:PageEvent){
-  //   this.fooService.getdata(event).subscribe(
-  //     response =>{
-  //       if(response.error) {
-  //         // handle error
-  //       } else {
-  //         this.datasource = response.data;
-  //         this.pageIndex = response.pageIndex;
-  //         this.pageSize = response.pageSize;
-  //         this.length = response.length;
-  //       }
-  //     },
-  //     error =>{
-  //       // handle error
-  //     }
-  //   );
-  //   return event;
-  // }
+  checked() {}
 
   getData() {
     var count = 0;
@@ -166,6 +149,8 @@ export class QuestionComponent implements OnInit {
     document
       .querySelector(`.question-item:nth-child(${indexQuestion}`)
       ?.classList.add('active');
+
+    console.log(this.postAnswer);
   }
 
   hamburgerClick() {
@@ -186,7 +171,10 @@ export class QuestionComponent implements OnInit {
   submitAnswer() {
     this.shareService.submitTest(this.postAnswer).subscribe((result) => {
       if (result !== null) {
-        this.router.navigate(['mbti-result/' + result]);
+        this.router.navigate([
+          'mbti-result/',
+          { id: result.id, shortName: result.resultShortName },
+        ]);
       }
     });
   }

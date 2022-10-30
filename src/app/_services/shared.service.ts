@@ -49,13 +49,23 @@ export class SharedService {
     );
   }
 
-  getTestResult(id: string | null): Observable<any> {
+  getTestResult(id: string, shortName: string): Observable<any> {
     return this.http.get<any>(
-      this.baseUrl + 'test/get-character?characterId=' + id
+      this.baseUrl +
+        'Character/get-character?testId=' +
+        id +
+        '&resultShortName=' +
+        shortName
     );
   }
 
   submitTest(data: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl + 'test/submit-test', data);
+    return this.http.post<any>(this.baseUrl + 'test/submit-test-guest', data);
+  }
+
+  getJobCareer(id: string | null): Observable<any> {
+    return this.http.get<any>(
+      this.baseUrl + 'job/get-job-career?CharacterId=' + id
+    );
   }
 }

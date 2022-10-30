@@ -104,7 +104,10 @@ const routes: Routes = [
   { path: 'big-five-quiz-attempt', component: BfQuizAttemptNewComponent },
 
   //Quizes result page link
-  { path: 'mbti-result/:id', component: MbtiQuizResultDetailPageComponent },
+  {
+    path: 'mbti-result',
+    component: MbtiQuizResultDetailPageComponent,
+  },
   { path: 'disc-result', component: DiscQuizResultDetailPageComponent },
   { path: 'holland-result', component: HollandQuizResultDetailPageComponent },
   { path: 'bf-result', component: BfQuizResultDetailPageComponent },
