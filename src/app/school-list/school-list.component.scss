@@ -147,6 +147,11 @@
     width: 200px;
 }
 
+.action-btn {
+    display: flex;
+    gap: 20px;
+}
+
 @media only screen and (max-width: 78.75em) {
     .wrapper .job-wrapper {
         grid-template-columns: repeat(2, 1fr);
