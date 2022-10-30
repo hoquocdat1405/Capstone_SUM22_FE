@@ -49,15 +49,8 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
     this.sharedServ.getJobCareer(this.quizResult!.id).subscribe({
       next: (data) => {
         this.job = data;
-        // console.log(this.quizResult!.id);
-        // console.log(data);
-        // console.log(this.job);
       },
     });
-  }
-
-  suggestClickHandler() {
-    this.router.navigate(['/job-list']);
   }
 
   chooseTab(event: any, index: number) {
@@ -74,7 +67,7 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
     infoContent?.classList.add('active');
   }
 
-  getMajor() {
-    this.router.navigate(['/job-list']);
+  getMajor(id: number) {
+    this.router.navigate(['major-list/', { id: id }]);
   }
 }

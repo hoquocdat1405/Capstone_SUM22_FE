@@ -87,7 +87,6 @@ import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component
 
 //staff links
 import { StaffModule } from './staff/staff.module';
-import { MajorListComponent } from './major-list/major-list.component';
 import { MajorInfoComponent } from './major-info/major-info.component';
 import { BfQuizResultDetailPageComponent } from './bf-quiz-result-detail-page/bf-quiz-result-detail-page.component';
 import { RandomTarotPageComponent } from './new-tarot-page/random-tarot-page/random-tarot-page.component';
@@ -116,6 +115,7 @@ import { HollandQuizAttemptNewComponent } from './holland-quiz-attempt-new/holla
 import { PopupComponent } from './popup/popup.component';
 import { SchoolListComponent } from './school-list/school-list.component';
 import { HandinUniAppComponent } from './handin-uni-app/handin-uni-app.component';
+import { MajorListComponent } from './major-list/major-list.component';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -167,7 +167,6 @@ export function tokenGetter() {
     ExpansionPanelComponent,
     HollandQuizResultDetailPageComponent,
     NewTarotPageComponent,
-    MajorListComponent,
     MajorInfoComponent,
     NewTarotDrawCardPageComponent,
     TwelveAstrologicalPageDetailComponent,
@@ -200,6 +199,7 @@ export function tokenGetter() {
     PrimaryInfoComponent,
     EducationComponent,
     SchoolInterestedComponent,
+    MajorListComponent,
   ],
   imports: [
     FormsModule,

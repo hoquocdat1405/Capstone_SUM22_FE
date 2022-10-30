@@ -1,31 +1,38 @@
-<div class="major-container">
+<div class="page-container">
   <app-nav></app-nav>
-  <div class="major-title-section">
-    <div class="major-title left">
-      <p class="title">Ngành học</p>
-      <p class="title-note">Tìm hiểu thêm thông tin về các ngành nghề đào tạo để có cái nhìn tốt hơn cho định hướng
-        tương lai</p>
-      <div class="title-round">
-        <p class="title-round-note">Liệt kê theo kết quả các bài trắc nghiệm </p>
-      </div>
+  <div class="search-container">
+    <div class="search-container-left">
+      <div class="search-main-header">Khám phá các ngành học liên quan</div>
+      <div class="search-sub-header">Tra cứu thông tin và tìm kiếm các ngành học dành cho bạn</div>
+      <form class="search-form">
+        <mat-icon>search</mat-icon>
+        <input type="text" class="search-input" placeholder="Nhập tên ngành học">
+        <button type="submit" mat-raised-button>Tìm kiếm</button>
+      </form>
     </div>
-
-    <img src="/assets/img/background.png" class="title-img right">
-  </div>
-
-  <div class="horizontal-bar"></div>
-
-  <p class="major-list-text">DANH SÁCH NGÀNH HỌC</p>
-  <div class="major-list" *ngFor="let major of majorList">
-    <div class="major-info">
-      <img src="/assets/img/background.png" class="major-info-img">
-      <div class="major-info-right">
-        <p class="major-info-title">{{major.majorName}}</p>
-        <p class="major-info-introduce">{{major.majorInfo}}</p>
-        <p class="major-info-btn">Xem chi tiết </p>
-      </div>
+    <div class="search-container-right">
+      <img src="./../../assets/img/school-list-logo.png" alt="">
     </div>
   </div>
-
-  <app-footer></app-footer>
-</div>
+  <div class="wrapper">
+    <div class="header-title">DANH SÁCH CÁC NGÀNH HỌC</div>
+    <div class="job-wrapper">
+      <div class="card-item" *ngFor="let major of majors | slice:0:12">
+        <div class="card-item">
+          <div class="job-icon">
+            <div class="img-wrapper">
+              <img src="../../assets/img/uniPlaceholder.png" alt="" class="main-img">
+            </div>
+            <div class="mini-background"></div>
+          </div>
+          <div class="job-name">{{major.majorName}}</div>
+          <div class="job-desc">
+            {{major.description}}
+          </div>
+          <div class="action-btn">
+            <button mat-raised-button class="view-detail-btn">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

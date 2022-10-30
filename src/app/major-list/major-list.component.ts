@@ -1,4 +1,7 @@
+import { MajorService } from './../_services/major.service';
+import { MajorModel } from './../_model/major/major-model';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-major-list',
@@ -6,40 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./major-list.component.scss'],
 })
 export class MajorListComponent implements OnInit {
-  constructor() {}
+  majors?: MajorModel[];
+  id?: string;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private majorSer: MajorService
+  ) {}
 
-  ngOnInit() {}
-
-  majorList = [
-    {
-      majorName: 'Công nghệ thông tin',
-      majorInfo:
-        'Công nghệ thông tin, viết tắt CNTT, ( Information Technology hay là IT) là ngành ứng dụng công nghệ quản lý và xử lý thông tin',
-      majorImg: 'assets/img/background.png',
-    },
-    {
-      majorName: 'Công nghệ thông tin2',
-      majorInfo:
-        'Công nghệ thông tin, viết tắt CNTT, ( Information Technology hay là IT) là ngành ứng dụng công nghệ quản lý và xử lý thông tin',
-      majorImg: 'assets/img/background.png',
-    },
-    {
-      majorName: 'Công nghệ thông tin3',
-      majorInfo:
-        'Công nghệ thông tin, viết tắt CNTT, ( Information Technology hay là IT) là ngành ứng dụng công nghệ quản lý và xử lý thông tin',
-      majorImg: 'assets/img/background.png',
-    },
-    {
-      majorName: 'Công nghệ thông tin4',
-      majorInfo:
-        'Công nghệ thông tin, viết tắt CNTT, ( Information Technology hay là IT) là ngành ứng dụng công nghệ quản lý và xử lý thông tin',
-      majorImg: 'assets/img/background.png',
-    },
-    {
-      majorName: 'Công nghệ thông tin5',
-      majorInfo:
-        'Công nghệ thông tin, viết tắt CNTT, ( Information Technology hay là IT) là ngành ứng dụng công nghệ quản lý và xử lý thông tin',
-      majorImg: 'assets/img/background.png',
-    },
-  ];
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.majorSer.getMajorCareer(this.id).subscribe((data) => {
+      console.log(data);
+      this.majors = data;
+    });
+  }
 }

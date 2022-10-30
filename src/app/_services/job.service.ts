@@ -5,14 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JobService {
   baseUrl = environment.mockApiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getAllJob(): Observable<Job[]>{
-    return this.http.get<Job[]>(this.baseUrl + "job/get-job");
+  getAllJob(): Observable<Job[]> {
+    return this.http.get<Job[]>(this.baseUrl + 'job/get-job');
   }
 }

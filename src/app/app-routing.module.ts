@@ -1,3 +1,4 @@
+import { MajorListComponent } from './major-list/major-list.component';
 import { HandinUniAppComponent } from './handin-uni-app/handin-uni-app.component';
 import { SchoolListComponent } from './school-list/school-list.component';
 import { SchoolInterestedComponent } from './user-profile-page/school-interested/school-interested.component';
@@ -23,7 +24,6 @@ import { BfQuizResultDetailPageComponent } from './bf-quiz-result-detail-page/bf
 import { NewTarotDrawCardPageComponent } from './new-tarot-page/new-tarot-draw-card-page/new-tarot-draw-card-page.component';
 import { TwelveAstrologicalPageDetailComponent } from './twelve-astrological-page/twelve-astrological-page-detail/twelve-astrological-page-detail.component';
 import { MajorInfoComponent } from './major-info/major-info.component';
-import { MajorListComponent } from './major-list/major-list.component';
 import { NewTarotPageComponent } from './new-tarot-page/new-tarot-page.component';
 import { TarotListPageComponent } from './tarot-page/tarot-list-page/tarot-list-page.component';
 import { TarotPageComponent } from './tarot-page/tarot-page.component';
@@ -127,6 +127,7 @@ const routes: Routes = [
 
   //Major links
   { path: 'major', component: MajorDetailPageComponent },
+  { path: 'major-list', component: MajorListComponent },
 
   //Staff links
   {
@@ -136,7 +137,6 @@ const routes: Routes = [
   },
 
   //Major
-  { path: 'major-list', component: MajorListComponent },
   { path: 'major-info', component: MajorInfoComponent },
 
   //School
