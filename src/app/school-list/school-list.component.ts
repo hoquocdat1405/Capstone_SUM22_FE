@@ -1,6 +1,11 @@
-import { Router } from '@angular/router';
+import { UniversityService } from './../_services/university.service';
+import { University } from './../_model/uni';
+import { AuthService } from './../_services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import * as alertify from "alertifyjs";
 
 @Component({
   selector: 'app-school-list',
@@ -8,13 +13,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./school-list.component.scss']
 })
 export class SchoolListComponent implements OnInit {
+  isFromNav:boolean = false;
+  uniList: University[] = [];
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private _location: Location,
+    private uniService: UniversityService
   ) { }
 
   ngOnInit(): void {
+    alertify.set('notifier', 'position', 'top-center');
+    alertify.set('notifier', 'delay', 3);
+    this.isFromNav = this.route.snapshot.paramMap.get("fromNav") ? true : false;
+    this.uniService.getAllUniversity().subscribe({
+      next: (data: University[]) => {
+        this.uniList = data;
+      },
+      error: () => {
+        alertify.error("Something error!");
+      }
+    })
+    if(!(this.isFromNav || this.authService.getDecodedToken())) {
+      alertify.error('Bạn cần đăng nhập để thực hiện chức năng này');
+      this._location.back();
+    }
   }
 
   search = this.fb.group({
