@@ -21,7 +21,7 @@
 
 .text-container {
   background-color: #fff;
-  padding: 0 18em;
+  padding: 0 8em;
 }
 .wrapper .header-title {
   font-weight: 600;
@@ -43,9 +43,10 @@
 }
 
 .wrapper .job-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
+  display: flex;
+  flex-wrap: wrap;
+  // grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
   gap: 1em;
 }
 
@@ -65,12 +66,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 4em 0;
+  padding: 1em 0;
 }
 
 .job-icon img {
-  width: 150px;
-  height: 150px;
+  width: 300px;
+  // height: 300px;
+  aspect-ratio: 1 /0.7;
   object-fit: cover;
 }
 
@@ -91,7 +93,7 @@
 }
 
 .search-container {
-  padding: 40px 22em;
+  // padding: 40px 22em;
   background-color: #fff;
   border-radius: 5px;
   margin: 0 auto;
@@ -99,7 +101,8 @@
     linear-gradient(6deg, #fff, #6af3e9 100%, rgba(195, 255, 221, 0.702) 0) 0 0
     no-repeat padding-box;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-top: 60px;
 }
 
 .search-title {
@@ -127,7 +130,7 @@
 }
 
 .search-input {
-  padding: 2px 20px;
+  padding: 5px 25px;
   width: 300px;
   height: 100%;
   background-color: #fff;
@@ -268,6 +271,10 @@ select {
   opacity: 0.8;
 }
 
+.drop-down {
+  display: flex;
+}
+
 @media only screen and (max-width: 78.75em) {
   .wrapper .job-wrapper {
     grid-template-columns: repeat(2, 1fr);
@@ -279,5 +286,68 @@ select {
   .wrapper .job-wrapper {
     grid-template-columns: repeat(1, 1fr);
     padding: 4em;
+  }
+}
+
+@media (max-width: 1300px) {
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .left {
+    order: 2;
+  }
+
+  .search-title,
+  .search-description,
+  .header-title {
+    text-align: center;
+  }
+
+  .right {
+    order: 1;
+  }
+
+  .search-row {
+    margin-bottom: 20px;
+  }
+
+  .search {
+    margin: 0px 0px 10px 0px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .drop-down {
+    justify-content: space-between;
+    gap: 2px;
+    margin-bottom: 10px;
+  }
+
+  .search-form {
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  .major-dropdown,
+  .spec-dropdown {
+    width: 48%;
+    padding: 5px 10px;
+    margin-right: 0;
+  }
+
+  .text-container {
+    // padding: 0 10em;
+  }
+}
+
+@media (max-width: 1200px) {
+  .text-container {
+    padding: 0;
+    // display: none;
   }
 }

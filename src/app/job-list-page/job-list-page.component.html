@@ -1,5 +1,5 @@
+<app-nav></app-nav>
 <div class="page-container">
-  <app-nav></app-nav>
   <div class="search-container">
     <div class="left">
       <p class="search-title">Khám phá các ngành nghề phù hợp với bản thân</p>
@@ -11,19 +11,22 @@
             <i class="search-icon fa fa-search" aria-hidden="true"></i>
           </div>
 
-          <select name="cars" id="cars">
-            <option value="volvo">Chọn ngành</option>
-            <option value="saab">Công nghệ thông tin</option>
-            <option value="mercedes">Khoa học</option>
-            <option value="audi">Giáo dục</option>
-          </select>
+          <div class="drop-down">
+            <select class="major-dropdown">
+              <option value="volvo">Chọn ngành</option>
+              <option value="saab">Công nghệ thông tin</option>
+              <option value="mercedes">Khoa học</option>
+              <option value="audi">Giáo dục</option>
+            </select>
 
-          <select name="cars" id="cars">
-            <option value="volvo">Chọn chuyên ngành</option>
-            <option value="saab">Kỹ thuật phần mềm</option>
-            <option value="mercedes">An toàn thông tin</option>
-          </select>
+            <select class="spec-dropdown">
+              <option value="volvo">Chọn chuyên ngành</option>
+              <option value="saab">Kỹ thuật phần mềm</option>
+              <option value="mercedes">An toàn thông tin</option>
+            </select>
+          </div>
           <input type="button" value="Tìm kiếm" class="btn-search">
+
         </form>
       </div>
     </div>
