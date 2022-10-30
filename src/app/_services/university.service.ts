@@ -5,15 +5,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UniversityService {
   baseUrl = environment.mockApiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllUniversity(): Observable<University[]> {
-    return this.http.get<University[]>(this.baseUrl + "university/get-university");
+    return this.http.get<University[]>(
+      this.baseUrl + 'university/get-university'
+    );
   }
 
+  getUniversityByMajor(id: string): Observable<University[]> {
+    return this.http.get<University[]>(
+      this.baseUrl + 'university/get-uni-major?majorId=' + id
+    );
+  }
 }

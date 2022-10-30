@@ -1,3 +1,4 @@
+import { University } from './../_model/uni';
 import { MajorService } from './../_services/major.service';
 import { MajorModel } from './../_model/major/major-model';
 import { Component, OnInit } from '@angular/core';
@@ -10,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class MajorListComponent implements OnInit {
   majors?: MajorModel[];
+
   id?: string;
   constructor(
     private router: Router,
@@ -23,5 +25,9 @@ export class MajorListComponent implements OnInit {
       console.log(data);
       this.majors = data;
     });
+  }
+
+  goUniver(id: string) {
+    this.router.navigate(['/school-list', { id: id }]);
   }
 }
