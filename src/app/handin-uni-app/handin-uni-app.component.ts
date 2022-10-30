@@ -27,7 +27,7 @@ export class HandinUniAppComponent implements OnInit {
   });
 
   finishFormGroup = this.fb.group({
-    name: [''],
+    name: [this.firstFormGroup.value.name || "", []],
     sex: [''],
     birth: [''],
     address: [''],
@@ -148,7 +148,8 @@ export class HandinUniAppComponent implements OnInit {
   }
 
   submitAll() {
-
+    console.log(this.firstFormGroup.value)
+    console.log(this.submitFiles)
   }
 
 }

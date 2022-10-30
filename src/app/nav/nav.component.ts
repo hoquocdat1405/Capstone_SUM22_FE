@@ -17,7 +17,6 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.token = this.authService.getDecodedToken();
-    console.log(this.token)
     if(this.token) {
       this.email = this.token.email;
     }
