@@ -1,6 +1,16 @@
+import { ApplicationService } from './../_services/application.service';
+import { Application, ApplicationDetail } from './../_model/application/application';
+import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { UniversityService } from './../_services/university.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserProfile } from './../_model/User';
+import { AuthService } from './../_services/auth.service';
 import { SubmitApplications } from './../_model/uniApplication';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { UniSpec } from '../_model/uni';
+import * as alertify from "alertifyjs";
 
 @Component({
   selector: 'app-handin-uni-app',
@@ -9,6 +19,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HandinUniAppComponent implements OnInit {
   submitFiles: SubmitApplications[] = [];
+  userProfile?: UserProfile;
+  gender: string = "";
+  schoolId: string ="";
+  uniSpecList: UniSpec[] = [];
+  filteredOptions?: Observable<string[]>;
+
+  constructor(
+    private fb: FormBuilder, 
+    private authService: AuthService, 
+    private route: ActivatedRoute,
+    private uniService: UniversityService,
+    private applicationService: ApplicationService
+  ) { }
+
+  ngOnInit(): void {
+    alertify.set('notifier', 'position', 'top-center');
+    this.schoolId = this.route.snapshot.paramMap.get('schoolId')!;
+    console.log(this.firstFormGroup.get('uniSpec'))
+    this.filteredOptions = (this.firstFormGroup.get('uniSpec') as FormControl).valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+    this.uniService.getUniSpecById(this.schoolId).subscribe({
+      next: (data: UniSpec[]) => {
+        this.uniSpecList = data;
+      }
+    })
+    this.authService.getUserProfile(this.authService.getDecodedToken().nameid).subscribe({
+      next: (userProfile: UserProfile) => {
+        this.userProfile = userProfile;
+        this.gender = userProfile.gender;
+        this.firstFormGroup.patchValue(
+          {
+            name: this.userProfile.userName,
+            sex: this.userProfile.gender,
+            birth: this.userProfile.dateOfBirth,
+            address: this.userProfile.addressNumber,
+            cmnd: this.userProfile.credentialId,
+            phone: this.userProfile.phone,
+            email: this.userProfile.email,
+          }
+        )
+      }
+    })
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    let result: string[] = []
+    this.uniSpecList.filter(option => option.uniSpecName.toLowerCase().includes(filterValue)).forEach(item => result.push(item.uniSpecName));
+    console.log(result)
+    return result;
+  }
 
   firstFormGroup = this.fb.group({
     name: [''],
@@ -24,6 +87,7 @@ export class HandinUniAppComponent implements OnInit {
     graduateYear: [''],
     gradeTwelve: [''],
     abilityTwelve: [''],
+    uniSpec: [''],
   });
 
   finishFormGroup = this.fb.group({
@@ -55,7 +119,7 @@ export class HandinUniAppComponent implements OnInit {
     backId: [''],
   });
 
-  constructor(private fb: FormBuilder) { }
+
 
   schoolProfileFileChange(event: any) {
     if (event.target.files.length > 0) {
@@ -66,7 +130,7 @@ export class HandinUniAppComponent implements OnInit {
       }
 
       const index = this.submitFiles.findIndex(item => item.name === schoolProfile.name);
-      if(index !== -1) {
+      if (index !== -1) {
         this.submitFiles[index].submittedFile = file;
       } else {
         this.submitFiles.push(schoolProfile);
@@ -144,12 +208,54 @@ export class HandinUniAppComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-  }
-
   submitAll() {
     console.log(this.firstFormGroup.value)
     console.log(this.submitFiles)
+    console.log("School ID: " + this.schoolId)
+    console.log("User ID: " + this.userProfile?.id)
+    console.log("Uni Spec: " + this.firstFormGroup.get('uniSpec')?.value)
+    console.log("Uni Spec Id: " + this.uniSpecList.filter(item => item.uniSpecName === this.firstFormGroup.get('uniSpec')?.value)[0].id)
+    let uniSpecId = this.uniSpecList.filter(item => item.uniSpecName === this.firstFormGroup.get('uniSpec')?.value)[0].id;
+    const application: Application = {
+      userId: this.userProfile!.id,
+      uniId: this.schoolId,
+      uniSpecId: uniSpecId
+    }
+
+    
+
+    this.applicationService.createApplication(application).subscribe({
+      next: (data) => {
+        console.log(data)
+        const applicationDetail: ApplicationDetail = {
+          applicationId: data.id,
+          credentialFrontImgUrl: '',
+          credentialBackImgUrl: '',
+          highSchoolCode: "3200349308",
+          highSchoolName: this.firstFormGroup.get('highSchool')?.value,
+          highSchoolAddress: this.firstFormGroup.get('city')?.value,
+          graduationYear: this.firstFormGroup.get('graduateYear')?.value,
+          avarageScore: this.firstFormGroup.get('gradeTwelve')?.value,
+          academicRank: this.firstFormGroup.get('abilityTwelve')?.value,
+          schoolReport1Url: '',
+          schoolReport2Url: '',
+          schoolReport3Url: '',
+          schoolReport4Url: ''
+        }
+        this.applicationService.createApplicationDetail(applicationDetail).subscribe({
+          next: (data) => {
+            console.log(data)
+            alertify.success("Submit Application Successfully!")
+          },
+          error: () => {
+            alertify.error("Submit failed");
+          }
+        })
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
   }
 
 }

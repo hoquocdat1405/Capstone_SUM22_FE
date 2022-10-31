@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
-import { User } from '../_model/User';
+import { User, UserProfile } from '../_model/User';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -29,6 +29,7 @@ export class AuthService {
     this.helper = new JwtHelperService();
     if (this.token) {
       this.decodedToken = this.helper.decodeToken(this.token);
+      console.log(this.decodedToken)
     }
   }
 
@@ -73,6 +74,10 @@ export class AuthService {
           }
         })
       );
+  }
+
+  getUserProfile(userId: string) : Observable<UserProfile> {
+    return this.http.get<UserProfile>(this.baseUrl + "user/get-profile?userId=" + userId);
   }
 
   logout() {

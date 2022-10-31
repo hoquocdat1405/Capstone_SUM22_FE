@@ -70,7 +70,7 @@ export class SchoolListComponent implements OnInit {
     this.router.navigate(['/school']);
   }
 
-  submitApplication() {
-    this.router.navigate(['/submit-application']);
+  submitApplication(uniId: string) {
+    this.router.navigate(['/submit-application', { schoolId: uniId }]);
   }
 }
