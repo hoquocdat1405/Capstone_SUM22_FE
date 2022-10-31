@@ -22,10 +22,6 @@
   left: 15px;
 }
 
-.profile-title-left {
-  color: #439be4;
-}
-
 .profile-title-row {
   width: 100%;
 }
@@ -70,6 +66,7 @@
   font-weight: 500;
   font-size: 20px;
   margin: 10px 0;
+  color: #439be4;
 }
 
 .profile-img-title ~ .profile-img-title {
@@ -126,15 +123,17 @@
 
 .profile-grid {
   display: grid;
-  grid-gap: 40px;
-  grid-template-columns: 45% 45%;
-  grid-template-rows: 80px 80px 80px;
+  grid-gap: 20px 40px;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: 80px 80px;
 }
 
 .address-grid {
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: 40% 16% 16% 16%;
+  grid-gap: 0 40px;
+  grid-template-columns: 30% calc((60% - 40px) / 3) calc((60% - 40px) / 3) calc(
+      (60% - 40px) / 3
+    );
 }
 
 .input-container {
@@ -147,14 +146,14 @@
 }
 
 input {
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10px 20px;
   border: 1px solid #ccc;
   background-color: #fff;
 }
 
 select {
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10px 20px;
   border: 1px solid #ccc;
   background-color: #fff;

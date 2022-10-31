@@ -100,7 +100,6 @@ export class QuestionComponent implements OnInit {
             var input = document.getElementById(
               `${this.postAnswer.questions[j].options[0].optionId}`
             ) as HTMLInputElement;
-            console.log(input);
             input.checked = true;
           }
         }

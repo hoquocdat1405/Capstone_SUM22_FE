@@ -1,3 +1,4 @@
+import { ProfileUpdateModel } from './../_model/profile';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
@@ -67,5 +68,13 @@ export class SharedService {
     return this.http.get<any>(
       this.baseUrl + 'job/get-job-career?CharacterId=' + id
     );
+  }
+
+  getProfileInfo(id: string): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'user/get-profile?userId=' + id);
+  }
+
+  updateProfile(profile: any): Observable<any> {
+    return this.http.put<any>(this.baseUrl + 'user/update-user', profile);
   }
 }

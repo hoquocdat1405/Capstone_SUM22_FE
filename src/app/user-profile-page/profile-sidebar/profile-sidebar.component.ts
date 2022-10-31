@@ -27,8 +27,8 @@ export class ProfileSidebarComponent implements OnInit {
       icon: 'fa fa-heart-o',
     },
     {
-      routerLink: 'education',
-      title: 'Nội dung đã lưu',
+      routerLink: 'apply',
+      title: 'Đơn đã nộp',
       icon: 'fa fa-floppy-o',
     },
   ];
