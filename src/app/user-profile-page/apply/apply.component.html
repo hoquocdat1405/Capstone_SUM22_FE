@@ -5,7 +5,7 @@
         <th scope="col">STT</th>
         <th scope="col">Chuyên ngành</th>
         <th scope="col">Tên trường</th>
-        <th scope="col">Ngày ứng tuyển</th>
+        <th scope="col">Ngày nộp hồ sơ</th>
         <th scope="col">Tình trạng</th>
         <th scope="col">Hành động</th>
       </tr>
@@ -19,7 +19,7 @@
           <p class="table-text">{{apply.uniSpecName}}</p>
         </td>
         <td>
-          <p class="table-text">hahaha</p>
+          <p class="table-text">{{apply.uniName}}</p>
         </td>
         <td>
           <p class="table-text">{{apply.applyDate }}</p>
@@ -28,7 +28,7 @@
           <p class="table-text">{{apply.status}}</p>
         </td>
         <td>
-          <button class="cancel-btn">Xem chi tiết</button>
+          <button class="cancel-btn" (click)="viewDetail(apply.id)">Xem chi tiết</button>
         </td>
       </tr>
     </tbody>

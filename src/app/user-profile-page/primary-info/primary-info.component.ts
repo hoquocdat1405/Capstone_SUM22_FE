@@ -38,18 +38,11 @@ export class PrimaryInfoComponent implements OnInit {
   getData(id: string) {
     this.sharedServ.getProfileInfo(id).subscribe((data) => {
       this.userProfile = data;
-      console.log(data);
     });
   }
 
   updateProfile() {
     this.getDataUpdate();
-
-    this.sharedServ
-      .updateProfile(this.userUpdateProfile)
-      .subscribe((result) => {
-        console.log(result);
-      });
   }
 
   getDataUpdate() {
@@ -76,7 +69,14 @@ export class PrimaryInfoComponent implements OnInit {
     this.userUpdateProfile!.credentialFrontImgUrl = '';
     this.userUpdateProfile!.credentialBackImgUrl = '';
 
-    // console.log(this.userUpdateProfile);
+    console.log(this.userUpdateProfile!);
+    console.log(this.userUpdateProfile!.userName);
+
+    this.sharedServ
+      .updateProfile(this.userUpdateProfile)
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 
   getAge(dateString: any) {

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ApplicationModel } from './../../_model/application/application';
 import { AuthService } from './../../_services/auth.service';
 import { SharedService } from './../../_services/shared.service';
@@ -12,7 +13,11 @@ export class ApplyComponent implements OnInit {
   id: string = '';
   applies?: ApplicationModel[];
 
-  constructor(private shared: SharedService, private auth: AuthService) {}
+  constructor(
+    private shared: SharedService,
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getData();
@@ -23,5 +28,9 @@ export class ApplyComponent implements OnInit {
     this.shared.getAllApply(user.nameid).subscribe((data) => {
       this.applies = data;
     });
+  }
+
+  viewDetail(id: string) {
+    this.router.navigate(['profile/apply-detail', { id: id }]);
   }
 }

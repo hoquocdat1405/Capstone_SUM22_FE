@@ -1,3 +1,4 @@
+import { ApplyDetailComponent } from './user-profile-page/apply-detail/apply-detail.component';
 import { ApplyComponent } from './user-profile-page/apply/apply.component';
 import { MajorListComponent } from './major-list/major-list.component';
 import { HandinUniAppComponent } from './handin-uni-app/handin-uni-app.component';
@@ -71,6 +72,7 @@ const routes: Routes = [
       { path: 'school-interested', component: SchoolInterestedComponent },
       { path: 'primary', component: PrimaryInfoComponent },
       { path: 'apply', component: ApplyComponent },
+      { path: 'apply-detail', component: ApplyDetailComponent },
       { path: '', component: PrimaryInfoComponent },
     ],
   },
