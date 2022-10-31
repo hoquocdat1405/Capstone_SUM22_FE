@@ -45,6 +45,11 @@
   font-size: 16px;
   font-weight: 600;
   font-style: italic;
+  cursor: pointer;
+}
+
+.text-major:hover {
+  color: rgb(0, 162, 255);
 }
 
 .info-title {
@@ -138,6 +143,20 @@
   background-color: #fff;
   border-bottom: 1px dotted #ccc;
   padding-bottom: 60px;
+}
+
+.text-major-header {
+  font-size: 24px;
+  font-weight: 500;
+  color:rgb(0, 162, 255);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.text-major-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 10px;
 }
 
 .left {

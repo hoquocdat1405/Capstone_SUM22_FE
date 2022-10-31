@@ -16,6 +16,13 @@
           </div>
           <img src="{{quizResult?.resultPicture}}" alt="" class="result-img">
         </div>
+        <div class="row">
+          <div class="text-major-header">Các ngành nghề phù hợp</div>
+          <div class="text-major-wrapper">
+            <h4 class="text-major" *ngFor="let result of job" (click)="getMajor(result.id)"> -
+              {{result.jobName}} </h4>
+          </div>
+        </div>
       </div>
 
       <div class="character-info">
@@ -31,8 +38,8 @@
             <h4 class="title-1"><span>02</span>Nghề nghiệp - Sự nghiệp</h4>
             <p class="text">{{quizResult?.resultCareer}}</p>
             <!-- <h4 class="text-primary" (click)="suggestClickHandler()">2.1 Dịch vụ cộng đồng và xã hội </h4> -->
-            <h4 class="text-major" *ngFor="let result of job" (click)="getMajor(result.id)"> -
-              {{result.jobName}} </h4>
+            <!-- <h4 class="text-major" *ngFor="let result of job" (click)="getMajor(result.id)"> -
+              {{result.jobName}} </h4> -->
             <!-- <h4 class="text-major"> - Tư vấn viên hôn nhân gia đình </h4>
             <h4 class="text-primary" (click)="suggestClickHandler()">2.2 Giáo dục </h4>
             <h4 class="text-major"> - Giáo viên</h4>
