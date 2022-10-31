@@ -11,24 +11,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let apply of applies; index as i">
         <td>
-          <p class="table-text">hahaha</p>
+          <p class="table-text">{{i+1}}</p>
+        </td>
+        <td>
+          <p class="table-text">{{apply.uniSpecName}}</p>
         </td>
         <td>
           <p class="table-text">hahaha</p>
         </td>
         <td>
-          <p class="table-text">hahaha</p>
+          <p class="table-text">{{apply.applyDate }}</p>
         </td>
         <td>
-          <p class="table-text">hahaha</p>
+          <p class="table-text">{{apply.status}}</p>
         </td>
         <td>
-          <p class="table-text">hahaha</p>
-        </td>
-        <td>
-          <button class="cancel-btn"><i class="icon-remove fa fa-times" aria-hidden="true"></i>Hủy đăng ký</button>
+          <button class="cancel-btn">Xem chi tiết</button>
         </td>
       </tr>
     </tbody>

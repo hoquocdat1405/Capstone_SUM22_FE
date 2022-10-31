@@ -25,7 +25,6 @@ export interface ProfileModel {
 }
 
 export interface ProfileUpdateModel {
-  id: string;
   userName: string;
   gender: string;
   dateOfBirth: string;
