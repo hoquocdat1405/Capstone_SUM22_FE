@@ -64,6 +64,18 @@
                             <input matInput formControlName="email" placeholder="Nhập email">
                         </mat-form-field>
                     </div>
+                    <div>
+                        <div class="label">Ngành ứng tuyển</div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Ngành ứng tuyển</mat-label>
+                            <input type='text' matInput formControlName="uniSpec" [matAutocomplete]="auto" placeholder="Nhập ngành ứng tuyển">
+                            <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+                                <mat-option *ngFor="let option of uniSpecList" [value]="option.uniSpecName">
+                                    {{option.uniSpecName}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
                 </div>
 
                 <!-- High school info section-->

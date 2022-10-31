@@ -11,3 +11,16 @@ export interface University {
     wardId: string,
     uniShortName: string
 }
+
+export interface UniSpec {
+    id: number,
+    uniId: string,
+    specId: string,
+    uniSpecName: string,
+    status: string,
+    specCode: string,
+    spec: string,
+    uni: string,
+    addmissionNews: []
+    applications: []
+}

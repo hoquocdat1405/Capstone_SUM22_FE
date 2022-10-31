@@ -1,6 +1,13 @@
+import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { UniversityService } from './../_services/university.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserProfile } from './../_model/User';
+import { AuthService } from './../_services/auth.service';
 import { SubmitApplications } from './../_model/uniApplication';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { UniSpec } from '../_model/uni';
 
 @Component({
   selector: 'app-handin-uni-app',
@@ -9,6 +16,56 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HandinUniAppComponent implements OnInit {
   submitFiles: SubmitApplications[] = [];
+  userProfile?: UserProfile;
+  gender: string = "";
+  schoolId: string ="";
+  uniSpecList: UniSpec[] = [];
+  filteredOptions?: Observable<string[]>;
+
+  constructor(
+    private fb: FormBuilder, 
+    private authService: AuthService, 
+    private route: ActivatedRoute,
+    private uniService: UniversityService) { }
+
+  ngOnInit(): void {
+    this.schoolId = this.route.snapshot.paramMap.get('schoolId')!;
+    console.log(this.firstFormGroup.get('uniSpec'))
+    this.filteredOptions = (this.firstFormGroup.get('uniSpec') as FormControl).valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+    this.uniService.getUniSpecById(this.schoolId).subscribe({
+      next: (data: UniSpec[]) => {
+        this.uniSpecList = data;
+      }
+    })
+    this.authService.getUserProfile(this.authService.getDecodedToken().nameid).subscribe({
+      next: (userProfile: UserProfile) => {
+        this.userProfile = userProfile;
+        this.gender = userProfile.gender;
+        this.firstFormGroup.patchValue(
+          {
+            name: this.userProfile.userName,
+            sex: this.userProfile.gender,
+            birth: this.userProfile.dateOfBirth,
+            address: this.userProfile.addressNumber,
+            cmnd: this.userProfile.credentialId,
+            phone: this.userProfile.phone,
+            email: this.userProfile.email,
+          }
+        )
+      }
+    })
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    let result: string[] = []
+    this.uniSpecList.filter(option => option.uniSpecName.toLowerCase().includes(filterValue)).forEach(item => result.push(item.uniSpecName));
+    console.log(result)
+    return result;
+  }
 
   firstFormGroup = this.fb.group({
     name: [''],
@@ -24,6 +81,7 @@ export class HandinUniAppComponent implements OnInit {
     graduateYear: [''],
     gradeTwelve: [''],
     abilityTwelve: [''],
+    uniSpec: [''],
   });
 
   finishFormGroup = this.fb.group({
@@ -55,7 +113,7 @@ export class HandinUniAppComponent implements OnInit {
     backId: [''],
   });
 
-  constructor(private fb: FormBuilder) { }
+
 
   schoolProfileFileChange(event: any) {
     if (event.target.files.length > 0) {
@@ -66,7 +124,7 @@ export class HandinUniAppComponent implements OnInit {
       }
 
       const index = this.submitFiles.findIndex(item => item.name === schoolProfile.name);
-      if(index !== -1) {
+      if (index !== -1) {
         this.submitFiles[index].submittedFile = file;
       } else {
         this.submitFiles.push(schoolProfile);
@@ -142,9 +200,6 @@ export class HandinUniAppComponent implements OnInit {
         this.submitFiles.push(backId);
       }
     }
-  }
-
-  ngOnInit(): void {
   }
 
   submitAll() {
