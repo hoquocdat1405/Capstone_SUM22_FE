@@ -29,7 +29,9 @@
     font-weight: 700;
 }
 
-
+.btn {
+    cursor: pointer;
+}
 
 .des {
     position: absolute;

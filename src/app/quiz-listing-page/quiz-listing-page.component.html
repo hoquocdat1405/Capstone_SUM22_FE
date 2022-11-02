@@ -9,10 +9,11 @@
         {{test.introduction}}
       </p>
       <div class="options">
-        <a href="#" [routerLink]="['/test-detail',test.id]" class="btn-detail"
+        <!-- <a href="#" [routerLink]="['/test-detail',test.id]" class="btn btn-detail"
           >Chi tiết</a
-        >
-        <a  (click)="redirectTest(test.quizTypeId)" class="btn-start"
+        > -->
+        <a href="#" [routerLink]="['/mbti-quiz-detail']" class="btn btn-detail">Chi tiết</a>
+        <a  (click)="redirectTest(test.quizTypeId)" class="btn btn-start"
           >Bắt đầu</a
         >
       </div>

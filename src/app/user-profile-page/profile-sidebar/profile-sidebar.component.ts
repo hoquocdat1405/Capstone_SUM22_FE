@@ -1,3 +1,4 @@
+import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ export class ProfileSidebarComponent implements OnInit {
   hamburgerFlag: boolean = false;
   opened: boolean = true;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
   currentRoutes = [
     {
       routerLink: 'primary',
@@ -33,7 +34,9 @@ export class ProfileSidebarComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.authService.getDecodedToken().role);
+  }
 
   hamburgerClick() {
     this.hamburgerFlag = !this.hamburgerFlag;
