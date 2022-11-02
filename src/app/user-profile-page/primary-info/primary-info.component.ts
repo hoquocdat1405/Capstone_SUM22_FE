@@ -13,7 +13,6 @@ export class PrimaryInfoComponent implements OnInit {
   userProfile?: ProfileModel;
   user?: any;
   userUpdateProfile: ProfileUpdateModel = {
-    id: '',
     userName: '',
     gender: '',
     dateOfBirth: '',
@@ -43,17 +42,10 @@ export class PrimaryInfoComponent implements OnInit {
   }
 
   updateProfile() {
-    this.sharedServ
-      .updateProfile(this.userUpdateProfile)
-      .subscribe((result) => {
-        console.log(result);
-      });
-
     this.getDataUpdate();
   }
 
   getDataUpdate() {
-    console.log(this.user);
     var userName = document.querySelector('.input-name') as HTMLInputElement;
     var gender = document.querySelector('.input-gender') as HTMLSelectElement;
     var dateOfBirth = document.querySelector('.input-birth') as any;
@@ -66,7 +58,6 @@ export class PrimaryInfoComponent implements OnInit {
     ) as HTMLInputElement;
     var age = this.getAge(dateOfBirth.value);
 
-    this.userUpdateProfile!.id = this.user.nameid;
     this.userUpdateProfile!.userName = userName.value;
     this.userUpdateProfile!.gender = gender.value;
     this.userUpdateProfile!.dateOfBirth = dateOfBirth.value;
@@ -78,7 +69,14 @@ export class PrimaryInfoComponent implements OnInit {
     this.userUpdateProfile!.credentialFrontImgUrl = '';
     this.userUpdateProfile!.credentialBackImgUrl = '';
 
-    console.log(this.userUpdateProfile);
+    console.log(this.userUpdateProfile!);
+    console.log(this.userUpdateProfile!.userName);
+
+    this.sharedServ
+      .updateProfile(this.userUpdateProfile)
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 
   getAge(dateString: any) {

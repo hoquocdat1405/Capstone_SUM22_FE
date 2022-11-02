@@ -74,7 +74,13 @@ export class SharedService {
     return this.http.get<any>(this.baseUrl + 'user/get-profile?userId=' + id);
   }
 
-  updateProfile(profile: any): Observable<any> {
+  updateProfile(profile: ProfileUpdateModel): Observable<any> {
     return this.http.put<any>(this.baseUrl + 'user/update-user', profile);
+  }
+
+  getAllApply(id: string): Observable<any> {
+    return this.http.get<any>(
+      this.baseUrl + 'application/get-all-application?Id=' + id
+    );
   }
 }

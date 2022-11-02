@@ -1,4 +1,5 @@
 import { AuthService } from './../../_services/auth.service';
+import { User } from 'src/app/_model/User';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileSidebarComponent implements OnInit {
   hamburgerFlag: boolean = false;
   opened: boolean = true;
+  user?: User;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authSer: AuthService) {}
   currentRoutes = [
     {
       routerLink: 'primary',
@@ -35,7 +37,8 @@ export class ProfileSidebarComponent implements OnInit {
   ];
 
   ngOnInit() {
-    console.log(this.authService.getDecodedToken().role);
+    this.user = this.authSer.getDecodedToken();
+    console.log(this.user);
   }
 
   hamburgerClick() {

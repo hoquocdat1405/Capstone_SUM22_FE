@@ -53,6 +53,7 @@ import { EducationComponent } from './user-profile-page/education/education.comp
 import { PrimaryInfoComponent } from './user-profile-page/primary-info/primary-info.component';
 import { SchoolInterestedComponent } from './user-profile-page/school-interested/school-interested.component';
 import { ApplyComponent } from './user-profile-page/apply/apply.component';
+import { ApplyDetailComponent } from './user-profile-page/apply-detail/apply-detail.component';
 import { ProfileSidebarComponent } from './user-profile-page/profile-sidebar/profile-sidebar.component';
 import { LoginRegisterPageComponent } from './login-register-page/login-register-page.component';
 import { LoginComponent } from './login-register-page/login/login.component';
@@ -202,6 +203,7 @@ export function tokenGetter() {
     SchoolInterestedComponent,
     MajorListComponent,
     ApplyComponent,
+    ApplyDetailComponent,
   ],
   imports: [
     FormsModule,
