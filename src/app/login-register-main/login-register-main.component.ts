@@ -19,7 +19,9 @@ export class LoginRegisterMainComponent implements OnInit {
   // confirmPasswordReg: string = '';
 
   @Input()
-  isActive = false;
+  isActiveLogin = false;
+  isActiveRegister1 = false;
+  isActiveRegister2 = false;
 
   constructor(
     private authService: AuthService,
