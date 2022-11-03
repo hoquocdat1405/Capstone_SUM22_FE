@@ -1,5 +1,7 @@
+import { ResProvince, Province, District, ResDistrict, ResWard, Ward } from './../../_model/address';
+import { AddressService } from './../../_services/address.service';
 import { ProfileService } from './../../_services/profile.service';
-import { User, UserProfile, ProfileUpdateModel } from './../../_model/User';
+import { UserProfile, ProfileUpdateModel } from './../../_model/User';
 import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import * as alertify from 'alertifyjs';
@@ -11,6 +13,9 @@ import * as alertify from 'alertifyjs';
 export class PrimaryInfoComponent implements OnInit {
   userProfile?: UserProfile;
   user?: any;
+  listProvince: Province[] = [];
+  listDistrict: District[] = [];
+  listWard: Ward[] = [];
   userUpdateProfile: ProfileUpdateModel = {
     userName: '',
     gender: '',
@@ -23,10 +28,13 @@ export class PrimaryInfoComponent implements OnInit {
     credentialFrontImgUrl: '', //chua co
     credentialBackImgUrl: '', //chua co
   };
+  selectedProvince: string = "";
+  selectedDistrict: string = "";
 
   constructor(
     private profileServ: ProfileService,
-    private authService: AuthService
+    private authService: AuthService,
+    private addressService: AddressService
   ) {}
 
   ngOnInit() {
@@ -34,6 +42,12 @@ export class PrimaryInfoComponent implements OnInit {
     this.getData(this.user.nameid);
     alertify.set('notifier', 'position', 'top-center');
     alertify.set('notifier', 'delay', '3');
+
+    this.addressService.getProvince().subscribe({
+      next: (data: ResProvince) => {
+        this.listProvince = data.results;
+      }
+    })
   }
 
   getData(id: string) {
@@ -88,5 +102,29 @@ export class PrimaryInfoComponent implements OnInit {
       age--;
     }
     return age;
+  }
+
+  provinceChange() {
+    this.getListDistrict(+this.selectedProvince)
+  }
+
+  getListDistrict(id: number) {
+    this.addressService.getDistrict(id).subscribe({
+      next: (data: ResDistrict) => {
+        this.listDistrict = data.results
+      }
+    })
+  }
+
+  getListWard(id: string) {
+    this.addressService.getWard(id).subscribe({
+      next: (data: ResWard) => {
+        this.listWard = data.results
+      }
+    })
+  }
+
+  districtChange() {
+    this.getListWard(this.selectedDistrict)
   }
 }

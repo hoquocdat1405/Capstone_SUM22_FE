@@ -76,26 +76,27 @@
       <input value="{{userProfile?.addressNumber}}" type="text" name="" id="" class="input-address">
     </div>
     <div class="input-container">
-      <label class="input-title" for="">Quận</label>
+      <label class="input-title" for="">Thành phố</label>
+      <select name="province" id="province" class="input-district" [(ngModel)]="selectedProvince" (change)="provinceChange()">
+        <option value="">Chọn Thành phố</option>
+        <option value="{{prov.province_id}}" *ngFor="let prov of listProvince">{{prov.province_name}}</option>
+      </select>
+    </div>
+    <div class="input-container">
+      <label class="input-title" for="">Quận/Huyện</label>
+      <select name="cars" id="cars" class="input-district" [(ngModel)]="selectedDistrict" (change)="districtChange()">
+        <option value="">Chọn Quận/Huyện</option>
+        <option value="{{dist.district_id}}" *ngFor="let dist of listDistrict">{{dist.district_name}}</option>
+      </select>
+    </div>
+    <div class="input-container">
+      <label class="input-title" for="">Phường/Xã</label>
       <select name="cars" id="cars" class="input-district">
         <option value="">Chọn Quận</option>
-        <option value="volvo">Volvo</option>
+        <option value="{{ward.ward_id}}" *ngFor="let ward of listWard">{{ward.ward_name}}</option>
       </select>
     </div>
-    <div class="input-container">
-      <label class="input-title" for="">Huyện</label>
-      <select name="cars" id="cars" class="input-district">
-        <option value="">Chọn Huyện</option>
-        <option value="volvo">Volvo</option>
-      </select>
-    </div>
-    <div class="input-container">
-      <label class="input-title" for="">Thành phố</label>
-      <select name="cars" id="cars" class="input-district">
-        <option value="">Chọn Thành phố</option>
-        <option value="volvo">Volvo</option>
-      </select>
-    </div>
+    
 
   </div>
   <button class="btn-save-bottom" (click)="updateProfile()">Lưu hồ sơ</button>
