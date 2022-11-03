@@ -5,7 +5,13 @@
 export const environment = {
   production: false,
   // mockApiUrl: 'http://localhost:3000/'
-  mockApiUrl: 'https://api.qick.tech/api/'
+  mockApiUrl: 'https://api.qick.tech/api/',
+  CLIENT_ID: '335727496797-ni5931lv7pm1g6k9jif5p24365egcilf.apps.googleusercontent.com',
+  CLIENT_SECRET: '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',
+  REDIRECT_URI: 'https://developers.google.com/oauthplayground',
+
+  REFRESH_TOKEN: '1//04lIaPgp7JXq3CgYIARAAGAQSNwF-L9Irh8TTzwSYtAU88rKkGuYbvqYirIlNnlkaf0nsL-3uwcixsGq4yFIKrsxFtGE0I4stHnY',
+
 };
 
 /*
