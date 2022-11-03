@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { drive_v3, google } from 'googleapis';
+// import { drive_v3, google } from 'googleapis';
 import { environment } from 'src/environments/environment';
-import path from 'path';
-import fs from 'fs';
+// import path from 'path';
+// import fs from 'fs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DriveApisService {
   // drive?:drive_v3.Drive;
@@ -17,11 +17,10 @@ export class DriveApisService {
   //   environment.REDIRECT_URI
   // );
 
-  constructor() { 
+  constructor() {
     // this.oauth2Client.setCredentials({
     //   refresh_token: environment.REFRESH_TOKEN
     // })
-
     // this.drive = google.drive({
     //   version: 'v3',
     //   auth: this.oauth2Client
