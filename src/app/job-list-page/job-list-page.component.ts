@@ -30,6 +30,7 @@ export class JobListPageComponent implements OnInit {
     this.jobService.getAllJob().subscribe({
       next: (data: Job[]) => {
         this.jobList = data;
+        console.log(this.jobList)
       },
       error: () => {
         alertify.error("Get data failed!")
@@ -45,7 +46,7 @@ export class JobListPageComponent implements OnInit {
     );
   }
 
-  handleClick() {
-    this.router.navigate(['/school-list']);
+  handleClick(id: number) {
+    this.router.navigate(['/major-list', {id: id}]);
   }
 }
