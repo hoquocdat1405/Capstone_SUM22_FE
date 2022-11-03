@@ -1,7 +1,7 @@
+import { ProfileService } from './../../_services/profile.service';
 import { Router } from '@angular/router';
 import { ApplicationModel } from './../../_model/application/application';
 import { AuthService } from './../../_services/auth.service';
-import { SharedService } from './../../_services/shared.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ export class ApplyComponent implements OnInit {
   applies?: ApplicationModel[];
 
   constructor(
-    private shared: SharedService,
+    private profileServ: ProfileService,
     private auth: AuthService,
     private router: Router
   ) {}
@@ -25,7 +25,7 @@ export class ApplyComponent implements OnInit {
 
   getData() {
     var user = this.auth.getDecodedToken();
-    this.shared.getAllApply(user.nameid).subscribe((data) => {
+    this.profileServ.getAllApply(user.nameid).subscribe((data) => {
       this.applies = data;
     });
   }

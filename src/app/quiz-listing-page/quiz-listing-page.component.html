@@ -1,23 +1,22 @@
 <app-nav></app-nav>
-
-<div class="tests-container row" >
-  <div class="quiz-card col-sm-5 col-md-5 col-10 m-4" *ngFor="let test of tests">
-    <img src="{{test.bannerUrl}}" alt="" />
-    <div class="des">
-      <h4>{{test.quizName}}</h4>
-      <p>
-        {{test.introduction}}
-      </p>
-      <div class="options">
-        <!-- <a href="#" [routerLink]="['/test-detail',test.id]" class="btn btn-detail"
+<div class="main-container">
+  <div class="tests-container row">
+    <div class="quiz-card col-sm-5 col-md-5 col-10 m-4" *ngFor="let test of tests">
+      <img src="{{test.bannerUrl}}" alt="" />
+      <div class="des">
+        <h4>{{test.quizName}}</h4>
+        <p>
+          {{test.introduction}}
+        </p>
+        <div class="options">
+          <!-- <a href="#" [routerLink]="['/test-detail',test.id]" class="btn btn-detail"
           >Chi tiết</a
         > -->
-        <a href="#" [routerLink]="['/mbti-quiz-detail']" class="btn btn-detail">Chi tiết</a>
-        <a  (click)="redirectTest(test.quizTypeId)" class="btn btn-start"
-          >Bắt đầu</a
-        >
+          <a href="#" [routerLink]="['/mbti-quiz-detail']" class="btn btn-detail">Chi tiết</a>
+          <a (click)="redirectTest(test.quizTypeId)" class="btn btn-start">Bắt đầu</a>
+        </div>
       </div>
     </div>
   </div>
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>
