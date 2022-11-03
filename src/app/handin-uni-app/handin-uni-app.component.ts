@@ -48,7 +48,8 @@ export class HandinUniAppComponent implements OnInit {
         this.uniSpecList = data;
       }
     })
-    this.authService.getUserProfile(this.authService.getDecodedToken().nameid).subscribe({
+    
+    this.authService.userProfile?.subscribe({
       next: (userProfile: UserProfile) => {
         this.userProfile = userProfile;
         this.gender = userProfile.gender;

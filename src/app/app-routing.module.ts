@@ -67,6 +67,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: UserProfilePageComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'education', component: EducationComponent },
       { path: 'school-interested', component: SchoolInterestedComponent },

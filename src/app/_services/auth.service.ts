@@ -6,15 +6,6 @@ import { User, UserProfile } from '../_model/User';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-};
-
-class Tokens {
-  jwt: string = '';
-  refreshToken: string = '';
-}
-
 @Injectable({
   providedIn: 'root',
 })
@@ -23,13 +14,19 @@ export class AuthService {
   private helper: any;
   private decodedToken: any;
   private token: any;
+  public userProfile?: BehaviorSubject<UserProfile>;
 
   constructor(private http: HttpClient) {
     this.token = localStorage.getItem('token');
     this.helper = new JwtHelperService();
     if (this.token) {
       this.decodedToken = this.helper.decodeToken(this.token);
-      console.log(this.decodedToken)
+      this.getUserProfile(this.decodedToken.nameid).subscribe({
+        next: (data: UserProfile) => {
+          this.userProfile = new BehaviorSubject<UserProfile>(data)
+          console.log(this.userProfile)
+        }
+      })
     }
   }
 
