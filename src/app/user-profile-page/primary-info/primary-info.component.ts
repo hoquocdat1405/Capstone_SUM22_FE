@@ -1,16 +1,15 @@
-import { User } from './../../_model/User';
+import { ProfileService } from './../../_services/profile.service';
+import { User, UserProfile, ProfileUpdateModel } from './../../_model/User';
 import { AuthService } from './../../_services/auth.service';
-import { SharedService } from './../../_services/shared.service';
-import { ProfileModel, ProfileUpdateModel } from './../../_model/profile';
 import { Component, OnInit } from '@angular/core';
-
+import * as alertify from 'alertifyjs';
 @Component({
   selector: 'app-primary-info',
   templateUrl: './primary-info.component.html',
   styleUrls: ['./primary-info.component.scss'],
 })
 export class PrimaryInfoComponent implements OnInit {
-  userProfile?: ProfileModel;
+  userProfile?: UserProfile;
   user?: any;
   userUpdateProfile: ProfileUpdateModel = {
     userName: '',
@@ -26,17 +25,19 @@ export class PrimaryInfoComponent implements OnInit {
   };
 
   constructor(
-    private sharedServ: SharedService,
+    private profileServ: ProfileService,
     private authService: AuthService
   ) {}
 
   ngOnInit() {
     this.user = this.authService.getDecodedToken();
     this.getData(this.user.nameid);
+    alertify.set('notifier', 'position', 'top-center');
+    alertify.set('notifier', 'delay', '3');
   }
 
   getData(id: string) {
-    this.sharedServ.getProfileInfo(id).subscribe((data) => {
+    this.profileServ.getProfileInfo(id).subscribe((data) => {
       this.userProfile = data;
     });
   }
@@ -68,15 +69,14 @@ export class PrimaryInfoComponent implements OnInit {
     this.userUpdateProfile!.addressNumber = addressNumber.value;
     this.userUpdateProfile!.credentialFrontImgUrl = '';
     this.userUpdateProfile!.credentialBackImgUrl = '';
-
-    console.log(this.userUpdateProfile!);
-    console.log(this.userUpdateProfile!.userName);
-
-    this.sharedServ
-      .updateProfile(this.userUpdateProfile)
-      .subscribe((result) => {
-        console.log(result);
-      });
+    this.profileServ.updateProfile(this.userUpdateProfile).subscribe({
+      next: () => {
+        alertify.success('Cập nhật thành công');
+      },
+      error: () => {
+        alertify.error('Cập nhật thất bại');
+      },
+    });
   }
 
   getAge(dateString: any) {

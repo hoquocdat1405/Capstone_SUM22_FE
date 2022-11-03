@@ -50,10 +50,8 @@
   margin: 40px;
   font-size: 14px;
   width: 60%;
-  /* background-color: blue; */
   margin-left: auto;
   margin-right: auto;
-  text-align: start;
 }
 
 .info span {
@@ -62,12 +60,31 @@
   width: 100%;
 }
 #options button {
-  position: relative;
+  /* position: relative; */
   /* background-color: #FDE4B8; */
   background-color: #fde4b8;
-  margin-left: 22%;
+  /* margin-left: 22%; */
   font-family: "Open Sans Bold";
   font-size: 14px;
+}
+
+
+.option-btn{
+  padding:8px 20px;
+  border-radius:8px;
+}
+
+.option-btn ~ .option-btn{
+  margin-left:20px;
+}
+
+.description{
+  font-size:16px;
+  text-align: justify; 
+}
+
+.slide{
+  margin-top:50px;
 }
 
 @media (max-width: 768px) {
@@ -84,7 +101,6 @@
 @media (min-width: 992px)  {
   .info h4 {
     width: 300px;
-    
   }
 
   .info span {
