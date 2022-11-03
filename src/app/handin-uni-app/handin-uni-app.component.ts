@@ -1,3 +1,4 @@
+import { DriveApisService } from './../_services/drive-apis.service';
 import { ApplicationService } from './../_services/application.service';
 import { Application, ApplicationDetail } from './../_model/application/application';
 import { map, startWith } from 'rxjs/operators';
@@ -30,7 +31,8 @@ export class HandinUniAppComponent implements OnInit {
     private authService: AuthService, 
     private route: ActivatedRoute,
     private uniService: UniversityService,
-    private applicationService: ApplicationService
+    private applicationService: ApplicationService,
+    private driveApis: DriveApisService
   ) { }
 
   ngOnInit(): void {
@@ -209,53 +211,52 @@ export class HandinUniAppComponent implements OnInit {
   }
 
   submitAll() {
-    console.log(this.firstFormGroup.value)
-    console.log(this.submitFiles)
-    console.log("School ID: " + this.schoolId)
-    console.log("User ID: " + this.userProfile?.id)
-    console.log("Uni Spec: " + this.firstFormGroup.get('uniSpec')?.value)
-    console.log("Uni Spec Id: " + this.uniSpecList.filter(item => item.uniSpecName === this.firstFormGroup.get('uniSpec')?.value)[0].id)
-    let uniSpecId = this.uniSpecList.filter(item => item.uniSpecName === this.firstFormGroup.get('uniSpec')?.value)[0].id;
-    const application: Application = {
-      userId: this.userProfile!.id,
-      uniId: this.schoolId,
-      uniSpecId: uniSpecId
-    }
+    // console.log(this.firstFormGroup.value)
+    // console.log(this.submitFiles)
+    // console.log("School ID: " + this.schoolId)
+    // console.log("User ID: " + this.userProfile?.id)
+    // console.log("Uni Spec: " + this.firstFormGroup.get('uniSpec')?.value)
+    // console.log("Uni Spec Id: " + this.uniSpecList.filter(item => item.uniSpecName === this.firstFormGroup.get('uniSpec')?.value)[0].id)
+    // let uniSpecId = this.uniSpecList.filter(item => item.uniSpecName === this.firstFormGroup.get('uniSpec')?.value)[0].id;
+    // const application: Application = {
+    //   userId: this.userProfile!.id,
+    //   uniId: this.schoolId,
+    //   uniSpecId: uniSpecId
+    // }
 
-    
-
-    this.applicationService.createApplication(application).subscribe({
-      next: (data) => {
-        console.log(data)
-        const applicationDetail: ApplicationDetail = {
-          applicationId: data.id,
-          credentialFrontImgUrl: '',
-          credentialBackImgUrl: '',
-          highSchoolCode: "3200349308",
-          highSchoolName: this.firstFormGroup.get('highSchool')?.value,
-          highSchoolAddress: this.firstFormGroup.get('city')?.value,
-          graduationYear: this.firstFormGroup.get('graduateYear')?.value,
-          avarageScore: this.firstFormGroup.get('gradeTwelve')?.value,
-          academicRank: this.firstFormGroup.get('abilityTwelve')?.value,
-          schoolReport1Url: '',
-          schoolReport2Url: '',
-          schoolReport3Url: '',
-          schoolReport4Url: ''
-        }
-        this.applicationService.createApplicationDetail(applicationDetail).subscribe({
-          next: (data) => {
-            console.log(data)
-            alertify.success("Submit Application Successfully!")
-          },
-          error: () => {
-            alertify.error("Submit failed");
-          }
-        })
-      },
-      error: (error) => {
-        console.log(error)
-      }
-    })
+    // this.applicationService.createApplication(application).subscribe({
+    //   next: (data) => {
+    //     console.log(data)
+    //     const applicationDetail: ApplicationDetail = {
+    //       applicationId: data.id,
+    //       credentialFrontImgUrl: '',
+    //       credentialBackImgUrl: '',
+    //       highSchoolCode: "3200349308",
+    //       highSchoolName: this.firstFormGroup.get('highSchool')?.value,
+    //       highSchoolAddress: this.firstFormGroup.get('city')?.value,
+    //       graduationYear: this.firstFormGroup.get('graduateYear')?.value,
+    //       avarageScore: this.firstFormGroup.get('gradeTwelve')?.value,
+    //       academicRank: this.firstFormGroup.get('abilityTwelve')?.value,
+    //       schoolReport1Url: '',
+    //       schoolReport2Url: '',
+    //       schoolReport3Url: '',
+    //       schoolReport4Url: ''
+    //     }
+    //     this.applicationService.createApplicationDetail(applicationDetail).subscribe({
+    //       next: (data) => {
+    //         console.log(data)
+    //         alertify.success("Submit Application Successfully!")
+    //       },
+    //       error: () => {
+    //         alertify.error("Submit failed");
+    //       }
+    //     })
+    //   },
+    //   error: (error) => {
+    //     console.log(error)
+    //   }
+    // })
+    // this.driveApis.uploadFile();
   }
 
 }
