@@ -24,7 +24,7 @@
 
     <div class="input-container item5">
       <label class="input-title" for="">Email liên hệ</label>
-      <input value="{{userProfile?.email}}" type="email" name="" id="" class="input-email" disabled>
+      <input value="{{userProfile?.email}}" type="email" name="" id="" class="input-email">
     </div>
     <div class="input-container item1">
       <label class="input-title" for="">Họ và tên</label>
@@ -40,9 +40,9 @@
 
     <div class="input-container item3">
       <label class="input-title" for="">Giới tính</label>
-      <select class="input-gender">
+      <select class="input-gender" value="{{userProfile?.gender}}">
         <option value="Nam">Nam</option>
-        <option value="Nữ">Nữ</option>
+        <option value="Nu">Nữ</option>
       </select>
     </div>
 

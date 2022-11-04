@@ -24,8 +24,7 @@ export class ApplyComponent implements OnInit {
   }
 
   getData() {
-    var user = this.auth.getDecodedToken();
-    this.profileServ.getAllApply(user.nameid).subscribe((data) => {
+    this.profileServ.getAllApply().subscribe((data) => {
       this.applies = data;
     });
   }
