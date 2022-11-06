@@ -24,19 +24,15 @@ export class QuizListingPageComponent implements OnInit {
   }
 
 
-  redirectTest(id:number){
-    console.log('inside');
-    
+  redirectTest(typeId:number,id:number){
     var redirectStr:string="";
-
-    if(id == TestTypeEnum.MBTI_TEST_ID) redirectStr = TestTypeEnum.MBTI_TEST;
-    else if(id == TestTypeEnum.DISC_TEST_ID) redirectStr = TestTypeEnum.DISC_TEST;
-    else if(id == TestTypeEnum.BIGFIVE_TEST_ID) redirectStr = TestTypeEnum.BIGFIVE_TEST;
-    else if(id  == TestTypeEnum.HOLLAND_TEST_ID) redirectStr = TestTypeEnum.HOLLAND_TEST;
+    if(typeId == TestTypeEnum.MBTI_TEST_ID) redirectStr = TestTypeEnum.MBTI_TEST;
+    else if(typeId == TestTypeEnum.DISC_TEST_ID) redirectStr = TestTypeEnum.DISC_TEST;
+    else if(typeId == TestTypeEnum.BIGFIVE_TEST_ID) redirectStr = TestTypeEnum.BIGFIVE_TEST;
+    else if(typeId  == TestTypeEnum.HOLLAND_TEST_ID) redirectStr = TestTypeEnum.HOLLAND_TEST;
     console.log('id : ' + id);
-    console.log(redirectStr + '-quiz-attempt');
-
-    this.router.navigate([redirectStr + '-quiz-attempt']);
+    console.log(redirectStr + '-quiz-attempt?id='+id);
+    this.router.navigate([redirectStr + '-quiz-attempt',{id:id}]);
   }
 
 }
