@@ -1,22 +1,47 @@
 <div class="container-main">
   <p class="title-mbti">Bài trắc nghiệm Holland</p>
   <p class="note-text">*Hãy đọc thật kĩ và chọn câu trả lời phù hợp nhất với bản thân</p>
-  <div class="content">
-    <div class="question-container" *ngFor="let question of questionSlice;index as i">
-      <p class="question-index">{{question.id}}. <span class="question-text">{{question.questionText}}</span></p>
-      <div class="answer-container">
-        <div class="answer" *ngFor="let answer of questionSlice[i].answers;index as j">
-          <input type="checkbox" name="answer-checkbox{{i}}" id="checkbox{{i}}{{j}}" value="{{answer}}"
-            (click)="storeUserAnswer($event,i)">
-          <label for="checkbox{{i}}{{j}}">{{answer}}</label>
+  <div class="content-row">
+    <div class="sidebar-container">
+      <div class="nav-row">
+        <div class="sidebar-title"> Danh sách câu hỏi</div>
+        <div class="hamburger" (click)="hamburgerClick()">
+          <mat-icon>menu</mat-icon>
+        </div>
+      </div>
+
+      <div class="horizontal-bar"></div>
+      <div class="nav-section">
+        <div class="question-list">
+          <p class="question-item" *ngFor="let question of quizCollections?.questions"
+            (click)="chooseQuestion(question.index+1)">
+            {{question.index+1}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+
+      <div class="question-container" *ngFor="let question of quizCollections?.questions;index as i">
+        <p class="question-index">Câu {{question.index+1}}: <span
+            class="question-text">{{question.questionContent}}</span>
+        </p>
+        <param id="p{{question.id}}" value="{{question.value}}">
+        <div class="answer-container">
+          <div class="answer" *ngFor="let answer of quizCollections!.questions[i].options;index as j">
+            <input type="checkbox" name="answer-checkbox{{i}}" id="{{answer.id}}" value="{{answer.value}}"
+              (click)="storeUserAnswer($event,i,question.index+1)">
+            <label for="{{answer.id}}">{{answer.optionContent}}</label>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
+
+  <!-- <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
       class="end-index">{{totalPage}}</span>
-  </p>
-  <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page" (page)="changePage($event)">
-  </mat-paginator>
+  </p> -->
+  <!-- <mat-paginator [length]="length" [pageSize]="10" aria-label=" Select page" (page)="changePage($event)">
+  </mat-paginator> -->
+  <button class="submit-btn" (click)="submitAnswer()">Xem kết quả</button>
 </div>
 <!-- <button class="btn-result">Kết quả</button> -->

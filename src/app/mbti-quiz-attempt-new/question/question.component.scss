@@ -132,6 +132,7 @@ input {
 
 .content-row {
   display: flex;
+  scroll-margin-top: 50px;
 }
 
 .content-column {
@@ -238,8 +239,8 @@ form {
 }
 
 .question-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 40px 40px 40px 40px 40px;
   gap: 8px;
   justify-content: space-between;
 }

@@ -89,4 +89,9 @@ export class PrimaryInfoComponent implements OnInit {
     }
     return age;
   }
+
+  uploadAvatar() {
+    var imgUpload = document.querySelector('.img-upload') as HTMLInputElement;
+    imgUpload.click();
+  }
 }

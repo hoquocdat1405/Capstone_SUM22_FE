@@ -1,20 +1,26 @@
-import { HollandQuizOption } from './holland-quiz-option';
+import {
+  HollandPostQuizOption,
+  HollandQuizOption,
+  HollandQuizOptionModel,
+} from './holland-quiz-option';
 
 export interface HollandQuizQuestion {
   id: string;
   text: string;
   type: string;
   options: HollandQuizOption[];
+}
 
-  // constructor(
-  //   id: string,
-  //   text: string,
-  //   type: string,
-  //   options: HollandQuizOption[]
-  // ) {
-  //   this._id = id;
-  //   this._text = text;
-  //   this._type = type;
-  //   this._options = options;
-  // }
+export interface HollandQuizQuestionModel {
+  index: number;
+  id: string;
+  questionContent: string;
+  value: string;
+  options: HollandQuizOptionModel[];
+}
+
+export interface HollandPostQuizQuestion {
+  questionId: number;
+  questionValue: string;
+  options: HollandPostQuizOption[];
 }

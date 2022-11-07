@@ -5,7 +5,7 @@
 
   <p class="profile-img-title">Ảnh đại diện</p>
   <div class="profile-img-title-row">
-    <div class="add-profile-img">
+    <div class="add-profile-img" (click)="uploadAvatar()">
       <div class="background-blur">
         <i class="add-icon fa fa-plus" aria-hidden="true"></i>
       </div>
@@ -14,7 +14,7 @@
 
     <input type="file" class="img-upload">
     <div class="vertical">
-      <p class="color-theme mb-8 upload-img">Tải ảnh lên</p>
+      <p class="color-theme mb-8 upload-img">{{userProfile?.userName}}</p>
       <p class="mt-8 upload-img-note">Ảnh đại diện giúp chúng tôi dễ nhận diện bạn hơn</p>
     </div>
   </div>
