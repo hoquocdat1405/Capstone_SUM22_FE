@@ -38,9 +38,30 @@
   justify-content: space-between;
 }
 
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .vertical {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.hover-info {
+  position: absolute;
+  background-color: #fff;
+  top: 35px;
+  left: 0;
+  padding: 14px 30px;
+  border-radius: 10px;
+  display: none;
+}
+
+.vertical:hover .hover-info {
+  display: flex;
 }
 
 .icon {

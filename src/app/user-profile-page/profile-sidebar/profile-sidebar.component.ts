@@ -40,7 +40,7 @@ export class ProfileSidebarComponent implements OnInit {
     },
     {
       routerLink: 'apply',
-      title: 'Đơn đã nộp',
+      title: 'Hồ sơ đã nộp',
       icon: 'fa fa-floppy-o',
     },
   ];

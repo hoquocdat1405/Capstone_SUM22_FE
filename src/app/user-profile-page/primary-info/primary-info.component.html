@@ -13,9 +13,20 @@
     </div>
 
     <input type="file" class="img-upload">
-    <div class="vertical">
-      <p class="color-theme mb-8 upload-img">{{userProfile?.userName}}</p>
-      <p class="mt-8 upload-img-note">Ảnh đại diện giúp chúng tôi dễ nhận diện bạn hơn</p>
+
+
+    <div class="header-row">
+      <div class="vertical">
+        <p class="color-theme mb-8 upload-img">{{userProfile?.userName}}</p>
+        <p class="mt-8 upload-img-note">Ảnh đại diện giúp chúng tôi dễ nhận diện bạn hơn</p>
+      </div>
+      <div class="vertical">
+        <mat-slide-toggle color="primary" [(ngModel)]="isChecked" (change)="receiveInfo()">Nhận thông tin tư vấn từ
+          trường Đại học</mat-slide-toggle>
+        <div class="hover-info">
+          Bạn sẽ nhận được tư vấn từ những trường Đại học hàng đầu tại Việt Nam
+        </div>
+      </div>
     </div>
   </div>
 
@@ -24,7 +35,7 @@
 
     <div class="input-container item5">
       <label class="input-title" for="">Email liên hệ</label>
-      <input value="{{userProfile?.email}}" type="email" name="" id="" class="input-email" disabled>
+      <input value="{{userProfile?.email}}" type="email" name="" id="" class="input-email">
     </div>
     <div class="input-container item1">
       <label class="input-title" for="">Họ và tên</label>
@@ -40,9 +51,9 @@
 
     <div class="input-container item3">
       <label class="input-title" for="">Giới tính</label>
-      <select class="input-gender">
+      <select class="input-gender" value="{{userProfile?.gender}}">
         <option value="Nam">Nam</option>
-        <option value="Nữ">Nữ</option>
+        <option value="Nu">Nữ</option>
       </select>
     </div>
 
@@ -76,26 +87,28 @@
       <input value="{{userProfile?.addressNumber}}" type="text" name="" id="" class="input-address">
     </div>
     <div class="input-container">
-      <label class="input-title" for="">Quận</label>
+      <label class="input-title" for="">Thành phố</label>
+      <select name="province" id="province" class="input-district" [(ngModel)]="selectedProvince"
+        (change)="provinceChange()">
+        <option value="">Chọn Thành phố</option>
+        <option value="{{prov.province_id}}" *ngFor="let prov of listProvince">{{prov.province_name}}</option>
+      </select>
+    </div>
+    <div class="input-container">
+      <label class="input-title" for="">Quận/Huyện</label>
+      <select name="cars" id="cars" class="input-district" [(ngModel)]="selectedDistrict" (change)="districtChange()">
+        <option value="">Chọn Quận/Huyện</option>
+        <option value="{{dist.district_id}}" *ngFor="let dist of listDistrict">{{dist.district_name}}</option>
+      </select>
+    </div>
+    <div class="input-container">
+      <label class="input-title" for="">Phường/Xã</label>
       <select name="cars" id="cars" class="input-district">
         <option value="">Chọn Quận</option>
-        <option value="volvo">Volvo</option>
+        <option value="{{ward.ward_id}}" *ngFor="let ward of listWard">{{ward.ward_name}}</option>
       </select>
     </div>
-    <div class="input-container">
-      <label class="input-title" for="">Huyện</label>
-      <select name="cars" id="cars" class="input-district">
-        <option value="">Chọn Huyện</option>
-        <option value="volvo">Volvo</option>
-      </select>
-    </div>
-    <div class="input-container">
-      <label class="input-title" for="">Thành phố</label>
-      <select name="cars" id="cars" class="input-district">
-        <option value="">Chọn Thành phố</option>
-        <option value="volvo">Volvo</option>
-      </select>
-    </div>
+
 
   </div>
   <button class="btn-save-bottom" (click)="updateProfile()">Lưu hồ sơ</button>

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
-import { User, UserProfile } from '../_model/User';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { UserProfile } from '../_model/User';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -24,7 +24,6 @@ export class AuthService {
       this.getUserProfile(this.decodedToken.nameid).subscribe({
         next: (data: UserProfile) => {
           this.userProfile = new BehaviorSubject<UserProfile>(data)
-          console.log(this.userProfile)
         }
       })
     }

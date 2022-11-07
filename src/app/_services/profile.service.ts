@@ -18,9 +18,9 @@ export class ProfileService {
     return this.http.put<any>(this.baseUrl + 'user/update-user', profile);
   }
 
-  getAllApply(id: string): Observable<any> {
+  getAllApply(): Observable<any> {
     return this.http.get<any>(
-      this.baseUrl + 'application/get-all-application?Id=' + id
+      this.baseUrl + 'application/get-all-application'
     );
   }
 }
