@@ -12,6 +12,7 @@ import * as alertify from 'alertifyjs';
 })
 export class PrimaryInfoComponent implements OnInit {
   userProfile?: UserProfile;
+  isChecked: boolean = false;
   user?: any;
   listProvince: Province[] = [];
   listDistrict: District[] = [];
@@ -126,5 +127,9 @@ export class PrimaryInfoComponent implements OnInit {
 
   districtChange() {
     this.getListWard(this.selectedDistrict)
+  }
+
+  receiveInfo() {
+    console.log("aaaaaaaaaaaaaaa")
   }
 }
