@@ -24,7 +24,6 @@
 .profile-name {
   font-weight: 500;
   font-size: 20px;
-  margin-left: 10px;
   transition: all 0.2s;
   margin-bottom: 20px;
 }
@@ -101,6 +100,10 @@ mat-sidenav-container {
 mat-list-item:hover {
   background-color: #00316c;
   cursor: pointer;
+}
+
+mat-list-item.active {
+  background-color: #00316c;
 }
 
 @media (max-width: 950px) {

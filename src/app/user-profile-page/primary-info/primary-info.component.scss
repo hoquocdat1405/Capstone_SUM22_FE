@@ -38,9 +38,30 @@
   justify-content: space-between;
 }
 
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .vertical {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.hover-info {
+  position: absolute;
+  background-color: #fff;
+  top: 35px;
+  left: 0;
+  padding: 14px 30px;
+  border-radius: 10px;
+  display: none;
+}
+
+.vertical:hover .hover-info {
+  display: flex;
 }
 
 .icon {
@@ -88,11 +109,12 @@
   transition: none;
 }
 .add-icon {
-  font-size: 50px;
+  font-size: 40px;
   color: #fff;
   visibility: hidden;
-  transition: none;
   line-height: 100px;
+  transition: none;
+  opacity: 0;
 }
 
 .profile-img2 {
@@ -100,8 +122,25 @@
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   object-fit: cover;
-  transition: width 1s linear;
-  z-index: 1;
+  // transition: width 1s linear;
+}
+
+.profile-img2:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.add-profile-img:hover {
+  cursor: pointer;
+}
+
+.add-profile-img:hover .add-icon {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.add-profile-img:hover .profile-img2 {
+  opacity: 0.7;
 }
 
 .img-upload {
@@ -178,6 +217,10 @@ textarea {
   border: 1px solid #ccc;
 }
 
+.input-avatar {
+  display: none;
+}
+
 .input-introduce {
   height: 150px;
 }
@@ -247,5 +290,15 @@ textarea {
 
   .profile-school-grid {
     grid-template-columns: 100%;
+  }
+
+  .background-blur {
+    width: 150px;
+    height: 150px;
+  }
+
+  .add-icon {
+    line-height: 150px;
+    font-size: 60px;
   }
 }

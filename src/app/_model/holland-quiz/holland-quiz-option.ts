@@ -3,11 +3,15 @@ export interface HollandQuizOption {
   text: string;
   value: number;
   isSelected: boolean;
+}
 
-  // constructor(id: string, text: string, value: number, isSelected: boolean) {
-  //   this._id = id;
-  //   this._text = text;
-  //   this._value = value;
-  //   this._isSelected = isSelected;
-  // }
+export interface HollandQuizOptionModel {
+  id: string;
+  optionContent: string;
+  value: string;
+}
+
+export interface HollandPostQuizOption {
+  optionId: number;
+  optionValue: string;
 }

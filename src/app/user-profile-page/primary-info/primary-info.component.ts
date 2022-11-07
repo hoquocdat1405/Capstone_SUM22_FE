@@ -1,4 +1,11 @@
-import { ResProvince, Province, District, ResDistrict, ResWard, Ward } from './../../_model/address';
+import {
+  ResProvince,
+  Province,
+  District,
+  ResDistrict,
+  ResWard,
+  Ward,
+} from './../../_model/address';
 import { AddressService } from './../../_services/address.service';
 import { ProfileService } from './../../_services/profile.service';
 import { UserProfile, ProfileUpdateModel } from './../../_model/User';
@@ -12,6 +19,7 @@ import * as alertify from 'alertifyjs';
 })
 export class PrimaryInfoComponent implements OnInit {
   userProfile?: UserProfile;
+  isChecked: boolean = false;
   user?: any;
   listProvince: Province[] = [];
   listDistrict: District[] = [];
@@ -28,8 +36,8 @@ export class PrimaryInfoComponent implements OnInit {
     credentialFrontImgUrl: '', //chua co
     credentialBackImgUrl: '', //chua co
   };
-  selectedProvince: string = "";
-  selectedDistrict: string = "";
+  selectedProvince: string = '';
+  selectedDistrict: string = '';
 
   constructor(
     private profileServ: ProfileService,
@@ -46,8 +54,8 @@ export class PrimaryInfoComponent implements OnInit {
     this.addressService.getProvince().subscribe({
       next: (data: ResProvince) => {
         this.listProvince = data.results;
-      }
-    })
+      },
+    });
   }
 
   getData(id: string) {
@@ -104,27 +112,35 @@ export class PrimaryInfoComponent implements OnInit {
     return age;
   }
 
+  uploadAvatar() {
+    var imgUpload = document.querySelector('.img-upload') as HTMLInputElement;
+    imgUpload.click();
+  }
   provinceChange() {
-    this.getListDistrict(+this.selectedProvince)
+    this.getListDistrict(+this.selectedProvince);
   }
 
   getListDistrict(id: number) {
     this.addressService.getDistrict(id).subscribe({
       next: (data: ResDistrict) => {
-        this.listDistrict = data.results
-      }
-    })
+        this.listDistrict = data.results;
+      },
+    });
   }
 
   getListWard(id: string) {
     this.addressService.getWard(id).subscribe({
       next: (data: ResWard) => {
-        this.listWard = data.results
-      }
-    })
+        this.listWard = data.results;
+      },
+    });
   }
 
   districtChange() {
-    this.getListWard(this.selectedDistrict)
+    this.getListWard(this.selectedDistrict);
+  }
+
+  receiveInfo() {
+    console.log('aaaaaaaaaaaaaaa');
   }
 }

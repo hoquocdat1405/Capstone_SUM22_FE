@@ -1,6 +1,8 @@
+import { UserProfile } from './../../_model/User';
+import { ProfileService } from './../../_services/profile.service';
 import { AuthService } from './../../_services/auth.service';
 import { User } from 'src/app/_model/User';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-profile-sidebar',
@@ -10,9 +12,16 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileSidebarComponent implements OnInit {
   hamburgerFlag: boolean = false;
   opened: boolean = true;
-  user?: User;
+  user?: any;
+  userProfile?: UserProfile;
 
-  constructor(private authSer: AuthService) {}
+  @Input()
+  checkActive = 0;
+
+  constructor(
+    private authSer: AuthService,
+    private profileServ: ProfileService
+  ) {}
   currentRoutes = [
     {
       routerLink: 'primary',
@@ -38,17 +47,26 @@ export class ProfileSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authSer.getDecodedToken();
-    console.log(this.user);
+    this.getData(this.user.nameid);
+  }
+
+  getData(id: string) {
+    this.profileServ.getProfileInfo(id).subscribe((data) => {
+      this.userProfile = data;
+    });
   }
 
   hamburgerClick() {
     this.hamburgerFlag = !this.hamburgerFlag;
-    console.log(this.hamburgerFlag);
     document.querySelector('.sidebar-container')?.classList.toggle('active');
     document.querySelector('.main-content')?.classList.toggle('active');
     document.querySelector('.nav-row .hamburger')?.classList.toggle('active');
     document.querySelectorAll('.nav-item-title')?.forEach((item) => {
       item.classList.toggle('active');
     });
+  }
+
+  activeTag(index: number) {
+    this.checkActive = index;
   }
 }

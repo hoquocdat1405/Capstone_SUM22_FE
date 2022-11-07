@@ -1,9 +1,11 @@
-import { HollandQuizCollection } from './holland-quiz-collection';
+// import { HollandQuizCollection } from './holland-quiz-collection';
 
-export class HollandQuizModel {
-  public _collections: HollandQuizCollection[];
+// export class HollandQuizModel {
+//   public _collections: HollandQuizCollection[];
 
-  constructor(collections: HollandQuizCollection[]) {
-    this._collections = collections;
-  }
-}
+//   constructor(collections: HollandQuizCollection[]) {
+//     this._collections = collections;
+//   }
+// }
+
+export class HollandQuizModel {}

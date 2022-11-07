@@ -152,8 +152,6 @@ export class QuestionComponent implements OnInit {
     document
       .querySelector(`.question-item:nth-child(${indexQuestion}`)
       ?.classList.add('active');
-
-    console.log(this.postAnswer);
   }
 
   hamburgerClick() {
