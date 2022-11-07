@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Route } from '@angular/router';
+import { SharedService } from 'src/app/_services/shared.service';
 @Component({
   selector: 'app-holland-question',
   templateUrl: './holland-question.component.html',
   styleUrls: ['./holland-question.component.scss'],
 })
 export class HollandQuestionComponent implements OnInit {
-  constructor() {}
+  constructor(private shareService:SharedService,private route: ActivatedRoute,) {}
   ngOnInit() {
+    let id = this.route.snapshot.paramMap.get('id')!;
+    this.shareService.takingTestGuest(id as unknown as number).subscribe({
+      next : (data) => {
+        console.log(data);
+      }
+    })
     var totalQuestions = this.questions.length;
     var sliceQuestion = this.questionSlice.length;
     this.totalPage =
