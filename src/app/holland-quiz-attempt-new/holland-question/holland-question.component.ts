@@ -5,9 +5,9 @@ import {
   HollandQuizCollectionModel,
   HollandPostQuizCollection,
 } from './../../_model/holland-quiz/holland-quiz-collection';
-import { SharedService } from './../../_services/shared.service';
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Route } from '@angular/router';
+import { SharedService } from 'src/app/_services/shared.service';
 @Component({
   selector: 'app-holland-question',
   templateUrl: './holland-question.component.html',
