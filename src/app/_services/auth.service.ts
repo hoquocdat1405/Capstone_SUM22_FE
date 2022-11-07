@@ -21,11 +21,11 @@ export class AuthService {
     this.helper = new JwtHelperService();
     if (this.token) {
       this.decodedToken = this.helper.decodeToken(this.token);
-      this.getUserProfile(this.decodedToken.nameid).subscribe({
-        next: (data: UserProfile) => {
-          this.userProfile = new BehaviorSubject<UserProfile>(data)
-        }
-      })
+      // this.getUserProfile(this.decodedToken.nameid).subscribe({
+      //   next: (data: UserProfile) => {
+      //     this.userProfile = new BehaviorSubject<UserProfile>(data)
+      //   }
+      // })
     }
   }
 

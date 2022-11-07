@@ -1,9 +1,6 @@
 import {
-  ResProvince,
   Province,
   District,
-  ResDistrict,
-  ResWard,
   Ward,
 } from './../../_model/address';
 import { AddressService } from './../../_services/address.service';
@@ -52,8 +49,9 @@ export class PrimaryInfoComponent implements OnInit {
     alertify.set('notifier', 'delay', '3');
 
     this.addressService.getProvince().subscribe({
-      next: (data: ResProvince) => {
-        this.listProvince = data.results;
+      next: (data: Province[]) => {
+        this.listProvince = data;
+        console.log(this.listProvince)
       },
     });
   }
@@ -122,16 +120,16 @@ export class PrimaryInfoComponent implements OnInit {
 
   getListDistrict(id: number) {
     this.addressService.getDistrict(id).subscribe({
-      next: (data: ResDistrict) => {
-        this.listDistrict = data.results;
+      next: (data: District[]) => {
+        this.listDistrict = data;
       },
     });
   }
 
   getListWard(id: string) {
     this.addressService.getWard(id).subscribe({
-      next: (data: ResWard) => {
-        this.listWard = data.results;
+      next: (data: Ward[]) => {
+        this.listWard = data;
       },
     });
   }

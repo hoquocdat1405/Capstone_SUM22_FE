@@ -1,4 +1,5 @@
-import { ResProvince, ResDistrict, ResWard } from './../_model/address';
+import { Province, District, Ward } from './../_model/address';
+import { environment } from './../../environments/environment.prod';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -7,19 +8,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AddressService {
+  baseUrl: string = environment.mockApiUrl;
 
   constructor(private http: HttpClient) { }
   
-  getProvince(): Observable<ResProvince> {
-    return this.http.get<ResProvince>('https://vapi.vnappmob.com/api/province/');
+  getProvince(): Observable<Province[]> {
+    return this.http.get<Province[]>(this.baseUrl + 'address/province');
   }
 
-  getDistrict(provinceId: number): Observable<ResDistrict> {
-    return this.http.get<ResDistrict>('https://vapi.vnappmob.com/api/province/district/' + provinceId);
+  getDistrict(provinceId: number): Observable<District[]> {
+    return this.http.get<District[]>(this.baseUrl + 'address/district?ProvinceId=' + provinceId);
   }
 
-  getWard(districtId: string): Observable<ResWard> {
-    return this.http.get<ResWard>('https://vapi.vnappmob.com/api/province/ward/' + districtId);
+  getWard(districtId: string): Observable<Ward[]> {
+    return this.http.get<Ward[]>(this.baseUrl + 'address/ward?DistrictId=' + districtId);
   }
 
 }
