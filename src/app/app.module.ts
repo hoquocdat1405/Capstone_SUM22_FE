@@ -118,6 +118,7 @@ import { PopupComponent } from './popup/popup.component';
 import { SchoolListComponent } from './school-list/school-list.component';
 import { HandinUniAppComponent } from './handin-uni-app/handin-uni-app.component';
 import { MajorListComponent } from './major-list/major-list.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -204,6 +205,7 @@ export function tokenGetter() {
     MajorListComponent,
     ApplyComponent,
     ApplyDetailComponent,
+    SpinnerComponent,
   ],
   imports: [
     FormsModule,
