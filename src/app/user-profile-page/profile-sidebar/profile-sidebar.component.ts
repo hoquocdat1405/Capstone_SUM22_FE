@@ -1,4 +1,4 @@
-import { UserProfile } from './../../_model/User';
+import { Profile } from './../../_model/User';
 import { ProfileService } from './../../_services/profile.service';
 import { AuthService } from './../../_services/auth.service';
 import { User } from 'src/app/_model/User';
@@ -13,7 +13,7 @@ export class ProfileSidebarComponent implements OnInit {
   hamburgerFlag: boolean = false;
   opened: boolean = true;
   user?: any;
-  userProfile?: UserProfile;
+  userProfile?: Profile;
 
   @Input()
   checkActive = 0;
@@ -47,13 +47,13 @@ export class ProfileSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authSer.getDecodedToken();
-    this.getData(this.user.nameid);
+    this.getData();
   }
 
-  getData(id: string) {
-    this.profileServ.getProfileInfo(id).subscribe((data) => {
+  getData() {
+    this.authSer.getUserProfileObserver().subscribe((data: Profile) => {
       this.userProfile = data;
-    });
+    })
   }
 
   hamburgerClick() {

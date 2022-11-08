@@ -5,7 +5,7 @@ import {
 } from './../../_model/address';
 import { AddressService } from './../../_services/address.service';
 import { ProfileService } from './../../_services/profile.service';
-import { UserProfile, ProfileUpdateModel } from './../../_model/User';
+import { ProfileUpdateModel, Profile } from './../../_model/User';
 import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import * as alertify from 'alertifyjs';
@@ -15,7 +15,7 @@ import * as alertify from 'alertifyjs';
   styleUrls: ['./primary-info.component.scss'],
 })
 export class PrimaryInfoComponent implements OnInit {
-  userProfile?: UserProfile;
+  userProfile?: Profile;
   isChecked: boolean = false;
   user?: any;
   listProvince: Province[] = [];
@@ -44,22 +44,21 @@ export class PrimaryInfoComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authService.getDecodedToken();
-    this.getData(this.user.nameid);
+    this.getData();
     alertify.set('notifier', 'position', 'top-center');
     alertify.set('notifier', 'delay', '3');
 
     this.addressService.getProvince().subscribe({
       next: (data: Province[]) => {
         this.listProvince = data;
-        console.log(this.listProvince)
       },
     });
   }
 
-  getData(id: string) {
-    this.profileServ.getProfileInfo(id).subscribe((data) => {
+  getData() {
+    this.authService.getUserProfileObserver().subscribe((data: Profile) => {
       this.userProfile = data;
-    });
+    })
   }
 
   updateProfile() {

@@ -1,8 +1,9 @@
+import { ProfileService } from './profile.service';
+import { Profile } from './../_model/User';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
-import { UserProfile } from '../_model/User';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -14,19 +15,31 @@ export class AuthService {
   private helper: any;
   private decodedToken: any;
   private token: any;
-  public userProfile?: BehaviorSubject<UserProfile>;
+  private userProfile?: Profile;
+  private userProfileObserver: BehaviorSubject<Profile>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private profileService: ProfileService) {
+    this.userProfileObserver = new BehaviorSubject<Profile>(<Profile>{})
     this.token = localStorage.getItem('token');
     this.helper = new JwtHelperService();
     if (this.token) {
       this.decodedToken = this.helper.decodeToken(this.token);
-      // this.getUserProfile(this.decodedToken.nameid).subscribe({
-      //   next: (data: UserProfile) => {
-      //     this.userProfile = new BehaviorSubject<UserProfile>(data)
-      //   }
-      // })
+      this.getUserProfile()
     }
+  }
+
+  getUserProfileObserver(): Observable<Profile> {
+    return this.userProfileObserver?.asObservable();
+  }
+
+  getUserProfile(): Profile {
+    this.profileService.getProfileInfo().subscribe({
+      next: (data: Profile) => {
+        this.userProfile = data
+        this.userProfileObserver.next(this.userProfile)
+      } 
+    })
+    return <Profile>{};
   }
 
   login(email: string, password: string): Observable<any> {
@@ -70,10 +83,6 @@ export class AuthService {
           }
         })
       );
-  }
-
-  getUserProfile(userId: string) : Observable<UserProfile> {
-    return this.http.get<UserProfile>(this.baseUrl + "user/get-profile?userId=" + userId);
   }
 
   logout() {

@@ -5,7 +5,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { UniversityService } from './../_services/university.service';
 import { ActivatedRoute } from '@angular/router';
-import { UserProfile } from './../_model/User';
+import { Profile } from './../_model/User';
 import { AuthService } from './../_services/auth.service';
 import { SubmitApplications } from './../_model/uniApplication';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
@@ -20,7 +20,7 @@ import * as alertify from "alertifyjs";
 })
 export class HandinUniAppComponent implements OnInit {
   submitFiles: SubmitApplications[] = [];
-  userProfile?: UserProfile;
+  userProfile?: Profile;
   gender: string = "";
   schoolId: string ="";
   uniSpecList: UniSpec[] = [];
@@ -31,8 +31,6 @@ export class HandinUniAppComponent implements OnInit {
     private authService: AuthService, 
     private route: ActivatedRoute,
     private uniService: UniversityService,
-    private applicationService: ApplicationService,
-    private driveApis: DriveApisService
   ) { }
 
   ngOnInit(): void {
@@ -48,24 +46,28 @@ export class HandinUniAppComponent implements OnInit {
         this.uniSpecList = data;
       }
     })
-    
-    this.authService.userProfile?.subscribe({
-      next: (userProfile: UserProfile) => {
-        this.userProfile = userProfile;
-        this.gender = userProfile.gender;
-        this.firstFormGroup.patchValue(
-          {
-            name: this.userProfile.userName,
-            sex: this.userProfile.gender,
-            birth: this.userProfile.dateOfBirth,
-            address: this.userProfile.addressNumber,
-            cmnd: this.userProfile.credentialId,
-            phone: this.userProfile.phone,
-            email: this.userProfile.email,
-          }
-        )
-      }
+
+    this.authService.getUserProfileObserver().subscribe((data: Profile) => {
+      console.log(data);
     })
+    
+    // this.authService.userProfile?.subscribe({
+    //   next: (userProfile: Profile) => {
+    //     this.userProfile = userProfile;
+    //     this.gender = userProfile.gender;
+    //     this.firstFormGroup.patchValue(
+    //       {
+    //         name: this.userProfile.userName,
+    //         sex: this.userProfile.gender,
+    //         birth: this.userProfile.dateOfBirth,
+    //         address: this.userProfile.addressNumber,
+    //         cmnd: this.userProfile.credentialId,
+    //         phone: this.userProfile.phone,
+    //         email: this.userProfile.email,
+    //       }
+    //     )
+    //   }
+    // })
   }
 
   private _filter(value: string): string[] {

@@ -1,4 +1,4 @@
-import { ProfileUpdateModel } from './../_model/User';
+import { ProfileUpdateModel, Profile } from './../_model/User';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
@@ -10,8 +10,8 @@ export class ProfileService {
   baseUrl = environment.mockApiUrl;
   constructor(private http: HttpClient) {}
 
-  getProfileInfo(id: string): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'user/get-profile?userId=' + id);
+  getProfileInfo(): Observable<Profile> {
+    return this.http.get<Profile>(this.baseUrl + 'user/get-profile');
   }
 
   updateProfile(profile: ProfileUpdateModel): Observable<any> {

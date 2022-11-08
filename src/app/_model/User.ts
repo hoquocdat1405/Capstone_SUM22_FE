@@ -5,32 +5,24 @@ export interface User {
   password: string;
 }
 
-export interface UserProfile {
-  id: string;
-  universityId: string;
-  userName: string;
-  roleId: string;
-  passwordHash: string;
-  passwordSalt: string;
-  gender: string;
-  dateOfBirth: Date;
-  age: number;
-  phone: string;
-  signUpDate: Date;
-  credentialId: null;
-  avatarUrl: string;
-  email: string;
-  status: string;
-  addressNumber: string;
-  credentialFrontImgUrl: string;
-  credentialBackImgUrl: string;
-  university: string;
-  academicProfiles: [];
-  applications: [];
-  attempts: [];
-  fqas: [];
-  savedUnis: [];
-  tests: [];
+export interface Profile {
+  userName: string,
+  gender: string,
+  dateOfBirth: Date,
+  age: number,
+  phone: string,
+  credentialId: string,
+  avatarUrl: string,
+  email: string,
+  status: string,
+  addressNumber: string,
+  credentialFrontImgUrl: string,
+  credentialBackImgUrl: string,
+  highSchoolName: string,
+  wardName: string,
+  provinceName: string,
+  districtName: string,
+  publicProfile: string
 }
 
 export interface ProfileUpdateModel {
