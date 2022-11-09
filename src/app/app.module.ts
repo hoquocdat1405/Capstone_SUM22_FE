@@ -119,6 +119,10 @@ import { SchoolListComponent } from './school-list/school-list.component';
 import { HandinUniAppComponent } from './handin-uni-app/handin-uni-app.component';
 import { MajorListComponent } from './major-list/major-list.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { MailMainComponent } from './mail-main/mail-main.component';
+import { MailInboxComponent } from './mail-main/mail-inbox/mail-inbox.component';
+import { RichTextEditorModule, ToolbarService, 
+LinkService, ImageService, HtmlEditorService } from '@syncfusion/ej2-angular-richtexteditor';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -206,6 +210,8 @@ export function tokenGetter() {
     ApplyComponent,
     ApplyDetailComponent,
     SpinnerComponent,
+    MailMainComponent,
+    MailInboxComponent,
   ],
   imports: [
     FormsModule,
@@ -219,10 +225,15 @@ export function tokenGetter() {
     PsyModule,
     ReactiveFormsModule,
     MaterialModule,
+    RichTextEditorModule
   ],
   providers: [
     AuthService,
     TarotServiceService,
+    ToolbarService,
+    LinkService,
+    ImageService,
+    HtmlEditorService,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ],
   bootstrap: [AppComponent],

@@ -1,3 +1,5 @@
+import { MailInboxComponent } from './mail-main/mail-inbox/mail-inbox.component';
+import { MailMainComponent } from './mail-main/mail-main.component';
 import { ApplyDetailComponent } from './user-profile-page/apply-detail/apply-detail.component';
 import { ApplyComponent } from './user-profile-page/apply/apply.component';
 import { MajorListComponent } from './major-list/major-list.component';
@@ -164,6 +166,8 @@ const routes: Routes = [
   { path: 'addmission-news-detail', component: AddmissionNewsDetailComponent },
   { path: 'admission-list', component: AdmissionListComponent },
   { path: 'school-list', component: SchoolListComponent },
+  { path: 'mail', component: MailMainComponent },
+  { path: 'mail-inbox', component: MailInboxComponent }
 ];
 
 @NgModule({
@@ -174,4 +178,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
