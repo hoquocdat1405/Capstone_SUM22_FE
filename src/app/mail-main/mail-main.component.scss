@@ -129,6 +129,11 @@ mat-sidenav-content {
     border-radius: 2px;
 }
 
+.main-content .mail-card:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
 .mail-card {
     width: 100%;
     display: flex;
@@ -258,4 +263,10 @@ mat-sidenav-content {
 
 .new-email-send i {
     margin-top: -3px;
+}
+
+.detail-toolbar {
+    display: flex;
+    padding: 12px 20px;
+    gap: 20px;
 }

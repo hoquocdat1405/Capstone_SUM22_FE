@@ -7,8 +7,7 @@
             </div>
             <form [formGroup]="search" class="search-form" (ngSubmit)="searchSchool()">
                 <mat-icon>search</mat-icon>
-                <input type="text" class="search-input" placeholder="Nhập tên trường đại học">
-                <!-- <button type="submit" mat-raised-button>Tìm kiếm</button> -->
+                <input type="text" class="search-input" placeholder="Tìm kiếm mail">
             </form>
             <div class="tool-bar">
                 <!-- Search's Toolbar -->
@@ -27,8 +26,8 @@
                 </mat-list>
             </mat-sidenav>
             <mat-sidenav-content>
-                <div class="main-content">
-                    <div class="mail-card seen">
+                <div class="main-content" *ngIf="!isViewingDetail">
+                    <div class="mail-card seen" (click)="isViewingDetail = !isViewingDetail">
                         <div class="mail-name">Đại học FPT</div>
                         <div class="mail-subject">Bard needs to shine again</div>
                         <div class="mail-time">9:35 PM</div>
@@ -53,10 +52,19 @@
                     </div>
                     <mat-divider></mat-divider>
                 </div>
+                <div class="detail-section" *ngIf="isViewingDetail">
+                    <div class="detail-toolbar">
+                        <mat-icon matTooltip="Lùi về" (click)="isViewingDetail = !isViewingDetail">keyboard_arrow_left</mat-icon>
+                        <mat-icon matTooltip="Đánh dấu chưa xem">email</mat-icon>
+                        <mat-icon matTooltip="Xóa mail">delete</mat-icon>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div id="detail-content"></div>
+                </div>
             </mat-sidenav-content>
         </mat-sidenav-container>
         <button mat-raised-button class="new-mail-btn" (click)="isShowNewEmailPopup = !isShowNewEmailPopup"
-        [ngClass]="{'hide': isShowNewEmailPopup}">
+            [ngClass]="{'hide': isShowNewEmailPopup}">
             <mat-icon>edit</mat-icon> Soạn thư
         </button>
     </div>
@@ -78,7 +86,8 @@
                     <p></p>
                 </ng-template>
             </ejs-richtexteditor>
-            <button id='submit-new-email' ej-button mat-fab color="primary" class="new-email-send" (click)="getNewEmailContent()">
+            <button id='submit-new-email' ej-button mat-fab color="primary" class="new-email-send"
+                (click)="getNewEmailContent()">
                 <i class="fa fa-paper-plane"></i>
             </button>
         </div>

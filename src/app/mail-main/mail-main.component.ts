@@ -14,9 +14,10 @@ export class MailMainComponent implements OnInit {
 
   @ViewChild('defaultRTE')
   public componentObject!: RichTextEditorComponent;
-  
+
   private htmlContent!: string;
   isShowNewEmailPopup: boolean = false;
+  isViewingDetail: boolean = false;
 
   ngOnInit(): void {
   }
