@@ -6,13 +6,17 @@ $main-color: #f6f8fc;
 
 .page-container {
   width: 100%;
-  min-height: 100vh;
   background-color: $main-color;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 mat-sidenav-container {
   height: 100vh;
   background-color: $main-color;
+  padding-bottom: 150px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 mat-sidenav {
@@ -30,6 +34,7 @@ mat-list {
   width: 100%;
   margin-top: 60px;
   z-index: 1;
+  padding-top: 10px;
 }
 
 .search-section {
@@ -95,6 +100,7 @@ mat-list {
 .hamburger {
   padding: 12px 24px;
   font-size: 24px;
+  width: 200px;
 }
 
 .link-item a {
@@ -102,6 +108,7 @@ mat-list {
   align-items: center;
   text-decoration: none;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .link-item a i {
@@ -258,6 +265,7 @@ mat-sidenav-content {
 .detail-section {
   //   position: sticky;
   //   top: 50px;
+  overflow: hidden;
 }
 
 .new-email-send i {
@@ -286,23 +294,59 @@ mat-sidenav-content {
   flex-direction: column;
   //   overflow-y: scroll;
   overflow: scroll;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 200px);
+  padding: 0px 16px;
 }
 
-.message {
-  padding: 8px 12px;
-  border-radius: 20px;
-  margin: 20px 12px;
-  width: fit-content;
+// .message {
+//   padding: 8px 12px;
+//   border-radius: 20px;
+//   margin: 20px 12px;
+//   width: fit-content;
+// }
+
+// .receiver-message {
+//   background-color: #e4e6eb;
+//   color: #000;
+// }
+
+// .sender-message {
+//   background-color: #6699cc;
+//   color: #fff;
+//   align-self: flex-end;
+// }
+
+.detail-item {
+  width: 100%;
+  margin: 20px 0;
 }
 
-.receiver-message {
-  background-color: #e4e6eb;
-  color: #000;
+.detail-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  padding-top: 0px;
 }
 
-.sender-message {
-  background-color: #6699cc;
-  color: #fff;
-  align-self: flex-end;
+.detail-user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-avatar {
+  border-radius: 50%;
+  // background-color: #000;
+  background-image: url(./../../assets/img/google-icon.png);
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+}
+
+.detail-sender-name {
+  margin-left: 12px;
+  font-weight: 500;
 }
