@@ -88,6 +88,10 @@ input {
   width: 100px;
 }
 
+#upload-school-profile {
+  display: none;
+}
+
 @media (max-width: 950px) {
   .profile-container {
     justify-content: center;
