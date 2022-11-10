@@ -1,7 +1,7 @@
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { MaterialModule } from './material/material.module';
 import { Interceptor } from './interceptor';
 import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
