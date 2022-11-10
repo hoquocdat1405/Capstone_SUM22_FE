@@ -54,12 +54,31 @@
                 </div>
                 <div class="detail-section" *ngIf="isViewingDetail">
                     <div class="detail-toolbar">
-                        <mat-icon matTooltip="Lùi về" (click)="isViewingDetail = !isViewingDetail">keyboard_arrow_left</mat-icon>
+                        <mat-icon matTooltip="Lùi về" (click)="isViewingDetail = !isViewingDetail">keyboard_arrow_left
+                        </mat-icon>
                         <mat-icon matTooltip="Đánh dấu chưa xem">email</mat-icon>
                         <mat-icon matTooltip="Xóa mail">delete</mat-icon>
                     </div>
                     <mat-divider></mat-divider>
-                    <div id="detail-content"></div>
+                    <div id="detail-content">
+                        <div class="receiver-message message">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo sunt similique corrupti dicta
+                            fugiat magnam suscipit et eum minus distinctio!
+                        </div>
+
+                        <div class="sender-message message">
+                            Lorem ipsum dolor sit, amet consectetur adipisicin
+                        </div>
+                        <div class="sender-message message">
+                            Lorem ipsum dolor sit, amet consectetur adipisicin
+                        </div>
+
+                        <div class="receiver-message message">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo sunt similique corrupti dicta
+                            fugiat magnam suscipit
+                            et eum minus distinctio!
+                        </div>
+                    </div>
                 </div>
             </mat-sidenav-content>
         </mat-sidenav-container>
