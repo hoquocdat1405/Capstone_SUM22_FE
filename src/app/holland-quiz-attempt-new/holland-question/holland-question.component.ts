@@ -78,19 +78,6 @@ export class HollandQuestionComponent implements OnInit {
   }
 
   storeUserAnswer(event: any, i: number, j: number) {
-    // if (event.target.checked === true) {
-    //   this.userAnswer[10 * this.currentPage + i].answer.push(
-    //     event.target.value
-    //   );
-    // } else {
-    //   const index = this.userAnswer[10 * this.currentPage + i].answer.indexOf(
-    //     event.target.value
-    //   );
-    //   if (index > -1) {
-    //     this.userAnswer[10 * this.currentPage + i].answer.splice(index, 1);
-    //   }
-    // }
-
     var question: HollandPostQuizQuestion;
     var option: HollandPostQuizOption;
     var optionCollect: HollandPostQuizOption[] = [];

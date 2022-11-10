@@ -10,7 +10,7 @@
             <div class="question-container" *ngFor="let question of questionSlice;index as i">
                 <p class="question-index">Câu <span>{{question.id}}</span></p>
                 <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
-                <mat-divider></mat-divider>
+                <!-- <mat-divider></mat-divider> -->
 
                 <div class="answer-container">
                     <div class="answer-row" *ngFor="let answer of questionSlice[i].answers;index as j">
@@ -32,9 +32,9 @@
         <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
                 class="end-index">{{totalPage}}</span>
         </p>
-        <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page"
+        <!-- <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page"
             (page)="changePage($event)">
-        </mat-paginator>
+        </mat-paginator> -->
     </div>
 
 </div>
