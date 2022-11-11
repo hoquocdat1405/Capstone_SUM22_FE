@@ -45,7 +45,9 @@ export class SchoolListComponent implements OnInit {
     }
 
     this.idMajor = this.route.snapshot.paramMap.get('id')!;
-    this.getSchoolList(this.idMajor);
+    if(this.idMajor) {
+      this.getSchoolList(this.idMajor);
+    }
   }
 
   getSchoolList(id: string) {
@@ -66,8 +68,8 @@ export class SchoolListComponent implements OnInit {
     console.log('Search');
   }
 
-  viewSchoolDetail() {
-    this.router.navigate(['/school']);
+  viewSchoolDetail(uniId: string) {
+    this.router.navigate(['/school', { schoolId: uniId }]);
   }
 
   submitApplication(uniId: string) {
