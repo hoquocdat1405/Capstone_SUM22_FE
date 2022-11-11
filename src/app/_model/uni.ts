@@ -9,7 +9,8 @@ export interface University {
     vippack: string,
     status: string,
     wardId: string,
-    uniShortName: string
+    uniShortName: string,
+    description: string,
 }
 
 export interface UniSpec {

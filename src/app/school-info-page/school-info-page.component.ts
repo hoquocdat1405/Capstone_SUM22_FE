@@ -1,5 +1,5 @@
 import { AddressService } from './../_services/address.service';
-import { UniDetail } from './../_model/uni';
+import { UniDetail, UniSpec } from './../_model/uni';
 import { UniversityService } from './../_services/university.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -13,10 +13,12 @@ export class SchoolInfoPageComponent implements OnInit {
   schoolId: string = "";
   uniDetail?: UniDetail;
   wardName: string = '';
+  uniSpecList: UniSpec[] = [];
 
   constructor(
-    private route: ActivatedRoute, 
-    private uniService: UniversityService, 
+    private route: ActivatedRoute,
+    private uniService: UniversityService,
+
     // private addressService: AddressService
   ) { }
 
@@ -34,6 +36,12 @@ export class SchoolInfoPageComponent implements OnInit {
       this.uniService.getUniById(this.schoolId).subscribe({
         next: (data: UniDetail) => {
           this.uniDetail = data;
+        }
+      })
+
+      this.uniService.getUniSpecById(this.schoolId).subscribe({
+        next: (data: UniSpec[]) => {
+          this.uniSpecList = data;
         }
       })
     }

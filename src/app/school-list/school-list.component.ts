@@ -17,6 +17,7 @@ export class SchoolListComponent implements OnInit {
   uniList: University[] = [];
   resultUni: University[] = [];
   idMajor?: string;
+  isFromMajor: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -47,6 +48,7 @@ export class SchoolListComponent implements OnInit {
     this.idMajor = this.route.snapshot.paramMap.get('id')!;
     if(this.idMajor) {
       this.getSchoolList(this.idMajor);
+      this.isFromMajor = true;
     }
   }
 
