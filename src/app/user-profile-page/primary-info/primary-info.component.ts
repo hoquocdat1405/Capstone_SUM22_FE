@@ -33,8 +33,9 @@ export class PrimaryInfoComponent implements OnInit {
     credentialFrontImgUrl: '', //chua co
     credentialBackImgUrl: '', //chua co
   };
-  selectedProvince: string = '';
-  selectedDistrict: string = '';
+  selectedProvince?: number;
+  selectedDistrict?: number;
+  selectedWard?: number;
 
   constructor(
     private profileServ: ProfileService,
@@ -58,6 +59,11 @@ export class PrimaryInfoComponent implements OnInit {
   getData() {
     this.authService.getUserProfileObserver().subscribe((data: Profile) => {
       this.userProfile = data;
+      this.selectedProvince = this.userProfile.provinceId;
+      this.getListDistrict(this.userProfile.provinceId);
+      this.selectedDistrict = this.userProfile.districtId;
+      this.getListWard(this.userProfile.districtId + "");
+      this.selectedWard = this.userProfile.wardId;
     })
   }
 
@@ -70,6 +76,7 @@ export class PrimaryInfoComponent implements OnInit {
     var gender = document.querySelector('.input-gender') as HTMLSelectElement;
     var dateOfBirth = document.querySelector('.input-birth') as any;
     var phone = document.querySelector('.input-phone') as HTMLInputElement;
+    var provinceId = document.getElementById('province') as HTMLSelectElement;
     var addressNumber = document.querySelector(
       '.input-address'
     ) as HTMLInputElement;
@@ -114,7 +121,7 @@ export class PrimaryInfoComponent implements OnInit {
     imgUpload.click();
   }
   provinceChange() {
-    this.getListDistrict(+this.selectedProvince);
+    this.getListDistrict(this.selectedProvince!);
   }
 
   getListDistrict(id: number) {
@@ -134,7 +141,7 @@ export class PrimaryInfoComponent implements OnInit {
   }
 
   districtChange() {
-    this.getListWard(this.selectedDistrict);
+    this.getListWard(this.selectedDistrict + "");
   }
 
   receiveInfo() {

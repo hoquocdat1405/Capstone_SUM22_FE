@@ -19,9 +19,9 @@ export interface Profile {
   credentialFrontImgUrl: string,
   credentialBackImgUrl: string,
   highSchoolName: string,
-  wardName: string,
-  provinceName: string,
-  districtName: string,
+  wardId: number,
+  provinceId: number,
+  districtId: number,
   publicProfile: string
 }
 

@@ -88,7 +88,7 @@
     </div>
     <div class="input-container">
       <label class="input-title" for="">Thành phố</label>
-      <select name="province" id="province" class="input-district" [(ngModel)]="selectedProvince"
+      <select name="province" id="province" class="input-province" [(ngModel)]="selectedProvince"
         (change)="provinceChange()">
         <option value="">Chọn Thành phố</option>
         <option value="{{prov.id}}" *ngFor="let prov of listProvince">{{prov.provinceName}}</option>
@@ -96,15 +96,15 @@
     </div>
     <div class="input-container">
       <label class="input-title" for="">Quận/Huyện</label>
-      <select name="cars" id="cars" class="input-district" [(ngModel)]="selectedDistrict" (change)="districtChange()">
+      <select name="cars" id="district" class="input-district" [(ngModel)]="selectedDistrict" (change)="districtChange()">
         <option value="">Chọn Quận/Huyện</option>
         <option value="{{dist.id}}" *ngFor="let dist of listDistrict">{{dist.districtName}}</option>
       </select>
     </div>
     <div class="input-container">
       <label class="input-title" for="">Phường/Xã</label>
-      <select name="cars" id="cars" class="input-district">
-        <option value="">Chọn Quận</option>
+      <select name="cars" id="ward" class="input-ward" [(ngModel)]="selectedWard">
+        <option value="">Chọn Phường/Xã</option>
         <option value="{{ward.id}}" *ngFor="let ward of listWard">{{ward.wardName}}</option>
       </select>
     </div>
