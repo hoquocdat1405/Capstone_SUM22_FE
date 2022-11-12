@@ -27,30 +27,14 @@
             </mat-sidenav>
             <mat-sidenav-content>
                 <div class="main-content" *ngIf="!isViewingDetail">
-                    <div class="mail-card seen" (click)="isViewingDetail = !isViewingDetail">
-                        <div class="mail-name">Đại học FPT</div>
-                        <div class="mail-subject">Bard needs to shine again</div>
-                        <div class="mail-time">9:35 PM</div>
-                    </div>
-                    <mat-divider></mat-divider>
-                    <div class="mail-card seen">
-                        <div class="mail-name">Đại học FPT</div>
-                        <div class="mail-subject">Bard needs to shine again</div>
-                        <div class="mail-time">9:35 PM</div>
-                    </div>
-                    <mat-divider></mat-divider>
-                    <div class="mail-card seen">
-                        <div class="mail-name">Đại học FPT</div>
-                        <div class="mail-subject">Bard needs to shine again</div>
-                        <div class="mail-time">9:35 PM</div>
-                    </div>
-                    <mat-divider></mat-divider>
-                    <div class="mail-card seen">
-                        <div class="mail-name">Đại học FPT</div>
-                        <div class="mail-subject">Bard needs to shine again</div>
-                        <div class="mail-time">9:35 PM</div>
-                    </div>
-                    <mat-divider></mat-divider>
+                    <ng-container *ngFor="let mail of listMailBox">
+                        <div class="mail-card seen" (click)="viewMailDetail(mail.id)">
+                            <div class="mail-name">{{mail.uniId}}</div>
+                            <div class="mail-subject">{{mail.messages}}</div>
+                            <div class="mail-time">{{mail.topic}}</div>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </ng-container>
                 </div>
                 <div class="detail-section" *ngIf="isViewingDetail">
                     <div class="detail-toolbar">
@@ -61,193 +45,28 @@
                     </div>
                     <mat-divider></mat-divider>
                     <div id="detail-content">
-                        <!-- <div class="sender-message message">
-                            Lorem ipsum dolor sit, amet consectetur adipisicin
-                        </div>
-                        <div class="sender-message message">
-                            Lorem ipsum dolor sit, amet consectetur adipisicin
-                        </div>
-
-                        <div class="receiver-message message">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo sunt similique corrupti dicta
-                            fugiat magnam suscipit
-                            et eum minus distinctio!
-                        </div> -->
-                        <div class="detail-item">
-                            <div class="detail-item-header">
-                                <div class="detail-user-info">
-                                    <div class="detail-avatar">
-                                        <img src="" alt="">
+                        <ng-container *ngFor="let message of messageList">
+                            <div class="detail-item">
+                                <div class="detail-item-header">
+                                    <div class="detail-user-info">
+                                        <div class="detail-avatar">
+                                            <img src="" alt="">
+                                        </div>
+                                        <div class="detail-sender-name">
+                                            {{message.mailBoxId}}
+                                        </div>
                                     </div>
-                                    <div class="detail-sender-name">
-                                        Khâm
+                                    <div class="detail-info">
+                                        <div class="detail-info-time">
+                                            {{message.createDate | date: 'dd/MM/yyyy hh:mm a'}}
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="detail-info">
-                                    <div class="detail-info-time">
-                                        9:56 AM (4 hours ago)
-                                    </div>
+                                <div class="detail-body" [innerHtml]="message.messageContent">
                                 </div>
                             </div>
-                            <div class="detail-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolorem aspernatur
-                                reprehenderit similique id adipisci tempore dicta quod velit hic!
-                            </div>
-                        </div>
-                        <mat-divider></mat-divider>
-                        <div class="detail-item">
-                            <div class="detail-item-header">
-                                <div class="detail-user-info">
-                                    <div class="detail-avatar">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="detail-sender-name">
-                                        Khâm
-                                    </div>
-                                </div>
-                                <div class="detail-info">
-                                    <div class="detail-info-time">
-                                        9:56 AM (4 hours ago)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolorem aspernatur
-                                reprehenderit similique id adipisci tempore dicta quod velit hic!
-                            </div>
-                        </div>
-                        <mat-divider></mat-divider>
-                        <div class="detail-item">
-                            <div class="detail-item-header">
-                                <div class="detail-user-info">
-                                    <div class="detail-avatar">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="detail-sender-name">
-                                        Khâm
-                                    </div>
-                                </div>
-                                <div class="detail-info">
-                                    <div class="detail-info-time">
-                                        9:56 AM (4 hours ago)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolorem aspernatur
-                                reprehenderit similique id adipisci tempore dicta quod velit hic!
-                            </div>
-                        </div>
-                        <mat-divider></mat-divider>
-                        <div class="detail-item">
-                            <div class="detail-item-header">
-                                <div class="detail-user-info">
-                                    <div class="detail-avatar">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="detail-sender-name">
-                                        Khâm
-                                    </div>
-                                </div>
-                                <div class="detail-info">
-                                    <div class="detail-info-time">
-                                        9:56 AM (4 hours ago)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolorem aspernatur
-                                reprehenderit similique id adipisci tempore dicta quod velit hic!
-                            </div>
-                        </div>
-                        <mat-divider></mat-divider>
-                        <div class="detail-item">
-                            <div class="detail-item-header">
-                                <div class="detail-user-info">
-                                    <div class="detail-avatar">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="detail-sender-name">
-                                        Khâm
-                                    </div>
-                                </div>
-                                <div class="detail-info">
-                                    <div class="detail-info-time">
-                                        9:56 AM (4 hours ago)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolorem aspernatur
-                                reprehenderit similique id adipisci tempore dicta quod velit hic!
-                            </div>
-                        </div>
-                        <mat-divider></mat-divider>
-                        <div class="detail-item">
-                            <div class="detail-item-header">
-                                <div class="detail-user-info">
-                                    <div class="detail-avatar">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="detail-sender-name">
-                                        Khâm
-                                    </div>
-                                </div>
-                                <div class="detail-info">
-                                    <div class="detail-info-time">
-                                        9:56 AM (4 hours ago)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolorem aspernatur
-                                reprehenderit similique id adipisci tempore dicta quod velit hic!
-                            </div>
-                        </div>
-                        <mat-divider></mat-divider>
-                        <div class="detail-item">
-                            <div class="detail-item-header">
-                                <div class="detail-user-info">
-                                    <div class="detail-avatar">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="detail-sender-name">
-                                        Khâm
-                                    </div>
-                                </div>
-                                <div class="detail-info">
-                                    <div class="detail-info-time">
-                                        9:56 AM (4 hours ago)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolorem aspernatur
-                                reprehenderit similique id adipisci tempore dicta quod velit hic!
-                            </div>
-                        </div>
-                        <mat-divider></mat-divider>
-                        <div class="detail-item">
-                            <div class="detail-item-header">
-                                <div class="detail-user-info">
-                                    <div class="detail-avatar">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="detail-sender-name">
-                                        Khâm
-                                    </div>
-                                </div>
-                                <div class="detail-info">
-                                    <div class="detail-info-time">
-                                        9:56 AM (4 hours ago)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolorem aspernatur
-                                reprehenderit similique id adipisci tempore dicta quod velit hic!
-                            </div>
-                        </div>
+                            <mat-divider></mat-divider>
+                        </ng-container>
                     </div>
                 </div>
             </mat-sidenav-content>
@@ -265,9 +84,32 @@
                 <i class="fa fa-times" (click)="isShowNewEmailPopup = !isShowNewEmailPopup"></i>
             </div>
         </div>
-        <div class="new-mail-receiver">
+        <!-- <div class="new-mail-receiver">
             <span>Đến</span>
             <input type="text" class="receiver-input">
+        </div> -->
+        <div class="new-mail-receiver">
+            <span>Đến: </span>
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="legacy">
+                    <mat-label>Chọn tên trường</mat-label>
+                    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="new-mail-receiver">
+            <span>Topic: </span>
+            <form class="example-form" [formGroup]="myForm">
+                <mat-form-field class="example-full-width" appearance="legacy">
+                    <input matInput placeholder="Nhập chủ đề" formControlName="topic">
+                </mat-form-field>
+            </form>
         </div>
         <div class="new-email-input">
             <ejs-richtexteditor [toolbarSettings]="customToolbar" #defaultRTE id='defaultRTE' height="200%">

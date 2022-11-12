@@ -172,7 +172,7 @@ mat-sidenav-content {
   bottom: 60px;
   right: 60px;
   background-color: #c2e7ff;
-  z-index: 1000;
+  z-index: 10;
   color: #000;
   border-radius: 16px;
   padding: 12px 16px;
@@ -195,7 +195,7 @@ mat-sidenav-content {
   position: fixed;
   bottom: 0;
   right: 4%;
-  z-index: 1001;
+  z-index: 100;
   box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%),
     0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);
   background-color: #fff;
@@ -229,6 +229,7 @@ mat-sidenav-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 500;
 }
 
 .new-mail-receiver span {
@@ -253,7 +254,7 @@ mat-sidenav-content {
 
 .new-email-send {
   position: absolute;
-  z-index: 1000;
+  z-index: 10;
   bottom: 20px;
   right: 20px;
   font-size: 20px;
@@ -285,6 +286,16 @@ mat-sidenav-content {
 .e-rte-content {
   min-height: 50% !important;
   padding-bottom: 5% !important;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
 }
 
 // Message
