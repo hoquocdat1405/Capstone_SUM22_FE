@@ -77,4 +77,8 @@ export class SchoolListComponent implements OnInit {
   submitApplication(uniId: string) {
     this.router.navigate(['/submit-application', { schoolId: uniId }]);
   }
+
+  considerUni(uniId: string) {
+    alertify.success("Lưu thành công");
+  }
 }

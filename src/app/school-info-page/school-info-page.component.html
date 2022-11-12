@@ -6,16 +6,27 @@
     </div>
 
     <div class="info-section">
-      <img src="{{(uniDetail?.avatarUrl !== 'string') ? uniDetail?.avatarUrl : './../../../assets/img/uniAvatarPlaceholder.png'}}" alt="school logo" class="school-logo" />
-      <span class="school-name">{{uniDetail?.uniName}}</span>
+      <div class="uni-info-wrapper">
+        <img
+          src="{{(uniDetail?.avatarUrl !== 'string') ? uniDetail?.avatarUrl : './../../../assets/img/uniAvatarPlaceholder.png'}}"
+          alt="school logo" class="school-logo" />
+        <span class="uni-info">
+          <span class="school-name">{{uniDetail?.uniName}}</span>
+          <div class="school-address">
+            <p class="address">
+              {{uniDetail?.addressNumber }}
+            </p>
+          </div>
+        </span>
+      </div>
       <div class="school-website">
-        <span class="website">{{uniDetail?.websiteUrl}}</span>
+        <a class="website" href="{{uniDetail?.websiteUrl}}">{{uniDetail?.websiteUrl}}</a>
+        <div class="btn-action">
+          <button mat-raised-button color="primary">Quan tâm</button>
+          <button mat-raised-button color="primary" (click)="submitApplication()" [matTooltip]="sendApplicationTooltip">Gửi hồ sơ</button>
+        </div>
       </div>
-      <div class="school-address">
-        <p class="address">
-          {{uniDetail?.addressNumber }}
-        </p>
-      </div>
+
     </div>
 
     <div class="tab-section">

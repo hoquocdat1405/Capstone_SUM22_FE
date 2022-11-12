@@ -17,6 +17,11 @@
   width: 50%;
 }
 
+.info-section {
+  display: flex;
+  justify-content: space-between;
+}
+
 .news-item-row {
   display: flex;
   justify-content: center;
@@ -31,7 +36,8 @@
 }
 
 .school-logo {
-  width: 10%;
+  width: 15%;
+  min-width: 100px;
   aspect-ratio: 1 / 1;
   margin-top: -10vh;
   margin-left: 10vw;
@@ -40,28 +46,37 @@
   box-shadow: 10px 10px 50px #777777;
 }
 
+.uni-info {
+  margin-left: 24px;
+  display: inline-block;
+}
+
 .school-name {
   font-family: "Open Sans Semibold";
   font-size: 1.8rem;
-  margin-left: 2vw;
   font-weight: 500;
 }
 
 .school-website {
-  margin-left: 50%;
-  display: inline-block;
-  top: 35vh;
-  right: 5vw;
+  margin: 4px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.btn-action {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
 }
 
 .school-address {
   width: 30vw;
-  margin-left: 22vw;
 }
 
 .address,
 .website {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .tab-section {
@@ -90,10 +105,6 @@
 ::ng-deep .mat-ink-bar {
   padding: 1% -10%;
   background-color: #51bfbb !important;
-}
-
-.menu-content-section {
-  //sad
 }
 
 .row {

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AddressService } from './../_services/address.service';
 import { UniDetail, UniSpec } from './../_model/uni';
 import { UniversityService } from './../_services/university.service';
@@ -14,10 +15,12 @@ export class SchoolInfoPageComponent implements OnInit {
   uniDetail?: UniDetail;
   wardName: string = '';
   uniSpecList: UniSpec[] = [];
+  sendApplicationTooltip: string = "";
 
   constructor(
     private route: ActivatedRoute,
     private uniService: UniversityService,
+    private router: Router
 
     // private addressService: AddressService
   ) { }
@@ -45,5 +48,10 @@ export class SchoolInfoPageComponent implements OnInit {
         }
       })
     }
+    this.sendApplicationTooltip = "Gửi hồ sơ để nhận được tư vấn";
+  }
+
+  submitApplication() {
+    this.router.navigate(['/submit-application', { schoolId: this.schoolId }]);
   }
 }
