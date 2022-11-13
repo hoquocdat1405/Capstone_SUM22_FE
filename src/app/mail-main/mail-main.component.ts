@@ -1,4 +1,4 @@
-import { FirstMail, MailBox, Message} from './../_model/mail/mail';
+import { FirstMail, MailBox, Message, ReplyMail } from './../_model/mail/mail';
 import { MailService } from './../_services/mail.service';
 import { startWith, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -27,11 +27,16 @@ export class MailMainComponent implements OnInit {
   listMailBox: MailBox[] = [];
   messageList: Message[] = [];
   trustedMessageContent?:SafeHtml;
+  selectedMailDetail: string = "";
   
   @ViewChild('defaultRTE')
   public componentObject!: RichTextEditorComponent;
 
+  @ViewChild('replyRTE')
+  public replyObject!: RichTextEditorComponent;
+
   private htmlContent!: string;
+  private replyContent!: string;
   isShowNewEmailPopup: boolean = false;
   isViewingDetail: boolean = false;
 
@@ -59,11 +64,7 @@ export class MailMainComponent implements OnInit {
       }
     })
 
-    this.mailService.getAllMail().subscribe({
-      next: (data: MailBox[]) => {
-        this.listMailBox = data;
-      }
-    })
+    this.getAllMail();
 
     this.topicControl.registerOnChange(() => {
       console.log("topic changed")
@@ -86,6 +87,14 @@ export class MailMainComponent implements OnInit {
 
   }
 
+  getAllMail() {
+    this.mailService.getAllMail().subscribe({
+      next: (data: MailBox[]) => {
+        this.listMailBox = data;
+      }
+    })
+  }
+
   public customToolbar: Object = {
     items: ['Bold', 'Italic', 'FontName', 'FontSize', '|', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyFull', '|', 'Formats', 'OrderedList', 'UnorderedList',]
   }
@@ -104,8 +113,8 @@ export class MailMainComponent implements OnInit {
     }
     this.mailService.sendFirstMail(firstMail).subscribe({
       next: (data) => {
-        console.log(data);
         alertify.success("Gửi thành công")
+        this.getAllMail();
       }
     })
   }
@@ -116,9 +125,28 @@ export class MailMainComponent implements OnInit {
   
   viewMailDetail(id: string) {
     this.isViewingDetail = !this.isViewingDetail;
+    this.selectedMailDetail = id;
     this.mailService.getAllMessage(id).subscribe({
       next: (data: Message[]) => {
         this.messageList = data;
+      }
+    })
+  }
+
+  sendReply() {
+    this.replyContent = this.replyObject.getHtml();
+    const replyMail: ReplyMail = {
+      mailBoxId: this.selectedMailDetail,
+      messageContent: this.replyContent
+    }
+    this.mailService.sendReply(replyMail).subscribe({
+      next: () => {
+        alertify.success("Thành công")
+        this.mailService.getAllMessage(this.selectedMailDetail).subscribe({
+          next: (data: Message[]) => {
+            this.messageList = data;
+          }
+        })
       }
     })
   }

@@ -43,8 +43,8 @@
                         <mat-icon matTooltip="Đánh dấu chưa xem">email</mat-icon>
                         <mat-icon matTooltip="Xóa mail">delete</mat-icon>
                     </div>
-                    <mat-divider></mat-divider>
                     <div id="detail-content">
+                        <mat-divider></mat-divider>
                         <ng-container *ngFor="let message of messageList">
                             <div class="detail-item">
                                 <div class="detail-item-header">
@@ -68,12 +68,24 @@
                             <mat-divider></mat-divider>
                         </ng-container>
                     </div>
+                    <div class="reply-field">
+                        <ejs-richtexteditor [toolbarSettings]="customToolbar" #replyRTE id='replyRTE' height="200%">
+                            <ng-template #valueTemplate>
+                                <p></p>
+                            </ng-template>
+                        </ejs-richtexteditor>
+                    </div>
                 </div>
             </mat-sidenav-content>
         </mat-sidenav-container>
         <button mat-raised-button class="new-mail-btn" (click)="isShowNewEmailPopup = !isShowNewEmailPopup"
-            [ngClass]="{'hide': isShowNewEmailPopup}">
+            [ngClass]="{'hide': isShowNewEmailPopup || isViewingDetail}">
             <mat-icon>edit</mat-icon> Soạn thư
+        </button>
+        <button mat-raised-button class="new-mail-btn" 
+            [ngClass]="{'hide': !isViewingDetail}"
+            (click)="sendReply()">
+            <mat-icon>edit</mat-icon> Gửi
         </button>
     </div>
     <div class="new-mail-popup" [ngClass]="{'hide': !isShowNewEmailPopup}">

@@ -266,7 +266,11 @@ mat-sidenav-content {
 .detail-section {
   //   position: sticky;
   //   top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
+  height: 80vh;
 }
 
 .new-email-send i {
@@ -280,7 +284,7 @@ mat-sidenav-content {
 }
 //LiemnT code ngu :fix
 .e-toolbar-wrapper {
-  height: 4% !important;
+  height: 42px !important;
 }
 //LiemnT code ngu :fix
 .e-rte-content {
@@ -305,8 +309,13 @@ mat-sidenav-content {
   flex-direction: column;
   //   overflow-y: scroll;
   overflow: scroll;
-  height: calc(100vh - 200px);
+  // height: calc(100vh - 500px);
   padding: 0px 16px;
+  flex: 1;
+}
+
+.reply-field {
+  width: 100%;
 }
 
 // .message {
