@@ -6,35 +6,60 @@
             <span class="header-content same">Giống bạn nhất</span>
             <span class="header-content difference">Khác bạn nhất</span>
         </div>
-        <div class="question">
-            <div class="question-container" *ngFor="let question of questionSlice;index as i">
-                <p class="question-index">Câu <span>{{question.id}}</span></p>
-                <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
-                <!-- <mat-divider></mat-divider> -->
 
-                <div class="answer-container">
-                    <div class="answer-row" *ngFor="let answer of questionSlice[i].answers;index as j">
-                        <p class="answer">{{answer}}</p>
-                        <div class="answer-box">
-                            <label class="input-container">
-                                <input class="disc-same" type="radio">
-                                <span class="checkmark" (click)="chooseAnswer(i,j,$event)"></span>
-                            </label>
-                            <label class="input-container">
-                                <input class="disc-differ" type="radio">
-                                <span class="checkmark-differ" (click)="chooseAnswer(i,j,$event)"></span>
-                            </label>
+        <div class="content-row">
+            <div class="sidebar-container">
+                <div class="nav-row">
+                    <div class="sidebar-title"> Danh sách câu hỏi</div>
+                    <div class="hamburger" (click)="hamburgerClick()">
+                        <mat-icon>menu</mat-icon>
+                    </div>
+                </div>
+
+                <div class="horizontal-bar"></div>
+                <div class="nav-section">
+                    <div class="question-list">
+                        <p class="question-item" *ngFor="let question of quizCollections?.questions"
+                            (click)="chooseQuestion(question.index+1)">
+                            {{question.index+1}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-container" *ngFor="let question of questionSlice;index as i">
+                    <param id="p{{question.id}}" value="{{question.value}}">
+                    <p class="question-index">Câu <span>{{question.index+1}}</span></p>
+                    <span class="error-text">Vui lòng chọn câu trả lời bên dưới</span>
+                    <!-- <mat-divider></mat-divider> -->
+                    <div class="answer-container">
+                        <div class="answer-row" *ngFor="let answer of questionSlice[i].options;index as j">
+                            <param class="param-answer" id="{{answer.id}}" value="{{answer.value}}">
+                            <p class="answer">{{answer.optionContent}}</p>
+
+                            <div class="answer-box">
+                                <label class="input-container">
+                                    <input class="disc-same" type="radio">
+                                    <span id="a{{answer.id}}" class="checkmark"
+                                        (click)="chooseAnswer(i,j,$event,true,question.index+1)"></span>
+                                </label>
+                                <label class="input-container">
+                                    <input class="disc-differ" type="radio">
+                                    <span id="a{{answer.id}}" class="checkmark-differ"
+                                        (click)="chooseAnswer(i,j,$event,false,question.index+1)"></span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
                 class="end-index">{{totalPage}}</span>
         </p>
-        <!-- <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page"
-            (page)="changePage($event)">
-        </mat-paginator> -->
+        <mat-paginator [length]="length" [pageSize]="10" aria-label=" Select page" (page)="changePage($event)">
+        </mat-paginator>
+        <button class="submit-btn">Xem kết quả</button>
     </div>
 
 </div>

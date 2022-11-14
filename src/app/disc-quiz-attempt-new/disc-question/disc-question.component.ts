@@ -1,4 +1,9 @@
-import { DiscQuizCollectionModel } from './../../_model/disc-quiz/disc-quiz-collection';
+import { DiscPostQuizOption } from './../../_model/disc-quiz/disc-quiz-option';
+import { DiscPostQuizQuestion } from './../../_model/disc-quiz/disc-quiz-question';
+import {
+  DiscQuizCollectionModel,
+  DiscPostQuizCollection,
+} from './../../_model/disc-quiz/disc-quiz-collection';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/_services/shared.service';
@@ -9,38 +14,31 @@ import { SharedService } from 'src/app/_services/shared.service';
   styleUrls: ['./disc-question.component.scss'],
 })
 export class DiscQuestionComponent implements OnInit {
-  constructor(private sharedServ: SharedService, private router: Router) {}
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {}
-  // questions = [
-  //   {
-  //     id: 1,
-  //     answers: [
-  //       'Tôi có xu hướng là một người thận trọng',
-  //       'Tôi là một người rất kiên quyết',
-  //       'Tôi giỏi thuyết phục mọi người',
-  //       'Tôi có xu hướng trở thành một người thân thiện',
-  //     ],
-  //   },
-  //   {
-  //     id: 2,
-  //     answers: [
-  //       'Tôi có xu hướng là một người thận trọng2',
-  //       'Tôi là một người rất kiên quyết2',
-  //       'Tôi giỏi thuyết phục mọi người2',
-  //       'Tôi có xu hướng trở thành một người thân thiện2',
-  //     ],
-  //   },
-
-  // ];
   totalPage = 0;
   currentQuestion = 0;
   currentPage = 0;
   quizCollections?: DiscQuizCollectionModel;
   length = 0;
   questionSlice: any;
+  postAnswer?: DiscPostQuizCollection = {
+    testId: 0,
+    questions: [],
+  };
+  hamburgerFlag: boolean = false;
+  pageObject = {
+    previouPageIndex: 0,
+    pageIndex: 0,
+    pageSize: 10,
+    Lenghth: 0,
+  };
+
+  countSubmit = 0;
+
+  constructor(private sharedServ: SharedService, private router: Router) {}
+
+  ngOnInit() {
+    this.getData();
+  }
 
   getData() {
     var count = 0;
@@ -65,7 +63,13 @@ export class DiscQuestionComponent implements OnInit {
     this.length = this.quizCollections?.questions.length as unknown as number;
   }
 
-  chooseAnswer(i: number, j: number, event: any) {
+  chooseAnswer(
+    i: number,
+    j: number,
+    event: any,
+    selectedField: boolean,
+    indexQuestion: number
+  ) {
     var activeSame = document.querySelector(
       `.question-container:nth-child(${
         i + 1
@@ -102,9 +106,75 @@ export class DiscQuestionComponent implements OnInit {
       activeDifferRow?.classList.remove('active-difference');
     }
     this.clickCheckBox(event);
+    this.storeUserAnswer(i, j, indexQuestion, selectedField);
   }
 
-  storeUserAnswer(index: number, answerText: any, check: string) {}
+  storeUserAnswer(
+    i: any,
+    j: number,
+    indexQuestion: number,
+    selectedField: boolean
+  ) {
+    var question: DiscPostQuizQuestion;
+    var option: DiscPostQuizOption;
+    var options: DiscPostQuizOption[] = [];
+
+    this.postAnswer!.testId = this.quizCollections!.id as unknown as number;
+
+    var paramAnswer = document.querySelector(
+      `.question-container:nth-child(${i + 1}) .answer-row:nth-child(${
+        j + 1
+      }) param`
+    ) as any;
+
+    option = {
+      optionId: paramAnswer?.id as unknown as number,
+      optionValue: paramAnswer?.value,
+      selectedField: selectedField,
+    };
+    options.push(option);
+
+    var param = document.querySelector(
+      `.question-container:nth-child(${i + 1}) param`
+    ) as HTMLInputElement;
+
+    question = {
+      questionId: param?.id.replace('p', '') as unknown as number,
+      questionValue: param.value,
+      options: options,
+    };
+
+    const index = this.postAnswer!.questions.findIndex(
+      (e) => e.questionId === question.questionId
+    );
+
+    if (index > -1) {
+      const indexOption = this.postAnswer!.questions[index].options.findIndex(
+        (e) => e.selectedField === selectedField
+      );
+      if (indexOption > -1) {
+        this.postAnswer!.questions[index].options[indexOption] = option;
+      } else {
+        this.postAnswer!.questions[index].options.push(option);
+      }
+      if (this.postAnswer!.questions[index].options.length === 2) {
+        document
+          .querySelector(`.question-item:nth-child(${indexQuestion}`)
+          ?.classList.add('active');
+        this.countSubmit++;
+      }
+    } else {
+      this.postAnswer!.questions.push(question);
+    }
+
+    if (
+      this.postAnswer!.questions.length ===
+      this.quizCollections?.questions.length
+    ) {
+      var btnSubmit = document.querySelector('.submit-btn');
+      btnSubmit?.classList.add('active');
+    }
+  }
 
   //them active
   clickCheckBox(event: any) {
@@ -123,10 +193,56 @@ export class DiscQuestionComponent implements OnInit {
     if (endIndex > event.length) {
       endIndex = event.length;
     }
-    // this.questionSlice = this.questions.slice(startIndex, endIndex);
+    this.questionSlice = this.quizCollections?.questions.slice(
+      startIndex,
+      endIndex
+    );
 
     setTimeout(() => {
       document.querySelector('.content')?.scrollIntoView();
     }, 1);
+
+    //lấy dữ liệu hiển thị
+    setTimeout(() => {
+      for (let i = 0; i < this.questionSlice.length; i++) {
+        for (let j = 0; j < this.postAnswer!.questions.length; j++) {
+          if (
+            this.questionSlice[i].id == this.postAnswer!.questions[j].questionId
+          ) {
+            for (
+              let z = 0;
+              z < this.postAnswer!.questions[j].options.length;
+              z++
+            ) {
+              var input = document.querySelectorAll(
+                `#a${this.postAnswer!.questions[j].options[z].optionId}`
+              ) as NodeListOf<HTMLInputElement>;
+              if (
+                this.postAnswer!.questions[j].options[z].selectedField === true
+              ) {
+                input[0].classList.add('active-same');
+              } else {
+                input[1].classList.add('active-difference');
+              }
+            }
+          }
+        }
+      }
+    }, 1);
+  }
+
+  hamburgerClick() {
+    this.hamburgerFlag = !this.hamburgerFlag;
+    document.querySelector('.sidebar-container')?.classList.toggle('active');
+    document.querySelector('.main-content')?.classList.toggle('active');
+    document.querySelector('.nav-row .hamburger')?.classList.toggle('active');
+    document.querySelectorAll('.nav-item-title')?.forEach((item) => {
+      item.classList.toggle('active');
+    });
+  }
+
+  chooseQuestion(index: number) {
+    this.pageObject.pageIndex = Math.floor(index / 10);
+    this.changePage(this.pageObject);
   }
 }

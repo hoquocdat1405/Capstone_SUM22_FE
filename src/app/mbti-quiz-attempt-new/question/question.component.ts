@@ -10,7 +10,7 @@ import {
   MbtiPostQuizCollection,
 } from './../../_model/mbti-quiz/mbti-quiz-collection';
 import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // mbti-result
 @Component({
@@ -19,9 +19,6 @@ import { Router,ActivatedRoute } from '@angular/router';
   styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
-
-
-
   quizCollections: MbtiQuizCollection = new MbtiQuizCollection();
   ngAfterViewInit() {}
   currentQuestion = 0;
@@ -46,7 +43,11 @@ export class QuestionComponent implements OnInit {
 
   postAnswer: MbtiPostQuizCollection = new MbtiPostQuizCollection();
 
-  constructor(private shareService: SharedService, private router: Router,private route: ActivatedRoute,) {}
+  constructor(
+    private shareService: SharedService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id')!;
@@ -55,7 +56,7 @@ export class QuestionComponent implements OnInit {
 
   checked() {}
 
-  getData(id:number) {
+  getData(id: number) {
     var count = 0;
     this.shareService.takingTestGuest(id).subscribe({
       next: (data) => {
