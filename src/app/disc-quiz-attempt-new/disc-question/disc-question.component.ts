@@ -150,7 +150,8 @@ export class DiscQuestionComponent implements OnInit {
 
     if (index > -1) {
       const indexOption = this.postAnswer!.questions[index].options.findIndex(
-        (e) => e.selectedField === selectedField
+        (e) =>
+          e.selectedField === selectedField || e.optionId === option.optionId
       );
       if (indexOption > -1) {
         this.postAnswer!.questions[index].options[indexOption] = option;
@@ -174,6 +175,8 @@ export class DiscQuestionComponent implements OnInit {
       var btnSubmit = document.querySelector('.submit-btn');
       btnSubmit?.classList.add('active');
     }
+
+    console.log(this.postAnswer);
   }
 
   //them active

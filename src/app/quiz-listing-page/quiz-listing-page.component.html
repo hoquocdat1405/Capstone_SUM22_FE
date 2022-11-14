@@ -1,7 +1,8 @@
 <app-nav></app-nav>
-<div class="main-container">
-  <div class="tests-container row">
-    <div class="quiz-card col-sm-5 col-md-5 col-10 m-4" *ngFor="let test of tests">
+<div class="main-container" (window:resize)="responsive()">
+  <p class="title-quiz-list">Danh sách các bài test</p>
+  <div class="tests-container">
+    <div class="quiz-card quiz-card-hover col-sm-5 col-md-5 col-10 m-4" *ngFor="let test of tests">
       <img src="{{test.bannerUrl}}" alt="" />
       <div class="des">
         <h4>{{test.quizName}}</h4>
@@ -16,6 +17,8 @@
           <a (click)="redirectTest(test.quizTypeId,test.id)" class="btn btn-start">Bắt đầu</a>
         </div>
       </div>
+      <a href="#" [routerLink]="['/mbti-quiz-detail']" class="btn btn-detail-hide">Chi tiết</a>
+
     </div>
   </div>
   <app-footer></app-footer>
