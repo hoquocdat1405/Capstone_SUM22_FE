@@ -20,7 +20,9 @@
 
     <div class="input-container">
       <label class="input-title" for="">Học bạ THPT</label>
-      <img class="input-img" src="assets/img/add-img.png" alt="">
+      <img class="input-img" src="assets/img/add-img.png" alt="" (click)="uploadSchoolProfile()">
+      <input type="file" id="upload-school-profile" (change)="selectFile($event)">
+      <div id="school-profile-name" [innerText]="schoolProfileName"></div>
     </div>
 
     <div class="input-container">
@@ -39,6 +41,6 @@
       <img class="input-img" src="assets/img/add-img.png" alt="">
     </div>
   </div>
-  <button class="btn-save-bottom">Lưu hồ sơ</button>
+  <button class="btn-save-bottom" (click)="saveAll()">Lưu hồ sơ</button>
 
 </div>

@@ -1,3 +1,7 @@
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from 'src/environments/environment.prod';
 import { MaterialModule } from './material/material.module';
 import { Interceptor } from './interceptor';
 import { BfQuestionComponent } from './bf-quiz-attempt-new/bf-question/bf-question.component';
@@ -121,8 +125,10 @@ import { MajorListComponent } from './major-list/major-list.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { MailMainComponent } from './mail-main/mail-main.component';
 import { MailInboxComponent } from './mail-main/mail-inbox/mail-inbox.component';
-import { RichTextEditorModule, ToolbarService, 
-LinkService, ImageService, HtmlEditorService } from '@syncfusion/ej2-angular-richtexteditor';
+import {
+  RichTextEditorModule, ToolbarService,
+  LinkService, ImageService, HtmlEditorService
+} from '@syncfusion/ej2-angular-richtexteditor';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -225,7 +231,10 @@ export function tokenGetter() {
     PsyModule,
     ReactiveFormsModule,
     MaterialModule,
-    RichTextEditorModule
+    RichTextEditorModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   providers: [
     AuthService,
@@ -238,4 +247,4 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

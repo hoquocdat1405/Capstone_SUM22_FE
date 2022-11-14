@@ -17,6 +17,7 @@ export class SchoolListComponent implements OnInit {
   uniList: University[] = [];
   resultUni: University[] = [];
   idMajor?: string;
+  isFromMajor: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -45,7 +46,10 @@ export class SchoolListComponent implements OnInit {
     }
 
     this.idMajor = this.route.snapshot.paramMap.get('id')!;
-    this.getSchoolList(this.idMajor);
+    if(this.idMajor) {
+      this.getSchoolList(this.idMajor);
+      this.isFromMajor = true;
+    }
   }
 
   getSchoolList(id: string) {
@@ -66,11 +70,15 @@ export class SchoolListComponent implements OnInit {
     console.log('Search');
   }
 
-  viewSchoolDetail() {
-    this.router.navigate(['/school']);
+  viewSchoolDetail(uniId: string) {
+    this.router.navigate(['/school', { schoolId: uniId }]);
   }
 
   submitApplication(uniId: string) {
     this.router.navigate(['/submit-application', { schoolId: uniId }]);
+  }
+
+  considerUni(uniId: string) {
+    alertify.success("Lưu thành công");
   }
 }

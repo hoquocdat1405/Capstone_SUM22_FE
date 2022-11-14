@@ -1,6 +1,5 @@
-import { DriveApisService } from './../_services/drive-apis.service';
-import { ApplicationService } from './../_services/application.service';
-import { Application, ApplicationDetail } from './../_model/application/application';
+import { FileuploadService } from './../_services/fileupload.service';
+import { FileUpload } from './../_model/file';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { UniversityService } from './../_services/university.service';
@@ -12,6 +11,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { Component, OnInit } from '@angular/core';
 import { UniSpec } from '../_model/uni';
 import * as alertify from "alertifyjs";
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-handin-uni-app',
@@ -25,12 +25,18 @@ export class HandinUniAppComponent implements OnInit {
   schoolId: string ="";
   uniSpecList: UniSpec[] = [];
   filteredOptions?: Observable<string[]>;
+  path:string = '';
+  selectedFiles?: FileList;
+  currentFileUpload?: FileUpload;
+  percentage?: number;
 
   constructor(
     private fb: FormBuilder, 
     private authService: AuthService, 
     private route: ActivatedRoute,
     private uniService: UniversityService,
+    private af: AngularFireStorage,
+    private uploadService: FileuploadService
   ) { }
 
   ngOnInit(): void {
@@ -128,20 +134,22 @@ export class HandinUniAppComponent implements OnInit {
 
   schoolProfileFileChange(event: any) {
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      const schoolProfile: SubmitApplications = {
-        name: "schoolProfile",
-        submittedFile: file
-      }
+      // const file = event.target.files[0];
+      // this.path = file;
+      // const schoolProfile: SubmitApplications = {
+      //   name: "schoolProfile",
+      //   submittedFile: file
+      // }
 
-      const index = this.submitFiles.findIndex(item => item.name === schoolProfile.name);
-      if (index !== -1) {
-        this.submitFiles[index].submittedFile = file;
-      } else {
-        this.submitFiles.push(schoolProfile);
-      }
+      // const index = this.submitFiles.findIndex(item => item.name === schoolProfile.name);
+      // if (index !== -1) {
+      //   this.submitFiles[index].submittedFile = file;
+      // } else {
+      //   this.submitFiles.push(schoolProfile);
+      // }
 
-      console.log(this.submitFiles)
+      // console.log(this.submitFiles)
+      this.selectedFiles = event.target.files;
     }
   }
 
@@ -213,6 +221,26 @@ export class HandinUniAppComponent implements OnInit {
     }
   }
 
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  submitFile() {
+    const file = this.selectedFiles!.item(0);
+    console.log(this.selectedFiles!.item(0))
+    this.selectedFiles = undefined;
+
+    this.currentFileUpload = new FileUpload(file!);
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+      percentage => {
+        this.percentage = Math.round(percentage);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   submitAll() {
     // console.log(this.firstFormGroup.value)
     // console.log(this.submitFiles)
@@ -260,6 +288,7 @@ export class HandinUniAppComponent implements OnInit {
     //   }
     // })
     // this.driveApis.uploadFile();
+
   }
 
 }

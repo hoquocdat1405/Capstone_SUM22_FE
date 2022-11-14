@@ -11,7 +11,16 @@ export const environment = {
   REDIRECT_URI: 'https://developers.google.com/oauthplayground',
 
   REFRESH_TOKEN: '1//04lIaPgp7JXq3CgYIARAAGAQSNwF-L9Irh8TTzwSYtAU88rKkGuYbvqYirIlNnlkaf0nsL-3uwcixsGq4yFIKrsxFtGE0I4stHnY',
-
+  firebase: {
+    apiKey: "AIzaSyCCf_yntBXQuNnWvw9me0G8Fha1e4JdoVs",
+    authDomain: "qick-admission.firebaseapp.com",
+    projectId: "qick-admission",
+    databaseURL: 'https://qick-admission.firebaseio.com',
+    storageBucket: "qick-admission.appspot.com",
+    messagingSenderId: "205172883092",
+    appId: "1:205172883092:web:ad713f00f90f4c2614fe81",
+    measurementId: "G-Q4Z5XDEEY8",
+  }
 };
 
 /*

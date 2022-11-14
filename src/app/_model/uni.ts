@@ -9,7 +9,8 @@ export interface University {
     vippack: string,
     status: string,
     wardId: string,
-    uniShortName: string
+    uniShortName: string,
+    description: string,
 }
 
 export interface UniSpec {
@@ -23,4 +24,29 @@ export interface UniSpec {
     uni: string,
     addmissionNews: []
     applications: []
+}
+
+export interface UniDetail {
+  id: string,
+  uniName: string,
+  addressNumber: string,
+  phone: string,
+  email: string,
+  websiteUrl: string,
+  avatarUrl: string,
+  coverPhotoUrl: string,
+  createdDate: Date,
+  vippack: string,
+  status: string,
+  uniCode: string,
+  description: string,
+  countSaved: string,
+  wardId: number,
+  ward: string,
+  addmissionCampaigns: [],
+  applications: [],
+  fqas: [],
+  savedUnis: [],
+  universitySpecializations: [],
+  users: []
 }
