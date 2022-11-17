@@ -162,7 +162,7 @@ export class DiscQuestionComponent implements OnInit {
         document
           .querySelector(`.question-item:nth-child(${indexQuestion}`)
           ?.classList.add('active');
-        this.countSubmit++;
+        // this.countSubmit++;
       }
     } else {
       this.postAnswer!.questions.push(question);
