@@ -5,7 +5,7 @@ export interface FirstMail {
 }
 
 export interface Message  {
-    id: string,
+    id: number,
     mailBoxId: string,
     messageContent: string,
     messageType: string,
@@ -16,11 +16,13 @@ export interface Message  {
 export interface MailBox {
     id: string,
     userId: string,
+    userName: string,
+    userAvatarUrl: string,
     uniId: string,
+    uniName: string,
+    uniAvatarUrl: string,
     topic: string,
-    uni: string,
-    user: string,
-    messages: Message[]
+    createDate: Date
 }
 
 export interface ReplyMail {

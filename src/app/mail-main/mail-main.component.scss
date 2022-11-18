@@ -9,6 +9,12 @@ $main-color: #f6f8fc;
   background-color: $main-color;
   max-height: 100vh;
   overflow: hidden;
+  padding: 0 20px;
+  margin-top: 54px;
+}
+
+mat-form-field {
+  width: 85% !important;
 }
 
 mat-sidenav-container {
@@ -32,7 +38,6 @@ mat-list {
 .page-wrapper {
   position: relative;
   width: 100%;
-  margin-top: 60px;
   z-index: 1;
   padding-top: 10px;
 }
@@ -148,6 +153,7 @@ mat-sidenav-content {
   padding: 12px;
   font-weight: 500;
   background-color: #fff;
+  cursor: pointer;
   // font-family: "Google Sans",
   //     Roboto,
   //     RobotoDraft,
@@ -191,7 +197,7 @@ mat-sidenav-content {
   display: flex;
   flex-direction: column;
   width: 600px;
-  height: 616px;
+  // height: 616px;
   position: fixed;
   bottom: 0;
   right: 4%;
@@ -248,8 +254,10 @@ mat-sidenav-content {
 }
 
 .new-email-input {
+  height: 400px;
   position: relative;
   flex: 1;
+  padding: 20px 0;
 }
 
 .new-email-send {
@@ -266,11 +274,7 @@ mat-sidenav-content {
 .detail-section {
   //   position: sticky;
   //   top: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
-  height: 80vh;
 }
 
 .new-email-send i {
@@ -282,24 +286,15 @@ mat-sidenav-content {
   padding: 12px 20px;
   gap: 20px;
 }
+
 //LiemnT code ngu :fix
 .e-toolbar-wrapper {
-  height: 42px !important;
+  height: 40px !important;
 }
+
 //LiemnT code ngu :fix
 .e-rte-content {
-  min-height: 50% !important;
-  padding-bottom: 5% !important;
-}
-
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
+  min-height: 100% !important;
 }
 
 // Message
@@ -309,13 +304,8 @@ mat-sidenav-content {
   flex-direction: column;
   //   overflow-y: scroll;
   overflow: scroll;
-  // height: calc(100vh - 500px);
+  height: calc(100vh - 200px);
   padding: 0px 16px;
-  flex: 1;
-}
-
-.reply-field {
-  width: 100%;
 }
 
 // .message {
@@ -358,7 +348,7 @@ mat-sidenav-content {
 .detail-avatar {
   border-radius: 50%;
   // background-color: #000;
-  background-image: url(./../../assets/img/google-icon.png);
+  background-image: url("../../assets/img/uniAvatarPlaceholder.png");
   object-fit: cover;
   background-position: center;
   background-size: cover;
@@ -369,4 +359,18 @@ mat-sidenav-content {
 .detail-sender-name {
   margin-left: 12px;
   font-weight: 500;
+}
+
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.group-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
