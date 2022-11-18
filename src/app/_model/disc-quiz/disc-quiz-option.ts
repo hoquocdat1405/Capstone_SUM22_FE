@@ -14,4 +14,5 @@ export interface DiscQuizOptionModel {
 export interface DiscPostQuizOption {
   optionId: number;
   optionValue: string;
+  selectedField: boolean;
 }
