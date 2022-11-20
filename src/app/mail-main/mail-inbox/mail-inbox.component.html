@@ -23,10 +23,10 @@
                         <div class="detail-item-header">
                             <div class="detail-user-info">
                                 <div class="detail-avatar">
-                                    <img src="{{mes.messageType === 'RE_USER' ? '' : uniAvatarUrl}}" alt="">
+                                    <img src="{{mes.messageType === 'RE_UNIVERSITY' ? uniAvatarUrl : userProfile?.avatarUrl}}" alt="">
                                 </div>
                                 <div class="detail-sender-name">
-                                    {{mes.messageType === 'RE_USER' ? userName : uniName}}
+                                    {{mes.messageType === 'RE_UNIVERSITY' ? uniName : userName }}
                                 </div>
                             </div>
                             <div class="detail-info">

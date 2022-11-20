@@ -1,3 +1,5 @@
+import { Profile } from './../../_model/User';
+import { AuthService } from './../../_services/auth.service';
 import { ReplyMail, Message } from './../../_model/mail/mail';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MailService } from './../../_services/mail.service';
@@ -19,6 +21,7 @@ export class MailInboxComponent implements OnInit {
   userName: string = "";
   uniName: string = "";
   uniAvatarUrl: string = "";
+  userProfile?: Profile;
   @ViewChild('defaultRTE')
   public componentObject!: RichTextEditorComponent;
 
@@ -28,7 +31,8 @@ export class MailInboxComponent implements OnInit {
     private fb: FormBuilder,
     private mailService: MailService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
 
@@ -39,6 +43,11 @@ export class MailInboxComponent implements OnInit {
     this.uniAvatarUrl = this.route.snapshot.paramMap.get("uniAvatarUrl")!;
     this.reloadMessage();
     // setInterval(() => this.reloadMessage(), 2000)
+    this.authService.getUserProfileObserver().subscribe({
+      next: (data: Profile) => {
+        this.userProfile = data;
+      }
+    })
   }
 
   reloadMessage() {
