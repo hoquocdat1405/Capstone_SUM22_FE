@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { FirstMail, MailBox, Message, ReplyMail } from './../_model/mail/mail';
+import { FirstMail, MailBox } from './../_model/mail/mail';
 import { MailService } from './../_services/mail.service';
 import { startWith, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -9,7 +9,6 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RichTextEditorComponent } from '@syncfusion/ej2-angular-richtexteditor/src';
 import * as alertify from "alertifyjs";
-import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mail-main',
@@ -76,7 +75,7 @@ export class MailMainComponent implements OnInit {
   }
 
   public customToolbar: Object = {
-    items: ['Bold', 'Italic', 'FontName', 'FontSize', '|', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyFull', '|', 'Formats', 'OrderedList', 'UnorderedList',]
+    items: ['Bold', 'Italic', '|', 'Formats', 'OrderedList', 'UnorderedList',]
   }
 
   getNewEmailContent() {

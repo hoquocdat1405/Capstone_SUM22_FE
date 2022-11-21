@@ -14,8 +14,9 @@
             </div>
         </div>
         <div class="main-content">
+            <div *ngIf="!listMailbox" class="no-mail-msg">Hiện chưa có mail nào</div>
             <ng-container *ngFor="let mail of listMailbox">
-                <div class="mail-card seen"
+                <div class="mail-card"
                     (click)="viewDetail(mail.id, mail.uniName, mail.userName, mail.uniAvatarUrl)">
                     <div class="mail-name">{{mail.uniName || "Chưa xác định"}}</div>
                     <div class="mail-subject">{{mail.topic}}</div>

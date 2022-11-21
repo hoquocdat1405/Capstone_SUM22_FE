@@ -10,7 +10,8 @@ $main-color: #f6f8fc;
   max-height: 100vh;
   overflow: hidden;
   padding: 0 20px;
-  margin-top: 54px;
+  padding-top: 54px;
+  min-height: 100vh;
 }
 
 mat-form-field {
@@ -48,6 +49,7 @@ mat-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
 }
 
 .search-form {
@@ -136,8 +138,9 @@ mat-sidenav-content {
 
 .main-content {
   background-color: #fff;
-  padding: 12px;
-  border-radius: 2px;
+  padding: 0 12px;
+  border-radius: 8px;
+  min-height: 85vh;
 }
 
 .main-content .mail-card:first-child {
@@ -149,28 +152,37 @@ mat-sidenav-content {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 12px;
-  font-weight: 500;
   background-color: #fff;
   cursor: pointer;
-  // font-family: "Google Sans",
-  //     Roboto,
-  //     RobotoDraft,
-  //     Helvetica,
-  //     Arial,
-  //     sans-serif;
   font-size: 0.875rem;
-}
-
-.mail-card.seen {
-  background-color: $main-color;
-  font-weight: normal;
+  position: relative;
 }
 
 .mail-card:hover {
   box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0,
     0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+
+.mail-name {
+  width: 300px;
+  font-weight: 500;
+}
+
+.mail-subject {
+  width: calc(100% - 380px);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.mail-time {
+  z-index: 4;
+  position: absolute;
+  right: 0;
+  width: 80px;
+  text-align: end;
+  background-color: #fff;
+  font-weight: 500;
 }
 
 .new-mail-btn {
@@ -373,4 +385,9 @@ mat-sidenav-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.no-mail-msg {
+  font-size: 20px;
+  text-align: center;
 }

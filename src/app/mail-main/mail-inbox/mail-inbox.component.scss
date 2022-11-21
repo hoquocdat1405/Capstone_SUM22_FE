@@ -7,28 +7,10 @@ $main-color: #f6f8fc;
 .page-container {
     width: 100%;
     background-color: $main-color;
-    max-height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     padding: 0 20px;
     margin-top: 12px;
-}
-
-mat-sidenav-container {
-    height: 100vh;
-    background-color: $main-color;
-    padding-bottom: 150px;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-mat-sidenav {
-    width: 250px;
-    background-color: $main-color;
-    border: none;
-}
-
-mat-list {
-    margin-top: 20px;
 }
 
 .page-wrapper {
@@ -255,8 +237,8 @@ mat-sidenav-content {
 .new-email-send {
     position: absolute;
     z-index: 1000;
-    bottom: 76px;
-    right: 60px;
+    bottom: 30px;
+    right: 30px;
     font-size: 20px;
     display: flex;
     justify-content: center;
@@ -266,7 +248,8 @@ mat-sidenav-content {
 .detail-section {
     //   position: sticky;
     //   top: 50px;
-    overflow: hidden;
+    // overflow: hidden;
+    margin-top: 50px;
 }
 
 .new-email-send i {
@@ -286,7 +269,7 @@ mat-sidenav-content {
     flex-direction: column;
     //   overflow-y: scroll;
     overflow: scroll;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 140px);
     padding: 0px 16px;
 }
 
@@ -363,6 +346,7 @@ mat-sidenav-content {
 }
 
 .reply-box {
+    position: relative;
     margin: 40px 0;
 }
 

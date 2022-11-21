@@ -62,7 +62,7 @@ export class MailInboxComponent implements OnInit {
     searchInput: [''],
   });
   public customToolbar: Object = {
-    items: ['Bold', 'Italic', 'FontName', 'FontSize', '|', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyFull', '|', 'Formats', 'OrderedList', 'UnorderedList',]
+    items: ['Bold', 'Italic', '|', 'Formats', 'OrderedList', 'UnorderedList',]
   }
 
   getNewEmailContent() {
