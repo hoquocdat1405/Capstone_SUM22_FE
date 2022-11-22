@@ -14,10 +14,19 @@
             </div>
         </div>
         <div class="main-content">
-            <div *ngIf="!listMailbox" class="no-mail-msg">Hiện chưa có mail nào</div>
-            <ng-container *ngFor="let mail of listMailbox">
-                <div class="mail-card"
-                    (click)="viewDetail(mail.id, mail.uniName, mail.userName, mail.uniAvatarUrl)">
+            <div class="main-content-tab">
+                <div class="my-tab" (click)="sendTabClick()" [ngClass]="{'active': sendTabFlag}">
+                    <mat-icon>send</mat-icon>
+                    <span>Thư đi</span>
+                </div>
+                <div class="my-tab" (click)="receiveTabClick()" [ngClass]="{'active': receiveTabFlag}">
+                    <mat-icon>reply</mat-icon>
+                    <span>Thư đến</span>
+                </div>
+            </div>
+            <div *ngIf="!displayMailbox" class="no-mail-msg">Hiện chưa có mail nào</div>
+            <ng-container *ngFor="let mail of displayMailbox">
+                <div class="mail-card" (click)="viewDetail(mail.id, mail.uniName, mail.userName, mail.uniAvatarUrl)">
                     <div class="mail-name">{{mail.uniName || "Chưa xác định"}}</div>
                     <div class="mail-subject">{{mail.topic}}</div>
                     <div class="mail-time">{{mail.createDate | date: 'dd/MM/yyyy'}}</div>
@@ -44,8 +53,8 @@
                     <span>Đến: </span>
                     <mat-form-field class="example-full-width" appearance="legacy">
                         <mat-label>Chọn tên trường</mat-label>
-                        <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="schoolControl"
-                            [matAutocomplete]="auto" required>
+                        <input type="text" placeholder="Pick one" aria-label="Number" matInput
+                            formControlName="schoolControl" [matAutocomplete]="auto" required>
                         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                                 {{option}}
@@ -76,7 +85,7 @@
         <!-- <form class="example-form" > -->
 
         <!-- </form> -->
-        
+
         <mat-divider></mat-divider>
     </div>
 </div>

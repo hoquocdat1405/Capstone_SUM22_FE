@@ -178,7 +178,7 @@ mat-sidenav-content {
 .mail-time {
   z-index: 4;
   position: absolute;
-  right: 0;
+  right: 12px;
   width: 80px;
   text-align: end;
   background-color: #fff;
@@ -320,24 +320,6 @@ mat-sidenav-content {
   padding: 0px 16px;
 }
 
-// .message {
-//   padding: 8px 12px;
-//   border-radius: 20px;
-//   margin: 20px 12px;
-//   width: fit-content;
-// }
-
-// .receiver-message {
-//   background-color: #e4e6eb;
-//   color: #000;
-// }
-
-// .sender-message {
-//   background-color: #6699cc;
-//   color: #fff;
-//   align-self: flex-end;
-// }
-
 .detail-item {
   width: 100%;
   margin: 20px 0;
@@ -390,4 +372,31 @@ mat-sidenav-content {
 .no-mail-msg {
   font-size: 20px;
   text-align: center;
+}
+
+.main-content-tab {
+  display: flex;
+  align-items: center;
+}
+
+.my-tab {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: 240px;
+  padding: 16px 8px;
+  cursor: pointer;
+}
+
+.my-tab:hover {
+  background-color: rgba(68, 71, 70, 0.059);
+}
+
+.my-tab .mat-icon {
+  margin-right: 12px;
+}
+
+.my-tab.active {
+  color: #0b57d0;
+  border-bottom: solid 2px #0b57d0;
 }

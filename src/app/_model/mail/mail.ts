@@ -1,5 +1,5 @@
 export interface FirstMail {
-    uniId: string,
+    recipientId: string,
     messageContent: string,
     topic: string
 }
@@ -22,7 +22,8 @@ export interface MailBox {
     uniName: string,
     uniAvatarUrl: string,
     topic: string,
-    createDate: Date
+    createDate: Date,
+    type: string
 }
 
 export interface ReplyMail {

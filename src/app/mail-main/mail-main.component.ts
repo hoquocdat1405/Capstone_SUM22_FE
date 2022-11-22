@@ -19,10 +19,13 @@ export class MailMainComponent implements OnInit {
   events: string[] = [];
   opened: boolean = true;
   uniList: University[] = [];
-  // myControl = new FormControl('');
   listMailbox: MailBox[] = [];
   filteredOptions!: Observable<string[]>;
   selectedUniList: University[] = [];
+  sendTabFlag: boolean = true;
+  receiveTabFlag: boolean = false;
+  displayMailbox: MailBox[] = [];
+
   @ViewChild('defaultRTE')
   public componentObject!: RichTextEditorComponent;
   constructor(
@@ -60,8 +63,7 @@ export class MailMainComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     this.selectedUniList = this.uniList.filter(option => option.uniName.toLowerCase().includes(filterValue));
-    console.log(this.uniList.filter(option => option.uniName.toLowerCase().includes(filterValue))
-      .map(uniSearched => uniSearched.uniName))
+    
     return this.uniList.filter(option => option.uniName.toLowerCase().includes(filterValue))
       .map(uniSearched => uniSearched.uniName);
   }
@@ -99,7 +101,7 @@ export class MailMainComponent implements OnInit {
 
     alertify.success("Gửi thành công")
     const firstMail: FirstMail = {
-      uniId: uni.id,
+      recipientId: uni.id,
       messageContent: this.htmlContent,
       topic: this.myForm.get('topic')?.value
     }
@@ -119,8 +121,21 @@ export class MailMainComponent implements OnInit {
     this.mailService.getAllMail().subscribe({
       next: (data: MailBox[]) => {
         this.listMailbox = data;
+        this.displayMailbox = this.listMailbox.filter(x => x.type === "USER");
       }
     })
+  }
+
+  sendTabClick() {
+    this.receiveTabFlag = false;
+    this.sendTabFlag = true;
+    this.displayMailbox = this.listMailbox.filter(x => x.type === "USER")
+  }
+
+  receiveTabClick() {
+    this.receiveTabFlag = true;
+    this.sendTabFlag = false;
+    this.displayMailbox = this.listMailbox.filter(x => x.type === "UNIVERSITY")
   }
 
 }
