@@ -6,7 +6,8 @@
             <div class="search-sub-header">Tra cứu thông tin và tìm kiếm trường đại học tốt nhất dành cho bạn</div>
             <form [formGroup]="search" class="search-form" (ngSubmit)="searchSchool()">
                 <mat-icon>search</mat-icon>
-                <input type="text" class="search-input" placeholder="Nhập tên trường đại học">
+                <input type="text" class="search-input" formControlName="schoolNameCtl"
+                    placeholder="Nhập tên trường đại học">
                 <button type="submit" mat-raised-button>Tìm kiếm</button>
             </form>
         </div>
@@ -16,9 +17,10 @@
     </div>
     <div class="wrapper">
         <div class="header-title">DANH SÁCH CÁC TRƯỜNG ĐẠI HỌC {{isFromMajor ? 'PHÙ HỢP' : 'NỔI BẬT'}}</div>
+        <div class="empty-uni-msg" *ngIf="displayedUniList.length === 0">Không tìm thấy kết quả</div>
         <div class="job-wrapper">
             <ng-container *ngIf="resultUni.length===0">
-                <div class="card-item" *ngFor="let uni of uniList | slice:0:12">
+                <div class="card-item" *ngFor="let uni of displayedUniList | slice:0:12">
                     <div class="job-icon">
                         <div class="img-wrapper">
                             <img src="../../assets/img/uniPlaceholder.png" alt="" class="main-img">
@@ -36,12 +38,13 @@
                     <div class="action-btn">
                         <button mat-raised-button class="view-detail-btn" (click)="viewSchoolDetail(uni.id)">Xem chi
                             tiết</button>
-                        <button mat-raised-button class="view-detail-btn" (click)="considerUni(uni.id)">Quan tâm</button>
+                        <button mat-raised-button class="view-detail-btn" (click)="considerUni(uni.id)">Quan
+                            tâm</button>
                     </div>
                 </div>
             </ng-container>
             <ng-container *ngIf="resultUni.length!==0">
-                <div class="card-item" *ngFor="let uni of resultUni | slice:0:12">
+                <div class="card-item" *ngFor="let uni of displayedUniList | slice:0:12">
                     <div class="job-icon">
                         <div class="img-wrapper">
                             <img src="../../assets/img/uniPlaceholder.png" alt="" class="main-img">
@@ -59,7 +62,8 @@
                     <div class="action-btn">
                         <button mat-raised-button class="view-detail-btn" (click)="viewSchoolDetail(uni.id)">Xem chi
                             tiết</button>
-                        <button mat-raised-button class="view-detail-btn" (click)="considerUni(uni.id)">Quan tâm</button>
+                        <button mat-raised-button class="view-detail-btn" (click)="considerUni(uni.id)">Quan
+                            tâm</button>
                     </div>
                 </div>
             </ng-container>
