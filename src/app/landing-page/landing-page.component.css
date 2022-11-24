@@ -1,17 +1,20 @@
-.page-container{
-  background-color: #FAF9F5;
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
 }
+
 
 .news-section {
   width: auto;
-  background-color: #f1f1f1;
-  margin-top: 3%;
-  padding-bottom: 2%;
+  padding:0 100px;
+  margin-bottom:50px;
 }
 
 .section-header {
-  position: relative;
-  padding-top: 3%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .section-header .view-all-link {
@@ -21,48 +24,83 @@
 
 .section-header h3 {
   font-family: "Open Sans Bold";
-  font-size: 17;
+  font-size: 30px;
   color: #5c5c5c;
 }
 
-.news-container {
-  padding-top: 2%;
-}
 
 .news-left {
-  width: 62%;
+  width: 49%;
 }
 
 .news-right {
-  margin-left: -2%;
-  width: 32%;
-  
+  width: 49%;
 }
 
-.news-right .news-item {
-  margin-bottom: 5%;
-}
-.edu-news-container,
-.news-container,
-.school-rank-container {
-  margin: 1% 0;
+.news-right{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .school-view-rank-section {
   width: 100%;
-  background-color: #f1f1f1;
-  padding-bottom: 2%;
-}
-
-.school-rank-container {
-  margin: 2%;
 }
 
 .edu-news-item {
   margin: 5px;
-  margin-top: 2%;
   width: 31%;
 }
+
+.horizontal-bar{
+  height: 6px;
+  width:35%;
+  border: 1px solid #e2e2e2;
+  border-left:0px;
+  border-right:0px;
+}
+
+.horizontal-bar2{
+  height:1px;
+  max-width:200px;
+  border-top:3px solid #fec96b;
+  margin:0 auto;
+  margin-bottom:50px;
+}
+
+.st0{
+  opacity: .12;
+}
+
+.st1{
+  opacity: .18;
+
+}
+
+.st2{
+  opacity: .24;
+}.st3{
+  opacity: .3;
+}
+
+.news-container{
+  display:flex;
+  gap:10px;
+}
+
+.edu-news-section{
+  background-image: linear-gradient(180deg, #644b95 46%,#393faa 100%);
+}
+
+.edu-news-container{
+  display:flex;
+    justify-content: space-between;
+}
+
+.edu-news-top{
+  padding:0 100px;
+}
+
 
 @media (max-width:500px){
   .news-container{
@@ -78,24 +116,19 @@
     width:100%;
     margin-top:10px;
     gap:10px;
-
   }
 
   .edu-news-container{
     flex-wrap: wrap;
     gap:10px;
-
   }
 
   .edu-news-item{
     width:50%;
     margin:10px 0;
-    padding:0;
   }
 
   .news-img{
-    margin:0;
-    padding:0;
     width:100%;
   }
 
@@ -128,12 +161,10 @@
   .edu-news-item{
     width:50%;
     margin:10px 0;
-    padding:0;
   }
 
   .container{
-    margin:0;
-    padding:0;
+
     width:100%;
   }
 

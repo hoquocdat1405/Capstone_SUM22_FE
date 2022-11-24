@@ -41,10 +41,6 @@
   line-height: 35px;
 }
 
-.header-banner-right {
-  width: 30%;
-}
-
 .header-banner-img {
   width: 300px;
 }
@@ -78,8 +74,21 @@ app-disc-question {
   width: 60%;
 }
 
-@media (max-width: 1000px) {
-  app-disc-question {
+@media (max-width: 900px) {
+  .header-banner {
+    flex-direction: column;
+  }
+
+  .header-banner-left {
+    order: 2;
     width: 90%;
+    text-align: center;
+  }
+  .header-banner-right {
+    order: 1;
+  }
+
+  .horizontal-bar {
+    margin: 10px auto;
   }
 }

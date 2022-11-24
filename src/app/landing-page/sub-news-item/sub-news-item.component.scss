@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.news-main {
+  display: flex;
+  gap: 20px;
+}
+
+.news-img {
+  width: 150px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.title:hover {
+  color: #6796bf;
+  cursor: pointer;
+}
+
+.brief {
+  font-size: 14px;
+}
+
+.hash-tag {
+  padding: 5px 15px;
+  background-color: #4747b3;
+  color: #fff;
+  border-radius: 5px;
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+.hash-tag:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

@@ -1,10 +1,10 @@
-export interface DiscQuizOptionModel {
+export interface BigFiveQuizOptionModel {
   id: string;
   optionContent: string;
   value: string;
 }
 
-export interface DiscPostQuizOption {
+export interface BigFivePostQuizOption {
   optionId: number;
   optionValue: string;
   selectedField: boolean;
