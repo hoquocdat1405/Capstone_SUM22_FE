@@ -1,20 +1,11 @@
 <div class="row slide">
-  <div id="left" class="col-md-6 item-info left">
-    <!-- <div id="category" class="col-md-6">
-      <div class="d-flex justify-content-center">
-        <a href="#" class="" id="category-img">
-          <img src="../assets/logo-qick.png" alt="mbti" />
-        </a>
-        <div class="" >
-          <h5 id="category-name">Trắc nghiệm tính cách</h5>
-          <span id="category-des">phân tích và xác định xu hướng tính cách của bạn</span>
-        </div>
-      </div>
-    </div> -->
+  <div id="left" class="col-md-5 item-img">
+    <img class="quiz-img" src="{{ img }}" alt="quiz" />
+  </div>
+  <div id="right" class="col-md-6 item-info left">
     <div class="left-info">
       <div id="quiz-info" class="">
-        <h4 class="col-md-8 col-sm-10">{{ name }}</h4>
-        <!-- <span class="col-md-8 description">{{ des }} </span> -->
+        <h4 class="title col-md-8 col-sm-10">{{ name }}</h4>
         <span class="description">{{ des }} </span>
         <div id="options" class="d-flex justify-content-start options">
           <button type="button" routerLink="/{{shorthand}}-quiz-detail" class="btn option-btn">Chi tiết</button>
@@ -23,8 +14,5 @@
       </div>
 
     </div>
-  </div>
-  <div id="right" class="col-md-6 item-img">
-    <img class="quiz-img" src="{{ img }}" alt="quiz" />
   </div>
 </div>

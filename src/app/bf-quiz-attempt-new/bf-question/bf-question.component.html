@@ -11,28 +11,13 @@
     <div class="question-container">
       <div class="question" *ngFor="let question of questionSlice;index as i">
         <div class="question-text-box">
-          <div class="question-text">{{question.questionText}}</div>
+          <div class="question-text">{{question.questionContent}}</div>
+          <param id="{{question.id}}" value="{{question.value}}">
         </div>
         <div class="character-level-box">
-          <label class="input-container">
-            <input class="level" type="radio" value="1">
+          <label class="input-container" *ngFor="let option of questionSlice[i].options;index as j">
+            <input id="{{option.id}}" class="level" type="radio" value="{{option.value}}">
             <span class="checkmark" (click)="chooseAnswer(i,$event,'1')"></span>
-          </label>
-          <label class="input-container">
-            <input class="level" type="radio" value="2">
-            <span class="checkmark" (click)="chooseAnswer(i,$event,'2')"></span>
-          </label>
-          <label class="input-container">
-            <input class="level" type="radio" value="3">
-            <span class="checkmark" (click)="chooseAnswer(i,$event,'3')"></span>
-          </label>
-          <label class="input-container">
-            <input class="level" type="radio" value="4">
-            <span class="checkmark" (click)="chooseAnswer(i,$event,'4')"></span>
-          </label>
-          <label class="input-container">
-            <input class="level" type="radio" value="5">
-            <span class="checkmark" (click)="chooseAnswer(i,$event,'5')"></span>
           </label>
         </div>
       </div>
@@ -41,6 +26,7 @@
   <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
       class="end-index">{{totalPage}}</span>
   </p>
-  <mat-paginator [length]="questions.length" [pageSize]="10" aria-label=" Select page" (page)="changePage($event)">
+  <mat-paginator [length]="quizCollections!.questions.length" [pageSize]="10" aria-label=" Select page"
+    (page)="changePage($event)">
   </mat-paginator>
 </div>

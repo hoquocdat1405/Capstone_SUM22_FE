@@ -1,14 +1,18 @@
 <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
-  <div class="carousel-indicators" >
-
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+      aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+      aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+      aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner" >
+  <div class="carousel-inner">
     <div class="carousel-item" data-bs-interval="3000" *ngFor="let quiz of quizes">
-      <app-quiz-carousel-item [name]="quiz.name" [description]="quiz.description" [imgSrc]="quiz.imgSrc" [shorthand]="quiz.shorthand"></app-quiz-carousel-item>    
+      <app-quiz-carousel-item [name]="quiz.name" [description]="quiz.description" [imgSrc]="quiz.imgSrc"
+        [shorthand]="quiz.shorthand"></app-quiz-carousel-item>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

@@ -32,6 +32,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExpansionPanelComponent } from './holland-quiz-detail-page/expansion-panel/expansion-panel.component';
 import { CarouselComponent } from './landing-page/carousel/carousel.component';
 import { NewsItemComponent } from './landing-page/news-item/news-item.component';
+import { SubNewsItemComponent } from './landing-page/sub-news-item/sub-news-item.component';
 import { EduNewsItemComponent } from './landing-page/edu-news-item/edu-news-item.component';
 import { TypeCardComponent } from './mbti-quiz-detail-page/type-card/type-card.component';
 import { TypeBubbleComponent } from './disc-quiz-detail-page/type-bubble/type-bubble.component';
@@ -126,8 +127,11 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { MailMainComponent } from './mail-main/mail-main.component';
 import { MailInboxComponent } from './mail-main/mail-inbox/mail-inbox.component';
 import {
-  RichTextEditorModule, ToolbarService,
-  LinkService, ImageService, HtmlEditorService
+  RichTextEditorModule,
+  ToolbarService,
+  LinkService,
+  ImageService,
+  HtmlEditorService,
 } from '@syncfusion/ej2-angular-richtexteditor';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
@@ -219,7 +223,8 @@ export function tokenGetter() {
     SpinnerComponent,
     MailMainComponent,
     MailInboxComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SubNewsItemComponent,
   ],
   imports: [
     FormsModule,
@@ -236,7 +241,7 @@ export function tokenGetter() {
     RichTextEditorModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
   providers: [
     AuthService,
@@ -249,4 +254,4 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
