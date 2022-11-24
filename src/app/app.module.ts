@@ -129,6 +129,7 @@ import {
   RichTextEditorModule, ToolbarService,
   LinkService, ImageService, HtmlEditorService
 } from '@syncfusion/ej2-angular-richtexteditor';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -218,6 +219,7 @@ export function tokenGetter() {
     SpinnerComponent,
     MailMainComponent,
     MailInboxComponent,
+    PageNotFoundComponent
   ],
   imports: [
     FormsModule,

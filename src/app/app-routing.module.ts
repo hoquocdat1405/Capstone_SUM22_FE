@@ -54,10 +54,12 @@ import { HollandQuizResultDetailPageComponent } from './holland-quiz-result-deta
 import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.component';
 import { SchoolInfoPageComponent } from './school-info-page/school-info-page.component';
 import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+
 
   // { path: 'home', component: LandingPageComponent},
   { path: 'home', component: LandingPageComponent },
@@ -120,28 +122,28 @@ const routes: Routes = [
   { path: 'bf-result', component: BfQuizResultDetailPageComponent },
 
   //Additional links
-  { path: 'astrological-page', component: TwelveAstrologicalPageComponent },
-  { path: 'tarot-page', component: TarotPageComponent },
-  { path: 'tarot-list-page', component: TarotListPageComponent },
-  { path: 'new-tarot-page', component: NewTarotPageComponent },
-  {
-    path: 'astrological-detail-page',
-    component: TwelveAstrologicalPageDetailComponent,
-  },
-  { path: 'random-tarot-page', component: NewTarotDrawCardPageComponent },
-  { path: 'cf-astrology-page', component: CfAstrologyPageComponent },
-  { path: 'mona-astrology-page', component: MonaAstrologicalPageComponent },
+  // { path: 'astrological-page', component: TwelveAstrologicalPageComponent },
+  // { path: 'tarot-page', component: TarotPageComponent },
+  // { path: 'tarot-list-page', component: TarotListPageComponent },
+  // { path: 'new-tarot-page', component: NewTarotPageComponent },
+  // {
+  //   path: 'astrological-detail-page',
+  //   component: TwelveAstrologicalPageDetailComponent,
+  // },
+  // { path: 'random-tarot-page', component: NewTarotDrawCardPageComponent },
+  // { path: 'cf-astrology-page', component: CfAstrologyPageComponent },
+  // { path: 'mona-astrology-page', component: MonaAstrologicalPageComponent },
 
   //Major links
   { path: 'major', component: MajorDetailPageComponent },
   { path: 'major-list', component: MajorListComponent },
 
   //Staff links
-  {
-    path: 'staff',
-    loadChildren: () =>
-      import('./staff/staff.module').then((m) => m.StaffModule),
-  },
+  // {
+  //   path: 'staff',
+  //   loadChildren: () =>
+  //     import('./staff/staff.module').then((m) => m.StaffModule),
+  // },
 
   //Major
   { path: 'major-info', component: MajorInfoComponent },
@@ -151,10 +153,10 @@ const routes: Routes = [
 
   { path: 'submit-application', component: HandinUniAppComponent },
 
-  {
-    path: 'psy',
-    loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),
-  },
+  // {
+  //   path: 'psy',
+  //   loadChildren: () => import('./psy/psy.module').then((m) => m.PsyModule),
+  // },
   //Job detail
   {
     path: 'job-detail',
@@ -167,7 +169,11 @@ const routes: Routes = [
   { path: 'admission-list', component: AdmissionListComponent },
   { path: 'school-list', component: SchoolListComponent },
   { path: 'mail', component: MailMainComponent },
-  { path: 'mail-inbox', component: MailInboxComponent }
+  { path: 'mail-inbox', component: MailInboxComponent },
+
+
+
+  { path: '**', component:PageNotFoundComponent },
 ];
 
 @NgModule({
