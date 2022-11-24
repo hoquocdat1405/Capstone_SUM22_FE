@@ -9,7 +9,7 @@
       <div class="background-blur">
         <i class="add-icon fa fa-plus" aria-hidden="true"></i>
       </div>
-      <img class="profile-img2" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="">
+      <img class="profile-img2" src="{{ userProfile?.avatarUrl || 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }}" alt="">
     </div>
 
     <input type="file" class="img-upload">
@@ -24,7 +24,7 @@
         <mat-slide-toggle color="primary" [(ngModel)]="isChecked" (change)="receiveInfo()">Nhận thông tin tư vấn từ
           trường Đại học</mat-slide-toggle>
         <div class="hover-info">
-          Bạn sẽ nhận được tư vấn từ những trường Đại học hàng đầu tại Việt Nam
+          Các trường Đại học sẽ có thể xem thông tin liên hệ và hồ sơ học vấn của bạn.
         </div>
       </div>
     </div>

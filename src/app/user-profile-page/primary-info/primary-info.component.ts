@@ -32,6 +32,7 @@ export class PrimaryInfoComponent implements OnInit {
     addressNumber: '', //
     credentialFrontImgUrl: '', //chua co
     credentialBackImgUrl: '', //chua co
+    wardId: 0
   };
   selectedProvince?: number;
   selectedDistrict?: number;
@@ -77,6 +78,7 @@ export class PrimaryInfoComponent implements OnInit {
     var dateOfBirth = document.querySelector('.input-birth') as any;
     var phone = document.querySelector('.input-phone') as HTMLInputElement;
     var provinceId = document.getElementById('province') as HTMLSelectElement;
+    var wardId = document.getElementById('ward') as HTMLSelectElement;
     var addressNumber = document.querySelector(
       '.input-address'
     ) as HTMLInputElement;
@@ -95,6 +97,7 @@ export class PrimaryInfoComponent implements OnInit {
     this.userUpdateProfile!.addressNumber = addressNumber.value;
     this.userUpdateProfile!.credentialFrontImgUrl = '';
     this.userUpdateProfile!.credentialBackImgUrl = '';
+    this.userUpdateProfile!.wardId = +wardId.value;
     this.profileServ.updateProfile(this.userUpdateProfile).subscribe({
       next: () => {
         alertify.success('Cập nhật thành công');

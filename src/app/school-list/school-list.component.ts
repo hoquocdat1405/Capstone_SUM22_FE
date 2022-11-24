@@ -18,6 +18,7 @@ export class SchoolListComponent implements OnInit {
   resultUni: University[] = [];
   idMajor?: string;
   isFromMajor: boolean = false;
+  displayedUniList: University[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -32,14 +33,6 @@ export class SchoolListComponent implements OnInit {
     alertify.set('notifier', 'position', 'top-center');
     alertify.set('notifier', 'delay', 3);
     this.isFromNav = this.route.snapshot.paramMap.get('fromNav') ? true : false;
-    this.uniService.getAllUniversity().subscribe({
-      next: (data: University[]) => {
-        this.uniList = data;
-      },
-      error: () => {
-        alertify.error('Something error!');
-      },
-    });
     if (!(this.isFromNav || this.authService.getDecodedToken())) {
       alertify.error('Bạn cần đăng nhập để thực hiện chức năng này');
       this._location.back();
@@ -49,25 +42,45 @@ export class SchoolListComponent implements OnInit {
     if(this.idMajor) {
       this.getSchoolList(this.idMajor);
       this.isFromMajor = true;
+      console.log("i'm here")
+    } else {
+      this.uniService.getAllUniversity().subscribe({
+        next: (data: University[]) => {
+          this.uniList = data;
+          this.displayedUniList = this.uniList;
+        },
+        error: () => {
+          alertify.error('Something error!');
+        },
+      });
     }
   }
 
   getSchoolList(id: string) {
     this.uniService.getUniversityByMajor(id).subscribe((data) => {
       this.resultUni = data;
+      this.displayedUniList = this.resultUni;
     });
   }
 
   search = this.fb.group({
-    searchInput: [''],
+    schoolNameCtl: [''],
   });
 
-  get searchForm(): FormGroup {
-    return this.search.controls as unknown as FormGroup;
+  get f() {
+    return this.search.controls;
   }
 
+  // get searchForm(): FormGroup {
+  //   return this.search.controls as unknown as FormGroup;
+  // }
+
   searchSchool() {
-    console.log('Search');
+    if(this.resultUni.length > 0) {
+      this.displayedUniList = this.resultUni.filter(uni => uni.uniName.toLowerCase().includes((this.f['schoolNameCtl'].value as string)))
+    } else {
+      this.displayedUniList = this.uniList.filter(uni => uni.uniName.toLowerCase().includes((this.f['schoolNameCtl'].value as string)))
+    }
   }
 
   viewSchoolDetail(uniId: string) {

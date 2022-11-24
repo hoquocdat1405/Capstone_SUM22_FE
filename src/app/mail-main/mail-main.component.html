@@ -2,9 +2,9 @@
 <div class="page-container">
     <div class="page-wrapper">
         <div class="search-section">
-            <div class="hamburger" (click)="opened=!opened">
+            <!-- <div class="hamburger" (click)="opened=!opened">
                 <i class="fa fa-bars"></i>
-            </div>
+            </div> -->
             <form [formGroup]="search" class="search-form" (ngSubmit)="searchSchool()">
                 <mat-icon>search</mat-icon>
                 <input type="text" class="search-input" placeholder="Tìm kiếm mail">
@@ -13,79 +13,30 @@
                 <!-- Search's Toolbar -->
             </div>
         </div>
-
-        <mat-sidenav-container>
-            <mat-sidenav [(opened)]="opened" mode="side">
-                <mat-list>
-                    <mat-list-item class="link-item">
-                        <a>
-                            <i class="fa fa-envelope"></i>
-                            <span>Tất cả thư</span>
-                        </a>
-                    </mat-list-item>
-                </mat-list>
-            </mat-sidenav>
-            <mat-sidenav-content>
-                <div class="main-content" *ngIf="!isViewingDetail">
-                    <ng-container *ngFor="let mail of listMailBox">
-                        <div class="mail-card seen" (click)="viewMailDetail(mail.id)">
-                            <div class="mail-name">{{mail.uniId}}</div>
-                            <div class="mail-subject">{{mail.messages}}</div>
-                            <div class="mail-time">{{mail.topic}}</div>
-                        </div>
-                        <mat-divider></mat-divider>
-                    </ng-container>
+        <div class="main-content">
+            <div class="main-content-tab">
+                <div class="my-tab" (click)="sendTabClick()" [ngClass]="{'active': sendTabFlag}">
+                    <mat-icon>send</mat-icon>
+                    <span>Thư đi</span>
                 </div>
-                <div class="detail-section" *ngIf="isViewingDetail">
-                    <div class="detail-toolbar">
-                        <mat-icon matTooltip="Lùi về" (click)="isViewingDetail = !isViewingDetail">keyboard_arrow_left
-                        </mat-icon>
-                        <mat-icon matTooltip="Đánh dấu chưa xem">email</mat-icon>
-                        <mat-icon matTooltip="Xóa mail">delete</mat-icon>
-                    </div>
-                    <div id="detail-content">
-                        <mat-divider></mat-divider>
-                        <ng-container *ngFor="let message of messageList">
-                            <div class="detail-item">
-                                <div class="detail-item-header">
-                                    <div class="detail-user-info">
-                                        <div class="detail-avatar">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="detail-sender-name">
-                                            {{message.mailBoxId}}
-                                        </div>
-                                    </div>
-                                    <div class="detail-info">
-                                        <div class="detail-info-time">
-                                            {{message.createDate | date: 'dd/MM/yyyy hh:mm a'}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="detail-body" [innerHtml]="message.messageContent">
-                                </div>
-                            </div>
-                            <mat-divider></mat-divider>
-                        </ng-container>
-                    </div>
-                    <div class="reply-field">
-                        <ejs-richtexteditor [toolbarSettings]="customToolbar" #replyRTE id='replyRTE' height="200%">
-                            <ng-template #valueTemplate>
-                                <p></p>
-                            </ng-template>
-                        </ejs-richtexteditor>
-                    </div>
+                <div class="my-tab" (click)="receiveTabClick()" [ngClass]="{'active': receiveTabFlag}">
+                    <mat-icon>reply</mat-icon>
+                    <span>Thư đến</span>
                 </div>
-            </mat-sidenav-content>
-        </mat-sidenav-container>
+            </div>
+            <div *ngIf="!displayMailbox" class="no-mail-msg">Hiện chưa có mail nào</div>
+            <ng-container *ngFor="let mail of displayMailbox">
+                <div class="mail-card" (click)="viewDetail(mail.id, mail.uniName, mail.userName, mail.uniAvatarUrl)">
+                    <div class="mail-name">{{mail.uniName || "Chưa xác định"}}</div>
+                    <div class="mail-subject">{{mail.topic}}</div>
+                    <div class="mail-time">{{mail.createDate | date: 'dd/MM/yyyy'}}</div>
+                </div>
+                <mat-divider></mat-divider>
+            </ng-container>
+        </div>
         <button mat-raised-button class="new-mail-btn" (click)="isShowNewEmailPopup = !isShowNewEmailPopup"
-            [ngClass]="{'hide': isShowNewEmailPopup || isViewingDetail}">
+            [ngClass]="{'hide': isShowNewEmailPopup}">
             <mat-icon>edit</mat-icon> Soạn thư
-        </button>
-        <button mat-raised-button class="new-mail-btn" 
-            [ngClass]="{'hide': !isViewingDetail}"
-            (click)="sendReply()">
-            <mat-icon>edit</mat-icon> Gửi
         </button>
     </div>
     <div class="new-mail-popup" [ngClass]="{'hide': !isShowNewEmailPopup}">
@@ -96,44 +47,45 @@
                 <i class="fa fa-times" (click)="isShowNewEmailPopup = !isShowNewEmailPopup"></i>
             </div>
         </div>
-        <!-- <div class="new-mail-receiver">
-            <span>Đến</span>
-            <input type="text" class="receiver-input">
-        </div> -->
         <div class="new-mail-receiver">
-            <span>Đến: </span>
-            <form class="example-form">
-                <mat-form-field class="example-full-width" appearance="legacy">
-                    <mat-label>Chọn tên trường</mat-label>
-                    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
-                        [matAutocomplete]="auto">
-                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            {{option}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </form>
-        </div>
-        <div class="new-mail-receiver">
-            <span>Topic: </span>
             <form class="example-form" [formGroup]="myForm">
-                <mat-form-field class="example-full-width" appearance="legacy">
-                    <input matInput placeholder="Nhập chủ đề" formControlName="topic">
-                </mat-form-field>
+                <div class="group-form">
+                    <span>Đến: </span>
+                    <mat-form-field class="example-full-width" appearance="legacy">
+                        <mat-label>Chọn tên trường</mat-label>
+                        <input type="text" placeholder="Pick one" aria-label="Number" matInput
+                            formControlName="schoolControl" [matAutocomplete]="auto" required>
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <div class="group-form">
+                    <span>Topic: </span>
+                    <mat-form-field class="example-full-width" appearance="legacy">
+                        <input matInput placeholder="Nhập chủ đề" formControlName="topic" required>
+                    </mat-form-field>
+                </div>
+                <div class="new-email-input">
+                    <ejs-richtexteditor [toolbarSettings]="customToolbar" #defaultRTE id='defaultRTE' height="100%">
+                        <ng-template #valueTemplate>
+                            <p></p>
+                        </ng-template>
+                    </ejs-richtexteditor>
+                    <button id='submit-new-email' ej-button mat-fab color="primary" class="new-email-send"
+                        (click)="getNewEmailContent()">
+                        <i class="fa fa-paper-plane"></i>
+                    </button>
+                </div>
             </form>
         </div>
-        <div class="new-email-input">
-            <ejs-richtexteditor [toolbarSettings]="customToolbar" #defaultRTE id='defaultRTE' height="200%">
-                <ng-template #valueTemplate>
-                    <p></p>
-                </ng-template>
-            </ejs-richtexteditor>
-            <button id='submit-new-email' ej-button mat-fab color="primary" class="new-email-send"
-                (click)="getNewEmailContent()">
-                <i class="fa fa-paper-plane"></i>
-            </button>
-        </div>
+
+        <!-- <form class="example-form" > -->
+
+        <!-- </form> -->
+
         <mat-divider></mat-divider>
     </div>
 </div>

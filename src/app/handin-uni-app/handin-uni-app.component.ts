@@ -231,14 +231,14 @@ export class HandinUniAppComponent implements OnInit {
     this.selectedFiles = undefined;
 
     this.currentFileUpload = new FileUpload(file!);
-    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-      percentage => {
-        this.percentage = Math.round(percentage);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    // this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+    //   percentage => {
+    //     this.percentage = Math.round(percentage);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
   }
 
   submitAll() {

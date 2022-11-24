@@ -9,6 +9,13 @@ $main-color: #f6f8fc;
   background-color: $main-color;
   max-height: 100vh;
   overflow: hidden;
+  padding: 0 20px;
+  padding-top: 54px;
+  min-height: 100vh;
+}
+
+mat-form-field {
+  width: 85% !important;
 }
 
 mat-sidenav-container {
@@ -32,7 +39,6 @@ mat-list {
 .page-wrapper {
   position: relative;
   width: 100%;
-  margin-top: 60px;
   z-index: 1;
   padding-top: 10px;
 }
@@ -43,6 +49,7 @@ mat-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
 }
 
 .search-form {
@@ -131,8 +138,9 @@ mat-sidenav-content {
 
 .main-content {
   background-color: #fff;
-  padding: 12px;
-  border-radius: 2px;
+  padding: 0 12px;
+  border-radius: 8px;
+  min-height: 85vh;
 }
 
 .main-content .mail-card:first-child {
@@ -144,27 +152,37 @@ mat-sidenav-content {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 12px;
-  font-weight: 500;
   background-color: #fff;
-  // font-family: "Google Sans",
-  //     Roboto,
-  //     RobotoDraft,
-  //     Helvetica,
-  //     Arial,
-  //     sans-serif;
+  cursor: pointer;
   font-size: 0.875rem;
-}
-
-.mail-card.seen {
-  background-color: $main-color;
-  font-weight: normal;
+  position: relative;
 }
 
 .mail-card:hover {
   box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0,
     0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+
+.mail-name {
+  width: 300px;
+  font-weight: 500;
+}
+
+.mail-subject {
+  width: calc(100% - 380px);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.mail-time {
+  z-index: 4;
+  position: absolute;
+  right: 12px;
+  width: 80px;
+  text-align: end;
+  background-color: #fff;
+  font-weight: 500;
 }
 
 .new-mail-btn {
@@ -191,7 +209,7 @@ mat-sidenav-content {
   display: flex;
   flex-direction: column;
   width: 600px;
-  height: 616px;
+  // height: 616px;
   position: fixed;
   bottom: 0;
   right: 4%;
@@ -248,8 +266,10 @@ mat-sidenav-content {
 }
 
 .new-email-input {
+  height: 400px;
   position: relative;
   flex: 1;
+  padding: 20px 0;
 }
 
 .new-email-send {
@@ -266,11 +286,7 @@ mat-sidenav-content {
 .detail-section {
   //   position: sticky;
   //   top: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
-  height: 80vh;
 }
 
 .new-email-send i {
@@ -282,24 +298,15 @@ mat-sidenav-content {
   padding: 12px 20px;
   gap: 20px;
 }
+
 //LiemnT code ngu :fix
 .e-toolbar-wrapper {
-  height: 42px !important;
+  height: 40px !important;
 }
+
 //LiemnT code ngu :fix
 .e-rte-content {
-  min-height: 50% !important;
-  padding-bottom: 5% !important;
-}
-
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
+  min-height: 100% !important;
 }
 
 // Message
@@ -309,32 +316,9 @@ mat-sidenav-content {
   flex-direction: column;
   //   overflow-y: scroll;
   overflow: scroll;
-  // height: calc(100vh - 500px);
+  height: calc(100vh - 200px);
   padding: 0px 16px;
-  flex: 1;
 }
-
-.reply-field {
-  width: 100%;
-}
-
-// .message {
-//   padding: 8px 12px;
-//   border-radius: 20px;
-//   margin: 20px 12px;
-//   width: fit-content;
-// }
-
-// .receiver-message {
-//   background-color: #e4e6eb;
-//   color: #000;
-// }
-
-// .sender-message {
-//   background-color: #6699cc;
-//   color: #fff;
-//   align-self: flex-end;
-// }
 
 .detail-item {
   width: 100%;
@@ -358,7 +342,7 @@ mat-sidenav-content {
 .detail-avatar {
   border-radius: 50%;
   // background-color: #000;
-  background-image: url(./../../assets/img/google-icon.png);
+  background-image: url("../../assets/img/uniAvatarPlaceholder.png");
   object-fit: cover;
   background-position: center;
   background-size: cover;
@@ -369,4 +353,50 @@ mat-sidenav-content {
 .detail-sender-name {
   margin-left: 12px;
   font-weight: 500;
+}
+
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.group-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.no-mail-msg {
+  font-size: 20px;
+  text-align: center;
+}
+
+.main-content-tab {
+  display: flex;
+  align-items: center;
+}
+
+.my-tab {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: 240px;
+  padding: 16px 8px;
+  cursor: pointer;
+}
+
+.my-tab:hover {
+  background-color: rgba(68, 71, 70, 0.059);
+}
+
+.my-tab .mat-icon {
+  margin-right: 12px;
+}
+
+.my-tab.active {
+  color: #0b57d0;
+  border-bottom: solid 2px #0b57d0;
 }

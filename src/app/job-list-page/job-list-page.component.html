@@ -5,13 +5,53 @@
       <p class="search-title">Khám phá các ngành nghề phù hợp với bản thân</p>
       <p class="search-description">Tra cứu thông tin và chọn ngành nghề phù hợp nhất với bạn</p>
       <div class="search-row">
-        <form class="search-form" action="">
-          <div class="search">
+        <form class="search-form" action="" [formGroup]="myForm" (ngSubmit)="searchJob()">
+          <!-- <div class="search">
             <input type="text" class="search-input" placeholder="Nhập tên ngành nghề">
             <i class="search-icon fa fa-search" aria-hidden="true"></i>
-          </div>
+          </div> -->
+          <!-- <div class="search-block"> -->
+            <!-- <div class="search-block-title">Theo tên nghề nghiệp</div> -->
+            <mat-form-field class='search' appearance="standard">
+              <mat-label>Nhập tên nghề nghiệp</mat-label>
+              <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="jobName"
+                [matAutocomplete]="auto1">
+              <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          <!-- </div> -->
 
-          <div class="drop-down">
+          <!-- <div class="search-block">
+            <div class="search-block-title">
+              Theo chuyên ngành
+            </div>
+            <mat-form-field class='search' appearance="fill">
+              <mat-label>Chọn tên ngành</mat-label>
+              <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="majorName"
+                [matAutocomplete]="auto2">
+              <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class='search' appearance="fill">
+              <mat-label>Chọn tên chuyên ngành</mat-label>
+              <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="specName"
+                [matAutocomplete]="auto3">
+              <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div> -->
+          
+
+          <!-- <div class="drop-down">
             <select class="major-dropdown">
               <option value="volvo">Chọn ngành</option>
               <option value="saab">Công nghệ thông tin</option>
@@ -24,8 +64,8 @@
               <option value="saab">Kỹ thuật phần mềm</option>
               <option value="mercedes">An toàn thông tin</option>
             </select>
-          </div>
-          <input type="button" value="Tìm kiếm" class="btn-search">
+          </div> -->
+          <button mat-raised-button color="primary" class="btn-search">Tìm kiếm</button>
 
         </form>
       </div>
@@ -39,7 +79,7 @@
       <div class="text-container">
         <div class="header-title">Danh sách các ngành nghề</div>
         <div class="job-wrapper">
-          <div class="card-item" *ngFor="let job of jobList | slice:0:12">
+          <div class="card-item" *ngFor="let job of displayedJobList | slice:0:12">
             <div class="job-icon">
               <img src="{{job.imageUrl}}" alt="">
             </div>

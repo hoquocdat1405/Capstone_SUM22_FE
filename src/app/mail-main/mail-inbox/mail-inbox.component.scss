@@ -1,0 +1,356 @@
+$main-color: #f6f8fc;
+
+.hide {
+    display: none !important;
+}
+
+.page-container {
+    width: 100%;
+    background-color: $main-color;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 0 20px;
+    margin-top: 12px;
+}
+
+.page-wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    // padding-top: 10px;
+}
+
+.search-section {
+    position: relative;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-form {
+    background-color: #eaf1fb;
+    display: inline-block;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.search-form .mat-icon {
+    scale: 1.2;
+    margin: 8px;
+    margin-right: 0;
+}
+
+.search-input {
+    background-color: #eaf1fb;
+    margin-left: 12px;
+    padding: 8px 0;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 680px;
+}
+
+.search-form button {
+    background-color: #3b52f5;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.tool-bar {
+    width: 300px;
+    height: 50px;
+}
+
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.example-events {
+    width: 300px;
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #555;
+}
+
+.hamburger {
+    padding: 12px 24px;
+    font-size: 24px;
+    width: 200px;
+}
+
+.link-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.link-item a i {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+mat-sidenav-content {
+    border-radius: 16px;
+    background-color: #fff;
+    margin: 4px;
+    margin-top: 12px;
+}
+
+.mat-list-item {
+    color: #3b52f5;
+}
+
+.main-content {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 2px;
+}
+
+.main-content .mail-card:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.mail-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    font-weight: 500;
+    background-color: #fff;
+    // font-family: "Google Sans",
+    //     Roboto,
+    //     RobotoDraft,
+    //     Helvetica,
+    //     Arial,
+    //     sans-serif;
+    font-size: 0.875rem;
+}
+
+.mail-card.seen {
+    background-color: $main-color;
+    font-weight: normal;
+}
+
+.mail-card:hover {
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0,
+        0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+
+.new-mail-btn {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    background-color: #c2e7ff;
+    z-index: 1000;
+    color: #000;
+    border-radius: 16px;
+    padding: 12px 16px;
+    box-shadow: 0 1px 2px 0 #0000, 0 1px 3px 1px #0000;
+}
+
+.new-mail-btn .mat-icon {
+    margin-right: 4px;
+}
+
+.new-mail-btn:hover {
+    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
+}
+
+.new-mail-popup {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 616px;
+    position: fixed;
+    bottom: 0;
+    right: 4%;
+    z-index: 1001;
+    box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%),
+        0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);
+    background-color: #fff;
+    border-radius: 8px 8px 0 0;
+}
+
+.new-mail-popup .mat-divider {
+    margin: 0 20px;
+}
+
+.new-mail-header {
+    padding: 8px 20px;
+    background-color: #f2f6fc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-mail-header-btn-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.new-mail-header-btn-action i {
+    cursor: pointer;
+}
+
+.new-mail-receiver {
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-mail-receiver span {
+    margin-right: 8px;
+}
+
+.new-mail-receiver .receiver-input {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+.new-mail-receiver .receiver-input:hover,
+.new-mail-receiver .receiver-input:focus-visible {
+    outline: none;
+}
+
+.new-email-input {
+    position: relative;
+    flex: 1;
+}
+
+.new-email-send {
+    position: absolute;
+    z-index: 1000;
+    bottom: 30px;
+    right: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-section {
+    //   position: sticky;
+    //   top: 50px;
+    // overflow: hidden;
+    margin-top: 50px;
+}
+
+.new-email-send i {
+    margin-top: -3px;
+}
+
+.detail-toolbar {
+    display: flex;
+    padding: 12px 20px;
+    gap: 20px;
+}
+
+// Message
+
+#detail-content {
+    display: flex;
+    flex-direction: column;
+    //   overflow-y: scroll;
+    overflow: scroll;
+    height: calc(100vh - 140px);
+    padding: 0px 16px;
+}
+
+// .message {
+//   padding: 8px 12px;
+//   border-radius: 20px;
+//   margin: 20px 12px;
+//   width: fit-content;
+// }
+
+// .receiver-message {
+//   background-color: #e4e6eb;
+//   color: #000;
+// }
+
+// .sender-message {
+//   background-color: #6699cc;
+//   color: #fff;
+//   align-self: flex-end;
+// }
+
+.detail-item {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.detail-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    padding-top: 0px;
+}
+
+.detail-user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-avatar {
+    border-radius: 50%;
+    // background-color: #000;
+    // background-image: url("../../../assets/img/uniAvatarPlaceholder.png");
+    // object-fit: cover;
+    // background-position: center;
+    // background-size: cover;
+    width: 40px;
+    height: 40px;
+}
+
+.detail-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-sender-name {
+    margin-left: 12px;
+    font-weight: 500;
+}
+
+.reply-btn {
+    display: inline-block;
+    width: 120px;
+    border-radius: 20px;
+    margin: 40px 0;
+    color: #444746;
+    padding: 4px;
+}
+
+.reply-btn:hover {
+    background-color: rgba(32, 33, 36, 0.059);
+}
+
+.reply-box {
+    position: relative;
+    margin: 40px 0;
+}
+
+.e-rte-content {
+    height: 200px !important;
+    margin-top: 42px !important;
+}

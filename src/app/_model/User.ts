@@ -36,4 +36,5 @@ export interface ProfileUpdateModel {
   addressNumber: string; //
   credentialFrontImgUrl: string; //chua co
   credentialBackImgUrl: string; //chua co
+  wardId: number
 }

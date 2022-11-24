@@ -1,14 +1,14 @@
-import { FirstMail, MailBox, Message, ReplyMail } from './../_model/mail/mail';
+import { Router } from '@angular/router';
+import { FirstMail, MailBox } from './../_model/mail/mail';
 import { MailService } from './../_services/mail.service';
 import { startWith, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { UniversityService } from './../_services/university.service';
 import { University } from './../_model/uni';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RichTextEditorComponent } from '@syncfusion/ej2-angular-richtexteditor/src';
 import * as alertify from "alertifyjs";
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mail-main',
@@ -19,45 +19,33 @@ export class MailMainComponent implements OnInit {
   events: string[] = [];
   opened: boolean = true;
   uniList: University[] = [];
-  myControl = new FormControl('');
-  topicControl = new FormControl('');
-  options: string[] = [];
+  listMailbox: MailBox[] = [];
   filteredOptions!: Observable<string[]>;
   selectedUniList: University[] = [];
-  listMailBox: MailBox[] = [];
-  messageList: Message[] = [];
-  trustedMessageContent?:SafeHtml;
-  selectedMailDetail: string = "";
-  
+  sendTabFlag: boolean = true;
+  receiveTabFlag: boolean = false;
+  displayMailbox: MailBox[] = [];
+
   @ViewChild('defaultRTE')
   public componentObject!: RichTextEditorComponent;
-
-  @ViewChild('replyRTE')
-  public replyObject!: RichTextEditorComponent;
-
-  private htmlContent!: string;
-  private replyContent!: string;
-  isShowNewEmailPopup: boolean = false;
-  isViewingDetail: boolean = false;
-
   constructor(
     private fb: FormBuilder,
     private uniService: UniversityService,
     private mailService: MailService,
-    private domS: DomSanitizer
+    private router: Router,
   ) { }
 
-  myForm = this.fb.group({
-    topic : ['']
-  })
-    
+
+  private htmlContent!: string;
+  isShowNewEmailPopup: boolean = false;
+
   ngOnInit(): void {
     alertify.set('notifier', 'position', 'top-center');
     alertify.set('notifier', 'delay', 3)
     this.uniService.getAllUniversity().subscribe({
       next: (data: University[]) => {
         this.uniList = data;
-        this.filteredOptions = this.myControl.valueChanges.pipe(
+        this.filteredOptions = (this.myForm.get('schoolControl') as FormControl).valueChanges.pipe(
           startWith(''),
           map(value => this._filter(value || '')),
         );
@@ -65,16 +53,17 @@ export class MailMainComponent implements OnInit {
     })
 
     this.getAllMail();
-
-    this.topicControl.registerOnChange(() => {
-      console.log("topic changed")
-    })
   }
+
+  myForm = this.fb.group({
+    schoolControl: ['', [Validators.required]],
+    topic: ['', [Validators.required]]
+  })
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     this.selectedUniList = this.uniList.filter(option => option.uniName.toLowerCase().includes(filterValue));
-
+    
     return this.uniList.filter(option => option.uniName.toLowerCase().includes(filterValue))
       .map(uniSearched => uniSearched.uniName);
   }
@@ -87,27 +76,32 @@ export class MailMainComponent implements OnInit {
 
   }
 
-  getAllMail() {
-    this.mailService.getAllMail().subscribe({
-      next: (data: MailBox[]) => {
-        this.listMailBox = data;
-      }
-    })
-  }
-
   public customToolbar: Object = {
-    items: ['Bold', 'Italic', 'FontName', 'FontSize', '|', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyFull', '|', 'Formats', 'OrderedList', 'UnorderedList',]
+    items: ['Bold', 'Italic', '|', 'Formats', 'OrderedList', 'UnorderedList',]
   }
 
   getNewEmailContent() {
     this.htmlContent = this.componentObject.getHtml();
-    if(this.selectedUniList.length !== 1) {
+    // if (this.selectedUniList.length < 1) {
+    //   alertify.error("Tên trường không hợp lệ")
+    //   return;
+    // }
+    if (this.myForm.invalid) {
+      alertify.error("Vui lòng điền đầy đủ thông tin")
+      return;
+    }
+    const uni: University = this.uniList.filter(x =>
+      x.uniName === this.myForm.get("schoolControl")!.value
+      && x.uniName.length === (this.myForm.get("schoolControl")!.value as string).trim().length)[0]
+    if (!uni) {
       alertify.error("Tên trường không hợp lệ")
       return;
     }
+
+
     alertify.success("Gửi thành công")
     const firstMail: FirstMail = {
-      uniId: this.selectedUniList[0].id,
+      recipientId: uni.id,
       messageContent: this.htmlContent,
       topic: this.myForm.get('topic')?.value
     }
@@ -119,35 +113,29 @@ export class MailMainComponent implements OnInit {
     })
   }
 
-  getChange() {
-    console.log("topic changed")
+  viewDetail(mailboxId: string, uniName: string, userName: string, uniAvatarUrl: string) {
+    this.router.navigate(['/mail-inbox', { mailboxId: mailboxId, uniName: uniName, userName: userName, uniAvatarUrl: uniAvatarUrl }])
   }
-  
-  viewMailDetail(id: string) {
-    this.isViewingDetail = !this.isViewingDetail;
-    this.selectedMailDetail = id;
-    this.mailService.getAllMessage(id).subscribe({
-      next: (data: Message[]) => {
-        this.messageList = data;
+
+  getAllMail() {
+    this.mailService.getAllMail().subscribe({
+      next: (data: MailBox[]) => {
+        this.listMailbox = data;
+        this.displayMailbox = this.listMailbox.filter(x => x.type === "USER");
       }
     })
   }
 
-  sendReply() {
-    this.replyContent = this.replyObject.getHtml();
-    const replyMail: ReplyMail = {
-      mailBoxId: this.selectedMailDetail,
-      messageContent: this.replyContent
-    }
-    this.mailService.sendReply(replyMail).subscribe({
-      next: () => {
-        alertify.success("Thành công")
-        this.mailService.getAllMessage(this.selectedMailDetail).subscribe({
-          next: (data: Message[]) => {
-            this.messageList = data;
-          }
-        })
-      }
-    })
+  sendTabClick() {
+    this.receiveTabFlag = false;
+    this.sendTabFlag = true;
+    this.displayMailbox = this.listMailbox.filter(x => x.type === "USER")
   }
+
+  receiveTabClick() {
+    this.receiveTabFlag = true;
+    this.sendTabFlag = false;
+    this.displayMailbox = this.listMailbox.filter(x => x.type === "UNIVERSITY")
+  }
+
 }

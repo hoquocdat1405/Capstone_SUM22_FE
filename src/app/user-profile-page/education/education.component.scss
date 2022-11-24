@@ -56,11 +56,10 @@
   font-weight: 500;
   font-size: 20px;
   margin: 10px 0;
+  grid-column: -1 / 1;
 }
 
-.profile-img-title ~ .profile-img-title {
-  margin-top: 30px;
-}
+
 .profile-school-grid {
   display: grid;
   grid-template-columns: 40% 40%;
@@ -85,10 +84,11 @@ input {
 }
 
 .input-img {
-  width: 100px;
+  width: 200px;
 }
 
-#upload-school-profile {
+#upload-school-profile,
+#upload-school-degree {
   display: none;
 }
 
@@ -113,17 +113,9 @@ input {
     flex-direction: column;
   }
 
-  .profile-img-title {
-    margin: 10px;
-  }
-
   .profile-img2 {
     order: 2;
     width: 150px;
-  }
-
-  .profile-img-title {
-    text-align: center;
   }
 
   .profile-title-row {
