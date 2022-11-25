@@ -12,8 +12,9 @@ import { SharedService } from '../_services/shared.service';
 export class LandingPageComponent implements OnInit, AfterViewInit {
   uniList: University[] = [];
   uniListRandom: University[] = [];
-  quizes!:Test[];
 
+
+  quizes!:Test[];
   constructor(private uniSer: UniversityService,private shared : SharedService) {}
 
   ngOnInit() {
@@ -30,8 +31,10 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   }
 
   getData() {
+
     this.uniSer.getAllUniversity().subscribe((data) => {
       this.uniList = data;
+      console.log(data);
     });
   }
 }

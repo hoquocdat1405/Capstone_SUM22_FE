@@ -7,9 +7,9 @@
       <div id="quiz-info" class="">
         <h4 class="title col-md-8 col-sm-10">{{ name }}</h4>
         <span class="description">{{ des }} </span>
-        <div id="options" class="d-flex justify-content-start options">
-          <button type="button" (click)="redirectTest(id,shorthand,0)"  class="btn option-btn">Chi tiết</button>
-          <button type="button" (click)="redirectTest(id,shorthand,1)" class="btn option-btn">Bắt đầu</button>
+        <div id="options" class="d-flex options ">
+          <button type="button" (click)="redirectTest(shorthand,id,1)"  class="btn option-btn">Chi tiết</button>
+          <button type="button" (click)="redirectTest(shorthand,id,0)" class="btn option-btn">Bắt đầu</button>
         </div>
       </div>
 

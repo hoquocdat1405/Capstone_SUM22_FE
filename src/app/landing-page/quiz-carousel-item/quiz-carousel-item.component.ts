@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TestTypeEnum } from 'src/app/shared/constants/app-const';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 @Component({
   selector: 'app-quiz-carousel-item',
   templateUrl: './quiz-carousel-item.component.html',
@@ -15,7 +15,12 @@ export class QuizCarouselItemComponent {
 
   constructor(private router: Router) {}
 
+  ngOnInit(){
+    if(this.des.length > 250)this.des = this.des.slice(0,250)+ " [...]";
+  }
+
   redirectTest(typeId: number, id: number, redirectType: number) {
+    console.log(typeId);
     var redirectStr: string = '';
     if (typeId == TestTypeEnum.MBTI_TEST_ID)
       redirectStr = TestTypeEnum.MBTI_TEST;

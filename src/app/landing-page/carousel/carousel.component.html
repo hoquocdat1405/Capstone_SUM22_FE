@@ -11,7 +11,7 @@
   </div>
   <div class="carousel-inner" *ngIf="quizes">
     <div class="carousel-item" data-bs-interval="3000" *ngFor="let quiz of quizes">
-      <app-quiz-carousel-item [id]="quiz.id" [name]="quiz.quizName" [description]="quiz.introduction" [imgSrc]="quiz.bannerUrl"
+      <app-quiz-carousel-item [id]="quiz.id" [name]="quiz.quizName" [description]="quiz.introduction" [imgSrc]="quiz.backgroundUrl"
         [shorthand]="quiz.quizTypeId"></app-quiz-carousel-item>
     </div>
   </div>

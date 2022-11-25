@@ -8,6 +8,7 @@ export interface Test {
   status: boolean;
   introduction: string;
   bannerUrl: string;
+  backgroundUrl:string;
   history: string;
   criteriaInformation: string;
   shortDescription: string;
