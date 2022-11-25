@@ -29,9 +29,13 @@
 .section-header .view-all-link2 {
   position: absolute;
   right: 0;
-  top:90px;
+  top:50px;
   font-size:18px;
   
+}
+
+.section-header .view-all-link2:hover{
+  opacity: 0.8;
 }
 
 .view-all-link2 a {

@@ -44,7 +44,7 @@
       <div class="horizontal-bar3"></div>
       <h3>DANH SÁCH TRƯỜNG HỌC</h3>
       <div class="horizontal-bar3"></div>
-      <div class="view-all-link2"><a [routerLink]="['/admission-list']" routerLinkActive="router-link-active">Xem toàn
+      <div class="view-all-link2"><a [routerLink]="['/school-list']" routerLinkActive="router-link-active">Xem toàn
           bộ
           -></a></div>
     </div>
@@ -52,23 +52,14 @@
 
 
     <div class="edu-news-container row d-flex">
-      <div class="edu-news-item col-sm-6">
+      <div class="edu-news-item col-sm-6" *ngFor="let uni of uniListRandom|slice:0:3">
         <div class="d-flex">
-          <app-edu-news-item></app-edu-news-item>
+          <app-edu-news-item [uniImg]="uni.avatarUrl" [address]="uni.addressNumber" [name]="uni.uniName"
+            [description]="uni.description"></app-edu-news-item>
         </div>
       </div>
 
-      <div class="edu-news-item col-sm-6">
-        <div class="d-flex">
-          <app-edu-news-item></app-edu-news-item>
-        </div>
-      </div>
 
-      <div class="edu-news-item col-sm-6">
-        <div class="d-flex">
-          <app-edu-news-item></app-edu-news-item>
-        </div>
-      </div>
     </div>
   </div>
 

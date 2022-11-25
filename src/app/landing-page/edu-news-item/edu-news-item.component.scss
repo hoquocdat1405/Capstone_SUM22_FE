@@ -23,6 +23,7 @@ img {
   font-size: 22px;
   font-weight: 500;
   color: #fff;
+  margin-top: 20px;
 }
 
 .title:hover {
@@ -42,6 +43,23 @@ img:hover {
   transform: scale(1.05);
   opacity: 1;
   cursor: pointer;
+}
+
+.news-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.news-img {
+  width: 100%;
+  aspect-ratio: 1.5/1;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.text-block {
+  text-align: justify;
 }
 
 @media (min-width: 500px) and (max-width: 900px) {
