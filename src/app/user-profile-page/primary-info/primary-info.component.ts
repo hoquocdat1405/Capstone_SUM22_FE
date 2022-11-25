@@ -65,6 +65,7 @@ export class PrimaryInfoComponent implements OnInit {
       this.selectedDistrict = this.userProfile.districtId;
       this.getListWard(this.userProfile.districtId + "");
       this.selectedWard = this.userProfile.wardId;
+      this.isChecked = this.userProfile.publicProfile === 'ACTIVE'
     })
   }
 
@@ -148,6 +149,11 @@ export class PrimaryInfoComponent implements OnInit {
   }
 
   receiveInfo() {
-    console.log('aaaaaaaaaaaaaaa');
+    this.authService.publicProfile().subscribe({
+      next: () => {
+        alertify.success("Thành công");
+      },
+      error: () => alertify.error("Có lỗi xảy ra")
+    })
   }
 }
