@@ -16,11 +16,31 @@
   justify-content: space-between;
   align-items: center;
   text-align:center;
+  position:relative;
 }
 
 .section-header .view-all-link {
   position: absolute;
-  right: 5%;
+  right: 0;
+  top:40px;
+  font-size:18px;
+}
+
+.section-header .view-all-link2 {
+  position: absolute;
+  right: 0;
+  top:90px;
+  font-size:18px;
+  
+}
+
+.view-all-link2 a {
+  color:#ffe496;
+  text-decoration: none;
+}
+
+.view-all-link a{
+  text-decoration: none;
 }
 
 .section-header h3 {
@@ -56,7 +76,7 @@
 .horizontal-bar{
   height: 6px;
   width:35%;
-  border: 1px solid #e2e2e2;
+  border: 1px solid rgb(69, 69, 69);
   border-left:0px;
   border-right:0px;
 }
@@ -68,6 +88,19 @@
   margin:0 auto;
   margin-bottom:50px;
 }
+
+.horizontal-bar3{
+  height: 6px;
+  width:35%;
+  border: 1px solid #fff;
+  border-left:0px;
+  border-right:0px;
+}
+
+
+.section-header-edu h3,.horizontal-bar{
+  color:white;
+} 
 
 .st0{
   opacity: .12;
@@ -82,6 +115,10 @@
   opacity: .24;
 }.st3{
   opacity: .3;
+}
+
+.st4{
+  background-color:#000;
 }
 
 .news-container{
@@ -99,7 +136,7 @@
 }
 
 .edu-news-top{
-  padding:0 100px;
+  padding:50px 100px;
 }
 
 
