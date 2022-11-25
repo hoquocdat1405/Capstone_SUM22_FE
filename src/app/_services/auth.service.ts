@@ -98,4 +98,8 @@ export class AuthService {
   hasLoggedIn() {
     return !!localStorage.getItem('token');
   }
+
+  publicProfile(): Observable<any> {
+    return this.http.put<any>(this.baseUrl + 'user/public', {})
+  }
 }
