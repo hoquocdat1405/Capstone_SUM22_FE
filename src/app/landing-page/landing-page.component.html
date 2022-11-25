@@ -1,6 +1,6 @@
-<div class="page-container">
-  <app-nav></app-nav>
-  <app-carousel></app-carousel>
+<div class="page-container" >
+  <app-nav></app-nav>\
+  <div *ngIf="quizes"><app-carousel [quizes]="quizes"></app-carousel></div>
 
   <!-- tin tuyển sinh -->
   <div class="news-section">
