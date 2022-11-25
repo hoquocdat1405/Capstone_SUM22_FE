@@ -1,3 +1,5 @@
+import { UniversityService } from './../_services/university.service';
+import { University } from './../_model/uni';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Test } from '../_model/test.model';
 import { SharedService } from '../_services/shared.service';
@@ -8,9 +10,15 @@ import { SharedService } from '../_services/shared.service';
   styleUrls: ['./landing-page.component.css'],
 })
 export class LandingPageComponent implements OnInit, AfterViewInit {
-  constructor(private shared : SharedService) {}
+  uniList: University[] = [];
+  uniListRandom: University[] = [];
   quizes!:Test[];
+
+  constructor(private uniSer: UniversityService,private shared : SharedService) {}
+
   ngOnInit() {
+    this.getData();
+
     this.shared.getAllTest().subscribe((data) => {
       this.quizes = data;
     });
@@ -19,5 +27,11 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     document.querySelector('edu-news-container')?.lastElementChild?.lastChild
       ?.remove;
+  }
+
+  getData() {
+    this.uniSer.getAllUniversity().subscribe((data) => {
+      this.uniList = data;
+    });
   }
 }
