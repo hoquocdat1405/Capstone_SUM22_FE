@@ -13,7 +13,7 @@ export class ExpansionPanelComponent implements OnInit {
   @Input() shorthand!:string;
   @Input() color!:string;
   @Input() isAllignRight!:boolean;
-
+  @Input() img!:string;
 
   constructor() {}
 

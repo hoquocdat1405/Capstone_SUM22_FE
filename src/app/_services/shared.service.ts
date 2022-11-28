@@ -23,14 +23,6 @@ export class SharedService {
     );
   }
 
-  //   getProfile(): Observable<User> {
-  //     return this.http.get<User>(`${this.baseUrl}/user/profile`);
-  //   }
-
-  //   updateUser(user: any): Observable<any> {
-  //     return this.http.put<any>(`${this.baseUrl}/user/update-user`, user);
-  //   }
-
   uploadImage(file: string): Observable<any> {
     let data = {
       file: file,
@@ -50,7 +42,7 @@ export class SharedService {
     );
   }
 
-  getTestResult(id: string, shortName: string): Observable<any> {
+  getTestResult(id: string | null, shortName: string): Observable<any> {
     return this.http.get<any>(
       this.baseUrl +
         'Character/get-character?testId=' +

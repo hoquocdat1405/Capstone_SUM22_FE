@@ -18,7 +18,8 @@
 .mat-expansion-panel-header.mat-expanded,
 .mat-expansion-panel-header.mat-expanded:hover {
   font-weight: 600;
-  font-size: 18px;
+
+  font-size: 14px;
   background: var(--color) !important;
 }
 

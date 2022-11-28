@@ -1,5 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-
+import { QuizResult } from '../_model/quiz-result';
+import { Test } from '../_model/test.model';
+import { SharedService } from '../_services/shared.service';
+import { ActivatedRoute,Router } from '@angular/router';
+import { TestTypeEnum } from '../shared/constants/app-const';
 @Component({
   selector: 'app-mbti-quiz-detail-page',
   templateUrl: './mbti-quiz-detail-page.component.html',
@@ -7,91 +11,39 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 })
 export class MbtiQuizDetailPageComponent implements OnInit {
   @ViewChild('card') card!:ElementRef;
-  public mbtiTypes: { name: string; shorthand: string; imgSrc: string }[];
-  constructor() {
-    this.mbtiTypes = [
-      {
-        shorthand: 'INFJ',
-        name: 'Người che chở',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-infj.svg',
-      },
-      {
-        shorthand: 'INTJ',
-        name: 'Nhà khoa học',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-intj.svg',
-      },
-      {
-        shorthand: 'INTP',
-        name: 'Nhà tư duy',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-intp.svg',
-      },
-      {
-        shorthand: 'INFP',
-        name: 'Người duy tâm',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-infp.svg',
-      },
-      {
-        shorthand: 'ESFJ',
-        name: 'Người quan tâm',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-esfj.svg',
-      },
-      {
-        shorthand: 'ISFJ',
-        name: 'Người nuôi dưỡng',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-isfj.svg',
-      },
-      {
-        shorthand: 'ESFP',
-        name: 'Người trình diễn',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-esfp.svg',
-      },
-      {
-        shorthand: 'ISFP',
-        name: 'Người nghệ sĩ',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-isfp.svg',
-      },
-      {
-        shorthand: 'ENFJ',
-        name: 'Người chỉ dạy',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-enfj.svg',
-      },
-      {
-        shorthand: 'ENFP',
-        name: 'Người truyền cảm hứng',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-enfp.svg',
-      },
-      {
-        shorthand: 'ENTJ',
-        name: 'Người điều hành',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-entj.svg',
-      },
-      {
-        shorthand: 'ESTJ',
-        name: 'Người giám sát',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-estj.svg',
-      },
-      {
-        shorthand: 'ISTJ',
-        name: 'Người trách nhiệm',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-istj.svg',
-      },
-      {
-        shorthand: 'ESTP',
-        name: 'Người thực thi',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-estp.svg',
-      },
-      {
-        shorthand: 'ISTP',
-        name: 'Nhà cơ học',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-istp.svg',
-      },
-      {
-        shorthand: 'ENTP',
-        name: 'Người có tầm nhìn xa',
-        imgSrc: '../../../assets/svg/mbti-types/mbti-type-entp.svg',
-      },
-    ];
-  }
+  id!: string | null;
+  test!:Test;
+  characters!: QuizResult[];
 
-  ngOnInit() {}
+  constructor(
+    private sharedServ : SharedService,
+    private route: ActivatedRoute,
+    private router: Router,
+    ) {}
+
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.sharedServ.getTestDetail(this.id).subscribe((response) => {
+      this.test = response;
+      this.sharedServ.getTestResult(this.id, '').subscribe((response) => {
+        this.characters = response;
+      });
+    });
+  }
+  redirectTest(typeId: number, id: number,type:number) {
+    console.log(typeId)
+    var redirectStr: string = '';
+    if (typeId == TestTypeEnum.MBTI_TEST_ID)
+      redirectStr = TestTypeEnum.MBTI_TEST;
+    else if (typeId == TestTypeEnum.DISC_TEST_ID)
+      redirectStr = TestTypeEnum.DISC_TEST;
+    else if (typeId == TestTypeEnum.BIGFIVE_TEST_ID)
+      redirectStr = TestTypeEnum.BIGFIVE_TEST;
+    else if (typeId == TestTypeEnum.HOLLAND_TEST_ID)
+      redirectStr = TestTypeEnum.HOLLAND_TEST;
+    console.log('id : ' + id);
+    console.log(redirectStr + '-quiz-attempt?id=' + id);
+    if(type==0)this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
+    else this.router.navigate([redirectStr + '-quiz-detail', { id: id }]);
+  }
 }

@@ -17,6 +17,7 @@ export class TypeCardComponent implements OnInit {
   @Input() name!: string;
   @Input('shorthand') shorthand!: string;
   @Input('imgSrc') img!: string;
+  @Input() summary!:string;
   @Input('isScalable') isScalelable: boolean = true;
 
   @ViewChild('cardBorder') cardBorder!: ElementRef;

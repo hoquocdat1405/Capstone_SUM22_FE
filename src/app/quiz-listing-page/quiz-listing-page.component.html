@@ -17,7 +17,7 @@
           <a (click)="redirectTest(test.testTypeId,test.id,0)" class="btn btn-start">Bắt đầu</a>
         </div>
       </div>
-      <a href="#" [routerLink]="['/mbti-quiz-detail']" class="btn btn-detail-hide">Chi tiết</a>
+      <a (click)="redirectTest(test.testTypeId,test.id,1)" class="btn btn-detail-hide">Chi tiết</a>
 
     </div>
   </div>

@@ -5,6 +5,6 @@ export interface QuizResult {
   resultRelationship: string;
   resultSuccessRule: string;
   resultShortName: string;
-  resultPicture: string;
+  resultPictureUrl: string;
   resultCareer: string;
 }
