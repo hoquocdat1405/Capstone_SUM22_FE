@@ -19,7 +19,7 @@ export class SharedService {
 
   getTestDetail(id: string | null): Observable<any> {
     return this.http.get<any>(
-      this.baseUrl + 'guest/get-test-detail?testId=' + id
+      this.baseUrl + 'test/get-test-detail?testId=' + id
     );
   }
 

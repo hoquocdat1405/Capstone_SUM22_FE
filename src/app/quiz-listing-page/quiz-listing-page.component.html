@@ -5,7 +5,7 @@
     <div class="quiz-card quiz-card-hover col-sm-5 col-md-5 col-10 m-4" *ngFor="let test of tests">
       <img src="{{test.bannerUrl}}" alt="" />
       <div class="des">
-        <h4>{{test.quizName}}</h4>
+        <h4>{{test.testName}}</h4>
         <p>
           {{test.introduction}}
         </p>
@@ -13,8 +13,8 @@
           <!-- <a href="#" [routerLink]="['/test-detail',test.id]" class="btn btn-detail"
           >Chi tiết</a
         > -->
-          <a href="#" [routerLink]="['/mbti-quiz-detail']" class="btn btn-detail">Chi tiết</a>
-          <a (click)="redirectTest(test.quizTypeId,test.id)" class="btn btn-start">Bắt đầu</a>
+          <a (click)="redirectTest(test.testTypeId,test.id,1)" class="btn btn-detail">Chi tiết</a>
+          <a (click)="redirectTest(test.testTypeId,test.id,0)" class="btn btn-start">Bắt đầu</a>
         </div>
       </div>
       <a href="#" [routerLink]="['/mbti-quiz-detail']" class="btn btn-detail-hide">Chi tiết</a>

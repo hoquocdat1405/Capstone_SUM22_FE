@@ -1,8 +1,8 @@
 export interface Test {
   id: number;
   creatorId: string;
-  quizTypeId: number;
-  quizName: string;
+  testTypeId: number;
+  testName: string;
   totalQuestion: number;
   createdDate: Date;
   status: boolean;
@@ -13,7 +13,7 @@ export interface Test {
   criteriaInformation: string;
   shortDescription: string;
   creator: string;
-  quizType: number;
+  testType: number;
   attempts: any;
   questions: any;
 }

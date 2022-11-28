@@ -46,7 +46,7 @@ export class QuizListingPageComponent implements OnInit {
     }
   }
 
-  redirectTest(typeId: number, id: number) {
+  redirectTest(typeId: number, id: number,type:number) {
     var redirectStr: string = '';
     if (typeId == TestTypeEnum.MBTI_TEST_ID)
       redirectStr = TestTypeEnum.MBTI_TEST;
@@ -58,6 +58,7 @@ export class QuizListingPageComponent implements OnInit {
       redirectStr = TestTypeEnum.HOLLAND_TEST;
     console.log('id : ' + id);
     console.log(redirectStr + '-quiz-attempt?id=' + id);
-    this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
+    if(type==0)this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
+    else this.router.navigate([redirectStr + '-quiz-detail', { id: id }]);
   }
 }
