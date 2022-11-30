@@ -26,7 +26,6 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle('Kết quả MBTI');
-
     this.getData();
   }
 

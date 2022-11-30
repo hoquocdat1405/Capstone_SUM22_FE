@@ -54,9 +54,7 @@ export class DoughnutChartComponent implements OnInit {
 
         chart.data.datasets.forEach((dataset: any, i: any) => {
           chart.getDatasetMeta(i).data.forEach((datapoint: any, index: any) => {
-            console.log(dataset);
             const { x, y } = datapoint.tooltipPosition();
-            console.log(x);
 
             const halfW = width / 2;
             const halfH = height / 2;

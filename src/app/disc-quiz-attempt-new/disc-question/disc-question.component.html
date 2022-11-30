@@ -59,7 +59,7 @@
         </p>
         <mat-paginator [length]="length" [pageSize]="10" aria-label=" Select page" (page)="changePage($event)">
         </mat-paginator>
-        <button class="submit-btn">Xem kết quả</button>
+        <button class="submit-btn" (click)="submit()">Xem kết quả</button>
     </div>
 
 </div>

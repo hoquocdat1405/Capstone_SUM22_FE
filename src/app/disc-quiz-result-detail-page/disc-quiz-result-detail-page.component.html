@@ -11,8 +11,8 @@
     <div class="disc-content-row">
       <div class="disc-content-column">
         <div class="content-header">Nhóm tính cách của bạn là</div>
-        <div class="character-result1">Nhóm S</div>
-        <div class="character-result2">Người kiên định </div>
+        <div class="character-result1">Nhóm {{quizResult?.resultShortName}}</div>
+        <div class="character-result2">{{quizResult?.resultName}}</div>
 
         <div _ngcontent-fut-c279="" class="btn-take-again"><i _ngcontent-fut-c279="" aria-hidden="true"
             class="icon-repeat fa fa-repeat"></i>
@@ -33,19 +33,19 @@
       <div class="info-container">
         <div class="info-content">
           <h4 class="title-1"><span>01</span>Tổng quan</h4>
-          <p class="text"></p>
+          <p class="text">{{quizResult?.resultSummary}}</p>
         </div>
         <div class="info-content">
           <h4 class="title-1"><span>02</span>Nghề nghiệp - Sự nghiệp</h4>
-          <p class="text"></p>
+          <p class="text">{{quizResult?.resultCareer}}</p>
         </div>
         <div class="info-content">
           <h4 class="title-1"><span>03</span>Mối quan hệ</h4>
-          <p class="text"></p>
+          <p class="text">{{quizResult?.resultRelationship}}</p>
         </div>
         <div class="info-content">
           <h4 class="title-1"><span>04</span>Nguyên tắc thành công</h4>
-          <p class="text"></p>
+          <p class="text">{{quizResult?.resultSuccessRule}}</p>
         </div>
       </div>
     </div>

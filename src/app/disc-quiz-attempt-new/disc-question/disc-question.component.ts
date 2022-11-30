@@ -4,7 +4,7 @@ import {
   DiscQuizCollectionModel,
   DiscPostQuizCollection,
 } from './../../_model/disc-quiz/disc-quiz-collection';
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/_services/shared.service';
 
@@ -14,7 +14,7 @@ import { SharedService } from 'src/app/_services/shared.service';
   styleUrls: ['./disc-question.component.scss'],
 })
 export class DiscQuestionComponent implements OnInit {
-  @Input() id !: string | null;
+  @Input() id!: string | null;
   totalPage = 0;
   currentQuestion = 0;
   currentPage = 0;
@@ -43,14 +43,16 @@ export class DiscQuestionComponent implements OnInit {
 
   getData() {
     var count = 0;
-    this.sharedServ.takingTestGuest(this.id as unknown as number).subscribe((data) => {
-      this.quizCollections = data;
-      this.quizCollections?.questions.forEach((question) => {
-        question.index = count++;
+    this.sharedServ
+      .takingTestGuest(this.id as unknown as number)
+      .subscribe((data) => {
+        this.quizCollections = data;
+        this.quizCollections?.questions.forEach((question) => {
+          question.index = count++;
+        });
+        this.questionSlice = this.quizCollections?.questions.slice(0, 10);
+        this.getTotal();
       });
-      this.questionSlice = this.quizCollections?.questions.slice(0, 10);
-      this.getTotal();
-    });
   }
 
   getTotal() {
@@ -150,7 +152,20 @@ export class DiscQuestionComponent implements OnInit {
     );
 
     if (index > -1) {
-      const indexOption = this.postAnswer!.questions[index].options.findIndex(
+      var indexx = this.postAnswer!.questions[index].options.findIndex(
+        (e) => e.optionId === option.optionId
+      );
+
+      if (indexx > -1) {
+        if (
+          this.postAnswer!.questions[index].options[indexx].selectedField !==
+          selectedField
+        ) {
+          this.postAnswer!.questions[index].options = [];
+        }
+      }
+
+      var indexOption = this.postAnswer!.questions[index].options.findIndex(
         (e) =>
           e.selectedField === selectedField || e.optionId === option.optionId
       );
@@ -163,18 +178,21 @@ export class DiscQuestionComponent implements OnInit {
         document
           .querySelector(`.question-item:nth-child(${indexQuestion}`)
           ?.classList.add('active');
-        // this.countSubmit++;
+      } else {
+        document
+          .querySelector(`.question-item:nth-child(${indexQuestion}`)
+          ?.classList.remove('active');
       }
     } else {
       this.postAnswer!.questions.push(question);
     }
 
-    if (
-      this.postAnswer!.questions.length ===
-      this.quizCollections?.questions.length
-    ) {
-      var btnSubmit = document.querySelector('.submit-btn');
+    var questionItems = document.querySelectorAll('.question-item.active');
+    var btnSubmit = document.querySelector('.submit-btn');
+    if (questionItems.length === this.quizCollections?.questions.length) {
       btnSubmit?.classList.add('active');
+    } else {
+      btnSubmit?.classList.remove('active');
     }
 
     console.log(this.postAnswer);
@@ -248,5 +266,16 @@ export class DiscQuestionComponent implements OnInit {
   chooseQuestion(index: number) {
     this.pageObject.pageIndex = Math.floor(index / 10);
     this.changePage(this.pageObject);
+  }
+
+  submit() {
+    this.sharedServ.submitTestDisc(this.postAnswer).subscribe((result) => {
+      if (result !== null) {
+        this.router.navigate([
+          'disc-result/',
+          { id: result.id, shortName: result.resultShortName },
+        ]);
+      }
+    });
   }
 }
