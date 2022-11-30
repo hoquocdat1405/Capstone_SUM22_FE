@@ -1,3 +1,4 @@
+import { ApplicationModel } from './../_model/application/application';
 import { ProfileUpdateModel, Profile } from './../_model/User';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -18,8 +19,8 @@ export class ProfileService {
     return this.http.put<any>(this.baseUrl + 'user/update-user', profile);
   }
 
-  getAllApply(): Observable<any> {
-    return this.http.get<any>(
+  getAllApply(): Observable<ApplicationModel[]> {
+    return this.http.get<ApplicationModel[]>(
       this.baseUrl + 'application/get-all-application'
     );
   }
