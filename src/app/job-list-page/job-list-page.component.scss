@@ -59,6 +59,7 @@
   padding: 2em;
   box-shadow: 0 7px 25px rgba($color: #000000, $alpha: 0.08);
   background-color: #fff;
+  width: 30%;
 }
 
 .card-item .job-icon {
@@ -82,6 +83,7 @@
 }
 
 .card-item .job-desc {
+  max-width: 20em;
   font-size: 1.2em;
   padding: 1em 0;
   text-align: justify;

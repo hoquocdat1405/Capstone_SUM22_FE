@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AddressService } from './../_services/address.service';
 import { UniDetail, UniSpec } from './../_model/uni';
@@ -11,19 +12,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./school-info-page.component.scss'],
 })
 export class SchoolInfoPageComponent implements OnInit {
-  schoolId: string = "";
+  schoolId: string = '';
   uniDetail?: UniDetail;
   wardName: string = '';
   uniSpecList: UniSpec[] = [];
-  sendApplicationTooltip: string = "";
+  sendApplicationTooltip: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private uniService: UniversityService,
-    private router: Router
-
-    // private addressService: AddressService
-  ) { }
+    private router: Router,
+    private title: Title
+  ) // private addressService: AddressService
+  {}
 
   header = 'Header';
   contents = [
@@ -34,21 +35,23 @@ export class SchoolInfoPageComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.title.setTitle('Chi tiết trường học');
+
     this.schoolId = this.route.snapshot.paramMap.get('schoolId')!;
     if (this.schoolId) {
       this.uniService.getUniById(this.schoolId).subscribe({
         next: (data: UniDetail) => {
           this.uniDetail = data;
-        }
-      })
+        },
+      });
 
       this.uniService.getUniSpecById(this.schoolId).subscribe({
         next: (data: UniSpec[]) => {
           this.uniSpecList = data;
-        }
-      })
+        },
+      });
     }
-    this.sendApplicationTooltip = "Gửi hồ sơ để nhận được tư vấn";
+    this.sendApplicationTooltip = 'Gửi hồ sơ để nhận được tư vấn';
   }
 
   submitApplication() {

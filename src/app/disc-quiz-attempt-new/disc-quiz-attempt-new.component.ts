@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -8,10 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DiscQuizAttemptNewComponent implements OnInit {
   id!: string | null;
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private title: Title) {}
 
   ngOnInit() {
+    this.title.setTitle('Bài test DISC');
     this.id = this.route.snapshot.paramMap.get('id');
   }
-
 }

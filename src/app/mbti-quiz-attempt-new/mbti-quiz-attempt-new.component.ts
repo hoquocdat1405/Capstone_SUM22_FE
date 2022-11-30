@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../_services/shared.service';
 
@@ -7,7 +8,9 @@ import { SharedService } from '../_services/shared.service';
   styleUrls: ['./mbti-quiz-attempt-new.component.scss'],
 })
 export class MbtiQuizAttemptNewComponent implements OnInit {
-  constructor() {}
+  constructor(private title: Title) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle('Bài test MBTI');
+  }
 }

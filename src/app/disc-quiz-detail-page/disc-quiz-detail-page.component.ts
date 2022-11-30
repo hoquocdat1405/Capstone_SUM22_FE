@@ -1,5 +1,6 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Test } from '../_model/test.model';
 import { QuizResult } from '../_model/quiz-result';
 import { SharedService } from '../_services/shared.service';
@@ -16,10 +17,13 @@ export class DiscQuizDetailPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private sharedServ: SharedService
+    private sharedServ: SharedService,
+    private title: Title
   ) {}
 
   ngOnInit() {
+    this.title.setTitle('Chi tiết DISC');
+
     this.id = this.route.snapshot.paramMap.get('id');
     this.sharedServ.getTestDetail(this.id).subscribe((response) => {
       this.test = response;
@@ -28,8 +32,8 @@ export class DiscQuizDetailPageComponent implements OnInit {
       });
     });
   }
-  redirectTest(typeId: number, id: number,type:number) {
-    console.log(typeId)
+  redirectTest(typeId: number, id: number, type: number) {
+    console.log(typeId);
     var redirectStr: string = '';
     if (typeId == TestTypeEnum.MBTI_TEST_ID)
       redirectStr = TestTypeEnum.MBTI_TEST;
@@ -41,7 +45,8 @@ export class DiscQuizDetailPageComponent implements OnInit {
       redirectStr = TestTypeEnum.HOLLAND_TEST;
     // console.log('id : ' + id);
     console.log(redirectStr + '-quiz-attempt?id=' + id);
-    if(type==0)this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
+    if (type == 0)
+      this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
     else this.router.navigate([redirectStr + '-quiz-detail', { id: id }]);
   }
 }

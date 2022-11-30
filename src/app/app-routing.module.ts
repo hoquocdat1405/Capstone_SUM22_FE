@@ -60,7 +60,6 @@ const routes: Routes = [
   //homepage - default blank url link redirect to home
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-
   // { path: 'home', component: LandingPageComponent},
   { path: 'home', component: LandingPageComponent },
 
@@ -171,9 +170,7 @@ const routes: Routes = [
   { path: 'mail', component: MailMainComponent },
   { path: 'mail-inbox', component: MailInboxComponent },
 
-
-
-  { path: '**', component:PageNotFoundComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
@@ -184,4 +181,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

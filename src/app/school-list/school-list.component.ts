@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { UniversityService } from './../_services/university.service';
 import { University } from './../_model/uni';
 import { AuthService } from './../_services/auth.service';
@@ -26,10 +27,13 @@ export class SchoolListComponent implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthService,
     private _location: Location,
-    private uniService: UniversityService
+    private uniService: UniversityService,
+    private title: Title
   ) {}
 
   ngOnInit(): void {
+    this.title.setTitle('Danh sách trường học');
+
     alertify.set('notifier', 'position', 'top-center');
     alertify.set('notifier', 'delay', 3);
     this.isFromNav = this.route.snapshot.paramMap.get('fromNav') ? true : false;
@@ -39,10 +43,10 @@ export class SchoolListComponent implements OnInit {
     }
 
     this.idMajor = this.route.snapshot.paramMap.get('id')!;
-    if(this.idMajor) {
+    if (this.idMajor) {
       this.getSchoolList(this.idMajor);
       this.isFromMajor = true;
-      console.log("i'm here")
+      // console.log("i'm here")
     } else {
       this.uniService.getAllUniversity().subscribe({
         next: (data: University[]) => {
@@ -76,10 +80,18 @@ export class SchoolListComponent implements OnInit {
   // }
 
   searchSchool() {
-    if(this.resultUni.length > 0) {
-      this.displayedUniList = this.resultUni.filter(uni => uni.uniName.toLowerCase().includes((this.f['schoolNameCtl'].value as string)))
+    if (this.resultUni.length > 0) {
+      this.displayedUniList = this.resultUni.filter((uni) =>
+        uni.uniName
+          .toLowerCase()
+          .includes(this.f['schoolNameCtl'].value as string)
+      );
     } else {
-      this.displayedUniList = this.uniList.filter(uni => uni.uniName.toLowerCase().includes((this.f['schoolNameCtl'].value as string)))
+      this.displayedUniList = this.uniList.filter((uni) =>
+        uni.uniName
+          .toLowerCase()
+          .includes(this.f['schoolNameCtl'].value as string)
+      );
     }
   }
 
@@ -92,6 +104,6 @@ export class SchoolListComponent implements OnInit {
   }
 
   considerUni(uniId: string) {
-    alertify.success("Lưu thành công");
+    alertify.success('Lưu thành công');
   }
 }

@@ -104,8 +104,8 @@ export class DoughnutChartComponent implements OnInit {
 
         var image = new Image();
         image.src = '../assets/img/disc-text/disc-c-nobackground.png';
-        image.width = 0.5*chart.height;
-        image.height = 0.5*chart.height;
+        image.width = 0.5 * chart.height;
+        image.height = 0.5 * chart.height;
         ctx.drawImage(
           image,
           //sx
@@ -131,6 +131,11 @@ export class DoughnutChartComponent implements OnInit {
         plugins: {
           legend: {
             display: false,
+            labels: {
+              font: {
+                size: 1,
+              },
+            },
           },
         },
       },
