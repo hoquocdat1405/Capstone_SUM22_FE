@@ -1,6 +1,7 @@
 export interface University {
     id: string,
     uniName: string,
+    uniCode:string,
     addressNumber: string,
     phone: string,
     websiteUrl: string,
