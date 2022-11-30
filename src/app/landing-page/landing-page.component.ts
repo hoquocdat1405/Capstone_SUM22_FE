@@ -3,6 +3,7 @@ import { University } from './../_model/uni';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Test } from '../_model/test.model';
 import { SharedService } from '../_services/shared.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,11 +14,15 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   uniList: University[] = [];
   uniListRandom: University[] = [];
 
-
-  quizes!:Test[];
-  constructor(private uniSer: UniversityService,private shared : SharedService) {}
+  quizes!: Test[];
+  constructor(
+    private uniSer: UniversityService,
+    private shared: SharedService,
+    private title: Title
+  ) {}
 
   ngOnInit() {
+    this.title.setTitle('Trang chủ');
     this.getData();
 
     this.shared.getAllTest().subscribe((data) => {
@@ -31,7 +36,6 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   }
 
   getData() {
-
     this.uniSer.getAllUniversity().subscribe((data) => {
       this.uniList = data;
       console.log(data);

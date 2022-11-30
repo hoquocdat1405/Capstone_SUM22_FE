@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../_services/shared.service';
 import { Test } from '../_model/test.model';
@@ -14,10 +15,12 @@ export class QuizListingPageComponent implements OnInit {
   constructor(
     private sharedServ: SharedService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) {}
 
   ngOnInit() {
+    this.title.setTitle('Danh sách bài test');
     this.sharedServ.getAllTest().subscribe((response) => {
       this.tests = response;
       console.log(this.tests.length);
@@ -46,7 +49,7 @@ export class QuizListingPageComponent implements OnInit {
     }
   }
 
-  redirectTest(typeId: number, id: number,type:number) {
+  redirectTest(typeId: number, id: number, type: number) {
     var redirectStr: string = '';
     if (typeId == TestTypeEnum.MBTI_TEST_ID)
       redirectStr = TestTypeEnum.MBTI_TEST;
@@ -58,7 +61,8 @@ export class QuizListingPageComponent implements OnInit {
       redirectStr = TestTypeEnum.HOLLAND_TEST;
     console.log('id : ' + id);
     console.log(redirectStr + '-quiz-attempt?id=' + id);
-    if(type==0)this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
+    if (type == 0)
+      this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
     else this.router.navigate([redirectStr + '-quiz-detail', { id: id }]);
   }
 }

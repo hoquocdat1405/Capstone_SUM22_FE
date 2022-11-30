@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../_services/auth.service';
@@ -26,7 +27,8 @@ export class LoginRegisterMainComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private title: Title
   ) {}
 
   loginFormIns = this.fb.group({
@@ -50,6 +52,7 @@ export class LoginRegisterMainComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title.setTitle('Đăng nhập');
     alertify.set('notifier', 'delay', 3);
   }
 

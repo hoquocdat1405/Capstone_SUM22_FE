@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../_services/shared.service';
 import { Test } from '../_model/test.model';
@@ -29,10 +30,12 @@ export class HollandQuizDetailPageComponent implements OnInit {
   constructor(
     private sharedServ: SharedService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private titleSer: Title
   ) {}
 
   ngOnInit() {
+    this.titleSer.setTitle('Chi tiết Holland');
     this.id = this.route.snapshot.paramMap.get('id');
     this.sharedServ.getTestDetail(this.id).subscribe((response) => {
       this.test = response;

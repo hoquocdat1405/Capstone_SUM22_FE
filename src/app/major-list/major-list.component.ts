@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { University } from './../_model/uni';
 import { MajorService } from './../_services/major.service';
 import { MajorModel } from './../_model/major/major-model';
@@ -16,10 +17,13 @@ export class MajorListComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private majorSer: MajorService
+    private majorSer: MajorService,
+    private title: Title
   ) {}
 
   ngOnInit() {
+    this.title.setTitle('Danh sách ngành học');
+
     this.id = this.route.snapshot.paramMap.get('id')!;
     this.majorSer.getMajorCareer(this.id).subscribe((data) => {
       console.log(data);

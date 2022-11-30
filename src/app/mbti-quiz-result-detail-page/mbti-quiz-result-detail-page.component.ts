@@ -3,7 +3,7 @@ import { QuizResult } from './../_model/quiz-result';
 import { SharedService } from './../_services/shared.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-mbti-quiz-result-detail-page',
   templateUrl: './mbti-quiz-result-detail-page.component.html',
@@ -14,18 +14,19 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   shortName?: string;
   quizResult?: QuizResult;
   job?: JobModel[];
-  imageSrc:any;
+  imageSrc: any;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private sharedServ: SharedService,
-    private sanitizer: DomSanitizer
-  ) {
-
-  }
+    private sanitizer: DomSanitizer,
+    private title: Title
+  ) {}
 
   ngOnInit() {
+    this.title.setTitle('Kết quả MBTI');
+
     this.getData();
   }
 
@@ -37,7 +38,9 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
       .subscribe((result) => {
         this.quizResult = result;
         this.getJob();
-        this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.quizResult!.resultPictureUrl);
+        this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
+          this.quizResult!.resultPictureUrl
+        );
         console.log(this.quizResult);
       });
   }

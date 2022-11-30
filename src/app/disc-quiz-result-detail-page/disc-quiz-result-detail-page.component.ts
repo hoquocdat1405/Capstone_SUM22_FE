@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +11,7 @@ export class DiscQuizResultDetailPageComponent implements OnInit {
 
   discType: { name: string; shorthand: string; imgSrc: string };
 
-  constructor() {
+  constructor(private title: Title) {
     this.result = { labels: ['D', 'I', 'S', 'C'], values: [7, 13, 22, 58] };
     this.discType = {
       name: 'Người kiên định',
@@ -19,5 +20,7 @@ export class DiscQuizResultDetailPageComponent implements OnInit {
     };
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle('Kết quả DISC');
+  }
 }

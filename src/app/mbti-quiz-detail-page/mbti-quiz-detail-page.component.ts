@@ -1,8 +1,9 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { QuizResult } from '../_model/quiz-result';
 import { Test } from '../_model/test.model';
 import { SharedService } from '../_services/shared.service';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TestTypeEnum } from '../shared/constants/app-const';
 @Component({
   selector: 'app-mbti-quiz-detail-page',
@@ -10,18 +11,21 @@ import { TestTypeEnum } from '../shared/constants/app-const';
   styleUrls: ['./mbti-quiz-detail-page.component.scss'],
 })
 export class MbtiQuizDetailPageComponent implements OnInit {
-  @ViewChild('card') card!:ElementRef;
+  @ViewChild('card') card!: ElementRef;
   id!: string | null;
-  test!:Test;
+  test!: Test;
   characters!: QuizResult[];
 
   constructor(
-    private sharedServ : SharedService,
+    private sharedServ: SharedService,
     private route: ActivatedRoute,
     private router: Router,
-    ) {}
+    private title: Title
+  ) {}
 
   ngOnInit() {
+    this.title.setTitle('Chi tiết MBTI');
+
     this.id = this.route.snapshot.paramMap.get('id');
     this.sharedServ.getTestDetail(this.id).subscribe((response) => {
       this.test = response;
@@ -30,8 +34,8 @@ export class MbtiQuizDetailPageComponent implements OnInit {
       });
     });
   }
-  redirectTest(typeId: number, id: number,type:number) {
-    console.log(typeId)
+  redirectTest(typeId: number, id: number, type: number) {
+    console.log(typeId);
     var redirectStr: string = '';
     if (typeId == TestTypeEnum.MBTI_TEST_ID)
       redirectStr = TestTypeEnum.MBTI_TEST;
@@ -43,7 +47,8 @@ export class MbtiQuizDetailPageComponent implements OnInit {
       redirectStr = TestTypeEnum.HOLLAND_TEST;
     console.log('id : ' + id);
     console.log(redirectStr + '-quiz-attempt?id=' + id);
-    if(type==0)this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
+    if (type == 0)
+      this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
     else this.router.navigate([redirectStr + '-quiz-detail', { id: id }]);
   }
 }

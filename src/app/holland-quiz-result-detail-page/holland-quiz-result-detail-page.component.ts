@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +11,7 @@ export class HollandQuizResultDetailPageComponent implements OnInit {
 
   hollandType: { name: string; shorthand: string; imgSrc: string };
 
-  constructor() {
+  constructor(private title: Title) {
     this.result = {
       labels: [
         'Kỹ thuật',
@@ -22,7 +23,7 @@ export class HollandQuizResultDetailPageComponent implements OnInit {
       ],
       values: [35, 1, 32, 29, 16, 24],
     };
-    
+
     this.hollandType = {
       name: 'Nhóm kỹ thuật',
       shorthand: 'Realistic',
@@ -30,5 +31,7 @@ export class HollandQuizResultDetailPageComponent implements OnInit {
     };
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle('Kết quả Holland');
+  }
 }
