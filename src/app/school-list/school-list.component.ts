@@ -42,7 +42,7 @@ export class SchoolListComponent implements OnInit {
     if(this.idMajor) {
       this.getSchoolList(this.idMajor);
       this.isFromMajor = true;
-      console.log("i'm here")
+      // console.log("i'm here")
     } else {
       this.uniService.getAllUniversity().subscribe({
         next: (data: University[]) => {
