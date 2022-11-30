@@ -1,91 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { Test } from '../_model/test.model';
+import { QuizResult } from '../_model/quiz-result';
 import { SharedService } from '../_services/shared.service';
+import { TestTypeEnum } from '../shared/constants/app-const';
 @Component({
   selector: 'app-disc-quiz-detail-page',
   templateUrl: './disc-quiz-detail-page.component.html',
   styleUrls: ['./disc-quiz-detail-page.component.scss'],
 })
 export class DiscQuizDetailPageComponent implements OnInit {
-  public discTypes: { name: string; shorthand: string; imgSrc: string }[];
-
   id!: string | null;
-
   test!: Test;
-
+  characters!: QuizResult[];
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private sharedServ: SharedService
-  ) {
-    this.discTypes = [
-      {
-        name: 'Người chiến thắng',
-        shorthand: 'D',
-        imgSrc: 'assets/svg/disc-types/disc-d-type.svg',
-      },
-      {
-        name: 'Người thách thức',
-        shorthand: 'DC',
-        imgSrc: 'assets/svg/disc-types/disc-dc-type.svg',
-      },
-      {
-        name: 'Người tìm kiếm',
-        shorthand: 'DI',
-        imgSrc: 'assets/svg/disc-types/disc-di-type.svg',
-      },
-      {
-        name: 'Người lạc quan',
-        shorthand: 'ID',
-        imgSrc: 'assets/svg/disc-types/disc-id-type.svg',
-      },
-      {
-        name: 'Người nhiệt tình',
-        shorthand: 'I',
-        imgSrc: 'assets/svg/disc-types/disc-i-type.svg',
-      },
-      {
-        name: 'Người bạn',
-        shorthand: 'IS',
-        imgSrc: 'assets/svg/disc-types/disc-is-type.svg',
-      },
-      {
-        name: 'Người cộng tác',
-        shorthand: 'SI',
-        imgSrc: 'assets/svg/disc-types/disc-si-type.svg',
-      },
-      {
-        name: 'Người nâng đỡ',
-        shorthand: 'S',
-        imgSrc: 'assets/svg/disc-types/disc-s-type.svg',
-      },
-      {
-        name: 'Kỹ thuật viên ',
-        shorthand: 'SC',
-        imgSrc: 'assets/svg/disc-types/disc-sc-type.svg',
-      },
-      {
-        name: 'Nhà phân tích ',
-        shorthand: 'C',
-        imgSrc: 'assets/svg/disc-types/disc-c-type.svg',
-      },
-      {
-        name: 'Người tạo nền tảng',
-        shorthand: 'CS',
-        imgSrc: 'assets/svg/disc-types/disc-cs-type.svg',
-      },
-      {
-        name: 'Người cầu toàn',
-        shorthand: ' CD',
-        imgSrc: 'assets/svg/disc-types/disc-cd-type.svg',
-      },
-    ];
-  }
+  ) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.sharedServ
-      .getTestDetail(this.id)
-      .subscribe((response) => (this.test = response));
+    this.sharedServ.getTestDetail(this.id).subscribe((response) => {
+      this.test = response;
+      this.sharedServ.getTestResult(this.id, '').subscribe((response) => {
+        this.characters = response;
+      });
+    });
+  }
+  redirectTest(typeId: number, id: number,type:number) {
+    console.log(typeId)
+    var redirectStr: string = '';
+    if (typeId == TestTypeEnum.MBTI_TEST_ID)
+      redirectStr = TestTypeEnum.MBTI_TEST;
+    else if (typeId == TestTypeEnum.DISC_TEST_ID)
+      redirectStr = TestTypeEnum.DISC_TEST;
+    else if (typeId == TestTypeEnum.BIGFIVE_TEST_ID)
+      redirectStr = TestTypeEnum.BIGFIVE_TEST;
+    else if (typeId == TestTypeEnum.HOLLAND_TEST_ID)
+      redirectStr = TestTypeEnum.HOLLAND_TEST;
+    // console.log('id : ' + id);
+    console.log(redirectStr + '-quiz-attempt?id=' + id);
+    if(type==0)this.router.navigate([redirectStr + '-quiz-attempt', { id: id }]);
+    else this.router.navigate([redirectStr + '-quiz-detail', { id: id }]);
   }
 }

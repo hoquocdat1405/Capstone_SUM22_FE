@@ -2,11 +2,11 @@
   <app-nav></app-nav>
 
   <div class="banner-section">
-    <img src="{{test.bannerUrl}}" alt="{{test.quizName}}" />
+    <img src="{{test.bannerUrl}}" alt="{{test.testName}}" />
   </div>
   <div class="banner-option">
     <!-- TODO: change this router to /test-attemp:param(id) -->
-    <a href="#" routerLink="/disc-quiz-attempt" class="btn-start"
+    <a (click)="redirectTest(test.testTypeId,test.id,0)" class="btn-start"
       >Bắt đầu ngay</a
     >
   </div>
@@ -14,7 +14,7 @@
 
 <div class="content-container">
   <div class="content-section">
-    <h4 class="content-header">{{ test.quizName }} là gì</h4>
+    <h4 class="content-header">{{ test.testName }} là gì</h4>
     <p class="content-text">
       {{ test.introduction }}
     </p>
@@ -32,15 +32,15 @@
     </p>
   </div>
 
-  <div class="bubble-section content-section">
+  <div class="bubble-section content-section" *ngIf="characters">
     <h4 class="content-header">12 Kiểu tính cách</h4>
     <div class="type-bubble-container">
-      <div class="bubble-row">
-        <div class="bubble" *ngFor="let type of discTypes">
+      <div class="bubble-row" >
+        <div class="bubble" *ngFor="let character of characters">
           <app-type-bubble
-            [name]="type.name"
-            [shorthand]="type.shorthand"
-            [imgSrc]="type.imgSrc"
+            [name]="character.resultName"
+            [shorthand]="character.resultShortName"
+            [imgSrc]="character.resultPictureUrl"
           ></app-type-bubble>
         </div>
       </div>

@@ -37,7 +37,7 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
       .subscribe((result) => {
         this.quizResult = result;
         this.getJob();
-        this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.quizResult!.resultPicture);
+        this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.quizResult!.resultPictureUrl);
         console.log(this.quizResult);
       });
   }

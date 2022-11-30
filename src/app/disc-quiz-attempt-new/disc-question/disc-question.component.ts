@@ -4,7 +4,7 @@ import {
   DiscQuizCollectionModel,
   DiscPostQuizCollection,
 } from './../../_model/disc-quiz/disc-quiz-collection';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/_services/shared.service';
 
@@ -14,6 +14,7 @@ import { SharedService } from 'src/app/_services/shared.service';
   styleUrls: ['./disc-question.component.scss'],
 })
 export class DiscQuestionComponent implements OnInit {
+  @Input() id !: string | null;
   totalPage = 0;
   currentQuestion = 0;
   currentPage = 0;
@@ -42,7 +43,7 @@ export class DiscQuestionComponent implements OnInit {
 
   getData() {
     var count = 0;
-    this.sharedServ.takingTestGuest(2006).subscribe((data) => {
+    this.sharedServ.takingTestGuest(this.id as unknown as number).subscribe((data) => {
       this.quizCollections = data;
       this.quizCollections?.questions.forEach((question) => {
         question.index = count++;
