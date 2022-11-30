@@ -114,7 +114,7 @@
 
 app-content-menu {
   width: 33%;
-  padding-left: 100px;
+  padding-left: 10%;
 }
 
 .tab-content.news-tab {
@@ -146,9 +146,48 @@ app-content-menu {
   }
 }
 
-// @media (min-width: 360px) and (max-width:541px) {
-//     .school-logo{
-//         width: 15%;
-//        margin
-//     }
-// }
+@media (max-width: 650px) {
+  .info-section {
+    flex-direction: column;
+  }
+
+  .uni-info {
+    text-align: center;
+  }
+
+  .school-address {
+    width: 100%;
+  }
+
+  .address {
+    margin: 0;
+  }
+
+  .school-website {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tab-section {
+    width: 90%;
+  }
+
+  app-content-menu {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .contacts {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact-phone,
+  .contact-email {
+    margin: 10px !important;
+    padding: 5px 15px !important;
+    width: 70% !important;
+  }
+}
