@@ -39,7 +39,7 @@
   width: 15%;
   min-width: 100px;
   aspect-ratio: 1 / 1;
-  margin-top: -10vh;
+  margin-top: -20vh;
   margin-left: 10vw;
   border-radius: 10px;
   border: solid 4px rgb(175, 175, 175);
@@ -47,6 +47,7 @@
 }
 
 .uni-info {
+  max-width: 40em;
   margin-left: 24px;
   display: inline-block;
 }
