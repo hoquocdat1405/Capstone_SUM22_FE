@@ -1,11 +1,12 @@
 <app-nav></app-nav>
 <div class="submit-app-header">Nộp hồ sơ</div>
 <div class="wrapper">
-    <mat-stepper linear #stepper>
+    <mat-horizontal-stepper linear #stepper (selectionChange)="setIndex($event)" (click)="handleFinalStepClick()">
         <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
                 <ng-template matStepLabel>Bước 1: Điền thông tin</ng-template>
                 <!-- Personal info section-->
+                <div class="personal-header first-header">Gửi hồ sơ cho trường {{uniDetail?.uniName}}</div>
                 <div class="personal-header">THÔNG TIN CÁ NHÂN</div>
                 <mat-divider></mat-divider>
                 <div class="personal-section">
@@ -20,9 +21,9 @@
                         <div class="label">Giới tính</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Giới tính</mat-label>
-                            <mat-select disableRipple formControlName="sex">
-                                <mat-option value="male">Nam</mat-option>
-                                <mat-option value="female">Nữ</mat-option>
+                            <mat-select disableRipple [formControl]="genderControl">
+                                <mat-option value="Nam">Nam</mat-option>
+                                <mat-option value="Nu">Nữ</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -30,7 +31,7 @@
                         <div class="label">Ngày sinh</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Chọn ngày sinh</mat-label>
-                            <input matInput [matDatepicker]="picker" formControlName="birth">
+                            <input matInput [matDatepicker]="picker" [formControl]="dateOfBirthControl">
                             <mat-hint>MM/DD/YYYY</mat-hint>
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
@@ -68,10 +69,11 @@
                         <div class="label">Ngành ứng tuyển</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Ngành ứng tuyển</mat-label>
-                            <input type='text' matInput formControlName="uniSpec" [matAutocomplete]="auto" placeholder="Nhập ngành ứng tuyển">
-                            <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
-                                <mat-option *ngFor="let option of uniSpecList" [value]="option.uniSpecName">
-                                    {{option.uniSpecName}}
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput
+                                formControlName="uniSpec" [matAutocomplete]="auto">
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                    {{option}}
                                 </mat-option>
                             </mat-autocomplete>
                         </mat-form-field>
@@ -79,31 +81,40 @@
                 </div>
 
                 <!-- High school info section-->
-                <div class="personal-header">THÔNG TIN TỐT NGHIỆP TRUNG HỌC PHỔ THÔNG</div>
+                <div class="personal-header">HỒ SƠ HỌC VẤN</div>
                 <mat-divider></mat-divider>
                 <div class="highschool-section">
-                    <div>
-                        <div class="label">Tỉnh thành</div>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Tỉnh thành</mat-label>
-                            <input matInput formControlName="city" placeholder="Nhập tỉnh thành">
-                        </mat-form-field>
-                    </div>
-                    <div>
-                        <div class="label">Quận huyện</div>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Quận huyện</mat-label>
-                            <mat-select disableRipple formControlName="district">
-                                <mat-option value="male">Quận 1</mat-option>
-                                <mat-option value="female">Quận 2</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
                     <div>
                         <div class="label">Trường THPT</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Trường THPT</mat-label>
                             <input matInput formControlName="highschool" placeholder="Nhập trường THPT">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <div class="label">Tỉnh thành</div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Tỉnh thành</mat-label>
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="city"
+                                [matAutocomplete]="auto2">
+                            <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
+                                <mat-option *ngFor="let option of provinceFilteredOptions | async" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <div class="label">Quận huyện</div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Tỉnh thành</mat-label>
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="district"
+                                [matAutocomplete]="auto3">
+                            <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete">
+                                <mat-option *ngFor="let option of districtFilteredOptions | async" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
                         </mat-form-field>
                     </div>
                     <div>
@@ -142,15 +153,10 @@
                 <ng-template matStepLabel>Bước 2: Upload Hồ sơ</ng-template>
                 <div class="step-two-card">
                     <label>Học bạ THPT</label>
-                    <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
-                </div>
-                <div class="step-two-card">
-                    <label>Bằng tốt nghiệp THPT</label>
-                    <input type="file" (change)="graduateFileChange($event)" formControlName="graduate">
-                </div>
-                <div class="step-two-card">
-                    <label>Phiếu điểm thi</label>
-                    <input type="file" (change)="gradeFileChange($event)" formControlName="grade">
+                    <div class="input-group">
+                        <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
+                        <input class="school-profile-name" type='text' formControlName="schoolProfileName">
+                    </div>
                 </div>
                 <div class="step-two-card">
                     <label>CMND mặt trước</label>
@@ -168,7 +174,9 @@
         </mat-step>
         <mat-step>
             <form [formGroup]="finishFormGroup">
-                <ng-template matStepLabel>Hoàn tất</ng-template>
+                <ng-template matStepLabel>
+                    <span>Hoàn tất</span>
+                </ng-template>
                 <!-- Personal info section-->
                 <div class="finish-header">KIỂM TRA LẠI THÔNG TIN</div>
                 <div class="personal-header">THÔNG TIN CÁ NHÂN</div>
@@ -185,9 +193,9 @@
                         <div class="label">Giới tính</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Giới tính</mat-label>
-                            <mat-select disableRipple formControlName="sex">
-                                <mat-option value="male">Nam</mat-option>
-                                <mat-option value="female">Nữ</mat-option>
+                            <mat-select disableRipple [formControl]="genderControl">
+                                <mat-option value="Nam">Nam</mat-option>
+                                <mat-option value="Nu">Nữ</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -195,7 +203,7 @@
                         <div class="label">Ngày sinh</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Chọn ngày sinh</mat-label>
-                            <input matInput [matDatepicker]="picker2" formControlName="birth">
+                            <input matInput [matDatepicker]="picker2" [formControl]="dateOfBirthControl">
                             <mat-hint>MM/DD/YYYY</mat-hint>
                             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                             <mat-datepicker #picker2></mat-datepicker>
@@ -229,6 +237,19 @@
                             <input matInput formControlName="email" placeholder="Nhập email">
                         </mat-form-field>
                     </div>
+                    <div>
+                        <div class="label">Ngành ứng tuyển</div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Ngành ứng tuyển</mat-label>
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="uniSpec"
+                                [matAutocomplete]="auto1">
+                            <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
                 </div>
 
                 <!-- High school info section-->
@@ -236,27 +257,36 @@
                 <mat-divider></mat-divider>
                 <div class="highschool-section">
                     <div>
+                        <div class="label">Trường THPT</div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Trường THPT</mat-label>
+                            <input matInput formControlName="highschool" placeholder="Nhập trường THPT">
+                        </mat-form-field>
+                    </div>
+                    <div>
                         <div class="label">Tỉnh thành</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Tỉnh thành</mat-label>
-                            <input matInput formControlName="city" placeholder="Nhập tỉnh thành">
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="city"
+                                [matAutocomplete]="auto2">
+                            <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
+                                <mat-option *ngFor="let option of provinceFilteredOptions | async" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
                         </mat-form-field>
                     </div>
                     <div>
                         <div class="label">Quận huyện</div>
                         <mat-form-field appearance="fill">
-                            <mat-label>Quận huyện</mat-label>
-                            <mat-select disableRipple formControlName="district">
-                                <mat-option value="male">Quận 1</mat-option>
-                                <mat-option value="female">Quận 2</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div>
-                        <div class="label">Trường THPT</div>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Trường THPT</mat-label>
-                            <input matInput formControlName="highschool" placeholder="Nhập trường THPT">
+                            <mat-label>Tỉnh thành</mat-label>
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="district"
+                                [matAutocomplete]="auto3">
+                            <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete">
+                                <mat-option *ngFor="let option of districtFilteredOptions | async" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
                         </mat-form-field>
                     </div>
                     <div>
@@ -283,23 +313,18 @@
                 </div>
                 <div class="step-two-card">
                     <label>Học bạ THPT</label>
-                    <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
-                </div>
-                <div class="step-two-card">
-                    <label>Bằng tốt nghiệp THPT</label>
-                    <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
-                </div>
-                <div class="step-two-card">
-                    <label>Phiếu điểm thi</label>
-                    <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
+                    <div class="input-group">
+                        <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
+                        <input class="school-profile-name" type='text' formControlName="schoolProfileName">
+                    </div>
                 </div>
                 <div class="step-two-card">
                     <label>CMND mặt trước</label>
-                    <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
+                    <input type="file" (change)="frontIdFileChange($event)" formControlName="frontId">
                 </div>
                 <div class="step-two-card">
                     <label>CMND mặt sau</label>
-                    <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
+                    <input type="file" (change)="backIdFileChange($event)" formControlName="backId">
                 </div>
                 <div class="action-btn">
                     <button mat-button matStepperPrevious>Back</button>
@@ -307,5 +332,5 @@
                 </div>
             </form>
         </mat-step>
-    </mat-stepper>
+    </mat-horizontal-stepper>
 </div>

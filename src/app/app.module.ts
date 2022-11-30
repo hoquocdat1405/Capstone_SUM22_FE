@@ -134,6 +134,7 @@ import {
   HtmlEditorService,
 } from '@syncfusion/ej2-angular-richtexteditor';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { DatePipe } from '@angular/common';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -250,6 +251,7 @@ export function tokenGetter() {
     LinkService,
     ImageService,
     HtmlEditorService,
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ],
   bootstrap: [AppComponent],
