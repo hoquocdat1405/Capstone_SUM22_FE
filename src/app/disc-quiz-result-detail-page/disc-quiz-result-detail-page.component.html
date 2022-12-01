@@ -20,16 +20,20 @@
         </div>
       </div>
       <img class="img-result" src="{{quizResult?.resultPictureUrl}}" alt="disc-s-type" />
-
-
     </div>
-
+    <!-- <div class="row">
+      <div class="text-major-header">Các ngành nghề phù hợp</div>
+      <div class="text-major-wrapper">
+        <h4 class="text-major" *ngFor="let result of job" (click)="getMajor(result.id)">
+          {{result.jobName}} </h4>
+      </div>
+    </div> -->
     <div class="character-info">
       <p class="info-title">Đặc điểm nhóm tính cách <span></span></p>
       <div class="horizontal-bar"></div>
-      <div class="chart-section">
+      <!-- <div class="chart-section">
         <app-doughnut-chart [labels]="result.labels" [values]="result.values"></app-doughnut-chart>
-      </div>
+      </div> -->
       <div class="info-container">
         <div class="info-content">
           <h4 class="title-1"><span>01</span>Tổng quan</h4>

@@ -62,4 +62,8 @@ export class DiscQuizResultDetailPageComponent implements OnInit {
       },
     });
   }
+
+  getMajor(id: number) {
+    this.router.navigate(['major-list/', { id: id }]);
+  }
 }
