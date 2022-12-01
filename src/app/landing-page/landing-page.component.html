@@ -1,6 +1,8 @@
-<div class="page-container" >
+<div class="page-container">
   <app-nav></app-nav>\
-  <div *ngIf="quizes"><app-carousel [quizes]="quizes"></app-carousel></div>
+  <div *ngIf="quizes">
+    <app-carousel [quizes]="quizes"></app-carousel>
+  </div>
 
   <!-- tin tuyển sinh -->
   <div class="news-section">
@@ -54,7 +56,7 @@
     <div class="edu-news-container row d-flex">
       <div class="edu-news-item col-sm-6" *ngFor="let uni of uniList|slice:0:3">
         <div class="d-flex">
-          <app-edu-news-item [uniImg]="uni.avatarUrl" [address]="uni.addressNumber" [name]="uni.uniName"
+          <app-edu-news-item [uniImg]="uni.coverPhotoUrl" [address]="uni.addressNumber" [name]="uni.uniName"
             [description]="uni.description"></app-edu-news-item>
         </div>
       </div>

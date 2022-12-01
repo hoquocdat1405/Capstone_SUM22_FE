@@ -17,7 +17,7 @@ export class SharedService {
     return this.http.get<any>(this.baseUrl + 'test/get-active-test');
   }
 
-  getTestDetail(id: string | null): Observable<any> {
+  getTestDetail(id: any): Observable<any> {
     return this.http.get<any>(
       this.baseUrl + 'test/get-test-detail?testId=' + id
     );

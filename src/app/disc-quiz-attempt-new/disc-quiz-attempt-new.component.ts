@@ -1,3 +1,5 @@
+import { TestDetail } from './../_model/test.model';
+import { SharedService } from 'src/app/_services/shared.service';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -9,10 +11,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DiscQuizAttemptNewComponent implements OnInit {
   id!: string | null;
-  constructor(private route: ActivatedRoute, private title: Title) {}
+  testDetail?: TestDetail;
+
+  constructor(
+    private route: ActivatedRoute,
+    private title: Title,
+    private shareService: SharedService
+  ) {}
 
   ngOnInit() {
     this.title.setTitle('Bài test DISC');
     this.id = this.route.snapshot.paramMap.get('id');
+    this.getData();
+  }
+
+  getData() {
+    this.shareService.getTestDetail(this.id).subscribe((data) => {
+      this.testDetail = data;
+    });
   }
 }

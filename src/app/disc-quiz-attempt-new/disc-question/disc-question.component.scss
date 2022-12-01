@@ -5,7 +5,7 @@
 }
 
 .note-text {
-  color: red;
+  color: #d00505;
 }
 
 .question {
@@ -25,25 +25,26 @@ mat-divider {
 
 .same {
   font-size: 20px;
-  color: #008300;
+  color: #04c75f;
 }
 
 .difference {
   font-size: 20px;
-  color: red;
+  color: #ff6347;
 }
 
 .title-disc {
   font-size: 40px;
-  color: #00b14f;
+  color: #0d93d9;
   margin: 10px 0;
   font-weight: 500;
+  width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
 }
 
 .disc-header {
-  background-color: #f3c97d;
+  background-color: #dfdfdf;
   width: 100%;
   padding: 20px;
   display: flex;
@@ -58,6 +59,7 @@ mat-divider {
 .header-content {
   width: 25%;
   text-align: center;
+  pointer-events: none;
 }
 
 .error-text {
@@ -117,7 +119,7 @@ mat-divider {
   left: 0;
   height: 20px;
   width: 20px;
-  border: 2px solid green;
+  border: 2px solid #04c75f;
   border-radius: 4px;
   margin-left: 50%;
 }
@@ -129,7 +131,7 @@ mat-divider {
   top: 1px;
   width: 8px;
   height: 12px;
-  border: solid green;
+  border: solid #04c75f;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -142,7 +144,7 @@ mat-divider {
   left: 0;
   height: 20px;
   width: 20px;
-  border: 2px solid red;
+  border: 2px solid #ff6347;
   border-radius: 4px;
   margin-left: 50%;
 }
@@ -154,7 +156,7 @@ mat-divider {
   top: 1px;
   width: 8px;
   height: 12px;
-  border: solid red;
+  border: solid #ff6347;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -195,8 +197,8 @@ span {
 
 .container-main {
   width: 100%;
-  background-color: #f4e9e2;
   padding: 20px;
+  background-color: #f2f2f2;
 }
 
 .content {
@@ -226,12 +228,12 @@ label {
 
 .same-label {
   font-size: 16px;
-  color: green;
+  color: #04c75f;
 }
 
 .different-label {
   font-size: 16px;
-  color: red;
+  color: #ff6347;
 }
 
 .pageIndex {
@@ -247,7 +249,7 @@ label {
 
 :host ::ng-deep.mat-paginator .mat-paginator-container {
   justify-content: flex-end;
-  background-color: #f4e9e2;
+  background-color: #f2f2f2;
   font-size: 16px;
 }
 
@@ -267,7 +269,7 @@ label {
 .submit-btn.active {
   cursor: pointer;
   color: #fff;
-  background-color: #007bff;
+  background-color: #0d93d9;
   opacity: 0.8;
   pointer-events: initial;
 }
@@ -356,9 +358,15 @@ label {
   text-align: center;
 }
 
+.question-item {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .question-item.active {
-  background-color: #f3f3f3;
-  color: #3a454b;
+  font-weight: bold;
+  background-color: #ffb000;
+  color: #fff;
 }
 
 .nav-section {

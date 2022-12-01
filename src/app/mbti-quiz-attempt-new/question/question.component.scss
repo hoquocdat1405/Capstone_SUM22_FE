@@ -7,7 +7,8 @@
 .container-main {
   width: 100%;
   // background-image: linear-gradient(to bottom right, #f2f2f2, #fefefe);
-  background-color: #f5f5f5;
+  background-color: #f1dfc4;
+  // background-image: linear-gradient(to bottom right, #fde1b5, #f2f2f2);
   padding: 20px 100px;
   display: flex;
   flex-direction: column;
@@ -22,7 +23,8 @@
 
 .title-mbti {
   font-size: 40px;
-  color: #00b14f;
+  // color: #00b14f;
+  color: #3c3327;
   font-weight: 500;
   width: -moz-fit-content;
   width: fit-content;
@@ -63,7 +65,7 @@
 }
 
 .note-text {
-  color: red;
+  color: #d00505;
   width: 70%;
 }
 
@@ -103,7 +105,7 @@ input {
 
 :host ::ng-deep.mat-paginator .mat-paginator-container {
   justify-content: flex-end;
-  background-color: #f5f5f5;
+  background-color: #f1dfc4;
   font-size: 16px;
 }
 
@@ -130,8 +132,8 @@ input {
 
 .submit-btn.active {
   cursor: pointer;
-  color: #fff;
-  background-color: #007bff;
+  color: #f1dfc4;
+  background-color: #3c3327;
   opacity: 0.8;
   pointer-events: initial;
 }
@@ -215,6 +217,7 @@ form {
   flex-direction: column;
   gap: 30px;
   margin-top: 10px;
+  overflow: scroll;
 }
 
 .nav-item {
@@ -269,9 +272,15 @@ form {
   text-align: center;
 }
 
+.question-item:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .question-item.active {
-  background-color: #f3f3f3;
-  color: #3a454b;
+  background-color: #f1e3cf;
+  color: #3c3327;
+  font-weight: bold;
 }
 
 @media (max-width: 600px) {

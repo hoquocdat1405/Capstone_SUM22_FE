@@ -8,7 +8,7 @@ export interface Test {
   status: boolean;
   introduction: string;
   bannerUrl: string;
-  backgroundUrl:string;
+  backgroundUrl: string;
   history: string;
   criteriaInformation: string;
   shortDescription: string;
@@ -16,4 +16,16 @@ export interface Test {
   testType: number;
   attempts: any;
   questions: any;
+}
+
+export interface TestDetail {
+  id: number;
+  testTypeId: number;
+  testName: string;
+  bannerUrl: string;
+  backgroundUrl: string;
+  totalQuestion: number;
+  introduction: string;
+  criteriaInformation: string;
+  history: string;
 }

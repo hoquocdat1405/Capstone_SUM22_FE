@@ -3,8 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-.main-container {
-}
 
 .page-container {
   padding: 0 20%;
@@ -73,9 +71,6 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-
-.tab-content {
 }
 
 .content1 {
@@ -147,15 +142,6 @@ img {
   display: flex;
 }
 
-.suggest-major-group-name {
-}
-
-.suggest-major-group-icon {
-}
-
-.suggest-major {
-}
-
 .suggest-content:not(:last-child) .suggest-major {
   border-right: 1px solid #000;
 }
@@ -173,6 +159,10 @@ img {
   font-weight: 500;
   color: #007bff;
   width: 300px;
+}
+
+.character-result1 span {
+  text-transform: uppercase;
 }
 
 .type-name {

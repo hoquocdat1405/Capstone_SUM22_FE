@@ -11,7 +11,7 @@
     <div class="disc-content-row">
       <div class="disc-content-column">
         <div class="content-header">Nhóm tính cách của bạn là</div>
-        <div class="character-result1">Nhóm {{quizResult?.resultShortName}}</div>
+        <div class="character-result1">Nhóm <span>{{quizResult?.resultShortName}}</span></div>
         <div class="character-result2">{{quizResult?.resultName}}</div>
 
         <div _ngcontent-fut-c279="" class="btn-take-again"><i _ngcontent-fut-c279="" aria-hidden="true"
@@ -19,7 +19,7 @@
           <p _ngcontent-fut-c279="" class="take-again">Làm lại bài test</p>
         </div>
       </div>
-      <img class="img-result" src="./../../assets/svg/disc-types/disc-s-type.svg" alt="disc-s-type" />
+      <img class="img-result" src="{{quizResult?.resultPictureUrl}}" alt="disc-s-type" />
 
 
     </div>
