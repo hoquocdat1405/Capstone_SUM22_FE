@@ -2,9 +2,13 @@
     margin-top: 8px;
 }
 
+.hide {
+    display: none !important;
+}
+
 .wrapper {
     padding: 10px 100px;
-} 
+}
 
 .mat-form-field {
     width: 100%;
@@ -116,4 +120,24 @@
 .input-group {
     display: flex;
     flex-direction: column;
+}
+
+.input-group img {
+    width: 120px;
+    aspect-ratio: 1 / 1;
+}
+
+.img-list {
+    display: flex;
+}
+
+.img-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img-section img {
+    width: 120px;
+    aspect-ratio: 1 / 1;
 }

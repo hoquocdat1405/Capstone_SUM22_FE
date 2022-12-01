@@ -13,7 +13,7 @@ import { Profile } from './../_model/User';
 import { AuthService } from './../_services/auth.service';
 import { SubmitApplications } from './../_model/uniApplication';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UniDetail, UniSpec, University } from '../_model/uni';
 import * as alertify from "alertifyjs";
 import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -44,12 +44,27 @@ export class HandinUniAppComponent implements OnInit {
   genderControl!: FormControl;
   uniSpecId?: number;
   applicationList: ApplicationModel[] = [];
+  currentSchoolProfileIndex: number = 1;
+  maxSchoolProfileIndex: number = 1;
 
   provinceList: Province[] = [];
   districtList: District[] = [];
 
   provinceFilteredOptions?: Observable<string[]>;
   districtFilteredOptions?: Observable<string[]>;
+
+  schoolProfile1Name: string = "";
+  schoolProfile2Name: string = "";
+  schoolProfile3Name: string = "";
+  schoolProfile4Name: string = "";
+
+  frontId: string = "";
+  backId: string = "";
+
+
+  @ViewChild('schoolProfileInput') schoolProfileEle?: ElementRef<HTMLElement>;
+  @ViewChild('frontImg') frontImgEle?: ElementRef<HTMLElement>;
+  @ViewChild('backImg') backImgEle?: ElementRef<HTMLElement>;
 
   constructor(
     private fb: FormBuilder,
@@ -220,33 +235,72 @@ export class HandinUniAppComponent implements OnInit {
   });
 
   schoolProfileFileChange(event: any) {
-    if (this.schoolProfileList.length >= 4) {
-      alertify.error("Tối đa 4 file được nhập")
-      return;
-    }
+    // if (this.schoolProfileList.length >= 4) {
+    //   alertify.error("Tối đa 4 file được nhập")
+    //   return;
+    // }
 
-    let schoolProfileNameConcat: string = "";
+    // let schoolProfileNameConcat: string = "";
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.path = file;
+      
+
+      // this.schoolProfileList.forEach(item => {
+      //   schoolProfileNameConcat += item.submittedFile.name + " ";
+      // })
+      // this.secondFormGroup.patchValue({
+      //   schoolProfileName: schoolProfileNameConcat
+      // })
+      this.selectedFiles = event.target.files;
+      
       const schoolProfile: SubmitApplications = {
-        name: "app_schoolProfile" + (this.schoolProfileList.length + 1),
+        name: "app_schoolProfile" + this.currentSchoolProfileIndex,
         submittedFile: file
       }
+      
+      switch (this.currentSchoolProfileIndex) {
+        case 1:
+          this.schoolProfile1Name = file.name;
+          if(this.submitFiles[0] === null) {
+            this.submitFiles.push(schoolProfile)
+          } else {
+            this.submitFiles[0] = schoolProfile
+          }
+          break;
+        case 2:
+          this.schoolProfile2Name = file.name;
+          if (this.submitFiles[1] === null) {
+            this.submitFiles.push(schoolProfile)
+          } else {
+            this.submitFiles[1] = schoolProfile
+          }
+          break;
+        case 3:
+          this.schoolProfile3Name = file.name;
+          if (this.submitFiles[2] === null) {
+            this.submitFiles.push(schoolProfile)
+          } else {
+            this.submitFiles[2] = schoolProfile
+          }
+          break;
+        case 4:
+          this.schoolProfile4Name = file.name;
+          if (this.submitFiles[3] === null) {
+            this.submitFiles.push(schoolProfile)
+          } else {
+            this.submitFiles[3] = schoolProfile
+          }
+          break;
+          
+        default:
+          break;
+      }
 
-      this.schoolProfileList.push(schoolProfile);
-
-      this.schoolProfileList.forEach(item => {
-        schoolProfileNameConcat += item.submittedFile.name + " ";
-      })
-      this.secondFormGroup.patchValue({
-        schoolProfileName: schoolProfileNameConcat
-      })
-      this.submitFiles.push(schoolProfile);
-
-      console.log(this.submitFiles)
-      this.selectedFiles = event.target.files;
+      if (this.maxSchoolProfileIndex <= 3 && this.maxSchoolProfileIndex <= this.currentSchoolProfileIndex) {
+        this.maxSchoolProfileIndex++;
+      }
     }
   }
 
@@ -259,6 +313,7 @@ export class HandinUniAppComponent implements OnInit {
       }
 
       const index = this.submitFiles.findIndex(item => item.name === frontId.name);
+      this.frontId = file.name
       if (index !== -1) {
         this.submitFiles[index].submittedFile = file;
       } else {
@@ -274,6 +329,7 @@ export class HandinUniAppComponent implements OnInit {
         name: "app_backId",
         submittedFile: file
       }
+      this.backId = file.name
 
       const index = this.submitFiles.findIndex(item => item.name === backId.name);
       if (index !== -1) {
@@ -282,10 +338,6 @@ export class HandinUniAppComponent implements OnInit {
         this.submitFiles.push(backId);
       }
     }
-  }
-
-  selectFile(event: any): void {
-    this.selectedFiles = event.target.files;
   }
 
   submitFile() {
@@ -414,5 +466,23 @@ export class HandinUniAppComponent implements OnInit {
       return value[0];
     }
     return value
+  }
+
+  schoolProfileClick(schoolProfileIndex: number) {
+    let el: HTMLElement = this.schoolProfileEle?.nativeElement!;
+    this.currentSchoolProfileIndex = schoolProfileIndex;
+    
+    console.log(this.maxSchoolProfileIndex)
+    el.click();
+  }
+
+  frontImgClick() {
+    let el: HTMLElement = this.frontImgEle?.nativeElement!;
+    el.click();
+  }
+
+  backImgClick() {
+    let el: HTMLElement = this.backImgEle?.nativeElement!;
+    el.click();
   }
 }
