@@ -135,6 +135,7 @@ import {
 } from '@syncfusion/ej2-angular-richtexteditor';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { DatePipe } from '@angular/common';
+import { NewJobListPageComponent } from './new-job-list-page/new-job-list-page.component';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -226,6 +227,7 @@ export function tokenGetter() {
     MailInboxComponent,
     PageNotFoundComponent,
     SubNewsItemComponent,
+    NewJobListPageComponent,
   ],
   imports: [
     FormsModule,

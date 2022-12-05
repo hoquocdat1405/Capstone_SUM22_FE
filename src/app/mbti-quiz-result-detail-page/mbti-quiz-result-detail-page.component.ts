@@ -1,4 +1,6 @@
-import { JobModel } from './../_model/job/job-model';
+import { MajorModel } from './../_model/major/major-model';
+import { MajorService } from './../_services/major.service';
+import { JobModel, JobMajorModel } from './../_model/job/job-model';
 import { QuizResult } from './../_model/quiz-result';
 import { SharedService } from './../_services/shared.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,13 +17,16 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   quizResult?: QuizResult;
   job?: JobModel[];
   imageSrc: any;
+  panelOpenState: boolean = false;
+  showedJobList: JobMajorModel[] = [];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private sharedServ: SharedService,
     private sanitizer: DomSanitizer,
-    private title: Title
+    private title: Title,
+    private majorService: MajorService
   ) {}
 
   ngOnInit() {
@@ -48,6 +53,20 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
     this.sharedServ.getJobCareer(this.quizResult!.id).subscribe({
       next: (data) => {
         this.job = data;
+        this.job?.forEach(job => {
+          this.majorService.getMajorCareer(job.id.toString()).subscribe({
+            next: (data: MajorModel[]) => {
+              const jobMajorData: JobMajorModel = {
+                id: job.id,
+                imageUrl: job.imageUrl,
+                description: job.description,
+                jobName: job.jobName,
+                majorList: data
+              }
+              this.showedJobList.push(jobMajorData);
+            }
+          })
+        })
       },
     });
   }
@@ -68,5 +87,9 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
 
   getMajor(id: number) {
     this.router.navigate(['major-list/', { id: id }]);
+  }
+
+  goUniver(id: string) {
+    this.router.navigate(['/school-list', { id: id }]);
   }
 }

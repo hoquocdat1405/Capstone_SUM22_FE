@@ -1,0 +1,110 @@
+import { MajorModel } from './../_model/major/major-model';
+import { MajorService } from './../_services/major.service';
+import { Title } from '@angular/platform-browser';
+import { startWith, map } from 'rxjs/operators';
+import { JobService } from './../_services/job.service';
+import { JobModel, JobMajorModel } from './../_model/job/job-model';
+import { SharedService } from './../_services/shared.service';
+import { Observable } from 'rxjs';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Job } from './../_model/job';
+import { Component, OnInit } from '@angular/core';
+import * as alertify from 'alertifyjs';
+
+
+@Component({
+  selector: 'app-new-job-list-page',
+  templateUrl: './new-job-list-page.component.html',
+  styleUrls: ['./new-job-list-page.component.scss']
+})
+export class NewJobListPageComponent implements OnInit {
+  job?: JobModel;
+  filteredOptions?: Observable<string[]>;
+  jobList: Job[] = [];
+  displayedJobList: Job[] = [];
+  JobMajorList: JobMajorModel[] = [];
+  showedJobList: JobMajorModel[] = [];
+
+  constructor(
+    private router: Router,
+    private sharedServ: SharedService,
+    private jobService: JobService,
+    private fb: FormBuilder,
+    private title: Title,
+    private majorService: MajorService
+  ) { }
+
+  myForm = this.fb.group({
+    jobName: [''],
+    majorName: [''],
+    specName: [''],
+  });
+
+  // getErrorMessage() {
+  //   return this.f['jobName'].hasError('required') ? 'Vui lòng nhập tên nghề nghiệp cần tìm' : '';
+  // }
+
+  get f() {
+    return this.myForm.controls;
+  }
+
+  ngOnInit(): void {
+    this.title.setTitle('Danh sách ngành nghề');
+
+    this.jobService.getAllJob().subscribe({
+      next: (data: Job[]) => {
+        this.jobList = data;
+        this.displayedJobList = this.jobList;
+        this.displayedJobList?.forEach(job => {
+          this.majorService.getMajorCareer(job.id.toString()).subscribe({
+            next: (data: MajorModel[]) => {
+              const jobMajorData: JobMajorModel = {
+                id: job.id,
+                imageUrl: job.imageUrl,
+                description: job.description,
+                jobName: job.jobName,
+                majorList: data
+              }
+              this.JobMajorList.push(jobMajorData);
+              this.showedJobList.push(jobMajorData);
+            }
+          })
+        })
+        this.filteredOptions = (
+          this.myForm.get('jobName') as FormControl
+        ).valueChanges.pipe(
+          startWith(''),
+          map((value) => this._filter(value || ''))
+        );
+      },
+      error: () => {
+        alertify.error('Get data failed!');
+      },
+    });
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.JobMajorList
+      .filter((option) => option.jobName.toLowerCase().includes(filterValue))
+      .map((job) => job.jobName);
+  }
+
+  handleClick(id: number) {
+    this.router.navigate(['/major-list', { id: id }]);
+  }
+
+  searchJob() {
+    this.showedJobList = this.JobMajorList.filter((job) =>
+      job.jobName
+        .toLowerCase()
+        .includes((this.f['jobName'].value as string).toLowerCase())
+    );
+  }
+
+  goUniver(id: string) {
+    this.router.navigate(['/school-list', { id: id }]);
+  }
+}
