@@ -1,18 +1,12 @@
 <nav class="nav-container navbar navbar-expand-lg"
   [ngClass]="{ 'navbar-dark': theme=='dark', 'navbar-light': theme != 'dark'}">
   <div class="container-fluid">
-    <a href="#" class="navbar-brand">
-      <!-- <img src="../assets/img/logo-qick-black.png" height="28" alt="Qick" /> -->
-      <img src="../assets/img/qick-text-black.png" height="18" alt="Qick-brand" class="brand-name"
-        *ngIf="theme == 'light'">
-      <img src="../assets/img/qick-text-white.png" height="18" alt="Qick-brand" class="brand-name"
-        *ngIf="theme != 'light'">
-    </a>
+
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <div class="navbar-nav">
+      <div class="navbar-nav left-nav">
         <a href="#" routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page"
           class="nav-item nav-link">Trang chủ</a>
         <a href="#" routerLink="/tests" routerLinkActive="active" class="nav-item nav-link">Trắc nghiệm tính
@@ -20,13 +14,22 @@
         <!-- <a href="#" routerLink="#" routerLinkActive="active" class="nav-item nav-link">Tìm hiểu bản thân</a> -->
         <!-- <a href="#" routerLink="#" routerLinkActive="active" class="nav-item nav-link">Tin tức</a> -->
         <a href="#" routerLink="/job-list" routerLinkActive="active" class="nav-item nav-link">Sự nghiệp</a>
-        <a href="#" [routerLink]="['/school-list', { fromNav: 'true' }]" routerLinkActive="active" class="nav-item nav-link">Đại học</a>
+        <a href="#" [routerLink]="['/school-list', { fromNav: 'true' }]" routerLinkActive="active"
+          class="nav-item nav-link">Đại học</a>
         <a href="#" routerLink="/mail" routerLinkActive="active" class="nav-item nav-link">Mail</a>
         <!-- <a href="#" class="nav-item nav-link">Chọn trường</a>
         <a href="#" class="nav-item nav-link">Tin tuyển sinh</a> -->
       </div>
 
-      <div class="navbar-nav ms-auto">
+      <a href="#" class="navbar-brand logo">
+        <!-- <img src="../assets/img/logo-qick-black.png" height="28" alt="Qick" /> -->
+        <img src="../../assets/img/full-new.png" height="18" alt="Qick-brand" class="brand-name"
+          *ngIf="theme == 'light'">
+        <img src="../../assets/img/full-new.png" height="18" alt="Qick-brand" class="brand-name"
+          *ngIf="theme != 'light'">
+      </a>
+
+      <div class="navbar-nav right-nav">
         <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input
             type="search"
