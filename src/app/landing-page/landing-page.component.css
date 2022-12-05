@@ -131,7 +131,8 @@
 }
 
 .edu-news-section{
-  background-image: linear-gradient(180deg, #1b8682 46%,#28d3cc 100%);
+  /* background-image: linear-gradient(180deg, #1b8682 46%,#28d3cc 100%); */
+  background-image: linear-gradient(180deg, #c85a35 46%,#c77c63 100%);
 }
 
 .edu-news-container{

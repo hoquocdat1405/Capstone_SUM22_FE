@@ -3,7 +3,9 @@
 }
 
 .nav-container{
-  background-color: #fff;
+  background-color: #fffcf8;
+  /* background-image: linear-gradient(to right,#6b50df, #7e95c7); */
+  /* background: linear-gradient(-45deg, #0982a7,hsla(218, 100%, 26%, 1)); */
   position: fixed;
   z-index: 10;
   width:100%;
@@ -14,9 +16,24 @@ nav{
   /* box-shadow: 2px 2px 30px rgb(225, 224, 224); */
 }
 
+.navbar-brand{
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.navbar-brand img{
+  width:100px;
+  height:25px;
+}
+
+/* .navbar-brand.logo{
+  aspect-ratio: 4/1;
+  width:100px;
+} */
+
 .navbar-brand .brand-name {
   vertical-align: middle;
-  margin: 0 10px 0 10px;
+  /* margin: 0 10px 0 10px; */
   font-family: "Orbitron";
   font-size: large;
 }
@@ -25,11 +42,16 @@ nav{
   font-family: "Open Sans Semibold" !important;
   font-weight: 500;
   font-size: 18px;
+  color: #2f333f !important; 
 }
 .navbar-nav {
   font-family: "Open Sans Regular";
-  font-size: 18px;
+  font-size: 16px;
   margin: auto 5px;
+}
+
+.nav-item.nav-link{
+  color: #2f333f !important; 
 }
 
 .navbar-nav a {
@@ -79,3 +101,17 @@ nav{
 .light {
   color: black !important;
 }
+
+.left-nav,.right-nav{
+  width:40%;
+}
+
+#navbarCollapse{
+  justify-content:space-between;
+}
+
+.right-nav{
+  justify-content:flex-end;
+
+}
+

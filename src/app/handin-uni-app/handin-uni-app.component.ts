@@ -1,5 +1,8 @@
 import { ProfileService } from './../_services/profile.service';
-import { ApplicationDetail, ApplicationModel } from './../_model/application/application';
+import {
+  ApplicationDetail,
+  ApplicationModel,
+} from './../_model/application/application';
 import { ApplicationService } from './../_services/application.service';
 import { Province, District } from './../_model/address';
 import { AddressService } from './../_services/address.service';
@@ -12,10 +15,15 @@ import { ActivatedRoute } from '@angular/router';
 import { Profile } from './../_model/User';
 import { AuthService } from './../_services/auth.service';
 import { SubmitApplications } from './../_model/uniApplication';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UniDetail, UniSpec, University } from '../_model/uni';
-import * as alertify from "alertifyjs";
+import * as alertify from 'alertifyjs';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { DatePipe } from '@angular/common';
 import { Application } from '../_model/application/application';
@@ -23,13 +31,13 @@ import { Application } from '../_model/application/application';
 @Component({
   selector: 'app-handin-uni-app',
   templateUrl: './handin-uni-app.component.html',
-  styleUrls: ['./handin-uni-app.component.scss']
+  styleUrls: ['./handin-uni-app.component.scss'],
 })
 export class HandinUniAppComponent implements OnInit {
   submitFiles: SubmitApplications[] = [];
   userProfile?: Profile;
-  gender: string = "";
-  schoolId: string = "";
+  gender: string = '';
+  schoolId: string = '';
   uniSpecList: UniSpec[] = [];
   filteredOptions?: Observable<string[]>;
   path: string = '';
@@ -53,14 +61,13 @@ export class HandinUniAppComponent implements OnInit {
   provinceFilteredOptions?: Observable<string[]>;
   districtFilteredOptions?: Observable<string[]>;
 
-  schoolProfile1Name: string = "";
-  schoolProfile2Name: string = "";
-  schoolProfile3Name: string = "";
-  schoolProfile4Name: string = "";
+  schoolProfile1Name: string = '';
+  schoolProfile2Name: string = '';
+  schoolProfile3Name: string = '';
+  schoolProfile4Name: string = '';
 
-  frontId: string = "";
-  backId: string = "";
-
+  frontId: string = '';
+  backId: string = '';
 
   @ViewChild('schoolProfileInput') schoolProfileEle?: ElementRef<HTMLElement>;
   @ViewChild('frontImg') frontImgEle?: ElementRef<HTMLElement>;
@@ -76,7 +83,7 @@ export class HandinUniAppComponent implements OnInit {
     private addressService: AddressService,
     private applicationService: ApplicationService,
     private profileService: ProfileService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     alertify.set('notifier', 'position', 'top-center');
@@ -84,36 +91,40 @@ export class HandinUniAppComponent implements OnInit {
     this.uniService.getUniById(this.schoolId).subscribe({
       next: (data: UniDetail) => {
         this.uniDetail = data;
-      }
-    })
-
+      },
+    });
 
     this.uniService.getUniSpecById(this.schoolId).subscribe({
       next: (data: UniSpec[]) => {
         this.uniSpecList = data;
-        this.filteredOptions = (this.firstFormGroup.get('uniSpec') as FormControl).valueChanges.pipe(
+        this.filteredOptions = (
+          this.firstFormGroup.get('uniSpec') as FormControl
+        ).valueChanges.pipe(
           startWith(''),
-          map(value => this._filter(value || '')),
+          map((value) => this._filter(value || ''))
         );
-      }
-    })
+      },
+    });
 
     this.addressService.getProvince().subscribe({
       next: (data: Province[]) => {
         this.provinceList = data;
-        this.provinceFilteredOptions = (this.firstFormGroup.get('city') as FormControl).valueChanges.pipe(
+        this.provinceFilteredOptions = (
+          this.firstFormGroup.get('city') as FormControl
+        ).valueChanges.pipe(
           startWith(''),
-          map(value => this._provinceFilter(value || '')),
+          map((value) => this._provinceFilter(value || ''))
         );
-      }
-    })
+      },
+    });
 
     this.authService.getUserProfileObserver().subscribe((data: Profile) => {
       this.userProfile = data;
       this.gender = this.userProfile.gender;
       this.dateOfBirth = new Date(this.userProfile.dateOfBirth);
-      this.dateOfBirthControl = new FormControl(this.dateOfBirth)
+      this.dateOfBirthControl = new FormControl(this.dateOfBirth);
       this.genderControl = new FormControl(this.gender);
+      console.log(this.gender);
 
       this.firstFormGroup.patchValue({
         name: [this.userProfile.userName],
@@ -129,8 +140,8 @@ export class HandinUniAppComponent implements OnInit {
         graduateYear: [''],
         gradeTwelve: [''],
         abilityTwelve: [''],
-      })
-    })
+      });
+    });
 
     this.getAllApplication();
   }
@@ -139,43 +150,64 @@ export class HandinUniAppComponent implements OnInit {
     this.profileService.getAllApply().subscribe({
       next: (data: ApplicationModel[]) => {
         this.applicationList = data;
-      }
-    })
+      },
+    });
   }
 
-  ngAfterViewInit() {
-
-  }
-
+  ngAfterViewInit() {}
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    let result: string[] = []
-    this.uniSpecList.filter(option => option.uniSpecName.toLowerCase().includes(filterValue)).forEach(item => result.push(item.uniSpecName));
+    let result: string[] = [];
+    this.uniSpecList
+      .filter((option) =>
+        option.uniSpecName.toLowerCase().includes(filterValue)
+      )
+      .forEach((item) => result.push(item.uniSpecName));
     return result;
   }
 
   private _provinceFilter(value: string): string[] {
     const filterValue = value.toString().toLowerCase();
-    if (this.provinceList.filter(x => x.provinceName.toLowerCase() === filterValue).length === 1) {
-      this.addressService.getDistrict(this.provinceList.filter(x => x.provinceName.toLowerCase() === filterValue)[0].id).subscribe({
-        next: (data: District[]) => {
-          this.districtList = data;
-          this.districtFilteredOptions = (this.firstFormGroup.get('district') as FormControl).valueChanges.pipe(
-            startWith(''),
-            map(value => this._districtFilter(value || '')),
-          );
-        }
-      })
+    if (
+      this.provinceList.filter(
+        (x) => x.provinceName.toLowerCase() === filterValue
+      ).length === 1
+    ) {
+      this.addressService
+        .getDistrict(
+          this.provinceList.filter(
+            (x) => x.provinceName.toLowerCase() === filterValue
+          )[0].id
+        )
+        .subscribe({
+          next: (data: District[]) => {
+            this.districtList = data;
+            this.districtFilteredOptions = (
+              this.firstFormGroup.get('district') as FormControl
+            ).valueChanges.pipe(
+              startWith(''),
+              map((value) => this._districtFilter(value || ''))
+            );
+          },
+        });
     }
-    const result: string[] = this.provinceList.filter(option => option.provinceName.toLowerCase().includes(filterValue)).map(x => x.provinceName);
+    const result: string[] = this.provinceList
+      .filter((option) =>
+        option.provinceName.toLowerCase().includes(filterValue)
+      )
+      .map((x) => x.provinceName);
     return result;
   }
 
   private _districtFilter(value: string): string[] {
     const filterValue = value.toString().toLowerCase();
-    const result: string[] = this.districtList.filter(option => option.districtName.toLowerCase().includes(filterValue)).map(x => x.districtName);
-    console.log(result)
+    const result: string[] = this.districtList
+      .filter((option) =>
+        option.districtName.toLowerCase().includes(filterValue)
+      )
+      .map((x) => x.districtName);
+    console.log(result);
     return result;
   }
 
@@ -221,7 +253,7 @@ export class HandinUniAppComponent implements OnInit {
     frontId: [''],
     backId: [''],
     schoolProfileName: [''],
-  })
+  });
 
   get birthControl(): FormControl {
     return this.getFirstForm['birth'] as FormControl;
@@ -235,17 +267,16 @@ export class HandinUniAppComponent implements OnInit {
   });
 
   schoolProfileFileChange(event: any) {
-    // if (this.schoolProfileList.length >= 4) {
-    //   alertify.error("Tối đa 4 file được nhập")
-    //   return;
-    // }
+    if (this.schoolProfileList.length >= 4) {
+      alertify.error('Tối đa 4 file được nhập');
+      return;
+    }
 
-    // let schoolProfileNameConcat: string = "";
+    let schoolProfileNameConcat: string = '';
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.path = file;
-      
 
       // this.schoolProfileList.forEach(item => {
       //   schoolProfileNameConcat += item.submittedFile.name + " ";
@@ -254,53 +285,24 @@ export class HandinUniAppComponent implements OnInit {
       //   schoolProfileName: schoolProfileNameConcat
       // })
       this.selectedFiles = event.target.files;
-      
-      const schoolProfile: SubmitApplications = {
-        name: "app_schoolProfile" + this.currentSchoolProfileIndex,
-        submittedFile: file
-      }
-      
-      switch (this.currentSchoolProfileIndex) {
-        case 1:
-          this.schoolProfile1Name = file.name;
-          if(this.submitFiles[0] === null) {
-            this.submitFiles.push(schoolProfile)
-          } else {
-            this.submitFiles[0] = schoolProfile
-          }
-          break;
-        case 2:
-          this.schoolProfile2Name = file.name;
-          if (this.submitFiles[1] === null) {
-            this.submitFiles.push(schoolProfile)
-          } else {
-            this.submitFiles[1] = schoolProfile
-          }
-          break;
-        case 3:
-          this.schoolProfile3Name = file.name;
-          if (this.submitFiles[2] === null) {
-            this.submitFiles.push(schoolProfile)
-          } else {
-            this.submitFiles[2] = schoolProfile
-          }
-          break;
-        case 4:
-          this.schoolProfile4Name = file.name;
-          if (this.submitFiles[3] === null) {
-            this.submitFiles.push(schoolProfile)
-          } else {
-            this.submitFiles[3] = schoolProfile
-          }
-          break;
-          
-        default:
-          break;
-      }
 
-      if (this.maxSchoolProfileIndex <= 3 && this.maxSchoolProfileIndex <= this.currentSchoolProfileIndex) {
-        this.maxSchoolProfileIndex++;
-      }
+      const schoolProfile: SubmitApplications = {
+        name: 'app_schoolProfile' + (this.schoolProfileList.length + 1),
+        submittedFile: file,
+      };
+
+      this.schoolProfileList.push(schoolProfile);
+
+      this.schoolProfileList.forEach((item) => {
+        schoolProfileNameConcat += item.submittedFile.name + ' ';
+      });
+      this.secondFormGroup.patchValue({
+        schoolProfileName: schoolProfileNameConcat,
+      });
+      this.submitFiles.push(schoolProfile);
+
+      console.log(this.submitFiles);
+      this.selectedFiles = event.target.files;
     }
   }
 
@@ -308,12 +310,13 @@ export class HandinUniAppComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       const frontId: SubmitApplications = {
-        name: "app_frontId",
-        submittedFile: file
-      }
+        name: 'app_frontId',
+        submittedFile: file,
+      };
 
-      const index = this.submitFiles.findIndex(item => item.name === frontId.name);
-      this.frontId = file.name
+      const index = this.submitFiles.findIndex(
+        (item) => item.name === frontId.name
+      );
       if (index !== -1) {
         this.submitFiles[index].submittedFile = file;
       } else {
@@ -326,12 +329,13 @@ export class HandinUniAppComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       const backId: SubmitApplications = {
-        name: "app_backId",
-        submittedFile: file
-      }
-      this.backId = file.name
+        name: 'app_backId',
+        submittedFile: file,
+      };
 
-      const index = this.submitFiles.findIndex(item => item.name === backId.name);
+      const index = this.submitFiles.findIndex(
+        (item) => item.name === backId.name
+      );
       if (index !== -1) {
         this.submitFiles[index].submittedFile = file;
       } else {
@@ -344,7 +348,6 @@ export class HandinUniAppComponent implements OnInit {
     // const file = this.selectedFiles!.item(0);
     // console.log(this.selectedFiles!.item(0))
     // this.selectedFiles = undefined;
-
     // this.currentFileUpload = new FileUpload(file!);
     // this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
     //   percentage => {
@@ -358,75 +361,128 @@ export class HandinUniAppComponent implements OnInit {
 
   submitAll() {
     this.getAllApplication();
-    if(this.applicationList.filter(x => {
-      return x.uniId === this.schoolId && x.userId === this.authService.getDecodedToken().nameid;
-    }).length > 0)  {
-      alertify.error("Bạn đã nộp hồ sơ vào trường này")
+    if (
+      this.applicationList.filter((x) => {
+        return (
+          x.uniId === this.schoolId &&
+          x.userId === this.authService.getDecodedToken().nameid
+        );
+      }).length > 0
+    ) {
+      alertify.error('Bạn đã nộp hồ sơ vào trường này');
       return;
     }
-    const userId = this.authService.getDecodedToken().nameid
-    this.uniSpecId = this.uniSpecList.filter(item => item.uniSpecName === this.firstFormGroup.get('uniSpec')?.value)[0].id;
+    const userId = this.authService.getDecodedToken().nameid;
+    this.uniSpecId = this.uniSpecList.filter(
+      (item) => item.uniSpecName === this.firstFormGroup.get('uniSpec')?.value
+    )[0].id;
     const application: Application = {
       userId: userId,
       uniId: this.schoolId,
-      uniSpecId: this.uniSpecId
-    }
+      uniSpecId: this.uniSpecId,
+    };
 
-    console.log(this.submitFiles)
+    console.log(this.submitFiles);
 
     this.applicationService.createApplication(application).subscribe({
       next: (data) => {
-        console.log(this.clearFormValue(this.finishFormGroup.get('abilityTwelve')?.value))
+        console.log(
+          this.clearFormValue(this.finishFormGroup.get('abilityTwelve')?.value)
+        );
         const applicationDetail: ApplicationDetail = {
           applicationId: data.id,
           credentialFrontImgUrl: '',
           credentialBackImgUrl: '',
-          highSchoolId: "62af0fec-f8ca-4273-8249-7c46e73d7d9b",
-          graduationYear: +this.clearFormValue(this.finishFormGroup.get('graduateYear')?.value).toString(),
-          averageScore: +this.clearFormValue(this.finishFormGroup.get('gradeTwelve')?.value).toString(),
-          academicRank: this.clearFormValue(this.finishFormGroup.get('abilityTwelve')?.value).toString(),
+          highSchoolId: '62af0fec-f8ca-4273-8249-7c46e73d7d9b',
+          graduationYear: +this.clearFormValue(
+            this.finishFormGroup.get('graduateYear')?.value
+          ).toString(),
+          averageScore: +this.clearFormValue(
+            this.finishFormGroup.get('gradeTwelve')?.value
+          ).toString(),
+          academicRank: this.clearFormValue(
+            this.finishFormGroup.get('abilityTwelve')?.value
+          ).toString(),
           schoolReport1Url: '',
           schoolReport2Url: '',
           schoolReport3Url: '',
-          schoolReport4Url: ''
-        }
-        this.applicationService.createApplicationDetail(applicationDetail).subscribe({
-          next: (data) => {
-            this.submitFiles.forEach(item => {
-              switch (item.name) {
-                case "app_schoolProfile1":
-                  this.uploadService.pushFileToStorage(userId, this.schoolId  + "_" + "app_schoolProfile1", new FileUpload(item.submittedFile)).subscribe()
-                  break;
-                case "app_schoolProfile2":
-                  this.uploadService.pushFileToStorage(userId, this.schoolId  + "_" + "app_schoolProfile2", new FileUpload(item.submittedFile)).subscribe()
-                  break;
-                case "app_schoolProfile3":
-                  this.uploadService.pushFileToStorage(userId, this.schoolId  + "_" + "app_schoolProfile3", new FileUpload(item.submittedFile)).subscribe()
-                  break;
-                case "app_schoolProfile4":
-                  this.uploadService.pushFileToStorage(userId, this.schoolId  + "_" + "app_schoolProfile4", new FileUpload(item.submittedFile)).subscribe()
-                  break;
-                case "app_frontId":
-                  this.uploadService.pushFileToStorage(userId, this.schoolId  + "_" + "app_frontId", new FileUpload(item.submittedFile)).subscribe()
-                  break;
-                case "app_backId":
-                  this.uploadService.pushFileToStorage(userId, this.schoolId  + "_" + "app_backId", new FileUpload(item.submittedFile)).subscribe()
-                  break;
-                default:
-                  break;
-              }
-            })
-            alertify.success("Submit Application Successfully!")
-          },
-          error: () => {
-            alertify.error("Submit failed");
-          }
-        })
+          schoolReport4Url: '',
+        };
+        this.applicationService
+          .createApplicationDetail(applicationDetail)
+          .subscribe({
+            next: (data) => {
+              this.submitFiles.forEach((item) => {
+                switch (item.name) {
+                  case 'app_schoolProfile1':
+                    this.uploadService
+                      .pushFileToStorage(
+                        userId,
+                        this.schoolId + '_' + 'app_schoolProfile1',
+                        new FileUpload(item.submittedFile)
+                      )
+                      .subscribe();
+                    break;
+                  case 'app_schoolProfile2':
+                    this.uploadService
+                      .pushFileToStorage(
+                        userId,
+                        this.schoolId + '_' + 'app_schoolProfile2',
+                        new FileUpload(item.submittedFile)
+                      )
+                      .subscribe();
+                    break;
+                  case 'app_schoolProfile3':
+                    this.uploadService
+                      .pushFileToStorage(
+                        userId,
+                        this.schoolId + '_' + 'app_schoolProfile3',
+                        new FileUpload(item.submittedFile)
+                      )
+                      .subscribe();
+                    break;
+                  case 'app_schoolProfile4':
+                    this.uploadService
+                      .pushFileToStorage(
+                        userId,
+                        this.schoolId + '_' + 'app_schoolProfile4',
+                        new FileUpload(item.submittedFile)
+                      )
+                      .subscribe();
+                    break;
+                  case 'app_frontId':
+                    this.uploadService
+                      .pushFileToStorage(
+                        userId,
+                        this.schoolId + '_' + 'app_frontId',
+                        new FileUpload(item.submittedFile)
+                      )
+                      .subscribe();
+                    break;
+                  case 'app_backId':
+                    this.uploadService
+                      .pushFileToStorage(
+                        userId,
+                        this.schoolId + '_' + 'app_backId',
+                        new FileUpload(item.submittedFile)
+                      )
+                      .subscribe();
+                    break;
+                  default:
+                    break;
+                }
+              });
+              alertify.success('Submit Application Successfully!');
+            },
+            error: () => {
+              alertify.error('Submit failed');
+            },
+          });
       },
       error: (error) => {
-        console.log(error)
-      }
-    })
+        console.log(error);
+      },
+    });
   }
 
   setIndex(event: any) {
@@ -455,9 +511,9 @@ export class HandinUniAppComponent implements OnInit {
         grade: [this.firstFormGroup.get('grade')?.value],
         frontId: [this.firstFormGroup.get('frontId')?.value],
         backId: [this.firstFormGroup.get('backId')?.value],
-      })
+      });
 
-      console.log(this.gender)
+      console.log(this.gender);
     }
   }
 
@@ -465,14 +521,14 @@ export class HandinUniAppComponent implements OnInit {
     if (Array.isArray(value)) {
       return value[0];
     }
-    return value
+    return value;
   }
 
   schoolProfileClick(schoolProfileIndex: number) {
     let el: HTMLElement = this.schoolProfileEle?.nativeElement!;
     this.currentSchoolProfileIndex = schoolProfileIndex;
-    
-    console.log(this.maxSchoolProfileIndex)
+
+    console.log(this.maxSchoolProfileIndex);
     el.click();
   }
 
