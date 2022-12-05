@@ -1,3 +1,4 @@
+import { NewJobListPageComponent } from './new-job-list-page/new-job-list-page.component';
 import { MailInboxComponent } from './mail-main/mail-inbox/mail-inbox.component';
 import { MailMainComponent } from './mail-main/mail-main.component';
 import { ApplyDetailComponent } from './user-profile-page/apply-detail/apply-detail.component';
@@ -162,6 +163,7 @@ const routes: Routes = [
     component: JobDetailPageComponent,
   },
   { path: 'job-list', component: JobListPageComponent },
+  { path: 'new-job-list', component: NewJobListPageComponent },
 
   //addmission-news
   { path: 'addmission-news-detail', component: AddmissionNewsDetailComponent },

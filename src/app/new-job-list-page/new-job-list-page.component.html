@@ -1,0 +1,61 @@
+<app-nav></app-nav>
+<div class="page-container">
+    <div class="search-container">
+        <div class="left">
+            <p class="search-title">Khám phá các ngành nghề phù hợp với bản thân</p>
+            <p class="search-description">Tra cứu thông tin và chọn ngành nghề phù hợp nhất với bạn</p>
+            <div class="search-row">
+                <form class="search-form" action="" [formGroup]="myForm" (ngSubmit)="searchJob()">
+                    <mat-form-field class='search' appearance="standard">
+                        <mat-label>Nhập tên nghề nghiệp</mat-label>
+                        <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="jobName"
+                            [matAutocomplete]="auto1">
+                        <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" class="btn-search">Tìm kiếm</button>
+                </form>
+            </div>
+        </div>
+        <div class="right">
+            <img src="assets/img/discover.png" alt="" class="banner-img">
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="job-container">
+            <div class="text-container">
+                <div class="header-title">Danh sách các ngành nghề</div>
+                <div class="job-wrapper">
+                    <div class="card-item" *ngFor="let job of showedJobList | slice:0:3">
+                        <div class="job-icon">
+                            <img src="{{job.imageUrl}}" alt="">
+                        </div>
+                        <div class="job-action-wrapper">
+                            <div class="ab-job-action-wrapper">
+                                <div class="job-info-wrapper">
+                                    <div class="job-name">{{job.jobName}}</div>
+                                    <div class="job-desc">
+                                        {{job.description}}
+                                    </div>
+                                </div>
+                                <div class="major-list-wrapper">
+                                    <div class="major-list-title">
+                                        Các ngành học liên quan
+                                    </div>
+                                    <button mat-raised-button class="major-list" *ngFor="let majorItem of job.majorList" (click)="goUniver(majorItem.id)">
+                                        {{majorItem.majorName}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <mat-paginator [length]="100" [pageSize]="3" [pageSizeOptions]="[5, 10, 25, 100]"
+                    aria-label="Select page">
+                </mat-paginator>
+            </div>
+        </div>
+    </div>

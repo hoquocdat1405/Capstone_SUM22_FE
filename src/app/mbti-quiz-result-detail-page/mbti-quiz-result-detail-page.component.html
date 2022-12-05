@@ -19,9 +19,39 @@
         </div>
         <div class="row">
           <div class="text-major-header">Các ngành nghề phù hợp</div>
-          <div class="text-major-wrapper">
+          <!-- <div class="text-major-wrapper">
             <h4 class="text-major" *ngFor="let result of job" (click)="getMajor(result.id)">
               {{result.jobName}} </h4>
+          </div> -->
+          <div class="major-acco-wrapper">
+            <div class="acco-item" *ngFor="let result of showedJobList">
+              <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <div class="job-img-wrapper">
+                        <img src="{{result.imageUrl}}" alt="" class="job-image">
+                      </div>
+                      {{result.jobName}}
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                      Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                    </mat-panel-description> -->
+                  </mat-expansion-panel-header>
+                  <div class="content-body">
+                    <div class="job-major-wrapper" *ngFor="let major of result.majorList">
+                      <div class="major-name">
+                        {{major.majorName}}
+                      </div>
+                      <div class="major-action-btn">
+                        <button mat-raised-button color="primary" (click)="goUniver(major.id)">Xem trường đào tạo</button>
+                        <!-- <button mat-raised-button>Đến trang trường</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
           </div>
         </div>
       </div>
