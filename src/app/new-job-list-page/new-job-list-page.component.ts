@@ -1,7 +1,8 @@
+import { PageEvent } from '@angular/material/paginator';
 import { MajorModel } from './../_model/major/major-model';
 import { MajorService } from './../_services/major.service';
 import { Title } from '@angular/platform-browser';
-import { startWith, map } from 'rxjs/operators';
+import { startWith, map, finalize } from 'rxjs/operators';
 import { JobService } from './../_services/job.service';
 import { JobModel, JobMajorModel } from './../_model/job/job-model';
 import { SharedService } from './../_services/shared.service';
@@ -25,6 +26,8 @@ export class NewJobListPageComponent implements OnInit {
   displayedJobList: Job[] = [];
   JobMajorList: JobMajorModel[] = [];
   showedJobList: JobMajorModel[] = [];
+  pageIndex?: number;
+  cutList: JobMajorModel[] = [];
 
   constructor(
     private router: Router,
@@ -34,6 +37,7 @@ export class NewJobListPageComponent implements OnInit {
     private title: Title,
     private majorService: MajorService
   ) { }
+
 
   myForm = this.fb.group({
     jobName: [''],
@@ -68,6 +72,9 @@ export class NewJobListPageComponent implements OnInit {
               }
               this.JobMajorList.push(jobMajorData);
               this.showedJobList.push(jobMajorData);
+            },
+            complete: () => {
+              this.cutList = this.showedJobList.slice(0, 3);
             }
           })
         })
@@ -102,9 +109,14 @@ export class NewJobListPageComponent implements OnInit {
         .toLowerCase()
         .includes((this.f['jobName'].value as string).toLowerCase())
     );
+    this.cutList = this.showedJobList.slice(0, 3)
   }
 
   goUniver(id: string) {
     this.router.navigate(['/school-list', { id: id }]);
+  }
+
+  onPageChange(event: PageEvent) {
+    this.cutList = this.showedJobList.slice(3*(event.pageIndex), 3*(event.pageIndex + 1))
   }
 }

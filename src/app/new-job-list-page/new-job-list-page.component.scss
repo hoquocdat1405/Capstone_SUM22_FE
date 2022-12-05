@@ -243,18 +243,15 @@ select {
     position: relative;
 }
 
-// .filter-btn {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 5px 20px;
-//   background-color: #fff;
-//   border-radius: 5px;
-//   border: 1px solid #ccc;
-// }
-
 .mat-form-field {
     background: #fff;
+}
+
+.mat-paginator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 ::ng-deep .mat-form-field {

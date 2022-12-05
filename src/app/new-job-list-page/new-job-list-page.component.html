@@ -29,9 +29,10 @@
             <div class="text-container">
                 <div class="header-title">Danh sách các ngành nghề</div>
                 <div class="job-wrapper">
-                    <div class="card-item" *ngFor="let job of showedJobList | slice:0:3">
+                    <div class="card-item"
+                        *ngFor="let job of cutList">
                         <div class="job-icon">
-                            <img src="{{job.imageUrl}}" alt="">
+                            <img src="{{job.imageUrl}}" alt="" onerror="this.src='../../assets/img/uniAvatarPlaceholder.png'">
                         </div>
                         <div class="job-action-wrapper">
                             <div class="ab-job-action-wrapper">
@@ -45,7 +46,8 @@
                                     <div class="major-list-title">
                                         Các ngành học liên quan
                                     </div>
-                                    <button mat-raised-button class="major-list" *ngFor="let majorItem of job.majorList" (click)="goUniver(majorItem.id)">
+                                    <button mat-raised-button class="major-list" *ngFor="let majorItem of job.majorList"
+                                        (click)="goUniver(majorItem.id)">
                                         {{majorItem.majorName}}
                                     </button>
                                 </div>
@@ -53,8 +55,9 @@
                         </div>
                     </div>
                 </div>
-                <mat-paginator [length]="100" [pageSize]="3" [pageSizeOptions]="[5, 10, 25, 100]"
-                    aria-label="Select page">
+                <mat-paginator [hidePageSize]="true" [length]="showedJobList.length" [pageSize]="3"
+                    [pageIndex]="pageIndex" aria-label="Select page"
+                    (page)="onPageChange($event)">
                 </mat-paginator>
             </div>
         </div>
