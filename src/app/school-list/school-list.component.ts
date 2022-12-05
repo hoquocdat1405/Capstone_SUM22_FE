@@ -84,13 +84,13 @@ export class SchoolListComponent implements OnInit {
       this.displayedUniList = this.resultUni.filter((uni) =>
         uni.uniName
           .toLowerCase()
-          .includes(this.f['schoolNameCtl'].value as string)
+          .includes((this.f['schoolNameCtl'].value as string).toLowerCase())
       );
     } else {
       this.displayedUniList = this.uniList.filter((uni) =>
         uni.uniName
           .toLowerCase()
-          .includes(this.f['schoolNameCtl'].value as string)
+          .includes((this.f['schoolNameCtl'].value as string).toLowerCase())
       );
     }
   }

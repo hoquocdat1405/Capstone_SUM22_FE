@@ -95,8 +95,8 @@
                         <div class="label">Tỉnh thành</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Tỉnh thành</mat-label>
-                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="city"
-                                [matAutocomplete]="auto2">
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput
+                                formControlName="city" [matAutocomplete]="auto2">
                             <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
                                 <mat-option *ngFor="let option of provinceFilteredOptions | async" [value]="option">
                                     {{option}}
@@ -108,8 +108,8 @@
                         <div class="label">Quận huyện</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Tỉnh thành</mat-label>
-                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="district"
-                                [matAutocomplete]="auto3">
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput
+                                formControlName="district" [matAutocomplete]="auto3">
                             <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete">
                                 <mat-option *ngFor="let option of districtFilteredOptions | async" [value]="option">
                                     {{option}}
@@ -154,17 +154,44 @@
                 <div class="step-two-card">
                     <label>Học bạ THPT</label>
                     <div class="input-group">
-                        <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
-                        <input class="school-profile-name" type='text' formControlName="schoolProfileName">
+                        <input #schoolProfileInput type="file" (change)="schoolProfileFileChange($event)"
+                            formControlName="schoolProfile" class="hide">
+                        <!-- <input class="school-profile-name" type='text' formControlName="schoolProfileName"> -->
+                        <div class="img-list">
+                            <div class="img-section">
+                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(1)">
+                                <div class="img-title">{{schoolProfile1Name}}</div>
+                            </div>
+                            <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 2}">
+                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(2)">
+                                <div class="img-title">{{schoolProfile2Name}}</div>
+                            </div>
+                            <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 3}">
+                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(3)">
+                                <div class="img-title">{{schoolProfile3Name}}</div>
+                            </div>
+                            <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 4}">
+                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(4)">
+                                <div class="img-title">{{schoolProfile4Name}}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="step-two-card">
                     <label>CMND mặt trước</label>
-                    <input type="file" (change)="frontIdFileChange($event)" formControlName="frontId">
+                    <input #frontImg type="file" (change)="frontIdFileChange($event)" formControlName="frontId" class="hide">
+                    <div class="img-section">
+                        <img src="../../assets/img/add-img.png" alt="" (click)="frontImgClick()">
+                        <div class="img-title">{{frontId}}</div>
+                    </div>
                 </div>
                 <div class="step-two-card">
                     <label>CMND mặt sau</label>
-                    <input type="file" (change)="backIdFileChange($event)" formControlName="backId">
+                    <input #backImg type="file" (change)="backIdFileChange($event)" formControlName="backId" class="hide">
+                    <div class="img-section">
+                        <img src="../../assets/img/add-img.png" alt="" (click)="backImgClick()">
+                        <div class="img-title">{{backId}}</div>
+                    </div>
                 </div>
                 <div class="action-btn">
                     <button mat-raised-button matStepperPrevious>Back</button>
@@ -241,8 +268,8 @@
                         <div class="label">Ngành ứng tuyển</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Ngành ứng tuyển</mat-label>
-                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="uniSpec"
-                                [matAutocomplete]="auto1">
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput
+                                formControlName="uniSpec" [matAutocomplete]="auto1">
                             <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
                                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                                     {{option}}
@@ -267,8 +294,8 @@
                         <div class="label">Tỉnh thành</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Tỉnh thành</mat-label>
-                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="city"
-                                [matAutocomplete]="auto2">
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput
+                                formControlName="city" [matAutocomplete]="auto2">
                             <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
                                 <mat-option *ngFor="let option of provinceFilteredOptions | async" [value]="option">
                                     {{option}}
@@ -280,8 +307,8 @@
                         <div class="label">Quận huyện</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Tỉnh thành</mat-label>
-                            <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="district"
-                                [matAutocomplete]="auto3">
+                            <input type="text" placeholder="Pick one" aria-label="Number" matInput
+                                formControlName="district" [matAutocomplete]="auto3">
                             <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete">
                                 <mat-option *ngFor="let option of districtFilteredOptions | async" [value]="option">
                                     {{option}}
@@ -311,7 +338,7 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="step-two-card">
+                <!-- <div class="step-two-card">
                     <label>Học bạ THPT</label>
                     <div class="input-group">
                         <input type="file" (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
@@ -325,6 +352,48 @@
                 <div class="step-two-card">
                     <label>CMND mặt sau</label>
                     <input type="file" (change)="backIdFileChange($event)" formControlName="backId">
+                </div> -->
+                <div class="step-two-card">
+                    <label>Học bạ THPT</label>
+                    <div class="input-group">
+                        <input #schoolProfileInput type="file" (change)="schoolProfileFileChange($event)"
+                            formControlName="schoolProfile" class="hide">
+                        <!-- <input class="school-profile-name" type='text' formControlName="schoolProfileName"> -->
+                        <div class="img-list">
+                            <div class="img-section">
+                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(1)">
+                                <div class="img-title">{{schoolProfile1Name}}</div>
+                            </div>
+                            <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 2}">
+                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(2)">
+                                <div class="img-title">{{schoolProfile2Name}}</div>
+                            </div>
+                            <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 3}">
+                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(3)">
+                                <div class="img-title">{{schoolProfile3Name}}</div>
+                            </div>
+                            <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 4}">
+                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(4)">
+                                <div class="img-title">{{schoolProfile4Name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-two-card">
+                    <label>CMND mặt trước</label>
+                    <input #frontImg type="file" (change)="frontIdFileChange($event)" formControlName="frontId" class="hide">
+                    <div class="img-section">
+                        <img src="../../assets/img/add-img.png" alt="" (click)="frontImgClick()">
+                        <div class="img-title">{{frontId}}</div>
+                    </div>
+                </div>
+                <div class="step-two-card">
+                    <label>CMND mặt sau</label>
+                    <input #backImg type="file" (change)="backIdFileChange($event)" formControlName="backId" class="hide">
+                    <div class="img-section">
+                        <img src="../../assets/img/add-img.png" alt="" (click)="backImgClick()">
+                        <div class="img-title">{{backId}}</div>
+                    </div>
                 </div>
                 <div class="action-btn">
                     <button mat-button matStepperPrevious>Back</button>

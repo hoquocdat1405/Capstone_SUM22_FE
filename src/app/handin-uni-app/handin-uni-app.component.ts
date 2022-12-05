@@ -21,7 +21,7 @@ import {
   FormGroup,
   FormControl,
 } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UniDetail, UniSpec, University } from '../_model/uni';
 import * as alertify from 'alertifyjs';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -52,12 +52,26 @@ export class HandinUniAppComponent implements OnInit {
   genderControl!: FormControl;
   uniSpecId?: number;
   applicationList: ApplicationModel[] = [];
+  currentSchoolProfileIndex: number = 1;
+  maxSchoolProfileIndex: number = 1;
 
   provinceList: Province[] = [];
   districtList: District[] = [];
 
   provinceFilteredOptions?: Observable<string[]>;
   districtFilteredOptions?: Observable<string[]>;
+
+  schoolProfile1Name: string = '';
+  schoolProfile2Name: string = '';
+  schoolProfile3Name: string = '';
+  schoolProfile4Name: string = '';
+
+  frontId: string = '';
+  backId: string = '';
+
+  @ViewChild('schoolProfileInput') schoolProfileEle?: ElementRef<HTMLElement>;
+  @ViewChild('frontImg') frontImgEle?: ElementRef<HTMLElement>;
+  @ViewChild('backImg') backImgEle?: ElementRef<HTMLElement>;
 
   constructor(
     private fb: FormBuilder,
@@ -263,6 +277,15 @@ export class HandinUniAppComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.path = file;
+
+      // this.schoolProfileList.forEach(item => {
+      //   schoolProfileNameConcat += item.submittedFile.name + " ";
+      // })
+      // this.secondFormGroup.patchValue({
+      //   schoolProfileName: schoolProfileNameConcat
+      // })
+      this.selectedFiles = event.target.files;
+
       const schoolProfile: SubmitApplications = {
         name: 'app_schoolProfile' + (this.schoolProfileList.length + 1),
         submittedFile: file,
@@ -319,10 +342,6 @@ export class HandinUniAppComponent implements OnInit {
         this.submitFiles.push(backId);
       }
     }
-  }
-
-  selectFile(event: any): void {
-    this.selectedFiles = event.target.files;
   }
 
   submitFile() {
@@ -503,5 +522,23 @@ export class HandinUniAppComponent implements OnInit {
       return value[0];
     }
     return value;
+  }
+
+  schoolProfileClick(schoolProfileIndex: number) {
+    let el: HTMLElement = this.schoolProfileEle?.nativeElement!;
+    this.currentSchoolProfileIndex = schoolProfileIndex;
+
+    console.log(this.maxSchoolProfileIndex);
+    el.click();
+  }
+
+  frontImgClick() {
+    let el: HTMLElement = this.frontImgEle?.nativeElement!;
+    el.click();
+  }
+
+  backImgClick() {
+    let el: HTMLElement = this.backImgEle?.nativeElement!;
+    el.click();
   }
 }
