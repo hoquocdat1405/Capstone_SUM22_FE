@@ -109,7 +109,8 @@ export class NewJobListPageComponent implements OnInit {
         .toLowerCase()
         .includes((this.f['jobName'].value as string).toLowerCase())
     );
-    this.cutList = this.showedJobList.slice(0, 3)
+    this.cutList = this.showedJobList.slice(0, 3);
+    this.pageIndex = 0;
   }
 
   goUniver(id: string) {

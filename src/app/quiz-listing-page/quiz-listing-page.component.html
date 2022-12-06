@@ -10,9 +10,6 @@
           {{test.introduction}}
         </p>
         <div class="options">
-          <!-- <a href="#" [routerLink]="['/test-detail',test.id]" class="btn btn-detail"
-          >Chi tiết</a
-        > -->
           <a (click)="redirectTest(test.testTypeId,test.id,1)" class="btn btn-detail">Chi tiết</a>
           <a (click)="redirectTest(test.testTypeId,test.id,0)" class="btn btn-start">Bắt đầu</a>
         </div>

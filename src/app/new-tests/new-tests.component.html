@@ -1,0 +1,23 @@
+<app-nav></app-nav>
+<div class="page-container">
+    <div class="content-wrapper">
+        <h2 class="title-quiz-list">Danh sách các bài test</h2>
+        <div class="tests-wrapper">
+            <div class="test-item" *ngFor="let test of tests">
+                <!-- <div class="hover-section"></div> -->
+                <div class="test-img">
+                    <img [src]="test.backgroundUrl" alt="">
+                </div>
+                <div class="item-info">
+                    <div class="item-title">{{test.testName}}</div>
+                    <div class="item-desc">{{test.introduction}}</div>
+                    <div class="btn-action">
+                        <button mat-raised-button color="primary" (click)="redirectTest(test.testTypeId,test.id,1)" class="btn btn-detail">Chi tiết</button>
+                        <button mat-raised-button color="primary"(click)="redirectTest(test.testTypeId,test.id,0)" class="btn btn-start">Bắt đầu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

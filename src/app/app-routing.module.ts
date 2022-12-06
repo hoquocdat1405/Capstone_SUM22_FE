@@ -1,3 +1,4 @@
+import { NewTestsComponent } from './new-tests/new-tests.component';
 import { NewJobListPageComponent } from './new-job-list-page/new-job-list-page.component';
 import { MailInboxComponent } from './mail-main/mail-inbox/mail-inbox.component';
 import { MailMainComponent } from './mail-main/mail-main.component';
@@ -94,6 +95,10 @@ const routes: Routes = [
 
     // ],
   }, //LiemNT test new route
+  {
+    path: 'new-tests',
+    component: NewTestsComponent,
+  },
   { path: 'test-detail/:id', component: DiscQuizDetailPageComponent }, //LiemNT test new route
 
   { path: 'quiz-list', component: QuizListingPageComponent },
