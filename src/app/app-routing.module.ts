@@ -68,7 +68,7 @@ const routes: Routes = [
 
   //loginpage
   { path: 'login', component: LoginRegisterMainComponent },
-  { path: 'vertify-account', component: VertifyAccountPageComponent },
+  { path: 'verify-account', component: VertifyAccountPageComponent },
 
   //User profile page
   {

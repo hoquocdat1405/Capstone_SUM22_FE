@@ -28,7 +28,8 @@ export class LoginRegisterMainComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
-    private title: Title
+    private title: Title,
+    private route: Router
   ) {}
 
   loginFormIns = this.fb.group({
@@ -91,7 +92,8 @@ export class LoginRegisterMainComponent implements OnInit {
         )
         .subscribe({
           next: () => {
-            alertify.success('Register Successfully!');
+            // alertify.success('Register Successfully!');
+            this.route.navigate(['verify-account']);
           },
           error: () => {
             alertify.success('Register Failed');
