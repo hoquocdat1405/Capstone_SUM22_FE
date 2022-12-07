@@ -1,3 +1,4 @@
+import { VertifyAccountPageComponent } from './vertify-account-page/vertify-account-page.component';
 import { NewTestsComponent } from './new-tests/new-tests.component';
 import { NewJobListPageComponent } from './new-job-list-page/new-job-list-page.component';
 import { MailInboxComponent } from './mail-main/mail-inbox/mail-inbox.component';
@@ -67,6 +68,7 @@ const routes: Routes = [
 
   //loginpage
   { path: 'login', component: LoginRegisterMainComponent },
+  { path: 'vertify-account', component: VertifyAccountPageComponent },
 
   //User profile page
   {
