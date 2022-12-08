@@ -24,9 +24,9 @@ export class NewTestsComponent implements OnInit {
     this.title.setTitle('Danh sách bài test');
     this.sharedServ.getAllTest().subscribe((response) => {
       this.tests = response;
-      this.tests.forEach((test) => {
-        test.introduction = test.introduction.slice(0, 150) + '...';
-      });
+      // this.tests.forEach((test) => {
+      //   test.introduction = test.introduction.slice(0, 150) + '...';
+      // });
     });
   }
 
