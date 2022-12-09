@@ -1,8 +1,6 @@
-<div class="container">
-  <div class="input-flex">
-    <div class="input-container">
-      <input type="text" class="" value="{{appDetail!.dateOfBirth}}" placeholder="">
-    </div>
+<!-- <div class="container"> -->
+<!-- <div class="input-flex">
+    
     <div class="input-container">
       <input type="text" class="" value="{{appDetail!.credentialId}}" placeholder="">
     </div>
@@ -12,36 +10,19 @@
     <div class="input-container">
       <input type="text" class="" value="{{appDetail!.specCode}}" placeholder="">
     </div>
-    <div class="input-container">
-      <input type="text" class="" value="{{appDetail!.userName}}" placeholder="">
-    </div>
-    <div class="input-container">
-      <input type="text" class="" value="{{appDetail!.gender}}" placeholder="">
-    </div>
-    <div class="input-container">
-      <input type="text" class="" value="{{appDetail!.age}}" placeholder="">
-    </div>
-    <div class="input-container">
-      <input type="text" class="" value="{{appDetail!.phone}}" placeholder="">
-    </div>
+
+
     <div class="input-container">
       <input type="text" class="" value="{{appDetail!.avatarUrl}}" placeholder="">
     </div>
-    <div class="input-container">
-      <input type="text" class="" value="{{appDetail!.email}}" placeholder="">
-    </div>
-    <div class="input-container">
-      <input type="text" class="" value="{{appDetail!.addressNumber}}" placeholder="">
-    </div>
+
     <div class="input-container">
       <input type="text" class="" value="{{appDetail!.credentialFrontImgUrl}}" placeholder="">
     </div>
     <div class="input-container">
       <input type="text" class="" value="{{appDetail!.credentialBackImgUrl}}" placeholder="">
     </div>
-    <div class="input-container">
-      <input type="text" class="" value="{{appDetail!.highSchoolCode}}" placeholder="">
-    </div>
+
     <div class="input-container">
       <input type="text" class="" value="{{appDetail!.highSchoolName}}" placeholder="">
     </div>
@@ -69,5 +50,77 @@
     <div class="input-container">
       <input type="text" class="" value="{{appDetail!.schoolReport4Url}}" placeholder="">
     </div>
-    </ div>
+  </div> -->
+<!-- </div> -->
+<p class="title">Thông tin hồ sơ chi tiết</p>
+<div class="profile-info">
+  <p class="profile-img-title">Thông tin cơ bản</p>
+  <div class="profile-grid">
+
+    <div class="input-container item5">
+      <label class="input-title" for="">Email</label>
+      <input value="{{appDetail?.email}}" type="email" name="" id="" class="input-email">
+    </div>
+    <div class="input-container item1">
+      <label class="input-title" for="">Họ và tên</label>
+      <input value="{{appDetail?.userName}}" type="text" name="" id="" class="input-name" placeholder="Nhập họ và tên">
+    </div>
+
+    <div class="input-container item2">
+      <label class="input-title" for="">Ngày tháng năm sinh</label>
+      <input value="{{appDetail?.dateOfBirth | date:'yyyy-MM-dd'}}" type="date" name="" id="" class="input-birth"
+        placeholder="Chọn ngày tháng năm sinh">
+    </div>
+
+    <div class="input-container item3">
+      <label class="input-title" for="">Giới tính</label>
+      <select class="input-gender" value="{{appDetail?.gender}}">
+        <option value="Nam">Nam</option>
+        <option value="Nu">Nữ</option>
+      </select>
+    </div>
+
+
+    <div class="input-container">
+      <label class="input-title" for="">CMND / CCCD</label>
+      <input value="{{appDetail?.credentialId}}" type="text" name="" id="" class="input-credentialId">
+    </div>
   </div>
+
+  <p class="profile-img-title">Thông tin liên hệ</p>
+  <div class="address-grid">
+    <div class="input-container">
+      <label class="input-title" for="">Số nhà</label>
+      <input value="{{appDetail?.addressNumber}}" type="text" name="" id="" class="input-address">
+    </div>
+
+    <div class="input-container item6">
+      <label class="input-title" for="">Số điện thoại liên hệ</label>
+      <input value="{{appDetail?.phone}}" type="text" name="" id="" class="input-phone"
+        placeholder="Nhập số điện thoại">
+    </div>
+  </div>
+
+  <p class="profile-img-title">Thông tin trường học</p>
+  <div class="address-grid">
+    <!-- <div class="input-container">
+      <label class="input-title" for="">Tên trường</label>
+      <input value="{{appDetail?.highSchoolName}}" type="text" name="" id="" class="input-address">
+    </div> -->
+
+    <div class="input-container">
+      <label class="input-title" for="">Tên trường</label>
+      <input value="{{appDetail?.highSchoolName}}" type="text" name="" id="" class="input-address">
+    </div>
+
+    <div class="input-container">
+      <label class="input-title" for="">Chuyên ngành</label>
+      <input value="{{appDetail?.uniSpecName}}" type="text" name="" id="" class="input-address">
+    </div>
+
+    <div class="input-container">
+      <label class="input-title" for="">Địa chỉ</label>
+      <input value="{{appDetail?.highSchoolAddress}}" type="text" name="" id="" class="input-address">
+    </div>
+  </div>
+</div>
