@@ -25,12 +25,18 @@ export class UniversityService {
   }
 
   getUniSpecById(schoolId: String): Observable<UniSpec[]> {
-    return this.http.get<UniSpec[]>(this.baseUrl + "university/get-university-spec?UniId=" + schoolId)
+    return this.http.get<UniSpec[]>(
+      this.baseUrl + 'university/get-university-spec?UniId=' + schoolId
+    );
   }
 
   getUniById(id: string): Observable<UniDetail> {
     return this.http.get<UniDetail>(
       this.baseUrl + 'university/get-university?UniId=' + id
     );
+  }
+
+  saveUni(id: string): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'user/save-uni', { uniId: id });
   }
 }
