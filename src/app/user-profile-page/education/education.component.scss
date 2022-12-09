@@ -59,7 +59,6 @@
   grid-column: -1 / 1;
 }
 
-
 .profile-school-grid {
   display: grid;
   grid-template-columns: 40% 40%;
@@ -85,6 +84,8 @@ input {
 
 .input-img {
   width: 200px;
+  height: 300px;
+  object-fit: cover;
 }
 
 #upload-school-profile,
