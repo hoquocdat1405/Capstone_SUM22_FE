@@ -87,7 +87,7 @@ const routes: Routes = [
 
   //quizes listing page (non-category)
   {
-    path: 'tests',
+    path: 'new-tests',
     component: QuizListingPageComponent,
     // children: [
     //   {
@@ -98,7 +98,7 @@ const routes: Routes = [
     // ],
   }, //LiemNT test new route
   {
-    path: 'new-tests',
+    path: 'tests',
     component: NewTestsComponent,
   },
   { path: 'test-detail/:id', component: DiscQuizDetailPageComponent }, //LiemNT test new route
