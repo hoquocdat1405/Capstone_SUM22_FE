@@ -23,9 +23,11 @@ export class UserProfilePageComponent implements OnInit {
     activeInfo?.classList.remove('active');
     infos[index].classList.add('active');
 
-    var sideBar = document.querySelector('.profile-sidebar');
-    sideBar?.classList.remove('active');
+    // var sideBar = document.querySelector('.profile-sidebar');
+    // sideBar?.classList.remove('active');
     background?.classList.remove('active');
+
+    console.log(activeTab);
   }
 
   uploadImg() {

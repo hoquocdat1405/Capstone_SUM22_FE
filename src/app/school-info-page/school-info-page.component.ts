@@ -5,6 +5,7 @@ import { UniDetail, UniSpec } from './../_model/uni';
 import { UniversityService } from './../_services/university.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-school-info-page',
@@ -22,9 +23,8 @@ export class SchoolInfoPageComponent implements OnInit {
     private route: ActivatedRoute,
     private uniService: UniversityService,
     private router: Router,
-    private title: Title
-  ) // private addressService: AddressService
-  {}
+    private title: Title // private addressService: AddressService
+  ) {}
 
   header = 'Header';
   contents = [
@@ -36,6 +36,7 @@ export class SchoolInfoPageComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle('Chi tiết trường học');
+    alertify.set('notifier', 'position', 'top-center');
 
     this.schoolId = this.route.snapshot.paramMap.get('schoolId')!;
     if (this.schoolId) {
@@ -56,5 +57,15 @@ export class SchoolInfoPageComponent implements OnInit {
 
   submitApplication() {
     this.router.navigate(['/submit-application', { schoolId: this.schoolId }]);
+  }
+
+  saveSchool(id: string) {
+    this.uniService.saveUni(id).subscribe({
+      next: () => {
+        // console.log("success");
+        alertify.success('Đã lưu thành công');
+      },
+      error: () => {},
+    });
   }
 }

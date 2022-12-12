@@ -22,8 +22,9 @@
       <div class="school-website">
         <a class="website" href="{{uniDetail?.websiteUrl}}">{{uniDetail?.websiteUrl}}</a>
         <div class="btn-action">
-          <button mat-raised-button color="primary">Quan tâm</button>
-          <button mat-raised-button color="primary" (click)="submitApplication()" [matTooltip]="sendApplicationTooltip">Gửi hồ sơ</button>
+          <button mat-raised-button color="primary" (click)="saveSchool(uniDetail!.id)">Quan tâm</button>
+          <button mat-raised-button color="primary" (click)="submitApplication()"
+            [matTooltip]="sendApplicationTooltip">Gửi hồ sơ</button>
         </div>
       </div>
 

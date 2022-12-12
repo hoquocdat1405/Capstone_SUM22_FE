@@ -1,8 +1,4 @@
-import {
-  Province,
-  District,
-  Ward,
-} from './../../_model/address';
+import { Province, District, Ward } from './../../_model/address';
 import { AddressService } from './../../_services/address.service';
 import { ProfileService } from './../../_services/profile.service';
 import { ProfileUpdateModel, Profile } from './../../_model/User';
@@ -32,7 +28,7 @@ export class PrimaryInfoComponent implements OnInit {
     addressNumber: '', //
     credentialFrontImgUrl: '', //chua co
     credentialBackImgUrl: '', //chua co
-    wardId: 0
+    wardId: 0,
   };
   selectedProvince?: number;
   selectedDistrict?: number;
@@ -58,15 +54,20 @@ export class PrimaryInfoComponent implements OnInit {
   }
 
   getData() {
-    this.authService.getUserProfileObserver().subscribe((data: Profile) => {
-      this.userProfile = data;
-      this.selectedProvince = this.userProfile.provinceId;
-      this.getListDistrict(this.userProfile.provinceId);
-      this.selectedDistrict = this.userProfile.districtId;
-      this.getListWard(this.userProfile.districtId + "");
-      this.selectedWard = this.userProfile.wardId;
-      this.isChecked = this.userProfile.publicProfile === 'ACTIVE'
-    })
+    // this.authService.getUserProfileObserver().subscribe((data: Profile) => {
+    // })
+
+    this.profileServ.getProfileInfo().subscribe({
+      next: (data: Profile) => {
+        this.userProfile = data;
+        this.selectedProvince = this.userProfile.provinceId;
+        this.getListDistrict(this.userProfile.provinceId);
+        this.selectedDistrict = this.userProfile.districtId;
+        this.getListWard(this.userProfile.districtId + '');
+        this.selectedWard = this.userProfile.wardId;
+        this.isChecked = this.userProfile.publicProfile === 'ACTIVE';
+      },
+    });
   }
 
   updateProfile() {
@@ -145,15 +146,15 @@ export class PrimaryInfoComponent implements OnInit {
   }
 
   districtChange() {
-    this.getListWard(this.selectedDistrict + "");
+    this.getListWard(this.selectedDistrict + '');
   }
 
   receiveInfo() {
     this.authService.publicProfile().subscribe({
       next: () => {
-        alertify.success("Thành công");
+        alertify.success('Thành công');
       },
-      error: () => alertify.error("Có lỗi xảy ra")
-    })
+      error: () => alertify.error('Có lỗi xảy ra'),
+    });
   }
 }

@@ -1,0 +1,126 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.title {
+  margin: 20px auto;
+  font-size: 22px;
+  color: red;
+  display: block;
+}
+
+.school-container {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.school-container img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.school-title {
+  font-size: 18px;
+  color: #2669b2;
+}
+
+.hashtag {
+  padding: 2px 10px;
+  background-color: #e86438;
+  color: #fff;
+  border-radius: 5px;
+  margin-right: 4px;
+  font-size: 12px;
+  width: fit-content;
+}
+
+.highlight-text {
+  font-weight: bold;
+}
+
+.middle {
+  margin: 0 20px;
+  margin-right: 40px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn-detail {
+  padding: 5px 10px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.btn-apply {
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+table {
+  width: 100%;
+  margin-top: 50px;
+}
+
+img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+}
+
+th {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+tr {
+  padding: 5px 0;
+}
+
+.btn-detail {
+  width: fit-content;
+  background-color: green;
+  border: none;
+  color: #fff;
+  padding: 6px 10px;
+}
+
+.btn-detail:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+::ng-deep .mat-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 56px;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+}
+
+mat-paginator {
+  width: 80%;
+  background-color: #fafafa;
+  margin-top: 30px;
+}

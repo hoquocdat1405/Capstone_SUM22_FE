@@ -4,12 +4,37 @@
   box-sizing: border-box;
 }
 .main-container {
-  //   padding: 0 40px;
+  padding: 20px 0;
+  // margin-top:20px;
 }
 
 .thead-dark {
   //   background-color: #fff;
   //   color: #fff;
+}
+
+.table {
+  border-top: 1px solid #ccc;
+}
+
+.search-form {
+  float: right;
+  margin: 20px 80px 10px 0;
+  display: flex;
+}
+
+.search-input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.btn-search {
+  padding: 5px 10px;
+  flex: 1;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
 }
 
 .col {

@@ -48,12 +48,17 @@ export class ProfileSidebarComponent implements OnInit {
   ngOnInit() {
     this.user = this.authSer.getDecodedToken();
     this.getData();
+    setTimeout(() => {
+      document
+        .querySelector(`mat-list-item:nth-child(1)`)
+        ?.classList.add('active');
+    }, 2);
   }
 
   getData() {
     this.authSer.getUserProfileObserver().subscribe((data: Profile) => {
       this.userProfile = data;
-    })
+    });
   }
 
   hamburgerClick() {
@@ -68,5 +73,12 @@ export class ProfileSidebarComponent implements OnInit {
 
   activeTag(index: number) {
     this.checkActive = index;
+
+    document.querySelectorAll(`mat-list-item.active`)?.forEach((item) => {
+      item.classList.remove('active');
+    });
+    document
+      .querySelector(`mat-list-item:nth-child(${index + 1})`)
+      ?.classList.add('active');
   }
 }

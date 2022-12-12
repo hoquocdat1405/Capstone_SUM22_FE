@@ -104,6 +104,12 @@ export class SchoolListComponent implements OnInit {
   }
 
   considerUni(uniId: string) {
-    alertify.success('Lưu thành công');
+    this.uniService.saveUni(uniId).subscribe({
+      next: () => {
+        // console.log("success");
+        alertify.success('Đã lưu thành công');
+      },
+      error: () => {},
+    });
   }
 }
