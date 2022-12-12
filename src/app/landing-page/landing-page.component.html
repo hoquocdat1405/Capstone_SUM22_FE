@@ -57,7 +57,7 @@
       <div class="edu-news-item col-sm-6" *ngFor="let uni of uniList|slice:0:3">
         <div class="d-flex">
           <app-edu-news-item [uniImg]="uni.coverPhotoUrl" [address]="uni.addressNumber" [name]="uni.uniName"
-            [description]="uni.description"></app-edu-news-item>
+            [description]="uni.description" [uniId]="uni.id"></app-edu-news-item>
         </div>
       </div>
 

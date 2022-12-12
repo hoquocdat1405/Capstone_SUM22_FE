@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -10,8 +11,15 @@ export class EduNewsItemComponent implements OnInit {
   @Input() address = '';
   @Input() name = '';
   @Input() description = '';
+  @Input() uniId = '';
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit() {}
+
+  goDetail() {
+    this.router.navigate(['school', {schoolId: this.uniId}])
+  }
 }
