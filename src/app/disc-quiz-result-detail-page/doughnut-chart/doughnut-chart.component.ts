@@ -82,7 +82,7 @@ export class DoughnutChartComponent implements OnInit {
 
             ctx.fillText(
               chart.data.datasets[0].data[index] +
-                ' % thuoc nhom ' +
+                ' % nhóm ' +
                 tmpLabels[index],
               xLine + xtraLine + textMargin,
               yLine

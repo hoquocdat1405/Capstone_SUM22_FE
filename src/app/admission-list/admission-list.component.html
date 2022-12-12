@@ -4,13 +4,13 @@
     <div class="search-section">
       <div class="search-input-row">
         <div class="search-input-field">
-          <div class="search-title">Tìm theo trường</div>
+          <div class="search-title">Tìm tin tuyển sinh</div>
           <form class="example-form">
             <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Tên trường ...</mat-label>
+              <mat-label>Từ khóa</mat-label>
               <input
                 type="text"
-                placeholder="Nhập"
+                placeholder="Từ khóa"
                 aria-label="Number"
                 matInput
                 [formControl]="myControl"
@@ -30,7 +30,7 @@
         <div class="filter-by-test">
           <div class="search-title">Lọc theo bài test</div>
           <mat-form-field appearance="fill">
-            <mat-label>Toppings</mat-label>
+            <mat-label>Bài kiểm tra</mat-label>
             <mat-select [formControl]="toppings" multiple>
               <mat-select-trigger>
                 {{toppings.value?.[0] || ''}}
@@ -60,7 +60,7 @@
           class="card-item-img"
         />
         <div class="card-item-right">
-          <div class="card-item-title">Tuyển sinh Title</div>
+          <div class="card-item-title" (click)="redirectToDetail()">Tuyển sinh Title</div>
           <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
           <div class="card-item-desc">
             Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel

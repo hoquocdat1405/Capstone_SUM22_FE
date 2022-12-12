@@ -9,8 +9,8 @@
         <p class="school-name">Đại học FPT</p>
       </div>
       <div class="header-content-right">
-        <button class="apply-btn">Ứng tuyển ngay</button>
-        <button class="save-btn">Lưu</button>
+        <button class="apply-btn" (click)="redirectToSchoolDetail()">Chi tiết trường</button>
+        <!-- <button class="save-btn">Lưu</button> -->
       </div>
     </div>
   </div>
@@ -18,11 +18,11 @@
   <ul class="tab-list">
     <li class="tab-item active" (click)=changTab($event,0)>Chi Tiết Tuyển Sinh</li>
     <li class="tab-item" (click)=changTab($event,1)>Thông Tin Trường học</li>
-    <li class="tab-item" (click)=changTab($event,2)>Ngành học khác</li>
+    <!-- <li class="tab-item" (click)=changTab($event,2)>Ngành học khác</li> -->
   </ul>
 
   <div class="info-section active">
-    <p class="info-title">Thông tin chung</p>
+    <!-- <p class="info-title">Thông tin chung</p>
     <div class="condition-list">
       <div class="condition-item ">
         <i class="icon-condition item1 fa fa-calendar" aria-hidden="true"></i>
@@ -44,8 +44,10 @@
         <p class="condition">Hạn nhận hồ sơ</p>
         <p class="condition-need">29/12/2022</p>
       </div>
-    </div>
+    </div> -->
 
+    <!-- TODO: thêm nội dung bài viết ở đây -->
+    
     <p class="info-title">Mô tả ngành nghề</p>
     <p class="info-content">Công nghệ (tiếng Anh: technology) là sự phát minh, sự thay đổi, việc sử dụng, và kiến thức
       về các công cụ, máy móc, kỹ thuật, kỹ năng nghề nghiệp, hệ thống, và phương pháp tổ chức, nhằm giải quyết một vấn

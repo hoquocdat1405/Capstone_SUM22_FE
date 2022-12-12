@@ -173,8 +173,8 @@ const routes: Routes = [
   { path: 'new-job-list', component: NewJobListPageComponent },
 
   //addmission-news
-  { path: 'addmission-news-detail', component: AddmissionNewsDetailComponent },
-  { path: 'admission-list', component: AdmissionListComponent },
+  { path: 'news-detail', component: AddmissionNewsDetailComponent },
+  { path: 'news-list', component: AdmissionListComponent },
   { path: 'school-list', component: SchoolListComponent },
   { path: 'mail', component: MailMainComponent },
   { path: 'mail-inbox', component: MailInboxComponent },

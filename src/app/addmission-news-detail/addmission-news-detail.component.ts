@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-addmission-news-detail',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addmission-news-detail.component.scss'],
 })
 export class AddmissionNewsDetailComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {}
 
@@ -20,5 +21,10 @@ export class AddmissionNewsDetailComponent implements OnInit {
     activeTab?.classList.remove('active');
     infoSection[index].classList.add('active');
     infoSectionActive?.classList.remove('active');
+  }
+
+  redirectToSchoolDetail() {
+    //TODO : thêm id trường vào đây
+    this.router.navigate(['/school',{schoolId:'3eb48a1d-4a13-408e-83a0-003cb529bdc1'}]);
   }
 }
