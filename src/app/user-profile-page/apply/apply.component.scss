@@ -5,12 +5,6 @@
 }
 .main-container {
   padding: 20px 0;
-  // margin-top:20px;
-}
-
-.thead-dark {
-  //   background-color: #fff;
-  //   color: #fff;
 }
 
 .table {
@@ -21,10 +15,19 @@
   float: right;
   margin: 20px 80px 10px 0;
   display: flex;
+  position: relative;
+}
+
+.icon-search {
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
 .search-input {
   padding: 5px 10px;
+  padding-left: 20px;
   border: 1px solid #ccc;
   flex: 1;
 }
@@ -56,4 +59,55 @@
 td,
 th {
   text-align: center;
+}
+
+table {
+  width: 100%;
+  margin-top: 50px;
+}
+
+table {
+  width: 90%;
+  margin: 0 auto;
+}
+
+th {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  text-align: center !important;
+}
+
+tr {
+  padding: 5px 0;
+}
+
+.btn-detail {
+  width: fit-content;
+  background-color: green;
+  border: none;
+  color: #fff;
+  padding: 6px 10px;
+}
+
+.btn-detail:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+::ng-deep .mat-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 56px;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+  margin: 0 auto;
+}
+
+mat-paginator {
+  width: 90%;
+  background-color: #fafafa;
+  margin-top: 30px;
 }

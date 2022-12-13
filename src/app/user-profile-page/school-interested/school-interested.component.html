@@ -1,5 +1,8 @@
 <div class="main-container">
-
+  <form class="search-form">
+    <input type="text" class="search-input" placeholder="Nhập chuyên ngành">
+    <i class="icon-search fa fa-search" aria-hidden="true"></i>
+  </form>
   <!-- <div class="school-container" *ngFor="let tt of array">
     <div class="left">
       <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2019/10/nha-alpha.jpg" alt="" class="school-img">
@@ -27,7 +30,11 @@
 
     <ng-container matColumnDef="img">
       <th mat-header-cell *matHeaderCellDef> Hình ảnh </th>
-      <td mat-cell *matCellDef="let element"> <img src="{{element.img}}" alt=""> </td>
+      <td mat-cell *matCellDef="let element">
+        <div class="img-div">
+          <img src="{{element.img}}" alt="">
+        </div>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="name">

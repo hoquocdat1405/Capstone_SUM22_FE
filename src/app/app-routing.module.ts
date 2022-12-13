@@ -1,3 +1,4 @@
+import { TestAttemptComponent } from './user-profile-page/test-attempt/test-attempt.component';
 import { VertifyAccountPageComponent } from './vertify-account-page/vertify-account-page.component';
 import { NewTestsComponent } from './new-tests/new-tests.component';
 import { NewJobListPageComponent } from './new-job-list-page/new-job-list-page.component';
@@ -81,6 +82,7 @@ const routes: Routes = [
       { path: 'primary', component: PrimaryInfoComponent },
       { path: 'apply', component: ApplyComponent },
       { path: 'apply-detail', component: ApplyDetailComponent },
+      { path: 'test-attempt', component: TestAttemptComponent },
       { path: '', component: PrimaryInfoComponent },
     ],
   },
