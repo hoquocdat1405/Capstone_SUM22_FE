@@ -20,17 +20,23 @@
 
     <div class="input-container">
       <label class="input-title" for="">Học bạ THPT</label>
-      <img class="input-img" [src]= "schoolProfileUrl || 'assets/img/add-img.png'" alt="" (click)="uploadSchoolProfile()">
-      <input type="file" id="upload-school-profile" (change)="selectSchoolProfileFile($event)">
-      <div id="school-profile-name" [innerText]="schoolProfileName"></div>
+      <div class="flex-wrapper">
+        <img class="input-img" [src]="schoolProfileUrl || 'assets/img/add-img.png'" alt=""
+          (click)="uploadSchoolProfile()">
+        <input type="file" id="upload-school-profile" (change)="selectSchoolProfileFile($event)">
+        <div id="school-profile-name" [innerText]="schoolProfileName"></div>
+      </div>
     </div>
 
     <div class="input-container">
       <label class="input-title" for="">Bằng tốt nghiệp THPT (tạm thời)</label>
       <!-- <img class="input-img" src="assets/img/add-img.png" alt=""> -->
-      <img class="input-img" src="{{ schoolDegreeUrl || 'assets/img/add-img.png'}}" alt="" (click)="uploadSchoolDegree()">
-      <input type="file" id="upload-school-degree" (change)="selectSchoolDegreeFile($event)">
-      <div id="school-profile-name" [innerText]="schoolDegreeName"></div>
+      <div class="flex-wrapper">
+        <img class="input-img" src="{{ schoolDegreeUrl || 'assets/img/add-img.png'}}" alt=""
+          (click)="uploadSchoolDegree()">
+        <input type="file" id="upload-school-degree" (change)="selectSchoolDegreeFile($event)">
+        <div id="school-profile-name" [innerText]="schoolDegreeName"></div>
+      </div>
     </div>
 
     <div class="profile-img-title">Kỹ năng cá nhân</div>

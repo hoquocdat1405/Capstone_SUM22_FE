@@ -1,3 +1,4 @@
+import { FileuploadService } from './../../_services/fileupload.service';
 import { Province, District, Ward } from './../../_model/address';
 import { AddressService } from './../../_services/address.service';
 import { ProfileService } from './../../_services/profile.service';
@@ -5,6 +6,7 @@ import { ProfileUpdateModel, Profile } from './../../_model/User';
 import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import * as alertify from 'alertifyjs';
+import { FileUpload } from 'src/app/_model/file';
 @Component({
   selector: 'app-primary-info',
   templateUrl: './primary-info.component.html',
@@ -34,10 +36,15 @@ export class PrimaryInfoComponent implements OnInit {
   selectedDistrict?: number;
   selectedWard?: number;
 
+  avatarUrl?: string;
+  avatarFile?: File;
+  // avatarName?: string;
+
   constructor(
     private profileServ: ProfileService,
     private authService: AuthService,
-    private addressService: AddressService
+    private addressService: AddressService,
+    private uploadService: FileuploadService
   ) {}
 
   ngOnInit() {
@@ -51,6 +58,16 @@ export class PrimaryInfoComponent implements OnInit {
         this.listProvince = data;
       },
     });
+
+    this.getAvatar();
+  }
+
+  getAvatar() {
+    this.uploadService.getFile(this.authService.getDecodedToken().nameid, 'avatar').subscribe({
+      next: (data) => {
+        this.avatarUrl = data;
+      }
+    })
   }
 
   getData() {
@@ -102,7 +119,15 @@ export class PrimaryInfoComponent implements OnInit {
     this.userUpdateProfile!.wardId = +wardId.value;
     this.profileServ.updateProfile(this.userUpdateProfile).subscribe({
       next: () => {
-        alertify.success('Cập nhật thành công');
+        if(this.avatarFile) {
+          this.uploadService.pushFileToStorage(this.authService.getDecodedToken().nameid, 'avatar', new FileUpload(this.avatarFile)).subscribe({
+            next: (data) => {
+              if(data === 100) {
+                alertify.success('Cập nhật thành công');
+              }
+            }
+          })
+        }
       },
       error: () => {
         alertify.error('Cập nhật thất bại');
@@ -156,5 +181,37 @@ export class PrimaryInfoComponent implements OnInit {
       },
       error: () => alertify.error('Có lỗi xảy ra'),
     });
+  }
+
+  avatarChange(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      if (!file.type.includes("image")) {
+        alertify.error("Vui lòng chọn hình ảnh");
+        return;
+      }
+      const reader = new FileReader();
+      const selectedFrontIdFile: FileList = event.target.files;
+      if (selectedFrontIdFile) {
+        // this.avatarName = selectedFrontIdFile.item(0)!.name;
+        reader.onload = e => this.avatarUrl = reader.result + "";
+        reader.readAsDataURL(event.target.files[0]);
+        this.avatarFile = selectedFrontIdFile[0]
+      }
+      // const frontId: SubmitApplications = {
+      //   name: 'app_frontId',
+      //   submittedFile: file,
+      // };
+
+      // const index = this.submitFiles.findIndex(
+      //   (item) => item.name === frontId.name
+      // );
+      // if (index !== -1) {
+      //   this.submitFiles[index].submittedFile = file;
+      // } else {
+      //   this.submitFiles.push(frontId);
+      // }
+      // console.log(this.submitFiles)
+    }
   }
 }

@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  padding: 0;
+  // padding: 0;
   box-sizing: border-box;
 }
 
@@ -293,7 +293,7 @@
   background-image: url("/assets/img/background-result.png");
   background-repeat: no-repeat;
   background-size: 100% 130px;
-  -webkit-filter: blur(30px);
+  --webkit-filter: blur(30px);
 }
 
 .quiz-result__quote>svg {

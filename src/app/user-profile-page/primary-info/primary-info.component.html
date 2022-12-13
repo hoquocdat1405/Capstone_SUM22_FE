@@ -9,10 +9,12 @@
       <div class="background-blur">
         <i class="add-icon fa fa-plus" aria-hidden="true"></i>
       </div>
-      <img class="profile-img2" src="{{ userProfile?.avatarUrl || 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }}" alt="">
+      <!-- <img class="profile-img2" src="{{ userProfile?.avatarUrl || 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }}" alt=""> -->
+      <img class="profile-img2" [src]="avatarUrl || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'" alt="">
+      <!-- <div id="img-title">{{avatarName ?? ""}}</div> -->
     </div>
 
-    <input type="file" class="img-upload">
+    <input #avatar type="file" class="img-upload" (change)="avatarChange($event)">
 
 
     <div class="header-row">
