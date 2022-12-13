@@ -1,40 +1,44 @@
 <div class="main-container">
   <form class="search-form">
-    <input type="text" class="search-input" placeholder="Nhập chuyên ngành">
-    <button class="btn-search">Tìm kiếm</button>
+    <input type="text" class="search-input" placeholder="Nhập chuyên ngành" (keyup)="applyFilter($event)">
+    <i class="icon-search fa fa-search" aria-hidden="true"></i>
   </form>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">STT</th>
-        <th scope="col">Chuyên ngành</th>
-        <th scope="col">Tên trường</th>
-        <th scope="col">Ngày nộp hồ sơ</th>
-        <th scope="col">Tình trạng</th>
-        <th scope="col">Hành động</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let apply of applies; index as i">
-        <td>
-          <p class="table-text">{{i+1}}</p>
-        </td>
-        <td>
-          <p class="table-text">{{apply.uniSpecName}}</p>
-        </td>
-        <td>
-          <p class="table-text">{{apply.uniName}}</p>
-        </td>
-        <td>
-          <p class="table-text">{{apply.applyDate }}</p>
-        </td>
-        <td>
-          <p class="table-text">{{apply.status}}</p>
-        </td>
-        <td>
-          <button class="cancel-btn" (click)="viewDetail(apply.id)">Xem chi tiết</button>
-        </td>
-      </tr>
-    </tbody>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef> STT </th>
+      <td mat-cell *matCellDef="let element"> 1 </td>
+    </ng-container>
+
+    <ng-container matColumnDef="uniSpecName">
+      <th mat-header-cell *matHeaderCellDef> Chuyên ngành </th>
+      <td mat-cell *matCellDef="let element">{{element.uniSpecName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="uniName">
+      <th mat-header-cell *matHeaderCellDef> Tên trường </th>
+      <td mat-cell *matCellDef="let element"> {{element.uniName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="applyDate">
+      <th mat-header-cell *matHeaderCellDef> Ngày nộp hồ sơ </th>
+      <td mat-cell *matCellDef="let element"> {{element.applyDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Tình trạng </th>
+      <td mat-cell *matCellDef="let element">{{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="detail">
+      <th mat-header-cell *matHeaderCellDef> Chi tiết </th>
+      <td mat-cell *matCellDef="let element"> <button class="btn-detail">Xem chi tiết</button> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator>
 </div>
