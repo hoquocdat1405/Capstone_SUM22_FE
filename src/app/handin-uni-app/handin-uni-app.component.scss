@@ -120,6 +120,7 @@
 .input-group {
     display: flex;
     flex-direction: column;
+    width: auto;
 }
 
 .input-group img {
@@ -135,9 +136,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin-right: 4px;
 }
 
 .img-section img {
     width: 120px;
     aspect-ratio: 1 / 1;
+}
+
+#upload-school-degree {
+    display: none;
 }

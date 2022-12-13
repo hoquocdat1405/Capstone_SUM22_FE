@@ -1,12 +1,12 @@
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { UniversityService } from './../_services/university.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as alertify from 'alertifyjs';
 import { University } from './../_model/uni';
 import { AuthService } from './../_services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import * as alertify from 'alertifyjs';
+import { UniversityService } from './../_services/university.service';
 
 @Component({
   selector: 'app-school-list',
@@ -75,10 +75,6 @@ export class SchoolListComponent implements OnInit {
     return this.search.controls;
   }
 
-  // get searchForm(): FormGroup {
-  //   return this.search.controls as unknown as FormGroup;
-  // }
-
   searchSchool() {
     if (this.resultUni.length > 0) {
       this.displayedUniList = this.resultUni.filter((uni) =>
@@ -106,7 +102,6 @@ export class SchoolListComponent implements OnInit {
   considerUni(uniId: string) {
     this.uniService.saveUni(uniId).subscribe({
       next: () => {
-        // console.log("success");
         alertify.success('Đã lưu thành công');
       },
       error: () => {},

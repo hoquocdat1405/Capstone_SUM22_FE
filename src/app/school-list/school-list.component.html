@@ -24,7 +24,7 @@
                     <div class="job-icon">
                         <div class="img-wrapper">
                             <img src="{{uni.coverPhotoUrl}}" alt="" class="main-img" *ngIf="uni.coverPhotoUrl !== 'string' && uni.coverPhotoUrl !== '' && uni.coverPhotoUrl !== null">
-                          <img src="../../assets/img/uniPlaceholder.png" alt="" class="main-img"*ngIf="uni.coverPhotoUrl === 'string' || uni.coverPhotoUrl === '' || uni.coverPhotoUrl === null">
+                          <img src="../../assets/img/uniPlaceholder.png" alt="" class="main-img" *ngIf="uni.coverPhotoUrl === 'string' || uni.coverPhotoUrl === '' || uni.coverPhotoUrl === null">
                             <div class="sub-img-wrapper"><img src="../../assets/img/uniAvatarPlaceholder.png" alt=""
                                     class="sub-img" *ngIf="uni.avatarUrl === 'string'"></div>
                             <div class="sub-img-wrapper" *ngIf="uni.avatarUrl !== 'string'"><img src="{{uni.avatarUrl}}"
