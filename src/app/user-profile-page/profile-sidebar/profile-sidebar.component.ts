@@ -43,6 +43,11 @@ export class ProfileSidebarComponent implements OnInit {
       title: 'Hồ sơ đã gửi',
       icon: 'fa fa-floppy-o',
     },
+    {
+      routerLink: 'test-attempt',
+      title: 'Bài test đã làm',
+      icon: 'fa fa-floppy-o',
+    },
   ];
 
   ngOnInit() {
