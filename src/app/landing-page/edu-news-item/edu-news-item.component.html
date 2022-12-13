@@ -1,10 +1,10 @@
-<div class="container" (click)="goDetail()">
+<div class="container">
   <div class="news-main">
     <img class="news-img"
       src="{{uniImg}}"
-      width="100%" alt="daihocfpt" />
+      width="100%" alt="daihocfpt" (click)="goDetail()"/>
     <div class="text-block">
-      <p class="title">{{name}}</p>
+      <p class="title" (click)="goDetail()">{{name}}</p>
       <p class="brief">
         {{description}}
       </p>
