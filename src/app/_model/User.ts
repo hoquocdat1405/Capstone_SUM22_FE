@@ -28,7 +28,7 @@ export interface Profile {
 export interface ProfileUpdateModel {
   userName: string;
   gender: string;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   age: number;
   phone: string;
   credentialId: string; //CMND

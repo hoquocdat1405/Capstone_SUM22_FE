@@ -1,3 +1,4 @@
+import { ProfileService } from './../../_services/profile.service';
 import { Profile } from './../../_model/User';
 import { AuthService } from './../../_services/auth.service';
 import { ReplyMail, Message } from './../../_model/mail/mail';
@@ -32,7 +33,8 @@ export class MailInboxComponent implements OnInit {
     private mailService: MailService,
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private profileService: ProfileService
   ) { }
 
 
@@ -43,11 +45,16 @@ export class MailInboxComponent implements OnInit {
     this.uniAvatarUrl = this.route.snapshot.paramMap.get("uniAvatarUrl")!;
     this.reloadMessage();
     // setInterval(() => this.reloadMessage(), 2000)
-    this.authService.getUserProfileObserver().subscribe({
+    this.profileService.getProfileInfo().subscribe({
       next: (data: Profile) => {
         this.userProfile = data;
       }
     })
+    // this.authService.getUserProfileObserver().subscribe({
+    //   next: (data: Profile) => {
+    //     this.userProfile = data;
+    //   }
+    // })
   }
 
   reloadMessage() {

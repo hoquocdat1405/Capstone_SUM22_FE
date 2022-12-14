@@ -46,6 +46,7 @@ export class HandinUniAppComponent implements OnInit {
   schoolProfileList: SubmitApplications[] = [];
   selectedIndex: number = 0;
   genderControl!: FormControl;
+  abilityTwelveControl!: FormControl;
   uniSpecId?: number;
   applicationList: ApplicationModel[] = [];
   currentSchoolProfileIndex: number = 1;
@@ -90,7 +91,7 @@ export class HandinUniAppComponent implements OnInit {
     private addressService: AddressService,
     private applicationService: ApplicationService,
     private profileService: ProfileService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     alertify.set('notifier', 'position', 'top-center');
@@ -124,31 +125,58 @@ export class HandinUniAppComponent implements OnInit {
         );
       },
     });
+    this.profileService.getProfileInfo().subscribe({
+      next: (data: Profile) => {
+        this.userProfile = data;
+        this.gender = this.userProfile.gender;
+        this.dateOfBirth = new Date(this.userProfile.dateOfBirth);
+        this.dateOfBirthControl = new FormControl(this.dateOfBirth);
+        this.genderControl = new FormControl(this.gender);
+        this.abilityTwelveControl = new FormControl('')
+        console.log(this.gender);
 
-    this.authService.getUserProfileObserver().subscribe((data: Profile) => {
-      this.userProfile = data;
-      this.gender = this.userProfile.gender;
-      this.dateOfBirth = new Date(this.userProfile.dateOfBirth);
-      this.dateOfBirthControl = new FormControl(this.dateOfBirth);
-      this.genderControl = new FormControl(this.gender);
-      console.log(this.gender);
+        this.firstFormGroup.patchValue({
+          name: [this.userProfile.userName],
+          sex: [this.userProfile.gender],
+          birth: [new Date(this.userProfile.dateOfBirth)],
+          address: [this.userProfile.addressNumber],
+          cmnd: [this.userProfile.credentialId],
+          phone: [this.userProfile.phone],
+          email: [this.userProfile.email],
+          city: [''],
+          district: [''],
+          highschool: [this.userProfile.highSchoolName],
+          graduateYear: [''],
+          gradeTwelve: [''],
+          abilityTwelve: [''],
+        });
+      }
+    })
 
-      this.firstFormGroup.patchValue({
-        name: [this.userProfile.userName],
-        sex: [this.userProfile.gender],
-        birth: [new Date(this.userProfile.dateOfBirth)],
-        address: [this.userProfile.addressNumber],
-        cmnd: [this.userProfile.credentialId],
-        phone: [this.userProfile.phone],
-        email: [this.userProfile.email],
-        city: [''],
-        district: [''],
-        highschool: [this.userProfile.highSchoolName],
-        graduateYear: [''],
-        gradeTwelve: [''],
-        abilityTwelve: [''],
-      });
-    });
+    // this.authService.getUserProfileObserver().subscribe((data: Profile) => {
+    //   this.userProfile = data;
+    //   this.gender = this.userProfile.gender;
+    //   this.dateOfBirth = new Date(this.userProfile.dateOfBirth);
+    //   this.dateOfBirthControl = new FormControl(this.dateOfBirth);
+    //   this.genderControl = new FormControl(this.gender);
+    //   console.log(this.gender);
+
+    //   this.firstFormGroup.patchValue({
+    //     name: [this.userProfile.userName],
+    //     sex: [this.userProfile.gender],
+    //     birth: [new Date(this.userProfile.dateOfBirth)],
+    //     address: [this.userProfile.addressNumber],
+    //     cmnd: [this.userProfile.credentialId],
+    //     phone: [this.userProfile.phone],
+    //     email: [this.userProfile.email],
+    //     city: [''],
+    //     district: [''],
+    //     highschool: [this.userProfile.highSchoolName],
+    //     graduateYear: [''],
+    //     gradeTwelve: [''],
+    //     abilityTwelve: [''],
+    //   });
+    // });
 
     this.getAllApplication();
   }
@@ -161,7 +189,7 @@ export class HandinUniAppComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -324,10 +352,10 @@ export class HandinUniAppComponent implements OnInit {
           break;
       }
 
-      if(this.maxSchoolProfileIndex <= this.currentSchoolProfileIndex && this.maxSchoolProfileIndex < 4) {
+      if (this.maxSchoolProfileIndex <= this.currentSchoolProfileIndex && this.maxSchoolProfileIndex < 4) {
         this.maxSchoolProfileIndex++;
       }
-      
+
 
       this.path = file;
 
@@ -356,7 +384,7 @@ export class HandinUniAppComponent implements OnInit {
   frontIdFileChange(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      if(!file.type.includes("image")) {
+      if (!file.type.includes("image")) {
         alertify.error("Vui lòng chọn hình ảnh");
         return;
       }
@@ -455,14 +483,14 @@ export class HandinUniAppComponent implements OnInit {
           averageScore: +this.clearFormValue(
             this.finishFormGroup.get('gradeTwelve')?.value
           ).toString(),
-          academicRank: this.clearFormValue(
-            this.finishFormGroup.get('abilityTwelve')?.value
-          ).toString(),
+          academicRank: this.abilityTwelveControl.value.toString(),
           schoolReport1Url: '',
           schoolReport2Url: '',
           schoolReport3Url: '',
           schoolReport4Url: '',
         };
+
+        //academicRank: this.clearFormValue(this.finishFormGroup.get('abilityTwelve')?.value).toString(),
         this.applicationService
           .createApplicationDetail(applicationDetail)
           .subscribe({
@@ -541,6 +569,7 @@ export class HandinUniAppComponent implements OnInit {
   }
 
   setIndex(event: any) {
+    console.log(event)
     this.selectedIndex = event.selectedIndex;
   }
 
@@ -567,6 +596,7 @@ export class HandinUniAppComponent implements OnInit {
         frontId: [this.firstFormGroup.get('frontId')?.value],
         backId: [this.firstFormGroup.get('backId')?.value],
       });
+      this.abilityTwelveControl.setValue(this.abilityTwelveControl.value.toString())
 
       console.log(this.gender);
     }
@@ -598,6 +628,6 @@ export class HandinUniAppComponent implements OnInit {
   }
 
   selectSchoolProfileFile() {
-    
+
   }
 }

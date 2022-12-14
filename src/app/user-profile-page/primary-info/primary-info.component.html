@@ -10,7 +10,7 @@
         <i class="add-icon fa fa-plus" aria-hidden="true"></i>
       </div>
       <!-- <img class="profile-img2" src="{{ userProfile?.avatarUrl || 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }}" alt=""> -->
-      <img class="profile-img2" [src]="avatarUrl || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'" alt="">
+      <img class="profile-img2" [src]="avatarUrl || userProfile?.avatarUrl || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'" alt="">
       <!-- <div id="img-title">{{avatarName ?? ""}}</div> -->
     </div>
 
@@ -37,7 +37,7 @@
 
     <div class="input-container item5">
       <label class="input-title" for="">Email liên hệ</label>
-      <input value="{{userProfile?.email}}" type="email" name="" id="" class="input-email">
+      <input value="{{userProfile?.email}}" type="email" name="" id="" class="input-email" readonly>
     </div>
     <div class="input-container item1">
       <label class="input-title" for="">Họ và tên</label>

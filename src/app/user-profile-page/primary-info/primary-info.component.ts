@@ -1,3 +1,5 @@
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from './../../popup/popup.component';
 import { FileuploadService } from './../../_services/fileupload.service';
 import { Province, District, Ward } from './../../_model/address';
 import { AddressService } from './../../_services/address.service';
@@ -7,6 +9,7 @@ import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import * as alertify from 'alertifyjs';
 import { FileUpload } from 'src/app/_model/file';
+import { URL } from 'url';
 @Component({
   selector: 'app-primary-info',
   templateUrl: './primary-info.component.html',
@@ -15,14 +18,14 @@ import { FileUpload } from 'src/app/_model/file';
 export class PrimaryInfoComponent implements OnInit {
   userProfile?: Profile;
   isChecked: boolean = false;
-  user?: any;
+  // user?: any;
   listProvince: Province[] = [];
   listDistrict: District[] = [];
   listWard: Ward[] = [];
   userUpdateProfile: ProfileUpdateModel = {
     userName: '',
     gender: '',
-    dateOfBirth: '',
+    dateOfBirth: new Date(),
     age: 0,
     phone: '',
     credentialId: '', //CMND
@@ -37,6 +40,7 @@ export class PrimaryInfoComponent implements OnInit {
   selectedWard?: number;
 
   avatarUrl?: string;
+  firebaseGotImage?: string;
   avatarFile?: File;
   // avatarName?: string;
 
@@ -44,30 +48,35 @@ export class PrimaryInfoComponent implements OnInit {
     private profileServ: ProfileService,
     private authService: AuthService,
     private addressService: AddressService,
-    private uploadService: FileuploadService
+    private uploadService: FileuploadService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
-    this.user = this.authService.getDecodedToken();
+    // this.user = this.authService.getDecodedToken();
     this.getData();
     alertify.set('notifier', 'position', 'top-center');
     alertify.set('notifier', 'delay', '3');
+    this.getProvince();
+    
 
-    this.addressService.getProvince().subscribe({
-      next: (data: Province[]) => {
-        this.listProvince = data;
-      },
-    });
-
-    this.getAvatar();
+    // this.getAvatar();
   }
 
   getAvatar() {
     this.uploadService.getFile(this.authService.getDecodedToken().nameid, 'avatar').subscribe({
       next: (data) => {
-        this.avatarUrl = data;
+        this.firebaseGotImage = data;
       }
     })
+  }
+
+  getProvince() {
+    this.addressService.getProvince().subscribe({
+      next: (data: Province[]) => {
+        this.listProvince = data;
+      },
+    });
   }
 
   getData() {
@@ -88,7 +97,21 @@ export class PrimaryInfoComponent implements OnInit {
   }
 
   updateProfile() {
-    this.getDataUpdate();
+    let dialogRef = this.dialog.open(PopupComponent, {
+      data: {
+        title: 'Lưu thay đổi',
+        content: 'Xác nhận lưu thông tin thay đổi ?'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (data) => {
+        if (data === true) {
+          this.getDataUpdate();
+        }
+      }
+    })
+
   }
 
   getDataUpdate() {
@@ -112,22 +135,14 @@ export class PrimaryInfoComponent implements OnInit {
     this.userUpdateProfile!.age = age;
     this.userUpdateProfile!.phone = phone.value;
     this.userUpdateProfile!.credentialId = credentialId.value;
-    this.userUpdateProfile!.avatarUrl = '';
+    this.userUpdateProfile!.avatarUrl = this.userProfile!.avatarUrl;
     this.userUpdateProfile!.addressNumber = addressNumber.value;
     this.userUpdateProfile!.credentialFrontImgUrl = '';
     this.userUpdateProfile!.credentialBackImgUrl = '';
     this.userUpdateProfile!.wardId = +wardId.value;
     this.profileServ.updateProfile(this.userUpdateProfile).subscribe({
       next: () => {
-        if(this.avatarFile) {
-          this.uploadService.pushFileToStorage(this.authService.getDecodedToken().nameid, 'avatar', new FileUpload(this.avatarFile)).subscribe({
-            next: (data) => {
-              if(data === 100) {
-                alertify.success('Cập nhật thành công');
-              }
-            }
-          })
-        }
+        alertify.success("Cập nhật thành công")
       },
       error: () => {
         alertify.error('Cập nhật thất bại');
@@ -197,21 +212,47 @@ export class PrimaryInfoComponent implements OnInit {
         reader.onload = e => this.avatarUrl = reader.result + "";
         reader.readAsDataURL(event.target.files[0]);
         this.avatarFile = selectedFrontIdFile[0]
+        this.uploadService.pushFileToStorage(this.authService.getDecodedToken().nameid, 'avatar', new FileUpload(this.avatarFile)).subscribe({
+          next: (data) => {
+            if (data === 100) {
+              this.updateAvatarToDB();
+            }
+          }
+        })
       }
-      // const frontId: SubmitApplications = {
-      //   name: 'app_frontId',
-      //   submittedFile: file,
-      // };
-
-      // const index = this.submitFiles.findIndex(
-      //   (item) => item.name === frontId.name
-      // );
-      // if (index !== -1) {
-      //   this.submitFiles[index].submittedFile = file;
-      // } else {
-      //   this.submitFiles.push(frontId);
-      // }
-      // console.log(this.submitFiles)
     }
+  }
+
+  updateAvatarToDB() {
+    this.uploadService.getFile(this.authService.getDecodedToken().nameid, 'avatar').subscribe({
+      next: (data) => {
+        this.firebaseGotImage = data;
+        let updateProfile: ProfileUpdateModel = {
+          userName: this.userProfile!.userName,
+          gender: this.userProfile!.gender,
+          dateOfBirth: this.userProfile!.dateOfBirth,
+          age: this.userProfile!.age,
+          phone: this.userProfile!.phone,
+          credentialId: this.userProfile!.credentialId,
+          avatarUrl: this.firebaseGotImage ?? this.userProfile!.avatarUrl,
+          addressNumber: this.userProfile!.addressNumber,
+          credentialFrontImgUrl: this.userProfile!.credentialFrontImgUrl,
+          credentialBackImgUrl: this.userProfile!.credentialBackImgUrl,
+          wardId: this.userProfile!.wardId
+        }
+
+        this.profileServ.updateProfile(updateProfile).subscribe({
+          next: () => {
+            alertify.success('Cập nhật ảnh đại diện thành công');
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000)
+          },
+          error: () => {
+            alertify.error('Cập nhật thất bại');
+          },
+        });
+      }
+    })
   }
 }
