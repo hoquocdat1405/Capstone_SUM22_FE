@@ -1,422 +1,425 @@
 * {
-    margin: 0;
-    // padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  // padding: 0;
+  box-sizing: border-box;
 }
 
 .page-container {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    font-size: 62.5%;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
 }
 
 .page-container .wrapper {
-    position: relative;
-    width: 100%;
-    padding: 4em 4em;
-    background-color: #fff;
+  position: relative;
+  width: 100%;
+  padding: 4em 4em;
+  background-color: #fafafa;
 }
 
 .text-container {
-    background-color: #fff;
-    padding: 0 8em;
+  // background-color: #fff;
+  padding: 0 8em;
 }
 
 .wrapper .header-title {
-    font-weight: 600;
-    font-size: 2.8em;
-    margin: 20px auto;
-    width: fit-content;
-    text-transform: uppercase;
-    color: #c85a35;
+  font-weight: 600;
+  font-size: 2.8em;
+  margin: 20px auto;
+  width: fit-content;
+  text-transform: uppercase;
+  color: #c85a35;
 }
 
 .wrapper .header-desc {
-    font-size: 1.5em;
-    font-weight: 500;
-    text-align: justify;
-    margin-left: 20px;
+  font-size: 1.5em;
+  font-weight: 500;
+  text-align: justify;
+  margin-left: 20px;
 }
 
 .job-container {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 .wrapper .job-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
 }
 
 .wrapper .job-wrapper .card-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: #fff;
-    height: 300px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  // background-color: #fff;
+  height: 300px;
+  width: 100%;
 }
 
 .card-item .job-icon {
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    border: solid 8px #fff4d5;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  // border: solid 8px #fff4d5;
+  box-shadow: 5px 5px 10px #ccc;
+  border-radius: 5px;
 }
 
 .job-icon img {
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 .job-action-wrapper {
-    position: relative;
-    height: 76%;
-    width: 60%;
-    border-radius: 8px;
+  position: relative;
+  height: 76%;
+  width: 60%;
+  border-radius: 8px;
 }
 
 .ab-job-action-wrapper {
-    display: flex;
-    position: absolute;
-    background-color: #fff4d5;
-    left: -40px;
-    width: 100%;
-    height: 100%;
-    padding: 28px;
-    border-radius: 8px;
+  display: flex;
+  position: absolute;
+  background-color: #fff4d5;
+  left: -40px;
+  width: 100%;
+  height: 100%;
+  padding: 28px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px #ccc;
 }
 
 .job-info-wrapper {
-    margin-right: 24px;
-    width: 30%;
+  margin-right: 24px;
+  width: 30%;
 }
 
-
 .card-item .job-name {
-    font-size: 2.4em;
-    font-weight: 500;
-    color: #c85a35;
+  font-size: 2.4em;
+  font-weight: 500;
+  color: #c85a35;
 }
 
 .card-item .job-desc {
-    max-width: 20em;
-    font-size: 1.2em;
-    padding: 1em 0;
-    text-align: justify;
+  max-width: 20em;
+  font-size: 1.2em;
+  padding: 1em 0;
+  text-align: justify;
 }
 
 .major-list-wrapper {
-    height: 100%;
-    border-left: solid 1px #d1c091;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
+  height: 100%;
+  border-left: solid 1px #d1c091;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
 
 .view-detail-btn {
-    background-color: rgb(0, 161, 224);
-    color: #fff;
+  background-color: rgb(0, 161, 224);
+  color: #fff;
 }
 
 .major-list-title {
-    font-size: 2.4em;
-    font-weight: 500;
-    color: #c85a35;
+  font-size: 2.4em;
+  font-weight: 500;
+  color: #c85a35;
 }
 
 .major-list {
-    font-size: 20px;
-    cursor: pointer;
-    margin-top: 8px;
-    font-style: italic;
-    color: #fff;
-    transition: .5s;
-    min-width: 16px;
-    margin-left: 4px;
-    background-color: #c85a35;
-    text-align: left;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 8px;
+  font-style: italic;
+  color: #fff;
+  transition: 0.5s;
+  min-width: 16px;
+  margin-left: 4px;
+  background-color: #c85a35;
+  text-align: left;
 }
 
 .major-list:hover {
-    font-size: 22px;
-    color: rgb(0, 45, 63);
+  font-size: 22px;
+  color: rgb(0, 45, 63);
 }
 
 .mat-flat-button.mat-primary,
 .mat-raised-button.mat-primary,
 .mat-fab.mat-primary,
 .mat-mini-fab.mat-primary {
-    background-color: #e3643b;
+  background-color: #e3643b;
 }
 
 .search-container {
-    // padding: 40px 22em;
-    background-color: #fff;
-    border-radius: 5px;
-    margin: 0 auto;
-    background: transparent linear-gradient(6deg, #fff, #f1e2b9 100%, rgba(195, 255, 221, 0.702) 0) 0 0 no-repeat padding-box;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 60px;
+  // padding: 40px 22em;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 0 auto;
+  background: transparent linear-gradient(6deg, #fff4d5, #f1e2b9);
+  display: flex;
+  justify-content: space-around;
+  margin-top: 60px;
 }
 
 .search-title {
-    font-size: 26px;
-    color: #c85a35;
-    font-weight: 500;
+  font-size: 26px;
+  color: #c85a35;
+  font-weight: 500;
 }
 
 .search-description {
-    font-size: 18px;
-    margin: 20px 0;
+  font-size: 18px;
+  margin: 20px 0;
 }
 
 .search-form {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .search-form .mat-form-field {
-    background: none;
+  background: none;
 }
 
 .search {
-    margin-right: 30px;
-    width: 400px;
-    font-size: 16px;
+  margin-right: 30px;
+  width: 400px;
+  font-size: 16px;
 }
 
 .search-block-title {
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .search-input {
-    padding: 5px 25px;
-    width: 300px;
-    height: 100%;
-    background-color: #fff;
-    border: 1px solid #f4f4f4;
-    border-radius: 5px;
-    font-size: 16px;
+  padding: 5px 25px;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid #f4f4f4;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 select {
-    background-color: #fff;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-right: 10px;
+  background-color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
 .left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    // align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
 }
 
 .banner-img {
-    width: 300px;
+  width: 300px;
 }
 
 .search-icon {
-    position: absolute;
-    left: 5px;
-    font-size: 16px;
-    top: 50%;
-    transform: translate(0, -50%);
+  position: absolute;
+  left: 5px;
+  font-size: 16px;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
 .filter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  position: relative;
 }
 
 .mat-form-field {
-    background: #fff;
+  background: #fff;
 }
 
 .mat-paginator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: #fafafa;
 }
 
 ::ng-deep .mat-form-field {
-    .mat-input-element {
-        color: slategray;
-    }
+  .mat-input-element {
+    color: slategray;
+  }
 
-    .mat-form-field-label {
-        color: slategray;
-    }
+  .mat-form-field-label {
+    color: slategray;
+  }
 
-    .mat-form-field-underline {
-        background-color: slategray;
-    }
+  .mat-form-field-underline {
+    background-color: slategray;
+  }
 
-    .mat-form-field-ripple {
-        background-color: slategray;
-    }
+  .mat-form-field-ripple {
+    background-color: slategray;
+  }
 
-    .mat-form-field-required-marker {
-        color: slategray;
-    }
+  .mat-form-field-required-marker {
+    color: slategray;
+  }
 }
 
 .filter-btn.active {
-    background-color: #2f54ea;
-    color: #fff;
+  background-color: #2f54ea;
+  color: #fff;
 }
 
 .filter-btn:hover {
-    cursor: pointer;
-    opacity: 0.8;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .filter-icon {
-    font-size: 16px;
-    margin-right: 5px;
+  font-size: 16px;
+  margin-right: 5px;
 }
 
 .filter-text {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .filter-box {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    background-color: #fff;
-    box-shadow: 3px 3px 10px #ccc;
-    width: 300px;
-    border-radius: 10px;
-    padding: 20px;
-    display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 3px 3px 10px #ccc;
+  width: 300px;
+  border-radius: 10px;
+  padding: 20px;
+  display: none;
 }
 
 .filter-box.active {
-    display: inline;
+  display: inline;
 }
 
 .filter-box-title {
-    font-weight: 500;
-    font-size: 18px;
-    margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
 .filter-box-row {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .btn-search {
-    // padding: 0px 10px;
-    font-size: 16px;
-    background-color: #c85a35;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    height: 40px;
+  // padding: 0px 10px;
+  font-size: 16px;
+  background-color: #c85a35;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
 }
 
 .filter-input {
-    width: 100%;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
 .btn-search:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .drop-down {
-    display: flex;
+  display: flex;
 }
 
 @media only screen and (max-width: 78.75em) {
-    .wrapper .job-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 4em 10em;
-    }
+  .wrapper .job-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 4em 10em;
+  }
 }
 
 @media only screen and (max-width: 50em) {
-    .wrapper .job-wrapper {
-        grid-template-columns: repeat(1, 1fr);
-        padding: 4em;
-    }
+  .wrapper .job-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 4em;
+  }
 }
 
 @media (max-width: 1300px) {
-    .search-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 5px;
-    }
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
 
-    .left {
-        order: 2;
-    }
+  .left {
+    order: 2;
+  }
 
-    .search-title,
-    .search-description,
-    .header-title {
-        text-align: center;
-    }
+  .search-title,
+  .search-description,
+  .header-title {
+    text-align: center;
+  }
 
-    .right {
-        order: 1;
-    }
+  .right {
+    order: 1;
+  }
 
-    .search-row {
-        margin-bottom: 20px;
-    }
+  .search-row {
+    margin-bottom: 20px;
+  }
 
-    .search {
-        margin: 0px 0px 10px 0px;
-    }
+  .search {
+    margin: 0px 0px 10px 0px;
+  }
 
-    .search-input {
-        width: 100%;
-    }
+  .search-input {
+    width: 100%;
+  }
 
-    .drop-down {
-        justify-content: space-between;
-        gap: 2px;
-        margin-bottom: 10px;
-    }
+  .drop-down {
+    justify-content: space-between;
+    gap: 2px;
+    margin-bottom: 10px;
+  }
 
-    .search-form {
-        flex-direction: column;
-        padding: 5px;
-    }
+  .search-form {
+    flex-direction: column;
+    padding: 5px;
+  }
 
-    .major-dropdown,
-    .spec-dropdown {
-        width: 48%;
-        padding: 5px 10px;
-        margin-right: 0;
-    }
+  .major-dropdown,
+  .spec-dropdown {
+    width: 48%;
+    padding: 5px 10px;
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 1200px) {
-    .text-container {
-        padding: 0;
-        // display: none;
-    }
+  .text-container {
+    padding: 0;
+    // display: none;
+  }
 }

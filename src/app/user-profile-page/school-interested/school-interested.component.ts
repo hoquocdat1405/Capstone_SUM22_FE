@@ -37,4 +37,8 @@ export class SchoolInterestedComponent implements OnInit {
   goDetail(id: string) {
     this.router.navigate(['school', { schoolId: id }]);
   }
+
+  applyFilter(filterValue: any) {
+    this.dataSource.filter = filterValue.target.value.trim().toLowerCase();
+  }
 }

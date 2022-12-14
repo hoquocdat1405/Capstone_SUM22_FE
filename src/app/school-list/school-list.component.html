@@ -1,5 +1,5 @@
+<app-nav></app-nav>
 <div class="page-container">
-    <app-nav></app-nav>
     <div class="search-container">
         <div class="search-container-left">
             <div class="search-main-header">Khám phá các trường đại học nổi bật</div>
@@ -23,8 +23,10 @@
                 <div class="card-item" *ngFor="let uni of displayedUniList | slice:0:12">
                     <div class="job-icon">
                         <div class="img-wrapper">
-                            <img src="{{uni.coverPhotoUrl}}" alt="" class="main-img" *ngIf="uni.coverPhotoUrl !== 'string' && uni.coverPhotoUrl !== '' && uni.coverPhotoUrl !== null">
-                          <img src="../../assets/img/uniPlaceholder.png" alt="" class="main-img" *ngIf="uni.coverPhotoUrl === 'string' || uni.coverPhotoUrl === '' || uni.coverPhotoUrl === null">
+                            <img src="{{uni.coverPhotoUrl}}" alt="" class="main-img"
+                                *ngIf="uni.coverPhotoUrl !== 'string' && uni.coverPhotoUrl !== '' && uni.coverPhotoUrl !== null">
+                            <img src="../../assets/img/uniPlaceholder.png" alt="" class="main-img"
+                                *ngIf="uni.coverPhotoUrl === 'string' || uni.coverPhotoUrl === '' || uni.coverPhotoUrl === null">
                             <div class="sub-img-wrapper"><img src="../../assets/img/uniAvatarPlaceholder.png" alt=""
                                     class="sub-img" *ngIf="uni.avatarUrl === 'string'"></div>
                             <div class="sub-img-wrapper" *ngIf="uni.avatarUrl !== 'string'"><img src="{{uni.avatarUrl}}"
@@ -32,25 +34,31 @@
                         </div>
                         <div class="mini-background"></div>
                     </div>
-                    <div class="job-name" [matTooltip]="uni.uniName">{{uni.uniName}} - {{uni.uniCode}}</div>
+                    <div (click)="viewSchoolDetail(uni.id)" class="job-name" [matTooltip]="uni.uniName">{{uni.uniName}}
+                        - {{uni.uniCode}}</div>
                     <div class="job-desc">
                         {{uni.description | slice:0: 150 }} ...
                     </div>
-                    <div class="action-btn">
+                    <div class="address">
+                        Địa chỉ: <span>{{uni.addressNumber | slice:0: 150 }}</span>
+                    </div>
+                    <!-- <div class="action-btn">
                         <button mat-raised-button class="view-detail-btn" (click)="viewSchoolDetail(uni.id)">Xem chi
                             tiết</button>
                         <button mat-raised-button class="view-detail-btn" (click)="considerUni(uni.id)">Quan
                             tâm</button>
-                    </div>
+                    </div> -->
                 </div>
             </ng-container>
             <ng-container *ngIf="resultUni.length!==0">
                 <div class="card-item" *ngFor="let uni of displayedUniList | slice:0:12">
                     <div class="job-icon">
                         <div class="img-wrapper">
-                          <img src="{{uni.coverPhotoUrl}}" alt="" class="main-img" *ngIf="uni.coverPhotoUrl !== 'string' && uni.coverPhotoUrl !== '' && uni.coverPhotoUrl !== null">
-                          <img src="../../assets/img/uniPlaceholder.png" alt="" class="main-img"*ngIf="uni.coverPhotoUrl === 'string' || uni.coverPhotoUrl === '' || uni.coverPhotoUrl === null">
-                          <div class="sub-img-wrapper"><img src="../../assets/img/uniAvatarPlaceholder.png" alt=""
+                            <img src="{{uni.coverPhotoUrl}}" alt="" class="main-img"
+                                *ngIf="uni.coverPhotoUrl !== 'string' && uni.coverPhotoUrl !== '' && uni.coverPhotoUrl !== null">
+                            <img src="../../assets/img/uniPlaceholder.png" alt="" class="main-img"
+                                *ngIf="uni.coverPhotoUrl === 'string' || uni.coverPhotoUrl === '' || uni.coverPhotoUrl === null">
+                            <div class="sub-img-wrapper"><img src="../../assets/img/uniAvatarPlaceholder.png" alt=""
                                     class="sub-img" *ngIf="uni.avatarUrl === 'string'"></div>
                             <div class="sub-img-wrapper" *ngIf="uni.avatarUrl !== 'string'"><img src="{{uni.avatarUrl}}"
                                     alt="" class="sub-img"></div>
