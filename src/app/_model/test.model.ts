@@ -29,3 +29,12 @@ export interface TestDetail {
   criteriaInformation: string;
   history: string;
 }
+
+export interface TestModel {
+  id: number;
+  testId: number;
+  testName: string;
+  attemptDate: string;
+  resultShortName: string;
+  resultName: number;
+}
