@@ -12,7 +12,7 @@ export class HighschoolService {
 
   constructor(private http: HttpClient) { }
 
-  getHighschool(): Observable<Highschool> {
-    return this.http.get<Highschool>(this.baseUrl + "application/highschool")
+  getHighschool(): Observable<Highschool[]> {
+    return this.http.get<Highschool[]>(this.baseUrl + "application/highschool")
   }
 }

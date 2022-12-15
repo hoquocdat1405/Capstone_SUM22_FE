@@ -148,7 +148,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavComponent,
     CarouselComponent,
@@ -231,8 +231,8 @@ export function tokenGetter() {
     SubNewsItemComponent,
     NewJobListPageComponent,
     NewTestsComponent,
-      VertifyAccountPageComponent
-   ],
+    VertifyAccountPageComponent,
+  ],
   imports: [
     FormsModule,
     BrowserModule,
@@ -262,4 +262,4 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
