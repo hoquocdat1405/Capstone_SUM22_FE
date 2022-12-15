@@ -1,9 +1,10 @@
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProfileService } from './../../_services/profile.service';
 import { Router } from '@angular/router';
 import { ApplicationModel } from './../../_model/application/application';
 import { AuthService } from './../../_services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 export interface PeriodicElement {
   position: number;
@@ -19,6 +20,7 @@ export interface PeriodicElement {
   styleUrls: ['./apply.component.scss'],
 })
 export class ApplyComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator?: MatPaginator;
   id: string = '';
   displayedColumns: string[] = [
     'index',
@@ -42,8 +44,8 @@ export class ApplyComponent implements OnInit {
 
   getData() {
     this.profileServ.getAllApply().subscribe((data) => {
-      // this.dataSource = data;
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
   }
 

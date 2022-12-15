@@ -49,7 +49,7 @@ export class ProfileSidebarComponent implements OnInit {
     {
       routerLink: 'test-attempt',
       title: 'Bài test đã làm',
-      icon: 'fa fa-floppy-o',
+      icon: 'fa fa-check-square-o',
     },
   ];
 
@@ -61,12 +61,13 @@ export class ProfileSidebarComponent implements OnInit {
         .querySelector(`mat-list-item:nth-child(1)`)
         ?.classList.add('active');
     }, 2);
-    this.uploadService.getFile(this.authSer.getDecodedToken().nameid, 'avatar').subscribe({
-      next: (data) => {
-        this.avatarUrl = data;
-      }
-    })
-    
+    this.uploadService
+      .getFile(this.authSer.getDecodedToken().nameid, 'avatar')
+      .subscribe({
+        next: (data) => {
+          this.avatarUrl = data;
+        },
+      });
   }
 
   getData() {

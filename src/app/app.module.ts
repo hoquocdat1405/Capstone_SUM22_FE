@@ -1,3 +1,4 @@
+import { TestAttemptComponent } from './user-profile-page/test-attempt/test-attempt.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -232,6 +233,7 @@ export function tokenGetter() {
     NewJobListPageComponent,
     NewTestsComponent,
     VertifyAccountPageComponent,
+    TestAttemptComponent,
   ],
   imports: [
     FormsModule,

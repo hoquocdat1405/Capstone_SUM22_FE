@@ -1,26 +1,8 @@
 <div class="main-container">
   <form class="search-form">
-    <input type="text" class="search-input" placeholder="Nhập chuyên ngành">
+    <input type="text" class="search-input" placeholder="Nhập chuyên ngành" (keyup)="applyFilter($event)">
     <i class="icon-search fa fa-search" aria-hidden="true"></i>
   </form>
-  <!-- <div class="school-container" *ngFor="let tt of array">
-    <div class="left">
-      <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2019/10/nha-alpha.jpg" alt="" class="school-img">
-    </div>
-    <div class="middle">
-      <p class="school-title">Đại học FPT</p>
-      <p class="hashtag">#FPT</p>
-      <p class="address"><span class="highlight-text">Địa chỉ: </span>Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành
-        Phố
-        Thủ Đức, Thành phố Hồ Chí Minh</p>
-    </div>
-    <div class="right">
-      <button class="btn-detail">Xem chi tiết</button>
-      <button class="btn-apply">Ứng tuyển ngay</button>
-    </div>
-  </div> -->
-
-
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="position">

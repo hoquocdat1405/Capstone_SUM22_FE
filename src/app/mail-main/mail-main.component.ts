@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FirstMail, MailBox } from './../_model/mail/mail';
 import { MailService } from './../_services/mail.service';
@@ -8,12 +9,12 @@ import { University } from './../_model/uni';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RichTextEditorComponent } from '@syncfusion/ej2-angular-richtexteditor/src';
-import * as alertify from "alertifyjs";
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-mail-main',
   templateUrl: './mail-main.component.html',
-  styleUrls: ['./mail-main.component.scss']
+  styleUrls: ['./mail-main.component.scss'],
 })
 export class MailMainComponent implements OnInit {
   events: string[] = [];
@@ -33,52 +34,56 @@ export class MailMainComponent implements OnInit {
     private uniService: UniversityService,
     private mailService: MailService,
     private router: Router,
-  ) { }
-
+    private title: Title
+  ) {}
 
   private htmlContent!: string;
   isShowNewEmailPopup: boolean = false;
 
   ngOnInit(): void {
+    this.title.setTitle('Mail');
     alertify.set('notifier', 'position', 'top-center');
-    alertify.set('notifier', 'delay', 3)
+    alertify.set('notifier', 'delay', 3);
     this.uniService.getAllUniversity().subscribe({
       next: (data: University[]) => {
         this.uniList = data;
-        this.filteredOptions = (this.myForm.get('schoolControl') as FormControl).valueChanges.pipe(
+        this.filteredOptions = (
+          this.myForm.get('schoolControl') as FormControl
+        ).valueChanges.pipe(
           startWith(''),
-          map(value => this._filter(value || '')),
+          map((value) => this._filter(value || ''))
         );
-      }
-    })
+      },
+    });
 
     this.getAllMail();
   }
 
   myForm = this.fb.group({
     schoolControl: ['', [Validators.required]],
-    topic: ['', [Validators.required]]
-  })
+    topic: ['', [Validators.required]],
+  });
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    this.selectedUniList = this.uniList.filter(option => option.uniName.toLowerCase().includes(filterValue));
-    
-    return this.uniList.filter(option => option.uniName.toLowerCase().includes(filterValue))
-      .map(uniSearched => uniSearched.uniName);
+    this.selectedUniList = this.uniList.filter((option) =>
+      option.uniName.toLowerCase().includes(filterValue)
+    );
+
+    return this.uniList
+      .filter((option) => option.uniName.toLowerCase().includes(filterValue))
+      .map((uniSearched) => uniSearched.uniName);
   }
 
   search = this.fb.group({
     searchInput: [''],
   });
 
-  searchSchool() {
-
-  }
+  searchSchool() {}
 
   public customToolbar: Object = {
-    items: ['Bold', 'Italic', '|', 'Formats', 'OrderedList', 'UnorderedList',]
-  }
+    items: ['Bold', 'Italic', '|', 'Formats', 'OrderedList', 'UnorderedList'],
+  };
 
   getNewEmailContent() {
     this.htmlContent = this.componentObject.getHtml();
@@ -87,55 +92,71 @@ export class MailMainComponent implements OnInit {
     //   return;
     // }
     if (this.myForm.invalid) {
-      alertify.error("Vui lòng điền đầy đủ thông tin")
+      alertify.error('Vui lòng điền đầy đủ thông tin');
       return;
     }
-    const uni: University = this.uniList.filter(x =>
-      x.uniName === this.myForm.get("schoolControl")!.value
-      && x.uniName.length === (this.myForm.get("schoolControl")!.value as string).trim().length)[0]
+    const uni: University = this.uniList.filter(
+      (x) =>
+        x.uniName === this.myForm.get('schoolControl')!.value &&
+        x.uniName.length ===
+          (this.myForm.get('schoolControl')!.value as string).trim().length
+    )[0];
     if (!uni) {
-      alertify.error("Tên trường không hợp lệ")
+      alertify.error('Tên trường không hợp lệ');
       return;
     }
 
-
-    alertify.success("Gửi thành công")
+    alertify.success('Gửi thành công');
     const firstMail: FirstMail = {
       recipientId: uni.id,
       messageContent: this.htmlContent,
-      topic: this.myForm.get('topic')?.value
-    }
+      topic: this.myForm.get('topic')?.value,
+    };
     this.mailService.sendFirstMail(firstMail).subscribe({
       next: (data) => {
-        alertify.success("Gửi thành công")
+        alertify.success('Gửi thành công');
         this.getAllMail();
-      }
-    })
+      },
+    });
   }
 
-  viewDetail(mailboxId: string, uniName: string, userName: string, uniAvatarUrl: string) {
-    this.router.navigate(['/mail-inbox', { mailboxId: mailboxId, uniName: uniName, userName: userName, uniAvatarUrl: uniAvatarUrl }])
+  viewDetail(
+    mailboxId: string,
+    uniName: string,
+    userName: string,
+    uniAvatarUrl: string
+  ) {
+    this.router.navigate([
+      '/mail-inbox',
+      {
+        mailboxId: mailboxId,
+        uniName: uniName,
+        userName: userName,
+        uniAvatarUrl: uniAvatarUrl,
+      },
+    ]);
   }
 
   getAllMail() {
     this.mailService.getAllMail().subscribe({
       next: (data: MailBox[]) => {
         this.listMailbox = data;
-        this.displayMailbox = this.listMailbox.filter(x => x.type === "USER");
-      }
-    })
+        this.displayMailbox = this.listMailbox.filter((x) => x.type === 'USER');
+      },
+    });
   }
 
   sendTabClick() {
     this.receiveTabFlag = false;
     this.sendTabFlag = true;
-    this.displayMailbox = this.listMailbox.filter(x => x.type === "USER")
+    this.displayMailbox = this.listMailbox.filter((x) => x.type === 'USER');
   }
 
   receiveTabClick() {
     this.receiveTabFlag = true;
     this.sendTabFlag = false;
-    this.displayMailbox = this.listMailbox.filter(x => x.type === "UNIVERSITY")
+    this.displayMailbox = this.listMailbox.filter(
+      (x) => x.type === 'UNIVERSITY'
+    );
   }
-
 }
