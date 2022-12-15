@@ -1,55 +1,46 @@
 <div class="main-container">
-
-  <!-- <div class="school-container" *ngFor="let tt of array">
-    <div class="left">
-      <img src="https://daihoc.fpt.edu.vn/wp-content/uploads/2019/10/nha-alpha.jpg" alt="" class="school-img">
-    </div>
-    <div class="middle">
-      <p class="school-title">Đại học FPT</p>
-      <p class="hashtag">#FPT</p>
-      <p class="address"><span class="highlight-text">Địa chỉ: </span>Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành
-        Phố
-        Thủ Đức, Thành phố Hồ Chí Minh</p>
-    </div>
-    <div class="right">
-      <button class="btn-detail">Xem chi tiết</button>
-      <button class="btn-apply">Ứng tuyển ngay</button>
-    </div>
-  </div> -->
-
-
+  <form class="search-form">
+    <input type="text" class="search-input" placeholder="Nhập chuyên ngành" (keyup)="applyFilter($event)">
+    <i class="icon-search fa fa-search" aria-hidden="true"></i>
+  </form>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> STT </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <td mat-cell *matCellDef="let element,index as i"> {{i+1}} </td>
     </ng-container>
 
     <ng-container matColumnDef="img">
       <th mat-header-cell *matHeaderCellDef> Hình ảnh </th>
-      <td mat-cell *matCellDef="let element"> <img src="{{element.img}}" alt=""> </td>
+      <td mat-cell *matCellDef="let element">
+        <div class="img-div">
+          <img src="{{element.avatarUrl}}" alt="">
+        </div>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Tên trường </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.uniName}} </td>
     </ng-container>
 
     <ng-container matColumnDef="address">
       <th mat-header-cell *matHeaderCellDef> Địa chỉ </th>
-      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
 
     <ng-container matColumnDef="button">
       <th mat-header-cell *matHeaderCellDef> Chi tiết </th>
-      <td mat-cell *matCellDef="let element"> <button class="btn-detail">Xem chi tiết</button> </td>
+      <td mat-cell *matCellDef="let element"> <button (click)="goDetail(element.universityId)" class="btn-detail">Xem
+          chi
+          tiết</button> </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  <mat-paginator [pageSizeOptions]="[5, 10]" aria-label="Select page">
   </mat-paginator>
 
 </div>

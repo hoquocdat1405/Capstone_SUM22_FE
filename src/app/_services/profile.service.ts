@@ -1,5 +1,5 @@
 import { ApplicationModel } from './../_model/application/application';
-import { ProfileUpdateModel, Profile } from './../_model/User';
+import { ProfileUpdateModel, Profile, AcaProfile, UpdateAca } from './../_model/User';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
@@ -23,5 +23,13 @@ export class ProfileService {
     return this.http.get<ApplicationModel[]>(
       this.baseUrl + 'application/get-all-application'
     );
+  }
+
+  getAcaProfile(): Observable<AcaProfile> {
+    return this.http.get<AcaProfile>(this.baseUrl + "user/get-aca-profile");
+  }
+
+  updateAcaProfile(updateAca: UpdateAca): Observable<any> {
+    return this.http.put<any>(this.baseUrl + "user/update-aca", updateAca)
   }
 }

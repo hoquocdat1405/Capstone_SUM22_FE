@@ -39,4 +39,8 @@ export class UniversityService {
   saveUni(id: string): Observable<any> {
     return this.http.post<any>(this.baseUrl + 'user/save-uni', { uniId: id });
   }
+
+  getInterestedUni(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'user/save-unis');
+  }
 }

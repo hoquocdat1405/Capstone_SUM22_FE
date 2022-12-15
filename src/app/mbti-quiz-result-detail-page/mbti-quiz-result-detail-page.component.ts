@@ -92,4 +92,8 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   goUniver(id: string) {
     this.router.navigate(['/school-list', { id: id }]);
   }
+
+  retake() {
+    this.router.navigate(['mbti-quiz-attempt', {id: this.id}])
+  }
 }

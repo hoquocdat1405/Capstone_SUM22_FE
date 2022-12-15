@@ -6,28 +6,19 @@ import { ApplicationModel } from './../../_model/application/application';
 import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-export interface PeriodicElement {
-  position: number;
-  img: string;
-  name: string;
-  address: string;
-  button: string;
-}
-
 @Component({
-  selector: 'app-apply',
-  templateUrl: './apply.component.html',
-  styleUrls: ['./apply.component.scss'],
+  selector: 'app-test-attempt',
+  templateUrl: './test-attempt.component.html',
+  styleUrls: ['./test-attempt.component.scss'],
 })
-export class ApplyComponent implements OnInit {
+export class TestAttemptComponent implements OnInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   id: string = '';
   displayedColumns: string[] = [
     'index',
-    'uniSpecName',
-    'uniName',
-    'applyDate',
-    'status',
+    'nameTest',
+    'result',
+    'date',
     'detail',
   ];
   dataSource: any;

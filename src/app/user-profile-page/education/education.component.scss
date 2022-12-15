@@ -3,6 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.hide {
+  display: none !important;
+}
+
 .profile-info {
   padding: 20px 70px;
   overflow: scroll;
@@ -61,12 +66,20 @@
 
 .profile-school-grid {
   display: grid;
-  grid-template-columns: 40% 40%;
-  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 78px;
   margin: 10px 0;
 }
 .input-container {
   display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.flex-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -74,23 +87,39 @@
   font-weight: 500;
 }
 
-input {
-  border-radius: 20px;
-  padding: 10px 20px;
-  border: 1px solid #fff;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
+// input {
+//   border-radius: 20px;
+//   padding: 10px 20px;
+//   border: 1px solid #fff;
+//   background-color: #fff;
+//   border: 1px solid #ddd;
+// }
 
 .input-img {
-  width: 200px;
-  height: 300px;
-  object-fit: cover;
+  // width: 200px;
+  height: 200px;
+  object-fit: contain;
 }
 
 #upload-school-profile,
 #upload-school-degree {
   display: none;
+}
+
+.img-list {
+  display: flex;
+}
+
+.img-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4px;
+}
+
+.input-group {
+  grid-column: -1 / 1;
 }
 
 @media (max-width: 950px) {

@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-profile-page.component.scss'],
 })
 export class UserProfilePageComponent implements OnInit {
-  constructor() {}
+  constructor(private title: Title) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle('Thông tin cá nhân');
+  }
 
   changeTab(event: any, index: number) {
     var activeTab = document.querySelector('.profile-item.active');
@@ -23,8 +26,6 @@ export class UserProfilePageComponent implements OnInit {
     activeInfo?.classList.remove('active');
     infos[index].classList.add('active');
 
-    // var sideBar = document.querySelector('.profile-sidebar');
-    // sideBar?.classList.remove('active');
     background?.classList.remove('active');
 
     console.log(activeTab);

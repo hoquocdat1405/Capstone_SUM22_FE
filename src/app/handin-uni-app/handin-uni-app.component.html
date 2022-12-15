@@ -135,7 +135,12 @@
                         <div class="label">Học lực lớp 12</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Học lực lớp 12</mat-label>
-                            <input matInput formControlName="abilityTwelve" placeholder="Nhập học lực lớp 12">
+                            <mat-select disableRipple [formControl]="abilityTwelveControl">
+                                <mat-option value="Gioi">Giỏi</mat-option>
+                                <mat-option value="Kha">Khá</mat-option>
+                                <mat-option value="trungbinh">Trung bình</mat-option>
+                            </mat-select>
+                            <!-- <input matInput formControlName="abilityTwelve" placeholder="Nhập học lực lớp 12"> -->
                         </mat-form-field>
                     </div>
                 </div>
@@ -154,48 +159,55 @@
                 <div class="step-two-card">
                     <label>Học bạ THPT</label>
                     <div class="input-group">
-                        <input #schoolProfileInput type="file" (change)="schoolProfileFileChange($event)"
-                            formControlName="schoolProfile" class="hide">
-                        <!-- <input class="school-profile-name" type='text' formControlName="schoolProfileName"> -->
+                        <input #schoolProfileInput type="file" class="hide" id="upload-front-id"
+                            (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
                         <div class="img-list">
                             <div class="img-section">
-                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(1)">
-                                <div class="img-title">{{schoolProfile1Name}}</div>
+                                <img class="input-img" [src]="schoolProfile1Src || '../../assets/img/add-img.png'"
+                                    alt="" (click)="schoolProfileClick(1)">
+                                <div id="img-title">{{schoolProfile1Name ?? "Chọn hình ảnh"}}</div>
                             </div>
                             <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 2}">
-                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(2)">
-                                <div class="img-title">{{schoolProfile2Name}}</div>
+                                <img class="input-img" [src]="schoolProfile2Src || '../../assets/img/add-img.png'"
+                                    alt="" (click)="schoolProfileClick(2)">
+                                <div id="img-title">{{schoolProfile2Name ?? "Chọn hình ảnh"}}</div>
                             </div>
                             <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 3}">
-                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(3)">
-                                <div class="img-title">{{schoolProfile3Name}}</div>
+                                <img class="input-img" [src]="schoolProfile3Src || '../../assets/img/add-img.png'"
+                                    alt="" (click)="schoolProfileClick(3)">
+                                <div id="img-title">{{schoolProfile3Name ?? "Chọn hình ảnh"}}</div>
                             </div>
                             <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 4}">
-                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(4)">
-                                <div class="img-title">{{schoolProfile4Name}}</div>
+                                <img class="input-img" [src]="schoolProfile4Src || '../../assets/img/add-img.png'"
+                                    alt="" (click)="schoolProfileClick(4)">
+                                <div id="img-title">{{schoolProfile4Name ?? "Chọn hình ảnh"}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="step-two-card">
                     <label>CMND mặt trước</label>
-                    <input #frontImg type="file" (change)="frontIdFileChange($event)" formControlName="frontId" class="hide">
+                    <input #frontImg type="file" class="hide" id="upload-front-id" (change)="frontIdFileChange($event)"
+                        formControlName="frontId">
                     <div class="img-section">
-                        <img src="../../assets/img/add-img.png" alt="" (click)="frontImgClick()">
-                        <div class="img-title">{{frontId}}</div>
+                        <img class="input-img" [src]="frontIdSrc || '../../assets/img/add-img.png'" alt=""
+                            (click)="frontImgClick()">
+                        <div id="img-title">{{frontIdName ?? "Chọn hình ảnh"}}</div>
                     </div>
                 </div>
                 <div class="step-two-card">
                     <label>CMND mặt sau</label>
-                    <input #backImg type="file" (change)="backIdFileChange($event)" formControlName="backId" class="hide">
+                    <input #backImg type="file" class="hide" id="upload-front-id" (change)="backIdFileChange($event)"
+                        formControlName="backId">
                     <div class="img-section">
-                        <img src="../../assets/img/add-img.png" alt="" (click)="backImgClick()">
-                        <div class="img-title">{{backId}}</div>
+                        <img class="input-img" [src]="backIdSrc || '../../assets/img/add-img.png'" alt=""
+                            (click)="backImgClick()">
+                        <div id="img-title">{{backIdName ?? "Chọn hình ảnh"}}</div>
                     </div>
                 </div>
                 <div class="action-btn">
                     <button mat-raised-button matStepperPrevious>Back</button>
-                    <button mat-raised-button matStepperNext (click)="submitFile()">Next</button>
+                    <button mat-raised-button matStepperNext>Next</button>
                 </div>
             </form>
         </mat-step>
@@ -334,7 +346,12 @@
                         <div class="label">Học lực lớp 12</div>
                         <mat-form-field appearance="fill">
                             <mat-label>Học lực lớp 12</mat-label>
-                            <input matInput formControlName="abilityTwelve" placeholder="Nhập học lực lớp 12">
+                            <mat-select disableRipple [formControl]="abilityTwelveControl">
+                                <mat-option value="Gioi">Giỏi</mat-option>
+                                <mat-option value="Kha">Khá</mat-option>
+                                <mat-option value="trungbinh">Trung bình</mat-option>
+                            </mat-select>
+                            <!-- <input matInput formControlName="abilityTwelve" placeholder="Nhập học lực lớp 12"> -->
                         </mat-form-field>
                     </div>
                 </div>
@@ -356,43 +373,50 @@
                 <div class="step-two-card">
                     <label>Học bạ THPT</label>
                     <div class="input-group">
-                        <input #schoolProfileInput type="file" (change)="schoolProfileFileChange($event)"
-                            formControlName="schoolProfile" class="hide">
-                        <!-- <input class="school-profile-name" type='text' formControlName="schoolProfileName"> -->
+                        <input #schoolProfileInput type="file" class="hide" id="upload-front-id"
+                            (change)="schoolProfileFileChange($event)" formControlName="schoolProfile">
                         <div class="img-list">
                             <div class="img-section">
-                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(1)">
-                                <div class="img-title">{{schoolProfile1Name}}</div>
+                                <img class="input-img" [src]="schoolProfile1Src || '../../assets/img/add-img.png'"
+                                    alt="" (click)="schoolProfileClick(1)">
+                                <div id="img-title">{{schoolProfile1Name ?? "Chọn hình ảnh"}}</div>
                             </div>
                             <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 2}">
-                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(2)">
-                                <div class="img-title">{{schoolProfile2Name}}</div>
+                                <img class="input-img" [src]="schoolProfile2Src || '../../assets/img/add-img.png'"
+                                    alt="" (click)="schoolProfileClick(2)">
+                                <div id="img-title">{{schoolProfile2Name ?? "Chọn hình ảnh"}}</div>
                             </div>
                             <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 3}">
-                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(3)">
-                                <div class="img-title">{{schoolProfile3Name}}</div>
+                                <img class="input-img" [src]="schoolProfile3Src || '../../assets/img/add-img.png'"
+                                    alt="" (click)="schoolProfileClick(3)">
+                                <div id="img-title">{{schoolProfile3Name ?? "Chọn hình ảnh"}}</div>
                             </div>
                             <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 4}">
-                                <img src="../../assets/img/add-img.png" alt="" (click)="schoolProfileClick(4)">
-                                <div class="img-title">{{schoolProfile4Name}}</div>
+                                <img class="input-img" [src]="schoolProfile4Src || '../../assets/img/add-img.png'"
+                                    alt="" (click)="schoolProfileClick(4)">
+                                <div id="img-title">{{schoolProfile4Name ?? "Chọn hình ảnh"}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="step-two-card">
                     <label>CMND mặt trước</label>
-                    <input #frontImg type="file" (change)="frontIdFileChange($event)" formControlName="frontId" class="hide">
+                    <input #frontImg type="file" class="hide" id="upload-front-id" (change)="frontIdFileChange($event)"
+                        formControlName="frontId">
                     <div class="img-section">
-                        <img src="../../assets/img/add-img.png" alt="" (click)="frontImgClick()">
-                        <div class="img-title">{{frontId}}</div>
+                        <img class="input-img" [src]="frontIdSrc || '../../assets/img/add-img.png'" alt=""
+                            (click)="frontImgClick()">
+                        <div id="img-title">{{frontIdName ?? "Chọn hình ảnh"}}</div>
                     </div>
                 </div>
                 <div class="step-two-card">
                     <label>CMND mặt sau</label>
-                    <input #backImg type="file" (change)="backIdFileChange($event)" formControlName="backId" class="hide">
+                    <input #backImg type="file" class="hide" id="upload-front-id" (change)="backIdFileChange($event)"
+                        formControlName="backId">
                     <div class="img-section">
-                        <img src="../../assets/img/add-img.png" alt="" (click)="backImgClick()">
-                        <div class="img-title">{{backId}}</div>
+                        <img class="input-img" [src]="backIdSrc || '../../assets/img/add-img.png'" alt=""
+                            (click)="backImgClick()">
+                        <div id="img-title">{{backIdName ?? "Chọn hình ảnh"}}</div>
                     </div>
                 </div>
                 <div class="action-btn">

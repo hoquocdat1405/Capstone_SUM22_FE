@@ -7,43 +7,76 @@
   </div>
 
   <p class="profile-img-title">Lịch sử học vấn</p>
-  <div class="profile-school-grid">
-    <div class="input-container">
+  <form class="profile-school-grid" [formGroup]="eduForm">
+    <!-- <div class="input-container">
       <label class="input-title" for="">Trường THPT</label>
-      <input type="text" name="" id="" class="input-school" value="Trường Phù thủy và Pháp sư Hogwarts">
-    </div>
-
-    <div class="input-container">
-      <label class="input-title" for="">Niên khóa</label>
-      <input type="text" name="" id="" class="input-school-year" value="2019-2022">
-    </div>
-
-    <div class="input-container">
-      <label class="input-title" for="">Học bạ THPT</label>
-      <img class="input-img" [src]= "schoolProfileUrl || 'assets/img/add-img.png'" alt="" (click)="uploadSchoolProfile()">
-      <input type="file" id="upload-school-profile" (change)="selectSchoolProfileFile($event)">
-      <div id="school-profile-name" [innerText]="schoolProfileName"></div>
-    </div>
-
-    <div class="input-container">
-      <label class="input-title" for="">Bằng tốt nghiệp THPT (tạm thời)</label>
-      <!-- <img class="input-img" src="assets/img/add-img.png" alt=""> -->
-      <img class="input-img" src="{{ schoolDegreeUrl || 'assets/img/add-img.png'}}" alt="" (click)="uploadSchoolDegree()">
-      <input type="file" id="upload-school-degree" (change)="selectSchoolDegreeFile($event)">
-      <div id="school-profile-name" [innerText]="schoolDegreeName"></div>
-    </div>
-
-    <div class="profile-img-title">Kỹ năng cá nhân</div>
-    <div class="input-container">
-      <label class="input-title" for="">Các kỹ năng cá nhân</label>
-      <input type="text" name="" id="" class="input-school-year">
-    </div>
+      <input type="text" name="" id="" class="input-school" [value]="highSchoolName">
+    </div> -->
+    <mat-form-field appearance="legacy">
+      <mat-label>Trường THPT</mat-label>
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="highSchoolName"
+        [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
     <!-- <div class="input-container">
-      <label class="input-title" for="">Bằng tốt nghiệp THPT (tạm thời)</label>
-      <img class="input-img" src="assets/img/add-img.png" alt="">
+      <label class="input-title" for="">Năm tốt nghiệp</label>
+      <input type="text" name="" id="" class="input-school-year" [value]="acaProfile?.graduationYear">
     </div> -->
-  </div>
+    <mat-form-field appearance="legacy">
+      <mat-label>Năm tốt nghiệp</mat-label>
+      <input matInput formControlName="graduationYear" placeholder="Năm tốt nghiệp">
+      <mat-error *ngIf="f['graduationYear'].hasError('pattern')">Giá trị không hợp lệ</mat-error>
+      <mat-error *ngIf="f['graduationYear'].hasError('maxlength')">Chỉ được nhập 4 số</mat-error>
+      <mat-error *ngIf="f['graduationYear'].hasError('minlength')">Chỉ được nhập 4 số</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Điểm trung bình</mat-label>
+      <input matInput formControlName="averageScore" placeholder="Điểm trung bình">
+      <mat-error *ngIf="f['averageScore'].hasError('pattern')">Giá trị không hợp lệ</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Học lực lớp 12</mat-label>
+      <mat-select disableRipple formControlName="academicRank">
+        <mat-option value="Gioi">Giỏi</mat-option>
+        <mat-option value="Kha">Khá</mat-option>
+        <mat-option value="trungbinh">Trung bình</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p class="profile-img-title">Học bạ THPT</p>
+    <div class="input-group">
+      <input #schoolProfileInput type="file" class="hide" id="upload-front-id" (change)="schoolProfileFileChange($event)">
+      <div class="img-list">
+        <div class="img-section">
+          <img class="input-img" [src]="schoolProfile1Src || '../../assets/img/add-img.png'" alt=""
+            (click)="schoolProfileClick(1)">
+          <div id="img-title">{{schoolProfile1Name ?? ""}}</div>
+        </div>
+        <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 2}">
+          <img class="input-img" [src]="schoolProfile2Src || '../../assets/img/add-img.png'" alt=""
+            (click)="schoolProfileClick(2)">
+          <div id="img-title">{{schoolProfile2Name ?? ""}}</div>
+        </div>
+        <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 3}">
+          <img class="input-img" [src]="schoolProfile3Src || '../../assets/img/add-img.png'" alt=""
+            (click)="schoolProfileClick(3)">
+          <div id="img-title">{{schoolProfile3Name ?? ""}}</div>
+        </div>
+        <div class="img-section" [ngClass]="{'hide': maxSchoolProfileIndex < 4}">
+          <img class="input-img" [src]="schoolProfile4Src || '../../assets/img/add-img.png'" alt=""
+            (click)="schoolProfileClick(4)">
+          <div id="img-title">{{schoolProfile4Name ?? ""}}</div>
+        </div>
+      </div>
+    </div>
+  </form>
   <button class="btn-save-bottom" (click)="saveAll()">Lưu hồ sơ</button>
 
 </div>

@@ -28,7 +28,7 @@ export interface Profile {
 export interface ProfileUpdateModel {
   userName: string;
   gender: string;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   age: number;
   phone: string;
   credentialId: string; //CMND
@@ -37,4 +37,27 @@ export interface ProfileUpdateModel {
   credentialFrontImgUrl: string; //chua co
   credentialBackImgUrl: string; //chua co
   wardId: number
+}
+
+export interface AcaProfile {
+  id: string;
+  userId: string;
+  highSchoolId: string;
+  graduationYear: number;
+  averageScore: number;
+  academicRank: string;
+  schoolReport1Url: string;
+  schoolReport2Url: string;
+  schoolReport3Url: string;
+  schoolReport4Url: string;
+  highSchool?: string;
+  user?: string;
+}
+
+export interface UpdateAca {
+  id: string;
+  highSchoolId: string;
+  graduationYear: number;
+  averageScore: number;
+  academicRank: string;
 }

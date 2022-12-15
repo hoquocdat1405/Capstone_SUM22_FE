@@ -6,6 +6,8 @@ import { UniversityService } from './../_services/university.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import * as alertify from 'alertifyjs';
+import { PopupComponent } from '../popup/popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-school-info-page',
@@ -23,6 +25,7 @@ export class SchoolInfoPageComponent implements OnInit {
     private route: ActivatedRoute,
     private uniService: UniversityService,
     private router: Router,
+    private dialog: MatDialog,
     private title: Title // private addressService: AddressService
   ) {}
 
@@ -60,12 +63,24 @@ export class SchoolInfoPageComponent implements OnInit {
   }
 
   saveSchool(id: string) {
-    this.uniService.saveUni(id).subscribe({
-      next: () => {
-        // console.log("success");
-        alertify.success('Đã lưu thành công');
-      },
-      error: () => {},
+    let dialogRef = this.dialog.open(PopupComponent, {
+      data: {
+        title: 'Quan tâm',
+        content: 'Xác nhận quan tâm trường này ?'
+      }
     });
+
+    dialogRef.afterClosed().subscribe({
+      next: (data) => {
+        if (data === true) {
+          this.uniService.saveUni(id).subscribe({
+            next: () => {
+              alertify.success('Đã lưu thành công');
+            },
+            error: () => { },
+          });
+        }
+      }
+    })
   }
 }

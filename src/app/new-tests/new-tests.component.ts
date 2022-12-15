@@ -3,16 +3,17 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from './../_services/shared.service';
 import { Test } from './../_model/test.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-new-tests',
   templateUrl: './new-tests.component.html',
   styleUrls: ['./new-tests.component.scss']
 })
-export class NewTestsComponent implements OnInit {
+export class NewTestsComponent implements OnInit, AfterViewInit {
   tests: Test[] = [];
-
+  @ViewChildren('sectionItem', { read: ElementRef }) sec?: QueryList<ElementRef>
+  observer?: IntersectionObserver;
   constructor(
     private sharedServ: SharedService,
     private route: ActivatedRoute,
@@ -24,10 +25,33 @@ export class NewTestsComponent implements OnInit {
     this.title.setTitle('Danh sách bài test');
     this.sharedServ.getAllTest().subscribe((response) => {
       this.tests = response;
-      // this.tests.forEach((test) => {
-      //   test.introduction = test.introduction.slice(0, 150) + '...';
-      // });
     });
+    this.intersectionObserver();
+  }
+
+  ngAfterViewInit() {
+    this.sec?.changes.subscribe((d: QueryList<ElementRef>) => {
+      d.forEach(item => {
+        this.observer?.observe(item.nativeElement)
+      })
+    })
+  }
+
+  intersectionObserver() {
+    let options = {
+      root: null,
+      threshold: 0.5,
+      rootMargin: '0px'
+    }
+
+    this.observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle("show", entry.isIntersecting)
+        if(entry.isIntersecting) {
+          this.observer?.unobserve(entry.target)
+        }
+      })
+    }, options)
   }
 
   redirectTest(typeId: number, id: number, type: number) {

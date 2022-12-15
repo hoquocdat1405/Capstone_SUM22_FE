@@ -1,32 +1,27 @@
-import { ProfileService } from './../_services/profile.service';
+import { Title } from '@angular/platform-browser';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import * as alertify from 'alertifyjs';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { Application } from '../_model/application/application';
+import { UniDetail, UniSpec } from '../_model/uni';
+import { District, Province } from './../_model/address';
 import {
   ApplicationDetail,
   ApplicationModel,
 } from './../_model/application/application';
-import { ApplicationService } from './../_services/application.service';
-import { Province, District } from './../_model/address';
-import { AddressService } from './../_services/address.service';
-import { FileuploadService } from './../_services/fileupload.service';
 import { FileUpload } from './../_model/file';
-import { map, startWith } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { UniversityService } from './../_services/university.service';
-import { ActivatedRoute } from '@angular/router';
-import { Profile } from './../_model/User';
-import { AuthService } from './../_services/auth.service';
 import { SubmitApplications } from './../_model/uniApplication';
-import {
-  Validators,
-  FormBuilder,
-  FormGroup,
-  FormControl,
-} from '@angular/forms';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { UniDetail, UniSpec, University } from '../_model/uni';
-import * as alertify from 'alertifyjs';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { DatePipe } from '@angular/common';
-import { Application } from '../_model/application/application';
+import { Profile } from './../_model/User';
+import { AddressService } from './../_services/address.service';
+import { ApplicationService } from './../_services/application.service';
+import { AuthService } from './../_services/auth.service';
+import { FileuploadService } from './../_services/fileupload.service';
+import { ProfileService } from './../_services/profile.service';
+import { UniversityService } from './../_services/university.service';
 
 @Component({
   selector: 'app-handin-uni-app',
@@ -50,6 +45,7 @@ export class HandinUniAppComponent implements OnInit {
   schoolProfileList: SubmitApplications[] = [];
   selectedIndex: number = 0;
   genderControl!: FormControl;
+  abilityTwelveControl!: FormControl;
   uniSpecId?: number;
   applicationList: ApplicationModel[] = [];
   currentSchoolProfileIndex: number = 1;
@@ -61,13 +57,24 @@ export class HandinUniAppComponent implements OnInit {
   provinceFilteredOptions?: Observable<string[]>;
   districtFilteredOptions?: Observable<string[]>;
 
-  schoolProfile1Name: string = '';
-  schoolProfile2Name: string = '';
-  schoolProfile3Name: string = '';
-  schoolProfile4Name: string = '';
+  schoolProfile1Name?: string;
+  schoolProfile2Name?: string;
+  schoolProfile3Name?: string;
+  schoolProfile4Name?: string;
+
+  schoolProfile1Src?: string;
+  schoolProfile2Src?: string;
+  schoolProfile3Src?: string;
+  schoolProfile4Src?: string;
 
   frontId: string = '';
   backId: string = '';
+
+  frontIdSrc?: string;
+  frontIdName?: string;
+
+  backIdSrc?: string;
+  backIdName?: string;
 
   @ViewChild('schoolProfileInput') schoolProfileEle?: ElementRef<HTMLElement>;
   @ViewChild('frontImg') frontImgEle?: ElementRef<HTMLElement>;
@@ -82,10 +89,12 @@ export class HandinUniAppComponent implements OnInit {
     private uploadService: FileuploadService,
     private addressService: AddressService,
     private applicationService: ApplicationService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private title: Title
   ) {}
 
   ngOnInit(): void {
+    this.title.setTitle('Nộp hồ sơ');
     alertify.set('notifier', 'position', 'top-center');
     this.schoolId = this.route.snapshot.paramMap.get('schoolId')!;
     this.uniService.getUniById(this.schoolId).subscribe({
@@ -117,31 +126,58 @@ export class HandinUniAppComponent implements OnInit {
         );
       },
     });
+    this.profileService.getProfileInfo().subscribe({
+      next: (data: Profile) => {
+        this.userProfile = data;
+        this.gender = this.userProfile.gender;
+        this.dateOfBirth = new Date(this.userProfile.dateOfBirth);
+        this.dateOfBirthControl = new FormControl(this.dateOfBirth);
+        this.genderControl = new FormControl(this.gender);
+        this.abilityTwelveControl = new FormControl('');
+        console.log(this.gender);
 
-    this.authService.getUserProfileObserver().subscribe((data: Profile) => {
-      this.userProfile = data;
-      this.gender = this.userProfile.gender;
-      this.dateOfBirth = new Date(this.userProfile.dateOfBirth);
-      this.dateOfBirthControl = new FormControl(this.dateOfBirth);
-      this.genderControl = new FormControl(this.gender);
-      console.log(this.gender);
-
-      this.firstFormGroup.patchValue({
-        name: [this.userProfile.userName],
-        sex: [this.userProfile.gender],
-        birth: [new Date(this.userProfile.dateOfBirth)],
-        address: [this.userProfile.addressNumber],
-        cmnd: [this.userProfile.credentialId],
-        phone: [this.userProfile.phone],
-        email: [this.userProfile.email],
-        city: [''],
-        district: [''],
-        highschool: [this.userProfile.highSchoolName],
-        graduateYear: [''],
-        gradeTwelve: [''],
-        abilityTwelve: [''],
-      });
+        this.firstFormGroup.patchValue({
+          name: [this.userProfile.userName],
+          sex: [this.userProfile.gender],
+          birth: [new Date(this.userProfile.dateOfBirth)],
+          address: [this.userProfile.addressNumber],
+          cmnd: [this.userProfile.credentialId],
+          phone: [this.userProfile.phone],
+          email: [this.userProfile.email],
+          city: [''],
+          district: [''],
+          highschool: [this.userProfile.highSchoolName],
+          graduateYear: [''],
+          gradeTwelve: [''],
+          abilityTwelve: [''],
+        });
+      },
     });
+
+    // this.authService.getUserProfileObserver().subscribe((data: Profile) => {
+    //   this.userProfile = data;
+    //   this.gender = this.userProfile.gender;
+    //   this.dateOfBirth = new Date(this.userProfile.dateOfBirth);
+    //   this.dateOfBirthControl = new FormControl(this.dateOfBirth);
+    //   this.genderControl = new FormControl(this.gender);
+    //   console.log(this.gender);
+
+    //   this.firstFormGroup.patchValue({
+    //     name: [this.userProfile.userName],
+    //     sex: [this.userProfile.gender],
+    //     birth: [new Date(this.userProfile.dateOfBirth)],
+    //     address: [this.userProfile.addressNumber],
+    //     cmnd: [this.userProfile.credentialId],
+    //     phone: [this.userProfile.phone],
+    //     email: [this.userProfile.email],
+    //     city: [''],
+    //     district: [''],
+    //     highschool: [this.userProfile.highSchoolName],
+    //     graduateYear: [''],
+    //     gradeTwelve: [''],
+    //     abilityTwelve: [''],
+    //   });
+    // });
 
     this.getAllApplication();
   }
@@ -276,14 +312,60 @@ export class HandinUniAppComponent implements OnInit {
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      if (!file.type.includes('image')) {
+        alertify.error('Vui lòng chọn hình ảnh');
+        return;
+      }
+      const reader = new FileReader();
+      const selectedSchoolProfileFile: FileList = event.target.files;
+
+      switch (this.currentSchoolProfileIndex) {
+        case 1:
+          if (selectedSchoolProfileFile) {
+            this.schoolProfile1Name = selectedSchoolProfileFile.item(0)!.name;
+            reader.onload = (e) =>
+              (this.schoolProfile1Src = reader.result + '');
+            reader.readAsDataURL(event.target.files[0]);
+          }
+          break;
+        case 2:
+          if (selectedSchoolProfileFile) {
+            this.schoolProfile2Name = selectedSchoolProfileFile.item(0)!.name;
+            reader.onload = (e) =>
+              (this.schoolProfile2Src = reader.result + '');
+            reader.readAsDataURL(event.target.files[0]);
+          }
+          break;
+        case 3:
+          if (selectedSchoolProfileFile) {
+            this.schoolProfile3Name = selectedSchoolProfileFile.item(0)!.name;
+            reader.onload = (e) =>
+              (this.schoolProfile3Src = reader.result + '');
+            reader.readAsDataURL(event.target.files[0]);
+          }
+          break;
+        case 4:
+          if (selectedSchoolProfileFile) {
+            this.schoolProfile4Name = selectedSchoolProfileFile.item(0)!.name;
+            reader.onload = (e) =>
+              (this.schoolProfile4Src = reader.result + '');
+            reader.readAsDataURL(event.target.files[0]);
+          }
+          break;
+
+        default:
+          break;
+      }
+
+      if (
+        this.maxSchoolProfileIndex <= this.currentSchoolProfileIndex &&
+        this.maxSchoolProfileIndex < 4
+      ) {
+        this.maxSchoolProfileIndex++;
+      }
+
       this.path = file;
 
-      // this.schoolProfileList.forEach(item => {
-      //   schoolProfileNameConcat += item.submittedFile.name + " ";
-      // })
-      // this.secondFormGroup.patchValue({
-      //   schoolProfileName: schoolProfileNameConcat
-      // })
       this.selectedFiles = event.target.files;
 
       const schoolProfile: SubmitApplications = {
@@ -309,6 +391,17 @@ export class HandinUniAppComponent implements OnInit {
   frontIdFileChange(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      if (!file.type.includes('image')) {
+        alertify.error('Vui lòng chọn hình ảnh');
+        return;
+      }
+      const reader = new FileReader();
+      const selectedFrontIdFile: FileList = event.target.files;
+      if (selectedFrontIdFile) {
+        this.frontIdName = selectedFrontIdFile.item(0)!.name;
+        reader.onload = (e) => (this.frontIdSrc = reader.result + '');
+        reader.readAsDataURL(event.target.files[0]);
+      }
       const frontId: SubmitApplications = {
         name: 'app_frontId',
         submittedFile: file,
@@ -322,12 +415,24 @@ export class HandinUniAppComponent implements OnInit {
       } else {
         this.submitFiles.push(frontId);
       }
+      console.log(this.submitFiles);
     }
   }
 
   backIdFileChange(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      if (!file.type.includes('image')) {
+        alertify.error('Vui lòng chọn hình ảnh');
+        return;
+      }
+      const reader = new FileReader();
+      const selectedBackIdFile: FileList = event.target.files;
+      if (selectedBackIdFile) {
+        this.backIdName = selectedBackIdFile.item(0)!.name;
+        reader.onload = (e) => (this.backIdSrc = reader.result + '');
+        reader.readAsDataURL(event.target.files[0]);
+      }
       const backId: SubmitApplications = {
         name: 'app_backId',
         submittedFile: file,
@@ -342,21 +447,6 @@ export class HandinUniAppComponent implements OnInit {
         this.submitFiles.push(backId);
       }
     }
-  }
-
-  submitFile() {
-    // const file = this.selectedFiles!.item(0);
-    // console.log(this.selectedFiles!.item(0))
-    // this.selectedFiles = undefined;
-    // this.currentFileUpload = new FileUpload(file!);
-    // this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-    //   percentage => {
-    //     this.percentage = Math.round(percentage);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
   }
 
   submitAll() {
@@ -400,14 +490,14 @@ export class HandinUniAppComponent implements OnInit {
           averageScore: +this.clearFormValue(
             this.finishFormGroup.get('gradeTwelve')?.value
           ).toString(),
-          academicRank: this.clearFormValue(
-            this.finishFormGroup.get('abilityTwelve')?.value
-          ).toString(),
+          academicRank: this.abilityTwelveControl.value.toString(),
           schoolReport1Url: '',
           schoolReport2Url: '',
           schoolReport3Url: '',
           schoolReport4Url: '',
         };
+
+        //academicRank: this.clearFormValue(this.finishFormGroup.get('abilityTwelve')?.value).toString(),
         this.applicationService
           .createApplicationDetail(applicationDetail)
           .subscribe({
@@ -472,10 +562,10 @@ export class HandinUniAppComponent implements OnInit {
                     break;
                 }
               });
-              alertify.success('Submit Application Successfully!');
+              alertify.success('Nộp hồ sơ thành công!');
             },
             error: () => {
-              alertify.error('Submit failed');
+              alertify.error('Có lỗi xảy ra');
             },
           });
       },
@@ -486,6 +576,7 @@ export class HandinUniAppComponent implements OnInit {
   }
 
   setIndex(event: any) {
+    console.log(event);
     this.selectedIndex = event.selectedIndex;
   }
 
@@ -512,6 +603,9 @@ export class HandinUniAppComponent implements OnInit {
         frontId: [this.firstFormGroup.get('frontId')?.value],
         backId: [this.firstFormGroup.get('backId')?.value],
       });
+      this.abilityTwelveControl.setValue(
+        this.abilityTwelveControl.value.toString()
+      );
 
       console.log(this.gender);
     }
@@ -541,4 +635,6 @@ export class HandinUniAppComponent implements OnInit {
     let el: HTMLElement = this.backImgEle?.nativeElement!;
     el.click();
   }
+
+  selectSchoolProfileFile() {}
 }

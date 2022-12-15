@@ -1,3 +1,4 @@
+import { FileuploadService } from './../../_services/fileupload.service';
 import { Profile } from './../../_model/User';
 import { ProfileService } from './../../_services/profile.service';
 import { AuthService } from './../../_services/auth.service';
@@ -14,13 +15,15 @@ export class ProfileSidebarComponent implements OnInit {
   opened: boolean = true;
   user?: any;
   userProfile?: Profile;
+  avatarUrl?: string;
 
   @Input()
   checkActive = 0;
 
   constructor(
     private authSer: AuthService,
-    private profileServ: ProfileService
+    private profileServ: ProfileService,
+    private uploadService: FileuploadService
   ) {}
   currentRoutes = [
     {
@@ -43,6 +46,11 @@ export class ProfileSidebarComponent implements OnInit {
       title: 'Hồ sơ đã gửi',
       icon: 'fa fa-floppy-o',
     },
+    {
+      routerLink: 'test-attempt',
+      title: 'Bài test đã làm',
+      icon: 'fa fa-check-square-o',
+    },
   ];
 
   ngOnInit() {
@@ -53,6 +61,13 @@ export class ProfileSidebarComponent implements OnInit {
         .querySelector(`mat-list-item:nth-child(1)`)
         ?.classList.add('active');
     }, 2);
+    this.uploadService
+      .getFile(this.authSer.getDecodedToken().nameid, 'avatar')
+      .subscribe({
+        next: (data) => {
+          this.avatarUrl = data;
+        },
+      });
   }
 
   getData() {
