@@ -11,6 +11,7 @@ import { Fqa } from '../_model/fqa.model';
 export class FQAPageComponent implements OnInit {
   contentId: string = '';
   fqa?: Fqa;
+
   constructor(
     private route: ActivatedRoute,
     private uniService: UniversityService,

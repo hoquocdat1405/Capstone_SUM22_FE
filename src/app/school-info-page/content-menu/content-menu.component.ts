@@ -21,7 +21,7 @@ export class ContentMenuComponent implements OnInit {
 
   ngOnInit() {}
 
-  redirectToFQA(contentId: number) {
-    this.router.navigate(['FQA', { id: contentId }]);
+  redirectToFQA(contentId: string) {
+    this.router.navigate(['/fqa', { id: contentId }]);
   }
 }

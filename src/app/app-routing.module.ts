@@ -163,7 +163,7 @@ const routes: Routes = [
     path: 'school',
     component: SchoolInfoPageComponent,
   },
-  { path: 'FQA', component: FQAPageComponent },
+  { path: 'fqa', component: FQAPageComponent },
 
   { path: 'submit-application', component: HandinUniAppComponent },
 
