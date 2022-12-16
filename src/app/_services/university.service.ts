@@ -43,4 +43,14 @@ export class UniversityService {
   getInterestedUni(): Observable<any> {
     return this.http.get<any>(this.baseUrl + 'user/save-unis');
   }
+
+  getFqaUni(id: string): Observable<any> {
+    return this.http.get<any>(
+      this.baseUrl + 'university/fqas?UniId=' + id + '&status=ACTIVE'
+    );
+  }
+
+  getFqaById(id: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'university/fqa?contentId=' + id);
+  }
 }

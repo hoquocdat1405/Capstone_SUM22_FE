@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import * as alertify from 'alertifyjs';
 import { PopupComponent } from '../popup/popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Fqa, FqaListModel, FqaTopic } from '../_model/fqa.model';
 
 @Component({
   selector: 'app-school-info-page',
@@ -20,6 +21,7 @@ export class SchoolInfoPageComponent implements OnInit {
   wardName: string = '';
   uniSpecList: UniSpec[] = [];
   sendApplicationTooltip: string = '';
+  FqaList: FqaListModel[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -28,14 +30,6 @@ export class SchoolInfoPageComponent implements OnInit {
     private dialog: MatDialog,
     private title: Title // private addressService: AddressService
   ) {}
-
-  header = 'Header';
-  contents = [
-    'Content1sssssss',
-    'Content2aaaa',
-    'Content3sasas',
-    'Contentssss4',
-  ];
 
   ngOnInit() {
     this.title.setTitle('Chi tiết trường học');
@@ -46,6 +40,13 @@ export class SchoolInfoPageComponent implements OnInit {
       this.uniService.getUniById(this.schoolId).subscribe({
         next: (data: UniDetail) => {
           this.uniDetail = data;
+        },
+      });
+
+      this.uniService.getFqaUni(this.schoolId).subscribe({
+        next: (data: FqaListModel[]) => {
+          this.FqaList = data;
+          console.log(this.FqaList);
         },
       });
 
@@ -66,8 +67,8 @@ export class SchoolInfoPageComponent implements OnInit {
     let dialogRef = this.dialog.open(PopupComponent, {
       data: {
         title: 'Quan tâm',
-        content: 'Xác nhận quan tâm trường này ?'
-      }
+        content: 'Xác nhận quan tâm trường này ?',
+      },
     });
 
     dialogRef.afterClosed().subscribe({
@@ -77,10 +78,10 @@ export class SchoolInfoPageComponent implements OnInit {
             next: () => {
               alertify.success('Đã lưu thành công');
             },
-            error: () => { },
+            error: () => {},
           });
         }
-      }
-    })
+      },
+    });
   }
 }

@@ -59,6 +59,7 @@ import { MajorDetailPageComponent } from './major-detail-page/major-detail-page.
 import { SchoolInfoPageComponent } from './school-info-page/school-info-page.component';
 import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { FQAPageComponent } from './FQA-page/FQA-page.component';
 
 const routes: Routes = [
   //homepage - default blank url link redirect to home
@@ -158,7 +159,11 @@ const routes: Routes = [
   { path: 'major-info', component: MajorInfoComponent },
 
   //School
-  { path: 'school', component: SchoolInfoPageComponent },
+  {
+    path: 'school',
+    component: SchoolInfoPageComponent,
+  },
+  { path: 'FQA', component: FQAPageComponent },
 
   { path: 'submit-application', component: HandinUniAppComponent },
 
