@@ -9,7 +9,7 @@ import { Fqa } from '../_model/fqa.model';
   styleUrls: ['./FQA-page.component.scss'],
 })
 export class FQAPageComponent implements OnInit {
-  contentId: string = '';
+  contentId?: string = '';
   fqa?: Fqa;
 
   constructor(
