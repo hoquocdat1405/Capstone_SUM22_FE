@@ -19,7 +19,7 @@ export interface PeriodicElement {
 })
 export class SchoolInterestedComponent implements OnInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
-  displayedColumns: string[] = ['position', 'img', 'name', 'address', 'button'];
+  displayedColumns: string[] = ['position', 'img', 'name', 'contact', 'button'];
   dataSource: any;
   constructor(private uni: UniversityService, private router: Router) {}
 
@@ -32,6 +32,10 @@ export class SchoolInterestedComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  goContact(uniName: string) {
+    this.router.navigate(['mail', { uniName: uniName }]);
   }
 
   goDetail(id: string) {

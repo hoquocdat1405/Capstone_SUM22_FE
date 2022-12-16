@@ -88,9 +88,24 @@ tr {
   border: none;
   color: #fff;
   padding: 6px 10px;
+  border-radius: 5px;
 }
 
 .btn-detail:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.btn-contact {
+  width: fit-content;
+  background-color: #012e7a;
+  border: none;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+.btn-contact:hover {
   opacity: 0.8;
   cursor: pointer;
 }

@@ -34,14 +34,17 @@ export class TestAttemptComponent implements OnInit {
   }
 
   getData() {
-    this.profileServ.getAllApply().subscribe((data) => {
+    this.profileServ.getTestAttempt().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
   }
 
-  viewDetail(id: string) {
-    this.router.navigate(['profile/apply-detail', { id: id }]);
+  viewDetail(id: string, resultShortName: string, category: string) {
+    this.router.navigate([
+      category.toLowerCase() + '-result/',
+      { id: id, shortName: resultShortName },
+    ]);
   }
 
   applyFilter(filterValue: any) {

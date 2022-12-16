@@ -1,5 +1,5 @@
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FirstMail, MailBox } from './../_model/mail/mail';
 import { MailService } from './../_services/mail.service';
 import { startWith, map } from 'rxjs/operators';
@@ -26,6 +26,7 @@ export class MailMainComponent implements OnInit {
   sendTabFlag: boolean = true;
   receiveTabFlag: boolean = false;
   displayMailbox: MailBox[] = [];
+  uniName: any;
 
   @ViewChild('defaultRTE')
   public componentObject!: RichTextEditorComponent;
@@ -34,14 +35,21 @@ export class MailMainComponent implements OnInit {
     private uniService: UniversityService,
     private mailService: MailService,
     private router: Router,
-    private title: Title
+    private title: Title,
+    private route: ActivatedRoute
   ) {}
 
   private htmlContent!: string;
   isShowNewEmailPopup: boolean = false;
 
   ngOnInit(): void {
+    this.uniName = this.route.snapshot.paramMap.get('uniName');
+    if (this.uniName !== '') {
+      this.isShowNewEmailPopup = true;
+    }
+
     this.title.setTitle('Mail');
+    this.myForm.get('schoolControl')?.patchValue(this.uniName);
     alertify.set('notifier', 'position', 'top-center');
     alertify.set('notifier', 'delay', 3);
     this.uniService.getAllUniversity().subscribe({
@@ -50,7 +58,7 @@ export class MailMainComponent implements OnInit {
         this.filteredOptions = (
           this.myForm.get('schoolControl') as FormControl
         ).valueChanges.pipe(
-          startWith(''),
+          startWith(this.uniName || ''),
           map((value) => this._filter(value || ''))
         );
       },
