@@ -147,6 +147,12 @@ app-content-menu {
   }
 }
 
+.menu-content-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 24px;
+}
+
 @media (max-width: 650px) {
   .info-section {
     flex-direction: column;

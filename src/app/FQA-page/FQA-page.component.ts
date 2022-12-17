@@ -20,7 +20,7 @@ export class FQAPageComponent implements OnInit {
 
   ngOnInit() {
     this.contentId = this.route.snapshot.paramMap.get('id')!;
-    this.uniService.getFqaById(this.contentId as unknown as number).subscribe({
+    this.uniService.getFqaById(+this.contentId).subscribe({
       next: (data: Fqa) => {
         this.fqa = data;
         console.log(this.fqa);
