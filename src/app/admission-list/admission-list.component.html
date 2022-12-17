@@ -1,7 +1,7 @@
 <div class="page-container">
   <app-nav></app-nav>
   <div class="wrapper">
-    <div class="search-section">
+    <!-- <div class="search-section">
       <div class="search-input-row">
         <div class="search-input-field">
           <div class="search-title">Tìm tin tuyển sinh</div>
@@ -51,7 +51,7 @@
           </mat-form-field>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="card-list" *ngIf="newsList">
       <div class="card-item" *ngFor="let news of newsList">
         <img src="{{ news.bannerUrl }}" alt="" class="card-item-img" />
@@ -69,13 +69,13 @@
         </div>
       </div>
     </div>
-    <mat-paginator
+    <!-- <mat-paginator
       [length]="length"
       [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions"
       (page)="pageEvent = $event"
       aria-label="Chọn số trang"
     >
-    </mat-paginator>
+    </mat-paginator> -->
   </div>
 </div>

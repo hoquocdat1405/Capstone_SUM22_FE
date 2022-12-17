@@ -14,11 +14,13 @@ export class AddmissionNewsDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private uniSer: UniversityService
   ) {}
-  id!: string;
-  news!: News;
+  id: string = '';
+
+  news?: News;
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')!;
+    this.getData();
   }
 
   changTab(event: any, index: number) {
@@ -36,10 +38,11 @@ export class AddmissionNewsDetailComponent implements OnInit {
   getData() {
     this.uniSer.getNewsById(this.id).subscribe((data) => {
       this.news = data;
+      console.log(this.news)
     });
   }
 
-  redirectToSchoolDetail(id: string) {
+  redirectToSchoolDetail(id?: string) {
     //TODO : thêm id trường vào đây
     this.router.navigate(['/school', { schoolId: id }]);
   }

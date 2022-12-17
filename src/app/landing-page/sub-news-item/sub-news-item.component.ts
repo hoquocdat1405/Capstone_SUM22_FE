@@ -17,7 +17,7 @@ export class SubNewsItemComponent implements OnInit {
     this.newsYear = date.getFullYear();
   }
 
-  redirectToDetail(id:number) {
+  redirectToDetail(id: number) {
     this.router.navigate(['news-detail',{id:id}]);
   }
 }
