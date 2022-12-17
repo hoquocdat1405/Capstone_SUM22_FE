@@ -53,4 +53,14 @@ export class UniversityService {
   getFqaById(id: number): Observable<any> {
     return this.http.get<any>(this.baseUrl + 'university/fqa?contentId=' + id);
   }
+
+  getAllNews(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'university/news');
+  }
+
+  getNewsById(id: string): Observable<any> {
+    return this.http.get<any>(
+      this.baseUrl + 'university/news-by-id?NewsId=' + id
+    );
+  }
 }

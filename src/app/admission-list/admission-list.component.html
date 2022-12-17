@@ -52,105 +52,30 @@
         </div>
       </div>
     </div>
-    <div class="card-list">
-      <div class="card-item">
-        <img
-          src="../../assets/img/schoolImg/fpt-logo.png"
-          alt=""
-          class="card-item-img"
-        />
+    <div class="card-list" *ngIf="newsList">
+      <div class="card-item" *ngFor="let news of newsList">
+        <img src="{{ news.bannerUrl }}" alt="" class="card-item-img" />
         <div class="card-item-right">
-          <div class="card-item-title" (click)="redirectToDetail()">Tuyển sinh Title</div>
-          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
-          <div class="card-item-desc">
-            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
-            perspiciatis totam eligendi error dolor voluptate voluptatem
-            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
-            dolore. Expedita, qui. Animi, voluptatem!
+          <div class="card-item-title" (click)="redirectToDetail(news.id)">
+            {{ news.title }}
+          </div>
+          <div class="card-item-subject">
+            Ngành tuyển sinh: {{ news.uniSpecName }}
+          </div>
+          <div class="card-item-desc">Trường : {{ news.uniName }}</div>
+          <div class="date">
+            Ngày đăng : {{ news.createDate.toLocaleDateString() }}
           </div>
         </div>
       </div>
-      <div class="card-item">
-        <img
-          src="../../assets/img/schoolImg/fpt-logo.png"
-          alt=""
-          class="card-item-img"
-        />
-        <div class="card-item-right">
-          <div class="card-item-title">Tuyển sinh Title</div>
-          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
-          <div class="card-item-desc">
-            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
-            perspiciatis totam eligendi error dolor voluptate voluptatem
-            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
-            dolore. Expedita, qui. Animi, voluptatem!
-          </div>
-        </div>
-      </div>
-      <div class="card-item">
-        <img
-          src="../../assets/img/schoolImg/fpt-logo.png"
-          alt=""
-          class="card-item-img"
-        />
-        <div class="card-item-right">
-          <div class="card-item-title">Tuyển sinh Title</div>
-          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
-          <div class="card-item-desc">
-            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
-            perspiciatis totam eligendi error dolor voluptate voluptatem
-            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
-            dolore. Expedita, qui. Animi, voluptatem!
-          </div>
-        </div>
-      </div>
-      <div class="card-item">
-        <img
-          src="../../assets/img/schoolImg/fpt-logo.png"
-          alt=""
-          class="card-item-img"
-        />
-        <div class="card-item-right">
-          <div class="card-item-title">Tuyển sinh Title</div>
-          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
-          <div class="card-item-desc">
-            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
-            perspiciatis totam eligendi error dolor voluptate voluptatem
-            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
-            dolore. Expedita, qui. Animi, voluptatem!
-          </div>
-        </div>
-      </div>
-      <div class="card-item">
-        <img
-          src="../../assets/img/schoolImg/fpt-logo.png"
-          alt=""
-          class="card-item-img"
-        />
-        <div class="card-item-right">
-          <div class="card-item-title">Tuyển sinh Title</div>
-          <div class="card-item-subject">Ngành tuyển sinh: IT, SE</div>
-          <div class="card-item-desc">
-            Mô tả: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            adipisci neque vero, accusamus quidem esse iusto ipsam, cumque cum
-            perspiciatis totam eligendi error dolor voluptate voluptatem
-            repellendus ducimus a incidunt sequi laboriosam placeat, sed fuga
-            dolore. Expedita, qui. Animi, voluptatem!
-          </div>
-        </div>
-      </div>
-      <mat-paginator
-        [length]="length"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        (page)="pageEvent = $event"
-        aria-label="Select page"
-      >
-      </mat-paginator>
     </div>
+    <mat-paginator
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="pageEvent = $event"
+      aria-label="Chọn số trang"
+    >
+    </mat-paginator>
   </div>
 </div>

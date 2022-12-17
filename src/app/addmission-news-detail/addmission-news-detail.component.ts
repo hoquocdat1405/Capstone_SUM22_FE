@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { News } from '../_model/news.model';
+import { UniversityService } from '../_services/university.service';
 
 @Component({
   selector: 'app-addmission-news-detail',
@@ -7,9 +9,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./addmission-news-detail.component.scss'],
 })
 export class AddmissionNewsDetailComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private uniSer: UniversityService
+  ) {}
+  id!: string;
+  news!: News;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id')!;
+  }
 
   changTab(event: any, index: number) {
     var tabs = document.querySelectorAll('.tab-list');
@@ -23,8 +33,14 @@ export class AddmissionNewsDetailComponent implements OnInit {
     infoSectionActive?.classList.remove('active');
   }
 
-  redirectToSchoolDetail() {
+  getData() {
+    this.uniSer.getNewsById(this.id).subscribe((data) => {
+      this.news = data;
+    });
+  }
+
+  redirectToSchoolDetail(id: string) {
     //TODO : thêm id trường vào đây
-    this.router.navigate(['/school',{schoolId:'3eb48a1d-4a13-408e-83a0-003cb529bdc1'}]);
+    this.router.navigate(['/school', { schoolId: id }]);
   }
 }

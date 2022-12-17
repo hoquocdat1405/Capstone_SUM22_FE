@@ -1,15 +1,21 @@
 <div class="container">
   <div class="news-main">
-    <img class="news-img" src="https://quantri.hanoi.edu.vn//UploadImages/thpttulap/admin/2022_3/fp.png?w=600"
-      width="100%" alt="daihocfpt" />
+    <img
+      class="news-img"
+      src="{{ news.bannerUrl }}"
+      width="100%"
+      alt="daihocfpt"
+    />
     <div class="text-block">
-      <a class="title" (click)="redirectToDetail()">Đại học FPT công bố phương thức tuyển sinh năm 2022</a>
+      <a class="title" (click)="redirectToDetail(news.id)">{{ news.title }}</a>
       <p class="brief">
-        Đại học FPT đã chính thức công bố chính thức các phương thức tuyển sinh [...]
+        Trường : {{ news.uniName }}
+        <br />
+        Ngành liên quan : {{ news.uniSpecName }}
       </p>
       <div class="news-info">
-        <span class="hash-tag">#FPT</span>
-        <span class="hash-tag">#2022</span>
+        <span class="hash-tag">#{{ news.uniCode }}</span>
+        <span class="hash-tag">#{{ newsYear }}</span>
       </div>
     </div>
   </div>

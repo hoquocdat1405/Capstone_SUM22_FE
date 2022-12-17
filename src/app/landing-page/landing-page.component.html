@@ -16,22 +16,13 @@
     <div class="horizontal-bar2"></div>
     <div class="news-container row d-flex">
       <div class="news-left">
-        <div class="news-item">
-          <app-news-item></app-news-item>
+        <div class="news-item" *ngIf="firstNews">
+          <app-news-item [news]="firstNews"></app-news-item>
         </div>
       </div>
-      <div class="news-right">
-        <div class="news-item">
-          <app-sub-news-item></app-sub-news-item>
-        </div>
-        <div class="news-item">
-          <app-sub-news-item></app-sub-news-item>
-        </div>
-        <div class="news-item">
-          <app-sub-news-item></app-sub-news-item>
-        </div>
-        <div class="news-item">
-          <app-sub-news-item></app-sub-news-item>
+      <div class="news-right" *ngIf="newsList">
+        <div class="news-item" *ngFor="let news of newsList">
+          <app-sub-news-item  [news]="news"></app-sub-news-item>
         </div>
       </div>
     </div>

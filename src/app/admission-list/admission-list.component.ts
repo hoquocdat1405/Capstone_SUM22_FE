@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { University } from '../_model/uni';
+import { UniversityService } from '../_services/university.service';
+import { News } from '../_model/news.model';
 
 @Component({
   selector: 'app-admission-list',
@@ -22,9 +25,16 @@ export class AdmissionListComponent implements OnInit {
   pageEvent: PageEvent | undefined;
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  newsList!: News[];
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private uniSer: UniversityService
+  ) {}
 
   ngOnInit() {
+    this.getData();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value || ''))
@@ -47,7 +57,16 @@ export class AdmissionListComponent implements OnInit {
     }
   }
 
-  redirectToDetail() {
-    this.router.navigate(['news-detail']);
+  getData() {
+    this.uniSer.getAllNews().subscribe((data) => {
+      this.newsList = data;
+      this.newsList.forEach((news) => {
+        news.createDate = new Date(news.createDate);
+      });
+    });
+  }
+
+  redirectToDetail(id:number) {
+    this.router.navigate(['news-detail',{id:id}]);
   }
 }
