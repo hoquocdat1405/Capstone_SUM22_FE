@@ -1,6 +1,7 @@
+import { Fqa, FqaListModel } from './../_model/fqa.model';
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment.prod';
-import { University, UniSpec, UniDetail } from './../_model/uni';
+import { University, UniSpec, UniDetail, UniDetailMajor } from './../_model/uni';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -44,8 +45,8 @@ export class UniversityService {
     return this.http.get<any>(this.baseUrl + 'user/save-unis');
   }
 
-  getFqaUni(id: string): Observable<any> {
-    return this.http.get<any>(
+  getFqaUni(id: string): Observable<FqaListModel[]> {
+    return this.http.get<FqaListModel[]>(
       this.baseUrl + 'university/fqas?UniId=' + id + '&status=ACTIVE'
     );
   }
@@ -53,4 +54,9 @@ export class UniversityService {
   getFqaById(id: number): Observable<any> {
     return this.http.get<any>(this.baseUrl + 'university/fqa?contentId=' + id);
   }
+
+  getUniDetailMajor(uniId: string): Observable<UniDetailMajor[]> {
+    return this.http.get<UniDetailMajor[]>(this.baseUrl + "university/majoruni?uniId=" + uniId)
+  }
+  
 }

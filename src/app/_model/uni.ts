@@ -57,3 +57,16 @@ export interface InterestedUni {
   img: string;
   name: string;
 }
+
+export interface UniDetailSpec {
+  id: number;
+  uniId: string;
+  specId: string;
+  uniSpecName: string;
+}
+
+export interface UniDetailMajor {
+  id: string,
+  majorName: string,
+  spec: UniDetailSpec[]
+}

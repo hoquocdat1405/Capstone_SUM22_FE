@@ -73,16 +73,9 @@
         <mat-tab label="Các ngành đào tạo" class="tab">
           <div class="tab-content">
             <div class="menu-content-section">
-              <!-- <div class="row">
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
+              <div class="row" *ngFor="let major of uniDetailMajorList">
+                <app-school-major class="col" [header]="major.majorName" [contents]="major.spec"></app-school-major>
               </div>
-              <div class="row">
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-              </div> -->
             </div>
           </div>
         </mat-tab>

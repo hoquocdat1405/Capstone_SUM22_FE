@@ -1,9 +1,11 @@
-<div class="body">
-  <app-nav></app-nav>
-  <div class="page-container" >
-    <!-- TODO : Decorate UI (CSSSsSsSSSsdasasasasas) -->
-    <p class="name">{{fqa!.id}}</p>
+<app-nav></app-nav>
+<div class="page-container">
+  <div class="wrapper" *ngIf="fqa">
+    <p class="name">{{fqa.fqacontent}}</p>
+    <div class="answer">
+      {{fqa.fqaanswer}}
+    </div>
   </div>
-  <app-footer></app-footer>
 </div>
+<app-footer></app-footer>
 

@@ -140,6 +140,7 @@ import { NewJobListPageComponent } from './new-job-list-page/new-job-list-page.c
 import { NewTestsComponent } from './new-tests/new-tests.component';
 import { VertifyAccountPageComponent } from './vertify-account-page/vertify-account-page.component';
 import { FQAPageComponent } from './FQA-page/FQA-page.component';
+import { SchoolMajorComponent } from './school-info-page/school-major/school-major.component';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -235,7 +236,8 @@ export function tokenGetter() {
     NewTestsComponent,
     VertifyAccountPageComponent,
     TestAttemptComponent,
-      FQAPageComponent
+      FQAPageComponent,
+      SchoolMajorComponent
    ],
   imports: [
     FormsModule,

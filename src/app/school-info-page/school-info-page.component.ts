@@ -1,14 +1,13 @@
-import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { AddressService } from './../_services/address.service';
-import { UniDetail, UniSpec } from './../_model/uni';
-import { UniversityService } from './../_services/university.service';
-import { ActivatedRoute } from '@angular/router';
+import { Fqa } from './../_model/fqa.model';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as alertify from 'alertifyjs';
 import { PopupComponent } from '../popup/popup.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Fqa, FqaListModel, FqaTopic } from '../_model/fqa.model';
+import { FqaListModel } from '../_model/fqa.model';
+import { UniDetail, UniDetailMajor, UniSpec } from './../_model/uni';
+import { UniversityService } from './../_services/university.service';
 
 @Component({
   selector: 'app-school-info-page',
@@ -22,6 +21,8 @@ export class SchoolInfoPageComponent implements OnInit {
   uniSpecList: UniSpec[] = [];
   sendApplicationTooltip: string = '';
   FqaList: FqaListModel[] = [];
+
+  uniDetailMajorList: UniDetailMajor[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -55,6 +56,13 @@ export class SchoolInfoPageComponent implements OnInit {
           this.uniSpecList = data;
         },
       });
+
+      this.uniService.getUniDetailMajor(this.schoolId).subscribe({
+        next: (data: UniDetailMajor[]) => {
+          this.uniDetailMajorList = data;
+          console.log(this.uniDetailMajorList)
+        }
+      })
     }
     this.sendApplicationTooltip = 'Gửi hồ sơ để nhận được tư vấn';
   }
