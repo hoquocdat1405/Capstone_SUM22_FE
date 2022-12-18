@@ -25,6 +25,7 @@ export class BfQuestionComponent implements OnInit {
     pageSize: 10,
     Lenghth: this.quizCollections?.questions.length,
   };
+  hamburgerFlag: boolean = false;
 
   constructor(
     private shareService: SharedService,
@@ -112,5 +113,20 @@ export class BfQuestionComponent implements OnInit {
     }, 1);
 
     this.pageObject = event;
+  }
+
+  hamburgerClick() {
+    this.hamburgerFlag = !this.hamburgerFlag;
+    document.querySelector('.sidebar-container')?.classList.toggle('active');
+    document.querySelector('.main-content')?.classList.toggle('active');
+    document.querySelector('.nav-row .hamburger')?.classList.toggle('active');
+    document.querySelectorAll('.nav-item-title')?.forEach((item) => {
+      item.classList.toggle('active');
+    });
+  }
+
+  chooseQuestion(index: number) {
+    this.pageObject.pageIndex = Math.floor(index / 10);
+    this.changePage(this.pageObject);
   }
 }

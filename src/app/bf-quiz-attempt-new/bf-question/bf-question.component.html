@@ -1,4 +1,5 @@
 <div class="main-container">
+  <p _ngcontent-ioc-c246="" class="title-mbti">Bài trắc nghiệm MBTI</p>
   <div class="note-text">*Hãy đọc kĩ câu hỏi và lựa chọn mức độ phù hợp nhất với bản thân. </div>
   <div class="content">
     <div class="header">
@@ -8,17 +9,36 @@
         <p class="level-title">Chính xác</p>
       </div>
     </div>
-    <div class="question-container">
-      <div class="question" *ngFor="let question of questionSlice;index as i">
-        <div class="question-text-box">
-          <div class="question-text">{{question.questionContent}}</div>
-          <param id="{{question.id}}" value="{{question.value}}">
+    <div class="content-row">
+      <div class="sidebar-container">
+        <div class="nav-row">
+          <div class="sidebar-title"> Danh sách câu hỏi</div>
+          <div class="hamburger" (click)="hamburgerClick()">
+            <mat-icon>menu</mat-icon>
+          </div>
         </div>
-        <div class="character-level-box">
-          <label class="input-container" *ngFor="let option of questionSlice[i].options;index as j">
-            <input id="{{option.id}}" class="level" type="radio" value="{{option.value}}">
-            <span class="checkmark" (click)="chooseAnswer(i,$event,'1')"></span>
-          </label>
+
+        <div class="horizontal-bar"></div>
+        <div class="nav-section">
+          <div class="question-list">
+            <p class="question-item" *ngFor="let question of quizCollections?.questions"
+              (click)="chooseQuestion(question.index+1)">
+              {{question.index+1}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="question-container">
+        <div class="question" *ngFor="let question of questionSlice;index as i">
+          <div class="question-text-box">
+            <div class="question-text">{{question.questionContent}}</div>
+            <param id="{{question.id}}" value="{{question.value}}">
+          </div>
+          <div class="character-level-box">
+            <label class="input-container" *ngFor="let option of questionSlice[i].options;index as j">
+              <input id="{{option.id}}" class="level" type="radio" value="{{option.value}}">
+              <span class="checkmark" (click)="chooseAnswer(i,$event,'1')"></span>
+            </label>
+          </div>
         </div>
       </div>
     </div>

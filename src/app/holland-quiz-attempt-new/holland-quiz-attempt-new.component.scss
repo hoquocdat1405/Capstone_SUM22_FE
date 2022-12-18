@@ -5,7 +5,7 @@
 }
 
 .header-banner {
-  background-color: #607660;
+  background-image: linear-gradient(to bottom right, #fde1b5, #f2f2f2);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -21,7 +21,8 @@
   font-size: 40px;
   line-height: 55px;
   text-transform: uppercase;
-  color: #f3c3a3;
+  color: #3c3327;
+  font-weight: 500;
 }
 
 .horizontal-bar {
@@ -32,7 +33,7 @@
 }
 
 .header-banner-sub-title {
-  color: #f4e9e2;
+  color: #3c3327;
   font-size: 26px;
   font-weight: 500;
   line-height: 35px;
