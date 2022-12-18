@@ -66,6 +66,9 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
         this.job?.forEach(job => {
           this.majorService.getMajorCareer(job.id.toString()).subscribe({
             next: (data: MajorModel[]) => {
+              if(data.length === 0) {
+                return;
+              }
               const jobMajorData: JobMajorModel = {
                 id: job.id,
                 imageUrl: job.imageUrl,
