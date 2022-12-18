@@ -1,0 +1,21 @@
+.page-container {
+    margin-top: 60px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 80%;
+    background-color: #FAFAFA;
+    padding: 40px;
+}
+
+.name {
+    color: red;
+    border-left: solid 4px red;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0 24px;
+}

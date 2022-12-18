@@ -1,28 +1,33 @@
 <app-nav></app-nav>
 <div class="addmission-container">
   <div class="header-section">
-    <img src="https://cdnimg.vietnamplus.vn/t1200/Uploaded/noktvz/2021_10_14/anh_1.jpg" alt="" class="header-img">
+    <div class="img-wrapper">
+      <img src="{{ news?.bannerUrl }}" alt="" class="header-img" />
+    </div>
 
     <div class="header-content">
       <div class="header-content-left">
-        <p class="major-name">Kỹ thuật phần mềm</p>
-        <p class="school-name">Đại học FPT</p>
+        <p class="major-name">{{ news?.uniSpecName }}</p>
+        <p class="school-name">{{ news?.uniName }} - Ngày đăng {{news?.createDate | date: 'dd/MM/yyyy'}}</p>
       </div>
       <div class="header-content-right">
-        <button class="apply-btn">Ứng tuyển ngay</button>
-        <button class="save-btn">Lưu</button>
+        <button class="apply-btn" (click)="redirectToSchoolDetail(news?.uniId)">
+          Chi tiết trường
+        </button>
+        <!-- <button class="save-btn">Lưu</button> -->
       </div>
     </div>
   </div>
 
-  <ul class="tab-list">
-    <li class="tab-item active" (click)=changTab($event,0)>Chi Tiết Tuyển Sinh</li>
-    <li class="tab-item" (click)=changTab($event,1)>Thông Tin Trường học</li>
-    <li class="tab-item" (click)=changTab($event,2)>Ngành học khác</li>
-  </ul>
+  <!-- <ul class="tab-list">
+    <li class="tab-item active" (click)="changTab($event, 0)">
+      Chi Tiết Tuyển Sinh
+    </li>
+    <li class="tab-item" (click)="changTab($event, 1)">Thông Tin Trường học</li>
+  </ul> -->
 
   <div class="info-section active">
-    <p class="info-title">Thông tin chung</p>
+    <!-- <p class="info-title">Thông tin chung</p>
     <div class="condition-list">
       <div class="condition-item ">
         <i class="icon-condition item1 fa fa-calendar" aria-hidden="true"></i>
@@ -44,24 +49,21 @@
         <p class="condition">Hạn nhận hồ sơ</p>
         <p class="condition-need">29/12/2022</p>
       </div>
-    </div>
+    </div> -->
 
-    <p class="info-title">Mô tả ngành nghề</p>
-    <p class="info-content">Công nghệ (tiếng Anh: technology) là sự phát minh, sự thay đổi, việc sử dụng, và kiến thức
-      về các công cụ, máy móc, kỹ thuật, kỹ năng nghề nghiệp, hệ thống, và phương pháp tổ chức, nhằm giải quyết một vấn
-      đề, cải tiến một giải pháp đã tồn tại, đạt một mục đích, hay thực hiện một chức năng cụ thể đòi hỏi hàm lượng chất
-      xám cao. Công nghệ ảnh hưởng đáng kể lên khả năng kiểm soát và thích nghi của con người cũng như của những động
-      vật khác vào môi trường tự nhiên của mình. Nói một cách đơn giản, công nghệ là sự ứng dụng những phát minh khoa
-      học vào những mục tiêu hoặc sản phẩm thực tiễn và cụ thể phục vụ đời sống con người, đặc biệt trong lĩnh vực công
-      nghiệp hoặc thương mại.[1] Thuật ngữ công nghệ có thể được dùng theo nghĩa chung hay cho những lĩnh vực cụ thể, ví
-      dụ như "công nghệ xây dựng", "công nghệ thông tin".</p>
+    <!-- TODO: thêm nội dung bài viết ở đây -->
+
+    <p class="info-title">{{news?.title}}</p>
+    <div class="info-content" [innerHTML]="news?.content"></div>
   </div>
 
   <div class="info-section">
     <p class="info-title">Thông tin trường học</p>
-    <p class="info-content">Chính thức thành lập ngày 8/9/2006 theo Quyết định của Thủ tướng Chính phủ, Trường Đại học
-      FPT trở thành trường đại học đầu tiên của Việt Nam do một doanh nghiệp đứng ra thành lập với 100% vốn đầu tư từ
-      Tập đoàn FPT.</p>
+    <p class="info-content">
+      Chính thức thành lập ngày 8/9/2006 theo Quyết định của Thủ tướng Chính
+      phủ, Trường Đại học FPT trở thành trường đại học đầu tiên của Việt Nam do
+      một doanh nghiệp đứng ra thành lập với 100% vốn đầu tư từ Tập đoàn FPT.
+    </p>
     <p class="info-title">Quy mô trường học</p>
     <div class="school-info-row">
       <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -82,7 +84,5 @@
     </div>
   </div>
 
-  <div class="info-section">
-    Hihihi
-  </div>
+  <div class="info-section">Hihihi</div>
 </div>

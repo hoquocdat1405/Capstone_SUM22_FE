@@ -15,7 +15,12 @@
   object-fit: cover;
 }
 
+.text-block a{
+  text-decoration: none;
+}
+
 .title {
+  color: black;
   font-size: 16px;
   font-weight: 500;
 }
@@ -27,6 +32,7 @@
 
 .brief {
   font-size: 14px;
+  margin: 5% 0;
 }
 
 .hash-tag {

@@ -73,15 +73,8 @@
         <mat-tab label="Các ngành đào tạo" class="tab">
           <div class="tab-content">
             <div class="menu-content-section">
-              <div class="row">
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-              </div>
-              <div class="row">
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
+              <div class="row" *ngFor="let major of uniDetailMajorList">
+                <app-school-major class="col" [header]="major.majorName" [contents]="major.spec"></app-school-major>
               </div>
             </div>
           </div>
@@ -89,18 +82,10 @@
         <mat-tab label="Liên hệ & Tư vấn" class="tab">
           <div class="tab-content">
             <!-- CONSIDER USING MAT-EXPANDABLE for each FAQ -->
-            <div class="menu-content-section">
-              <div class="row">
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
+            <div class="menu-content-section" *ngIf="FqaList">
+              <div class="row" *ngFor="let topic of FqaList">
+                <app-content-menu class="col" [header]="topic.topicName" [contents]="topic.fqas"></app-content-menu>
               </div>
-              <div class="row">
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-                <app-content-menu class="col" [header]="header" [contents]="contents"></app-content-menu>
-              </div>
-
               <div class="contacts">
                 <div class="contact-phone">
                   {{uniDetail?.phone}}

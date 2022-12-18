@@ -139,6 +139,9 @@ import { DatePipe } from '@angular/common';
 import { NewJobListPageComponent } from './new-job-list-page/new-job-list-page.component';
 import { NewTestsComponent } from './new-tests/new-tests.component';
 import { VertifyAccountPageComponent } from './vertify-account-page/vertify-account-page.component';
+import { FQAPageComponent } from './FQA-page/FQA-page.component';
+import { SchoolMajorComponent } from './school-info-page/school-major/school-major.component';
+import { TypeBubbleBigfiveComponent } from './bf-quiz-detail-page/type-bubble-bigfive/type-bubble-bigfive.component';
 
 export function tokenGetter() {
   let savedToken = localStorage.getItem('token');
@@ -149,7 +152,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavComponent,
     CarouselComponent,
@@ -234,7 +237,10 @@ export function tokenGetter() {
     NewTestsComponent,
     VertifyAccountPageComponent,
     TestAttemptComponent,
-  ],
+      FQAPageComponent,
+      SchoolMajorComponent,
+      TypeBubbleBigfiveComponent
+   ],
   imports: [
     FormsModule,
     BrowserModule,

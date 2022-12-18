@@ -8,6 +8,7 @@
 
 .wrapper {
     width: 100%;
+    padding-top: 2%;
 }
 
 .search-section {
@@ -42,7 +43,7 @@
 .card-item {
     display: flex;
     border: solid 1px #000;
-    padding: 4em 2em;
+    padding: 12px 24px;
     gap: 3em;
     margin-bottom: 2em;
 }
@@ -65,4 +66,13 @@
 
 .card-item .card-item-right .card-item-desc {
     font-size: 1.5em;
+}
+
+.card-item-title:hover{
+    color: #6796bf;
+    cursor: pointer;
+}
+
+.date {
+    font-size: 12px;
 }
