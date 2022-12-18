@@ -9,9 +9,23 @@
             <p class="character"><span class="character-short">{{quizResult?.resultShortName}} </span> - <span
                 class="character-name">{{quizResult?.resultName}}</span>
             </p>
+            <div class="result-detail-perc">
+              <div class="result-perc">
+                Nhóm IE: <span>{{quizResult?.result1}}</span>
+              </div>
+              <div class="result-perc">
+                Nhóm SN: <span>{{quizResult?.result2}}</span>
+              </div>
+              <div class="result-perc">
+                Nhóm TF: <span>{{quizResult?.result3}}</span>
+              </div>
+              <div class="result-perc">
+                Nhóm JP: <span>{{quizResult?.result4}}</span>
+              </div>
+            </div>
 
           </div>
-          <img [src]="imageSrc" alt="img" class="result-img">
+          <img [src]="quizResult?.resultPictureUrl" alt="img" class="result-img">
         </div>
         <div class="btn-take-again">
           <i class="icon-repeat fa fa-repeat" aria-hidden="true"></i>

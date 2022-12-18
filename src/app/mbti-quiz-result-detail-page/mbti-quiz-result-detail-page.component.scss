@@ -363,6 +363,22 @@
   margin-right: 4px;
 }
 
+.result-detail-perc {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
+  margin: 16px 0;
+}
+
+.result-perc {
+  font-size: 24px;
+  color: #007bff;
+}
+
+.result-perc span {
+  color: #c85a35;
+}
+
 @media (max-width: 1000px) {
   .body {
     padding: 60px 10%;

@@ -27,7 +27,7 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private title: Title,
     private majorService: MajorService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.title.setTitle('Kết quả MBTI');
@@ -35,18 +35,28 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   }
 
   getData() {
-    this.id = this.route.snapshot.paramMap.get('id')!;
-    this.shortName = this.route.snapshot.paramMap.get('shortName')!;
-    this.sharedServ
-      .getTestResult(this.id, this.shortName)
-      .subscribe((result) => {
-        this.quizResult = result;
+    // this.id = this.route.snapshot.paramMap.get('id')!;
+    // this.shortName = this.route.snapshot.paramMap.get('shortName')!;
+    // this.sharedServ
+    //   .getTestResult(this.id, this.shortName)
+    //   .subscribe((result) => {
+    //     this.quizResult = result;
+    //     this.getJob();
+    //     this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
+    //       this.quizResult!.resultPictureUrl
+    //     );
+    //     console.log(this.quizResult);
+    //   });
+
+    // Kham
+    const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
+
+    this.sharedServ.submitTest(JSON.parse(postAnswer)).subscribe((result) => {
+      if (result !== null) {
+        this.quizResult = result
         this.getJob();
-        this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
-          this.quizResult!.resultPictureUrl
-        );
-        console.log(this.quizResult);
-      });
+      }
+    });
   }
 
   getJob() {
@@ -94,6 +104,6 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   }
 
   retake() {
-    this.router.navigate(['mbti-quiz-attempt', {id: this.id}])
+    this.router.navigate(['mbti-quiz-attempt', { id: this.id }])
   }
 }
