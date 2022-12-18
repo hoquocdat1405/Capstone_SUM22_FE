@@ -5,24 +5,20 @@
       <div class="character-result">
         <div class="row">
           <div class="left">
-            <p class="character-text">Nhóm tính cách của bạn là:</p>
-            <p class="character"><span class="character-short">{{quizResult?.resultShortName}} </span> - <span
-                class="character-name">{{quizResult?.resultName}}</span>
-            </p>
-
           </div>
-          <img [src]="imageSrc" alt="img" class="result-img">
         </div>
-        <div class="btn-take-again">
-          <i class="icon-repeat fa fa-repeat" aria-hidden="true"></i>
-          <p class="take-again">Làm lại bài test</p>
-        </div>
+
         <div class="row">
-          <div class="text-major-header">Các ngành nghề phù hợp</div>
-          <div class="text-major-wrapper">
+          <!-- <div class="text-major-header">Các ngành nghề phù hợp</div> -->
+          <!-- <div class="text-major-wrapper">
             <h4 class="text-major" *ngFor="let result of job" (click)="getMajor(result.id)">
               {{result.jobName}} </h4>
-          </div>
+          </div> -->
+
+          <!-- Note tam -->
+
+
+
         </div>
       </div>
 
@@ -32,160 +28,46 @@
         <app-radar-chart [labels]="result.labels" [values]="result.values"></app-radar-chart>
 
         <div class="info-container">
-          <div class="elementor-widget-wrap elementor-element-populated">
-            <div class="elementor-element elementor-element-36eed69 elementor-widget elementor-widget-text-editor"
-              data-id="36eed69" data-element_type="widget" data-widget_type="text-editor.default">
-              <div class="elementor-widget-container">
-                <div class="table-lt-custom scrollbar kqtn-holland-code">
-                  <table class="table table-bordered">
-                    <tbody>
-                      <tr>
-                        <td width="15%" class="table-title text-center">Sở thích</td>
-                        <td width="10%" class="table-title text-center">Điểm số</td>
-                        <td width="75%" class="table-title text-center">Chi tiết</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <a href="https://huongnghiepaau.edu.vn/nhom-ky-thuat-realistic" target="_blank"
-                            rel="nofollow">
-                            <img src="https://huongnghiepaau.edu.vn/wp-content/uploads/2022/07/nhom-ky-thuat.jpg"
-                              alt="Nhóm kỹ thuật" width="228" height="255" class="responsive">
-                            <b>Kỹ thuật – Realistic</b>
-                          </a>
-                        </td>
-                        <td class="text-center align-items"><b>2/10</b></td>
-                        <td class="text-left">
-                          <p>Người yêu thích <b>Kỹ thuật</b> thường thực tế, thích khám phá, thao tác một cách trật tự
-                            và có hệ thống, thích làm việc với những vật cụ thể như máy móc, công cụ dụng cụ, con vật,…
-                          </p>
-                          <p><b>Năng lực nổi trội:</b> thủ công, cơ khí, nông nghiệp, điện, kỹ thuật,…</p>
-                          <p><b>Năng lượng thiếu hụt:</b> Xã hội và Giáo dục.</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <a href="https://huongnghiepaau.edu.vn/nhom-nghien-cuu-investigative" target="_blank"
-                            rel="nofollow">
-                            <img loading="lazy"
-                              src="https://huongnghiepaau.edu.vn/wp-content/uploads/2022/07/nhom-nghien-cuu.jpg"
-                              alt="Nhóm nghiên cứu" width="228" height="255" class="responsive">
-                            <b>Nghiên cứu – Investigative</b>
-                          </a>
-                        </td>
-                        <td class="text-center"><b>1/10</b></td>
-                        <td class="text-left">
-                          <p>Người có sở thích nổi trội ở nhóm <b>Nghiên cứu</b> thường thích phân tích, nghiên cứu sâu
-                            mọi vấn đề. Họ cũng hay tò mò, thích quan sát, học hỏi, điều tra, đánh giá và giải quyết các
-                            vấn đề.</p>
-                          <p><b>Năng lực nổi trội:</b> khoa học, toán học, tư duy phản biện, phân tích,…</p>
-                          <p><b>Năng lực thiếu hụt:</b> khả năng thuyết phục, tương tác xã hội và những hoạt động lặp đi
-                            lặp lại.</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <a href="https://huongnghiepaau.edu.vn/nhom-nghe-thuat-artistic" target="_blank"
-                            rel="nofollow">
-                            <img loading="lazy"
-                              src="https://huongnghiepaau.edu.vn/wp-content/uploads/2022/07/nhom-nghe-thuat.jpg"
-                              alt="Nhóm nghệ thuật" width="228" height="255" class="responsive">
-                            <b>Nghệ thuật – Artistic</b>
-                          </a>
-                        </td>
-                        <td class="text-center"><b>1/10</b></td>
-                        <td class="text-left">
-                          <p>Người yêu thích <b>Nghệ thuật</b> thường có trí tưởng tượng phong phú, trực giác mạnh và
-                            khả năng sáng tạo tốt. Họ yêu thích cái đẹp và dễ &nbsp; bị hấp dẫn bởi chúng. Đặc tính của
-                            người thuộc nhóm này là tự do, không có thiện cảm với những nguyên tắc, các công việc rõ
-                            ràng, hệ thống hóa.</p>
-                          <p><b>Năng lực nổi trội:</b> nghệ thuật (ngôn ngữ viết – nói, hội họa, ca hát, trình diễn,
-                            diễn xuất,…)</p>
-                          <p><b>Năng lực thiếu hụt:</b> nghiệp vụ hành chính, kinh doanh.</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <a href="https://huongnghiepaau.edu.vn/nhom-xa-hoi-social" target="_blank" rel="nofollow">
-                            <img loading="lazy"
-                              src="https://huongnghiepaau.edu.vn/wp-content/uploads/2022/07/nhom-xa-hoi.jpg"
-                              alt="Nhóm xã hội" width="228" height="255" class="responsive">
-                            <b>Xã hội – Social</b>
-                          </a>
-                        </td>
-                        <td class="text-center"><b>1/10</b></td>
-                        <td class="text-left">
-                          <p>Nhóm <b>Xã hội</b> là sở thích của những bạn thích làm việc và tương tác với người khác bao
-                            gồm những công việc thường xuyên tiếp xúc và giao tiếp với xã hội như giao tiếp, huấn luyện,
-                            chữa lành, thiện nguyện, công tác xã hội,… Nhóm này thường có thiện cảm với các công việc rõ
-                            ràng, có hệ thống liên quan đến vật liệu, công cụ hoặc máy móc.</p>
-                          <p><b>Năng lực nổi trội:</b> giao tiếp, giáo dục.</p>
-                          <p><b>Năng lực thiếu hụt:</b> thủ công, kỹ thuật.</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <a href="https://huongnghiepaau.edu.vn/nhom-quan-ly-enterprising" target="_blank"
-                            rel="nofollow">
-                            <img loading="lazy"
-                              src="https://huongnghiepaau.edu.vn/wp-content/uploads/2022/07/nhom-quan-ly.jpg"
-                              alt="Nhóm quản lý" width="228" height="255" class="responsive">
-                            <b>Quản lý – Enterprising</b>
-                          </a>
-                        </td>
-                        <td class="text-center"><b>1/10</b></td>
-                        <td class="text-left">
-                          <p>Người yêu thích <b>Quản lý</b> thường yêu thích các hoạt động đòi hỏi sự lãnh đạo, thuyết
-                            phục, tác động vào người khác để đạt được mục đích chung của tổ chức hoặc lợi ích kinh tế.
-                            Nhóm này thường ưu tiên những công việc bao quát, những cải tiến, đổi mới mà không thích làm
-                            việc một cách máy móc, tượng trưng.</p>
-                          <p><b>Năng lực nổi trội:</b> lãnh đạo, giao tiếp, thuyết phục.</p>
-                          <p><b>Năng lực thiếu hụt:</b> khoa học.</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">
-                          <a href="https://huongnghiepaau.edu.vn/nhom-nghiep-vu-conventional" target="_blank"
-                            rel="nofollow">
-                            <img loading="lazy"
-                              src="https://huongnghiepaau.edu.vn/wp-content/uploads/2022/07/nhom-nghiep-vu.jpg"
-                              alt="Nhóm nghiệp vụ" width="228" height="255" class="responsive">
-                            <b>Nghiệp vụ – Conventional</b>
-                          </a>
-                        </td>
-                        <td class="text-center"><b>1/10</b></td>
-                        <td class="text-left">
-                          <p>Người có sở thích nổi trội ở nhóm <b>Nghiệp vụ</b> thường thích làm việc với con số và dữ
-                            liệu, công việc hành chánh văn phòng và những công việc được phân công cụ thể, rõ ràng. Nhóm
-                            này đặc biệt yêu thích xử lý dữ liệu, tài liệu một cách có trật tự và hệ thống hóa, không có
-                            thiện cảm với những hoạt động mơ hồ, tự do.</p>
-                          <p><b>Năng lực nổi trội:</b> công việc lặp đi lặp lại, chăm chỉ, cần mẫn.</p>
-                          <p><b>Năng lực thiếu hụt:</b> khả năng sáng tạo, giao tiếp,…</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+          <div class="info-content" *ngFor="let character of characters, index as i">
+            <h4 class="title-1"><span>0{{i+1}}</span>{{character.resultName}} - {{character.resultShortName}}</h4>
+            <p class="text">{{character.resultSummary}}</p>
+            <p class="text"><b>Các ngành nghề phù hợp:</b></p>
+
+            <div class="major-acco-wrapper">
+              <div class="acco-item" *ngFor="let result of showedJobList">
+                <mat-accordion>
+                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <div class="job-img-wrapper">
+                          <img src="{{result.imageUrl}}" alt="" class="job-image">
+                        </div>
+                        {{result.jobName}}
+                      </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <div class="content-body">
+                      <div class="job-major-wrapper" *ngFor="let major of result.majorList">
+                        <div class="major-name">
+                          {{major.majorName}}
+                        </div>
+                        <div class="major-action-btn">
+                          <button mat-raised-button color="primary" (click)="goUniver(major.id)">Xem trường đào
+                            tạo</button>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="info-content">
-            <h4 class="title-1"><span>01</span>Tổng quan</h4>
-            <p class="text">{{quizResult?.resultSummary}}</p>
-          </div>
+        <div class="btn-take-again">
+          <i class="icon-repeat fa fa-repeat" aria-hidden="true"></i>
+          <p class="take-again">Làm lại bài test</p>
 
-          <div class="info-content">
-            <h4 class="title-1"><span>02</span>Nghề nghiệp - Sự nghiệp</h4>
-            <p class="text">{{quizResult?.resultCareer}}</p>
-          </div>
-          <div class="info-content">
-            <h4 class="title-1"><span>03</span>Mối quan hệ</h4>
-            <p class="text">{{quizResult?.resultRelationship}}</p>
-          </div>
-          <div class="info-content">
-            <h4 class="title-1"><span>04</span>Nguyên tắc thành công</h4>
-            <p class="text">{{quizResult?.resultSuccessRule}}</p>
-          </div>
         </div>
       </div>
     </div>

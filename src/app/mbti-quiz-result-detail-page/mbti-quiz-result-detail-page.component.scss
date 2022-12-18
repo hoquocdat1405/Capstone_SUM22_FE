@@ -17,7 +17,7 @@
   background-color: #f1f1f1;
 }
 
-.mat-mdc-form-field+.mat-mdc-form-field {
+.mat-mdc-form-field + .mat-mdc-form-field {
   margin-left: 8px;
 }
 
@@ -41,7 +41,7 @@
   opacity: 0.8;
 }
 
-.text-primary~.text-primary {
+.text-primary ~ .text-primary {
   margin-top: 20px;
 }
 
@@ -87,7 +87,7 @@
   font-weight: 600;
 }
 
-.title-1>span {
+.title-1 > span {
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
@@ -155,7 +155,7 @@
   padding-bottom: 60px;
 }
 
-// Job section 
+// Job section
 .text-major-header {
   font-size: 30px;
   font-weight: 500;
@@ -202,9 +202,12 @@
   background-color: #c85a35;
 }
 
-.mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled=true]),
-.mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled=true]),
-.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+.mat-expansion-panel
+  .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled="true"]),
+.mat-expansion-panel
+  .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled="true"]),
+.mat-expansion-panel:not(.mat-expanded)
+  .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
   background-color: #b93a10;
 }
 
@@ -260,6 +263,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0;
 }
 
 .right {
@@ -296,7 +300,7 @@
   --webkit-filter: blur(30px);
 }
 
-.quiz-result__quote>svg {
+.quiz-result__quote > svg {
   position: absolute;
   z-index: 3;
   opacity: 0.5;
@@ -305,18 +309,18 @@
   color: #004b99;
 }
 
-.quiz-result__quote>svg:first-child {
+.quiz-result__quote > svg:first-child {
   top: 25px;
   left: 2px;
 }
 
-.quiz-result__quote>svg:last-child {
+.quiz-result__quote > svg:last-child {
   right: 4px;
   bottom: -3px;
   transform: rotate(180deg);
 }
 
-.quiz-result__quote>span {
+.quiz-result__quote > span {
   position: relative;
   z-index: 10;
   line-height: 1.9;
@@ -340,7 +344,6 @@
   display: flex;
   color: #fff;
   border-radius: 50px;
-  // background-color: #11be52;
   background-color: #2f333f;
   padding: 7px 20px;
   width: fit-content;

@@ -21,6 +21,6 @@ export interface HollandQuizQuestionModel {
 
 export interface HollandPostQuizQuestion {
   questionId: number;
-  questionValue: string;
+  questionvalue: string;
   options: HollandPostQuizOption[];
 }

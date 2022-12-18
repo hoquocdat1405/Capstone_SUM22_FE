@@ -7,5 +7,4 @@ export interface BigFiveQuizOptionModel {
 export interface BigFivePostQuizOption {
   optionId: number;
   optionValue: string;
-  selectedField: boolean;
 }

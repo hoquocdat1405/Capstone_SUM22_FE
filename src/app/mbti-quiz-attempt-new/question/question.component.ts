@@ -153,6 +153,8 @@ export class QuestionComponent implements OnInit {
     document
       .querySelector(`.question-item:nth-child(${indexQuestion}`)
       ?.classList.add('active');
+
+    console.log(this.postAnswer);
   }
 
   hamburgerClick() {
@@ -182,7 +184,7 @@ export class QuestionComponent implements OnInit {
     this.router.navigate([
       'mbti-result/',
       // { id: result.id, shortName: result.resultShortName },
-      { postAnswer : JSON.stringify(this.postAnswer)}
+      { postAnswer: JSON.stringify(this.postAnswer) },
     ]);
     // console.log(this.postAnswer)
   }

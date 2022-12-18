@@ -82,6 +82,8 @@ export class HollandQuestionComponent implements OnInit {
     var option: HollandPostQuizOption;
     var optionCollect: HollandPostQuizOption[] = [];
 
+    this.postAnswer.testId = this.quizCollections!.id as unknown as number;
+
     option = {
       optionId: event.target.id,
       optionValue: event.target.value,
@@ -94,7 +96,7 @@ export class HollandQuestionComponent implements OnInit {
 
     question = {
       questionId: param?.id.replace('p', '') as unknown as number,
-      questionValue: param.value,
+      questionvalue: param.value,
       options: optionCollect,
     };
 
@@ -121,7 +123,7 @@ export class HollandQuestionComponent implements OnInit {
     } else {
       this.postAnswer.questions.push({
         questionId: param?.id.replace('p', '') as unknown as number,
-        questionValue: param.value,
+        questionvalue: param.value,
         options: optionCollect,
       });
       document
@@ -139,14 +141,18 @@ export class HollandQuestionComponent implements OnInit {
   }
 
   submitAnswer() {
-    this.sharedServ.submitTest(this.postAnswer).subscribe((result) => {
-      if (result !== null) {
-        this.router.navigate([
-          'holland-result/',
-          { id: result.id, shortName: result.resultShortName },
-        ]);
-      }
-    });
+    // this.sharedServ.submitTest(this.postAnswer).subscribe((result) => {
+    //   if (result !== null) {
+    //     this.router.navigate([
+    //       'holland-result/',
+    //       { id: result.id, shortName: result.resultShortName },
+    //     ]);
+    //   }
+    // });
+    this.router.navigate([
+      'holland-result/',
+      { postAnswer: JSON.stringify(this.postAnswer) },
+    ]);
   }
 
   hamburgerClick() {

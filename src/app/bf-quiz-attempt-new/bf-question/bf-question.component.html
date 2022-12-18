@@ -36,7 +36,7 @@
           <div class="character-level-box">
             <label class="input-container" *ngFor="let option of questionSlice[i].options;index as j">
               <input id="{{option.id}}" class="level" type="radio" value="{{option.value}}">
-              <span class="checkmark" (click)="chooseAnswer(i,$event,'1')"></span>
+              <span class="checkmark" (click)="chooseAnswer(i,$event,option.value)"></span>
             </label>
           </div>
         </div>

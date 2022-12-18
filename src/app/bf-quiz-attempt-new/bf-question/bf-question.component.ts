@@ -1,3 +1,5 @@
+import { BigFivePostQuizOption } from './../../_model/big-five-quiz/big-five-option';
+import { BigFivePostQuizQuestion } from './../../_model/big-five-quiz/big-five-question';
 import {
   BigFiveQuizCollectionModel,
   BigFivePostQuizCollection,
@@ -70,15 +72,48 @@ export class BfQuestionComponent implements OnInit {
       level.classList.remove('active');
     });
     this.clickCheckBox(event);
-    this.storeUserAnswer(i, level);
+    this.storeUserAnswer(event, i, level);
   }
 
   clickCheckBox(event: any) {
     event.target.classList.add('active');
   }
 
-  storeUserAnswer(i: number, level: string) {
-    // this.userAnswer[10 * this.currentPage + i].answer = level;
+  storeUserAnswer(event: any, i: number, level: string) {
+    // var question: BigFivePostQuizQuestion;
+    // var options: BigFivePostQuizOption[] = [];
+    // options.push({
+    //   optionId: event.target.id,
+    //   optionValue: event.target.value,
+    // });
+    // var param = document.querySelector(
+    //   `.question-container:nth-child(${i + 1}) param`
+    // ) as HTMLInputElement;
+    // question = {
+    //   questionId: param?.id.replace('p', '') as unknown as number,
+    //   questionValue: param.value,
+    //   options: options,
+    // };
+    // this.postAnswer!.testId = this.quizCollections!.id as unknown as number;
+    // const index = this.postAnswer!.questions.findIndex(
+    //   (e) => e.questionId === question.questionId
+    // );
+    // if (index > -1) {
+    //   this.postAnswer!.questions[i] = question;
+    // } else {
+    //   this.postAnswer!.questions.push(question);
+    // }
+    // if (
+    //   this.postAnswer!.questions.length ===
+    //   this.quizCollections!.questions.length
+    // ) {
+    //   var btnSubmit = document.querySelector('.submit-btn');
+    //   btnSubmit?.classList.add('active');
+    // }
+    // // document
+    // //   .querySelector(`.question-item:nth-child(${indexQuestion}`)
+    // //   ?.classList.add('active');
+    // console.log(this.postAnswer);
   }
 
   changePage(event: any) {
