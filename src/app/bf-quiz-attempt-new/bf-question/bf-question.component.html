@@ -39,7 +39,8 @@
             <label class="input-container" *ngFor="let option of questionSlice[i].options;index as j">
               <param class="param-answer" id="{{option.id}}" value="{{option.value}}">
               <input id="{{option.id}}" class="level" type="radio" value="{{option.value}}">
-              <span class="checkmark" (click)="chooseAnswer(i,$event,option.value,j)"></span>
+              <span id="checkmark{{option.id}}" class="checkmark"
+                (click)="chooseAnswer(i,$event,option.value,j)"></span>
             </label>
           </div>
         </div>

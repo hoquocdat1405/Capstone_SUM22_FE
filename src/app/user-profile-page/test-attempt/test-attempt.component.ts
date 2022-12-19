@@ -55,19 +55,35 @@ export class TestAttemptComponent implements OnInit {
   viewDetail(id: number) {
     const y = this.testResult.find(x => x.id === id);
     if (y) {
-      this.router.navigate([
-        y.testName.toLowerCase() + '-result/',
-        {
-          id: y.testId,
-          shortName: y.resultShortName,
-          result1: y.result1,
-          result2: y.result2,
-          result3: y.result3,
-          result4: y.result4,
-          result5: y.result5,
-          result6: y.result6,
-        },
-      ]);
+      if (y.testName === "Big Five") {
+        this.router.navigate([
+          'bf-result/',
+          {
+            id: y.testId,
+            shortName: y.resultShortName,
+            result1: y.result1,
+            result2: y.result2,
+            result3: y.result3,
+            result4: y.result4,
+            result5: y.result5,
+            result6: y.result6,
+          },
+        ]);
+      } else {
+        this.router.navigate([
+          y.testName.toLowerCase() + '-result/',
+          {
+            id: y.testId,
+            shortName: y.resultShortName,
+            result1: y.result1,
+            result2: y.result2,
+            result3: y.result3,
+            result4: y.result4,
+            result5: y.result5,
+            result6: y.result6,
+          },
+        ]);
+      }
     }
   }
 
