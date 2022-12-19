@@ -269,13 +269,9 @@ export class DiscQuestionComponent implements OnInit {
   }
 
   submit() {
-    this.sharedServ.submitTestDisc(this.postAnswer).subscribe((result) => {
-      if (result !== null) {
-        this.router.navigate([
-          'disc-result/',
-          { id: result.id, shortName: result.resultShortName },
-        ]);
-      }
-    });
+    this.router.navigate([
+      'disc-result/',
+      { postAnswer: JSON.stringify(this.postAnswer) },
+    ]);
   }
 }
