@@ -1,10 +1,16 @@
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
     <div class="sidenav-header">
-      <div class="profile-name-img">
-        <img src="{{userProfile?.avatarUrl || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'}}" alt=""
-          class="profile-img">
-        <span class="profile-name">{{userProfile?.userName}}</span>
+      <div class="profile-name-img" *ngIf="userProfile">
+        <img
+          src="{{
+            userProfile.avatarUrl ||
+              'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+          }}"
+          alt=""
+          class="profile-img"
+        />
+        <span class="profile-name">{{ userProfile.userName }}</span>
       </div>
       <!-- <div class="hamburger" (click)="opened=!opened">
         <mat-icon>menu</mat-icon>
@@ -12,11 +18,15 @@
     </div>
     <mat-list>
       <ng-container>
-        <mat-list-item class="link-item" routerLink="{{item.routerLink}}" (click)="activeTag(i)"
-          *ngFor="let item of currentRoutes;index as i">
+        <mat-list-item
+          class="link-item"
+          routerLink="{{ item.routerLink }}"
+          (click)="activeTag(i)"
+          *ngFor="let item of currentRoutes; index as i"
+        >
           <a>
-            <i class="icon-sidebar {{item.icon}}" aria-hidden="true"></i>
-            <span class="sidebar-text">{{item.title}}</span>
+            <i class="icon-sidebar {{ item.icon }}" aria-hidden="true"></i>
+            <span class="sidebar-text">{{ item.title }}</span>
           </a>
         </mat-list-item>
       </ng-container>
