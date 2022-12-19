@@ -118,7 +118,7 @@ export class BfQuestionComponent implements OnInit {
       (e) => e.questionId === question.questionId
     );
     if (index > -1) {
-      this.postAnswer!.questions[i] = question;
+      this.postAnswer!.questions[index] = question;
     } else {
       this.postAnswer!.questions.push(question);
     }
@@ -168,10 +168,10 @@ export class BfQuestionComponent implements OnInit {
           if (
             this.questionSlice[i].id == this.postAnswer?.questions[j].questionId
           ) {
-            var input = document.getElementById(
-              `${this.postAnswer?.questions[j].options[0].optionId}`
+            var checkmark = document.querySelector(
+              `#checkmark${this.postAnswer?.questions[j].options[0].optionId}`
             ) as HTMLInputElement;
-            input.checked = true;
+            checkmark.classList.add('active');
           }
         }
       }
