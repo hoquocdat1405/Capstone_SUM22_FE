@@ -19,7 +19,7 @@ export class BfQuizAttemptNewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.title.setTitle('Bài test Holland');
+    this.title.setTitle('Bài test Big Five');
     this.id = this.route.snapshot.paramMap.get('id');
     this.getData();
   }

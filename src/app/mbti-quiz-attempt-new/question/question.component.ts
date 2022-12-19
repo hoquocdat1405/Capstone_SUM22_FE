@@ -140,7 +140,7 @@ export class QuestionComponent implements OnInit {
       (e) => e.questionId === question.questionId
     );
     if (index > -1) {
-      this.postAnswer.questions[i] = question;
+      this.postAnswer.questions[index] = question;
     } else {
       this.postAnswer.questions.push(question);
     }
