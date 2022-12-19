@@ -1,3 +1,4 @@
+import { TestResult } from './../../_model/quiz-attempt-model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProfileService } from './../../_services/profile.service';
@@ -12,8 +13,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./test-attempt.component.scss'],
 })
 export class TestAttemptComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator?: MatPaginator;
-  id: string = '';
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  // id: string = '';
   displayedColumns: string[] = [
     'index',
     'nameTest',
@@ -21,30 +22,53 @@ export class TestAttemptComponent implements OnInit {
     'date',
     'detail',
   ];
-  dataSource: any;
+  dataSource: MatTableDataSource<TestResult>;
+  testResult: TestResult[] = [];
 
   constructor(
     private profileServ: ProfileService,
     private auth: AuthService,
     private router: Router
-  ) {}
+  ) {
+    this.dataSource = new MatTableDataSource();
+  }
 
   ngOnInit() {
     this.getData();
   }
 
   getData() {
-    this.profileServ.getTestAttempt().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+    this.profileServ.getTestAttempt().subscribe((data: TestResult[]) => {
+      this.testResult = data;
+      this.dataSource = new MatTableDataSource(this.testResult);
       this.dataSource.paginator = this.paginator;
     });
   }
 
-  viewDetail(id: string, resultShortName: string, category: string) {
-    this.router.navigate([
-      category.toLowerCase() + '-result/',
-      { id: id, shortName: resultShortName },
-    ]);
+  // viewDetail(id: string, resultShortName: string, category: string) {
+  //   this.router.navigate([
+  //     category.toLowerCase() + '-result/',
+  //     { id: id, shortName: resultShortName },
+  //   ]);
+  // }
+
+  viewDetail(id: number) {
+    const y = this.testResult.find(x => x.id === id);
+    if (y) {
+      this.router.navigate([
+        y.testName.toLowerCase() + '-result/',
+        {
+          id: y.testId,
+          shortName: y.resultShortName,
+          result1: y.result1,
+          result2: y.result2,
+          result3: y.result3,
+          result4: y.result4,
+          result5: y.result5,
+          result6: y.result6,
+        },
+      ]);
+    }
   }
 
   applyFilter(filterValue: any) {

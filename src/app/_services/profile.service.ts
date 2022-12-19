@@ -1,3 +1,4 @@
+import { TestResult } from './../_model/quiz-attempt-model';
 import { ApplicationModel } from './../_model/application/application';
 import {
   ProfileUpdateModel,
@@ -38,7 +39,7 @@ export class ProfileService {
     return this.http.put<any>(this.baseUrl + 'user/update-aca', updateAca);
   }
 
-  getTestAttempt(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'user/attempts');
+  getTestAttempt(): Observable<TestResult[]> {
+    return this.http.get<TestResult[]>(this.baseUrl + 'user/attempts');
   }
 }

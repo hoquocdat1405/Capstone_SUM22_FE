@@ -16,6 +16,19 @@
                             </mat-option>
                         </mat-autocomplete>
                     </mat-form-field>
+                    <mat-form-field class='search' appearance="standard">
+                        <mat-label>Tìm kiếm theo bài test đã làm</mat-label>
+                        <mat-select formControlName="toppings" multiple>
+                            <mat-select-trigger>
+                                {{f['toppings'].value?.[0] || ''}}
+                                <span *ngIf="(f['toppings'].value?.length || 0) > 1" class="example-additional-selection">
+                                    (+{{(f['toppings'].value?.length || 0) - 1}} {{f['toppings'].value?.length === 2 ? 'other' : 'others'}})
+                                </span>
+                            </mat-select-trigger>
+                            <mat-option value="MBTI">MBTI</mat-option>
+                            <mat-option value="DISC">DISC</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                     <button mat-raised-button color="primary" class="btn-search">Tìm kiếm</button>
                 </form>
             </div>
@@ -29,8 +42,7 @@
             <div class="text-container">
                 <div class="header-title">Danh sách các ngành nghề</div>
                 <div class="job-wrapper">
-                    <div class="card-item"
-                        *ngFor="let job of cutList">
+                    <div class="card-item" *ngFor="let job of cutList">
                         <div class="job-icon">
                             <img src="{{job.imageUrl}}" alt="" onerror="this.src='../../assets/img/university-placeholder.jpg'">
                         </div>
@@ -56,8 +68,7 @@
                     </div>
                 </div>
                 <mat-paginator [hidePageSize]="true" [length]="showedJobList.length" [pageSize]="3"
-                    [pageIndex]="pageIndex" aria-label="Select page"
-                    (page)="onPageChange($event)">
+                    [pageIndex]="pageIndex" aria-label="Select page" (page)="onPageChange($event)">
                 </mat-paginator>
             </div>
         </div>
