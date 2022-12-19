@@ -5,6 +5,7 @@
       src="{{ news.bannerUrl }}"
       width="100%"
       alt="daihocfpt"
+      (click)="redirectToDetail(news.id)"
     />
     <div class="text-block">
       <a class="title" (click)="redirectToDetail(news.id)">{{ news.title }}</a>

@@ -43,6 +43,7 @@ export class NewJobListPageComponent implements OnInit {
     jobName: [''],
     majorName: [''],
     specName: [''],
+    toppings: ['']
   });
 
   // getErrorMessage() {
@@ -92,7 +93,7 @@ export class NewJobListPageComponent implements OnInit {
   }
 
   private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+    const filterValue = value.toString().toLowerCase();
 
     return this.JobMajorList
       .filter((option) => option.jobName.toLowerCase().includes(filterValue))
@@ -104,13 +105,54 @@ export class NewJobListPageComponent implements OnInit {
   }
 
   searchJob() {
-    this.showedJobList = this.JobMajorList.filter((job) =>
-      job.jobName
-        .toLowerCase()
-        .includes((this.f['jobName'].value as string).toLowerCase())
-    );
-    this.cutList = this.showedJobList.slice(0, 3);
-    this.pageIndex = 0;
+    if(this.f['toppings'].value.toString() === '') {
+      this.showedJobList = this.JobMajorList.filter((job) =>
+        job.jobName
+          .toLowerCase()
+          .includes((this.f['jobName'].value as string).toLowerCase())
+      );
+      this.cutList = this.showedJobList.slice(0, 3);
+      this.pageIndex = 0;
+    } else {
+      const newSearchList: number[] = [];
+      (this.f['toppings'].value as Array<string>).forEach(x => {
+        if(x === 'MBTI') {
+          newSearchList.push(3)
+        } else if(x === 'DISC') {
+          newSearchList.push(4)
+        }
+      })
+      console.log(newSearchList)
+      this.jobService.getJobFiltered().subscribe({
+        next: (data: Job[]) => {
+          const showJobNew: Job[] = data;
+          const newJobMajorList: JobMajorModel[] = [];
+          showJobNew.forEach(job => {
+            this.majorService.getMajorCareer(job.id.toString()).subscribe({
+              next: (majorData: MajorModel[]) => {
+                const jobMajorData: JobMajorModel = {
+                  id: job.id,
+                  imageUrl: job.imageUrl,
+                  description: job.description,
+                  jobName: job.jobName,
+                  majorList: majorData
+                }
+                newJobMajorList.push(jobMajorData)
+                this.showedJobList = newJobMajorList.filter((job) =>
+                  job.jobName
+                    .toLowerCase()
+                    .includes((this.f['jobName'].value as string).toLowerCase())
+                );
+              },
+              complete: () => {
+                this.cutList = this.showedJobList.slice(0, 3);
+                this.pageIndex = 0;
+              }
+            })
+          })
+        }
+      })
+    }
   }
 
   goUniver(id: string) {

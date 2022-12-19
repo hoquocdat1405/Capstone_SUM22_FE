@@ -1,5 +1,5 @@
+<app-nav></app-nav>
 <div class="page-container">
-  <app-nav></app-nav>
   <div class="wrapper">
     <!-- <div class="search-section">
       <div class="search-input-row">
@@ -52,6 +52,7 @@
         </div>
       </div>
     </div> -->
+    <div class="header-title">Danh sách tin tức tuyển sinh</div>
     <div class="card-list" *ngIf="newsList">
       <div class="card-item" *ngFor="let news of newsList">
         <img src="{{ news.bannerUrl }}" alt="" class="card-item-img" />
