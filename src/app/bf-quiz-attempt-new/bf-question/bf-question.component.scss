@@ -26,10 +26,22 @@
 }
 
 .view-result {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  // color: #fff;
+  border-radius: 5px;
+  margin: 10px auto;
+  border: none;
+  display: block;
+  cursor: not-allowed;
+  background-color: #ccc;
+  pointer-events: none;
+}
+
+.view-result.active {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0d93d9;
+  opacity: 0.8;
+  pointer-events: initial;
 }
 
 .header {
@@ -320,9 +332,10 @@ input {
   display: flex;
   flex-direction: row;
   // justify-content: center;
+  scroll-margin-top: 120px;
 }
 
-.active::after {
+.checkmark.active::after {
   content: "";
   position: absolute;
   left: 6px;

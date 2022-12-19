@@ -173,19 +173,9 @@ export class QuestionComponent implements OnInit {
   }
 
   submitAnswer() {
-    // this.shareService.submitTest(this.postAnswer).subscribe((result) => {
-    //   if (result !== null) {
-    //     this.router.navigate([
-    //       'mbti-result/',
-    //       { id: result.id, shortName: result.resultShortName },
-    //     ]);
-    //   }
-    // });
     this.router.navigate([
       'mbti-result/',
-      // { id: result.id, shortName: result.resultShortName },
       { postAnswer: JSON.stringify(this.postAnswer) },
     ]);
-    // console.log(this.postAnswer)
   }
 }

@@ -29,14 +29,16 @@
       </div>
       <div class="question-container">
         <div class="question" *ngFor="let question of questionSlice;index as i">
+          <param id="p{{question.id}}" value="{{question.value}}">
           <div class="question-text-box">
             <div class="question-text">{{question.questionContent}}</div>
             <param id="{{question.id}}" value="{{question.value}}">
           </div>
           <div class="character-level-box">
             <label class="input-container" *ngFor="let option of questionSlice[i].options;index as j">
+              <param class="param-answer" id="{{option.id}}" value="{{option.value}}">
               <input id="{{option.id}}" class="level" type="radio" value="{{option.value}}">
-              <span class="checkmark" (click)="chooseAnswer(i,$event,option.value)"></span>
+              <span class="checkmark" (click)="chooseAnswer(i,$event,option.value,j)"></span>
             </label>
           </div>
         </div>
@@ -46,8 +48,7 @@
   <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
       class="end-index">{{totalPage}}</span>
   </p>
-  <mat-paginator [length]="quizCollections!.questions.length" [pageSize]="10" aria-label=" Select page"
-    (page)="changePage($event)">
+  <mat-paginator [length]="length" [pageSize]="10" aria-label=" Select page" (page)="changePage($event)">
   </mat-paginator>
-  <button mat-raised-button color="primary" class="view-result">Xem kết quả</button>
+  <button mat-raised-button color="primary" class="view-result" (click)="submitTest()">Xem kết quả</button>
 </div>
