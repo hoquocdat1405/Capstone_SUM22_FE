@@ -23,6 +23,8 @@ export class DiscQuizResultDetailPageComponent implements OnInit {
   imageSrc: any;
   showedJobList: JobMajorModel[] = [];
   panelOpenState: boolean = false;
+  resultArray: number[] = [];
+  characterArray: string[] = [];
 
   constructor(
     private router: Router,
@@ -43,22 +45,10 @@ export class DiscQuizResultDetailPageComponent implements OnInit {
   ngOnInit() {
     this.title.setTitle('Kết quả DISC');
     this.getData();
+    this.characterArray = ['D', 'I', 'S', 'C'];
   }
 
   getData() {
-    // this.id = this.route.snapshot.paramMap.get('id')!;
-    // this.shortName = this.route.snapshot.paramMap.get('shortName')!;
-    // this.sharedServ
-    //   .getTestResult(this.id, this.shortName)
-    //   .subscribe((result) => {
-    //     this.quizResult = result;
-    //     this.getJob();
-    //     this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
-    //       this.quizResult!.resultPictureUrl
-    //     );
-    //     console.log(result);
-    //   });
-
     const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
 
     this.sharedServ
@@ -67,6 +57,32 @@ export class DiscQuizResultDetailPageComponent implements OnInit {
         if (result !== null) {
           this.quizResult = result;
           this.getJob();
+
+          this.resultArray.push(
+            this.quizResult?.result1
+              .split('-')[1]
+              .split('%')[0]! as unknown as number
+          );
+          this.resultArray.push(
+            this.quizResult?.result2
+              .split('-')[1]
+              .split('%')[0]! as unknown as number
+          );
+          this.resultArray.push(
+            this.quizResult?.result3
+              .split('-')[1]
+              .split('%')[0]! as unknown as number
+          );
+          this.resultArray.push(
+            this.quizResult?.result4
+              .split('-')[1]
+              .split('%')[0]! as unknown as number
+          );
+          this.resultArray.push(
+            this.quizResult?.result5
+              .split('-')[1]
+              .split('%')[0]! as unknown as number
+          );
         }
       });
   }

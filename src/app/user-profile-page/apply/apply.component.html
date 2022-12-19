@@ -23,7 +23,7 @@
 
     <ng-container matColumnDef="applyDate">
       <th mat-header-cell *matHeaderCellDef> Ngày nộp hồ sơ </th>
-      <td mat-cell *matCellDef="let element"> {{element.applyDate}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.applyDate| date: 'dd/MM/yyyy hh:mm a'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="status">

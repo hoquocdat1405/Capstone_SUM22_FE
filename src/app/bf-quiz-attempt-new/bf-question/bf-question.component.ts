@@ -1,3 +1,4 @@
+import { MatPaginator } from '@angular/material/paginator';
 import { BigFivePostQuizOption } from './../../_model/big-five-quiz/big-five-option';
 import { BigFivePostQuizQuestion } from './../../_model/big-five-quiz/big-five-question';
 import {
@@ -6,7 +7,7 @@ import {
 } from './../../_model/big-five-quiz/big-five-collection';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedService } from './../../_services/shared.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-bf-question',
@@ -32,6 +33,8 @@ export class BfQuestionComponent implements OnInit {
   };
   hamburgerFlag: boolean = false;
   length = 0;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private shareService: SharedService,
@@ -190,5 +193,10 @@ export class BfQuestionComponent implements OnInit {
     this.changePage(this.pageObject);
   }
 
-  submitTest() {}
+  submitTest() {
+    this.router.navigate([
+      'bf-result/',
+      { postAnswer: JSON.stringify(this.postAnswer) },
+    ]);
+  }
 }

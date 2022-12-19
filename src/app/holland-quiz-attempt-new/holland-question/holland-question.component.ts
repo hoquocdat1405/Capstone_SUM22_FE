@@ -14,12 +14,13 @@ import { SharedService } from 'src/app/_services/shared.service';
   styleUrls: ['./holland-question.component.scss'],
 })
 export class HollandQuestionComponent implements OnInit {
-  constructor(private sharedServ: SharedService, private router: Router) {}
+  constructor(private sharedServ: SharedService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {
     this.getData();
+    this.testId = this.route.snapshot.paramMap.get('id')!;
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   hamburgerFlag: boolean = false;
   quizCollections?: HollandQuizCollectionModel;
@@ -36,6 +37,8 @@ export class HollandQuestionComponent implements OnInit {
     pageSize: 10,
     Length: 0,
   };
+
+  testId: string = ''
 
   getData() {
     var count = 0;
@@ -136,23 +139,35 @@ export class HollandQuestionComponent implements OnInit {
     ) {
       var btnSubmit = document.querySelector('.submit-btn');
       btnSubmit?.classList.add('active');
+    } else {
+      var btnSubmit = document.querySelector('.submit-btn');
+      btnSubmit?.classList.remove('active');
     }
     console.log(this.postAnswer);
   }
 
   submitAnswer() {
-    // this.sharedServ.submitTest(this.postAnswer).subscribe((result) => {
-    //   if (result !== null) {
-    //     this.router.navigate([
-    //       'holland-result/',
-    //       { id: result.id, shortName: result.resultShortName },
-    //     ]);
-    //   }
-    // });
-    this.router.navigate([
-      'holland-result/',
-      { postAnswer: JSON.stringify(this.postAnswer) },
-    ]);
+    this.sharedServ.submitTestHolland(this.postAnswer).subscribe((result) => {
+      if (result !== null) {
+        this.router.navigate([
+          'holland-result/',
+          {
+            id: this.testId,
+            shortName: result.resultShortName,
+            result1: result.result1,
+            result2: result.result2,
+            result3: result.result3,
+            result4: result.result4,
+            result5: result.result5,
+            result6: result.result6,
+          },
+        ]);
+      }
+    });
+    // this.router.navigate([
+    //   'holland-result/',
+    //   { postAnswer: JSON.stringify(this.postAnswer) },
+    // ]);
   }
 
   hamburgerClick() {

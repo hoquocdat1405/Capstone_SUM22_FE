@@ -7,36 +7,35 @@
           <div class="left">
             <p class="character-text">Nhóm tính cách của bạn là:</p>
             <p class="character">
-              <span class="character-short"
-                >{{ quizResult?.resultShortName }}
+              <span class="character-short">{{ quizResult?.resultShortName }}
               </span>
               - <span class="character-name">{{ quizResult?.resultName }}</span>
             </p>
-            <div class="result-detail-perc">
+            <!-- <div class="result-detail-perc">
               <div class="result-perc">
-                Nhóm IE: <span>{{ quizResult?.result1 }}</span>
+                Nhóm IE: <span>{{result1}}</span>
               </div>
               <div class="result-perc">
-                Nhóm SN: <span>{{ quizResult?.result2 }}</span>
+                Nhóm SN: <span>{{result2}}</span>
               </div>
               <div class="result-perc">
-                Nhóm TF: <span>{{ quizResult?.result3 }}</span>
+                Nhóm TF: <span>{{result3}}</span>
               </div>
               <div class="result-perc">
-                Nhóm JP: <span>{{ quizResult?.result4 }}</span>
+                Nhóm JP: <span>{{result4}}</span>
               </div>
-            </div>
+            </div> -->
+
           </div>
-          <img
-            [src]="quizResult?.resultPictureUrl"
-            alt="img"
-            class="result-img"
-          />
+          <img [src]="quizResult?.resultPictureUrl" alt="img" class="result-img" />
         </div>
         <div class="btn-take-again">
           <i class="icon-repeat fa fa-repeat" aria-hidden="true"></i>
           <p class="take-again" (click)="retake()">Làm lại bài test</p>
         </div>
+        <app-bar-chart [charPercentage]="resultArray" [charTitle]="titleArray" [charCharacter]="characterArray"
+          [contentHover]="contentArray"></app-bar-chart>
+        <p class="note-graph">Biểu đồ thể hiện mức độ tính cách của bạn</p>
         <div class="row">
           <div class="text-major-header">Các ngành nghề phù hợp</div>
           <!-- <div class="text-major-wrapper">
@@ -46,18 +45,11 @@
           <div class="major-acco-wrapper">
             <div class="acco-item" *ngFor="let result of showedJobList">
               <mat-accordion>
-                <mat-expansion-panel
-                  (opened)="panelOpenState = true"
-                  (closed)="panelOpenState = false"
-                >
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                   <mat-expansion-panel-header>
                     <mat-panel-title>
                       <div class="job-img-wrapper">
-                        <img
-                          src="{{ result.imageUrl }}"
-                          alt=""
-                          class="job-image"
-                        />
+                        <img src="{{ result.imageUrl }}" alt="" class="job-image" />
                       </div>
                       {{ result.jobName }}
                     </mat-panel-title>
@@ -66,19 +58,12 @@
                     </mat-panel-description> -->
                   </mat-expansion-panel-header>
                   <div class="content-body">
-                    <div
-                      class="job-major-wrapper"
-                      *ngFor="let major of result.majorList"
-                    >
+                    <div class="job-major-wrapper" *ngFor="let major of result.majorList">
                       <div class="major-name">
                         {{ major.majorName }}
                       </div>
                       <div class="major-action-btn">
-                        <button
-                          mat-raised-button
-                          color="primary"
-                          (click)="goUniver(major.id)"
-                        >
+                        <button mat-raised-button color="primary" (click)="goUniver(major.id)">
                           Xem trường đào tạo
                         </button>
                         <!-- <button mat-raised-button>Đến trang trường</button> -->

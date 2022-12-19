@@ -109,7 +109,7 @@ import { SchoolNewsComponent } from './school-info-page/school-news/school-news.
 import { AddmissionNewsDetailComponent } from './addmission-news-detail/addmission-news-detail.component';
 
 //psy links
-import { BarChartComponent } from './common-components/bar-chart/bar-chart.component';
+import { BarChartComponent } from './bf-quiz-result-detail-page/bar-chart/bar-chart.component';
 import { PsyModule } from './psy/psy.module';
 import { LoginRegisterMainComponent } from './login-register-main/login-register-main.component';
 
@@ -152,7 +152,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavComponent,
     CarouselComponent,
@@ -237,10 +237,11 @@ export function tokenGetter() {
     NewTestsComponent,
     VertifyAccountPageComponent,
     TestAttemptComponent,
-      FQAPageComponent,
-      SchoolMajorComponent,
-      TypeBubbleBigfiveComponent
-   ],
+    FQAPageComponent,
+    SchoolMajorComponent,
+    TypeBubbleBigfiveComponent,
+    BarChartComponent,
+  ],
   imports: [
     FormsModule,
     BrowserModule,
@@ -270,4 +271,4 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

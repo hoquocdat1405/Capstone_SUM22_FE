@@ -32,55 +32,83 @@ export class HollandQuizResultDetailPageComponent implements OnInit {
 
   listValue: string[] = [];
 
+  result1: string = '';
+  result2: string = '';
+  result3: string = '';
+  result4: string = '';
+  result5: string = '';
+  result6: string = '';
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private sharedServ: SharedService,
     private title: Title,
     private majorService: MajorService
-  ) { 
+  ) {
   }
 
   ngOnInit() {
     this.title.setTitle('Kết quả Holland');
     this.getData();
+    
+    this.result1 = this.route.snapshot.paramMap.get('result1')!;
+    this.result2 = this.route.snapshot.paramMap.get('result2')!;
+    this.result3 = this.route.snapshot.paramMap.get('result3')!;
+    this.result4 = this.route.snapshot.paramMap.get('result4')!;
+    this.result5 = this.route.snapshot.paramMap.get('result5')!;
+    this.result6 = this.route.snapshot.paramMap.get('result6')!;
 
+    this.listValue.push(this.result1.split('-')[1].split('%')[0]!)
+    this.listValue.push(this.result2.split('-')[1].split('%')[0]!)
+    this.listValue.push(this.result3.split('-')[1].split('%')[0]!)
+    this.listValue.push(this.result4.split('-')[1].split('%')[0]!)
+    this.listValue.push(this.result5.split('-')[1].split('%')[0]!)
+    this.listValue.push(this.result6.split('-')[1].split('%')[0]!)
+    this.result = {
+      labels: [
+        'Kỹ thuật',
+        'Nghiên cứu',
+        'Nghệ thuật',
+        'Xã hội',
+        'Quản lí',
+        'Nghiệp vụ',
+      ],
+      values: [+this.listValue[0], +this.listValue[1], +this.listValue[2], +this.listValue[3], +this.listValue[4], +this.listValue[5]]
+    }
     // this.getCharacter();
   }
 
   getData() {
-    const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
-
-    this.sharedServ
-      .submitTestHolland(JSON.parse(postAnswer))
-      .subscribe((result) => {
-        if (result !== null) {
-          this.quizResult = result;
-          this.listValue.push(this.quizResult?.result1.split('-')[1].split('%')[0]!)
-          this.listValue.push(this.quizResult?.result2.split('-')[1].split('%')[0]!)
-          this.listValue.push(this.quizResult?.result3.split('-')[1].split('%')[0]!)
-          this.listValue.push(this.quizResult?.result4.split('-')[1].split('%')[0]!)
-          this.listValue.push(this.quizResult?.result5.split('-')[1].split('%')[0]!)
-          this.listValue.push(this.quizResult?.result6.split('-')[1].split('%')[0]!)
-          this.result = {
-            labels: [
-              'Kỹ thuật',
-              'Nghiên cứu',
-              'Nghệ thuật',
-              'Xã hội',
-              'Quản lí',
-              'Nghiệp vụ',
-            ],
-            values: [+this.listValue[0], +this.listValue[1], +this.listValue[2], +this.listValue[3], +this.listValue[4], +this.listValue[5]],
-          };
-        }
-      });
-
-    this.testId = JSON.parse(postAnswer).testId;
+    // this.sharedServ
+    //   .submitTestHolland(JSON.parse(postAnswer))
+    //   .subscribe((result) => {
+    //     if (result !== null) {
+    //       this.quizResult = result;
+    //       this.listValue.push(this.quizResult?.result1.split('-')[1].split('%')[0]!)
+    //       this.listValue.push(this.quizResult?.result2.split('-')[1].split('%')[0]!)
+    //       this.listValue.push(this.quizResult?.result3.split('-')[1].split('%')[0]!)
+    //       this.listValue.push(this.quizResult?.result4.split('-')[1].split('%')[0]!)
+    //       this.listValue.push(this.quizResult?.result5.split('-')[1].split('%')[0]!)
+    //       this.listValue.push(this.quizResult?.result6.split('-')[1].split('%')[0]!)
+    //       this.result = {
+    //         labels: [
+    //           'Kỹ thuật',
+    //           'Nghiên cứu',
+    //           'Nghệ thuật',
+    //           'Xã hội',
+    //           'Quản lí',
+    //           'Nghiệp vụ',
+    //         ],
+    //         values: [+this.listValue[0], +this.listValue[1], +this.listValue[2], +this.listValue[3], +this.listValue[4], +this.listValue[5]],
+    //       };
+    //     }
+    //   });
     this.getCharacter();
   }
 
   getCharacter() {
+    this.testId = this.route.snapshot.paramMap.get('id')!;
     this.sharedServ.getTestResult(this.testId, '').subscribe((response) => {
       this.myCharacterList = response;
       this.myCharacterList.forEach(char => {
