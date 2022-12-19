@@ -56,6 +56,7 @@ export class ProfileSidebarComponent implements OnInit {
   ngOnInit() {
     this.user = this.authSer.getDecodedToken();
     this.getData();
+
     setTimeout(() => {
       document
         .querySelector(`mat-list-item:nth-child(1)`)
