@@ -19,6 +19,10 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   imageSrc: any;
   panelOpenState: boolean = false;
   showedJobList: JobMajorModel[] = [];
+  resultArray: number[] = [];
+  titleArray: string[] = [];
+  characterArray: string[] = [];
+  contentArray: string[] = [];
 
   constructor(
     private router: Router,
@@ -27,34 +31,55 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private title: Title,
     private majorService: MajorService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.title.setTitle('Kết quả MBTI');
     this.getData();
+
+    this.titleArray = ['Nhóm I-E', 'Nhóm S-N', 'Nhóm T-F', 'Nhóm J-P'];
+    this.contentArray = [
+      'Tỷ lệ dựa trên nhóm: Hướng Nội - Hướng Ngoại',
+      'Tỷ lệ dựa trên nhóm: Giác Quan - Trực Giác',
+      'Tỷ lệ dựa trên nhóm: Lý Trí - Cảm xúc',
+      'Tỷ lệ dựa trên nhóm: Nguyên tắc - Linh hoạt',
+    ];
   }
 
   getData() {
-    // this.id = this.route.snapshot.paramMap.get('id')!;
-    // this.shortName = this.route.snapshot.paramMap.get('shortName')!;
-    // this.sharedServ
-    //   .getTestResult(this.id, this.shortName)
-    //   .subscribe((result) => {
-    //     this.quizResult = result;
-    //     this.getJob();
-    //     this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
-    //       this.quizResult!.resultPictureUrl
-    //     );
-    //     console.log(this.quizResult);
-    //   });
-
     // Kham
     const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
 
     this.sharedServ.submitTest(JSON.parse(postAnswer)).subscribe((result) => {
       if (result !== null) {
-        this.quizResult = result
+        this.quizResult = result;
+        console.log(result);
         this.getJob();
+        this.resultArray.push(
+          this.quizResult?.result1
+            .split('-')[1]
+            .split('%')[0]! as unknown as number
+        );
+        this.resultArray.push(
+          this.quizResult?.result2
+            .split('-')[1]
+            .split('%')[0]! as unknown as number
+        );
+        this.resultArray.push(
+          this.quizResult?.result3
+            .split('-')[1]
+            .split('%')[0]! as unknown as number
+        );
+        this.resultArray.push(
+          this.quizResult?.result4
+            .split('-')[1]
+            .split('%')[0]! as unknown as number
+        );
+
+        this.characterArray.push(this.quizResult?.result1.charAt(0) as string);
+        this.characterArray.push(this.quizResult?.result2.charAt(0) as string);
+        this.characterArray.push(this.quizResult?.result3.charAt(0) as string);
+        this.characterArray.push(this.quizResult?.result4.charAt(0) as string);
       }
     });
   }
@@ -63,10 +88,10 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
     this.sharedServ.getJobCareer(this.quizResult!.id).subscribe({
       next: (data) => {
         this.job = data;
-        this.job?.forEach(job => {
+        this.job?.forEach((job) => {
           this.majorService.getMajorCareer(job.id.toString()).subscribe({
             next: (data: MajorModel[]) => {
-              if(data.length === 0) {
+              if (data.length === 0) {
                 return;
               }
               const jobMajorData: JobMajorModel = {
@@ -74,12 +99,12 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
                 imageUrl: job.imageUrl,
                 description: job.description,
                 jobName: job.jobName,
-                majorList: data
-              }
+                majorList: data,
+              };
               this.showedJobList.push(jobMajorData);
-            }
-          })
-        })
+            },
+          });
+        });
       },
     });
   }
@@ -107,6 +132,6 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   }
 
   retake() {
-    this.router.navigate(['mbti-quiz-attempt', { id: this.id }])
+    this.router.navigate(['mbti-quiz-attempt', { id: this.id }]);
   }
 }

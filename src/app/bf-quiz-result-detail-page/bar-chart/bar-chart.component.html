@@ -1,0 +1,18 @@
+<div class="first-section">
+  <!-- <div class="first-section-title">
+    <p class="question-number">5</p>
+    <div class="question-text">
+      <p class="question">Kết quả</p>
+      <p class="question-hint">Đặc điểm tính cách</p>
+    </div>
+  </div> -->
+  <div class="bar-graph-container">
+    <div class="bar-wrapper" *ngFor="let i of charPercentage; let ind = index" [matTooltip]="contentHover[ind]">
+      <div class="percentage-numb">{{ i }}%</div>
+      <div class="bar" style="--perc: {{ i }}; background-color: {{ getColor(ind) }}"></div>
+      <div class="bar-title2" style="font-size:20px;font-weight:bold;color: {{ getColor(ind) }}">{{ charCharacter[ind]
+        }}</div>
+      <div class="bar-title">{{ charTitle[ind] }}</div>
+    </div>
+  </div>
+</div>

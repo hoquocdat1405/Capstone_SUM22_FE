@@ -136,6 +136,9 @@ export class HollandQuestionComponent implements OnInit {
     ) {
       var btnSubmit = document.querySelector('.submit-btn');
       btnSubmit?.classList.add('active');
+    } else {
+      var btnSubmit = document.querySelector('.submit-btn');
+      btnSubmit?.classList.remove('active');
     }
     console.log(this.postAnswer);
   }

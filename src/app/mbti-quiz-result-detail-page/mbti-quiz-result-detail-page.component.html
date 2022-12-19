@@ -9,21 +9,6 @@
             <p class="character"><span class="character-short">{{quizResult?.resultShortName}} </span> - <span
                 class="character-name">{{quizResult?.resultName}}</span>
             </p>
-            <div class="result-detail-perc">
-              <div class="result-perc">
-                Nhóm IE: <span>{{quizResult?.result1}}</span>
-              </div>
-              <div class="result-perc">
-                Nhóm SN: <span>{{quizResult?.result2}}</span>
-              </div>
-              <div class="result-perc">
-                Nhóm TF: <span>{{quizResult?.result3}}</span>
-              </div>
-              <div class="result-perc">
-                Nhóm JP: <span>{{quizResult?.result4}}</span>
-              </div>
-            </div>
-
           </div>
           <img [src]="quizResult?.resultPictureUrl" alt="img" class="result-img">
         </div>
@@ -31,6 +16,9 @@
           <i class="icon-repeat fa fa-repeat" aria-hidden="true"></i>
           <p class="take-again" (click)="retake()">Làm lại bài test</p>
         </div>
+        <app-bar-chart [charPercentage]="resultArray" [charTitle]="titleArray" [charCharacter]="characterArray"
+          [contentHover]="contentArray"></app-bar-chart>
+        <p class="note-graph">Biểu đồ thể hiện mức độ tính cách của bạn</p>
         <div class="row">
           <div class="text-major-header">Các ngành nghề phù hợp</div>
           <!-- <div class="text-major-wrapper">

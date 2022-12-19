@@ -64,6 +64,10 @@ export class SharedService {
     return this.http.post<any>(this.baseUrl + 'test/holland', data);
   }
 
+  submitTestBigFive(data: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'test/big5', data);
+  }
+
   getJobCareer(id: string | null): Observable<any> {
     return this.http.get<any>(
       this.baseUrl + 'job/get-job-career?CharacterId=' + id
