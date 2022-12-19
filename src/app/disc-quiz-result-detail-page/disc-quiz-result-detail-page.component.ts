@@ -26,6 +26,11 @@ export class DiscQuizResultDetailPageComponent implements OnInit {
   resultArray: number[] = [];
   characterArray: string[] = [];
 
+  result1: string = '';
+  result2: string = '';
+  result3: string = '';
+  result4: string = '';
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -49,42 +54,76 @@ export class DiscQuizResultDetailPageComponent implements OnInit {
   }
 
   getData() {
-    const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
+    // const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
 
+    // this.sharedServ
+    //   .submitTestDisc(JSON.parse(postAnswer))
+    //   .subscribe((result) => {
+    //     if (result !== null) {
+    //       this.quizResult = result;
+    //       this.getJob();
+
+    //       this.resultArray.push(
+    //         this.quizResult?.result1
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //       this.resultArray.push(
+    //         this.quizResult?.result2
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //       this.resultArray.push(
+    //         this.quizResult?.result3
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //       this.resultArray.push(
+    //         this.quizResult?.result4
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //       this.resultArray.push(
+    //         this.quizResult?.result5
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //     }
+    //   });
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.shortName = this.route.snapshot.paramMap.get('shortName')!;
+    this.result1 = this.route.snapshot.paramMap.get('result1')!;
+    this.result2 = this.route.snapshot.paramMap.get('result2')!;
+    this.result3 = this.route.snapshot.paramMap.get('result3')!;
+    this.result4 = this.route.snapshot.paramMap.get('result4')!;
     this.sharedServ
-      .submitTestDisc(JSON.parse(postAnswer))
+      .getTestResult(this.id, this.shortName)
       .subscribe((result) => {
-        if (result !== null) {
-          this.quizResult = result;
-          this.getJob();
-
-          this.resultArray.push(
-            this.quizResult?.result1
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-          this.resultArray.push(
-            this.quizResult?.result2
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-          this.resultArray.push(
-            this.quizResult?.result3
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-          this.resultArray.push(
-            this.quizResult?.result4
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-          this.resultArray.push(
-            this.quizResult?.result5
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-        }
+        this.quizResult = result;
+        console.log(this.id);
+        console.log(this.shortName);
+        this.getJob();
+        this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
+          this.quizResult!.resultPictureUrl
+        );
       });
+
+    this.characterArray.push(this.result1.charAt(0) as string);
+    this.characterArray.push(this.result2.charAt(0) as string);
+    this.characterArray.push(this.result3.charAt(0) as string);
+    this.characterArray.push(this.result4.charAt(0) as string);
+    this.resultArray.push(
+      this.result1.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result2.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result3.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result4.split('-')[1].split('%')[0]! as unknown as number
+    );
   }
 
   getJob() {

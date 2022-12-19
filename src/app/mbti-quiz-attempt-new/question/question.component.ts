@@ -41,7 +41,7 @@ export class QuestionComponent implements OnInit {
   pageSize?: number;
   length?: number;
 
-  testId: string = ''
+  testId: string = '';
 
   postAnswer: MbtiPostQuizCollection = new MbtiPostQuizCollection();
 
@@ -177,15 +177,14 @@ export class QuestionComponent implements OnInit {
   submitAnswer() {
     this.shareService.submitTest(this.postAnswer).subscribe((result) => {
       if (result !== null) {
-        console.log(result)
         this.router.navigate([
           'mbti-result/',
-          { 
-            id: this.testId, 
-            shortName: result.resultShortName, 
-            result1: result.result1, 
-            result2: result.result2, 
-            result3: result.result3, 
+          {
+            id: this.testId,
+            shortName: result.resultShortName,
+            result1: result.result1,
+            result2: result.result2,
+            result3: result.result3,
             result4: result.result4,
           },
         ]);

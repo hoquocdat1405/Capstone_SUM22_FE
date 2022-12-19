@@ -21,12 +21,20 @@ import { Component, OnInit } from '@angular/core';
 export class BfQuizResultDetailPageComponent implements OnInit {
   quizResult?: QuizResult;
   showedJobList: JobMajorModel[] = [];
-  id?: string | null;
+  id: string = '';
   panelOpenState: boolean = false;
   myCharacterList: CharacterJobMajor[] = [];
   testId: string = '';
   resultArray: number[] = [];
   titleArray: string[] = [];
+  characterArray: string[] = [];
+  contentArray: string[] = [];
+
+  result1: string = '';
+  result2: string = '';
+  result3: string = '';
+  result4: string = '';
+  result5: string = '';
 
   public mbtiType: { name: string; shorthand: string; imgSrc: string };
 
@@ -59,44 +67,81 @@ export class BfQuizResultDetailPageComponent implements OnInit {
   }
 
   getData() {
-    const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
+    // const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
 
-    this.sharedServ
-      .submitTestBigFive(JSON.parse(postAnswer))
-      .subscribe((result) => {
-        if (result !== null) {
-          this.quizResult = result;
-          this.resultArray.push(
-            this.quizResult?.result1
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-          this.resultArray.push(
-            this.quizResult?.result2
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-          this.resultArray.push(
-            this.quizResult?.result3
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-          this.resultArray.push(
-            this.quizResult?.result4
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-          this.resultArray.push(
-            this.quizResult?.result5
-              .split('-')[1]
-              .split('%')[0]! as unknown as number
-          );
-        }
-      });
+    // this.sharedServ
+    //   .submitTestBigFive(JSON.parse(postAnswer))
+    //   .subscribe((result) => {
+    //     if (result !== null) {
+    //       this.quizResult = result;
+    //       this.resultArray.push(
+    //         this.quizResult?.result1
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //       this.resultArray.push(
+    //         this.quizResult?.result2
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //       this.resultArray.push(
+    //         this.quizResult?.result3
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //       this.resultArray.push(
+    //         this.quizResult?.result4
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //       this.resultArray.push(
+    //         this.quizResult?.result5
+    //           .split('-')[1]
+    //           .split('%')[0]! as unknown as number
+    //       );
+    //     }
+    //   });
 
-    console.log(this.resultArray);
+    // console.log(this.resultArray);
 
-    this.testId = JSON.parse(postAnswer).testId;
+    // this.testId = JSON.parse(postAnswer).testId;
+    // this.getCharacter();
+
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.result1 = this.route.snapshot.paramMap.get('result1')!;
+    this.result2 = this.route.snapshot.paramMap.get('result2')!;
+    this.result3 = this.route.snapshot.paramMap.get('result3')!;
+    this.result4 = this.route.snapshot.paramMap.get('result4')!;
+    this.result5 = this.route.snapshot.paramMap.get('result5')!;
+    this.sharedServ.getTestResult(this.id, '').subscribe((result) => {
+      this.quizResult = result;
+      console.log(this.quizResult);
+      // this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
+      //   this.quizResult!.resultPictureUrl
+      // );
+    });
+
+    this.characterArray.push(this.result1.charAt(0) as string);
+    this.characterArray.push(this.result2.charAt(0) as string);
+    this.characterArray.push(this.result3.charAt(0) as string);
+    this.characterArray.push(this.result4.charAt(0) as string);
+    this.characterArray.push(this.result5.charAt(0) as string);
+    this.resultArray.push(
+      this.result1.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result2.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result3.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result4.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result5.split('-')[1].split('%')[0]! as unknown as number
+    );
+
     this.getCharacter();
   }
 
@@ -126,8 +171,9 @@ export class BfQuizResultDetailPageComponent implements OnInit {
   // }
 
   getCharacter() {
-    this.sharedServ.getTestResult(this.testId, '').subscribe((response) => {
+    this.sharedServ.getTestResult(this.id, '').subscribe((response) => {
       this.myCharacterList = response;
+      console.log(this.myCharacterList);
     });
   }
 

@@ -33,6 +33,7 @@ export class BfQuestionComponent implements OnInit {
   };
   hamburgerFlag: boolean = false;
   length = 0;
+  testId: string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -45,6 +46,7 @@ export class BfQuestionComponent implements OnInit {
   ngOnInit() {
     this.getData(2004);
     this.postAnswer!.testId = 0;
+    this.testId = this.route.snapshot.paramMap.get('id')!;
   }
 
   getData(id: number) {
@@ -194,9 +196,21 @@ export class BfQuestionComponent implements OnInit {
   }
 
   submitTest() {
-    this.router.navigate([
-      'bf-result/',
-      { postAnswer: JSON.stringify(this.postAnswer) },
-    ]);
+    this.shareService.submitTestBigFive(this.postAnswer).subscribe((result) => {
+      if (result !== null) {
+        this.router.navigate([
+          'bf-result/',
+          {
+            id: this.testId,
+            shortName: result.resultShortName,
+            result1: result.result1,
+            result2: result.result2,
+            result3: result.result3,
+            result4: result.result4,
+            result5: result.result5,
+          },
+        ]);
+      }
+    });
   }
 }
