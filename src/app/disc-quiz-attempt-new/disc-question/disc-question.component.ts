@@ -5,7 +5,7 @@ import {
   DiscPostQuizCollection,
 } from './../../_model/disc-quiz/disc-quiz-collection';
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SharedService } from 'src/app/_services/shared.service';
 
 @Component({
@@ -34,10 +34,16 @@ export class DiscQuestionComponent implements OnInit {
   };
 
   countSubmit = 0;
+  testId: string = '';
 
-  constructor(private sharedServ: SharedService, private router: Router) {}
+  constructor(
+    private sharedServ: SharedService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this.testId = this.route.snapshot.paramMap.get('id')!;
     this.getData();
   }
 
@@ -269,9 +275,21 @@ export class DiscQuestionComponent implements OnInit {
   }
 
   submit() {
-    this.router.navigate([
-      'disc-result/',
-      { postAnswer: JSON.stringify(this.postAnswer) },
-    ]);
+    this.sharedServ.submitTestDisc(this.postAnswer).subscribe((result) => {
+      if (result !== null) {
+        console.log(result);
+        this.router.navigate([
+          'disc-result/',
+          {
+            id: this.testId,
+            shortName: result.resultShortName,
+            result1: result.result1,
+            result2: result.result2,
+            result3: result.result3,
+            result4: result.result4,
+          },
+        ]);
+      }
+    });
   }
 }

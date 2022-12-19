@@ -29,7 +29,6 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   result3: string = '';
   result4: string = '';
 
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -67,7 +66,6 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
         this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
           this.quizResult!.resultPictureUrl
         );
-        console.log(this.quizResult);
       });
 
     // Kham
@@ -103,8 +101,27 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
     //     this.characterArray.push(this.quizResult?.result2.charAt(0) as string);
     //     this.characterArray.push(this.quizResult?.result3.charAt(0) as string);
     //     this.characterArray.push(this.quizResult?.result4.charAt(0) as string);
+
     //   }
     // });
+
+    this.characterArray.push(this.result1.charAt(0) as string);
+    this.characterArray.push(this.result2.charAt(0) as string);
+    this.characterArray.push(this.result3.charAt(0) as string);
+    this.characterArray.push(this.result4.charAt(0) as string);
+    this.resultArray.push(
+      this.result1.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result2.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result3.split('-')[1].split('%')[0]! as unknown as number
+    );
+    this.resultArray.push(
+      this.result4.split('-')[1].split('%')[0]! as unknown as number
+    );
+    console.log(this.characterArray);
   }
 
   getJob() {
