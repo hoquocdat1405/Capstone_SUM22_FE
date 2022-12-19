@@ -84,6 +84,10 @@ label {
   font-size: 16px;
 }
 
+label::first-letter {
+  text-transform: capitalize;
+}
+
 .question-total {
   color: #6f6d6e;
 }

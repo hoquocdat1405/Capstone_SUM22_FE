@@ -1,3 +1,4 @@
+import { MatPaginator } from '@angular/material/paginator';
 import { BigFivePostQuizOption } from './../../_model/big-five-quiz/big-five-option';
 import { BigFivePostQuizQuestion } from './../../_model/big-five-quiz/big-five-question';
 import {
@@ -6,7 +7,7 @@ import {
 } from './../../_model/big-five-quiz/big-five-collection';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedService } from './../../_services/shared.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-bf-question',
@@ -19,7 +20,10 @@ export class BfQuestionComponent implements OnInit {
   currentPage = 0;
   userAnswer: { id: number; answer: string }[] = [];
   quizCollections?: BigFiveQuizCollectionModel;
-  postAnswer?: BigFivePostQuizCollection;
+  postAnswer: BigFivePostQuizCollection = {
+    testId: 0,
+    questions: [],
+  };
   questionSlice: any;
   pageObject = {
     previouPageIndex: 0,
@@ -28,6 +32,9 @@ export class BfQuestionComponent implements OnInit {
     Lenghth: this.quizCollections?.questions.length,
   };
   hamburgerFlag: boolean = false;
+  length = 0;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private shareService: SharedService,
@@ -37,6 +44,7 @@ export class BfQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.getData(2004);
+    this.postAnswer!.testId = 0;
   }
 
   getData(id: number) {
@@ -61,9 +69,11 @@ export class BfQuestionComponent implements OnInit {
     if (totalQuestions % sliceQuestion !== 0) {
       this.totalPage++;
     }
+
+    this.length = this.quizCollections?.questions.length as unknown as number;
   }
 
-  chooseAnswer(i: number, event: any, level: string) {
+  chooseAnswer(i: number, event: any, level: string, j: number) {
     var levelAll = document.querySelectorAll(
       `.question:nth-child(${i + 1}) .checkmark`
     );
@@ -72,48 +82,66 @@ export class BfQuestionComponent implements OnInit {
       level.classList.remove('active');
     });
     this.clickCheckBox(event);
-    this.storeUserAnswer(event, i, level);
+    this.storeUserAnswer(event, i, level, j);
   }
 
   clickCheckBox(event: any) {
     event.target.classList.add('active');
   }
 
-  storeUserAnswer(event: any, i: number, level: string) {
-    // var question: BigFivePostQuizQuestion;
-    // var options: BigFivePostQuizOption[] = [];
-    // options.push({
-    //   optionId: event.target.id,
-    //   optionValue: event.target.value,
-    // });
-    // var param = document.querySelector(
-    //   `.question-container:nth-child(${i + 1}) param`
-    // ) as HTMLInputElement;
-    // question = {
-    //   questionId: param?.id.replace('p', '') as unknown as number,
-    //   questionValue: param.value,
-    //   options: options,
-    // };
-    // this.postAnswer!.testId = this.quizCollections!.id as unknown as number;
-    // const index = this.postAnswer!.questions.findIndex(
-    //   (e) => e.questionId === question.questionId
-    // );
-    // if (index > -1) {
-    //   this.postAnswer!.questions[i] = question;
-    // } else {
-    //   this.postAnswer!.questions.push(question);
-    // }
-    // if (
-    //   this.postAnswer!.questions.length ===
-    //   this.quizCollections!.questions.length
-    // ) {
-    //   var btnSubmit = document.querySelector('.submit-btn');
-    //   btnSubmit?.classList.add('active');
-    // }
-    // // document
-    // //   .querySelector(`.question-item:nth-child(${indexQuestion}`)
-    // //   ?.classList.add('active');
-    // console.log(this.postAnswer);
+  storeUserAnswer(event: any, i: number, level: string, j: number) {
+    this.postAnswer!.testId = this.quizCollections!.id as unknown as number;
+
+    var question: BigFivePostQuizQuestion;
+    var options: BigFivePostQuizOption[] = [];
+    var paramAnswer = document.querySelector(
+      `.question:nth-child(${i + 1}) .input-container:nth-child(${
+        j + 1
+      }) .param-answer`
+    ) as HTMLInputElement;
+    options.push({
+      optionId: paramAnswer.id as unknown as number,
+      optionValue: paramAnswer.value,
+    });
+    var param = document.querySelector(
+      `.question-container .question:nth-child(${i + 1}) param`
+    ) as HTMLInputElement;
+    question = {
+      questionId: param?.id.replace('p', '') as unknown as number,
+      questionValue: param.value,
+      options: options,
+    };
+
+    const index = this.postAnswer!.questions.findIndex(
+      (e) => e.questionId === question.questionId
+    );
+    if (index > -1) {
+      this.postAnswer!.questions[i] = question;
+    } else {
+      this.postAnswer!.questions.push(question);
+    }
+    if (
+      this.postAnswer!.questions.length ===
+      this.quizCollections!.questions.length
+    ) {
+      var btnSubmit = document.querySelector('.submit-btn');
+      btnSubmit?.classList.add('active');
+    }
+    document
+      .querySelector(
+        `.question-item:nth-child(${i + this.pageObject.pageIndex * 10 + 1}`
+      )
+      ?.classList.add('active');
+
+    var questionItems = document.querySelectorAll('.question-item.active');
+    var btnSubmit = document.querySelector('.view-result');
+    if (questionItems.length === this.quizCollections?.questions.length) {
+      btnSubmit?.classList.add('active');
+    } else {
+      btnSubmit?.classList.remove('active');
+    }
+
+    console.log(this.postAnswer);
   }
 
   changePage(event: any) {
@@ -163,5 +191,12 @@ export class BfQuestionComponent implements OnInit {
   chooseQuestion(index: number) {
     this.pageObject.pageIndex = Math.floor(index / 10);
     this.changePage(this.pageObject);
+  }
+
+  submitTest() {
+    this.router.navigate([
+      'bf-result/',
+      { postAnswer: JSON.stringify(this.postAnswer) },
+    ]);
   }
 }

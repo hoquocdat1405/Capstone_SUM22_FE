@@ -1,5 +1,5 @@
 <div class="main-container">
-  <p _ngcontent-ioc-c246="" class="title-mbti">Bài trắc nghiệm MBTI</p>
+  <p _ngcontent-ioc-c246="" class="title-mbti">Bài trắc nghiệm Big Five</p>
   <div class="note-text">*Hãy đọc kĩ câu hỏi và lựa chọn mức độ phù hợp nhất với bản thân. </div>
   <div class="content">
     <div class="header">
@@ -29,14 +29,17 @@
       </div>
       <div class="question-container">
         <div class="question" *ngFor="let question of questionSlice;index as i">
+          <param id="p{{question.id}}" value="{{question.value}}">
           <div class="question-text-box">
-            <div class="question-text">{{question.questionContent}}</div>
+            <div class="question-text"><span>Câu {{this.paginator.pageIndex == 0 ? i + 1 : 1 + i +
+                this.paginator.pageIndex * this.paginator.pageSize}}: </span>{{question.questionContent}}</div>
             <param id="{{question.id}}" value="{{question.value}}">
           </div>
           <div class="character-level-box">
             <label class="input-container" *ngFor="let option of questionSlice[i].options;index as j">
+              <param class="param-answer" id="{{option.id}}" value="{{option.value}}">
               <input id="{{option.id}}" class="level" type="radio" value="{{option.value}}">
-              <span class="checkmark" (click)="chooseAnswer(i,$event,option.value)"></span>
+              <span class="checkmark" (click)="chooseAnswer(i,$event,option.value,j)"></span>
             </label>
           </div>
         </div>
@@ -46,8 +49,7 @@
   <p class="pageIndex">Trang <span class="start-index">{{currentPage+1}}</span>/<span
       class="end-index">{{totalPage}}</span>
   </p>
-  <mat-paginator [length]="quizCollections!.questions.length" [pageSize]="10" aria-label=" Select page"
-    (page)="changePage($event)">
+  <mat-paginator [length]="length" [pageSize]="10" aria-label=" Select page" (page)="changePage($event)">
   </mat-paginator>
-  <button mat-raised-button color="primary" class="view-result">Xem kết quả</button>
+  <button mat-raised-button color="primary" class="view-result" (click)="submitTest()">Xem kết quả</button>
 </div>
