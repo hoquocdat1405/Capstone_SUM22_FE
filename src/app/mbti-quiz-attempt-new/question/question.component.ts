@@ -41,6 +41,8 @@ export class QuestionComponent implements OnInit {
   pageSize?: number;
   length?: number;
 
+  testId: string = ''
+
   postAnswer: MbtiPostQuizCollection = new MbtiPostQuizCollection();
 
   constructor(
@@ -50,8 +52,8 @@ export class QuestionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id')!;
-    this.getData(id as unknown as number);
+    this.testId = this.route.snapshot.paramMap.get('id')!;
+    this.getData(this.testId as unknown as number);
   }
 
   checked() {}
@@ -173,19 +175,26 @@ export class QuestionComponent implements OnInit {
   }
 
   submitAnswer() {
-    // this.shareService.submitTest(this.postAnswer).subscribe((result) => {
-    //   if (result !== null) {
-    //     this.router.navigate([
-    //       'mbti-result/',
-    //       { id: result.id, shortName: result.resultShortName },
-    //     ]);
-    //   }
-    // });
-    this.router.navigate([
-      'mbti-result/',
-      // { id: result.id, shortName: result.resultShortName },
-      { postAnswer: JSON.stringify(this.postAnswer) },
-    ]);
+    this.shareService.submitTest(this.postAnswer).subscribe((result) => {
+      if (result !== null) {
+        console.log(result)
+        this.router.navigate([
+          'mbti-result/',
+          { 
+            id: this.testId, 
+            shortName: result.resultShortName, 
+            result1: result.result1, 
+            result2: result.result2, 
+            result3: result.result3, 
+            result4: result.result4,
+          },
+        ]);
+      }
+    });
+    // this.router.navigate([
+    //   'mbti-result/',
+    //   { postAnswer: JSON.stringify(this.postAnswer) },
+    // ]);
     // console.log(this.postAnswer)
   }
 }

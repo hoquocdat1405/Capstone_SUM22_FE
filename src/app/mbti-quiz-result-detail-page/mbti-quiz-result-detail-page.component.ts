@@ -20,6 +20,12 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   panelOpenState: boolean = false;
   showedJobList: JobMajorModel[] = [];
 
+  result1: string = '';
+  result2: string = '';
+  result3: string = '';
+  result4: string = '';
+
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -35,28 +41,32 @@ export class MbtiQuizResultDetailPageComponent implements OnInit {
   }
 
   getData() {
-    // this.id = this.route.snapshot.paramMap.get('id')!;
-    // this.shortName = this.route.snapshot.paramMap.get('shortName')!;
-    // this.sharedServ
-    //   .getTestResult(this.id, this.shortName)
-    //   .subscribe((result) => {
-    //     this.quizResult = result;
-    //     this.getJob();
-    //     this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
-    //       this.quizResult!.resultPictureUrl
-    //     );
-    //     console.log(this.quizResult);
-    //   });
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.shortName = this.route.snapshot.paramMap.get('shortName')!;
+    this.result1 = this.route.snapshot.paramMap.get('result1')!;
+    this.result2 = this.route.snapshot.paramMap.get('result2')!;
+    this.result3 = this.route.snapshot.paramMap.get('result3')!;
+    this.result4 = this.route.snapshot.paramMap.get('result4')!;
+    this.sharedServ
+      .getTestResult(this.id, this.shortName)
+      .subscribe((result) => {
+        this.quizResult = result;
+        this.getJob();
+        this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
+          this.quizResult!.resultPictureUrl
+        );
+        console.log(this.quizResult);
+      });
 
     // Kham
-    const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
+    // const postAnswer = this.route.snapshot.paramMap.get('postAnswer')!;
 
-    this.sharedServ.submitTest(JSON.parse(postAnswer)).subscribe((result) => {
-      if (result !== null) {
-        this.quizResult = result
-        this.getJob();
-      }
-    });
+    // this.sharedServ.submitTest(JSON.parse(postAnswer)).subscribe((result) => {
+    //   if (result !== null) {
+    //     this.quizResult = result
+    //     this.getJob();
+    //   }
+    // });
   }
 
   getJob() {
