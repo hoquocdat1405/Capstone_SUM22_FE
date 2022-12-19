@@ -136,7 +136,8 @@ app-content-menu {
   display: flex;
   .contact-phone,
   .contact-email {
-    width: 40%;
+    // width: 40%;
+    width: fit-content;
     margin: 5% 5%;
     font-size: 1rem;
     font-weight: 500;

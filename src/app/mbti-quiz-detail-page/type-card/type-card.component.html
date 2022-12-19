@@ -14,7 +14,8 @@
     <div class="tail" #tail>
       <h3 class="tail-title">{{shorthand}}</h3>
       <p class="tail-sub-title">{{name}}</p>
-      <p class="tail-description">{{summary}}</p>
+      <!-- <p class="tail-description">{{summary}}</p> -->
+      <p class="tail-description" [innerHTML]="summary"></p>
       <!-- <button class="tail-btn-detail">Xem chi tiết</button> -->
     </div>
   </div>

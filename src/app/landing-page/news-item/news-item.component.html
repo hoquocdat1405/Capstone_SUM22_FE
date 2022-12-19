@@ -1,7 +1,7 @@
 <div class="container">
   <div class="news-main">
     <img class="news-img" src="{{news.bannerUrl}}"
-      width="100%" alt="daihocfpt" />
+      width="100%" alt="daihocfpt" (click)="redirectToDetail(news.id)"/>
     <div class="text-block">
       <a (click)="redirectToDetail(news.id)" class="title">{{news.title}}</a>
       <p class="brief">

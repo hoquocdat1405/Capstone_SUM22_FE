@@ -15,4 +15,8 @@ export class JobService {
   getAllJob(): Observable<Job[]> {
     return this.http.get<Job[]>(this.baseUrl + 'job/get-job');
   }
+
+  getJobFiltered(): Observable<Job[]> {
+    return this.http.get<Job[]>(this.baseUrl + "job/filter");
+  }
 }
