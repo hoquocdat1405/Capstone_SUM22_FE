@@ -1,54 +1,77 @@
-<div class="main">
-  <app-nav></app-nav>
-  <div class="body">
-    <div class="result-container">
-      <div class="character-info">
-        <p class="info-title">Đặc điểm nhóm tính cách <span>{{quizResult?.resultShortName}}</span></p>
-        <div class="horizontal-bar"></div>
-        <app-radar-chart [labels]="result.labels" [values]="result.values"></app-radar-chart>
+<app-nav></app-nav>
+<!-- <div class="main"> -->
+<div class="body">
+  <div class="result-container">
+    <div class="character-info">
+      <p class="info-title">Đặc điểm nhóm tính cách <span>{{quizResult?.resultShortName}}</span></p>
+      <div class="horizontal-bar"></div>
+      <app-radar-chart [labels]="result.labels" [values]="result.values" *ngIf="result"></app-radar-chart>
 
-        <div class="info-container">
-          <div class="info-content" *ngFor="let character of characters, index as i">
-            <h4 class="title-1"><span>0{{i+1}}</span>{{character.resultName}} - {{character.resultShortName}}</h4>
-            <p class="text">{{character.resultSummary}}</p>
-            <p class="text"><b>Các ngành nghề phù hợp:</b></p>
+      <div class="info-container">
+        <div class="result-detail-perc" *ngIf="quizResult">
+          <div class="result-perc">
+            Nhóm Kỹ thuật: <span>{{quizResult.result1.split('-')[1]}}</span>
+          </div>
+          <div class="result-perc">
+            Nhóm Nghiên cứu: <span>{{quizResult.result2.split('-')[1]}}</span>
+          </div>
+          <div class="result-perc">
+            Nhóm Nghệ thuật: <span>{{quizResult.result3.split('-')[1]}}</span>
+          </div>
+          <div class="result-perc">
+            Nhóm Xã hội: <span>{{quizResult.result4.split('-')[1]}}</span>
+          </div>
+          <div class="result-perc">
+            Nhóm Quản lí: <span>{{quizResult.result5.split('-')[1]}}</span>
+          </div>
+          <div class="result-perc">
+            Nhóm Nghiệp vụ: <span>{{quizResult.result6.split('-')[1]}}</span>
+          </div>
+        </div>
+        
+        <div class="info-content" *ngFor="let character of myCharacterList, index as i">
+          <h4 class="title-1"><span>0{{i+1}}</span>{{character.resultName}} - {{character.resultShortName}}</h4>
+          <p class="text" [innerHTML]="character.resultSummary"></p>
+          <p class="text"><b>Các ngành nghề phù hợp:</b></p>
 
-            <div class="major-acco-wrapper">
-              <div class="acco-item" *ngFor="let result of showedJobList">
-                <mat-accordion>
-                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        <div class="job-img-wrapper">
-                          <img src="{{result.imageUrl}}" alt="" class="job-image">
-                        </div>
-                        {{result.jobName}}
-                      </mat-panel-title>
+          <div class="major-acco-wrapper">
+            <div class="acco-item" *ngFor="let job of character.jobs">
+              <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <div class="job-img-wrapper">
+                        <img src="{{job.imageUrl}}" alt="" class="job-image">
+                      </div>
+                      {{job.jobName}}
+                    </mat-panel-title>
 
-                    </mat-expansion-panel-header>
-                    <div class="content-body">
-                      <div class="job-major-wrapper" *ngFor="let major of result.majorList">
-                        <div class="major-name">
-                          {{major.majorName}}
-                        </div>
-                        <div class="major-action-btn">
-                          <button mat-raised-button color="primary" (click)="goUniver(major.id)">Xem trường đào
-                            tạo</button>
-                        </div>
+                  </mat-expansion-panel-header>
+                  <div class="content-body">
+                    <div class="job-major-wrapper" *ngFor="let eachMajor of job.majors">
+                      <div class="major-name">
+                        {{eachMajor.majorName}}
+                      </div>
+                      <div class="major-action-btn">
+                        <button mat-raised-button color="primary" (click)="goUniver(eachMajor.id)">Xem trường đào
+                          tạo</button>
                       </div>
                     </div>
-                  </mat-expansion-panel>
-                </mat-accordion>
-              </div>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="btn-take-again">
-          <i class="icon-repeat fa fa-repeat" aria-hidden="true"></i>
-          <p class="take-again">Làm lại bài test</p>
+      <div class="btn-take-again">
+        <i class="icon-repeat fa fa-repeat" aria-hidden="true"></i>
+        <p class="take-again" (click)="retake()">Làm lại bài test</p>
 
-        </div>
       </div>
     </div>
   </div>
+</div>
+<!-- </div> -->
+<!-- <app-footer></app-footer> -->
