@@ -2,8 +2,7 @@
 <div class="page-container">
   <div class="wrapper" *ngIf="fqa">
     <p class="name">{{fqa.fqacontent}}</p>
-    <div class="answer">
-      {{fqa.fqaanswer}}
+    <div class="answer" [innerHTML]="fqa.fqaanswer">
     </div>
   </div>
 </div>
