@@ -9,6 +9,9 @@
   </div>
 </div>
 
+<p class="note">*Bạn nên làm lại bài test sau mỗi 6 tháng</p>
+
+
 <div class="content-container">
   <div class="content-section">
     <h4 class="content-header">{{test.testName}} là gì</h4>
@@ -34,7 +37,8 @@
     <div class="type-card-container">
       <div class="card-row">
         <div class="card" *ngFor="let type of characters">
-          <app-type-card [summary]="type.resultSummary" [name]="type.resultName" [shorthand]="type.resultShortName" [imgSrc]="type.resultPictureUrl"></app-type-card>
+          <app-type-card [summary]="type.resultSummary" [name]="type.resultName" [shorthand]="type.resultShortName"
+            [imgSrc]="type.resultPictureUrl"></app-type-card>
         </div>
       </div>
     </div>

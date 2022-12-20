@@ -1,100 +1,105 @@
 .page-container {
-    // background: linear-gradient(to bottom right, #ffdfb4, #ffe8bf);
-    // background: #fff;
-    width: 100%;
-    position: relative;
-
+  // background: linear-gradient(to bottom right, #ffdfb4, #ffe8bf);
+  // background: #fff;
+  width: 100%;
+  position: relative;
 }
 
-
 .banner-section {
-    -moz-box-shadow: inset 0 0 70px 10px #c2c2c2;
-    -webkit-box-shadow: inset 0 0 70px 10px #c2c2c2;
-    box-shadow: inset 0 0 70px 10px #c2c2c2;
-    width: 100%;
-    height: 70%;
-    display: flex;
-    position: relative;
-    justify-content: center;
+  -moz-box-shadow: inset 0 0 70px 10px #c2c2c2;
+  -webkit-box-shadow: inset 0 0 70px 10px #c2c2c2;
+  box-shadow: inset 0 0 70px 10px #c2c2c2;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  position: relative;
+  justify-content: center;
 }
 
 .banner-section img {
-    width: 600px;
-    height: auto;
+  width: 600px;
+  height: auto;
 }
 
 .banner-option {
-    width: 100%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
 }
 
 .banner-option a {
-    bottom: 0;
-    color: #fff;
-    background: #00B3FF;
-    padding: 10px 45px;
-    font-weight: 500;
-    border-radius: 15px;
-    text-decoration: none;
-    position: absolute;
-    bottom: 10px;
+  bottom: 0;
+  color: #fff;
+  background: #00b3ff;
+  padding: 10px 45px;
+  font-weight: 500;
+  border-radius: 15px;
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
 }
 
 .banner-option a:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 .type-bubble-container {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 .content-container {
-    font-family: 'Open Sans Regular';
-    font-size: 18px;
-    text-align: center;
-    margin: 0 10%;
+  font-family: "Open Sans Regular";
+  font-size: 18px;
+  text-align: center;
+  margin: 0 10%;
 }
 
 .content-text {
-    text-align: left;
+  text-align: left;
 }
 
 .content-section {
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 .content-header {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 2%;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 2%;
 }
 
 app-type-bubble {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .bubble {
-    width: 280px;
-    border: none;
-    margin: 10px;
-    transition: all 0.2s ease-in;
+  width: 280px;
+  border: none;
+  margin: 10px;
+  transition: all 0.2s ease-in;
 }
 
 .bubble:hover {
-    transform: scale(1.1);
-    cursor: pointer;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
-
-
 .bubble-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .bubble-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.note {
+  color: #c85a35;
+  opacity: 0.8;
+  font-size: 20px;
+  font-style: italic;
+  margin: 10px auto;
+  text-align: center;
 }

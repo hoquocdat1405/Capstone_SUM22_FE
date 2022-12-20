@@ -2,32 +2,73 @@
   <app-nav></app-nav>
   <div class="page-container">
     <div class="banner-img">
-      <img class="school-banner-img" src="../../assets/img/school/fpt-hcm.jpg" alt="school picture" />
+      <img
+        class="school-banner-img"
+        src="{{ uniDetail?.coverPhotoUrl }}"
+        alt="school picture"
+        *ngIf="
+          uniDetail?.coverPhotoUrl !== 'string' &&
+          uniDetail?.coverPhotoUrl !== '' &&
+          uniDetail?.coverPhotoUrl !== null
+        "
+      />
+
+      <img
+        class="school-banner-img"
+        src="./../../../assets/img/university-placeholder.jpg"
+        alt="school picture"
+        *ngIf="
+          uniDetail?.coverPhotoUrl === 'string' ||
+          uniDetail?.coverPhotoUrl === '' ||
+          uniDetail?.coverPhotoUrl === null
+        "
+      />
     </div>
 
     <div class="info-section">
       <div class="uni-info-wrapper">
         <img
-          src="{{(uniDetail?.avatarUrl !== 'string') ? uniDetail?.avatarUrl : './../../../assets/img/university-placeholder.jpg'}}"
-          alt="school logo" class="school-logo" />
+          src="{{
+            uniDetail?.avatarUrl !== 'string'
+              ? uniDetail?.avatarUrl
+              : './../../../assets/img/university-placeholder.jpg'
+          }}"
+          alt="school logo"
+          class="school-logo"
+        />
         <span class="uni-info">
-          <span class="school-name">{{uniDetail?.uniName}} - {{uniDetail?.uniCode}}</span>
+          <span class="school-name"
+            >{{ uniDetail?.uniName }} - {{ uniDetail?.uniCode }}</span
+          >
           <div class="school-address">
             <p class="address">
-              {{uniDetail?.addressNumber }}
+              {{ uniDetail?.addressNumber }}
             </p>
           </div>
         </span>
       </div>
       <div class="school-website">
-        <a class="website" href="{{uniDetail?.websiteUrl}}">{{uniDetail?.websiteUrl}}</a>
+        <a class="website" href="{{ uniDetail?.websiteUrl }}">{{
+          uniDetail?.websiteUrl
+        }}</a>
         <div class="btn-action">
-          <button mat-raised-button color="primary" (click)="saveSchool(uniDetail!.id)">Quan tâm</button>
-          <button mat-raised-button color="primary" (click)="submitApplication()"
-            [matTooltip]="sendApplicationTooltip">Gửi hồ sơ</button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="saveSchool(uniDetail!.id)"
+          >
+            Quan tâm
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="submitApplication()"
+            [matTooltip]="sendApplicationTooltip"
+          >
+            Gửi hồ sơ
+          </button>
         </div>
       </div>
-
     </div>
 
     <div class="tab-section">
@@ -36,7 +77,7 @@
         <mat-tab label="Giới thiệu" class="tab">
           <div class="tab-content">
             <span class="overview">
-              {{uniDetail?.description}}
+              {{ uniDetail?.description }}
             </span>
           </div>
         </mat-tab>
@@ -74,7 +115,11 @@
           <div class="tab-content">
             <div class="menu-content-section">
               <div class="row" *ngFor="let major of uniDetailMajorList">
-                <app-school-major class="col" [header]="major.majorName" [contents]="major.spec"></app-school-major>
+                <app-school-major
+                  class="col"
+                  [header]="major.majorName"
+                  [contents]="major.spec"
+                ></app-school-major>
               </div>
             </div>
           </div>
@@ -84,17 +129,20 @@
             <!-- CONSIDER USING MAT-EXPANDABLE for each FAQ -->
             <div class="menu-content-section" *ngIf="FqaList">
               <div class="row" *ngFor="let topic of FqaList">
-                <app-content-menu class="col" [header]="topic.topicName" [contents]="topic.fqas"></app-content-menu>
+                <app-content-menu
+                  class="col"
+                  [header]="topic.topicName"
+                  [contents]="topic.fqas"
+                ></app-content-menu>
               </div>
               <div class="contacts">
                 <div class="contact-phone">
-                  {{uniDetail?.phone}}
+                  {{ uniDetail?.phone }}
                 </div>
                 <div class="contact-email">
-                  {{uniDetail?.email}}
+                  {{ uniDetail?.email }}
                 </div>
               </div>
-
             </div>
           </div>
         </mat-tab>

@@ -3,9 +3,7 @@
   // background: #fff;
   width: 100%;
   position: relative;
-
 }
-
 
 .banner-section {
   -moz-box-shadow: inset 0 0 70px 10px #c2c2c2;
@@ -33,7 +31,7 @@
 .banner-option a {
   bottom: 0;
   color: #fff;
-  background: #00B3FF;
+  background: #00b3ff;
   padding: 10px 45px;
   font-weight: 500;
   border-radius: 15px;
@@ -51,7 +49,7 @@
 }
 
 .content-container {
-  font-family: 'Open Sans Regular';
+  font-family: "Open Sans Regular";
   font-size: 18px;
   text-align: center;
   margin: 0 10%;
@@ -87,8 +85,6 @@ app-type-bubble {
   cursor: pointer;
 }
 
-
-
 .bubble-section {
   display: flex;
   flex-direction: column;
@@ -99,4 +95,13 @@ app-type-bubble {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.note {
+  color: #c85a35;
+  opacity: 0.8;
+  font-size: 20px;
+  font-style: italic;
+  margin: 10px auto;
+  text-align: center;
 }

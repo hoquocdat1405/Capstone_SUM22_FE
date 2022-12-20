@@ -20,6 +20,7 @@ export class ApplyDetailComponent implements OnInit {
     this.appService.getApplicationDetail(id).subscribe((data) => {
       console.log(data);
       this.appDetail = data;
+      console.log(data);
     });
   }
 }

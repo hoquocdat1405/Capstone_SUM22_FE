@@ -5,11 +5,11 @@
     <img src="{{test.bannerUrl}}" alt="mbti test" />
   </div>
   <div class="banner-option">
-    <a (click)="redirectTest(test.testTypeId,test.id,0)" class="btn-start"
-      >Bắt đầu ngay</a
-    >
+    <a (click)="redirectTest(test.testTypeId,test.id,0)" class="btn-start">Bắt đầu ngay</a>
   </div>
 </div>
+<p class="note">*Bạn nên làm lại bài test sau mỗi 6 tháng</p>
+
 
 <div class="content-container">
   <div class="content-section">
@@ -27,7 +27,7 @@
   <div class="content-section">
     <h4 class="content-header"> {{test.testName}} dựa trên tiêu chí </h4>
     <p class="content-text">
-     {{test.criteriaInformation}}
+      {{test.criteriaInformation}}
     </p>
   </div>
 
@@ -40,24 +40,12 @@
         </div>
       </div> -->
 
-      <app-expansion-panel
-        *ngIf="i / 2 != 0"
-        [name]="type.resultName"
-        [shorthand]="type.resultShortName"
-        [text]="type.resultSummary"
-        [img]="type.resultPictureUrl"
-        [color]="colors[i]"
-        [isAllignRight]="true"
-      ></app-expansion-panel>
-      <app-expansion-panel
-        *ngIf="i / 2 == 0"
-        [name]="type.resultName"
-        [shorthand]="type.resultShortName"
-        [img]="type.resultPictureUrl"
-        [text]="type.resultSummary"
-        [color]="colors[i]"
-        [isAllignRight]="false"
-      ></app-expansion-panel>
+      <app-expansion-panel *ngIf="i / 2 != 0" [name]="type.resultName" [shorthand]="type.resultShortName"
+        [text]="type.resultSummary" [img]="type.resultPictureUrl" [color]="colors[i]"
+        [isAllignRight]="true"></app-expansion-panel>
+      <app-expansion-panel *ngIf="i / 2 == 0" [name]="type.resultName" [shorthand]="type.resultShortName"
+        [img]="type.resultPictureUrl" [text]="type.resultSummary" [color]="colors[i]"
+        [isAllignRight]="false"></app-expansion-panel>
     </div>
   </div>
 </div>
