@@ -65,7 +65,7 @@
                         </div>
                         <div class="mini-background"></div>
                     </div>
-                    <div class="job-name">{{uni.uniName}}</div>
+                    <!-- <div class="job-name">{{uni.uniName}}</div>
                     <div class="job-desc">
                         {{uni.description | slice:0: 100}} ...
                     </div>
@@ -74,6 +74,14 @@
                             tiết</button>
                         <button mat-raised-button class="view-detail-btn" (click)="considerUni(uni.id)">Quan
                             tâm</button>
+                    </div> -->
+                    <div (click)="viewSchoolDetail(uni.id)" class="job-name" [matTooltip]="uni.uniName">{{uni.uniName}}
+                        - {{uni.uniCode}}</div>
+                    <div class="job-desc">
+                        {{uni.description | slice:0: 150 }} ...
+                    </div>
+                    <div class="address">
+                        Địa chỉ: <span>{{uni.addressNumber | slice:0: 150 }}</span>
                     </div>
                 </div>
             </ng-container>
