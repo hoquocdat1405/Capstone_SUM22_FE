@@ -182,7 +182,7 @@ export class BfQuizResultDetailPageComponent implements OnInit {
   }
 
   retake() {
-    this.router.navigate(['bf-quiz-attempt', { id: this.id }]);
+    this.router.navigate(['big-five-quiz-attempt', { id: this.id }]);
   }
 
   goUniver(id: string) {
