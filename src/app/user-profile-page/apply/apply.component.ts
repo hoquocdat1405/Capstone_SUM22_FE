@@ -28,7 +28,7 @@ export class ApplyComponent implements OnInit {
     'uniName',
     'applyDate',
     'status',
-    'detail',
+    // 'detail',
   ];
   dataSource: any;
 
