@@ -22,8 +22,8 @@
         <mat-panel-title> {{ name }} </mat-panel-title>
       </div>
     </mat-expansion-panel-header>
-    <p>
-      {{ text }}
+    <p [innerHTML]="text">
+      <!-- {{ text }} -->
     </p>
   </mat-expansion-panel>
 </mat-accordion>

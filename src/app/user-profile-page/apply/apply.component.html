@@ -35,6 +35,11 @@
       <th mat-header-cell *matHeaderCellDef> Chi tiết </th>
       <td mat-cell *matCellDef="let element"> <button (click)="viewDetail(element.id)" class="btn-detail">Xem chi
           tiết</button> </td>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="6">
+          Không tìm thấy kết quả nào
+        </td>
+      </tr>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

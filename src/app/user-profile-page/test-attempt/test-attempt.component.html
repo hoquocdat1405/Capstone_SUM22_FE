@@ -36,6 +36,11 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="6">
+        Không tìm thấy kết quả nào
+      </td>
+    </tr>
   </table>
   <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10]" aria-label="Select page">
   </mat-paginator>

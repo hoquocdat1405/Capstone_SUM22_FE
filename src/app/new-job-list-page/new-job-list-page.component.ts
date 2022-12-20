@@ -116,42 +116,75 @@ export class NewJobListPageComponent implements OnInit {
     } else {
       const newSearchList: number[] = [];
       (this.f['toppings'].value as Array<string>).forEach(x => {
-        if(x === 'MBTI') {
+        if (x === 'MBTI') {
           newSearchList.push(3)
-        } else if(x === 'DISC') {
+        } else if (x === 'DISC') {
           newSearchList.push(4)
         }
       })
-      console.log(newSearchList)
-      this.jobService.getJobFiltered().subscribe({
-        next: (data: Job[]) => {
-          const showJobNew: Job[] = data;
-          const newJobMajorList: JobMajorModel[] = [];
-          showJobNew.forEach(job => {
-            this.majorService.getMajorCareer(job.id.toString()).subscribe({
-              next: (majorData: MajorModel[]) => {
-                const jobMajorData: JobMajorModel = {
-                  id: job.id,
-                  imageUrl: job.imageUrl,
-                  description: job.description,
-                  jobName: job.jobName,
-                  majorList: majorData
+
+      if (newSearchList.length === 1) {
+        this.jobService.getJobSingleFiltered(newSearchList[0]).subscribe({
+          next: (data: Job[]) => {
+            const showJobNew: Job[] = data;
+            const newJobMajorList: JobMajorModel[] = [];
+            showJobNew.forEach(job => {
+              this.majorService.getMajorCareer(job.id.toString()).subscribe({
+                next: (majorData: MajorModel[]) => {
+                  const jobMajorData: JobMajorModel = {
+                    id: job.id,
+                    imageUrl: job.imageUrl,
+                    description: job.description,
+                    jobName: job.jobName,
+                    majorList: majorData
+                  }
+                  newJobMajorList.push(jobMajorData)
+                  this.showedJobList = newJobMajorList.filter((job) =>
+                    job.jobName
+                      .toLowerCase()
+                      .includes((this.f['jobName'].value as string).toLowerCase())
+                  );
+                },
+                complete: () => {
+                  this.cutList = this.showedJobList.slice(0, 3);
+                  this.pageIndex = 0;
                 }
-                newJobMajorList.push(jobMajorData)
-                this.showedJobList = newJobMajorList.filter((job) =>
-                  job.jobName
-                    .toLowerCase()
-                    .includes((this.f['jobName'].value as string).toLowerCase())
-                );
-              },
-              complete: () => {
-                this.cutList = this.showedJobList.slice(0, 3);
-                this.pageIndex = 0;
-              }
+              })
             })
-          })
-        }
-      })
+          }
+        })
+      } else if (newSearchList.length === 2) {
+        this.jobService.getJobFiltered().subscribe({
+          next: (data: Job[]) => {
+            const showJobNew: Job[] = data;
+            const newJobMajorList: JobMajorModel[] = [];
+            showJobNew.forEach(job => {
+              this.majorService.getMajorCareer(job.id.toString()).subscribe({
+                next: (majorData: MajorModel[]) => {
+                  const jobMajorData: JobMajorModel = {
+                    id: job.id,
+                    imageUrl: job.imageUrl,
+                    description: job.description,
+                    jobName: job.jobName,
+                    majorList: majorData
+                  }
+                  newJobMajorList.push(jobMajorData)
+                  this.showedJobList = newJobMajorList.filter((job) =>
+                    job.jobName
+                      .toLowerCase()
+                      .includes((this.f['jobName'].value as string).toLowerCase())
+                  );
+                },
+                complete: () => {
+                  this.cutList = this.showedJobList.slice(0, 3);
+                  this.pageIndex = 0;
+                }
+              })
+            })
+          }
+        })
+      }
+      
     }
   }
 
